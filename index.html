@@ -21,7 +21,9 @@ installation, DNS, DHCP, package updates, power management, configuration manage
 
   <h1>Introduction to Cobbler</h1>
   <ul class="posts">
-    <li><a href="http://cobbler.github.com/docs/cobbler_in_plain_english.html">Cobbler in plain english</li>
+    {% for post in site.introdocs %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
   </ul>
 
   <h1>Get the Source</h1>
