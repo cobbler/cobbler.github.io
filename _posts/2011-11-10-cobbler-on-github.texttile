@@ -1,9 +1,18 @@
+-
 layout: post
-title: Cobbler's now on github
+title: Cobbler on github
 -
 
 {{ page.title }}
 Nov 20 2011
 
-Github pages test, nothing here yet.
+Cobbler's on github!   Please use the issue tracker for all issues, and fork the project and use pull requests for contributing code.
+This documentation site is *itself* on github, so you can submit patches here as well.  We'll continue to use
+the fedorahosted.org mailing lists for project coordination, though we are otherwise discontinuing usage of Trac.
+
+<A HREF="http://github.com/cobbler/">Source & issue tracker</A>
+
+Michael DeHaan
+
+
 
