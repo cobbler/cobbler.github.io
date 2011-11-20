@@ -1,8 +1,26 @@
-<html>
-<head>
-<title>cobbler.github.com</title>
-</head>
-<body>
-Welcome to cobbler.github.com
-</body>
-</html>
+yout: default
+title: Cobbler - Linux install and update server
+---
+
+<div id="home">
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+  
+  <h1>Learn about Cobbler</h1>
+  <ul class="posts">
+  </ul>
+
+  <h1>Get the Source</h1>
+  <ul class="posts">
+    <li><a href="http://github.com/cobbler/cobbler">Cobbler</a></li>
+    <li><a href="http://github.com/cobbler/cobbler.github.com">Documentation Site</a></li>
+  </ul>
+
+  <h1>Read the Documentation</h1>
+  <ul class="posts">
+  </ul>
+</div>
