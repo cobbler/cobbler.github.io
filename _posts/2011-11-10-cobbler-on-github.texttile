@@ -3,10 +3,9 @@ layout: post
 title: Cobbler on github
 ---
 
-{{ page.title }}
-Nov 20 2011
+Cobbler's now on github!   
 
-Cobbler's on github!   Please use the issue tracker for all issues, and fork the project and use pull requests for contributing code.
+Please use the issue tracker for all issues, and fork the project and use pull requests for contributing code.
 This documentation site is *itself* on github, so you can submit patches here as well.  We'll continue to use
 the fedorahosted.org mailing lists for project coordination, though we are otherwise discontinuing usage of Trac.
 
