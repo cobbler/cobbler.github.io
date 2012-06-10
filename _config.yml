@@ -1,2 +1,18 @@
-markdown: rdiscount
-pygments: true
+destination: ./_site
+auto:        false
+lsi:         false
+server_port: 4000
+pygments:    true
+markdown:    maruku
+permalink:   date
+maruku:
+  use_tex:    false
+  use_divs:   false
+  png_dir:    images/
+  png_url:    /images/
+  toc:        true
+exclude:    readme.md
+cobbler:
+    version:    2.2.3-1
+    released:   2012-06-07
+    versions:   [2.2.3-1]
