@@ -7,4 +7,5 @@ Cobbler is a Linux installation server that allows for rapid setup of network in
 {% for post in site.posts limit:3 %}
 # [{{ post.title}}]({{post.url}}) #
 {{post.content}}
+<a href="{{ post.url }}" title="read more">read more</a>
 {% endfor %}
