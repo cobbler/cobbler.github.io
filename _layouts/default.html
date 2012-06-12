@@ -5,15 +5,14 @@
    <title>{{ page.title }}</title>
    <meta name="author" content="Cobbler development team" />
 
-   <!-- syntax highlighting CSS -->
-   <!-- <link rel="stylesheet" href="/css/syntax.css" type="text/css" /> -->
-
    <!-- Homepage CSS -->
-   <!-- <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" /> -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
 
-   <!-- Typekit -->
-   <script type="text/javascript" src="http://use.typekit.com/jpd0pfm.js"></script>
-   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
    <!-- Icon -->
    <link rel="icon" type="image/png" href="/images/favicon.png" />
@@ -25,27 +24,36 @@
 var WRInitTime=(new Date()).getTime();
 </script>
 <!-- ClickTale end of Top part -->
-{% include navigation.md %}
-<div class="site">
-  {{ content }}
-  <div class="footer">
-    <div class="contact"></div>
+
+<div id="wrapper">
+  <div id="header">
   </div>
+  <div id="container">
+    <div id="leftcol">
+    {% include navigation.md %}
+    </div>
+    <div id="content">
+    {{ content }}
+    </div>
+    <div id="rightcol">
+    </div>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
 </div>
 
 <!-- Google Analytics -->
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27319020-1']);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 <!-- Google Analytics end -->
 

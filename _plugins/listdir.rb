@@ -17,6 +17,8 @@ module Jekyll
             @attributes['sort']      = 'ascending';
             @attributes['spacesep']  = '_';
 
+            print "DEBUG: listdir:directory is #{@attributes['directory']}\n"
+
             # Parse parameters
             if markup =~ Syntax
                 markup.scan(Liquid::TagAttributes) do |key, value|
