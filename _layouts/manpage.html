@@ -1,0 +1,19 @@
+{% include header.md %}
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+{% include navigation.md %}
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+{% listdir %}
+    </div> <!-- rightcol -->
+    <div id="content">
+{{ content }}
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+{% include footer.md %}
