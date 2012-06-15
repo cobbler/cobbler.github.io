@@ -1,4 +1,8 @@
-## Relocating Your Install
+---
+layout: default
+title: Cobbler Manual - Relocating Your Installation
+---
+## Relocating Your Installation
 
 Often folks don't have a very large /var partition, which is what
 cobbler uses by default for mirroring install trees and the like.

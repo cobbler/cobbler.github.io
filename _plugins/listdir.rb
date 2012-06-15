@@ -29,6 +29,22 @@ module Jekyll
             super
         end
 
+        def pretty_label(label) 
+            (dir,name) = File.split(label)
+            dir.gsub!(@attributes['directory'],"")
+            dir = dir.split(File::SEPARATOR).join(".")
+            if dir[0..0] == "."
+                dir = dir[1..-1]
+            end
+            name = File.basename(name,".*")
+            name.gsub!(@attributes['spacesep']," ")
+            if dir != ""
+                "#{dir}.#{name}"
+            else
+                name
+            end
+        end
+
         def read_dir(curdir)
             this_tree = {}
             this_tree = {}
@@ -52,9 +68,7 @@ module Jekyll
         end
 
         def print_dir(tree)
-            html = '<ul>'
-
-            #print "DEBUG: curdir = #{tree['path']}\n"
+            html = '<ul class="dirtree">'
 
             keys = tree['children'].keys()
             keys.sort!
@@ -62,18 +76,28 @@ module Jekyll
             tree['files'].sort!
             tree['files'].each do |entry|
                 (path,name) = File.split(entry)
-                (subset,name) = name.split("_-_",2)
-                html += "<li>#{entry}</li>"
-                if keys.index(subset) != nil
-                    html += print_dir(tree['children'][subset])
+                (subset,rest) = name.split("_-_",2)
+                name = File.basename(name,".*")
+                link = "/#{path}/#{name}.html"
+                html += "<li><a href=\"#{link}\">#{pretty_label(entry)}</a></li>"
+                subkey = File.join(tree['path'],subset)
+                if keys.index(subkey) != nil
+                    html += print_dir(tree['children'][subkey])
+                    keys.delete(subkey)
                 end
+            end
+            keys.each do |key|
+                html += "<li>#{pretty_label(key)}</li>"
+                html += print_dir(tree['children'][key])
             end
             html += '</ul>'
         end
 
         def render(context)
             context.registers[:listdir] ||= Hash.new(0)
-            print_dir(read_dir(@attributes['directory']))
+            html = '<div class="toc">'
+            html += print_dir(read_dir(@attributes['directory']))
+            html += '</div>'
         end
     end
 end

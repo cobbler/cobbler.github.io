@@ -1,3 +1,7 @@
+---
+layout: default
+title: Cobbler Manual - Download Instructions
+---
 ## Download Instructions
 
 Cobbler is licensed under the General Public License (GPL), version

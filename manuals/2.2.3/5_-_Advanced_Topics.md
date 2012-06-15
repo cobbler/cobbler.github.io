@@ -2,9 +2,12 @@
 layout: default
 title: Cobbler Manual - Advanced Topics
 ---
-# Advanced Topics
+## Advanced Topics
 
-_This document has been created from a section of the original cobbler man page.  It is slowly being reduced, as particular topics gain their own dedicated wiki pages. See  [User Documentation](User Documentation)._
+This section of the manual covers the more advanced use cases for Cobbler, including methods for customizing and extending cobbler without needing to write code.
+
+## Section Topics:
+{% listdir directory:manuals/2.2.3/5 filter:* %}
 
 ## PXE behaviour and tailoring
 

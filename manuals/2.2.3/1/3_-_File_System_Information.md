@@ -1,3 +1,7 @@
+---
+layout: default
+title: Cobbler Manual - File System Information
+---
 A typical cobbler install looks something as follows. Note that in
 general cobbler manages its own directories. Editing templates and
 configuration files is intended. Deleting directories will result

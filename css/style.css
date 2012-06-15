@@ -148,8 +148,11 @@ h1 a, h2 a, h3 a, h4 a {
 #content h1, #content h2, #content h3 {
   margin-bottom: 0.5em;
 }
-#content p, #content ul {
+#content p, #content ul, #content .toc, #content .highlight{
   margin-bottom: 1em;
+}
+#content ul.dirtree {
+  margin:0px;
 }
 
 #header #logo {
