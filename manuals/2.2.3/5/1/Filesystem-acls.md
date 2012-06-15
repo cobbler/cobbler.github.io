@@ -1,0 +1,1 @@
+documentation pending migration from fedorahosted.org/cobbler, please search that location

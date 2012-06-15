@@ -17,8 +17,6 @@ module Jekyll
             @attributes['sort']      = 'ascending';
             @attributes['spacesep']  = '_';
 
-            print "DEBUG: listdir:directory is #{@attributes['directory']}\n"
-
             # Parse parameters
             if markup =~ Syntax
                 markup.scan(Liquid::TagAttributes) do |key, value|
@@ -27,43 +25,55 @@ module Jekyll
             else
                 raise SyntaxError.new("Bad options given to 'listdir' plugin.")
             end
+
             super
         end
 
-        def do_dir(curdir)
+        def read_dir(curdir)
+            this_tree = {}
+            this_tree = {}
+            this_tree['path'] = curdir
+            this_tree['files'] = []
+            this_tree['children'] = {}
+
             flist = Dir.glob(File.join(curdir, @attributes['filter']))
-
-            if @attributes['sort'].casecmp( "descending" ) == 0
-                # Find files and sort them reverse-lexically. This means
-                # that files whose names begin with YYYYMMDD are sorted newest first.
-                flist.sort! {|x,y| y <=> x }
-            else
-                # sort normally in ascending order
-                flist.sort!
-            end
-
-            html = "<ul>"
             flist.each do |item|
-                if item == File.join(curdir,"index.md")
-                    next
-                end
-
+                (path,name) = File.split(item)
                 if FileTest.directory?(item)
-                    html = html + do_dir(item)
+                    this_tree['children'][item] = read_dir(item)
                 else
-                    dir = File.dirname(item).gsub(@attributes['directory'],'').gsub('/','.')
-                    dir.slice!(0)
-                    lentry = dir + "." + File.basename(item,".*").gsub(@attributes['spacesep'],' ')
-                    aentry = File.join(curdir,File.basename(item,".*")+".html")
-                    html = html + "<li><a href=\"/#{aentry}\">" + lentry + "</a></li>"
+                    if name != "index.md"
+                        this_tree['files'] << item
+                    end
                 end
             end
-            html = html + "</ul>"
+
+            this_tree
+        end
+
+        def print_dir(tree)
+            html = '<ul>'
+
+            #print "DEBUG: curdir = #{tree['path']}\n"
+
+            keys = tree['children'].keys()
+            keys.sort!
+
+            tree['files'].sort!
+            tree['files'].each do |entry|
+                (path,name) = File.split(entry)
+                (subset,name) = name.split("_-_",2)
+                html += "<li>#{entry}</li>"
+                if keys.index(subset) != nil
+                    html += print_dir(tree['children'][subset])
+                end
+            end
+            html += '</ul>'
         end
 
         def render(context)
             context.registers[:listdir] ||= Hash.new(0)
-            do_dir(@attributes['directory'])
+            print_dir(read_dir(@attributes['directory']))
         end
     end
 end
