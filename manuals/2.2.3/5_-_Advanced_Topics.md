@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: manpage
 title: Cobbler Manual - Advanced Topics
 ---
 ## Advanced Topics
@@ -7,7 +7,7 @@ title: Cobbler Manual - Advanced Topics
 This section of the manual covers the more advanced use cases for Cobbler, including methods for customizing and extending cobbler without needing to write code.
 
 ## Section Topics:
-{% listdir directory:manuals/2.2.3/5 filter:* %}
+{% listdir %}
 
 ## PXE behaviour and tailoring
 

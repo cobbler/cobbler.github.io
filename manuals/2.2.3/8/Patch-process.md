@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Patches And Stuff
 
 You'd like to contribute features or fixes to Cobbler? Great! We'd

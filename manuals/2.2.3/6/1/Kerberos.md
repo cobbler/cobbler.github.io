@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## About
 
 Do you want to authenticate users using Cobbler's Web UI against

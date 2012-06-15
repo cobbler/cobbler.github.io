@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ### Koan
 
 perhaps it stands for "kickstart over a network", koan is a helper client side helper for cobbler.  It's kind of a play on "Xen" too.

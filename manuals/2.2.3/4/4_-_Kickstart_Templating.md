@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: manpage
 title: Cobbler Manual - Kickstart Templating
 ---
 Kickstarts automate Red Hat and Fedora based Linux installations.

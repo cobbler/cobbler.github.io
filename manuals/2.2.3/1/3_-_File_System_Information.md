@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: manpage
 title: Cobbler Manual - File System Information
 ---
 A typical cobbler install looks something as follows. Note that in

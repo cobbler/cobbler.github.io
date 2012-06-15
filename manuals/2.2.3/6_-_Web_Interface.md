@@ -1,9 +1,7 @@
 ---
-layout: default
-title: Cobbler Manual - Web Interface
+layout: manpage
+title: Cobbler Web Interface
 ---
-## Cobbler Web Interface
-
 This section of the manual covers the Cobbler Web Interface. With the web user interface (WebUI), you can:
 
   * View all of the cobbler objects and the settings
@@ -17,9 +15,6 @@ You cannnot (yet):
   * Do a "cobbler validateks"
 
 The WebUI is intended to be self-explanatory and contains tips and explanations for nearly every field you can edit.  It also contains links to additional documentation, including the Cobbler manpage documentation in HTML format.
-
-## Section Topics:
-{% listdir directory:manuals/2.2.3/4 filter:* %}
 
 ## Basic Setup
 

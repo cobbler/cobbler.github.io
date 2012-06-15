@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Locking Down Cobbler
 
 If you want to enable the

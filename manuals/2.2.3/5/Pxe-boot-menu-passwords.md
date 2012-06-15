@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 == How to create a PXE boot menu password ==
 
 There are two different levels of password: 

@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## About
 
 How do you use Cobbler to provision machines onto multiple

@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Cobbler Modules
 
 Certain cobbler features can be user extended (in Python) by

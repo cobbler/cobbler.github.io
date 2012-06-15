@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: manpage
 title: Cobbler Manual - How We Model Things
 ---
 ## Modeling Your Configuration

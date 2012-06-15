@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## About
 
 What if you have Cobbler installed on Box A, and decide it really

@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 # Built in Configuration Management
 
 Cobbler is not just an installation server, it can also enable two different types of ongoing configuration management system (CMS):

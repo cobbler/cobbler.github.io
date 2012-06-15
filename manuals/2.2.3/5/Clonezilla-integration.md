@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Clonezilla live integration
 
 Since many of us need to support non-linux systems in addition to

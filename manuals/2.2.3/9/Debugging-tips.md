@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 # Debugging Cobbler Web
 
 Most of the action in cobbler happens inside cobblerd, and the web server actually talks to it over XMLRPC.

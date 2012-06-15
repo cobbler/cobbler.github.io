@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## About
 
 Cobbler triggers provide a way to tie user-defined actions to

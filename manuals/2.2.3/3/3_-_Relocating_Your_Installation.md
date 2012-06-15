@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: manpage
 title: Cobbler Manual - Relocating Your Installation
 ---
 ## Relocating Your Installation

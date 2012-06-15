@@ -12,7 +12,7 @@ module Jekyll
         def initialize(tag_name, markup, tokens)
             @attributes = {}
 
-            @attributes['directory'] = '';
+            @attributes['directory'] = '.';
             @attributes['filter']    = '*';
             @attributes['sort']      = 'ascending';
             @attributes['spacesep']  = '_';
@@ -95,6 +95,18 @@ module Jekyll
 
         def render(context)
             context.registers[:listdir] ||= Hash.new(0)
+
+            (dir,name) = File.split(context.environments.first["page"]["url"][1..-1])
+            (sub,rest) = name.split("_-_",2)
+            if @attributes['directory'] == '.'
+                #print "DEBUG: no directory specified, figuring out based on the url #{dir}/#{name}\n"
+                if FileTest.directory?(File.join(dir,sub))
+                    @attributes['directory'] = File.join(dir,sub)
+                else
+                    @attributes['directory'] = dir
+                end
+            end
+            #print "DEBUG: directory will be #{@attributes['directory']}\n"
             html = '<div class="toc">'
             html += print_dir(read_dir(@attributes['directory']))
             html += '</div>'

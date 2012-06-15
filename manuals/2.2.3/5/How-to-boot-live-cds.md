@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ### Live CDs
 
 Note: this page refers to Linux-style Live CDs.  For information on how to boot a DOS-style live CD check out the [All About Images](https://github.com/cobbler/cobbler/wiki/All-About-Images) page.

@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Cobbler Repository Management
 
 ### About
@@ -33,9 +37,10 @@ install media. See
 
 Once the import is complete, we'll add the mirrors...
 
-        cobbler repo add --mirror=http://download.fedora.redhat.com/pub/fedora/linux/updates/12/ --name=f12-i386-updates 
-    
-        cobbler repo add --mirror=http://download.fedora.redhat.com/pub/fedora/linux/releases/12/Everything/i386/ --name=f12-i386-everything 
+{% highlight bash %}
+$ cobbler repo add --mirror=http://download.fedora.redhat.com/pub/fedora/linux/updates/12/ --name=f12-i386-updates 
+$ cobbler repo add --mirror=http://download.fedora.redhat.com/pub/fedora/linux/releases/12/Everything/i386/ --name=f12-i386-everything 
+{% endhighlight %}
 
 Please replace i386 with your preferred architecture. If you own
 x86\_64 or ppc machines as well, just change it. If you're not

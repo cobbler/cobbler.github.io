@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Why Customizable Security?
 
 See also [Cobbler Web Interface](Cobbler web interface).

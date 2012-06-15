@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Memtest
 
 If installed, cobbler will put an entry into all of your PXE menus

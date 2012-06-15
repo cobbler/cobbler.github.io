@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 Cobbler's helper program, koan, can be installed on remote systems.
 
 It can then be used to reinstall systems, as well as it's original purpose of installing virtual machines.

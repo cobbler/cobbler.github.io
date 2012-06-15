@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ### Authentication
 
 Authentication controls who has access to your cobbler server. Controlling the details of what they can subsequently do is covered by a second step, [Web Authorization](Web Authorization).

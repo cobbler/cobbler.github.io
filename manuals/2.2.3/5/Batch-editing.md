@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Batch Editing
 
 Do you want to apply a change to a lot of cobbler objects at once?

@@ -1,4 +1,4 @@
 ---
-layout: default
+layout: manpage
 title: Cobbler Manual - PAM
 ---

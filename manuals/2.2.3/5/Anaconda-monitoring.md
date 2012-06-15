@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 This page details the **Ana**conda **Mon**itoring service available
 in cobbler.  As the Anaconda monitor is rather distribution specific,
 support for it is considered deprecated at this time.

@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 As mentioned at [KickstartTemplating](/cobbler/wiki/KickstartTemplating), Cobbler
 uses Cheetah for it's templating system.  (It also wants to support other choices
 and may in the future support others).

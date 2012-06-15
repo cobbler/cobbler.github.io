@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 # All about images
 
 The primary and recommended use of cobbler is to deploy systems by building them, as though from the OS manufacturer's distribution, e.g Redhat kickstart.  This method is generally easier to work with and provides an infrastructure which is not only more sustainable but also much more flexible across varieties of hardware.

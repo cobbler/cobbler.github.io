@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Power Management
 
 Cobbler allows for linking your power management systems with

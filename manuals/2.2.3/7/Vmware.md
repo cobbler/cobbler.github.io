@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 # VMWare support for koan
 
 One goal of Cobbler is to abstract out all your installation types.  Basically the idea is create a profile one, use it for PXE, reinstallations (--replace-self) and virtualized machines all at once.

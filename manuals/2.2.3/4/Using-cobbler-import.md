@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 # Using cobbler import
 
 _Although this document is called "Using cobbler import", it currently covers additional topics. Those additional topics should eventually be moved elsewhere._

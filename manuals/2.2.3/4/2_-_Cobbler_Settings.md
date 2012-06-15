@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: manpage
 title: Cobbler Manual - Settings
 ---
 allow_duplicate_hostnames               : 0

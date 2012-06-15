@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ### Customizable Authorization 
 
 Authorization happens after users have been [authenticated](Web Authentication) and controls who is then allowed, or not allowed, to perform certain specific operations in cobbler.

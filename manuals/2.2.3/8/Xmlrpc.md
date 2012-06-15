@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## About XMLRPC
 
 XMLRPC is a lightweight way for computer programs written in

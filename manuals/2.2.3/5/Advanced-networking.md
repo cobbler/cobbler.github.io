@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 # Advanced networking
 
 First off, read the cobbler manpage for all the settings you can

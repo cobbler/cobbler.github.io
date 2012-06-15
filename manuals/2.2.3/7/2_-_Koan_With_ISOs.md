@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 While most of cobbler installing is about enabling scripted network
 installation, can also define image objects which track ISOs that
 koan can find and see. Currently this only works when using koan

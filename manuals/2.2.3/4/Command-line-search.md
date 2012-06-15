@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Command Line Search
 
 Command line search can be used to ask questions about your cobbler

@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Using DBAN with Cobbler to automate system retirement
 
 ### Introduction

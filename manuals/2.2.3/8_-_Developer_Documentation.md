@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: manpage
 title: Cobbler Manual - Developer Documentation
 ---
 Learn how cobbler works internally, and how to contribute to it.   We're in the process of moving documentation to github, so if a page is blank, you may find it on fedorahosted.org/cobbler.   

@@ -1,13 +1,7 @@
 ---
-layout: default
-title: Cobbler - 2.2.3 Manual
+layout: manpage
+title: Installing Cobbler
 ---
-## Installing Cobbler
-This section of the manual will cover the basics of installing Cobbler on your system.
-
-## Section Topics:
-{% listdir directory:manuals/2.2.3/3 filter:* %}
-
 ## Installation And Basics
 
 Start here to learn about what Cobbler can do and how to set it up.

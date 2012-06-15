@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Cobbler with Ldap
 
 By default, the Cobbler WebUI and Web services authenticate against

@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 # Frequently Asked Virtualization Trouble Shooting Questions
 
 This section covers some questions that frequently come up in IRC,

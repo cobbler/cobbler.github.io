@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Func
 
 Func is a neat tool, (which, in full disclosure, Michael had a part

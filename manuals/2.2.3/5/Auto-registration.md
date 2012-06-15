@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ## Scenario
 
 You have a lot of machines coming right "off the truck" and you

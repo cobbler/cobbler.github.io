@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 # Power PC support
 
 Cobbler includes support for provisioning Linux on PowerPC systems.

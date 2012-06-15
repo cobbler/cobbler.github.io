@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ### Introduction
 
 Cobbler includes support for provisioning Linux on virtualized guests under z/VM, the System z hypervisor. 

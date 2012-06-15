@@ -1,3 +1,7 @@
+---
+layout: manpage
+title: Cobbler Manual
+---
 ### Notice
 
 For Xen and qemu/KVM virtual machines to be able to get outside access they will need to have a virtual bridge configured on the virtual host.   (If you're using VMware this page won't apply to you)
