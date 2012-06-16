@@ -1,6 +1,6 @@
 destination: ./_site
-auto: true
-lsi: true
+auto: false
+lsi: false
 server_port: 4000
 pygments: true
 markdown: rdiscount

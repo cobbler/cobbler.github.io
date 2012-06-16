@@ -12,8 +12,6 @@
 # in the file name with a space character (underscore by default).
 # This allows you to use filenames with no spaces and avoid ugly URLs.
 
-require 'pathname'
-
 module Jekyll
     class ListDirectoryTag < Liquid::Tag
 
