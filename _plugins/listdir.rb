@@ -1,5 +1,16 @@
 #usage:
-#{% listdir directory:images filter:*.jpg sort:descending spacesep:_ %}
+#{% listdir <directory:dir_name> <filter:*> <spacesep:_> %}
+# If directory isn't specified, it will:
+#   1) default to the directory the page is in. 
+#   2) If the page url starts with X_-_... it will check if there 
+#      is a subdirectory with the name X and use that instead.
+# 
+# The filter can be specified to filter out other files/directories.
+# Any file named index.md is skipped no matter what.
+#
+# The spacesep specifies a character sequence that will be replaced 
+# in the file name with a space character (underscore by default).
+# This allows you to use filenames with no spaces and avoid ugly URLs.
 
 require 'pathname'
 
