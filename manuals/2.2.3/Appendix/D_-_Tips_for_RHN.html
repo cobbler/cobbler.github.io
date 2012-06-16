@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Cobbler Manual - 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/Appendix/A_-_API.html">A - API</a></li><li><a href="/manuals/2.2.3/Appendix/B_-_S390_Support.html">B - S390 Support</a></li><li><a href="/manuals/2.2.3/Appendix/C_-_Power-PC_Support.html">C - Power-PC Support</a></li><li><a href="/manuals/2.2.3/Appendix/D_-_Tips_for_RHN.html">D - Tips for RHN</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<p>If you're deploying RHEL, there are a few extra kickstart and Cobbler tricks you can employ to make provisioning a snap, all consolidated in one place...</p>
+
+<h3>Importing</h3>
+
+<p>Download the DVD ISO's for RHN hosted.</p>
+
+<p>Then use "cobbler import" to import the ISO's to get an install tree.</p>
+
+<h3>Registering To RHN</h3>
+
+<p>RHEL has a tool installed called rhnreg_ks that you may not be familiar with. It's what you call in the %post of a kickstart file to make a system automatically register itself with Satellite or the RHN Hosted offering.</p>
+
+<p>You may want to read up on rhnreg_ks for all the options it provides, but Cobbler ships with a snippet ("redhat_register") that can help you register systems. It should be in the /var/lib/cobbler/kickstarts/sample*.ks files by default, for you to look at. It is configured by various settings in /etc/cobbler/settings</p>
+
+<h3>Authenticating XMLRPC/Web users against Satellite / Spacewalk's API</h3>
+
+<p>In /etc/cobbler/modules.conf, if you are using authn_spacewalk for authentication, Cobbler can talk to Satellite (5.3 and later) or Spacewalk for authentication. Authentication is cleared when users have the role "org_admin", or "kickstart_admin" roles. Authorization can later be supplied via cobbler modules as normal, for example, authz_allowall (default) or authn_ownership, but should probably be left as authz_allowall.</p>
+
+<p>See CustomizableSecurity</p>
+
+<p>If you are using a copy of Cobbler that came bundled with Spacewalk or Satellite Server, don't change these settings, as you will break Spacewalk/Satellite's ability to converse with Cobbler.</p>
+
+<h3>Installation Numbers</h3>
+
+<p>See the section called "RHEL Keys" on the KickstartSnippets page. It's a useful way to store all of your install keys in cobbler and use them automatically as needed.</p>
+
+<h3>Repository Mirroring</h3>
+
+<p>Cobbler has limited/experimental support for mirroring RHN-channels, see the cobbler manpage for details. Basically you just specify a "cobbler repo add" with the path "rhn://channel-name". This requires a version of yum-utils 1.0.4 or later, installed on the cobbler boot server. Only the arch of the cobbler server can be mirrored. See ManageYumRepos.</p>
+
+<p>If you require better mirroring support than what yum provides, please consider Red Hat Satellite Server.</p>
+
+<h3>Other Tricks</h3>
+
+<p>Feel free to add your own here!</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

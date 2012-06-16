@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Cobbler Manual - 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1_-_Cobbler_Primatives.html">1 - Cobbler Primatives</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1.1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">1.2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">1.3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">1.4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">1.5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">1.6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">1.7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">1.8 - Package Resources</a></li></ul><li><a href="/manuals/2.2.3/4/2_-_Cobbler_Settings.html">2 - Cobbler Settings</a></li><li><a href="/manuals/2.2.3/4/3_-_Managing_Services_With_Cobbler.html">3 - Managing Services With Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/3/1_-_Managing_DHCP.html">3.1 - Managing DHCP</a></li><li><a href="/manuals/2.2.3/4/3/2_-_Managing_DNS.html">3.2 - Managing DNS</a></li><li><a href="/manuals/2.2.3/4/3/Managing_TFTP.html">3.Managing TFTP</a></li><li><a href="/manuals/2.2.3/4/3/Managing_rsync.html">3.Managing rsync</a></li><li><a href="/manuals/2.2.3/4/3/Managing_yum_repos.html">3.Managing yum repos</a></li></ul><li><a href="/manuals/2.2.3/4/4_-_Kickstart_Templating.html">4 - Kickstart Templating</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/4/1_-_Advanced_Kickstarts.html">4.1 - Advanced Kickstarts</a></li></ul><li><a href="/manuals/2.2.3/4/5_-_Snippets.html">5 - Snippets</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/5/1_-_Advanced_Snippets.html">5.1 - Advanced Snippets</a></li></ul><li><a href="/manuals/2.2.3/4/All-About-Images.html">All-About-Images</a></li><li><a href="/manuals/2.2.3/4/Build-iso.html">Build-iso</a></li><li><a href="/manuals/2.2.3/4/Command-line-search.html">Command-line-search</a></li><li><a href="/manuals/2.2.3/4/Package-management-and-mirroring.html">Package-management-and-mirroring</a></li><li><a href="/manuals/2.2.3/4/Replication.html">Replication</a></li><li><a href="/manuals/2.2.3/4/Security-overview.html">Security-overview</a></li><li><a href="/manuals/2.2.3/4/Using-cobbler-import.html">Using-cobbler-import</a></li><li><a href="/manuals/2.2.3/4/Virtual-networking-setup.html">Virtual-networking-setup</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h3>Notice</h3>
+
+<p>For Xen and qemu/KVM virtual machines to be able to get outside access they will need to have a virtual bridge configured on the virtual host.   (If you're using VMware this page won't apply to you)</p>
+
+<p>While "virbr0" should automatically be set up if you are using a newer libvirt, it's not a real bridge and you won't be able to contact your guests from outside -- it's a private network.  So you most likely do NOT want to use virbr0 if you are doing anything useful.   "xenbr0" if you have that, is fine to use.</p>
+
+<p>The following instructions show about how to set up bridging manually which must be done on a host to make things work as you would expect.</p>
+
+<p>Remember if you have a "xenbr0", you can use that though -- it's a real bridge.  If you want something more specific you can still create your own.   xenbr0 is created in most versions of RHEL by xend startup.</p>
+
+<h3>Networking</h3>
+
+<p>Virtualization networking in koan uses "bridged" mode.   This is so that guests by default
+can be connected to from the outside world, which is very important for them to be able to do useful things.</p>
+
+<p>If a network bridge already exists, koan will be able to use that, though in some cases, you'll
+have to create your own bridge in order to get koan to work.  You do this by modifying the network configuration on your virtual host,
+and then using the koan parameter --virt-bridge=bridgename</p>
+
+<p>(As we mentioned, if you use virbr0, it's a fake bridge, so be aware you won't be able to ssh into your guests .. however koan can use that if you REALLY want to)</p>
+
+<h3>Basics</h3>
+
+<p>The configuration in this section is adapted from [http://watzmann.net/blog/index.php/2007/04/27/networking_with_kvm_and_libvirt this link].  We're going to be ignoring the parts in that article about using virt-install as we want to use koan -- we want to make our virtualized configurations be managed server side, by Cobbler -- and to take advantage of things that cobbler provides for us, like syslog setup, templating, remote profile browsing, etc.</p>
+
+<p>So here's the short rundown of what you need to do to create a bridge if you do not already have one.  Once you do this once for each guest, you're set up -- so if you have bare metal profiles for Cobbler set up, it may make sense to make those profiles set up your bridge at install time as well.</p>
+
+<p>Set up /etc/sysconfig/network-scripts/ifcfg-peth0 to define your physical NIC:</p>
+
+<pre><code>DEVICE=peth0
+ONBOOT=yes
+BRIDGE=eth0
+HWADDR=XX:XX:XX:XX:XX:XX
+</code></pre>
+
+<p>Substitute the X's in HWADDR for the mac address of the NIC you'd get from /sbin/ifconfig</p>
+
+<p>Now set up the bridge interface:  /sbin/sysconfig/network-scripts/ifcfg-eth0:</p>
+
+<pre><code>DEVICE=eth0
+BOOTPROTO=dhcp
+ONBOOT=yes
+TYPE=Bridge
+</code></pre>
+
+<p>As the above link recommends, "You also want to add an iptables rule that allows forwarding of packets on the bridged physical NIC (otherwise DHCP from your guests won't work)".</p>
+
+<pre><code># service iptables start
+# iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
+# service iptables save
+</code></pre>
+
+<p>Alternatively, you could also disable iptables (at your own risk).</p>
+
+<p>Now you should be able to use koan as follows:</p>
+
+<pre><code>koan --server=bootserver.example.org --profile=RHEL5-i386 --virt
+</code></pre>
+
+<p>To force a specific choice, you can use --virt-bridge and specify the name of any bridge you like.  Note that this must be a /real/ bridge, and not a physical interface.
+If you use a physical interface things will not work.</p>
+
+<pre><code>koan --server=bootserver.example.org --profile=RHEL5-i386 --virt --virt-bridge=peth0
+</code></pre>
+
+<p>Hopefully that helps address some of the basics around virtual networking setup.  The above instructions work for both Xen and qemu/KVM.</p>
+
+<p>(If you encounter problems with the above please bring them up on the cobbler mailing list)</p>
+
+<p>== Network Manager ==</p>
+
+<p>At the time of writing this (Fedora 10), Network Manager does not support bridging.</p>
+
+<p>You should also set NM_MANAGED=No in the configuration file for your physical interface to disable NetworkManager on hosts that use it.</p>
+
+<p>(This has the side effect of tricking firefox into offline mode on startup, but we are hopefully talking about servers here... if this bothers you, go into about:config and search for networkmanager.  Turn off the firefox network manager toolkit.)</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

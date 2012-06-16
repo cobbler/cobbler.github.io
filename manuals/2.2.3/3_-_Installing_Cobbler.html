@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Installing Cobbler</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Cobbler Manual - 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/3/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.2.3/3/2_-_Download_Instructions.html">2 - Download Instructions</a></li><li><a href="/manuals/2.2.3/3/3_-_Relocating_Your_Installation.html">3 - Relocating Your Installation</a></li><li><a href="/manuals/2.2.3/3/4_-_Installation_Notes.html">4 - Installation Notes</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h2>Installation And Basics</h2>
+
+<p>Start here to learn about what Cobbler can do and how to set it up.</p>
+
+<ul>
+<li><a href="Download%20Instructions">Download Instructions</a> -- Download instructions for RPMs and DEB files, and how to set up yum to be able to get Cobbler updates.</li>
+<li><a href="Start%20Here">Start Here</a> -- a little about everything (in process of being split up into subpages)</li>
+<li><a href="Using%20Cobbler%20Import">Using Cobbler Import</a> -- Guide on how to import distributions from DVD or mirrors and get going quickly.   Everyone should read this.</li>
+<li><a href="Cobbler%20Web%20Interface">Cobbler Web Interface</a> -- using the Cobbler Web interface, and how to set it up.  The Web UI is optional if you prefer the command line.</li>
+<li><a href="How%20We%20Model%20Things">How We Model Things</a> -- the different object types in cobbler and how we represent your configuration for easy manipulation</li>
+<li><a href="Koan">Koan</a> -- using Cobbler's helper tool on nodes to reinstall, install, and update themselves (pull style)</li>
+<li><a href="Distribution%20Support">Distribution Support</a> -- notes on levels of support for different platforms</li>
+<li><a href="Advanced%20Topics">Advanced Topics</a> -- an overview of various advanced features that may be covered elsewhere in the Wiki in greater depth.  A vestige of the old manpage docs, this is getting broken out below.</li>
+</ul>
+
+
+<h2>Core Features -- Start Here</h2>
+
+<h3>Physical Machine Installation</h3>
+
+<p>One of the main features of Cobbler is help you roll out new physical machines in a fully-automated way.</p>
+
+<ul>
+<li>Basic PXE setup is described in <a href="Using%20Cobbler%20Import">Using Cobbler Import</a></li>
+<li><a href="Manage%20Yum%20Repos">Manage Yum And Apt Repos</a> -- how to use cobbler to mirror updates as well as just do installs</li>
+<li><a href="Reinstallation">Reinstallation</a> -- how to use Koan for adding a reinstall option to grub, for when PXE is not possible</li>
+<li><a href="Build%20Iso">Build Iso</a> - when you need to install baremetal systems in an automated way and can't use PXE and/or DHCP infrastructure, Cobbler provides alternatives</li>
+</ul>
+
+
+<h3>Virtualization Automation</h3>
+
+<p>Koan can be used (run on the host machines, talks to cobbler) to help automate virtual machine installation.   This is one of the primary functions of Cobbler -- to serve installs of not only physical machines, but also virtual ones.   Of course, you don't always need to use koan -- for example, let Cobbler manage your PXE tree, and just PXE boot from VMware.  But when you do, koan has lots of helpful options to automate the parameters in and around virtual installs.</p>
+
+<ul>
+<li><a href="Installing%20Virtual%20Guests">Installing Virtual Guests</a>-- an overview of how to do virtualization installs with koan+cobbler, start here</li>
+<li><a href="Virtual%20Networking%20Setup">Virtual Networking Setup</a> -- virtual networking setup for use with koan</li>
+<li><a href="VMware">VMWare</a> -- how to use Koan with VMware instead of Xen or qemu/KVM</li>
+</ul>
+
+
+<h2>Intermediate Features (A La Carte Usage Ok)</h2>
+
+<h3>Kickstart Templating</h3>
+
+<p>One of the main features of Cobbler is a kickstart templating engine that can help users tame a sea of unruly kickstarts for automating their OS and application installations, making it possible to share Snippets of code between them, or substitute variables into kickstart files.</p>
+
+<ul>
+<li><a href="Kickstart%20Templating">Kickstart Templating</a> -- examples using Cobbler with profile and system specific kickstart templating</li>
+<li><a href="Kickstart%20Snippets">Kickstart Snippets</a> -- a cookbook of snippets for use in kickstart templates</li>
+<li><a href="Extending%20Cheetah">Extending Cheetah</a> -- for those of you who really want to get carried away with kickstart templating (Advanced Topic!)</li>
+</ul>
+
+
+<h3>Package Update Mirroring Features</h3>
+
+<p>Packages are closely related to installation.   Cobbler can help you mirror updates as well, and ensure that installed systems are configured to get those updates that you mirror.  In some cases, you can also make sure systems are up to date with all of the latest packages at the end of OS installation.</p>
+
+<ul>
+<li><a href="Package%20Management%20and%20Mirroring">Package Management and Mirroring</a> : using Cobbler to manage yum repositories for fun and profit</li>
+</ul>
+
+
+<h3>Network Management Features</h3>
+
+<p>DHCP and DNS are low level network services closely related to (and needed for) installation.   Cobbler can optionally help you keep your DHCP and DNS configurations manageable.  It can also help you configure advanced network features not neccessarily supported natively in kickstart, including bonding and VLANs.  If you don't want to use these advanced options, you can just set up DHCP to point to your PXE server and not have Cobbler manage it -- which is a perfectly fine thing to do.  However, if you'd like to get out of the game of editing DHCP/DNS configuration files, this section is for you.</p>
+
+<ul>
+<li><a href="DHCP%20Management">DHCP Management</a> -- cobbler can take care of DHCP management for you also</li>
+<li><a href="DNS%20Management">DNS Management</a> -- cobbler can use BIND for DNS management</li>
+<li><a href="Advanced%20Networking">Advanced Networking</a> -- Using Cobbler to deploy advanced networking configurations (bonding and VLANs are covered here)</li>
+</ul>
+
+
+<h3>Usage with Redhat-based systems</h3>
+
+<ul>
+<li><a href="Hints-redhat">Hints and tips for Redhat</a> :  rescue-mode etc.</li>
+</ul>
+
+
+<h3>Usage with Red Hat Enterprise Linux</h3>
+
+<p>Cobbler supports many varieties of Linux, but here are some special tips for making RHEL management easier.</p>
+
+<ul>
+<li><a href="Tips%20For%20RHN">Tips for RHN</a> :  Ways to make cobbler/RHN/RHEL life even easier</li>
+<li>We recommend that RHEL users configure EPEL-testing as a repository</li>
+<li>Satellite 5.3 and beyond have an embedded (older) Cobbler server, see also http://fedorahosted.org/spacewalk, but we recommend that you just use Cobbler directly and will have access to more options.</li>
+</ul>
+
+
+<h3>Continued Management of Installed Systems</h3>
+
+<p>Cobbler can either be its own (very simple) configuration management system or can help you out to use another configuration management system (like Puppet) alongside it.</p>
+
+<ul>
+<li><a href="Built%20In%20Configuration%20Management">Built-in Configuration Management</a> : using cobbler as a lightweight configuration management system</li>
+<li><a href="Using%20Cobbler%20With%20A%20Configuration%20Management%20System">Using Cobbler With A Configuration Management System</a> : different ways to control the mappings between cobbler and things like Puppet</li>
+<li><a href="Func%20Integration">Func Integration</a> : even easier [http://fedorahosted.org/func Func] setup with Cobbler</li>
+</ul>
+
+
+<h3>Using Cobbler for Power Management (Optional)</h3>
+
+<p>Cobbler can help you control systems in diverse power management environments, including helping you out with virtual systems.</p>
+
+<ul>
+<li><a href="Power%20Management">Power Management</a></li>
+</ul>
+
+
+<h3>Simple Cobbler Tips And Tricks</h3>
+
+<p>Some useful things that don't fit into other categories.</p>
+
+<ul>
+<li><a href="Command%20line%20search">Command line search</a> : ask questions about your configuration using the command line.</li>
+<li><a href="Batch%20Editing">Batch Editing</a> : Want to edit a lot of objects at once?</li>
+<li><a href="Memtest">Memtest</a>: How cobbler auto-discovers memtest and adds it automatically to your PXE menus</li>
+<li><a href="Graphical%20Installs">Graphical Installs</a> : How do I do graphical installs?   Easy.</li>
+<li><a href="How%20To%20Boot%20Live%20CDs">How to Boot Live CDs</a> : How do you boot a linux live CD over PXE?</li>
+<li><a href="All%20About%20Images">All About Images</a>: Some options for dealing with things that don't fall into the kernel+initrd model</li>
+<li><a href="Filesystem%20ACLs">Filesystem ACLs</a>: use "cobbler aclsetup" to grant cobbler usage to non-root users (instead of granting sudo access)</li>
+</ul>
+
+
+<h2>Advanced Operations</h2>
+
+<h3>Misc. Advanced Tips And Tricks</h3>
+
+<p>For more complex environments, a simple netboot infrastructure and a single install server is not enough.  If you have a large number of systems, a static network, or special requirements, items in this section may be for you.   If you have a simple DHCP network with one Cobbler server, you can probably ignore this section for now and read about these features later as you need them.</p>
+
+<ul>
+<li><a href="Deploy%20Feature">Deploy Feature</a>: Easier virt deployment all in one central place using a variety of transports</li>
+<li><a href="Replication">Replication</a>: cobbler can replicate configurations to other cobbler servers for performance and disaster recovery</li>
+<li><a href="Build%20Iso">Build Iso</a>: How to build net install CD's with a menu of all of your profiles on them, in one easy step</li>
+<li><a href="Anaconda%20Monitoring">Anaconda Monitoring</a> : Using the anaconda installation monitoring feature for tracking and logging install progress remotely <em>DEPRECATED</em></li>
+<li><a href="System%20Retirement">System Retirement and Secure Erasure</a>: how to securely wipe a system with Cobbler and DBAN</li>
+<li><a href="Auto%20Registration">Auto Registration</a> : how to create Cobbler System records during PXE</li>
+<li><a href="Multiple%20Cobbler%20Server%20Addresses">Multiple Cobbler Server Addresses</a></li>
+<li><a href="Power%20PC%20Support">Power PC Support</a> : How to use yaboot to simulate PXE to network boot your systems.</li>
+<li><a href="S390%20Support">S390 Support</a> : How to use the zpxe PXE simulator that is built into cobbler, and how it works</li>
+<li><a href="Clonezilla%20Integration">Clonezilla Integration</a> : How to use clonezilla-live with cobbler for duplicating any OS type</li>
+<li><a href="Microsoft%20Systems%20Center">Microsoft Systems Center</a> : How to add a PXE menu item that will boot a SCCM install CD <em>DEPRECATED</em></li>
+<li><a href="PXE%20Boot%20Menu%20Passwords">PXE Boot Menu Passwords</a> : How to set a password on the PXE menu</li>
+</ul>
+
+
+<h3>Using Cobbler for Firmware Updates</h3>
+
+<p>Here are some instructions for using Cobbler to push out Vendor specific firmware updates</p>
+
+<ul>
+<li><a href="HP%20Firmware%20Updates">HP Firmware Updates</a> : using Cobbler to update firmware on HP Proliant hardware</li>
+<li><a href="Dell%20Firmware%20Updates">Dell Firmware Updates</a> : using Cobbler to update Dell firmware</li>
+</ul>
+
+
+<h3>Cobbler Server Migrations</h3>
+
+<p>If you need to move Cobbler to another machine or change where it is storing data, this section is for you.</p>
+
+<ul>
+<li><a href="Relocating%20Your%20Install">Relocating Your Install</a> : what if I don't want cobbler data in my /var partition?</li>
+<li><a href="Moving%20Your%20Install">Moving Your Install</a> : How do you go about moving your cobbler install to another box?</li>
+</ul>
+
+
+<h3>Security Choices (for WebUI / XMLRPC)</h3>
+
+<p>What sort of security controls are available for the web application and XMLRPC API consumers?</p>
+
+<ul>
+<li><a href="Security%20Overview">Security Overview</a> -- general security overview on how to define your security policy</li>
+<li><a href="Web%20Authentication">Web Authentication</a> -- choose what to autheticate against
+
+<ul>
+<li><a href="Kerberos">Kerberos</a> -- how to authenticate against Kerberos</li>
+<li><a href="LDAP">LDAP</a> -- how to authenticate against Ldap</li>
+</ul>
+</li>
+<li><a href="Web%20Authorization">Web Authorization</a> -- choose what users get what access controls</li>
+<li><a href="Lock%20Down">Lock Down</a> -- if you're a multi-user cobbler install, mdehaan's recommendations.  Also includes SELinux notes.</li>
+</ul>
+
+
+<p>See the developer documentation page for more about API integration options.</p>
+
+<h3>Internals</h3>
+
+<ul>
+<li><a href="File%20System%20Information">File System Information</a> -- what lives where in a cobbler install, and where the important files are at.</li>
+</ul>
+
+
+<h2>Troubleshooting</h2>
+
+<p>A list of resources to look into when encountering problems with Cobbler, virtualization, kickstart, and related IT infrastructure</p>
+
+<ul>
+<li><a href="Troubleshooting">TroubleShooting</a> (basically a Cobbler FAQ)</li>
+<li><a href="Virtualization%20Troubleshooting">Virtualization Troubleshooting</a> (specifically related to cobbler+koan and virtualization)</li>
+<li><a href="http://fedoraproject.org/wiki/Anaconda/NetworkIssues">Anaconda Network Issues</a> -- it's not our fault</li>
+<li><a href="http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Installation_Guide-en-US/s1-kickstart2-options.html">RHEL docs on kickstart options</a></li>
+<li><a href="http://fedoraproject.org/wiki/Anaconda/Option">Fedora docs on kickstart options</a></li>
+<li><a href="http://www.suse.de/~ug/%20SuSE%20AutoYast%20documentation">SuSE AutoYaST documentation</a></li>
+<li><a href="http://www.redhat.com/mailman/listinfo/kickstart-list">Kickstart mailing list</a></li>
+<li><a href="http://www.google.com/coop/cse?cx=016811804524159694721%3A1h7btspnxtu">Kickstart mailing list custom search engine</a></li>
+<li><a href="http://www.google.com/coop/cse?cx=016811804524159694721:pfx-ny1pn3s">Cobbler mailing list custom search engine</a></li>
+</ul>
+
+
+<p>If you're still stuck, join the mailing list, as we have a large community of experienced admins.  See details at <a href="cobbler.github.com">cobbler.github.com</a>.</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

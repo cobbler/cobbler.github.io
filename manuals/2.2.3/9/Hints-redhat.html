@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Cobbler Manual - 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/9/Debugging-tips.html">Debugging-tips</a></li><li><a href="/manuals/2.2.3/9/Hints-redhat.html">Hints-redhat</a></li><li><a href="/manuals/2.2.3/9/Virtualization-troubleshooting.html">Virtualization-troubleshooting</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h1>Hints and tips: Redhat</h1>
+
+<p>A collection of tips for using Cobbler to deploy and support Redhat-based machines, including CentOS, Fedora, Scientific Linux, etc.</p>
+
+<h2>rescue mode</h2>
+
+<p>Redhat-based systems offer a "rescue" mode, typically used for trying to analyse and recover after a major OS problem.  The usual way of doing this is booting from a DVD and selecting "rescue" mode at the relevant point.  But it is also possible to do this via Cobbler.  Indeed, if the machine lacks a DVD drive, alternatives such as this are vital for attempted rescue operations.</p>
+
+<p><strong>RISK:</strong>  <em>Because you are using this Cobbler deployment system that usually installs machines, there is the risk that this procedure could overwrite the very machine you are attempting to rescue.  So it is strongly recommended that, as part of your normal workflow, you develop and periodically verify this procedure in a safe, non-production, non-emergency environment.</em></p>
+
+<p>The example below illustrates RHEL 5.6.  The detail may vary for other Redhat-like flavours.</p>
+
+<h3>Assumptions</h3>
+
+<ul>
+<li>Your target machine's Cobbler network deployment is supported by exactly one active DHCP server.</li>
+<li>Your deployed machines are already present in Cobbler for their earlier deployment purposes.</li>
+<li>A deployed machine's <code>kopts</code> setting field is usually null.</li>
+<li>A deployed machine's <code>netboot-enabled</code> setting is false outside deployment time.</li>
+</ul>
+
+
+<h3>Procedure</h3>
+
+<p>As stated above: <em>verify this periodically, outside emergency times, in a non-production environment.</em></p>
+
+<p>On the Cobbler server:</p>
+
+<pre><code>cobbler system edit --name=sick-machine --kopts='rescue'
+cobbler system edit --name=sick-machine --netboot-enabled=true
+cobbler sync
+</code></pre>
+
+<p>As always, don't forget that "cobbler sync".</p>
+
+<p>At the client "sick-machine", start a normal deployment-style network boot.  During this you should eventually see:</p>
+
+<ul>
+<li>Usual blue screen: <code>Loading SCSI driver</code>.  There may be a couple of similar screens.</li>
+<li>Usual blue screen: <code>Sending request for IP information for eth0...</code>.  (The exact value of that "eth0" is dependent on your machine.)</li>
+<li>Usual blue screen: repeat <code>Sending request for IP...</code> , but this time the header bar at the top should have <code>Rescue Mode</code> appended.</li>
+<li>Usual back-to-black: <code>running anaconda</code> and a couple of related lines.</li>
+<li>Blue screen with header bar <code>Rescue</code> and options "Continue", "Read-Only", "Skip".</li>
+</ul>
+
+
+<p>In particular, if the second <code>Sending request for IP...</code> screen fails to say <code>Rescue Mode</code>, it is strongly recommended that you immediately abort the process to avoid the risk of overwriting the machine.</p>
+
+<p>At this point you select whichever option is appropriate for your rescue and follow the Redhat rescue procedures.  (The detail is independent of, and beyond the scope of, this Cobbler procedure.)</p>
+
+<p>When you have finished, on the Cobbler server nullify the rescue:</p>
+
+<pre><code>cobbler system edit --name=sick-machine --kopts=''
+cobbler system edit --name=sick-machine --netboot-enabled=false
+cobbler sync
+</code></pre>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

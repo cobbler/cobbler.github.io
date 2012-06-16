@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Cobbler Manual - 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/8/Development-environment-tips.html">Development-environment-tips</a></li><li><a href="/manuals/2.2.3/8/Patch-process.html">Patch-process</a></li><li><a href="/manuals/2.2.3/8/Xmlrpc.html">Xmlrpc</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h2>Patches And Stuff</h2>
+
+<p>You'd like to contribute features or fixes to Cobbler? Great! We'd
+love to have them.</p>
+
+<p>It is highly recommended that you have a github.com account if you would
+like to contribute code.   Create an account, log in, and then go
+to github.com/cobbler/cobbler to "fork" the project.</p>
+
+<p>Create a new branch named after the feature you are working on.</p>
+
+<p>Do the work on your local machine and push to your personal github
+branch (e.g. github.com/yourname/cobbler)</p>
+
+<p>Then use the "submit pull request" feature of github to request that
+the official repo pull in your changes.  Be sure to include a full
+description of what your change does in the comments, including
+what you have tested (and other things that you may have not been
+able to test well and need help with).</p>
+
+<p>If the patch needs more work, we'll let you know in the comments.</p>
+
+<p>Do not mix work on different features in different pull requests/branches if at
+all possible as this makes it difficult to take only some of the work at
+one time, and to quickly slurp in some changes why others get hammered out.</p>
+
+<p>Once we merge in your pull request, you can remove the branch from your repo if you
+like.</p>
+
+<p>If not already there, please add yourself to the AUTHORS file in the root of the checkout.</p>
+
+<h2>Branches</h2>
+
+<p>Cobbler has a development branch called "master"
+(where the action is), and a branch for each release that are in maintaince mode.
+In nearly all cases, your patches should go against master and we can, if we decide,
+backport them to release branches if we want to do an incremental release.</p>
+
+<h2>Standards</h2>
+
+<p>We're not overly picky, but please follow the usual python PEP8 standards
+within reason.</p>
+
+<ul>
+<li>always use under_scores, not camelCase</li>
+<li>always spaces, not tabs</li>
+<li>avoid one line if statements</li>
+<li>keep things simple -- make sure everyone can read and     understand your code -- avoid "magic" such as very
+complex list comprehensions.   The audience for Cobbler     includes folks with a wide range of programming skills and
+this is not the place to show off</li>
+<li>use modules that are available in EPEL or the base OS, therwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines</li>
+<li>at least for now we have to support Python 2.3 for Cobbler and
+Python 2.2 for koan, so stay away from metaclasses and fancy stuff
+:).  (We should discuss dropping support for these soon)</li>
+</ul>
+
+
+<p>You're also welcome to hang out in #cobbler and
+#cobbler-devel on irc.freenode.net, as there are folks around to
+answer questions, etc.</p>
+
+<h2>Mailing List</h2>
+
+<p>We have a development mailing list at <a href="https://fedorahosted.org/mailman/listinfo/cobbler-devel">https://fedorahosted.org/mailman/listinfo/cobbler-devel</a>.  Discuss development related questions,
+roadmap, and other things there, rather than on the general user list.</p>
+
+<p>It is a very good idea to mention your pull request (copy/paste, etc) to the development mailing
+list for discussion.</p>
+
+<h2>The End</h2>
+
+<p>Thanks for the interest and happy patching!</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

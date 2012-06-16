@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual - Relocating Your Installation</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Cobbler Manual - 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/3/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.2.3/3/2_-_Download_Instructions.html">2 - Download Instructions</a></li><li><a href="/manuals/2.2.3/3/3_-_Relocating_Your_Installation.html">3 - Relocating Your Installation</a></li><li><a href="/manuals/2.2.3/3/4_-_Installation_Notes.html">4 - Installation Notes</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h2>Relocating Your Installation</h2>
+
+<p>Often folks don't have a very large /var partition, which is what
+cobbler uses by default for mirroring install trees and the like.</p>
+
+<p>You'll notice you can reconfigure the webdir location just by going
+into /etc/cobbler/settings, but it's not the best way to do things
+-- especially as the RPM packaging does include some files and
+directories in the stock path. This means that, for upgrades and
+the like, you'll be breaking things somewhat. Rather than
+attempting to reconfigure cobbler, your Apache configuration, your
+file permissions, and your SELinux rules, the recommended course of
+action is very simple.</p>
+
+<p>\1. Copy everything you have already in /var/www/cobbler to another
+ location -- for instance, /opt/cobbler_data</p>
+
+<p>\2. Now just create a symlink or bind mount at /var/www/cobbler
+ that points to /opt/cobbler_data.</p>
+
+<p>Done. You're up and running.</p>
+
+<p>NOTE: If you decided to access cobbler's data store over NFS (not
+recommended) you really want to mount NFS on /var/www/cobbler with
+SELinux context passed in as a parameter to mount versus the
+symlink. You may also have to deal with problems related to
+rootsquash. However if you are making a mirror of a Cobbler server
+for a multi-site setup, mounting read only is ok there.</p>
+
+<p>ALSO NOTE: /var/lib/cobbler can not live on NFS, as this interferes
+with locking ("flock") cobbler does around it's storage files.</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Cobbler Manual - 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/Advanced-networking.html">Advanced-networking</a></li><li><a href="/manuals/2.2.3/5/Alternative_Template_Formats.html">Alternative Template Formats</a></li><li><a href="/manuals/2.2.3/5/Anaconda-monitoring.html">Anaconda-monitoring</a></li><li><a href="/manuals/2.2.3/5/Auto-registration.html">Auto-registration</a></li><li><a href="/manuals/2.2.3/5/Batch-editing.html">Batch-editing</a></li><li><a href="/manuals/2.2.3/5/Built-in-configuration-management.html">Built-in-configuration-management</a></li><li><a href="/manuals/2.2.3/5/Clonezilla-integration.html">Clonezilla-integration</a></li><li><a href="/manuals/2.2.3/5/Filesystem-acls.html">Filesystem-acls</a></li><li><a href="/manuals/2.2.3/5/Func-integration.html">Func-integration</a></li><li><a href="/manuals/2.2.3/5/How-to-boot-live-cds.html">How-to-boot-live-cds</a></li><li><a href="/manuals/2.2.3/5/Memtest.html">Memtest</a></li><li><a href="/manuals/2.2.3/5/Moving-your-install.html">Moving-your-install</a></li><li><a href="/manuals/2.2.3/5/Multiple-cobbler-server-addresses.html">Multiple-cobbler-server-addresses</a></li><li><a href="/manuals/2.2.3/5/Power-management.html">Power-management</a></li><li><a href="/manuals/2.2.3/5/Pxe-boot-menu-passwords.html">Pxe-boot-menu-passwords</a></li><li><a href="/manuals/2.2.3/5/Selinux.html">Selinux</a></li><li><a href="/manuals/2.2.3/5/System-retirement.html">System-retirement</a></li><li><a href="/manuals/2.2.3/5/Using-cobbler-with-a-configuration-management-system.html">Using-cobbler-with-a-configuration-management-system</a></li><li><a href="/manuals/2.2.3/5/Virtual-image-cloning.html">Virtual-image-cloning</a></li><li><a href="/manuals/2.2.3/5/X_-_Extending_Cobbler.html">X - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/X/Extending-cheetah.html">X.Extending-cheetah</a></li><li><a href="/manuals/2.2.3/5/X/Modules.html">X.Modules</a></li><li><a href="/manuals/2.2.3/5/X/Triggers.html">X.Triggers</a></li></ul></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h1>Advanced networking</h1>
+
+<p>First off, read the cobbler manpage for all the settings you can
+set on a system object.</p>
+
+<pre><code>man cobbler
+</code></pre>
+
+<p>This page details some of the networking tips and tricks in more
+detail, regarding what you can set on system records to set up
+networking, without having to know a lot about kickstart/Anaconda.</p>
+
+<p>These features include:</p>
+
+<ul>
+<li>Arbitrary NIC naming (the interface is matched to a physical
+device using it's MAC address)</li>
+<li>Configuring DNS nameserver addresses</li>
+<li>Setting up NIC bonding</li>
+<li>Defining for static routes</li>
+<li>Support for VLANs</li>
+</ul>
+
+
+<p>If you want to use any of these features, it's highly recommended
+to add the MAC addresses for the interfaces you're using to Cobbler
+for each system.</p>
+
+<h2>Arbitrary NIC naming</h2>
+
+<p>You can give your network interface (almost) any name you like.</p>
+
+<pre><code>cobbler system edit --name=foo1.bar.local --interface=mgmt --mac=AA:BB:CC:DD:EE:F0]
+cobbler system edit --name=foo1.bar.local --interface=dmz --mac=AA:BB:CC:DD:EE:F1
+</code></pre>
+
+<p>The default interface is named eth0, but you don't have to call it
+that.</p>
+
+<p>Note that you can't name your interface after a kernel module
+you're using. For example: if a NIC is called 'drbd', the module
+drbd.ko would stop working. This is due to an "alias" line in
+/etc/modprobe.conf.</p>
+
+<h2>Name Servers</h2>
+
+<p>For static systems, the --name-servers parameter can be used to
+specify a list of name servers to assign to the systems.</p>
+
+<pre><code>cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC::DD:EE:FF --static=1 --name-servers="&lt;ip1&gt; &lt;ip2&gt;"
+</code></pre>
+
+<h3>DNS and DHCP Management</h3>
+
+<p>See <a href="Dns%20Management">ManageDns</a> and
+<a href="Dhcp%20Management">ManageDhcp</a> for how cobbler can help
+control your DHCP and DNS servers.</p>
+
+<h2>NIC bonding</h2>
+
+<p>Bonding is also known as trunking, or teaming. Different vendors
+use different names. It's used to join multiple physical interfaces
+to one logical interface, for redundancy and/or performance.</p>
+
+<p>You can set up a bond, to join interfaces eth0 and eth1 to a
+failover (active-backup) interface bond0 as follows:</p>
+
+<pre><code>cobbler system edit --name=foo2.bar.local --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 --bonding=slave --bonding-master=bond0  
+cobbler system edit --name=foo2.bar.local --interface=eth1 --mac=AA:BB:CC:DD:EE:F1 --bonding=slave --bonding-master=bond0  
+cobbler system edit --name=foo2.bar.local --interface=bond0 --bonding=master --bonding-opts="miimon=100 mode=1"
+</code></pre>
+
+<h2>Static routes</h2>
+
+<p>You can define static routes for a particular interface to use with
+--static-routes</p>
+
+<h2>VLANs</h2>
+
+<p>You can now add VLAN tags to interfaces from Cobbler. In this case
+we have two VLANs on eth0: 10 and 20. The default VLAN (untagged
+traffic) is not used:</p>
+
+<pre><code>cobbler system edit --name=foo3.bar.local --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 --static=1  
+cobbler system edit --name=foo3.bar.local --interface=eth0.10 --static=1 --ip=10.0.10.5 --subnet=255.255.255.0  
+cobbler system edit --name=foo3.bar.local --interface=eth0.20 --static=1 --ip=10.0.20.5 --subnet=255.255.255.0
+</code></pre>
+
+<p>You have to install the vconfig package for this to work.</p>
+
+<h2>Kickstart Notes</h2>
+
+<p>Three different networking
+<a href="Kickstart%20Snippets">Kickstart Snippets</a> must be
+present in your kickstart files for this to work:</p>
+
+<p>pre_install_network_config</p>
+
+<p>network_config</p>
+
+<p>post_install_network_config</p>
+
+<p>The default kickstart templates
+(/var/lib/cobbler/kickstart/sample*.ks) have these installed by
+default so they work out of the box.</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+
