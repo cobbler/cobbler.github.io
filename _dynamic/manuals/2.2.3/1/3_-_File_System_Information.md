@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - File System Information
+meta: 2.2.3
 ---
 A typical cobbler install looks something as follows. Note that in
 general cobbler manages its own directories. Editing templates and

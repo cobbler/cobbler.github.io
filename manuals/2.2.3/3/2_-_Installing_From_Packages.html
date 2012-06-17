@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Installing Cobbler From Packages</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/3/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.2.3/3/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><li><a href="/manuals/2.2.3/3/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.2.3/3/4_-_Relocating_Your_Installation.html">4 - Relocating Your Installation</a></li><li><a href="/manuals/2.2.3/3/5_-_Installation_Notes.html">5 - Installation Notes</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h1>Installing Cobbler From Packages</h1>
+
+<p>Cobbler is available for installation for many Linux variants through their packaging systems.</p>
+
+<h2>Fedora</h2>
+
+<p>Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the yum command:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install cobbler
+</code></pre>
+</div>
+
+
+<p>With Fedora's packaging system, new releases are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler for Fedora (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install --enablerepo<span class="o">=</span>updates-testing cobbler
+<span class="c"># or</span>
+<span class="nv">$ </span>sudo yum update --enablerepo<span class="o">=</span>updates-testing cobbler
+</code></pre>
+</div>
+
+
+<p>Once cobbler is installed, start and enable the service:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>systemctl start cobblerd.service
+<span class="nv">$ </span>systemctl <span class="nb">enable </span>cobblerd.service
+<span class="nv">$ </span>systemctl status cobblerd.service
+cobblerd.service - Cobbler Helper Daemon
+      Loaded: loaded <span class="o">(</span>/lib/systemd/system/cobblerd.service; enabled<span class="o">)</span>
+      Active: active <span class="o">(</span>running<span class="o">)</span> since Sun, 17 Jun 2012 13:01:28 -0500; 1min 44s ago
+    Main PID: 1234 <span class="o">(</span>cobblerd<span class="o">)</span>
+      CGroup: <span class="nv">name</span><span class="o">=</span>systemd:/system/cobblerd.service
+          └ 1234 /usr/bin/python /usr/bin/cobblerd -F
+</code></pre>
+</div>
+
+
+<h2>RHEL/CentOS/Scientific Linux</h2>
+
+<p>Cobbler is packaged for RHEL variants through the <a href="http://fedoraproject.org/wiki/EPEL">Fedora EPEL</a> (Extra Packages for Enterprise Linux) system. Follow the directions there to install the correct repo RPM for your RHEL version and architecture. For example, on for a RHEL6.x x86_64 system:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-X-Y.noarch.rpm
+</code></pre>
+</div>
+
+
+<p>Be sure to use the most recent X.Y version of the epel-release package.</p>
+
+<p>Once that is complete, simply use the yum command to install the cobbler package:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install cobbler
+</code></pre>
+</div>
+
+
+<p>As noted above, new releases in the Fedora packaging system are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler through EPEL (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install --enablerepo<span class="o">=</span>epel-testing cobbler
+<span class="c"># or</span>
+<span class="nv">$ </span>sudo yum update --enablerepo<span class="o">=</span>epel-testing cobbler
+</code></pre>
+</div>
+
+
+<p>Once cobbler is installed, start and enable the service:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>service cobblerd start
+<span class="nv">$ </span>chkconfig cobblerd on
+</code></pre>
+</div>
+
+
+<h2>Debian/Ubuntu</h2>
+
+<p>Coming soon.</p>
+
+<h2>SuSE</h2>
+
+<p>Coming soon.</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

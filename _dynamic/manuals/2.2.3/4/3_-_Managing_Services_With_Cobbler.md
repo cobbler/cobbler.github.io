@@ -1,4 +1,5 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Managing Services With Cobbler
+meta: 2.2.3
 ---

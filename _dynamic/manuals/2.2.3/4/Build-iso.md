@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual
+meta: 2.2.3
 ---
 Often an environment cannot support PXE because of either (A) an
 unfortunate lack of control over DHCP configurations (i.e. another

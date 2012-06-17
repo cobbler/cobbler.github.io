@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Cobbler - 2.2.3 Manual
+meta: 2.2.3
 ---
 ## Cobbler Manual - Version 2.2.3
 

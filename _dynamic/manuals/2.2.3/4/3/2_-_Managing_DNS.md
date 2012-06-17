@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - DNS Management
+meta: 2.2.3
 ---
 # DNS Management
 

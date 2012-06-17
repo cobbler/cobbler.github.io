@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - Advanced Topics
+meta: 2.2.3
 ---
 ## Advanced Topics
 

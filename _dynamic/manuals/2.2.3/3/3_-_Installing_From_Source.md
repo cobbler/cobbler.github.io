@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - Download Instructions
+meta: 2.2.3
 ---
 ## Download Instructions
 

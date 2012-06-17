@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - Settings
+meta: 2.2.3
 ---
 allow_duplicate_hostnames               : 0
 allow_duplicate_ips                     : 0

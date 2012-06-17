@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual
+meta: 2.2.3
 ---
 If you're deploying RHEL, there are a few extra kickstart and Cobbler tricks you can employ to make provisioning a snap, all consolidated in one place...
 

@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Web Interface
+meta: 2.2.3
 ---
 This section of the manual covers the Cobbler Web Interface. With the web user interface (WebUI), you can:
 

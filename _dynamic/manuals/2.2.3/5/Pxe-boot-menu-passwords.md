@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual
+meta: 2.2.3
 ---
 == How to create a PXE boot menu password ==
 

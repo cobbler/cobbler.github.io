@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual
+meta: 2.2.3
 ---
 Check out cobbler from git, all work should be done against the master branch, unless we decide to cherry-pick bugfixes back to previous releases to do releases for critical bugs.
 

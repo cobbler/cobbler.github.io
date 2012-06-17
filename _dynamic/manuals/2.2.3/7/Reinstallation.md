@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual
+meta: 2.2.3
 ---
 Cobbler's helper program, koan, can be installed on remote systems.
 

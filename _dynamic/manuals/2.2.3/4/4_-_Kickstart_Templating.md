@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - Kickstart Templating
+meta: 2.2.3
 ---
 Kickstarts automate Red Hat and Fedora based Linux installations.
 This document also pertains to templating as it relates to other

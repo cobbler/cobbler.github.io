@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual
+meta: 2.2.3
 ---
 While most of cobbler installing is about enabling scripted network
 installation, can also define image objects which track ISOs that

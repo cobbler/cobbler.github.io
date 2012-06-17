@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - Snippets
+meta: 2.2.3
 ---
 Snippets are a way of reusing common blocks of code between kickstarts (though this also works on files other than kickstart templates, but that's a sidenote). For instance, the default Cobbler installation has a snippet called "$SNIPPET('func\_register\_if\_enabled')" that can help set up the application called Func ([http://fedorahosted.org/func](http://fedorahosted.org/func)).
 

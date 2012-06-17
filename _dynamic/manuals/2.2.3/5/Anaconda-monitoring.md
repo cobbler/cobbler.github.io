@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual
+meta: 2.2.3
 ---
 This page details the **Ana**conda **Mon**itoring service available
 in cobbler.  As the Anaconda monitor is rather distribution specific,

@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - Koan
+meta: 2.2.3
 ---
 ## Koan
 

@@ -1,6 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual - Installation Notes
+meta: 2.2.3
 ---
 # Installation Notes
 The purpose of this page is to document installation requirements (especially when installing from source) on distros that don't have official packaging or for those that want the most up to date version of cobbler.
