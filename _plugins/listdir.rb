@@ -67,7 +67,7 @@ module Jekyll
                 if FileTest.directory?(item)
                     this_tree['children'][item] = read_dir(item)
                 else
-                    if name != "index.md"
+                    if !name.downcase().start_with?("index")
                         this_tree['files'] << item
                     end
                 end
