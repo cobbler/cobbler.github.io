@@ -3,6 +3,7 @@ layout: default
 ---
 <div class="post">
 <h2>{{ page.title }}</h2>
+<p class="postauthor"><i>Posted by {{ page.author }} on {{ page.date | date: "%A, %B %d, %Y" }}</i></p>
 {{ content }}
 </div>
 
