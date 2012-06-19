@@ -41,8 +41,7 @@ h1 a, h2 a, h3 a, h4 a {
 }
 #header {
   height:70px;
-  padding:5px;
-  padding-top:15px;
+  padding:20px 5px 0px;
   margin:0;
   background-color: #444237;
   border-bottom: 4px solid #d4d2c7;
@@ -148,7 +147,7 @@ h1 a, h2 a, h3 a, h4 a {
 }
 
 #header #logo {
-  width: 190px;
+  width: 170px;
 }
 
 #rightcol .toc {
