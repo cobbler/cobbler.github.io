@@ -1,6 +1,6 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Web Authentication and Authorization
 meta: 2.2.3
 ---
 ### Authentication

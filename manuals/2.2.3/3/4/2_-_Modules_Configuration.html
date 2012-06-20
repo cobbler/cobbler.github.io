@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - Relocating Your Installation</title>
+   <title>/etc/cobbler/modules.conf</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -50,40 +50,34 @@ var WRInitTime=(new Date()).getTime();
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/3/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.2.3/3/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><li><a href="/manuals/2.2.3/3/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.2.3/3/4_-_Relocating_Your_Installation.html">4 - Relocating Your Installation</a></li><li><a href="/manuals/2.2.3/3/5_-_Installation_Notes.html">5 - Installation Notes</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/3/4/1_-_Settings.html">1 - Settings</a></li><li><a href="/manuals/2.2.3/3/4/2_-_Modules_Configuration.html">2 - Modules Configuration</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Relocating Your Installation</h2>
+<h2>Modules Configuration - /etc/cobbler/modules.conf</h2>
 
-<p>Often folks don't have a very large /var partition, which is what
-cobbler uses by default for mirroring install trees and the like.</p>
+<p>Cobbler supports add-on modules, some of which can provide the same functionality (for instance, the authentication/authorization modules discussed in the <a href="/manuals/2.2.3/6/1_-_Web_Authentication.html">Web Authentication and Authorization</a> section). Modules of this nature are configured via the /etc/cobbler/modules.conf file, for example:</p>
 
-<p>You'll notice you can reconfigure the webdir location just by going
-into /etc/cobbler/settings, but it's not the best way to do things
--- especially as the RPM packaging does include some files and
-directories in the stock path. This means that, for upgrades and
-the like, you'll be breaking things somewhat. Rather than
-attempting to reconfigure cobbler, your Apache configuration, your
-file permissions, and your SELinux rules, the recommended course of
-action is very simple.</p>
+<div class="highlight"><pre><code class="ini"><span class="c"># dns:</span>
+<span class="c"># chooses the DNS management engine if manage_dns is enabled</span>
+<span class="c"># in /etc/cobbler/settings, which is off by default.</span>
+<span class="c"># choices:</span>
+<span class="c">#    manage_bind    -- default, uses BIND/named</span>
+<span class="c">#    manage_dnsmasq -- uses dnsmasq, also must select dnsmasq for dhcp below</span>
+<span class="c"># NOTE: more configuration is still required in /etc/cobbler</span>
+<span class="c"># for more information:</span>
+<span class="c"># https://fedorahosted.org/cobbler/wiki/ManageDns</span>
 
-<p>\1. Copy everything you have already in /var/www/cobbler to another
- location -- for instance, /opt/cobbler_data</p>
+<span class="k">[dns]</span>
+<span class="na">module</span> <span class="o">=</span> <span class="s">manage_bind</span>
+</code></pre>
+</div>
 
-<p>\2. Now just create a symlink or bind mount at /var/www/cobbler
- that points to /opt/cobbler_data.</p>
 
-<p>Done. You're up and running.</p>
+<p>As you can see above, this file has a typical INI-style syntax where sections are denoted with the <strong>[]</strong> brackets and entries are of the form <strong>"key = value"</strong>.</p>
 
-<p>NOTE: If you decided to access cobbler's data store over NFS (not
-recommended) you really want to mount NFS on /var/www/cobbler with
-SELinux context passed in as a parameter to mount versus the
-symlink. You may also have to deal with problems related to
-rootsquash. However if you are making a mirror of a Cobbler server
-for a multi-site setup, mounting read only is ok there.</p>
+<p>Many of these sections are covered in the <a href="/manuals/2.2.3/4/3_-_Managing_Services_With_Cobbler.html">Managing Services With Cobbler</a> and <a href="/manuals/2.2.3/6/1_-_Web_Authentication.html">Web Authentication and Authorization</a> topics later in this manual. Please refer to those sections for further details on modifying this file.</p>
 
-<p>ALSO NOTE: /var/lib/cobbler can not live on NFS, as this interferes
-with locking ("flock") cobbler does around it's storage files.</p>
+<p>As with the settings file, you must restart cobblerd after making changes to this file.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

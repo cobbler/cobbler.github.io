@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - Installation Notes</title>
+   <title>/etc/cobbler/settings</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -50,54 +50,14 @@ var WRInitTime=(new Date()).getTime();
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/3/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.2.3/3/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><li><a href="/manuals/2.2.3/3/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.2.3/3/4_-_Relocating_Your_Installation.html">4 - Relocating Your Installation</a></li><li><a href="/manuals/2.2.3/3/5_-_Installation_Notes.html">5 - Installation Notes</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/3/4/1_-_Settings.html">1 - Settings</a></li><li><a href="/manuals/2.2.3/3/4/2_-_Modules_Configuration.html">2 - Modules Configuration</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>Installation Notes</h1>
+<h2>Settings - /etc/cobbler/settings</h2>
 
-<p>The purpose of this page is to document installation requirements (especially when installing from source) on distros that don't have official packaging or for those that want the most up to date version of cobbler.</p>
+<p>The main settings file for cobbler is /etc/cobbler/settings. This file is YAML-formatted, so take care when hand-editing this file as an invalid formatting can render both the command-line utility and cobblerd inoperable.</p>
 
-<h2>Debian Squeeze (2.3.0 devel tested on 6.0.4)</h2>
-
-<p>To install cobbler from source on Debian Squeeze, the following steps need to be made:</p>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>apt-get install make <span class="c"># for build</span>
-<span class="nv">$ </span>apt-get install git <span class="c"># for build</span>
-<span class="nv">$ </span>apt-get install python-yaml
-<span class="nv">$ </span>apt-get install python-cheetah
-<span class="nv">$ </span>apt-get install python-netaddr
-<span class="nv">$ </span>apt-get install python-simplejson
-<span class="nv">$ </span>apt-get install python-urlgrabber
-<span class="nv">$ </span>apt-get install libapache2-mod-wsgi
-<span class="nv">$ </span>apt-get install python-django
-<span class="nv">$ </span>apt-get install atftpd
-
-<span class="nv">$ </span>a2enmod proxy
-<span class="nv">$ </span>a2enmod proxy_http
-<span class="nv">$ </span>a2enmod rewrite
-
-<span class="nv">$ </span>ln -s /usr/local/lib/python2.6/dist-packages/cobbler /usr/lib/python2.6/dist-packages/
-<span class="nv">$ </span>ln -s /srv/tftp /var/lib/tftpboot
-
-<span class="nv">$ </span>chown www-data /var/lib/cobbler/webui_sessions
-</code></pre>
-</div>
-
-
-<ul>
-<li>Change all /var/www/cobbler in /etc/apache2/conf.d/cobbler.conf to /usr/share/cobbler/webroot/</li>
-<li>init script
-
-<ul>
-<li>add Required-Stop line</li>
-<li>path needs to be /usr/local/... or fix the install location
-</pre></li>
-</ul>
-</li>
-</ul>
-
-
-<p>The same steps will most likely be required on the current 2.2.x stable branch.</p>
+<p>Currently, if you make any changes to this file, you must restart cobblerd for them to take effect.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->
