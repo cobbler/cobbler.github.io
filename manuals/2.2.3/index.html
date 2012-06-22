@@ -16,6 +16,12 @@
 
    <!-- Icon -->
    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- searching -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <script type="text/javascript" src="/scripts/search.js"></script>
 </head>
 <body>
 
@@ -27,7 +33,12 @@ var WRInitTime=(new Date()).getTime();
 
 
 <div id="wrapper">
-  <div id="header"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div>
+  <div id="header">
+    <div id="logodiv"><img id="logo" src="/images/logo-cobbler.png" alt="logo" /></div>
+    <div id="searchdiv">
+      <input id="searchbox" class="search" type="text" /><input id="searchbutton" class="search" type="button" value="search" onclick="javascript:run_search();" />
+    </div>
+  </div>
   <div id="container">
     <div id="leftcol">
 <div id="mainmenu" class="menu">

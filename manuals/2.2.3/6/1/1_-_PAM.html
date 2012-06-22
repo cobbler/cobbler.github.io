@@ -16,6 +16,12 @@
 
    <!-- Icon -->
    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- searching -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <script type="text/javascript" src="/scripts/search.js"></script>
 </head>
 <body>
 
