@@ -1,6 +1,6 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Using Cobbler Import
 meta: 2.2.3
 ---
 # Using cobbler import
