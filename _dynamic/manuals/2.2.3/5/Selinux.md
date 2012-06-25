@@ -1,6 +1,6 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: SELinux With Cobbler
 meta: 2.2.3
 ---
 Providing working policies for SElinux (and AppArmor) is the responsibility of downstream (e.g. your Linux or repo vendor). Unfortunately, every now and then issues tend to pop up on the mailing lists or in the issue tracker. Since we're really not in the position to resolve SElinux issues, all reported bugs will be closed. All we can do is try to document these issues here, hopefully the community is able to provide some feedback/workarounds/fixes.

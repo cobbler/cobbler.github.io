@@ -1,6 +1,6 @@
 ---
 layout: manpage
-title: Cobbler Manual - Relocating Your Installation
+title: Relocating Your Installation
 meta: 2.2.3
 ---
 ## Relocating Your Installation

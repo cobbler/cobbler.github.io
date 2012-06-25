@@ -7,5 +7,5 @@ meta: 2.2.3
 
 Cobbler has many configuration files, however only a few typically need be modified for basic functionality:
 
-* {% linkup title:"/etc/cobbler/settings" extrameta:2.2.3 %}
-* {% linkup title:"/etc/cobbler/modules.conf" extrameta:2.2.3 %}
+* {% linkup title:"Settings File" extrameta:2.2.3 %}
+* {% linkup title:"Modules Configuration" extrameta:2.2.3 %}

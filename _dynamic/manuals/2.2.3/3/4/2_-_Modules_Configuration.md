@@ -1,6 +1,6 @@
 ---
 layout: manpage
-title: /etc/cobbler/modules.conf
+title: Modules Configuration
 meta: 2.2.3
 ---
 ## Modules Configuration - /etc/cobbler/modules.conf
