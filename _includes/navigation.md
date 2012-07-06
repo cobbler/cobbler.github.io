@@ -2,7 +2,9 @@
   <div class="heading">Main Menu</div>
   <ul>
     <li><a href="/" title="Index">Home</a></li>
-    <li class="last"><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+    <li><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+    <li><a href="/users.html" title="Who's Using Cobbler">Who's Using Cobbler</a></li>
+    <li class="last"><a href="/community.html" title="Cobbler Community">Cobbler Community</a></li>
   </ul>
   <div class="heading">Manuals</div>
   <ul>

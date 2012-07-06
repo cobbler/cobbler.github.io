@@ -7,9 +7,6 @@ meta: 2.2.3
 
 This section of the manual covers the more advanced use cases for Cobbler, including methods for customizing and extending cobbler without needing to write code.
 
-## Section Topics:
-{% listdir %}
-
 ## PXE behaviour and tailoring
 
 ### Menus

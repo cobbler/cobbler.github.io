@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- searching -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <script type="text/javascript" src="/scripts/search.js"></script>
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header">
+    <img id="logo" src="/images/logo-cobbler.png" alt="logo" />
+    <div id="searchdiv">
+<script type="text/javascript">
+function do_search() {
+  run_search(function doit() {
+  var resultsdiv = $('div#results');
+  var itemsdiv = $('div#items');
+
+  if (final_results.length > 0) {
+    html = '<ul>';
+    $.each(final_results, function(idx,obj) {
+      var title = obj["t"];
+      var link = obj["u"];
+      html += '<li><a href="'+link+'">'+title+'</a></li>';
+    });
+    html += '</ul>';
+    itemsdiv.html(html);
+  } else {
+    itemsdiv.html('<p class="error">No search results found.</p>');
+  }
+
+  if (!resultsdiv.is(":visible")) {
+    resultsdiv.css({top:0,left:0,width:"300px","max-height":"100px"}).position({
+      my: "left top",
+      at: "left bottom",
+      of: "input#searchbox",
+      offset: "0 0",
+      collision: "none"
+    }).fadeIn();
+  }
+  });
+}
+
+function close_results() {
+  var resultsdiv = $('div#results');
+  if (resultsdiv.is(":visible")) {
+    resultsdiv.fadeOut();
+  }
+}
+</script>
+      <input id="searchbox" class="search" type="text" />
+      <input id="searchbutton" class="search" type="button" value="search" onclick="do_search();" />
+      <div id="results" class="menu">
+        <!--<a href="javascript:close_results();"><img src="/images/cancel.png" /></a>-->
+        <input type="image" src="/images/cancel.png" onclick="javascript:close_results();" />
+        <div id="items"></div>
+      </div>
+    </div>
+
+  </div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+    <li><a href="/users.html" title="Who's Using Cobbler">Who's Using Cobbler</a></li>
+    <li class="last"><a href="/community.html" title="Cobbler Community">Cobbler Community</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/4/1_-_Triggers.html">1 - Triggers</a></li><li><a href="/manuals/2.2.3/5/4/2_-_Modules.html">2 - Modules</a></li><li><a href="/manuals/2.2.3/5/4/3_-_Extending_Cheetah.html">3 - Extending Cheetah</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h2>About</h2>
+
+<p>Cobbler triggers provide a way to tie user-defined actions to
+certain cobbler commands -- for instance, to provide additional
+logging, integration with apps like Puppet or cfengine, set up SSH
+keys, tieing in with a DNS server configuration script, or for some
+other purpose.</p>
+
+<p>Cobbler Triggers should be Python modules written using the low-level
+Python API for maximum speed, but could also be simple executable shell
+scripts.</p>
+
+<p>As a general rule, if you need access to Cobbler's object data from
+a trigger, you need to write the trigger as a module. Also never
+invoke cobbler from a trigger, or use Cobbler XMLRPC from a
+trigger. Essentially, cobbler triggers can be thought of as plugins
+into cobbler, though they are not essentially plugins per se.</p>
+
+<h2>Trigger Names (for Old-Style Triggers)</h2>
+
+<p>Cobbler script-based triggers are scripts installed in the
+following locations, and must be made chmod +x.</p>
+
+<pre><code>/var/lib/cobbler/triggers/add/system/pre/*
+/var/lib/cobbler/triggers/add/system/post/*
+/var/lib/cobbler/triggers/add/profile/pre/*
+/var/lib/cobbler/triggers/add/profile/post/*
+/var/lib/cobbler/triggers/add/distro/pre/*
+/var/lib/cobbler/triggers/add/distro/post/*
+/var/lib/cobbler/triggers/add/repo/pre/*
+/var/lib/cobbler/triggers/add/repo/post/*
+/var/lib/cobbler/triggers/sync/pre/*
+/var/lib/cobbler/triggers/sync/post/*
+/var/lib/cobbler/triggers/install/pre/*
+/var/lib/cobbler/triggers/install/post/*
+</code></pre>
+
+<p>And the same as the above replacing "add" with "remove".</p>
+
+<p>Pre-triggers are capable of failing an operation if they return
+anything other than 0. They are to be thought of as "validation"
+filters. Post-triggers cannot fail an operation and are to be
+thought of notifications.</p>
+
+<p>We may add additional types as time goes on.</p>
+
+<h2>Pure Python Triggers</h2>
+
+<p>As mentioned earlier, triggers can be written in pure python, and
+many of these kinds of triggers ship with cobbler as stock.</p>
+
+<p>Look in your site-packages/cobbler/modules directory and cat
+"install_post_report.py" for an example trigger that sends email
+when a system gets done installing.</p>
+
+<p>Notice how the trigger has a register method with a path that
+matches with the shell patterns above. That's how we know what type
+each trigger is.</p>
+
+<p>You will see the path used in the trigger corresponds with the path
+where it would exist if it was a script -- this is how we know what
+type of trigger the module is providing.</p>
+
+<h2>The Simplest Trigger Possible</h2>
+
+<p>create /var/lib/cobbler/triggers/add/system/post/test.sh chmod +x
+the file</p>
+
+<pre><code>#!/bin/bash
+echo "Hi, my name is $1 and I'm a newly added system"
+</code></pre>
+
+<p>However that's not very interesting as all you get are the names
+passed across. For triggers to be the most powerful, they should
+take advantage of the Cobbler API -- which means writing them as a
+Python module.</p>
+
+<h2>Performance Note</h2>
+
+<p>If you have a very large number of systems, using the Cobbler API
+from scripts with old style (non-Python modules, just scripts in
+/var/lib/cobbler/triggers) is a very very bad idea. The reason for
+this is that the cobbler API brings the cobbler engine up with it,
+and since it's a seperate process, you have to wait for that to
+load. If you invoke 3000 triggers editing 3000 objects, you can see
+where this would get slow pretty quickly. However, if you write a
+modular trigger (see above) this suffers no performance penalties
+-- it's crazy fast and you experience no problems.</p>
+
+<h2>Permissions</h2>
+
+<p>The /var/lib/cobbler/triggers directory is only writeable by root
+(and are executed by cobbler on a regular basis). For security
+reasons do not loosen these permissions.</p>
+
+<h2>Example trigger for resetting Cfengine keys</h2>
+
+<p>Here is an example where cobbler and cfengine are running on two
+different machines and xmlrpc is used to communicate between the
+hosts.</p>
+
+<p>Note that this uses the Cobbler API so it's somewhat inefficient --
+it should be converted to a Python module-based trigger. If it were
+in a pure Python modular trigger, it would fly.</p>
+
+<p>On the cobbler box:</p>
+
+<p>/var/lib/cobbler/triggers/install/post/clientkeys.py</p>
+
+<pre><code>#!/usr/bin/python
+import socket
+import xmlrpclib
+import sys
+from cobbler import api
+cobbler_api = api.BootAPI()
+systems = cobbler_api.systems()
+box = systems.find(sys.argv[2])
+server = xmlrpclib.ServerProxy("http://cfengine:9000")
+server.update(box.get_ip_address())
+</code></pre>
+
+<p>On the cfengine box, we run a daemon that does the following (along
+with a few steps to update our ssh_known_hosts file):</p>
+
+<pre><code>#!/usr/bin/python
+import SimpleXMLRPCServer
+import os
+class Keys(object):
+     def update(self, ip):
+         try:
+            os.unlink('/var/cfengine/ppkeys/root-%s.pub' % ip)
+        except OSError:
+            pass
+keys = Keys()
+server = SimpleXMLRPCServer.SimpleXMLRPCServer(("cfengine",9000))
+server.register_instance(keys)
+server.serve_forever()
+</code></pre>
+
+<h2>See Also</h2>
+
+<p>post by Ithiriel:</p>
+
+<p><a href="http://www.ithiriel.com/content/2010/03/29/writing-install-triggers-cobbler">Writing Install Triggers</a></p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

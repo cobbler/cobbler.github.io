@@ -82,7 +82,19 @@ module Jekyll
             keys = tree['children'].keys()
             keys.sort!
 
-            tree['files'].sort!
+            tree['files'].sort! { |a,b|
+            begin
+                #(apath,aname) = File.split(a)
+                #(bpath,bname) = File.split(b)
+                #(asub,ares) = aname.split("_-_",2)
+                #(bsub,bres) = bname.split("_-_",2)
+                asub = File.split(a)[1].split("_-_",2)[0].to_i # asub.to_i
+                bsub = File.split(b)[1].split("_-_",2)[0].to_i # bsub.to_i
+                asub <=> bsub
+            rescue
+                a <=> b
+            end
+            }
             tree['files'].each do |entry|
                 (path,name) = File.split(entry)
                 (subset,rest) = name.split("_-_",2)
