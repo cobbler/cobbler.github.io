@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - PAM</title>
+   <title>Alternative Storage Backends - MongoDB</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -108,9 +108,41 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/6/1/Ldap.html">Ldap</a></li><li><a href="/manuals/2.2.3/6/1/Kerberos.html">Kerberos</a></li><li><a href="/manuals/2.2.3/6/1/1_-_PAM.html">1 - PAM</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/19/1_-_CouchDB.html">1 - CouchDB</a></li><li><a href="/manuals/2.2.3/5/19/2_-_MongoDB.html">2 - MongoDB</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
+<h2>Alternative Storage Backends - MongoDB</h2>
+
+<p>Cobbler 2.2.x introduced support for MongoDB as alternate storage backend, due to the native use of JSON. Currently, support for this backend is BETA-quality, and it should not be used for critical production systems.</p>
+
+<h3>Serializer Setup</h3>
+
+<p>Add or modify the following section in the /etc/cobbler/modules.conf configuration file:</p>
+
+<div class="highlight"><pre><code class="ini"><span class="k">[serializers]</span>
+<span class="na">settings</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
+<span class="na">distro</span> <span class="o">=</span> <span class="s">serializer_mongodb</span>
+<span class="na">profile</span> <span class="o">=</span> <span class="s">serializer_mongodb</span>
+<span class="na">system</span> <span class="o">=</span> <span class="s">serializer_mongodb</span>
+<span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_mongodb</span>
+<span class="err">etc...</span>
+</code></pre>
+</div>
+
+
+<p><strong>NOTE</strong> Be sure to leave the settings serializer set to serializer_catalog.</p>
+
+<h3>MongoDB Configuration File</h3>
+
+<p>The configuration file for the MongoDB serializer is /etc/cobbler/mongodb.conf. This is an INI-style configuration file, which has the following default entries:</p>
+
+<div class="highlight"><pre><code class="ini"><span class="k">[connection]</span>
+<span class="na">host</span> <span class="o">=</span> <span class="s">localhost</span>
+<span class="na">port</span> <span class="o">=</span> <span class="s">27017</span>
+</code></pre>
+</div>
+
+
 
 
      <div id="push"></div> <!-- push -->

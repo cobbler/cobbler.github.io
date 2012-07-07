@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Web Authentication</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- searching -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <script type="text/javascript" src="/scripts/search.js"></script>
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header">
+    <img id="logo" src="/images/logo-cobbler.png" alt="logo" />
+    <div id="searchdiv">
+<script type="text/javascript">
+function do_search() {
+  run_search(function doit() {
+  var resultsdiv = $('div#results');
+  var itemsdiv = $('div#items');
+
+  if (final_results.length > 0) {
+    html = '<ul>';
+    $.each(final_results, function(idx,obj) {
+      var title = obj["t"];
+      var link = obj["u"];
+      html += '<li><a href="'+link+'">'+title+'</a></li>';
+    });
+    html += '</ul>';
+    itemsdiv.html(html);
+  } else {
+    itemsdiv.html('<p class="error">No search results found.</p>');
+  }
+
+  if (!resultsdiv.is(":visible")) {
+    resultsdiv.css({top:0,left:0,width:"300px","max-height":"100px"}).position({
+      my: "left top",
+      at: "left bottom",
+      of: "input#searchbox",
+      offset: "0 0",
+      collision: "none"
+    }).fadeIn();
+  }
+  });
+}
+
+function close_results() {
+  var resultsdiv = $('div#results');
+  if (resultsdiv.is(":visible")) {
+    resultsdiv.fadeOut();
+  }
+}
+</script>
+      <input id="searchbox" class="search" type="text" />
+      <input id="searchbutton" class="search" type="button" value="search" onclick="do_search();" />
+      <div id="results" class="menu">
+        <!--<a href="javascript:close_results();"><img src="/images/cancel.png" /></a>-->
+        <input type="image" src="/images/cancel.png" onclick="javascript:close_results();" />
+        <div id="items"></div>
+      </div>
+    </div>
+
+  </div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+    <li><a href="/users.html" title="Who's Using Cobbler">Who's Using Cobbler</a></li>
+    <li class="last"><a href="/community.html" title="Cobbler Community">Cobbler Community</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/6/2/1_-_PAM.html">1 - PAM</a></li><li><a href="/manuals/2.2.3/6/2/2_-_LDAP.html">2 - LDAP</a></li><li><a href="/manuals/2.2.3/6/2/3_-_Kerberos.html">3 - Kerberos</a></li><li><a href="/manuals/2.2.3/6/2/4_-_Spacewalk.html">4 - Spacewalk</a></li><li><a href="/manuals/2.2.3/6/2/5_-_Passthru.html">5 - Passthru</a></li><li><a href="/manuals/2.2.3/6/2/6_-_Digest.html">6 - Digest</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h1>Web Authentication</h1>
+
+<p>Authentication controls who has access to your cobbler server. Controlling the details of what they can subsequently do is covered by a second step, <a href="Web%20Authorization">Web Authorization</a>.</p>
+
+<p>Authentication is governed by a setting in the <code>[authentication]</code> section of <code>/etc/cobbler/modules.conf</code>, whose options are as follows:</p>
+
+<h2>Deny All (Default)</h2>
+
+<pre><code>[authentication]
+module = authn_denyall
+</code></pre>
+
+<p>This disables all external XMLRPC modifications, and also disables the Cobbler Web interface.   Use this if you do not want to allow any external access and do not want
+to use the web interface.  This is the default setting in Cobbler for new installations, forcing users to decide what sort of remote security they want to have, and is intended to make sure they think about that decision, rather than having access on by default.</p>
+
+<h2>Digest</h2>
+
+<pre><code>[authentication]
+module = authn_configfile
+</code></pre>
+
+<p>This option uses a simple digest file to hold username and password information.  This is a great option if you do not have a Kerberos or LDAP server to authenticate against and just want something simple.</p>
+
+<p>Be sure to change your default password for the "cobbler" user as soon as you set this up:</p>
+
+<pre><code>htdigest /etc/cobbler/users.digest "Cobbler" cobbler
+</code></pre>
+
+<p>You can add additional users:</p>
+
+<pre><code>htdigest /etc/cobbler/users.digest "Cobbler" $username
+</code></pre>
+
+<p>You can also choose to delete the "cobbler" user from the file.</p>
+
+<h2>Defer to Apache / Kerberos</h2>
+
+<pre><code>[authentication]
+module = authn_passthru
+</code></pre>
+
+<p>This option lets Apache do the authentication and Cobbler will defer to what it decides.  This is how Cobbler implements <a href="Kerberos">Kerberos</a> support. This could be modified to use other mechanisms if so desired.</p>
+
+<h2>LDAP</h2>
+
+<pre><code>[authentication]
+module = authn_ldap
+</code></pre>
+
+<p>This option authenticates against <a href="LDAP">LDAP</a> using parameters from /etc/cobbler/settings. This is a direct connection to LDAP without relying on Apache.</p>
+
+<h2>Spacewalk</h2>
+
+<pre><code>[authentication]
+module = authn_spacewalk
+</code></pre>
+
+<p>This module allows http://fedorahosted.org/spacewalk to use its own specific authorization scheme to log into Cobbler, since Cobbler is a software service used by Spacewalk.</p>
+
+<p>There are settings in <code>/etc/cobbler/settings</code> to configure this, for instance redhat_management_permissive if set to 1 will enable users with admin rights in Spacewalk (or RHN Satellite Server) to access Cobbler web using the same username/password combinations.</p>
+
+<p>This module requires that the address of the Spacewalk/Satellite server is configured in <code>/etc/cobbler/settings</code> (redhat_management_server)</p>
+
+<h2>Testing</h2>
+
+<pre><code>[authentication]
+module = authn_testing
+</code></pre>
+
+<p>This is for development/debug only and should never be used in production systems.  The user "testing/testing" is always let in, and no other combinations are accepted.</p>
+
+<h2>User Supplied</h2>
+
+<p>Copy the signature of any existing cobbler authentication <a href="Modules">module</a> to write your own that conforms to your organization's specific security requirements.
+Then just reference that module name in <code>/etc/cobbler/modules.conf</code>, restart cobblerd, and you're good to go.</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

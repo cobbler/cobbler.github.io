@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - File System Information</title>
+   <title>File System Information</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,151 +111,108 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/1/1_-_How_We_Model_Things.html">1 - How We Model Things</a></li><li><a href="/manuals/2.2.3/1/2_-_Distribution_Support.html">2 - Distribution Support</a></li><li><a href="/manuals/2.2.3/1/3_-_File_System_Information.html">3 - File System Information</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<p>A typical cobbler install looks something as follows. Note that in
-general cobbler manages its own directories. Editing templates and
-configuration files is intended. Deleting directories will result
-in very loud alarms. Please do not ask for help if you decide to
-delete core directories or move them around.</p>
+<h1>File System Information</h1>
 
-<p>See <a href="Relocating%20Your%20Install">Relocating Your Install</a> if
-you have space problems.</p>
+<p>A typical Cobbler install looks something as follows. Note that in general Cobbler manages its own directories. Editing templates and configuration files is intended. Deleting directories will result in very loud alarms. Please do not ask for help if you decide to delete core directories or move them around.</p>
+
+<p>See <a href="/manuals/2.2.3/3/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> if you have space problems.</p>
 
 <h2>/var/log/cobbler</h2>
 
-<p>All cobbler logs go here. cobbler does not dump to
-/var/log/messages, though other system services relating to
-netbooting do.</p>
+<p>All Cobbler logs go here. Cobbler does not dump to /var/log/messages, though other system services relating to netbooting do.</p>
 
 <h2>/var/www/cobbler</h2>
 
-<p>This is a cobbler owned and managed directory for serving up
-various content that we need to serve up via http. Further selected
-details are below. As tempting as it is to self-garden this
-directory, do not do so. Manage it using the "cobbler" command or
-the Cobbler web app.</p>
+<p>This is a Cobbler owned and managed directory for serving up various content that we need to serve up via http. Further selected details are below. As tempting as it is to self-garden this directory, do not do so. Manage it using the "cobbler" command or the Cobbler web app.</p>
 
-<h2>/var/www/cobbler/web/</h2>
+<h3>/var/www/cobbler/web/</h3>
 
-<p>Here is where the mod_python web interface and supporting service
-scripts live for Cobbler pre 2.0</p>
+<p>Here is where the mod_python web interface and supporting service scripts live for Cobbler pre 2.0</p>
 
-<h2>/usr/share/cobbler/web</h2>
+<h3>/var/www/cobbler/webui/</h3>
 
-<p>This is where the cobbler-web package (for Cobbler 2.0 and later)
-lives. It is a Django app.</p>
+<p>Here is where content for the (pre 2.0) webapp lives that is not a template. Web templates for all versions live in /usr/share/cobbler.</p>
 
-<h2>/var/www/cobbler/webui/</h2>
+<h3>/var/www/cobbler/aux/</h3>
 
-<p>Here is where content for the (pre 2.0) webapp lives that is not a
-template. Web templates for all versions live in
-/usr/share/cobbler.</p>
+<p>This is used to serve up certain scripts to anaconda, such as anamon (See <a href="/manuals/2.2.3/5/5_-_Anaconda_Monitoring.html">Anaconda Monitoring</a> for more information on anamon).</p>
 
-<h2>/var/www/cobbler/aux/</h2>
+<h3>/var/www/cobbler/svc/</h3>
 
-<p>This is used to serve up certain scripts to anaconda, such as
-<a href="/cobbler/wiki/AnaMon">AnaMon</a></p>
+<p>This is where the mod_wsgi script for Cobbler lives.</p>
 
-<h2>/var/www/cobbler/svc/</h2>
+<h3>/var/www/cobbler/images/</h3>
 
-<p>Here code for auxillary web services lives, see
-<a href="/cobbler/wiki/ModPythonDetails">ModPythonDetails</a> for exactly what
-those URLs and services are.</p>
+<p>Kernel and initrd files are copied/symlinked here for usage by koan.</p>
 
-<h2>/var/www/cobbler/images/</h2>
-
-<p>Kernel and initrd files are copied/symlinked here for usage by
-koan.</p>
-
-<h2>/var/www/cobbler/ks_mirror/</h2>
+<h3>/var/www/cobbler/ks_mirror/</h3>
 
 <p>Install trees are copied here.</p>
 
-<h2>/var/www/cobbler/repo_mirror/</h2>
+<h3>/var/www/cobbler/repo_mirror/</h3>
 
 <p>Cobbler repo objects (i.e. yum, apt-mirror) are copied here.</p>
 
 <h2>/var/lib/cobbler/</h2>
 
-<p>See individual descriptions of subdirectories below:</p>
+<p>This is the main data directory for Cobbler. See individual descriptions of subdirectories below.</p>
 
 <h3>/var/lib/cobbler/config/</h3>
 
-<p>Here cobbler stores configuration files that it creates when you
-make or edit cobbler objects. If you are using serializer_catalog
-in modules.conf, these will exist in various ".d" directories under
-this main directory.</p>
+<p>Here Cobbler stores configuration files that it creates when you make or edit Cobbler objects. If you are using serializer_catalog in modules.conf, these will exist in various ".d" directories under this main directory.</p>
 
 <h3>/var/lib/cobbler/backups/</h3>
 
-<p>This is a backup of the config directory created on RPM upgrades.
-The configuration format is intended to be forward compatible (i.e.
-upgrades without user intervention are supported) though this file
-is kept around in case something goes wrong during an install
-(though it never should, it never hurts to be safe).</p>
+<p>This is a backup of the config directory created on RPM upgrades.  The configuration format is intended to be forward compatible (i.e.  upgrades without user intervention are supported) though this file is kept around in case something goes wrong during an install (though it never should, it never hurts to be safe).</p>
 
 <h3>/var/lib/cobbler/kickstarts/</h3>
 
-<p>This is where cobbler's shipped kickstart templates are stored. You
-may also keep yours here if you like. If you want to edit
-kickstarts in the web application this is the recommended place for
-them. Though other distributions may have templates that are not
-explicitly 'kickstarts', we also keep them here.</p>
+<p>This is where Cobbler's shipped kickstart templates are stored. You may also keep yours here if you like. If you want to edit kickstarts in the web application this is the recommended place for them. Though other distributions may have templates that are not explicitly 'kickstarts', we also keep them here.</p>
 
 <h3>/var/lib/cobbler/snippets/</h3>
 
-<p>This is where cobbler keeps snippet files, which are pieces of text
-that can be reused between multiple kickstarts.</p>
+<p>This is where Cobbler keeps snippet files, which are pieces of text that can be reused between multiple kickstarts.</p>
 
 <h3>/var/lib/cobbler/triggers/</h3>
 
-<p>Various user-scripts to extend cobbler to perform certain actions
-can be dropped into subdirectories of this directory. See
-<a href="/cobbler/wiki/CobblerTriggers">CobblerTriggers</a>.</p>
+<p>Various user-scripts to extend Cobbler to perform certain actions can be dropped into subdirectories of this directory. See the <a href="/manuals/2.2.3/5/4/1_-_Triggers.html">Triggers</a> section for more information.</p>
 
-<h2>/etc/</h2>
+<h2>/usr/share/cobbler/web</h2>
 
-<h3>/etc/cobbler/</h3>
+<p>This is where the cobbler-web package (for Cobbler 2.0 and later) lives. It is a Django app.</p>
+
+<h2>/etc/cobbler/</h2>
 
 <ul>
-<li>cobbler.conf -- cobbler's most important config file. Self-explanatory with comments, in YAML format.</li>
-<li>modules.conf --auxilliary config file. controls cobbler security, and whatDHCP/DNS engine is attached, see <a href="Modules">Modules</a> for developer-level details, and also <a href="Security%20Overview">Security Overview</a>. Config Parser format.</li>
-<li>users.digest -- if using the digest authorization
-module, here's where your web app username/passwords live, see
-<a href="Cobbler%20Web%20Interface">Cobbler Web Interface</a> for more
-info.</li>
+<li><strong>cobbler.conf</strong> - Cobbler's most important config file. Self-explanatory with comments, in YAML format.</li>
+<li><strong>modules.conf</strong> - auxilliary config file. controls Cobbler security, and what DHCP/DNS engine is attached, see <a href="/manuals/2.2.3/5/4/2_-_Modules.html">Modules</a> for developer-level details, and also <a href="/manuals/2.2.3/6/1_-_Security_Overview.html">Security Overview</a>. This file is in an INI-style format that can be read by the ConfigParser class.</li>
+<li><strong>users.digest</strong> - if using the digest authorization module this is where your web app username/passwords live. Refer to the <a href="/manuals/2.2.3/6_-_Web_Interface.html">Cobbler Web User Interface</a> section for more info.</li>
 </ul>
 
 
-<h2>/etc/cobbler/power</h2>
+<h3>/etc/cobbler/power</h3>
 
-<p>Here we keep the templates for the various power management modules
-cobbler supports.</p>
+<p>Here we keep the templates for the various power management modules Cobbler supports. Please refer to the <a href="/manuals/2.2.3/5/7_-_Power_Management.html">Power Management</a> section for more details on configuring power management features.</p>
 
-<h2>/etc/cobbler/pxe</h2>
+<h3>/etc/cobbler/pxe</h3>
 
-<p>Various templates related to netboot installation, not neccessarily
-"pxe".</p>
+<p>Various templates related to netboot installation, not neccessarily "pxe".</p>
 
-<h2>/etc/cobbler/zone_templates</h2>
+<h3>/etc/cobbler/zone_templates</h3>
 
-<p>If the chosen DNS management module for DNS is BIND, this directory
-is where templates for each zone file live. dnsmasq does not use
-this directory.</p>
+<p>If the chosen DNS management module for DNS is BIND, this directory is where templates for each zone file live. dnsmasq does not use this directory.</p>
 
-<h2>/etc/cobbler/reporting</h2>
+<h3>/etc/cobbler/reporting</h3>
 
-<p>Templates for various reporting related functions of cobbler, most
-notably the new system email feature in Cobbler 1.5 and later.</p>
+<p>Templates for various reporting related functions of Cobbler, most notably the new system email feature in Cobbler 1.5 and later.</p>
 
-<h2>/usr/lib/pythonVERSION/site-packages/cobbler/</h2>
+<h2>/usr/lib/python${VERSION}/site-packages/cobbler/</h2>
 
-<p>The source code to cobbler lives here.</p>
+<p>The source code to Cobbler lives here. If you have multiple versions of python installed, make sure Cobbler is in the site-packages directory for the correct python version (you can use symlinks to make it available to multiple versions).</p>
 
-<h2>/usr/lib/pythonVERSION/site-packages/cobbler/modules/</h2>
+<h3>/usr/lib/python${VERSION}/site-packages/cobbler/modules/</h3>
 
-<p>This is a directory where modules can be dropped to extend cobbler
-without modifying the core. See
-<a href="Modules">Modules</a>.</p>
+<p>This is a directory where modules can be dropped to extend Cobbler without modifying the core. See <a href="/manuals/2.2.3/5/4/2_-_Modules.html">Modules</a> for more information.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

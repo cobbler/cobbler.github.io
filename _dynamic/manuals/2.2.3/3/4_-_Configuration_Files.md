@@ -3,7 +3,8 @@ layout: manpage
 title: Configuration Files
 meta: 2.2.3
 ---
-## Cobbler Configuration Files
+
+# {{ page.title }}
 
 Cobbler has many configuration files, however only a few typically need be modified for basic functionality:
 

@@ -1,8 +1,8 @@
 ---
 layout: manpage
-title: Cobbler Manual - How We Model Things
+title: How We Model Things
 meta: 2.2.3
 ---
-## Modeling Your Configuration
+# {{ page.title }}
 
 ![object tree diagram](https://fedorahosted.org/cobbler/attachment/wiki/ChartsAndGraphs/object_tree.png?format=raw)

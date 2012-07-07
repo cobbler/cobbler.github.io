@@ -1,8 +1,13 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Security Overview
 meta: 2.2.3
 ---
+
+# {{ page.title }}
+
+This section provides an overview of Cobbler's security model for the Web UI.
+
 ## Why Customizable Security?
 
 See also [Cobbler Web Interface](Cobbler web interface).

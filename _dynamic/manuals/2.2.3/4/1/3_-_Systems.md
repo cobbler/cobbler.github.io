@@ -1,5 +1,5 @@
 ---
 layout: manpage
-title: Cobbler Primatives
+title: Cobbler Primatives - Systems
 meta: 2.2.3
 ---

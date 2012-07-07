@@ -1,121 +1,56 @@
 ---
 layout: manpage
-title: Cobbler Manual - Distribution Support
+title: Distribution Support
 meta: 2.2.3
 ---
-# Distribution Support
+# {{ page.title }}
 
-Cobbler was originally written to support Fedora, Red Hat, and
-derivative distributions such as CentOS or Scientific Linux.
-Cobbler now works for managing other environments,
-including mixed environments, occasionally with some limitations. 
-Debian and SuSE support is quite strong, with patches coming
-in from developers working on those distributions as well.  
+Cobbler was originally written to support Fedora, Red Hat, and derivative distributions such as CentOS or Scientific Linux. Cobbler now works for managing other environments, including mixed environments, occasionally with some limitations. Debian and SuSE support is quite strong, with patches coming in from developers working on those distributions as well.  
 
 ## Debian and Ubuntu
 
-"cobbler distro add" works if you use --breed=debian.
+Most Debian and Ubuntu versions should be correctly recognized when using the "cobbler import" command. 
 
-This will treat any kickstart files as preseeds. Be sure to use the
-appropriate contents for preseed templates and add on any
-additional kernel arguments you may need.
+There is currently no support for using the --available-as option with import, unless you're pointing at a web location that does not house multiple versions of the distro.
+
+Support for Ubuntu has increased dramatically in the 2.2.x releases, however there is still some work to be done - particularly around automation and snippet support. The preseed format also allows for only a single script to be run for pre and post installation actions, so right now the only option is to manually configure something like the following:
+
+{% highlight bash %}
+wget -O- http://server/path/to/post-install-script | bash -s
+{% endhighlight %}
+
+In the future, we will be looking to add native support for that in cobbler for the preseed format.
+
+APT repositories can be managed from RPM based systems, as long as you install the debmirror package for your distribution.
+
+### Notes About Debian
+
+The Debian distribution does not currently have a focus on network-based automated installs. As such, there are a few extra steps that must be taken to convert a normal DVD distribution to one that can be installed via PXE. Instructions for doing this are currently out of the scope of this manual, however a quick Google search should turn up what you steps you need to take to make this happen.
 
 ## SuSE
 
-"cobbler distro add" works if you use "--breed=suse". This will
-make cobbler use the right kernel options so you can PXE these
-OS's. When used, the "--kickstart" argument for "cobbler profile
-add" references a AutoYaST XML file, not an actual kickstart,
-though the templating works the same.
+Most SuSE versions should be correctly recognized when using the "cobbler import" command.
 
-SuSE repos can be managed with yum, so that works as with the Red
-Hat based distributions.
+When used, the "--kickstart" argument for "cobbler profile add" references a AutoYaST XML file, not an actual kickstart, though the templating works the same.
 
-Unlike Red Hat, SuSE (SLES) keeps its bootup
-files in a much different directory. For SLES 10, they are located
-here where "arch" is i386 or x86\_64:
+SuSE repos can be managed with yum, so that works as with the Red Hat based distributions.
 
-1.  /boot/arch/loader/linux (kernel file)
-2.  /boot/arch/loader/initrd (initrd file)
+Unlike Red Hat, SuSE (SLES) keeps its bootup files in a much different directory. For SLES 10, they are located here where "arch" is i386 or x86\_64:
 
-I would recommend that you put your sles distro folder
-(suse10x86sp2) in /var/www/ks\_mirror where all the others are
-kept. Then change your path in the command below
+1. /boot/arch/loader/linux (kernel file)
+2. /boot/arch/loader/initrd (initrd file)
 
-    cobbler distro add --arch=x86 --breed=suse --initrd=/var/www/ks_mirror/suse10x86sp2/boot/i386/loader/initrd --kernel=/var/www/ks_mirror/suse10x86sp2/boot/i386/loader/linux --name=SLES10-x86-sp2 --os-version=sles10
+I would recommend that you put your sles distro folder (suse10x86sp2) in /var/www/ks\_mirror where all the others are kept. Then change your path in the command below:
 
-You will also want to append the following kernel arg with
---kopts:
+{% highlight bash %}
+$ cobbler distro add --arch=x86 --breed=suse --initrd=/var/www/ks_mirror/suse10x86sp2/boot/i386/loader/initrd --kernel=/var/www/ks_mirror/suse10x86sp2/boot/i386/loader/linux --name=SLES10-x86-sp2 --os-version=sles10
+{% endhighlight %}
 
-    install=http://IP/cobbler/ks_mirror/sles9-i386
+You will also want to append the following kernel arg with --kopts:
 
-### SLES9 Support
-
-SLES9 needs special attention because of the way the CDs are packaged. Following this method it should work for your environment:
-
-    * Create directory and copy SLES9 and SLES9 SP4 CD's as following:
-     # Make directories in installation dir
-         
-     - mkdir -p SLES9/CD1
-     - mkdir -p CORE9/CD1
-     - mkdir -p CORE9/CD2
-     - mkdir -p CORE9/CD3
-     - mkdir -p SLES9_SP4/CD1
-     - mkdir -p SLES9_SP4/CD2
-         
-     # copy media using rsync
-     # example: rsync -avz --progress /mnt/iso1/ /var/www/cobbler/ks_mirror/SLES9-x86/SLES9/CD1/
-        
-     - SLES-9-i386-RC5-CD1.iso - SLES9/CD1  
-     - SLES-9-i386-RC5-CD2.iso - CORE9/CD1
-     - SLES-9-i386-RC5-CD3.iso - CORE9/CD2
-     - SLES-9-i386-RC5-CD4.iso - CORE9/CD3
-     - SLES-9-i386-RC5-CD5.iso - CORE9/CD4  (src cd, not needed)
-     - SLES-9-i386-RC5-CD6.iso - CORE9/CD5  (src cd, not needed)
-     - SLES-9-SP4-CD-i386-GM-CD1.iso - SLES9_SP4/CD1
-     - SLES-9-SP4-CD-i386-GM-CD1.iso - SLES9_SP4/CD2
-     - SLES-9-SP4-CD-i386-GM-CD1.iso - SLES9_SP4/CD3 (src cd, not needed)
-        
-     * Make links to the root of installation directory:
-     - ln -s SLES9/CD1/content content
-     - ln -s SLES9/CD1/control.xml control.xml
-     - ln -s SLES9/CD1/media.1 media.1
-     - ln -s SLES9_SP4/CD1/driverupdate driverupdate
-     - ln -s SLES9_SP4/CD1/linux linux
-     - ln -s SLES9/CD1/boot boot
-        
-     * Copy the updated kernel/initrd from SP4 directory (if you don't do this network cards will not be detected)
-     - cp SLES9_SP4/CD1/boot/linux boot/
-     - cp SLES9_SP4/CD1/boot/initrd boot/
-        
-     * Create directory "yast" and the following files into it:
-     Those are tabs between entries
-     - create instorder file:
-        
-     /SLES9_SP4/CD1                      
-     /SLES9/CD1                      
-     /CORE9/CD1
-        
-    - create order file:
-    
-    /SLES9_SP4/CD1  /SLES9_SP4/CD1
-    /SLES9/CD1      /SLES9/CD1
-    /CORE9/CD1      /CORE9/CD1
-
-So this basically looks like:
-
-    dr-xr-xr-x 3  501 games 4096 Mar  9 17:01 boot  
-    lrwxrwxrwx 1  501 games   17 Mar 10 14:39 content -> suse9/CD1/content  
-    lrwxrwxrwx 1  501 games   21 Mar 10 14:39 control.xml -> suse9/CD1/control.xml  
-    drwxr-xr-x 6  501 games 4096 Mar  9 16:28 core9  
-    lrwxrwxrwx 1  501 games   25 Mar 10 14:41 driverupdate -> suse9sp4/CD1/driverupdate  
-    lrwxrwxrwx 1  501 games   18 Mar 10 14:41 linux -> suse9sp4/CD1/linux  
-    lrwxrwxrwx 1  501 games   18 Mar 10 14:41 media.1 -> suse9/CD1/media.1/  
-    drwxr-xr-x 3  501 games 4096 Mar  9 16:28 suse9  
-    drwxr-xr-x 4  501 games 4096 Mar  9 16:33 suse9sp4  
-    drwxr-xr-x 2 root root  4096 Mar 10 16:59 yast  
-    [root@cobbler SLES9-i386-SP4]# ls yast  
-    instorder  order  
+{% highlight bash %}
+install=http://IP/cobbler/ks_mirror/sles9-i386
+{% endhighlight %}
 
 ## VMWare ESX/ESXi
 
@@ -125,17 +60,13 @@ ESXi5 now has BETA support, but requires the use of gPXE, which is new in Cobble
 
 ## FreeBSD
 
-The following steps are required to enable FreeBSD support in
-Cobbler.
+The following steps are required to enable FreeBSD support in Cobbler.
 
-You can grab the patches and scripts from the following github
-repos:
+You can grab the patches and scripts from the following github repos:
 
-\*
 [git://github.com/jsabo/cobbler\_misc.git](git://github.com/jsabo/cobbler_misc.git)
 
-This would not be possible without the help from Doug Kilpatrick.
-Thanks Doug!
+This would not be possible without the help from Doug Kilpatrick. Thanks Doug!
 
 ### Stuff to do once
 
@@ -263,9 +194,11 @@ installer will connect back to the Cobbler server to fetch the
 install.cfg (the kickstart file), and do the install as instructed,
 rebooting at the end.
 
-## Where the Cobbler server can be installed
+## Where the Cobbler Server Can Be Installed
 
-Folks have reported getting cobbler to install and be happy running on a Debian server, though this is not officially supported.  Cobbler runs happiest on Red Hat Enterprise Linux, Fedora, or CentOS. We are continuing to work on supporting running cobbler on other distributions, however this support should be considered BETA for the time being.
+Cobbler runs happiest on Red Hat Enterprise Linux, Fedora, or RHEL clone like CentOS. We are continuing to work on supporting running cobbler on other distributions, however this support should be considered BETA for the time being.
+
+Please refer to the {% linkup title:"Installing Cobbler" extrameta:2.2.3 %} section for details regarding the installation on various platforms.
 
 ## Reinstallation, Virtualization, and Koan in general
 

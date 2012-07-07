@@ -1,6 +1,6 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Triggers
 meta: 2.2.3
 ---
 ## About

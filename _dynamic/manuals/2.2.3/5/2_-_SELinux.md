@@ -4,13 +4,13 @@ title: SELinux With Cobbler
 meta: 2.2.3
 ---
 
-## {{ page.title }}
+# {{ page.title }}
 
 SELinux policies are typically provided by the upstream distribution (Fedora, Ubuntu, etc.). As new features are added to cobbler (and we do add new features frequently), those policies may become out-of-date leading to AVC denials and other problems. If you wish to run SELinux on your cobbler system, we expect you to know how to write policy and resolve AVCs.
 
 Below are some of the more common issues you may run into with this release.
 
-### ProtocolError: &lt;ProtocolError for x.x.x.x:80/cobbler_api: 503 Service Temporarily Unavailable&gt;
+## ProtocolError: &lt;ProtocolError for x.x.x.x:80/cobbler_api: 503 Service Temporarily Unavailable&gt;
 
 If you see this when you run "cobbler check" or any other cobbler command, it means SELinux is blocking httpd from talking with cobblerd. The command to fix this is:
 
@@ -18,7 +18,7 @@ If you see this when you run "cobbler check" or any other cobbler command, it me
 $ sudo setsebool -P httpd_can_network_connect true
 {% endhighlight %}
 
-### Fedora 16 / RHEL6 / CentOS6 - Python MemoryError
+## Fedora 16 / RHEL6 / CentOS6 - Python MemoryError
 
 When starting cobblerd for the first time (or after upgrading to 2.2.x), you may see a stack trace like the following:
 

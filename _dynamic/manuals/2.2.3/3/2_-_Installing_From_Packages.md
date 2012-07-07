@@ -3,7 +3,8 @@ layout: manpage
 title: Installing Cobbler From Packages
 meta: 2.2.3
 ---
-# Installing Cobbler From Packages
+
+# {{ page.title }}
 
 Cobbler is available for installation for many Linux variants through their packaging systems.
 

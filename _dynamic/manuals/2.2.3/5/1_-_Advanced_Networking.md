@@ -3,7 +3,7 @@ layout: manpage
 title: Advanced Networking
 meta: 2.2.3
 ---
-## {{ page.title }}
+# {{ page.title }}
 
 This page details some of the networking tips and tricks in more detail, regarding what you can set on system records to set up networking, without having to know a lot about kickstart/Anaconda.
 
@@ -20,7 +20,7 @@ If you want to use any of these features, it's highly recommended
 to add the MAC addresses for the interfaces you're using to Cobbler
 for each system.
 
-### Arbitrary NIC naming
+## Arbitrary NIC naming
 
 You can give your network interface (almost) any name you like.
 
@@ -33,7 +33,7 @@ The default interface is named eth0, but you don't have to call it that.
 
 Note that you can't name your interface after a kernel module you're using. For example: if a NIC is called 'drbd', the module drbd.ko would stop working. This is due to an "alias" line in /etc/modprobe.conf.
 
-### Name Servers
+## Name Servers
 
 For static systems, the --name-servers parameter can be used to
 specify a list of name servers to assign to the systems.
@@ -42,7 +42,7 @@ specify a list of name servers to assign to the systems.
 $ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC::DD:EE:FF --static=1 --name-servers="<ip1> <ip2>"
 {% endhighlight %}
 
-### Static routes
+## Static routes
 
 You can define static routes for a particular interface to use with --static-routes. The format of a static route is:
 
@@ -58,7 +58,7 @@ $ cobbler system edit --name=foo --interface=eth0 --static-routes="192.168.1.0/2
 
 As with all lists in cobbler, the --static-routes list is space-separated so you can specify multiple static routes if needed.
 
-### Kickstart Notes
+## Kickstart Notes
 
 Three different networking {% linkup title:"Snippets" extratags:2.2.3 %} must be present in your kickstart files for this to work:
 

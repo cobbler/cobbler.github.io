@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Security Overview</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- searching -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <script type="text/javascript" src="/scripts/search.js"></script>
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header">
+    <img id="logo" src="/images/logo-cobbler.png" alt="logo" />
+    <div id="searchdiv">
+<script type="text/javascript">
+function do_search() {
+  run_search(function doit() {
+  var resultsdiv = $('div#results');
+  var itemsdiv = $('div#items');
+
+  if (final_results.length > 0) {
+    html = '<ul>';
+    $.each(final_results, function(idx,obj) {
+      var title = obj["t"];
+      var link = obj["u"];
+      html += '<li><a href="'+link+'">'+title+'</a></li>';
+    });
+    html += '</ul>';
+    itemsdiv.html(html);
+  } else {
+    itemsdiv.html('<p class="error">No search results found.</p>');
+  }
+
+  if (!resultsdiv.is(":visible")) {
+    resultsdiv.css({top:0,left:0,width:"300px","max-height":"100px"}).position({
+      my: "left top",
+      at: "left bottom",
+      of: "input#searchbox",
+      offset: "0 0",
+      collision: "none"
+    }).fadeIn();
+  }
+  });
+}
+
+function close_results() {
+  var resultsdiv = $('div#results');
+  if (resultsdiv.is(":visible")) {
+    resultsdiv.fadeOut();
+  }
+}
+</script>
+      <input id="searchbox" class="search" type="text" />
+      <input id="searchbutton" class="search" type="button" value="search" onclick="do_search();" />
+      <div id="results" class="menu">
+        <!--<a href="javascript:close_results();"><img src="/images/cancel.png" /></a>-->
+        <input type="image" src="/images/cancel.png" onclick="javascript:close_results();" />
+        <div id="items"></div>
+      </div>
+    </div>
+
+  </div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+    <li><a href="/users.html" title="Who's Using Cobbler">Who's Using Cobbler</a></li>
+    <li class="last"><a href="/community.html" title="Cobbler Community">Cobbler Community</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/6/1_-_Security_Overview.html">1 - Security Overview</a></li><li><a href="/manuals/2.2.3/6/2_-_Web_Authentication.html">2 - Web Authentication</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/6/2/1_-_PAM.html">2.1 - PAM</a></li><li><a href="/manuals/2.2.3/6/2/2_-_LDAP.html">2.2 - LDAP</a></li><li><a href="/manuals/2.2.3/6/2/3_-_Kerberos.html">2.3 - Kerberos</a></li><li><a href="/manuals/2.2.3/6/2/4_-_Spacewalk.html">2.4 - Spacewalk</a></li><li><a href="/manuals/2.2.3/6/2/5_-_Passthru.html">2.5 - Passthru</a></li><li><a href="/manuals/2.2.3/6/2/6_-_Digest.html">2.6 - Digest</a></li></ul><li><a href="/manuals/2.2.3/6/3_-_Web_Authorization.html">3 - Web Authorization</a></li><ul class="dirtree"></ul><li><a href="/manuals/2.2.3/6/4_-_Locking_Down_Cobbler.html">4 - Locking Down Cobbler</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h1>Security Overview</h1>
+
+<p>This section provides an overview of Cobbler's security model for the Web UI.</p>
+
+<h2>Why Customizable Security?</h2>
+
+<p>See also <a href="Cobbler%20web%20interface">Cobbler Web Interface</a>.</p>
+
+<p>When manipulating cobbler remotely, either through the Web UI or
+the XMLRPC interface, different classes of users want different
+authentication systems and different workflows. It would be wrong
+for Cobbler to enforce any specific workflow on someone moving to
+Cobbler from their current systems, as it would limit where Cobbler
+can be deployed. So what Cobbler does is make authentication and
+authorization extremely pluggable, while still shipping with some
+very reasonable defaults.</p>
+
+<p>The center of all of this revolves around a few settings in
+<code>/etc/cobbler/modules.conf</code>, for example:</p>
+
+<pre><code>[authentication]
+module = authn_configfile
+
+[authorization]
+module = authn_allowall
+</code></pre>
+
+<p>The list of choices for each option is covered in depth at the
+links below.</p>
+
+<h2>Authentication</h2>
+
+<p>The authentication setting determines what external source users
+are checked against to see if their passwords are valid.</p>
+
+<p>See
+<a href="Web%20Authentication">Authentication</a>.</p>
+
+<p>The default setting is to deny XMLRPC access, so all users wanting
+remote/web access will need to pick their authentication mode.</p>
+
+<h2>Authorization</h2>
+
+<p>The authorization setting determines, for a user that has already
+passed authentication stages, what resources they have access to in
+Cobbler.</p>
+
+<p>See
+<a href="Web%20Authorization">Authorization</a>.</p>
+
+<p>The default is to authorize all users that have cleared the
+authentication stage.</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

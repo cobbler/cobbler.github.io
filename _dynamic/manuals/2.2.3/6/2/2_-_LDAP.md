@@ -1,9 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: LDAP Authentication
 meta: 2.2.3
 ---
-## Cobbler with Ldap
+# {{ page.title }}
 
 By default, the Cobbler WebUI and Web services authenticate against
 a digest file. All users in the digest file are "in". What if you

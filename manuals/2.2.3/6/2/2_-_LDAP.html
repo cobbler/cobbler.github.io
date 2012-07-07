@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>LDAP Authentication</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- searching -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <script type="text/javascript" src="/scripts/search.js"></script>
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+
+<div id="wrapper">
+  <div id="header">
+    <img id="logo" src="/images/logo-cobbler.png" alt="logo" />
+    <div id="searchdiv">
+<script type="text/javascript">
+function do_search() {
+  run_search(function doit() {
+  var resultsdiv = $('div#results');
+  var itemsdiv = $('div#items');
+
+  if (final_results.length > 0) {
+    html = '<ul>';
+    $.each(final_results, function(idx,obj) {
+      var title = obj["t"];
+      var link = obj["u"];
+      html += '<li><a href="'+link+'">'+title+'</a></li>';
+    });
+    html += '</ul>';
+    itemsdiv.html(html);
+  } else {
+    itemsdiv.html('<p class="error">No search results found.</p>');
+  }
+
+  if (!resultsdiv.is(":visible")) {
+    resultsdiv.css({top:0,left:0,width:"300px","max-height":"100px"}).position({
+      my: "left top",
+      at: "left bottom",
+      of: "input#searchbox",
+      offset: "0 0",
+      collision: "none"
+    }).fadeIn();
+  }
+  });
+}
+
+function close_results() {
+  var resultsdiv = $('div#results');
+  if (resultsdiv.is(":visible")) {
+    resultsdiv.fadeOut();
+  }
+}
+</script>
+      <input id="searchbox" class="search" type="text" />
+      <input id="searchbutton" class="search" type="button" value="search" onclick="do_search();" />
+      <div id="results" class="menu">
+        <!--<a href="javascript:close_results();"><img src="/images/cancel.png" /></a>-->
+        <input type="image" src="/images/cancel.png" onclick="javascript:close_results();" />
+        <div id="items"></div>
+      </div>
+    </div>
+
+  </div> <!-- header -->
+  <div id="container">
+    <div id="leftcol">
+<div id="mainmenu" class="menu">
+  <div class="heading">Main Menu</div>
+  <ul>
+    <li><a href="/" title="Index">Home</a></li>
+    <li><a href="/about.html" title="About Cobbler">About Cobbler</a></li>
+    <li><a href="/users.html" title="Who's Using Cobbler">Who's Using Cobbler</a></li>
+    <li class="last"><a href="/community.html" title="Cobbler Community">Cobbler Community</a></li>
+  </ul>
+  <div class="heading">Manuals</div>
+  <ul>
+    <li class="last"><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+  </ul>
+  <div class="heading">Github</div>
+  <ul>
+    <li><a href="https://github.com/cobbler/cobbler" title="Main Repo" target="_blank">Main Repo</a></li>
+    <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+    <li class="last"><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+  </ul>
+</div>
+
+    </div> <!-- leftcol -->
+    <div id="rightcol">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/6/2/1_-_PAM.html">1 - PAM</a></li><li><a href="/manuals/2.2.3/6/2/2_-_LDAP.html">2 - LDAP</a></li><li><a href="/manuals/2.2.3/6/2/3_-_Kerberos.html">3 - Kerberos</a></li><li><a href="/manuals/2.2.3/6/2/4_-_Spacewalk.html">4 - Spacewalk</a></li><li><a href="/manuals/2.2.3/6/2/5_-_Passthru.html">5 - Passthru</a></li><li><a href="/manuals/2.2.3/6/2/6_-_Digest.html">6 - Digest</a></li></ul></div>
+    </div> <!-- rightcol -->
+    <div id="content">
+<h1>LDAP Authentication</h1>
+
+<p>By default, the Cobbler WebUI and Web services authenticate against
+a digest file. All users in the digest file are "in". What if you
+want to authenticate against an external resource? Cobbler can do
+that too. These instructions can be used to make it authenticate
+against LDAP instead.</p>
+
+<p>For the purposes of these instructions, we are authenticating
+against a new source install of FreeIPA -- though any LDAP install
+should work in the same manner.</p>
+
+<h2>Instructions</h2>
+
+<p>\0. Install python-ldap</p>
+
+<pre><code>yum install python-ldap
+</code></pre>
+
+<p>\1. In /etc/cobbler/modules.conf change the authn/authz sections to
+ look like:</p>
+
+<pre><code>[authentication]
+module = authn_ldap
+
+[authorization]
+module = authz_configfile
+</code></pre>
+
+<p>The above specifies that you authenticating against LDAP and will
+list which LDAP users are valid by looking at
+/etc/cobbler/users.conf.</p>
+
+<p>\2. In /etc/cobbler/settings, set the following to appropriate
+ values to configure the LDAP parts. The values below are examples
+ that show us pointing to an LDAP server, which is not running on
+ the cobbler box, for authentication. Note that authorization is
+ seperate from authentication. We'll get to that later.</p>
+
+<pre><code>ldap_server     : "grimlock.devel.redhat.com"
+ldap_base_dn    : "DC=devel,DC=redhat,DC=com"
+ldap_port       : 389
+ldap_tls        : 1
+</code></pre>
+
+<p>With Cobbler 1.3 and higher, you can add additional LDAP servers by
+separating the server names with a space in the ldap_server
+field.</p>
+
+<p>\3. Now we have to configure OpenLDAP to know about the cert of the
+ LDAP server. You only have to do this once on the cobbler box, not
+ on each client box.</p>
+
+<pre><code>openssl s_client -connect servername:636
+</code></pre>
+
+<p>\4. Copy everything between BEGIN and END in the above output to
+ /etc/openldap/cacerts/ldap.pem</p>
+
+<p>\5. Ensure that the CA certificate is correctly hashed</p>
+
+<pre><code>cd /etc/openldap/cacerts
+
+ln -s ldap.pem $(openssl x509 -hash -noout -in ldap.pem).0
+</code></pre>
+
+<p>On Red Hat and Fedora systems this can also be done using the
+cacertdir_rehash command:</p>
+
+<pre><code>cacertdir_rehash /etc/openldap/cacerts
+</code></pre>
+
+<p>\6. Configure /etc/openldap/ldap.conf to include the following:</p>
+
+<pre><code>TLS_CACERTDIR   /etc/openldap/cacerts
+TLS_REQCERT     allow
+</code></pre>
+
+<p>\7. Edit /etc/cobbler/users.conf to include the list of users
+ allowed access to cobbler resources. These must match names in
+ LDAP. The group names are just comments.</p>
+
+<pre><code>[dxs]
+mac = ""
+pete = ""
+jack = ""
+</code></pre>
+
+<p>\8. Done! Cobbler now authenticates against ldap instead of the
+ digest file, and you can limit what users can edit things by
+ changing the /etc/cobbler/users.conf file.</p>
+
+<h2>Troubleshooting LDAP</h2>
+
+<p>The following trick lets you test your username/password
+combinations outside of the web app and may prove useful in
+verifying that your LDAP configuration is correct. replace $VERSION
+with your python version, for instance 2.4 or 2.5, etc.</p>
+
+<pre><code># cp /usr/lib/python$VERSION/site-packages/cobbler/demo_connect.py /tmp/demo_connect.py
+# python /tmp/demo_connect.py --user=username --pass=password
+</code></pre>
+
+<p>Just run the above and look at the output. You should see a
+traceback if problems are encountered, which may point to problems
+in your configuration if you specified a valid username/password.
+Restart cobblerd after changing /etc/cobbler/settings in order for
+them to take effect.</p>
+
+     <div id="push"></div> <!-- push -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+</div> <!-- wrapper -->
+
+<div id="footer">
+  <div class="contact">&copy; 2012</div>
+</div>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

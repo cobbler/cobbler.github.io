@@ -111,7 +111,7 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/1/1_-_Bonding.html">1 - Bonding</a></li><li><a href="/manuals/2.2.3/5/1/2_-_VLANs.html">2 - VLANs</a></li><li><a href="/manuals/2.2.3/5/1/3_-_Bridging.html">3 - Bridging</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Advanced Networking</h2>
+<h1>Advanced Networking</h1>
 
 <p>This page details some of the networking tips and tricks in more detail, regarding what you can set on system records to set up networking, without having to know a lot about kickstart/Anaconda.</p>
 
@@ -131,7 +131,7 @@ device using it's MAC address)</li>
 to add the MAC addresses for the interfaces you're using to Cobbler
 for each system.</p>
 
-<h3>Arbitrary NIC naming</h3>
+<h2>Arbitrary NIC naming</h2>
 
 <p>You can give your network interface (almost) any name you like.</p>
 
@@ -145,7 +145,7 @@ for each system.</p>
 
 <p>Note that you can't name your interface after a kernel module you're using. For example: if a NIC is called 'drbd', the module drbd.ko would stop working. This is due to an "alias" line in /etc/modprobe.conf.</p>
 
-<h3>Name Servers</h3>
+<h2>Name Servers</h2>
 
 <p>For static systems, the --name-servers parameter can be used to
 specify a list of name servers to assign to the systems.</p>
@@ -155,7 +155,7 @@ specify a list of name servers to assign to the systems.</p>
 </div>
 
 
-<h3>Static routes</h3>
+<h2>Static routes</h2>
 
 <p>You can define static routes for a particular interface to use with --static-routes. The format of a static route is:</p>
 
@@ -172,7 +172,7 @@ network/CIDR:gateway
 
 <p>As with all lists in cobbler, the --static-routes list is space-separated so you can specify multiple static routes if needed.</p>
 
-<h3>Kickstart Notes</h3>
+<h2>Kickstart Notes</h2>
 
 <p>Three different networking <a href="/manuals/2.2.3/4/5_-_Snippets.html">Snippets</a> must be present in your kickstart files for this to work:</p>
 

@@ -3,7 +3,7 @@ layout: manpage
 title: Modules Configuration
 meta: 2.2.3
 ---
-## Modules Configuration - /etc/cobbler/modules.conf
+# {{ page.title }} - /etc/cobbler/modules.conf
 
 Cobbler supports add-on modules, some of which can provide the same functionality (for instance, the authentication/authorization modules discussed in the {% linkup title:"Web Authentication and Authorization" extrameta=2.2.3 %} section). Modules of this nature are configured via the /etc/cobbler/modules.conf file, for example:
 

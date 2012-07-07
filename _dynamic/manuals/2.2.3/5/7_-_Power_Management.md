@@ -1,9 +1,10 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Power Management
 meta: 2.2.3
 ---
-## Power Management
+
+# {{ page.title }}
 
 Cobbler allows for linking your power management systems with
 cobbler, making it very easy to make changes to your systems when

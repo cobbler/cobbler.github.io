@@ -1,17 +1,14 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Modules
 meta: 2.2.3
 ---
-## Cobbler Modules
 
-Certain cobbler features can be user extended (in Python) by
-Cobbler users.
+## {{ page.title }}
 
-These features include storage of data (serialization),
-authorization, and authentication. Over time, this list of module
-types will grow to support more options.  [Triggers](Triggers) are
-basically modules.
+Certain cobbler features can be user extended (in Python) by Cobbler users.
+
+These features include storage of data (serialization), authorization, and authentication. Over time, this list of module types will grow to support more options.  [Triggers](Triggers) are basically modules.
 
 ## See Also
 

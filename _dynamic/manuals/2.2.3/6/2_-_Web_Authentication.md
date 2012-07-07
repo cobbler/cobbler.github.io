@@ -1,15 +1,15 @@
 ---
 layout: manpage
-title: Web Authentication and Authorization
+title: Web Authentication
 meta: 2.2.3
 ---
-### Authentication
+# {{ page.title }}
 
 Authentication controls who has access to your cobbler server. Controlling the details of what they can subsequently do is covered by a second step, [Web Authorization](Web Authorization).
 
 Authentication is governed by a setting in the `[authentication]` section of `/etc/cobbler/modules.conf`, whose options are as follows:
 
-### Deny All (Default) 
+## Deny All (Default) 
 
     [authentication]
     module = authn_denyall
@@ -18,7 +18,7 @@ Authentication is governed by a setting in the `[authentication]` section of `/e
 This disables all external XMLRPC modifications, and also disables the Cobbler Web interface.   Use this if you do not want to allow any external access and do not want
 to use the web interface.  This is the default setting in Cobbler for new installations, forcing users to decide what sort of remote security they want to have, and is intended to make sure they think about that decision, rather than having access on by default.
 
-### Digest
+## Digest
 
     [authentication]
     module = authn_configfile
@@ -35,21 +35,21 @@ You can add additional users:
 
 You can also choose to delete the "cobbler" user from the file.
 
-### Defer to Apache / Kerberos
+## Defer to Apache / Kerberos
 
     [authentication]
     module = authn_passthru
 
 This option lets Apache do the authentication and Cobbler will defer to what it decides.  This is how Cobbler implements [Kerberos](Kerberos) support. This could be modified to use other mechanisms if so desired.
 
-### LDAP
+## LDAP
 
     [authentication]
     module = authn_ldap
 
 This option authenticates against [LDAP](LDAP) using parameters from /etc/cobbler/settings. This is a direct connection to LDAP without relying on Apache.
 
-### Spacewalk
+## Spacewalk
 
     [authentication]
     module = authn_spacewalk
@@ -60,14 +60,14 @@ There are settings in `/etc/cobbler/settings` to configure this, for instance re
 
 This module requires that the address of the Spacewalk/Satellite server is configured in `/etc/cobbler/settings` (redhat_management_server)
 
-### Testing
+## Testing
 
     [authentication]
     module = authn_testing
 
 This is for development/debug only and should never be used in production systems.  The user "testing/testing" is always let in, and no other combinations are accepted.
 
-### User Supplied
+## User Supplied
 
 Copy the signature of any existing cobbler authentication [module](Modules) to write your own that conforms to your organization's specific security requirements.
 Then just reference that module name in `/etc/cobbler/modules.conf`, restart cobblerd, and you're good to go.
