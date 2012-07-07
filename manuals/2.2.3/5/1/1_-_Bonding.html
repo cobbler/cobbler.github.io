@@ -117,9 +117,9 @@ function close_results() {
 
 <p>You can set up a bond, to join interfaces eth0 and eth1 to a failover (active-backup) interface bond0 as follows:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F0 --interface-type<span class="o">=</span>bonding_slave --interface-master<span class="o">=</span>bond0
-<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth1 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F1 --interface-type<span class="o">=</span>bonding_slave --interface-master<span class="o">=</span>bond0
-<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>bond0 --interface-type<span class="o">=</span>bonding_master --bonding-opts<span class="o">=</span><span class="s2">&quot;miimon=100 mode=1&quot;</span> --ip-address<span class="o">=</span>192.168.1.100 --netmask<span class="o">=</span>255.255.255.0
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F0 --interface-type<span class="o">=</span>bond_slave --interface-master<span class="o">=</span>bond0
+<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth1 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F1 --interface-type<span class="o">=</span>bond_slave --interface-master<span class="o">=</span>bond0
+<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>bond0 --interface-type<span class="o">=</span>bond --bonding-opts<span class="o">=</span><span class="s2">&quot;miimon=100 mode=1&quot;</span> --ip-address<span class="o">=</span>192.168.1.100 --netmask<span class="o">=</span>255.255.255.0
 </code></pre>
 </div>
 
@@ -130,7 +130,7 @@ function close_results() {
 
 <p>The methodology to create bonds was changed in 2.2.x with the introduction of bridged interface support. The <strong>--bonding</strong> and <strong>--bonding-master</strong> options have since been deprecated and are now an alias to <strong>--interface-type</strong> and <strong>--interface-master</strong>, respectively.</p>
 
-<p>Likewise, the master/slave options have been deprecated in favor of bonding_master/bonding_slave. Cobbler will continue to read system objects that have those fields set, but when the object is edited and saved back to disk they will be converted to the new format transparently.</p>
+<p>Likewise, the master/slave options have been deprecated in favor of bond/bond_slave. Cobbler will continue to read system objects that have those fields set, but when the object is edited and saved back to disk they will be converted to the new format transparently.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->
