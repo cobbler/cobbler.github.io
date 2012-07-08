@@ -1,8 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Tips For RHN
 meta: 2.2.3
 ---
+# {{ page.title }}
 If you're deploying RHEL, there are a few extra kickstart and Cobbler tricks you can employ to make provisioning a snap, all consolidated in one place...
 
 ### Importing

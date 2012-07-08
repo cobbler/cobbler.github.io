@@ -1,9 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual - Koan
+title: Koan
 meta: 2.2.3
 ---
-## Koan
+# {{ page.title }}
 
 This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual machines with cobbler.
 

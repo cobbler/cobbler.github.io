@@ -1,9 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Func Integration
 meta: 2.2.3
 ---
-## Func
+# {{ page.title }}
 
 Func is a neat tool, (which, in full disclosure, Michael had a part
 in creating). Read all about it at

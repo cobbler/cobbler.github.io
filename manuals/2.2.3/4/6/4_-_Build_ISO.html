@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Validate Kickstart</title>
+   <title>Build ISO</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -108,10 +108,48 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/6/1_-_Import.html">1 - Import</a></li><li><a href="/manuals/2.2.3/4/6/2_-_Build_ISO.html">2 - Build ISO</a></li><li><a href="/manuals/2.2.3/4/6/3_-_Command_Line_Search.html">3 - Command Line Search</a></li><li><a href="/manuals/2.2.3/4/6/4_-_Replication.html">4 - Replication</a></li><li><a href="/manuals/2.2.3/4/6/5_-_Sync.html">5 - Sync</a></li><li><a href="/manuals/2.2.3/4/6/6_-_Validate_Kickstart.html">6 - Validate Kickstart</a></li><li><a href="/manuals/2.2.3/4/6/7_-_ACL_Setup.html">7 - ACL Setup</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/6/1_-_Import.html">1 - Import</a></li><li><a href="/manuals/2.2.3/4/6/2_-_Sync.html">2 - Sync</a></li><li><a href="/manuals/2.2.3/4/6/3_-_Reposync.html">3 - Reposync</a></li><li><a href="/manuals/2.2.3/4/6/4_-_Build_ISO.html">4 - Build ISO</a></li><li><a href="/manuals/2.2.3/4/6/5_-_Command_Line_Search.html">5 - Command Line Search</a></li><li><a href="/manuals/2.2.3/4/6/6_-_Replication.html">6 - Replication</a></li><li><a href="/manuals/2.2.3/4/6/7_-_Validate_Kickstart.html">7 - Validate Kickstart</a></li><li><a href="/manuals/2.2.3/4/6/8_-_ACL_Setup.html">8 - ACL Setup</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>Cobbler Validate Kickstart</h1>
+<h1>Build ISO</h1>
+
+<p>Often an environment cannot support PXE because of either (A) an
+unfortunate lack of control over DHCP configurations (i.e. another
+group owns DHCP and won't give you a next-server entry), or (B) you
+are using static IPs only.</p>
+
+<p>This is easily solved:</p>
+
+<pre><code># cobbler buildiso
+</code></pre>
+
+<p>What this command does is to copy all distro kernel/initrds onto a
+boot CD image and generate a menu for the ISO that is essentially
+equivalent to the PXE menu provided to net-installing machines via
+Cobbler.</p>
+
+<p>By default, the boot CD menu will include all profiles and systems,
+you can force it to display a list of profiles/systems in concern
+with the following.</p>
+
+<p>Cobbler versions >= 2.2.0:</p>
+
+<pre><code># cobbler buildiso --systems="system1 system2 system3"
+# cobbler buildiso --profiles="profile1 profile2 profile3"
+</code></pre>
+
+<p>Cobbler versions &lt; 2.2.0:</p>
+
+<pre><code># cobbler buildiso --systems="system1,system2,system3"
+# cobbler buildiso --profiles="profile1,profile2,profile3"
+</code></pre>
+
+<p>If you need to install into a lab (or other environment) that does not have network
+access to the cobbler server, you can also copy a full distribution tree plus profile
+and system records onto a disk image:</p>
+
+<pre><code># cobbler buildiso --standalone --distro="distro1"
+</code></pre>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

@@ -1,9 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Package Management and Mirroring
 meta: 2.2.3
 ---
-## Cobbler Repository Management
+# {{ page.title }}
 
 ### About
 

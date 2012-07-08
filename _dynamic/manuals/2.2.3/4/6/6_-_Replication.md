@@ -1,9 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Replicate
 meta: 2.2.3
 ---
-# Replication
+# {{ page.title }}
 
     cobbler replicate --help
 

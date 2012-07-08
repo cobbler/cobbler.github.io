@@ -1,9 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Multi-Homed Cobbler Servers
 meta: 2.2.3
 ---
-## About
+# {{ page.title }}
 
 How do you use Cobbler to provision machines onto multiple
 different subnets, assuming no DNS tricks can be employed, and

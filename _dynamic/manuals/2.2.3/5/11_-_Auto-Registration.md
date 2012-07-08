@@ -1,9 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Automatic Registration
 meta: 2.2.3
 ---
-## Scenario
+# {{ page.title }}
 
 You have a lot of machines coming right "off the truck" and you
 want to plug them in, install them however (perhaps using PXE
