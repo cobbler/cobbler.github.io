@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - Koan</title>
+   <title>Cobbler Manual</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -108,17 +108,107 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/6/1_-_Import.html">1 - Import</a></li><li><a href="/manuals/2.2.3/4/6/2_-_Build_ISO.html">2 - Build ISO</a></li><li><a href="/manuals/2.2.3/4/6/3_-_Command_Line_Search.html">3 - Command Line Search</a></li><li><a href="/manuals/2.2.3/4/6/4_-_Replication.html">4 - Replication</a></li><li><a href="/manuals/2.2.3/4/6/5_-_Sync.html">5 - Sync</a></li><li><a href="/manuals/2.2.3/4/6/6_-_Validate_Kickstart.html">6 - Validate Kickstart</a></li><li><a href="/manuals/2.2.3/4/6/7_-_ACL_Setup.html">7 - ACL Setup</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Koan</h2>
+<h1>Replication</h1>
 
-<p>This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual machines with cobbler.</p>
+<pre><code>cobbler replicate --help
+</code></pre>
 
-<h2>Section Topics:</h2>
+<p>Replication works by downloading the configuration from one cobbler
+server into another. It is useful for Highly Available setups,
+disaster recovery, support of multiple geographies, or for load
+balancing.</p>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<pre><code>cobbler replicate --master=master.example.org
+</code></pre>
 
+<p>With the default arguments, only distribution and profile metadata
+are synchronized. Without any of the other sync flags (described
+below) it is assumed data backing these objects (such as
+kernels/initrds, etc) are already accessible. Don't worry though,
+cobbler can help move those over too.</p>
+
+<h2>Transferring More Than Just Metadata</h2>
+
+<p>Cobbler can transfer mirrored trees, packages, snippets, kickstart
+templates, and triggers as well. To do this, just use the
+appropriate flags with cobbler replicate.</p>
+
+<pre><code>[root@localhost mdehaan]# cobbler replicate --help
+Usage: cobbler [options]
+
+Options:
+  -h, --help            show this help message and exit
+  --master=MASTER       Cobbler server to replicate from.
+  --distros=PATTERN     pattern of distros  to replicate
+  --profiles=PATTERN    pattern of profiles to replicate
+  --systems=PATTERN     pattern of systems to replicate
+  --repos=PATTERN       pattern of repos to replicate
+  --image=PATTERN       pattern of images to replicate
+  --omit-data           do not rsync data
+  --prune               remove objects (of all types) not found on the master
+</code></pre>
+
+<h2>Setup</h2>
+
+<p>On each replica-to-be cobbler server, just install cobbler as
+normal, and make sure /etc/cobbler/settings and
+/etc/cobbler/modules.conf are appropriate. Use "cobbler check" to
+spot check your work. Cobbler replicate will not configure these
+files, and you may want different site-specific settings for
+variables in these files. That's fine, as cobbler replicate will
+respect these.</p>
+
+<h2>How It Works</h2>
+
+<p>Metadata is transferred over Cobbler XMLRPC, so you'll need to have
+the Cobbler XMLRPC endpoint accessible --
+<a href="http://servername:80/cobbler_api">http://servername:80/cobbler_api</a>.
+This is the read only API so no authentication is required. This is
+possible because this is a user-initiated pull operation, not a
+push operation.</p>
+
+<p>Files are transferred either by rsync (over ssh) or scp, so you
+will probably want to use ssh-agent prior to kicking off the
+replicate command, or otherwise use authorized_keys on the remote
+host to save typing.</p>
+
+<h2>Limitations</h2>
+
+<p>It is perfectly fine to sync data bi-directionally, though keep in
+mind metadata being synced is not timestamped with the time of the
+last edit (this may be a nice future extension), so the latest sync
+"wins". Cobbler replicate is, generally, designed to have a
+"master" concept, so it is probably not desirable yet to do
+bi-directional syncing.</p>
+
+<h2>Common Use Cases</h2>
+
+<h2>High Availability / Disaster Recovery</h2>
+
+<p>A remote cobbler server periodically replicates from the master to
+keep an active installation.</p>
+
+<h2>Load Balancing</h2>
+
+<p>Similar to the HA / Disaster Recovery case, consider using a
+<a href="Triggers">CobblerTrigger</a> to notify the other
+server to pull new metadata when commands are issued.</p>
+
+<h2>Multiple Geographies</h2>
+
+<p>Several remote servers pull from the master, either triggered by a
+<a href="Triggers">CobblerTrigger</a> on the central
+server, or otherwise on daily cron. This allows for establishing
+install mirrors that are closer and therefore faster and less
+bandwidth hungry. The admin can choose whether or not system
+records should be centrally managed. It may be desirable to just
+centrally provide the distributions and profiles and keep the
+system records on each seperate cobbler server, however, there is
+nothing to say all records can't be kept centrally as well. (Choose
+one or the other, don't do a mixture of both.)</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

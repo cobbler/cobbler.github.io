@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - Koan</title>
+   <title>Cobbler Manual</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -108,16 +108,34 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/5/1_-_Triggers.html">1 - Triggers</a></li><li><a href="/manuals/2.2.3/5/5/2_-_Modules.html">2 - Modules</a></li><li><a href="/manuals/2.2.3/5/5/3_-_Extending_Cheetah.html">3 - Extending Cheetah</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Koan</h2>
+<p>As mentioned at <a href="/cobbler/wiki/KickstartTemplating">KickstartTemplating</a>, Cobbler
+uses Cheetah for it's templating system.  (It also wants to support other choices
+and may in the future support others).</p>
 
-<p>This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual machines with cobbler.</p>
+<p>It is possible to add new functions to the templating engine, much
+like <a href="/cobbler/wiki/KickstartSnippets">KickstartSnippets</a>, that
+provide the ability to do macro-based things in the template. If
+you are new to Cheetah, see the documentation at
+<a href="http://www.cheetahtemplate.org/learn.html">http://www.cheetahtemplate.org/learn.html</a>
+and pay special attention to the #def directive.</p>
 
-<h2>Section Topics:</h2>
+<p>To create new functions, add your Cheetah code to
+/etc/cobbler/cheetah_macros. This file will be sourced in all
+Cheetah templates automatically, making it possible to write custom
+functions and use them from this file.</p>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<p>You will want to restart cobblerd after changing the macros file.</p>
+
+<h2>User Shared Functions</h2>
+
+<p>Users can share examples of functions they have written below:</p>
+
+<ul>
+<li>Fill in</li>
+</ul>
 
 
      <div id="push"></div> <!-- push -->

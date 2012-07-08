@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - Koan</title>
+   <title>File System ACLs</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -108,17 +108,46 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/6/1_-_Import.html">1 - Import</a></li><li><a href="/manuals/2.2.3/4/6/2_-_Build_ISO.html">2 - Build ISO</a></li><li><a href="/manuals/2.2.3/4/6/3_-_Command_Line_Search.html">3 - Command Line Search</a></li><li><a href="/manuals/2.2.3/4/6/4_-_Replication.html">4 - Replication</a></li><li><a href="/manuals/2.2.3/4/6/5_-_Sync.html">5 - Sync</a></li><li><a href="/manuals/2.2.3/4/6/6_-_Validate_Kickstart.html">6 - Validate Kickstart</a></li><li><a href="/manuals/2.2.3/4/6/7_-_ACL_Setup.html">7 - ACL Setup</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Koan</h2>
+<h1>File System ACLs</h1>
 
-<p>This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual machines with cobbler.</p>
+<p>Cobbler contains an "aclsetup" command for automation of setting up file system acls (i.e. setfacl) on directories that cobbler needs to read and write to.</p>
 
-<h2>Section Topics:</h2>
+<h2>Using File System ACLs</h2>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<p>Usage of this command allows the administrator to grant access to other users without granting them the ability to run cobbler as root.</p>
 
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler aclsetup --help
+Usage: cobbler aclsetup  <span class="o">[</span>ARGS<span class="o">]</span>
+
+Options:
+  -h, --help            show this <span class="nb">help </span>message and <span class="nb">exit</span>
+  --adduser<span class="o">=</span>ADDUSER     give acls to this user
+  --addgroup<span class="o">=</span>ADDGROUP   give acls to this group
+  --removeuser<span class="o">=</span>REMOVEUSER
+                        remove acls from this user
+  --removegroup<span class="o">=</span>REMOVEGROUP
+                        remove acls from this group
+</code></pre>
+</div>
+
+
+<p>Example:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler aclsetup --adduser<span class="o">=</span>timmy
+</code></pre>
+</div>
+
+
+<p>The above example gives timmy access to run cobbler commands.</p>
+
+<p>Note that aclsetup does grant access to configure all of /etc/cobbler, /var/www/cobbler, and /var/lib/cobbler, so it is still rather powerful in terms of the access it grants (though somewhat less so than providing root).</p>
+
+<p>A user with acls can, for instance, edit cobbler triggers which are later run by cobblerd (as root).  In this event, cobbler access (either sudo or aclsetup) should not be granted to users you do not trust completely.   This should not be a major problem as in giving them access to configure future aspects of your network (via the provisioning server) they are already being granted fairly broad rights.</p>
+
+<p>It is at least nicer than running "sudo" all of the time if you were going to grant a user "no password" sudo access to cobbler.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - Koan</title>
+   <title>Cobbler Manual</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -108,17 +108,46 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/6/1_-_Import.html">1 - Import</a></li><li><a href="/manuals/2.2.3/4/6/2_-_Build_ISO.html">2 - Build ISO</a></li><li><a href="/manuals/2.2.3/4/6/3_-_Command_Line_Search.html">3 - Command Line Search</a></li><li><a href="/manuals/2.2.3/4/6/4_-_Replication.html">4 - Replication</a></li><li><a href="/manuals/2.2.3/4/6/5_-_Sync.html">5 - Sync</a></li><li><a href="/manuals/2.2.3/4/6/6_-_Validate_Kickstart.html">6 - Validate Kickstart</a></li><li><a href="/manuals/2.2.3/4/6/7_-_ACL_Setup.html">7 - ACL Setup</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Koan</h2>
+<p>Often an environment cannot support PXE because of either (A) an
+unfortunate lack of control over DHCP configurations (i.e. another
+group owns DHCP and won't give you a next-server entry), or (B) you
+are using static IPs only.</p>
 
-<p>This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual machines with cobbler.</p>
+<p>This is easily solved:</p>
 
-<h2>Section Topics:</h2>
+<pre><code># cobbler buildiso
+</code></pre>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<p>What this command does is to copy all distro kernel/initrds onto a
+boot CD image and generate a menu for the ISO that is essentially
+equivalent to the PXE menu provided to net-installing machines via
+Cobbler.</p>
 
+<p>By default, the boot CD menu will include all profiles and systems,
+you can force it to display a list of profiles/systems in concern
+with the following.</p>
+
+<p>Cobbler versions >= 2.2.0:</p>
+
+<pre><code># cobbler buildiso --systems="system1 system2 system3"
+# cobbler buildiso --profiles="profile1 profile2 profile3"
+</code></pre>
+
+<p>Cobbler versions &lt; 2.2.0:</p>
+
+<pre><code># cobbler buildiso --systems="system1,system2,system3"
+# cobbler buildiso --profiles="profile1,profile2,profile3"
+</code></pre>
+
+<p>If you need to install into a lab (or other environment) that does not have network
+access to the cobbler server, you can also copy a full distribution tree plus profile
+and system records onto a disk image:</p>
+
+<pre><code># cobbler buildiso --standalone --distro="distro1"
+</code></pre>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

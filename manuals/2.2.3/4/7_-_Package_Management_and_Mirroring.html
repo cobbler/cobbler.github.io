@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - Settings</title>
+   <title>Cobbler Manual</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,97 +111,169 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1_-_Cobbler_Primatives.html">1 - Cobbler Primatives</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1.1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">1.2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">1.3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">1.4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">1.5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">1.6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">1.7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">1.8 - Package Resources</a></li></ul><li><a href="/manuals/2.2.3/4/2_-_Cobbler_Settings.html">2 - Cobbler Settings</a></li><li><a href="/manuals/2.2.3/4/3_-_Managing_Services_With_Cobbler.html">3 - Managing Services With Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/3/Managing_rsync.html">3.Managing rsync</a></li><li><a href="/manuals/2.2.3/4/3/Managing_yum_repos.html">3.Managing yum repos</a></li><li><a href="/manuals/2.2.3/4/3/Managing_TFTP.html">3.Managing TFTP</a></li><li><a href="/manuals/2.2.3/4/3/1_-_Managing_DHCP.html">3.1 - Managing DHCP</a></li><li><a href="/manuals/2.2.3/4/3/2_-_Managing_DNS.html">3.2 - Managing DNS</a></li></ul><li><a href="/manuals/2.2.3/4/4_-_Kickstart_Templating.html">4 - Kickstart Templating</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/4/1_-_Advanced_Kickstarts.html">4.1 - Advanced Kickstarts</a></li></ul><li><a href="/manuals/2.2.3/4/5_-_Snippets.html">5 - Snippets</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/5/1_-_Advanced_Snippets.html">5.1 - Advanced Snippets</a></li></ul><li><a href="/manuals/2.2.3/4/6_-_Cobbler_Commands.html">6 - Cobbler Commands</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/4/6/1_-_Import.html">6.1 - Import</a></li><li><a href="/manuals/2.2.3/4/6/2_-_Build_ISO.html">6.2 - Build ISO</a></li><li><a href="/manuals/2.2.3/4/6/3_-_Command_Line_Search.html">6.3 - Command Line Search</a></li><li><a href="/manuals/2.2.3/4/6/4_-_Replication.html">6.4 - Replication</a></li><li><a href="/manuals/2.2.3/4/6/5_-_Sync.html">6.5 - Sync</a></li><li><a href="/manuals/2.2.3/4/6/6_-_Validate_Kickstart.html">6.6 - Validate Kickstart</a></li><li><a href="/manuals/2.2.3/4/6/7_-_ACL_Setup.html">6.7 - ACL Setup</a></li></ul><li><a href="/manuals/2.2.3/4/7_-_Package_Management_and_Mirroring.html">7 - Package Management and Mirroring</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<p>allow_duplicate_hostnames               : 0
-allow_duplicate_ips                     : 0
-allow_duplicate_macs                    : 0
-allow_dynamic_settings                  : 0
-anamon_enabled                          : 0
-bind_chroot_path                        : /
-bind_master                             : 127.0.0.1
-build_reporting_email                   : ['root@localhost']
-build_reporting_enabled                 : 0
-build_reporting_sender                  :
-build_reporting_smtp_server             : localhost
-build_reporting_subject                 :
-build_reporting_to_address              :
-buildisodir                             : /var/cache/cobbler/buildiso
-cheetah_import_whitelist                : ['random', 're', 'time']
-client_use_localhost                    :
-cobbler_master                          :
-consoles                                : /var/consoles
-createrepo_flags                        : -c cache -s sha --update
-default_deployment_method               : ssh
-default_kickstart                       : /var/lib/cobbler/kickstarts/default.ks
-default_name_servers                    : []
-default_name_servers_search             : []
-default_ownership                       : ['admin']
-default_password_crypted                : $1$wrWZXfa7$Ts7jMmpdZkTlu0lSx1A/I/
-default_template_type                   : cheetah
-default_virt_bridge                     : xenbr0
-default_virt_disk_driver                : raw
-default_virt_file_size                  : 5
-default_virt_ram                        : 512
-default_virt_type                       : xenpv
-enable_gpxe                             : 0
-enable_menu                             : 1
-func_auto_setup                         : 0
-func_master                             : overlord.example.org
-http_port                               : 80
-isc_set_host_name                       : 0
-iso_template_dir                        : /etc/cobbler/iso
-kerberos_realm                          : EXAMPLE.COM
-kernel_options                          : {'ksdevice': 'bootif', 'lang': ' ', 'text': '~'}
-kernel_options_s390x                    : {'vnc': '~', 'ip': False, 'RUNKS': 1, 'ramdisk_size': 40000, 'ro': '~', 'root': '/dev/ram0'}
-ldap_anonymous_bind                     : 1
-ldap_base_dn                            : DC=example,DC=com
-ldap_management_default_type            : authconfig
-ldap_port                               : 389
-ldap_search_bind_dn                     :
-ldap_search_passwd                      :
-ldap_search_prefix                      : uid=
-ldap_server                             : ldap.example.com
-ldap_tls                                : 1
-manage_dhcp                             : 1
-manage_dns                              : 0
-manage_forward_zones                    : []
-manage_reverse_zones                    : []
-manage_rsync                            : 0
-manage_tftp                             : 1
-manage_tftpd                            : 1
-mgmt_classes                            : []
-mgmt_parameters                         : {'from_cobbler': 1}
-next_server                             : 1.1.1.1
-power_management_default_type           : ipmitool
-power_template_dir                      : /etc/cobbler/power
-puppet_auto_setup                       : 1
-puppetca_path                           : /usr/sbin/puppetca
-pxe_just_once                           : 0
-pxe_template_dir                        : /etc/cobbler/pxe
-redhat_management_key                   :
-redhat_management_permissive            : 0
-redhat_management_server                : xmlrpc.rhn.redhat.com
-redhat_management_type                  : off
-register_new_installs                   : 0
-remove_old_puppet_certs_automatically   : 1
-replicate_rsync_options                 : -avzH
-reposync_flags                          : -l -m -d
-restart_dhcp                            : 1
-restart_dns                             : 1
-restart_xinetd                          : 1
-run_install_triggers                    : 1
-scm_track_enabled                       : 0
-scm_track_mode                          : git
-serializer_pretty_json                  : 0
-server                                  : 1.1.1.1
-sign_puppet_certs_automatically         : 0
-snippetsdir                             : /var/lib/cobbler/snippets
-template_remote_kickstarts              : 0
-virt_auto_boot                          : 1
-webdir                                  : /var/www/cobbler
-xmlrpc_port                             : 25151
-yum_distro_priority                     : 1
-yum_post_install_mirror                 : 1
-yumdownloader_flags                     : --resolve</p>
+<h2>Cobbler Repository Management</h2>
+
+<h3>About</h3>
+
+<p>This is a walkthrough of how to set up cobbler to be a full fledged
+mirror of everything install and update related that you might ever
+be interested in.</p>
+
+<p>Updates and package installation are closely related. If you're
+doing one, it makes sense to do the other.</p>
+
+<h3>Why would you be interested in this?</h3>
+
+<p>Suppose you manage a large number of machines and are (A) not
+allowed to get to the outside world, (B) bandwidth constrained, or
+(C) wanting to get access to 3rd party packages including custom
+yum repositories.</p>
+
+<p>All of these are good reasons to want a mirror server for all
+things kickstart and yum related. Cobbler can do that for you.</p>
+
+<h3>How To</h3>
+
+<p>The following instructions walk through an example of setting up a
+mirror of a Fedora install tree, including any updates. This will
+require a good bit of hard disk space (we'll show you how to
+hardlink to save space later), so be prepared :). These same
+commands work for all varieties of RHEL, Fedora, or Centos.</p>
+
+<p>First, follow the setup for a DVD import here using the Fedora 12
+install media. See
+<a href="Using%20cobbler%20import">Using Cobbler Import</a>.</p>
+
+<p>Once the import is complete, we'll add the mirrors...</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler repo add --mirror<span class="o">=</span>http://download.fedora.redhat.com/pub/fedora/linux/updates/12/ --name<span class="o">=</span>f12-i386-updates 
+<span class="nv">$ </span>cobbler repo add --mirror<span class="o">=</span>http://download.fedora.redhat.com/pub/fedora/linux/releases/12/Everything/i386/ --name<span class="o">=</span>f12-i386-everything 
+</code></pre>
+</div>
+
+
+<p>Please replace i386 with your preferred architecture. If you own
+x86_64 or ppc machines as well, just change it. If you're not
+running Fedora, insert your yum URLs of choice. It all works the
+same!</p>
+
+<p>These are just a few common examples. Say you have a RHEL5 or
+Centos4 machine? Perhaps you would want to add something from
+<a href="http://fedoraproject.org/wiki/EPEL">EPEL</a>,
+<a href="http://rpmfusion.org/">RPM Fusion</a>, or someplace else? No
+problem.</p>
+
+<p>Now that we've added the mirrors, let's pull down the content. This
+will take a little while, but subsequent updates won't take nearly
+as long.</p>
+
+<pre><code>    cobbler reposync 
+</code></pre>
+
+<p>Now, that the repositories are mirrored locally, let's create a
+cobbler profile that will be able to automatically install from the
+above repositories and also configure clients to use the new
+mirror.</p>
+
+<pre><code>    cobbler profile add --name=f12-i386-test --repos="f12-i386-updates f12-i386-everything" --distro=F12-i386 --kickstart=/etc/cobbler/sample_end.ks 
+</code></pre>
+
+<p>Now, any machines installed from this mirror won't have to hit the
+outside world for any content they may need during install or with
+yum. They'll ask for content from the cobbler server instead.
+Cool.</p>
+
+<h3>RHN</h3>
+
+<p>This is rather experimental, but if you have a provisioning need
+for fast local installs without hitting an outside server
+repeatedly (say you have a slow pipe), you can try:</p>
+
+<pre><code>    cobbler repo add --name=insertnamehere --mirror=rhn://rhn-channel-name 
+</code></pre>
+
+<p>That's just the channel-name, no server. This only works on RHEL5+
+and you'll need entitlements for the channel in question. You also
+want a version of yum-utils at least equal to 1.0.4.</p>
+
+<h2>Post Install Yum Usage</h2>
+
+<p>If you want your installed systems to be automatically configured
+to use your install server for updates, go into
+/etc/cobbler/settings and set the following:</p>
+
+<pre><code>yum_post_install_mirror: 1
+</code></pre>
+
+<p>(Don't do this if the servers can't reach the cobbler server at the
+value set up in settings or if you're going to move the installed
+machine to a different network later)</p>
+
+<h3>Updates And Cron</h3>
+
+<p>As you're mirroring repositories that change (and probably even
+include some security updates from time to time), putting "cobbler
+reposync" on crontab would be a good idea. Cobbler reposync will
+update the content in all of your repositories.</p>
+
+<p>You can disable updating of certain repos that you've already
+pulled down and don't wish to contact again by toggling the
+--keep-updated flag on the repo. Make sure you reposync them at
+least once.</p>
+
+<p>Use of the following flags will ensure smoother updates from cron:</p>
+
+<pre><code>cobbler reposync --tries=3 --no-fail
+</code></pre>
+
+<p>This will allow Cobbler to keep trucking if one of your mirrors has
+problems.</p>
+
+<h3>Also Apt</h3>
+
+<p>Starting, we can also do apt mirroring (see
+<a href="Distribution%20Support">Distribution Support</a> ).</p>
+
+<pre><code>cobbler repo add --name=foo --mirror=http://url --breed=apt --arch=i386
+</code></pre>
+
+<p>This is useful with Debian distributions (those that have
+--breed=debian in the distro object), see
+[Distribution Support](Distribution Support]</p>
+
+<h3>Saving Space</h3>
+
+<p>To eliminate space duplicated between mirrored updates and install
+trees, run the following command</p>
+
+<pre><code>cobbler hardlink
+</code></pre>
+
+<p>This requires that you have first installed the package
+'hardlink'.</p>
+
+<h3>To Review</h3>
+
+<p>The above steps have set up your cobbler server as a full fledged
+mirror, not just for install trees (which are imported using
+"cobbler import" not reposync -- read
+<a href="/cobbler/wiki/UsingCobblerImport">Using cobbler import</a>), but also
+for future package installs and updates with yum.</p>
+
+<p>Installation content during anaconda and afterwards will be pulled
+from your cobbler mirror, not the outside world. You should see
+faster installs and won't have to worry about whether your client
+machines have outside internet connectivity.</p>
+
+<p>Cobbler handles all of the yum, reposync, and createrepo magic for
+you, so you don't have to know how they work. Plus, the kickstarts
+are automatically aware of the configuration and build themselves
+out based on what repos are defined. Bottom line: you don't need to
+know how any of this stuff works. Cool.</p>
+
+<p>If you have questions or want to clear up something in this
+document, ask on the mailing list or stop by #cobbler on
+irc.freenode.net.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

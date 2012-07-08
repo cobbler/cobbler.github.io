@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>SELinux With Cobbler</title>
+   <title>Cobbler Manual</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,42 +111,61 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/1_-_Advanced_Networking.html">1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/1/1_-_Bonding.html">1.1 - Bonding</a></li><li><a href="/manuals/2.2.3/5/1/2_-_VLANs.html">1.2 - VLANs</a></li><li><a href="/manuals/2.2.3/5/1/3_-_Bridging.html">1.3 - Bridging</a></li></ul><li><a href="/manuals/2.2.3/5/2_-_SELinux.html">2 - SELinux</a></li><li><a href="/manuals/2.2.3/5/3_-_Configuration_Management.html">3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/3/1_-_Built-In_Configuration_Management.html">3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.2.3/5/3/2_-_Puppet_Integration.html">3.2 - Puppet Integration</a></li><li><a href="/manuals/2.2.3/5/3/3_-_Func_Integration.html">3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.2.3/5/4_-_Anaconda_Monitoring.html">4 - Anaconda Monitoring</a></li><li><a href="/manuals/2.2.3/5/5_-_Extending_Cobbler.html">5 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/5/1_-_Triggers.html">5.1 - Triggers</a></li><li><a href="/manuals/2.2.3/5/5/2_-_Modules.html">5.2 - Modules</a></li><li><a href="/manuals/2.2.3/5/5/3_-_Extending_Cheetah.html">5.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.2.3/5/6_-_Power_Management.html">6 - Power Management</a></li><li><a href="/manuals/2.2.3/5/7_-_Alternative_Template_Formats.html">7 - Alternative Template Formats</a></li><li><a href="/manuals/2.2.3/5/8_-_Multi-Homed_Cobbler_Server.html">8 - Multi-Homed Cobbler Server</a></li><li><a href="/manuals/2.2.3/5/9_-_Memtest.html">9 - Memtest</a></li><li><a href="/manuals/2.2.3/5/10_-_Virtual_Image_Cloning.html">10 - Virtual Image Cloning</a></li><li><a href="/manuals/2.2.3/5/11_-_Auto-Registration.html">11 - Auto-Registration</a></li><li><a href="/manuals/2.2.3/5/12_-_Booting_Live_CDs.html">12 - Booting Live CDs</a></li><li><a href="/manuals/2.2.3/5/13_-_Clonezilla_Integration.html">13 - Clonezilla Integration</a></li><li><a href="/manuals/2.2.3/5/14_-_Batch_Editing.html">14 - Batch Editing</a></li><li><a href="/manuals/2.2.3/5/15_-_Moving_to_a_New_Server.html">15 - Moving to a New Server</a></li><li><a href="/manuals/2.2.3/5/16_-_PXE-boot_Menu_Passwords.html">16 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.2.3/5/17_-_System_Retirement.html">17 - System Retirement</a></li><li><a href="/manuals/2.2.3/5/18_-_Alternative_Storage_Backends.html">18 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/18/1_-_CouchDB.html">18.1 - CouchDB</a></li><li><a href="/manuals/2.2.3/5/18/2_-_MongoDB.html">18.2 - MongoDB</a></li></ul></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>SELinux With Cobbler</h1>
+<h3>Live CDs</h3>
 
-<p>SELinux policies are typically provided by the upstream distribution (Fedora, Ubuntu, etc.). As new features are added to cobbler (and we do add new features frequently), those policies may become out-of-date leading to AVC denials and other problems. If you wish to run SELinux on your cobbler system, we expect you to know how to write policy and resolve AVCs.</p>
+<p>Note: this page refers to Linux-style Live CDs.  For information on how to boot a DOS-style live CD check out the <a href="https://github.com/cobbler/cobbler/wiki/All-About-Images">All About Images</a> page.</p>
 
-<p>Below are some of the more common issues you may run into with this release.</p>
+<p>Live CD's can be used for a variety of tasks.  They might update firmware, run diagnostics, assist with cloning systems, or just serve up a desktop environment.</p>
 
-<h2>ProtocolError: &lt;ProtocolError for x.x.x.x:80/cobbler_api: 503 Service Temporarily Unavailable&gt;</h2>
+<h3>With Cobbler</h3>
 
-<p>If you see this when you run "cobbler check" or any other cobbler command, it means SELinux is blocking httpd from talking with cobblerd. The command to fix this is:</p>
+<p>Somewhat unintuitively, LiveCD's are booted by transforming the CD ISO's to kernel+initrd files.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo setsebool -P httpd_can_network_connect <span class="nb">true</span>
+<p>Take the livecd and install livecd-tools.  You may need a recent Fedora (F9+) to find livecd-tools.  What we are about to do is convert the live image to something that is PXEable.  It will produce a kernel image and a VERY large initrd which essnetially contains the entire ISO.  Once this is done it is PXE-bootable, but we still have to provide the right kernel arguments.</p>
+
+<pre><code>livecd-iso-to-pxeboot live-image.iso
 </code></pre>
-</div>
 
+<p>This will produce a subdirectory in the current directory called ./tftpboot.  You need to save the initrd and the vmlinuz from this directory, and as a warning, the initrd is as big as the live image.  Make sure you have space.</p>
 
-<h2>Fedora 16 / RHEL6 / CentOS6 - Python MemoryError</h2>
+<pre><code>mkdir -p /srv/livecd
+cp /path/to/cwd/tftpboot/vmlinuz0 /srv/livecd/vmlinuz0
+cp /path/to/cwd/tftpboot/initrd.img /srv/livecd/initrd.img
 
-<p>When starting cobblerd for the first time (or after upgrading to 2.2.x), you may see a stack trace like the following:</p>
-
-<div class="highlight"><pre><code class="bash">Starting cobbler daemon: Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-File <span class="s2">&quot;/usr/bin/cobblerd&quot;</span>, line 76, in main
-<span class="nv">api</span> <span class="o">=</span> cobbler_api.BootAPI<span class="o">(</span><span class="nv">is_cobblerd</span><span class="o">=</span>True<span class="o">)</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/api.py&quot;</span>, line 127, in init
-module_loader.load_modules<span class="o">()</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/module_loader.py&quot;</span>, line 62, in load_modules
-<span class="nv">blip</span> <span class="o">=</span> import<span class="o">(</span><span class="s2">&quot;modules.%s&quot;</span> % <span class="o">(</span> modname<span class="o">)</span>, globals<span class="o">()</span>, locals<span class="o">()</span>, <span class="o">[</span>modname<span class="o">])</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py&quot;</span>, line 53, in
-from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
-File <span class="s2">&quot;/usr/lib64/python2.6/ctypes/init.py&quot;</span>, line 546, in
-CFUNCTYPE<span class="o">(</span>c_int<span class="o">)(</span>lambda: None<span class="o">)</span>
-MemoryError
+cobbler distro add --name=liveF9 --kernel=/srv/livecd/vmlinuz0 --initrd=/srv/livecd/initrd.img
 </code></pre>
-</div>
 
+<p>Now we must add some parameters to the kernel and create a dummy profile object.  Note we are passing in some extra kernel options and telling cobbler it doesn't need many of the default ones because it can save space.  Be sure the "/name-goes-here.iso" part of the path matches up with the ISO you ran livecd-iso-to-pxeboot against exactly or the booting will not be successful.</p>
 
-<p>This error is caused by SELinux blocking python ctypes. To resolve this, you can use audit2allow to enable the execution of temp files or you can remove the authn_pam.py module from the site-packages/cobbler/modules/ directory (as long as you're not using PAM authentication for the Web UI).</p>
+<pre><code>cobbler distro edit --name=liveF9 --kopts='root=/f9live.iso rootfstype=iso9660 rootflags=loop !text !lang !ksdevice'
+cobbler profile add --name=liveF9 --distro=liveF9
+</code></pre>
+
+<p>At this point it will work as though it is a normal "profile", though it will boot the live image as opposed to an installer image.</p>
+
+<p>For instance, if we wanted to deploy the live image to all machines on a specific subnet we could do it as follows:</p>
+
+<pre><code>cobbler system add --name=live_network --ip=123.45.00.00/24 --profile=liveF9
+</code></pre>
+
+<p>Or of course we could just deploy it to a specific system:</p>
+
+<pre><code>cobbler system add --name=xyz --mac=AA:BB:CC:DD:EE:FF --profile=liveF9
+</code></pre>
+
+<p>And of course this will show up in the PXE menus automatically as well.</p>
+
+<h3>Notes</h3>
+
+<p>When you boot this profile it will take a relatively long time (3-5 minutes?) and you will see a lot of dots printed on the screen.  This is expected behavior as it has to transfer a large amount of data.</p>
+
+<h3>Space Considerations</h3>
+
+<p>The Live Images are very large.  Cobbler will try to hardlink them if the vmlinuz/initrd files are on the same device, but it cannot symlink because of the way TFTP (needed for PXE) requires a chroot environment.  If your distro add command takes a long time, this is because of the copy, please make sure you have the extra space in your TFTP boot directory's partition (either /var/lib/tftpboot or /tftpboot depending on OS).</p>
+
+<h3>Troubleshooting</h3>
+
+<p>If you boot into the live environment and it does not work right, most likely the rootflags and other parameters are incorrect.   Recheck them with "cobbler distro report --name=foo"</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>SELinux With Cobbler</title>
+   <title>Cobbler Manual</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,42 +111,69 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/1_-_Advanced_Networking.html">1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/1/1_-_Bonding.html">1.1 - Bonding</a></li><li><a href="/manuals/2.2.3/5/1/2_-_VLANs.html">1.2 - VLANs</a></li><li><a href="/manuals/2.2.3/5/1/3_-_Bridging.html">1.3 - Bridging</a></li></ul><li><a href="/manuals/2.2.3/5/2_-_SELinux.html">2 - SELinux</a></li><li><a href="/manuals/2.2.3/5/3_-_Configuration_Management.html">3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/3/1_-_Built-In_Configuration_Management.html">3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.2.3/5/3/2_-_Puppet_Integration.html">3.2 - Puppet Integration</a></li><li><a href="/manuals/2.2.3/5/3/3_-_Func_Integration.html">3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.2.3/5/4_-_Anaconda_Monitoring.html">4 - Anaconda Monitoring</a></li><li><a href="/manuals/2.2.3/5/5_-_Extending_Cobbler.html">5 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/5/1_-_Triggers.html">5.1 - Triggers</a></li><li><a href="/manuals/2.2.3/5/5/2_-_Modules.html">5.2 - Modules</a></li><li><a href="/manuals/2.2.3/5/5/3_-_Extending_Cheetah.html">5.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.2.3/5/6_-_Power_Management.html">6 - Power Management</a></li><li><a href="/manuals/2.2.3/5/7_-_Alternative_Template_Formats.html">7 - Alternative Template Formats</a></li><li><a href="/manuals/2.2.3/5/8_-_Multi-Homed_Cobbler_Server.html">8 - Multi-Homed Cobbler Server</a></li><li><a href="/manuals/2.2.3/5/9_-_Memtest.html">9 - Memtest</a></li><li><a href="/manuals/2.2.3/5/10_-_Virtual_Image_Cloning.html">10 - Virtual Image Cloning</a></li><li><a href="/manuals/2.2.3/5/11_-_Auto-Registration.html">11 - Auto-Registration</a></li><li><a href="/manuals/2.2.3/5/12_-_Booting_Live_CDs.html">12 - Booting Live CDs</a></li><li><a href="/manuals/2.2.3/5/13_-_Clonezilla_Integration.html">13 - Clonezilla Integration</a></li><li><a href="/manuals/2.2.3/5/14_-_Batch_Editing.html">14 - Batch Editing</a></li><li><a href="/manuals/2.2.3/5/15_-_Moving_to_a_New_Server.html">15 - Moving to a New Server</a></li><li><a href="/manuals/2.2.3/5/16_-_PXE-boot_Menu_Passwords.html">16 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.2.3/5/17_-_System_Retirement.html">17 - System Retirement</a></li><li><a href="/manuals/2.2.3/5/18_-_Alternative_Storage_Backends.html">18 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.2.3/5/18/1_-_CouchDB.html">18.1 - CouchDB</a></li><li><a href="/manuals/2.2.3/5/18/2_-_MongoDB.html">18.2 - MongoDB</a></li></ul></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>SELinux With Cobbler</h1>
+<h2>Scenario</h2>
 
-<p>SELinux policies are typically provided by the upstream distribution (Fedora, Ubuntu, etc.). As new features are added to cobbler (and we do add new features frequently), those policies may become out-of-date leading to AVC denials and other problems. If you wish to run SELinux on your cobbler system, we expect you to know how to write policy and resolve AVCs.</p>
+<p>You have a lot of machines coming right "off the truck" and you
+want to plug them in, install them however (perhaps using PXE
+menus, koan with --profile, a live CD, etc) and then have the
+system mac address recorded in cobbler so you can change things
+later.</p>
 
-<p>Below are some of the more common issues you may run into with this release.</p>
+<p>In the simplest of use cases, you could set up a cobbler default
+profile that did nothing more than serve up a mostly blank
+kickstart, set up a post install trigger to email your admin, and
+then all turned on machines would register automagically, and then
+you could reassign them to other profiles using the cobbler command
+line tools. (See <a href="Triggers">Triggers</a>)</p>
 
-<h2>ProtocolError: &lt;ProtocolError for x.x.x.x:80/cobbler_api: 503 Service Temporarily Unavailable&gt;</h2>
+<p>There are then quite a few ways in which you might want to use
+this.</p>
 
-<p>If you see this when you run "cobbler check" or any other cobbler command, it means SELinux is blocking httpd from talking with cobblerd. The command to fix this is:</p>
+<h2>Warning</h2>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo setsebool -P httpd_can_network_connect <span class="nb">true</span>
+<p>Though this feature cannot overwrite system records, it does have
+the ability to create a /LOT/ of cobbler system records remotely if
+someone wanted to write a script to do it. It should not be enabled
+on a public network, so use your judgement. In most cases it's
+perfectly safe.</p>
+
+<p>For instance, this was originally written for FreeLinuxPC.org,
+which had a large amount of machines on a private network that was
+for installation purposes only. On a restricted installation-only
+subnet this should be fine.</p>
+
+<h2>How It Works</h2>
+
+<p>A tool called "cobbler-register" is installed as part of the koan
+package.</p>
+
+<p>There is also a
+<a href="Kickstart%20Snippets">Kickstart Snippets</a> that is in
+every default kickstart that says "if this feature is enabled in
+the settings file, and this is a profile based install, register
+this system automatically in %post to create a system record for
+this system if it did not already exist.</p>
+
+<p>If you want to run cobbler-register over SSH instead that works
+too.</p>
+
+<p>cobbler-register is smart and will set all fields to "netboot
+disabled" to prevent newly registered systems from being
+reinstalled unless you ask them to be.</p>
+
+<pre><code>cobbler-register [---server=cobbler.example.org] --profile=name [--hostname=override-hostname.example.org]
 </code></pre>
-</div>
 
+<p>The server will be sourced from the environment variable
+COBBLER_SERVER if installed previously with cobbler, meaning you
+won't need to provide it in many cases. The hostname can also be
+used if available.</p>
 
-<h2>Fedora 16 / RHEL6 / CentOS6 - Python MemoryError</h2>
-
-<p>When starting cobblerd for the first time (or after upgrading to 2.2.x), you may see a stack trace like the following:</p>
-
-<div class="highlight"><pre><code class="bash">Starting cobbler daemon: Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-File <span class="s2">&quot;/usr/bin/cobblerd&quot;</span>, line 76, in main
-<span class="nv">api</span> <span class="o">=</span> cobbler_api.BootAPI<span class="o">(</span><span class="nv">is_cobblerd</span><span class="o">=</span>True<span class="o">)</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/api.py&quot;</span>, line 127, in init
-module_loader.load_modules<span class="o">()</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/module_loader.py&quot;</span>, line 62, in load_modules
-<span class="nv">blip</span> <span class="o">=</span> import<span class="o">(</span><span class="s2">&quot;modules.%s&quot;</span> % <span class="o">(</span> modname<span class="o">)</span>, globals<span class="o">()</span>, locals<span class="o">()</span>, <span class="o">[</span>modname<span class="o">])</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py&quot;</span>, line 53, in
-from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
-File <span class="s2">&quot;/usr/lib64/python2.6/ctypes/init.py&quot;</span>, line 546, in
-CFUNCTYPE<span class="o">(</span>c_int<span class="o">)(</span>lambda: None<span class="o">)</span>
-MemoryError
-</code></pre>
-</div>
-
-
-<p>This error is caused by SELinux blocking python ctypes. To resolve this, you can use audit2allow to enable the execution of temp files or you can remove the authn_pam.py module from the site-packages/cobbler/modules/ directory (as long as you're not using PAM authentication for the Web UI).</p>
+<p>This registration script will populate all physical interfaces
+found, including IP, MAC, and netmask info. The user may wish to
+fill in additional information later by a script or using
+web interface or the
+command line -- not everything can be autodetected.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

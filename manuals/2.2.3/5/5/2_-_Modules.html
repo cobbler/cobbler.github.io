@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Manual - Koan</title>
+   <title>Modules</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -108,17 +108,65 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/5/1_-_Triggers.html">1 - Triggers</a></li><li><a href="/manuals/2.2.3/5/5/2_-_Modules.html">2 - Modules</a></li><li><a href="/manuals/2.2.3/5/5/3_-_Extending_Cheetah.html">3 - Extending Cheetah</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Koan</h2>
+<h2>Modules</h2>
 
-<p>This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual machines with cobbler.</p>
+<p>Certain cobbler features can be user extended (in Python) by Cobbler users.</p>
 
-<h2>Section Topics:</h2>
+<p>These features include storage of data (serialization), authorization, and authentication. Over time, this list of module types will grow to support more options.  <a href="Triggers">Triggers</a> are basically modules.</p>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.2.3/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.2.3/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.2.3/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.2.3/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.2.3/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+<h2>See Also</h2>
 
+<ul>
+<li><a href="Security%20Overview">Security</a></li>
+<li>the cobbler command line itself (it's implemented in cobbler
+modules so it's easy to add new commands)</li>
+</ul>
+
+
+<h2>Python Files And modules.conf</h2>
+
+<p>To create a module, add a python file in
+/usr/lib/python$version/site-packages/cobbler/modules. Then, in the
+apppropriate part of /etc/cobbler/modules.conf, reference the name
+of your module so cobbler knows that you want to activate the
+module.</p>
+
+<p>(<a href="Triggers">Triggers</a> that are python
+modules, as well as CLI python modules don't need to be listed in
+this file, they are auto-loaded)</p>
+
+<p>An example from the serializers is:</p>
+
+<pre><code>[serializers]
+settings = serializer_catalog
+</code></pre>
+
+<p>The format of /etc/cobbler/modules.conf is that of Python's
+ConfigParser module.</p>
+
+<pre><code>    A setup file consists of sections, lead by a "[section]" header,
+    and followed by "name: value" entries, with continuations and such in
+    the style of RFC 822.
+</code></pre>
+
+<p>Each module, regardless of it's nature, must have the following
+function that returns the type of module (as a string) on an
+acceptable load (when the module can be loaded) or raises an
+exception otherwise.</p>
+
+<p>The trivial case for a cli module is:</p>
+
+<pre><code>def register():
+    return "cli"
+</code></pre>
+
+<p>Other than that, modules do not have a particular API signature --
+they are "Duck Typed" based on how they are employed. When starting
+a new module, look at other modules of the same type to see what
+functions they possess.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->
