@@ -4,7 +4,6 @@ title: Power Management
 meta: 2.2.3
 ---
 
-# {{ page.title }}
 
 Cobbler allows for linking your power management systems with cobbler, making it very easy to make changes to your systems when you want to reinstall them, or just use it to remember what the power management settings for all of your systems are. For instance, you can just change what profile they should run and flip their power states to begin the reinstall!
 

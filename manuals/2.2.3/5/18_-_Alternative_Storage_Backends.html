@@ -111,8 +111,7 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/18/1_-_CouchDB.html">1 - CouchDB</a></li><li><a href="/manuals/2.2.3/5/18/2_-_MongoDB.html">2 - MongoDB</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Alternative Storage Backends</h2>
-
+<h1>Alternative Storage Backends</h1>
 <p>Cobbler saves object data via serializers implemented as Cobbler <a href="/manuals/2.2.3/5/5/2_-_Modules.html">Modules</a>. This means Cobbler can be extended to support other storage backends for those that want to do it. Today, cobbler ships two such modules alternate backends: MongoDB and CouchDB.</p>
 
 <p>The default serializer is <strong>serializer_catalog</strong> which uses JSON in /var/lib/cobbler/config/&lt;object&gt; directories, with one file for each object definition. It is very fast, however people with a large number of systems can still experience slowness, especially if cobbler lives on a disk partition that is slow or heavily utilized. Users with such setups should ensure /var/lib/cobbler is mounted on a dedicated disk that offers higher performance (15K SAS or a SAN LUN for example).</p>

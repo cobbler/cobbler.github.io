@@ -3,7 +3,6 @@ layout: manpage
 title: Build ISO
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 Often an environment cannot support PXE because of either (A) an
 unfortunate lack of control over DHCP configurations (i.e. another

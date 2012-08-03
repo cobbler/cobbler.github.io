@@ -4,7 +4,6 @@ title: Kerberos Authentication
 meta: 2.2.3
 ---
 
-# {{ page.title }}
 
 Do you want to authenticate users using Cobbler's Web UI against
 Kerberos? If so, this is for you.

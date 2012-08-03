@@ -112,7 +112,6 @@ function close_results() {
     </div> <!-- rightcol -->
     <div id="content">
 <h1>Relocating Your Installation</h1>
-
 <p>Often folks don't have a very large /var partition, which is what cobbler uses by default for mirroring install trees and the like.</p>
 
 <p>You'll notice you can reconfigure the webdir location just by going into /etc/cobbler/settings, but it's not the best way to do things -- especially as the RPM packaging does include some files and directories in the stock path. This means that, for upgrades and the like, you'll be breaking things somewhat. Rather than attempting to reconfigure cobbler, your Apache configuration, your file permissions, and your SELinux rules, the recommended course of action is very simple.</p>

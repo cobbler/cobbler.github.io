@@ -3,7 +3,6 @@ layout: manpage
 title: Cobbler Import
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 The purpose of "cobbler import" is to  set up a network install server for one or more distributions. This mirrors content based on a DVD image, an ISO file, a tree on a mounted filesystem, an external rsync mirror or SSH location.
 

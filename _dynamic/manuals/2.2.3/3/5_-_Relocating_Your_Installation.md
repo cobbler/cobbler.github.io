@@ -4,7 +4,6 @@ title: Relocating Your Installation
 meta: 2.2.3
 ---
 
-# {{ page.title }}
 
 Often folks don't have a very large /var partition, which is what cobbler uses by default for mirroring install trees and the like.
 

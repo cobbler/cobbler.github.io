@@ -111,6 +111,7 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/5/1_-_Advanced_Snippets.html">1 - Advanced Snippets</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
+<h1>Snippets</h1>
 <p>Snippets are a way of reusing common blocks of code between kickstarts (though this also works on files other than kickstart templates, but that's a sidenote). For instance, the default Cobbler installation has a snippet called "$SNIPPET('func_register_if_enabled')" that can help set up the application called Func (<a href="http://fedorahosted.org/func">http://fedorahosted.org/func</a>).</p>
 
 <p>This means that every time that this SNIPPET text appears in a kickstart file it is replaced by the contents of /var/lib/cobbler/snippets/func_register_if_enabled. This allows this block of text to be reused in every kickstart template -- you may think of snippets, if you like, as templates for templates!</p>

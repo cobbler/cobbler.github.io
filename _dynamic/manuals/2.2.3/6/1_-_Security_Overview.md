@@ -4,7 +4,6 @@ title: Security Overview
 meta: 2.2.3
 ---
 
-# {{ page.title }}
 
 This section provides an overview of Cobbler's security model for the Web UI.
 

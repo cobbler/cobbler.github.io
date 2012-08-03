@@ -111,8 +111,7 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/5/1/1_-_Bonding.html">1 - Bonding</a></li><li><a href="/manuals/2.2.3/5/1/2_-_VLANs.html">2 - VLANs</a></li><li><a href="/manuals/2.2.3/5/1/3_-_Bridging.html">3 - Bridging</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h2>Advanced Networking - VLANs</h2>
-
+<h1>Advanced Networking - VLANs</h1>
 <p>You can now add VLAN tags to interfaces from Cobbler. In this case we have two VLANs on eth0: 10 and 20. The default VLAN (untagged traffic) is not used:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo3.bar.local --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F0 --static<span class="o">=</span>1 

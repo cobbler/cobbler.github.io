@@ -3,7 +3,6 @@ layout: manpage
 title: Cobbler Quickstart Guide
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your choosen distribution. 
 

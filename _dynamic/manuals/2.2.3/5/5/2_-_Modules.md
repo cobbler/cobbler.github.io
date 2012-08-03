@@ -4,7 +4,6 @@ title: Modules
 meta: 2.2.3
 ---
 
-## {{ page.title }}
 
 Certain cobbler features can be user extended (in Python) by Cobbler users.
 

@@ -3,7 +3,6 @@ layout: manpage
 title: Replicate
 meta: 2.2.3
 ---
-# {{ page.title }}
 
     cobbler replicate --help
 

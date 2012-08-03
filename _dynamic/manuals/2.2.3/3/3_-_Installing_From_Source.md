@@ -3,7 +3,6 @@ layout: manpage
 title: Download Instructions
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 Cobbler is licensed under the General Public License (GPL), version
 2 or later. You can download it, free of charge, using the links

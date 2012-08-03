@@ -3,7 +3,6 @@ layout: manpage
 title: Advanced Networking - VLANs
 meta: 2.2.3
 ---
-## {{ page.title }}
 
 You can now add VLAN tags to interfaces from Cobbler. In this case we have two VLANs on eth0: 10 and 20. The default VLAN (untagged traffic) is not used:
 
