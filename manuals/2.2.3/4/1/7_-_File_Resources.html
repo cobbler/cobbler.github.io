@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Primatives - File Resources</title>
+   <title>File Resources</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,16 +111,8 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>Cobbler Primatives - File Resources</h1>
-<h2>MANAGEMENT RESOURCES</h2>
-
-<p>Resources are the lego blocks of configuration management. Resources are grouped together via Management Classes, which are then linked to a system. Cobbler supports two (2) resource types. Resources are configured in the order listed below.</p>
-
-<pre><code>   1. Packages
-   2. Files
-</code></pre>
-
-<h2>FILE RESOURCES</h2>
+<h1>File Resources</h1>
+<p>File resources are managed using cobbler file add, allowing you to create and delete files on a system.</p>
 
 <h2>Actions</h2>
 
@@ -154,7 +146,7 @@ function close_results() {
 
 <p>The template for the file.</p>
 
-<h4>Examples:</h4>
+<h4>Example:</h4>
 
 <div class="highlight"><pre><code class="bash">       
 <span class="nv">$ </span>cobbler file add --name<span class="o">=</span>string --comment<span class="o">=</span>string <span class="o">[</span>--action<span class="o">=</span>string<span class="o">]</span> --mode<span class="o">=</span>string --group<span class="o">=</span>string <span class="se">\</span>

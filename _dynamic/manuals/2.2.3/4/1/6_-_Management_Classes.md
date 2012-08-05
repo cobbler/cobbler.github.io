@@ -1,16 +1,15 @@
 ---
 layout: manpage
-title: Cobbler Primatives - Management Classes
+title: Management Classes
 meta: 2.2.3
 ---
-## MANAGEMENT CLASSES
-Management classes allows cobbler to function as an configuration management system. Cobbler currently supports the following resource types:
+Management classes allow cobbler to function as a configuration management system.  The lego blocks of configuration management, resources are grouped together via Management Classes and linked to a system. Cobbler supports two (2) resource types, which are configured in the order listed below:
 
-       1. Packages
-       2. Files
-
-       Resources are executed in the order listed above.
-
+1. {% linkup title:"Package Resources" extrameta:2.2.3 %}
+2. {% linkup title:"File Resources" extrameta:2.2.3 %}
+  
+  
+To add a Management Class, you would run the following command:
 {% highlight bash %}
 $ cobbler mgmtclass add --name=string --comment=string [--packages=list] [--files=list]
 {% endhighlight %}

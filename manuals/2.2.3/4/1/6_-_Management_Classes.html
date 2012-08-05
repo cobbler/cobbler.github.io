@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Primatives - Management Classes</title>
+   <title>Management Classes</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,16 +111,16 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>Cobbler Primatives - Management Classes</h1>
-<h2>MANAGEMENT CLASSES</h2>
+<h1>Management Classes</h1>
+<p>Management classes allow cobbler to function as a configuration management system.  The lego blocks of configuration management, resources are grouped together via Management Classes and linked to a system. Cobbler supports two (2) resource types, which are configured in the order listed below:</p>
 
-<p>Management classes allows cobbler to function as an configuration management system. Cobbler currently supports the following resource types:</p>
+<ol>
+<li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">Package Resources</a></li>
+<li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">File Resources</a></li>
+</ol>
 
-<pre><code>   1. Packages
-   2. Files
 
-   Resources are executed in the order listed above.
-</code></pre>
+<p>To add a Management Class, you would run the following command:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler mgmtclass add --name<span class="o">=</span>string --comment<span class="o">=</span>string <span class="o">[</span>--packages<span class="o">=</span>list<span class="o">]</span> <span class="o">[</span>--files<span class="o">=</span>list<span class="o">]</span>
 </code></pre>

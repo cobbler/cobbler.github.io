@@ -1,9 +1,8 @@
 ---
 layout: manpage
-title: Cobbler Primatives - Profiles & Sub-Profiles
+title: Profiles & Sub-Profiles
 meta: 2.2.3
 ---
-## PROFILES
 A profile associates a distribution to additional specialized options, such as a kickstart automation file.  Profiles are the core unit of provisioning and at least one profile must exist for every distribution to be provisioned.  A profile might represent, for instance, a web server or desktop configuration.  In this way, profiles define a role to be performed.
 
 
