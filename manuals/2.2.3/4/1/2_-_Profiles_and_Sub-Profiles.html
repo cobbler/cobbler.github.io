@@ -111,7 +111,92 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
+<h2>PROFILES</h2>
 
+<p>A profile associates a distribution to additional specialized options, such as a kickstart automation file.  Profiles are the core unit of provisioning and at least one profile must exist for every distribution to be provisioned.  A profile might represent, for instance, a web server or desktop configuration.  In this way, profiles define a role to be performed.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler profile add --name<span class="o">=</span>string --distro<span class="o">=</span>string <span class="o">[</span>--kickstart<span class="o">=</span>path<span class="o">]</span> <span class="o">[</span>--kopts<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--ksmeta<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
+<span class="o">[</span>--virt-file-size<span class="o">=</span>gigabytes<span class="o">]</span> <span class="o">[</span>--virt-ram<span class="o">=</span>megabytes<span class="o">]</span> <span class="o">[</span>--virt-type<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--virt-cpus<span class="o">=</span>integer<span class="o">]</span> <span class="se">\</span>
+<span class="o">[</span>--virt-path<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--virt-bridge<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--server-override<span class="o">]</span> <span class="o">[</span>--parent<span class="o">=</span>profile<span class="o">]</span>
+</code></pre>
+</div>
+
+
+<p>Arguments are the same as listed for distributions, save for the removal of "arch" and "breed", and with the additions listed below:</p>
+
+<h3>name</h3>
+
+<p>A descriptive name.  This could be something like "rhel5webservers" or "f9desktops".</p>
+
+<h3>distro</h3>
+
+<p>The name of a previously defined cobbler distribution. This value is required.</p>
+
+<h3>kickstart</h3>
+
+<p>Local filesystem path to a kickstart file.  http:// URLs (even CGI’s) are also accepted, but a local file path is recommended, so that the kickstart templating engine can be taken advantage of.</p>
+
+<p>If this parameter is not provided, the kickstart file will default to /var/lib/cobbler/kickstarts/default.ks.  This file is initially blank, meaning default kickstarts are not automated "out of the box".  Admins can change the default.ks if they desire.</p>
+
+<p>When using kickstart files, they can be placed anywhere on the filesystem, but the recommended path is /var/lib/cobbler/kickstarts.   If using the webapp to create new kickstarts, this is where the web application will put them.</p>
+
+<h3>nameservers</h3>
+
+<p>If your nameservers are not provided by DHCP, you can specify a space seperated list of addresses here to configure each of the installed nodes to use them (provided the kickstarts used are installed on a per-system basis).   Users with DHCP setups should not need to use this option.  This is available to set in profiles to avoid having to set it repeatedly for each system record.</p>
+
+<h3>virt-file-size</h3>
+
+<p><strong>(Virt-only)</strong> How large the disk image should be in Gigabytes.  The default is "5".  This can be a space seperated list (ex: "5,6,7") to allow for multiple disks of different sizes depending on what is given to --virt-path.  This should be input as a integer or decimal value without units.</p>
+
+<h3>virt-ram</h3>
+
+<p><strong>(Virt-only)</strong> How many megabytes of RAM to consume.  The default is 512 MB.  This should be input as an integer without units.</p>
+
+<h3>virt-type</h3>
+
+<p><strong>(Virt-only)</strong> Koan can install images using either Xen paravirt ("xenpv") or QEMU/KVM ("qemu").  Choose one or the other strings to specify, or values will default to attempting to find a compatible installation type on the client system ("auto").  See the "koan" manpage for more documentation.  The default virt-type can be configured in the cobbler settings file such that this parameter does not have to be provided.  Other virtualization types are supported, for information on those options (such as VMware), see the Cobbler Wiki.</p>
+
+<h3>virt-cpus</h3>
+
+<p><strong>(Virt-only)</strong> How many virtual CPUs should koan give the virtual machine?  The default is 1.  This is an integer.</p>
+
+<h3>virt-path</h3>
+
+<p><strong>(Virt-only)</strong> Where to store the virtual image on the host system. Except for advanced cases, this parameter can usually be omitted. For disk images, the value is usually an absolute path to an existing directory with an optional file name component.  There is support for specifying partitions "/dev/sda4" or volume groups "VolGroup00", etc.</p>
+
+<p>For multiple disks, seperate the values with commas such as "VolGroup00,VolGroup00" or "/dev/sda4,/dev/sda5".  Both those examples would create two disks for the VM.</p>
+
+<h3>virt-bridge</h3>
+
+<p><strong>(Virt-only)</strong> This specifies the default bridge to use for all systems defined under this profile.  If not specified, it will assume the default value in the cobbler settings file, which as shipped in the RPM is ’xenbr0’.  If using KVM, this is most likely not correct.  You may want to override this setting in the system object.  Bridge settings are important as they define how outside networking will reach the guest.  For more information on bridge setup, see the Cobbler Wiki, where there is a section describing koan usage.</p>
+
+<h3>repos</h3>
+
+<p>This is a space delimited list of all the repos (created with "cobbler repo add" and updated with "cobbler reposync") that this profile can make use of during kickstart installation.  For example, an example might be --repos="fc6i386updates fc6i386extras" if the profile wants to access these two mirrors that are already mirrored on the cobbler server.  Repo management is described in greater depth later in the manpage.</p>
+
+<h3>parent</h3>
+
+<p>This is an advanced feature.</p>
+
+<p>Profiles may inherit from other profiles in lieu of specifing --distro.  Inherited profiles will override any settings specified in their parent, with the exception of --ksmeta (templating) and --kopts (kernel options), which will be blended together.</p>
+
+<h4>Example:</h4>
+
+<p>If profile A has --kopts="x=7 y=2", B inherits from A, and B has --kopts="x=9 z=2", the actual kernel options that will be used for B are "x=9 y=2 z=2".</p>
+
+<h4>Example:</h4>
+
+<p>If profile B has --virt-ram=256 and A has --virt-ram of 512, profile B will use the value 256.</p>
+
+<h4>Example:</h4>
+
+<p>If profile A has a --virt-file-size of 5 and B does not specify a size, B will use the value from A.</p>
+
+<h3>server-override</h3>
+
+<p>This parameter should be useful only in select circumstances.  If machines are on a subnet that cannot access the cobbler server using the name/IP as configured in the cobbler settings file, use this parameter to override that server name.   See also --dhcp-tag for configuring the next server and DHCP informmation of the system if you are also using Cobbler to help manage your DHCP configuration.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->
