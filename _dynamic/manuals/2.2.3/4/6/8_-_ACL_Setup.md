@@ -4,7 +4,6 @@ title: File System ACLs
 meta: 2.2.3
 ---
 
-# {{ page.title }}
 
 Cobbler contains an "aclsetup" command for automation of setting up file system acls (i.e. setfacl) on directories that cobbler needs to read and write to.
 

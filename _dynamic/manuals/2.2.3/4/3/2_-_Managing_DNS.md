@@ -3,7 +3,6 @@ layout: manpage
 title: Managing DNS
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 You may want cobbler to manage the DNS entries of its client systems.  Cobbler can do so automatically by using templates.  It currently supports either dnsmasq (which also provides DHCP) or BIND. Cobbler also has the ability to handle [DHCP Management](DHCP Management).
 

@@ -3,7 +3,6 @@ layout: manpage
 title: Introduction to Cobbler
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 Cobbler is a build and deployment system. The primary functionality of cobbler is to simplify the lives of administrators by automating repetive actions, and to encourage reuse of existing work through the use of templating.
 

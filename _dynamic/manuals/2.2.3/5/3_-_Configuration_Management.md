@@ -4,7 +4,6 @@ title: Configuration Management
 meta: 2.2.3
 ---
 
-## {{ page.title }}
 
 The initial provisioning of client systems with cobbler is just one component of their management. We also need to consider how to continue to manage them using a configuration management system (CMS). Cobbler can help you provision and introduce a CMS onto your client systems.
 

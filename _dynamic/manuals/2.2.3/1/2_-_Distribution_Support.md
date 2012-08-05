@@ -3,7 +3,6 @@ layout: manpage
 title: Distribution Support
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 Cobbler was originally written to support Fedora, Red Hat, and derivative distributions such as CentOS or Scientific Linux. Cobbler now works for managing other environments, including mixed environments, occasionally with some limitations. Debian and SuSE support is quite strong, with patches coming in from developers working on those distributions as well.  
 

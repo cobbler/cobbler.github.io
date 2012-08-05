@@ -4,7 +4,6 @@ title: Alternative Storage Backends
 meta: 2.2.3
 ---
 
-## {{ page.title }}
 
 Cobbler saves object data via serializers implemented as Cobbler {% linkup title:"Modules" extrameta:2.2.3 %}. This means Cobbler can be extended to support other storage backends for those that want to do it. Today, cobbler ships two such modules alternate backends: MongoDB and CouchDB.
 

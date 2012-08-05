@@ -61,7 +61,7 @@ This is an advanced feature that sets kickstart variables to substitute, thus en
 --ksmeta="foo=bar baz=3 asdf"
 {% endhighlight %}
 
-See the section on {% linkup title:"Cobbler Manual - Kickstart Templating" extrameta:2.2.3 %} for further information.
+See the section on {% linkup title:"Kickstart Templating" extrameta:2.2.3 %} for further information.
 
 ### breed
 Controls how various physical and virtual parameters, including kernel arguments for automatic installation, are to be treated.  Defaults to "redhat", which is a suitable value for Fedora and CentOS as well.  It means anything redhat based.

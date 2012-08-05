@@ -3,7 +3,6 @@ layout: manpage
 title: Advanced Networking
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 This page details some of the networking tips and tricks in more detail, regarding what you can set on system records to set up networking, without having to know a lot about kickstart/Anaconda.
 

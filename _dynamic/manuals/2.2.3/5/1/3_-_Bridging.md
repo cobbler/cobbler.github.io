@@ -3,7 +3,6 @@ layout: manpage
 title: Advanced Networking - Bridging
 meta: 2.2.3
 ---
-## {{ page.title }}
 
 A bridge is a way to connect two Ethernet segments together in a protocol independent way. Packets are forwarded based on Ethernet address, rather than IP address (like a router). Since forwarding is done at Layer 2, all protocols can go transparently through a bridge. ([reference](http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge)). 
 

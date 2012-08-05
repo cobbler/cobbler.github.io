@@ -3,7 +3,6 @@ layout: manpage
 title: Cobbler Settings
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 This page documents all settings /etc/cobbler/settings available for configuring both cobblerd and the cobbler CLI command. Be sure to restart the cobblerd service after making changes to this file.
 

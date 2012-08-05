@@ -3,7 +3,6 @@ layout: manpage
 title: Locking Down Cobbler
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 If you want to enable the
 [Cobbler web interface](Cobbler web interface) for a lot

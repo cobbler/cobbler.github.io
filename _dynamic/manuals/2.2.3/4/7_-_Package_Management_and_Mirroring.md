@@ -3,7 +3,6 @@ layout: manpage
 title: Package Management and Mirroring
 meta: 2.2.3
 ---
-# {{ page.title }}
 
 ### About
 
