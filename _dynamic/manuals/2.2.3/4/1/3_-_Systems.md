@@ -1,9 +1,8 @@
 ---
 layout: manpage
-title: Cobbler Primatives - Systems
+title: Systems
 meta: 2.2.3
 ---
-## SYSTEMS
 System records map a piece of hardware (or a virtual machine) with the cobbler profile to be assigned to run on it.  This may be thought of as chosing a role for a specific system.
 
 Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though they are useful when system specific customizations are required.   One such customization would be defining the MAC address.  If there is a specific role inteded for a given machine, system records should be created for it.

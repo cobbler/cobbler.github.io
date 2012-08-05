@@ -1,16 +1,10 @@
 ---
 layout: manpage
-title: Cobbler Primatives - File Resources
+title: File Resources
 meta: 2.2.3
 ---
-## MANAGEMENT RESOURCES
+File resources are managed using cobbler file add, allowing you to create and delete files on a system.
 
-Resources are the lego blocks of configuration management. Resources are grouped together via Management Classes, which are then linked to a system. Cobbler supports two (2) resource types. Resources are configured in the order listed below.
-
-       1. Packages
-       2. Files
-
-## FILE RESOURCES
 ## Actions
 
 ### create
@@ -36,7 +30,7 @@ The path for the file.
 ### template
 The template for the file.
 
-#### Examples:
+#### Example:
 {%  highlight bash %}       
 $ cobbler file add --name=string --comment=string [--action=string] --mode=string --group=string \
 --user=string --path=string [--template=string]

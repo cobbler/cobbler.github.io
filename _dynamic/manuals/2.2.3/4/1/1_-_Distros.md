@@ -1,10 +1,8 @@
 ---
 layout: manpage
-title: Cobbler Primatives - Distros
+title: Distros
 meta: 2.2.3
 ---
-## DISTRIBUTIONS
-
 The first step towards installing systems with Cobbler is to add a distribution record to cobbler’s configuration.
 
 If there is an rsync mirror, DVD, NFS, or filesystem tree available that you would rather import instead, skip down to the documentation about the "import" command.  It’s really a lot easier to follow the import workflow -- it only requires waiting for the mirror content to be copied and/or scanned.  Imported mirrors also save time during install since they don’t have to hit external install sources. 
