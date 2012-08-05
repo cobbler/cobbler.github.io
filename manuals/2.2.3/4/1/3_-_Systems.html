@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Primatives - Systems</title>
+   <title>Systems</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,7 +111,198 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>Cobbler Primatives - Systems</h1>
+<h1>Systems</h1>
+<p>System records map a piece of hardware (or a virtual machine) with the cobbler profile to be assigned to run on it.  This may be thought of as chosing a role for a specific system.</p>
+
+<p>Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though they are useful when system specific customizations are required.   One such customization would be defining the MAC address.  If there is a specific role inteded for a given machine, system records should be created for it.</p>
+
+<p>System commands have a wider variety of control offered over network details.  In order to use these to the fullest possible extent, the kickstart template used by cobbler must contain certain kickstart snippets (sections of code specifically written for Cobbler to make these values become reality).   Compare your kickstart templates with the stock ones in /var/lib/cobbler/kickstarts if you have upgraded, to make sure you can take advantage of all options to their fullest potential.  If you are a new cobbler user, base your kickstarts off of these templates.  Non-kickstart based distributions, while supported by Cobbler, may not be able to use all of these features.</p>
+
+<p>Read more about networking setup at: https://fedorahosted.org/cobbler/wiki/AdvancedNetworking</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span>string --profile<span class="o">=</span>string <span class="o">[</span>--mac<span class="o">=</span>macaddress<span class="o">]</span> <span class="o">[</span>--ip<span class="o">=</span>ipaddress<span class="o">]</span> <span class="se">\</span>
+<span class="o">[</span>--hostname<span class="o">=</span>hostname<span class="o">]</span> <span class="o">[</span>--kopts<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--ksmeta<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--kickstart<span class="o">=</span>path<span class="o">]</span> <span class="o">[</span>--netboot-enabled<span class="o">=</span>Y/N<span class="o">]</span> <span class="se">\</span>
+<span class="o">[</span>--server-override<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--gateway<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--dns-name<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--static-routes<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
+<span class="o">[</span>--power-address<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-type<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-user<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-password<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
+<span class="o">[</span>--power-id<span class="o">=</span>string<span class="o">]</span>
+</code></pre>
+</div>
+
+
+<p>Adds a cobbler System to the configuration.  Arguments are specified as per "profile add" with the following changes:</p>
+
+<h3>name</h3>
+
+<p>The system name works like the name option for other commands.</p>
+
+<p>If the name looks like a MAC address or an IP, the name will implicitly be used for either --mac or --ip of the first interface, respectively.   However, it’s usually better to give a descriptive name -- don’t rely on this behavior.</p>
+
+<p>A system created with name "default" has special semantics.  If a default system object exists, it sets all undefined systems to PXE to a specific profile.  Without a "default" system name created, PXE will fall through to local boot for unconfigured systems.</p>
+
+<p>When using "default" name, don’t specify any other arguments than --profile ... they won’t be used.</p>
+
+<h3>--mac</h3>
+
+<p>Specifying a mac address via --mac allows the system object to boot directly to a specific profile via PXE, bypassing cobbler’s PXE menu.  If the name of the cobbler system already looks like a mac address, this is inferred from the system name and does not need to be specified.</p>
+
+<p>MAC addresses have the format AA:BB:CC:DD:EE:FF. It’s higly recommended to register your MAC-addresses in Cobbler if you’re using static adressing with multiple interfaces, or if you are using any of the advanced networking features like bonding, bridges or VLANs.</p>
+
+<p>Cobbler does contain a feature (enabled in /etc/cobbler/settings) that can automatically add new system records when it finds profiles being provisioned on hardware it has seen before.  This may help if you do not have a report of all the MAC addresses in your datacenter/lab configuration.</p>
+
+<h3>--ip</h3>
+
+<p>If cobbler is configured to generate a DHCP configuratition (see advanced section), use this setting to define a specific IP for this system in DHCP.  Leaving off this parameter will result in no DHCP management for this particular system.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash">--ip<span class="o">=</span>192.168.1.50
+</code></pre>
+</div>
+
+
+<p>Note for Itanium users:  this setting is always required for IA64 regardless of whether DHCP management is enabled.</p>
+
+<p>If DHCP management is disabled and the interface is labelled --static=1, this setting will be used for static IP configuration.</p>
+
+<p>Special feature: To control the default PXE behavior for an entire subnet, this field can also be passed in using CIDR notation.  If --ip is CIDR, do not specify any other arguments other than --name and --profile.</p>
+
+<p>When using the CIDR notation trick, don’t specify any arguments other than --name and --profile... they won’t be used.</p>
+
+<h3>--dns-name</h3>
+
+<p>If using the DNS management feature (see advanced section -- cobbler supports auto-setup of BIND and dnsmasq), use this to define a hostname for the system to receive from DNS.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash">--dns-name<span class="o">=</span>mycomputer.example.com
+</code></pre>
+</div>
+
+
+<p>This is a per-interface parameter.  If you have multiple interfaces, it may be different for each interface, for example, assume a DMZ / dual-homed setup.</p>
+
+<h3>--gateway and --subnet</h3>
+
+<p>If you are using static IP configurations and the interface is flagged --static=1, these will be applied.</p>
+
+<p>Subnet is a per-interface parameter.  Because of the way gateway is stored on the installed OS, gateway is a global parameter.  You may use --static-routes for per-interface customizations if required.</p>
+
+<h3>--hostname</h3>
+
+<p>This field corresponds to the hostname set in a systems /etc/sysconfig/network file.  This has no bearing on DNS, even when manage_dns is enabled.  Use --dns-name instead for that feature.</p>
+
+<p>This parameter is assigned once per system, it is not a per-interface setting.</p>
+
+<h3>--power-address, --power-type, --power-user, --power-password, --power-id</h3>
+
+<p>Cobbler contains features that enable integration with power management for easier installation, reinstallation, and management of machines in a datacenter environment.  These parameters are described online at https://fedorahosted.org/cobbler/wiki/PowerManagement.  If you have a power-managed datacenter/lab setup, usage of these features may be something you are interested in.</p>
+
+<h3>--static</h3>
+
+<p>Indicates that this interface is statically configured.  Many fields (such as gateway/subnet) will not be used unless this field is enabled.</p>
+
+<p>This is a per-interface setting.</p>
+
+<h3>--static-routes</h3>
+
+<p>This is a space delimited list of ip/mask:gateway routing information in that format.  Most systems will not need this information.</p>
+
+<p>This is a per-interface setting.</p>
+
+<h3>--virt-bridge</h3>
+
+<p><strong>(Virt-only)</strong> While --virt-bridge is present in the profile object (see above), here it works on an interface by interface basis.  For instance it would be possible to have --virt-bridge0=xenbr0 and --virt-bridge1=xenbr1.  If not specified in cobbler for each interface, koan will use the value as specified in the profile for each interface, which may not always be what is intended, but will be sufficient in most cases.</p>
+
+<p>This is a per-interface setting.</p>
+
+<h3>--kickstart</h3>
+
+<p>While it is recommended that the --kickstart parameter is only used within for the "profile add" command, there are limited scenarios when an install base switching to cobbler may have legacy kickstarts created on a per-system basis (one kickstart for each system, nothing shared) and may not want to immediately make use of the cobbler templating system.  This allows specifing a kickstart for use on a per-system basis.  Creation of a parent profile is still required.  If the kickstart is a filesystem location, it will still be treated as a cobbler template.</p>
+
+<h3>--netboot-enabled</h3>
+
+<p>If set false, the system will be provisionable through koan but not through standard PXE.  This will allow the system to fall back to default PXE boot behavior without deleting the cobbler system object.  The default value allows PXE.   Cobbler contains a PXE boot loop prevention feature (pxe_just_once, can be enabled in /etc/cobbler/settings) that can automatically trip off this value after a system gets done installing.  This can prevent installs from appearing in an endless loop when the system is set to PXE first in the BIOS order.</p>
+
+<h3>--ldap-enabled, --ldap-type</h3>
+
+<p>Cobbler contains features that enable ldap management for easier configuration after system provisioning. If set true, koan will run the ldap command as defined by the systems ldap_type. The default value is false.</p>
+
+<h3>--monit-enabled</h3>
+
+<p>If set true, koan will reload monit after each configuration run.  The default value is false.</p>
+
+<h3>--repos-enabled</h3>
+
+<p>If set true, koan can reconfigure repositories after installation.  This is described further on the Cobbler Wiki, https://fedorahosted.org/cobbler/wiki/ManageYumRepos.</p>
+
+<h3>--dhcp-tag</h3>
+
+<p>If you are setting up a PXE environment with multiple subnets/gateways, and are using cobbler to manage a DHCP configuration, you will probably want to use this option.  If not, it can be ignored.</p>
+
+<p>By default, the dhcp tag for all systems is "default" and means that in the DHCP template files the systems will expand out where $insert_cobbler_systems_definitions is found in the DHCP template.  However, you may want certain systems to expand out in other places in the DHCP config file.  Setting --dhcp-tag=subnet2 for instance, will cause that system to expand out where $insert_cobbler_system_definitions_subnet2 is found, allowing you to insert directives to specify different subnets (or other parameters) before the DHCP configuration entries for those particular systems.</p>
+
+<p>This is described further on the Cobbler Wiki.</p>
+
+<h3>--interface</h3>
+
+<p>By default flags like --ip, --mac, --dhcp-tag, --dns-name, --subnet, --virt-bridge, and --static-routes operate on the first network interface defined for a system (eth0).  However, cobbler supports an arbitrary number of interfaces.  Using --interface=eth1 for instance, will allow creating and editing of a second interface.</p>
+
+<h4>Interface naming notes:</h4>
+
+<p>Additional interfaces can be specified (for example: eth1, or any name you like, as long as it does not conflict with any reserved names such as kernel module names) for use with the edit command.  Defining VLANs this way is also supported, if you want to add VLAN 5 on interface eth0, simply name your interface eth0:5.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --ip<span class="o">=</span>192.168.1.50 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A0
+<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --ip<span class="o">=</span>192.168.1.51 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A1
+<span class="nv">$ </span>cobbler system report foo
+</code></pre>
+</div>
+
+
+<p>Interfaces can be deleted using the --delete-interface option.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth2 --delete-interface
+</code></pre>
+</div>
+
+
+<h3>--interface-type, --interface-master and --bonding-opts/--bridge-opts</h3>
+
+<p>One of the other advanced networking features supported by Cobbler is NIC bonding and bridging. You can use this to bond multiple physical network interfaces to one single logical interface to reduce single points of failure in your network, or to create bridged interfaces for things like tunnels and virtual machine networks. Supported values for the --interface-type parameter are "bond", "bond_slave", "bridge" and "bridge_slave". If one of the "_slave" options is specified, you also need to define the master-interface for this bond using --interface-master=INTERFACE. Bonding and bridge options for the master-interface may be specified using --bonding-opts="foo=1 bar=2" or --bridge-opts="foo=1 bar=2", respectively.</p>
+
+<p><strong>Note:</strong> The options "master" and "slave" are deprecated, and are assumed to me "bond" and "bond_slave" when encountered. When a system object is saved, the deprecated values will be overwritten with the new, correct values.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC:DD:EE:00 --interface-type<span class="o">=</span>bond_slave <span class="se">\</span>
+--interface-master<span class="o">=</span>bond0
+<span class="err">$</span>
+<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth1 --mac<span class="o">=</span>AA:BB:CC:DD:EE:01 --interface-type<span class="o">=</span>bond_slave <span class="se">\</span>
+--interface-master<span class="o">=</span>bond0
+<span class="err">$</span>
+<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>bond0 --interface-type<span class="o">=</span>bond <span class="se">\</span>
+--bonding-opts<span class="o">=</span><span class="s2">&quot;mode=active-backup miimon=100&quot;</span> --ip<span class="o">=</span>192.168.0.63 --subnet<span class="o">=</span>255.255.255.0 <span class="se">\</span>
+--gateway<span class="o">=</span>192.168.0.1 --static<span class="o">=</span>1
+</code></pre>
+</div>
+
+
+<p>More information about networking setup is available at https://fedorahosted.org/cobbler/wiki/AdvancedNetworking</p>
+
+<p>To review what networking configuration you have for any object, run "cobbler system report" at any time:</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system report --name<span class="o">=</span>foo
+</code></pre>
+</div>
+
+
 
 
      <div id="push"></div> <!-- push -->

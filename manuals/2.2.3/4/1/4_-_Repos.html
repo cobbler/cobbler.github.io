@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Primatives - Repos</title>
+   <title>Repos</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,8 +111,77 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>Cobbler Primatives - Repos</h1>
+<h1>Repos</h1>
+<p>Repository mirroring allows cobbler to mirror not only install trees ("cobbler import" does this for you) but also optional packages, 3rd party content, and even updates.   Mirroring all of this content locally on your network will result in faster, more up-to-date installations and faster updates.  If you are only provisioning a home setup, this will probably be overkill, though it can be very useful for larger setups (labs, datacenters, etc).  For information on how to keep your mirror up-to-date, see <a href="/manuals/2.2.3/4/6/3_-_Reposync.html">Reposync</a>.</p>
 
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler repo add --mirror<span class="o">=</span>url --name<span class="o">=</span>string <span class="o">[</span>--rpmlist<span class="o">=</span>list<span class="o">]</span> <span class="o">[</span>--creatrepo-flags<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
+<span class="o">[</span>--keep-updated<span class="o">=</span>Y/N<span class="o">]</span> <span class="o">[</span>--priority<span class="o">=</span>number<span class="o">]</span> <span class="o">[</span>--arch<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--mirror-locally<span class="o">=</span>Y/N<span class="o">]</span> <span class="o">[</span>--breed<span class="o">=</span>yum|rsync|rhn<span class="o">]</span>
+</code></pre>
+</div>
+
+
+<h3>mirror</h3>
+
+<p>The addresss of the yum mirror.  This can be an rsync:// URL, an ssh location, or a http:// or ftp:// mirror location.  Filesystem paths also work.</p>
+
+<p>The mirror address should specify an exact repository to mirror -- just one architecture and just one distribution.  If you have a seperate repo to mirror for a different arch, add that repo seperately.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash">rsync://yourmirror.example.com/fedora-linux-core/updates/6/i386 <span class="o">(</span><span class="k">for </span>rsync protocol<span class="o">)</span>
+http://mirrors.kernel.org/fedora/extras/6/i386/ <span class="o">(</span><span class="k">for </span>http://<span class="o">)</span>
+user@yourmirror.example.com/fedora-linux-core/updates/6/i386  <span class="o">(</span><span class="k">for </span>SSH<span class="o">)</span>
+</code></pre>
+</div>
+
+
+<p>Experimental support is also provided for mirroring RHN content when you need a fast local mirror.  The mirror syntax for this is --mirror=rhn://channel-name and you must have entitlements for this to work.  This requires the cobbler server to be installed on RHEL5 or later.  You will also need a version of yum-utils equal or greater to 1.0.4.</p>
+
+<h3>name</h3>
+
+<p>This name is used as the save location for the mirror.  If the mirror represented, say, Fedora Core 6 i386 updates, a good name would be "fc6i386updates".  Again, be specific.</p>
+
+<p>This name corresponds with values given to the --repos parameter of "cobbler profile add".  If a profile has a --repos value that matches the name given here, that repo can be automatically set up during provisioning (when supported) and installed systems will also use the boot server as a mirror (unless "yum_post_install_mirror" is disabled in the settings file).  By default the provisioning server will act as a mirror to systems it installs, which may not be desirable for laptop configurations, etc.</p>
+
+<p>Distros that can make use of yum repositories during kickstart include FC6 and later, RHEL 5 and later, and derivative distributions.</p>
+
+<p>See the documentation on "cobbler profile add" for more information.</p>
+
+<h3>rpm-list</h3>
+
+<p>By specifying a space-delimited list of package names for --rpm-list, one can decide to mirror only a part of a repo (the list of packages given, plus dependencies).  This may be helpful in conserving time/space/bandwidth.  For instance, when mirroring FC6 Extras, it may be desired to mirror just cobbler and koan, and skip all of the game packages.  To do this, use --rpm-list="cobbler koan".</p>
+
+<p>This option only works for http:// and ftp:// repositories (as it is powered by yumdownloader).  It will be ignored for other mirror types, such as local paths and rsync:// mirrors.</p>
+
+<h3>createrepo-flags</h3>
+
+<p>Specifies optional flags to feed into the createrepo tool, which is called when "cobbler reposync" is run for the given repository. The defaults are ’-c cache’.</p>
+
+<h3>keep-updated</h3>
+
+<p>Specifies that the named repository should not be updated during a normal "cobbler reposync".    The repo may still be updated by name.   The repo should be synced at least once before disabling this feature See "cobbler reposync" below.</p>
+
+<h3>mirror-locally</h3>
+
+<p>When set to "N", specifies that this yum repo is to be referenced directly via kickstarts and not mirrored locally on the cobbler server.  Only http:// and ftp:// mirror urls are supported when using --mirror-locally=N, you cannot use filesystem URLs.</p>
+
+<h3>priority</h3>
+
+<p>Specifies the priority of the repository (the lower the number, the higher the priority), which applies to installed machines using the repositories that also have the yum priorities plugin installed. The default priority for the plugin is 99, as is that of all cobbler mirrored repositories.</p>
+
+<h3>arch</h3>
+
+<p>Specifies what architecture the repository should use.  By default the current system arch (of the server) is used, which may not be desirable.  Using this to override the default arch allows mirroring of source repositories (using --arch=src).</p>
+
+<h3>yumopts</h3>
+
+<p>Sets values for additional yum options that the repo should use on installed systems.  For instance if a yum plugin takes a certain parameter "alpha" and "beta", use something like --yumopts="alpha=2 beta=3".</p>
+
+<h3>breed</h3>
+
+<p>Ordinarily cobbler’s repo system will understand what you mean without supplying this parameter, though you can set it explicitly if needed.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->
