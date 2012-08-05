@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Primatives - Distros</title>
+   <title>Distros</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,8 +111,103 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>Cobbler Primatives - Distros</h1>
+<h1>Distros</h1>
+<p>The first step towards installing systems with Cobbler is to add a distribution record to cobbler’s configuration.</p>
 
+<p>If there is an rsync mirror, DVD, NFS, or filesystem tree available that you would rather import instead, skip down to the documentation about the "import" command.  It’s really a lot easier to follow the import workflow -- it only requires waiting for the mirror content to be copied and/or scanned.  Imported mirrors also save time during install since they don’t have to hit external install sources.</p>
+
+<p>If you want to be explicit with distribution definition, however, here’s how it works:</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro add --name<span class="o">=</span>string --kernel<span class="o">=</span>path --initrd<span class="o">=</span>path <span class="o">[</span>--kopts<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--kopts-post<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
+<span class="o">[</span>--ksmeta<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--arch<span class="o">=</span>x86|x86_64|ia64<span class="o">]</span> <span class="o">[</span>--breed<span class="o">=</span>redhat|debian|suse<span class="o">]</span> <span class="o">[</span>--template-files<span class="o">=</span>string<span class="o">]</span>
+</code></pre>
+</div>
+
+
+<h3>name</h3>
+
+<p>a string identifying the distribution, this should be something like "rhel4".</p>
+
+<h3>kernel</h3>
+
+<p>An absolute filesystem path to a kernel image</p>
+
+<h3>initrd</h3>
+
+<p>An absolute filesystem path to a initrd image</p>
+
+<h3>kopts</h3>
+
+<p>Sets kernel command-line arguments that the distro, and profiles/systems dependant on it, will use.  To remove a kernel argument that may be added by a higher cobbler object (or in the global settings), you can prefix it with a "!".</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash">--kopts<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf !gulp&quot;</span>
+</code></pre>
+</div>
+
+
+<p>This example passes the arguments "foo=bar baz=3 asdf" but will make sure "gulp" is not passed even if it was requested at a level higher up in the cobbler configuration.</p>
+
+<h3>kopts-post</h3>
+
+<p>This is just like --kopts, though it governs kernel options on the installed OS, as opposed to kernel options fed to the installer.  The syntax is exactly the same.  This requires some special snippets to be found in your kickstart template in order for this to work.  Kickstart templating is described later on in this document.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash">--kops-post<span class="o">=</span><span class="s2">&quot;noapic&quot;</span>
+</code></pre>
+</div>
+
+
+<h3>arch</h3>
+
+<p>Sets the architecture for the PXE bootloader and also controls how koan’s --replace-self option will operate.</p>
+
+<p>The default setting (’standard’) will use pxelinux.   Set to ’ia64’ to use elilo.  ’ppc’ and ’ppc64’ use yaboot.  ’s390x’ is not PXEable, but koan supports it for reinstalls.</p>
+
+<p>’x86’ and ’x86_64’ effectively do the same thing as standard.</p>
+
+<p>If you perform a cobbler import, the arch field will be auto-assigned.</p>
+
+<h3>ksmeta</h3>
+
+<p>This is an advanced feature that sets kickstart variables to substitute, thus enabling kickstart files to be treated as templates.  Templates are powered using Cheetah and are described further along in this manpage as well as on the Cobbler Wiki.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash">--ksmeta<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf&quot;</span>
+</code></pre>
+</div>
+
+
+<p>See the section on <a href="/manuals/2.2.3/4/4_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
+
+<h3>breed</h3>
+
+<p>Controls how various physical and virtual parameters, including kernel arguments for automatic installation, are to be treated.  Defaults to "redhat", which is a suitable value for Fedora and CentOS as well.  It means anything redhat based.</p>
+
+<p>There is limited experimental support for specifying "debian", "ubuntu", or "suse", which treats the kickstart file as a different format and changes the kernel arguments appropriately.   Support for other types of distributions is possible in the future.  See the Wiki for the latest information about support for these distributions.</p>
+
+<p>The file used for the answer file, regardless of the breed setting, is the value used for --kickstart when creating the profile.  In other words, if another distro calls their answer file something other than a "kickstart", the kickstart parameter still governs where that answer file is.</p>
+
+<h3>os-version</h3>
+
+<p>Generally this field can be ignored.   It is intended to alter some hardware setup for virtualized instances when provisioning guests with koan.  The valid options for --os-version vary depending on what is specified for --breed.  If you specify an invalid option, the error message will contain a list of valid os versions that can be used.  If you do not know the os version or it does not appear in the list, omitting this argument or using "other" should be perfectly fine.  Largely this is needed to support older distributions in virtualized settings, such as "rhel2.1", one of the OS choices if the breed is set to "redhat".  If you do not encounter any problems with virtualized instances, this option can be safely ignored.</p>
+
+<h3>owners</h3>
+
+<p>Users with small sites and a limited number of admins can probably ignore this option.  All cobbler objects (distros, profiles, systems, and repos) can take a --owners parameter to specify what cobbler users can edit particular objects.  This only applies to the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell.  Furthermore, this is only respected by the "authz_ownership" module which must be enabled in /etc/cobbler/modules.conf.  The value for --owners is a space seperated list of users and groups as specified in /etc/cobbler/users.conf.  For more information see the users.conf file as well as the Cobbler Wiki.  In the default Cobbler configuration, this value is completely ignored, as is users.conf.</p>
+
+<h3>template-files</h3>
+
+<p>This feature allows cobbler to be used as a configuration management system.  The argument is a space delimited string of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the system.  This is described in further detail on the Cobbler Wiki and is implemented using special code in the post install.  Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function as a lightweight templated configuration management system.</p>
+
+<h3>redhat-management-key</h3>
+
+<p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included.  Read more about setup in /etc/cobbler/settings.</p>
 
      <div id="push"></div> <!-- push -->
     </div> <!-- content -->

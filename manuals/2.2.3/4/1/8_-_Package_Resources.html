@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>Cobbler Primatives - Package Resources</title>
+   <title>Package Resources</title>
    <meta name="author" content="Cobbler development team" />
 
    <!-- Homepage CSS -->
@@ -111,7 +111,37 @@ function close_results() {
 <div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.2.3/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.2.3/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.2.3/4/1/4_-_Repos.html">4 - Repos</a></li><li><a href="/manuals/2.2.3/4/1/5_-_Images.html">5 - Images</a></li><li><a href="/manuals/2.2.3/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.2.3/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.2.3/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
-<h1>Cobbler Primatives - Package Resources</h1>
+<h1>Package Resources</h1>
+<p>Package resources are managed using cobbler package add, allowing you to install and uninstall packages on a system outside of your install process.</p>
+
+<h2>Actions</h2>
+
+<h3>install</h3>
+
+<p>Install the package. [Default]</p>
+
+<h3>uninstall</h3>
+
+<p>Uninstall the package.</p>
+
+<h2>Attributes</h2>
+
+<h3>installer</h3>
+
+<p>Which package manager to use, vaild options [rpm|yum].</p>
+
+<h3>version</h3>
+
+<p>Which version of the package to install.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler package add --name<span class="o">=</span>string --comment<span class="o">=</span>string <span class="o">[</span>--action<span class="o">=</span>install|uninstall<span class="o">]</span> --installer<span class="o">=</span>string <span class="se">\</span>
+<span class="o">[</span>--version<span class="o">=</span>string<span class="o">]</span>
+</code></pre>
+</div>
+
+
 
 
      <div id="push"></div> <!-- push -->
