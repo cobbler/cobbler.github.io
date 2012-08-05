@@ -13,7 +13,7 @@ Read more about networking setup at: https://fedorahosted.org/cobbler/wiki/Advan
 
 #### Example:
 {% highlight bash %}
-$ cobbler system add --name=string --profile=string [--mac=macaddress] [--ip=ipaddress] \
+$ cobbler system add --name=string --profile=string [--mac=macaddress] [--ip-address=ipaddress] \
 [--hostname=hostname] [--kopts=string] [--ksmeta=string] [--kickstart=path] [--netboot-enabled=Y/N] \
 [--server-override=string] [--gateway=string] [--dns-name=string] [--static-routes=string] \
 [--power-address=string] [--power-type=string] [--power-user=string] [--power-password=string] \
@@ -25,7 +25,7 @@ Adds a cobbler System to the configuration.  Arguments are specified as per "pro
 ### name
 The system name works like the name option for other commands.
 
-If the name looks like a MAC address or an IP, the name will implicitly be used for either --mac or --ip of the first interface, respectively.   However, it’s usually better to give a descriptive name -- don’t rely on this behavior.
+If the name looks like a MAC address or an IP, the name will implicitly be used for either --mac or --ip-address of the first interface, respectively.   However, it’s usually better to give a descriptive name -- don’t rely on this behavior.
 
 A system created with name "default" has special semantics.  If a default system object exists, it sets all undefined systems to PXE to a specific profile.  Without a "default" system name created, PXE will fall through to local boot for unconfigured systems.
 
@@ -38,19 +38,19 @@ MAC addresses have the format AA:BB:CC:DD:EE:FF. It’s higly recommended to reg
 
 Cobbler does contain a feature (enabled in /etc/cobbler/settings) that can automatically add new system records when it finds profiles being provisioned on hardware it has seen before.  This may help if you do not have a report of all the MAC addresses in your datacenter/lab configuration.
 
-### --ip
+### --ip-address
 If cobbler is configured to generate a DHCP configuratition (see advanced section), use this setting to define a specific IP for this system in DHCP.  Leaving off this parameter will result in no DHCP management for this particular system.
 
 #### Example:
 {% highlight bash %}
---ip=192.168.1.50
+--ip-address=192.168.1.50
 {% endhighlight %}
 
 Note for Itanium users:  this setting is always required for IA64 regardless of whether DHCP management is enabled.
            
 If DHCP management is disabled and the interface is labelled --static=1, this setting will be used for static IP configuration.
 
-Special feature: To control the default PXE behavior for an entire subnet, this field can also be passed in using CIDR notation.  If --ip is CIDR, do not specify any other arguments other than --name and --profile.
+Special feature: To control the default PXE behavior for an entire subnet, this field can also be passed in using CIDR notation.  If --ip-address is CIDR, do not specify any other arguments other than --name and --profile.
 
 When using the CIDR notation trick, don’t specify any arguments other than --name and --profile... they won’t be used.
 
@@ -122,8 +122,8 @@ Additional interfaces can be specified (for example: eth1, or any name you like,
 
 #### Example:
 {% highlight bash %}
-$ cobbler system edit --name=foo --ip=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
-$ cobbler system edit --name=foo --interface=eth0 --ip=192.168.1.51 --mac=AA:BB:CC:DD:EE:A1
+$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
+$ cobbler system edit --name=foo --interface=eth0 --ip-address=192.168.1.51 --mac=AA:BB:CC:DD:EE:A1
 $ cobbler system report foo
 {% endhighlight %}
 
@@ -148,7 +148,7 @@ $ cobbler system edit --name=foo --interface=eth1 --mac=AA:BB:CC:DD:EE:01 --inte
 --interface-master=bond0
 $
 $ cobbler system edit --name=foo --interface=bond0 --interface-type=bond \
---bonding-opts="mode=active-backup miimon=100" --ip=192.168.0.63 --subnet=255.255.255.0 \
+--bonding-opts="mode=active-backup miimon=100" --ip-address=192.168.0.63 --subnet=255.255.255.0 \
 --gateway=192.168.0.1 --static=1
 {% endhighlight %}
 

@@ -23,7 +23,7 @@ Next, it's time to add a system to Cobbler.  Unlike traditional PXE, where unkno
 
 
     cobbler system add --name z01 \
-    --hostname=z01.example.com --ip=10.10.10.100 --subnet=10.10.10.255 --netmask=255.255.255.0 \
+    --hostname=z01.example.com --ip-address=10.10.10.100 --subnet=10.10.10.255 --netmask=255.255.255.0 \
     --name-servers=10.10.10.1 --name-servers-search=example.com:example2.com \
     --gateway=10.10.10.254 --kopts="LAYER2=0 NETTYPE=qeth PORTNO=0 cms=None \
     HOSTNAME=z01.example.com IPADDR=10.10.10.100 SUBCHANNELS=0.0.0600,0.0.0601,0.0.0602 \

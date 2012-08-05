@@ -108,7 +108,7 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/Appendix/A_-_API.html">A - API</a></li><li><a href="/manuals/2.2.3/Appendix/D_-_Tips_for_RHN.html">D - Tips for RHN</a></li><li><a href="/manuals/2.2.3/Appendix/B_-_S390_Support.html">B - S390 Support</a></li><li><a href="/manuals/2.2.3/Appendix/C_-_Power-PC_Support.html">C - Power-PC Support</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/Appendix/A_-_API.html">A - API</a></li><li><a href="/manuals/2.2.3/Appendix/C_-_Power-PC_Support.html">C - Power-PC Support</a></li><li><a href="/manuals/2.2.3/Appendix/D_-_Tips_for_RHN.html">D - Tips for RHN</a></li><li><a href="/manuals/2.2.3/Appendix/B_-_S390_Support.html">B - S390 Support</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
 <h1>Cobbler Manual</h1>
@@ -133,7 +133,7 @@ function close_results() {
 <p>Next, it's time to add a system to Cobbler.  Unlike traditional PXE, where unknown clients are identified by MAC address, zPXE uses the z/VM user ID to distinguish systems.  For example, to add a system with z/VM user ID ''z01'':</p>
 
 <pre><code>cobbler system add --name z01 \
---hostname=z01.example.com --ip=10.10.10.100 --subnet=10.10.10.255 --netmask=255.255.255.0 \
+--hostname=z01.example.com --ip-address=10.10.10.100 --subnet=10.10.10.255 --netmask=255.255.255.0 \
 --name-servers=10.10.10.1 --name-servers-search=example.com:example2.com \
 --gateway=10.10.10.254 --kopts="LAYER2=0 NETTYPE=qeth PORTNO=0 cms=None \
 HOSTNAME=z01.example.com IPADDR=10.10.10.100 SUBCHANNELS=0.0.0600,0.0.0601,0.0.0602 \

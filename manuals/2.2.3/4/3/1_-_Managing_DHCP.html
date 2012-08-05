@@ -108,7 +108,7 @@ function close_results() {
 
     </div> <!-- leftcol -->
     <div id="rightcol">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/3/Managing_TFTP.html">Managing TFTP</a></li><li><a href="/manuals/2.2.3/4/3/Managing_rsync.html">Managing rsync</a></li><li><a href="/manuals/2.2.3/4/3/1_-_Managing_DHCP.html">1 - Managing DHCP</a></li><li><a href="/manuals/2.2.3/4/3/2_-_Managing_DNS.html">2 - Managing DNS</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/4/3/Managing_rsync.html">Managing rsync</a></li><li><a href="/manuals/2.2.3/4/3/Managing_TFTP.html">Managing TFTP</a></li><li><a href="/manuals/2.2.3/4/3/1_-_Managing_DHCP.html">1 - Managing DHCP</a></li><li><a href="/manuals/2.2.3/4/3/2_-_Managing_DNS.html">2 - Managing DNS</a></li></ul></div>
     </div> <!-- rightcol -->
     <div id="content">
 <h1>Managing DHCP</h1>
@@ -166,8 +166,6 @@ restart_dhcp: 1
 <pre><code>cobbler system add --name=foo --profile=&lt;profile name&gt; --interface=eth0 --mac=AA:BB:CC:DD:EE:FF --ip-address=192.168.1.1
 </code></pre>
 
-<p><strong>Note:</strong> If you're still running the 2.0.x version, use --ip instead of --ip-address.</p>
-
 <p>That will take the template file in <code>/etc/cobbler/dhcp.template</code>, fill in the appropriate fields, and generate a fuller configuration file <code>/etc/dhcpd.conf</code> that includes this machine, and ensures that when AA:BB:CC:DD:EE:FF asks for an IP, it gets 192.168.1.1. The <code>--ip-address=...</code> specification is optional; DHCP can make dynamic assignments within a configured range.</p>
 
 <p>To make this active, run:</p>
@@ -182,7 +180,7 @@ restart_dhcp: 1
 <ul>
 <li>When creating the distro object, make sure that <code>--arch=ia64</code> is specified.</li>
 <li>You need to create system objects, and the <code>--mac-address</code> argument is mandatory. (This is due to a deficiency in LILO where it will ask for an encoded IP address, but will not ask for a PXE configuration file based on the MAC address.)</li>
-<li>You need to specify the <code>--ip=...</code> value on system objects.</li>
+<li>You need to specify the <code>--ip-address=...</code> value on system objects.</li>
 <li>In <code>/etc/cobbler/settings</code>, you must (for now) choose <code>dhcp_isc</code>.</li>
 </ul>
 

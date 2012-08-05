@@ -37,7 +37,7 @@ To restore the previous behavior remove that explicit "default" system:
 
 It is also possible to control the default behavior for a specific network:
 
-    cobbler system add --name=network1 --ip=192.168.0.0/24 --profile=boot_this
+    cobbler system add --name=network1 --ip-address=192.168.0.0/24 --profile=boot_this
 
 ### Preventing boot loops
 

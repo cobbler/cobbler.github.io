@@ -174,7 +174,7 @@ see in cobbler command line options.
 To make this a bit more clear, look at the following system add
 command:
 
-    cobbler system add --name=spartacus --profile=f10webserver-i386 --ip=192.168.50.5 --mac=AA:BB:CC:DD:EE:FF --hostname=spartacus.example.org
+    cobbler system add --name=spartacus --profile=f10webserver-i386 --ip-address=192.168.50.5 --mac=AA:BB:CC:DD:EE:FF --hostname=spartacus.example.org
 
 For the above command, assuming the kickstart template for
 fc6webserver contained the following line:

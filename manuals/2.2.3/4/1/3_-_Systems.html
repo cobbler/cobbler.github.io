@@ -122,7 +122,7 @@ function close_results() {
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span>string --profile<span class="o">=</span>string <span class="o">[</span>--mac<span class="o">=</span>macaddress<span class="o">]</span> <span class="o">[</span>--ip<span class="o">=</span>ipaddress<span class="o">]</span> <span class="se">\</span>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span>string --profile<span class="o">=</span>string <span class="o">[</span>--mac<span class="o">=</span>macaddress<span class="o">]</span> <span class="o">[</span>--ip-address<span class="o">=</span>ipaddress<span class="o">]</span> <span class="se">\</span>
 <span class="o">[</span>--hostname<span class="o">=</span>hostname<span class="o">]</span> <span class="o">[</span>--kopts<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--ksmeta<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--kickstart<span class="o">=</span>path<span class="o">]</span> <span class="o">[</span>--netboot-enabled<span class="o">=</span>Y/N<span class="o">]</span> <span class="se">\</span>
 <span class="o">[</span>--server-override<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--gateway<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--dns-name<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--static-routes<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
 <span class="o">[</span>--power-address<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-type<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-user<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-password<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
@@ -137,7 +137,7 @@ function close_results() {
 
 <p>The system name works like the name option for other commands.</p>
 
-<p>If the name looks like a MAC address or an IP, the name will implicitly be used for either --mac or --ip of the first interface, respectively.   However, it’s usually better to give a descriptive name -- don’t rely on this behavior.</p>
+<p>If the name looks like a MAC address or an IP, the name will implicitly be used for either --mac or --ip-address of the first interface, respectively.   However, it’s usually better to give a descriptive name -- don’t rely on this behavior.</p>
 
 <p>A system created with name "default" has special semantics.  If a default system object exists, it sets all undefined systems to PXE to a specific profile.  Without a "default" system name created, PXE will fall through to local boot for unconfigured systems.</p>
 
@@ -151,13 +151,13 @@ function close_results() {
 
 <p>Cobbler does contain a feature (enabled in /etc/cobbler/settings) that can automatically add new system records when it finds profiles being provisioned on hardware it has seen before.  This may help if you do not have a report of all the MAC addresses in your datacenter/lab configuration.</p>
 
-<h3>--ip</h3>
+<h3>--ip-address</h3>
 
 <p>If cobbler is configured to generate a DHCP configuratition (see advanced section), use this setting to define a specific IP for this system in DHCP.  Leaving off this parameter will result in no DHCP management for this particular system.</p>
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash">--ip<span class="o">=</span>192.168.1.50
+<div class="highlight"><pre><code class="bash">--ip-address<span class="o">=</span>192.168.1.50
 </code></pre>
 </div>
 
@@ -166,7 +166,7 @@ function close_results() {
 
 <p>If DHCP management is disabled and the interface is labelled --static=1, this setting will be used for static IP configuration.</p>
 
-<p>Special feature: To control the default PXE behavior for an entire subnet, this field can also be passed in using CIDR notation.  If --ip is CIDR, do not specify any other arguments other than --name and --profile.</p>
+<p>Special feature: To control the default PXE behavior for an entire subnet, this field can also be passed in using CIDR notation.  If --ip-address is CIDR, do not specify any other arguments other than --name and --profile.</p>
 
 <p>When using the CIDR notation trick, don’t specify any arguments other than --name and --profile... they won’t be used.</p>
 
@@ -255,8 +255,8 @@ function close_results() {
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --ip<span class="o">=</span>192.168.1.50 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A0
-<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --ip<span class="o">=</span>192.168.1.51 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A1
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --ip-address<span class="o">=</span>192.168.1.50 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A0
+<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --ip-address<span class="o">=</span>192.168.1.51 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A1
 <span class="nv">$ </span>cobbler system report foo
 </code></pre>
 </div>
@@ -286,7 +286,7 @@ function close_results() {
 --interface-master<span class="o">=</span>bond0
 <span class="err">$</span>
 <span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>bond0 --interface-type<span class="o">=</span>bond <span class="se">\</span>
---bonding-opts<span class="o">=</span><span class="s2">&quot;mode=active-backup miimon=100&quot;</span> --ip<span class="o">=</span>192.168.0.63 --subnet<span class="o">=</span>255.255.255.0 <span class="se">\</span>
+--bonding-opts<span class="o">=</span><span class="s2">&quot;mode=active-backup miimon=100&quot;</span> --ip-address<span class="o">=</span>192.168.0.63 --subnet<span class="o">=</span>255.255.255.0 <span class="se">\</span>
 --gateway<span class="o">=</span>192.168.0.1 --static<span class="o">=</span>1
 </code></pre>
 </div>

@@ -38,7 +38,7 @@ At this point it will work as though it is a normal "profile", though it will bo
 
 For instance, if we wanted to deploy the live image to all machines on a specific subnet we could do it as follows:
 
-    cobbler system add --name=live_network --ip=123.45.00.00/24 --profile=liveF9
+    cobbler system add --name=live_network --ip-address=123.45.00.00/24 --profile=liveF9
 
 Or of course we could just deploy it to a specific system:
 

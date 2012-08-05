@@ -54,8 +54,6 @@ Suppose the following command is given (where &lt;profile name&gt; is an existin
 
     cobbler system add --name=foo --profile=<profile name> --interface=eth0 --mac=AA:BB:CC:DD:EE:FF --ip-address=192.168.1.1
 
-**Note:** If you're still running the 2.0.x version, use --ip instead of --ip-address.
-
 That will take the template file in `/etc/cobbler/dhcp.template`, fill in the appropriate fields, and generate a fuller configuration file `/etc/dhcpd.conf` that includes this machine, and ensures that when AA:BB:CC:DD:EE:FF asks for an IP, it gets 192.168.1.1. The `--ip-address=...` specification is optional; DHCP can make dynamic assignments within a configured range.
 
 To make this active, run:
@@ -68,7 +66,7 @@ Itanium-based systems are more complicated and special the other architectures, 
 
 * When creating the distro object, make sure that `--arch=ia64` is specified.
 * You need to create system objects, and the `--mac-address` argument is mandatory. (This is due to a deficiency in LILO where it will ask for an encoded IP address, but will not ask for a PXE configuration file based on the MAC address.)
-* You need to specify the `--ip=...` value on system objects.
+* You need to specify the `--ip-address=...` value on system objects.
 * In `/etc/cobbler/settings`, you must (for now) choose `dhcp_isc`.
 
 Also, sometimes Itaniums tend to hang during net installs; the reasons are unknown.
