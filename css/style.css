@@ -29,6 +29,10 @@ body:before {
   margin-top:-32767px;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .navbar .brand {
   padding: 5px 2px 0px 5px;
 }
