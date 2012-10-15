@@ -38,7 +38,7 @@ function close_results() {
 }
 </script>
       <input id="searchbox" class="search" type="text" />
-      <input id="searchbutton" class="search" type="button" value="search" onclick="do_search();" />
+      <button id="searchbutton" class="btn btn-primary search" type="button" onclick="do_search();" /><i class="icon-search"></i> Search</button>
       <div id="results" class="menu">
         <!--<a href="javascript:close_results();"><img src="/images/cancel.png" /></a>-->
         <input type="image" src="/images/cancel.png" onclick="javascript:close_results();" />
