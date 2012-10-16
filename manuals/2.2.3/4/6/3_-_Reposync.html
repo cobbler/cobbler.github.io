@@ -84,6 +84,7 @@ var WRInitTime=(new Date()).getTime();
 
 
    <div class="span9">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3">2.2.3</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3/4/6_-_Cobbler_Commands.html">6</a> <span class="divider">/</span></li><li class="active">Reposync</li></ul>
     <h1>Reposync</h1>
 <p>Yum repository management is an optional feature, and is not required to provision through cobbler.  However, if cobbler is configured to mirror certain repositories, it can then be used to associate profiles with those repositories.  Systems installed under those profiles will then be autoconfigured to use these repository mirrors in /etc/yum.repos.d, and if supported (Fedora Core 6 and later) these repositories can be leveraged even within Anaconda.  This can be useful if (A) you have a large install base, (B) you want fast installation and upgrades for your systems, or (C) have some extra software not in a standard repository but want provisioned systems to know about that repository.</p>
 

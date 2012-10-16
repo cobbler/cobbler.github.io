@@ -6,8 +6,8 @@
 # for more details.
 #
 # The directory argument specifies a directory name that, when encountered, 
-# ends the backtracking of the url up the tree. If directory isn't 
-# specified, it will continue moving up to the root of the current pages url.
+# ends the backtracking of the dir up the tree. If directory isn't 
+# specified, it will continue moving up to the root of the current pages dir.
 
 module Jekyll
     # Add accessor for directory
@@ -25,8 +25,6 @@ module Jekyll
             @attributes = {}
             @attributes['directory'] = '';
 
-            @cache = {}
-
             # Parse parameters
             if markup =~ Syntax
                 markup.scan(Liquid::TagAttributes) do |key, value|
@@ -39,31 +37,44 @@ module Jekyll
             super
         end
 
-        def find_parent(dir,context)
-            if @cache.has_key?(dir)
-              puts "DEBUG: cached entry for #{dir} = #{@cache[dir]}"
-              return @cache[dir]
-            end
-            context.environments.first["site"]["pages"].each do |p|
-              (pdir,fname) = File.split(p.dir)
-              puts "DEBUG: dir = #{dir}, page dir = #{pdir}"
-              if pdir == dir
-                puts "DEBUG: dir = #{dir}, page match url = #{pdir}/#{fname}"
-                @cache[dir] = fname
-                return fname
+        def get_current_page(context)
+            purl = context.environments.first["page"]["url"]
+            context.registers[:site].pages.each do |p|
+              if "#{p.dir}#{p.url}" == purl
+                return p
               end
             end
-            return "/"
+            return nil
+        end
+
+        def find_match(search,context)
+            context.registers[:site].pages.each do |p|
+              if "#{p.dir}#{p.url}".match(search)
+                return p
+              end
+            end
+            return nil
         end
 
         def render(context)
             context.registers[:breadcrumb] ||= Hash.new(0)
 
-            page = context.environments.first["page"]
-            oparts = context.environments.first["page"]["url"].split("/")
+            page = get_current_page(context)
+            begin
+              title = page.data['title']
+            rescue
+              title = page.name
+            end
+
+            # The dir we split on doesn't contain the file name, so 
+            # we push a dummy entry on at the end before we reverse. 
+            # This will be ignored since we always use the page object
+            # instead of the array entry for the first hit
+            oparts = page.dir.split("/")
+            oparts.push("dummy!") 
             oparts.reverse!
 
-            # search up through the url path to find the first
+            # search up through the dir path to find the first
             # directory that matches the specified attribute.
             # If no attr was specified, this is skipped and the 
             # entire path is used.
@@ -77,26 +88,31 @@ module Jekyll
               end
             end
 
-            # the actual step to cut the url up
-            parts = oparts[0..last].reverse
-
-            url_start = oparts[last..-1].reverse.join("/")
-
-            html = '<ul class="breadcrumb">'
-            parts.each_with_index do |part,index|
-              if part == ""
-                next
+            res = []
+            oparts.each_with_index do |part,index|
+              if part == "" || index > last
+                break
               end
-              url_start += "/#{part}"
-              #matches = context.environments.first["site"]["pages"].find_all{|p| url_start == p.url}
-              #puts "DEBUG: #{url_start} matches = #{matches}"
-              if index == parts.size-1
-                html += "<li class=\"active\">#{page['title']}</li>"
+              if index == 0
+                res.push("<li class=\"active\">#{title}</li>")
               else
-                #html += "<li><a href=\"#{url_start + find_parent(url_start,context)}\">#{part}</a> <span class=\"divider\">/</span></li>"
-                html += "<li><a href=\"#{url_start}\">#{part}</a> <span class=\"divider\">/</span></li>"
+                parent = oparts[(index+1)..-1].reverse.join("/")
+                search = "#{parent}/#{part[0..0]}_-_.*\.html"
+                target = find_match(search,context)
+                if !target
+                  link = parent+"/"+part
+                else
+                  begin
+                    link = "#{target.dir}#{target.url}"
+                  rescue
+                  end
+                end
+                res.push("<li><a href=\"#{link}\">#{part}</a> <span class=\"divider\">/</span></li>")
               end
             end
+
+            html = '<ul class="breadcrumb">'
+            html += res.reverse.join("")
             html += '</ul>'
         end
     end
