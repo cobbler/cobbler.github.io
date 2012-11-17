@@ -18,7 +18,7 @@
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="/scripts/search.js"></script>
+   <script type="text/javascript" src="/js/search.js"></script>
 
    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,6 +38,11 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap">
  <div id="main" class="container-fluid">
   <div class="row-fluid">
+   <div class="span12">&nbsp;</div>
+  </div>
+  <div class="row-fluid">
 {% include navigation.md %}
+  </div>
+  <div class="row-fluid">
    <div class="span10 offset1">
    <!-- begin content -->

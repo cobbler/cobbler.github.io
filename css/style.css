@@ -33,6 +33,34 @@ a:hover {
   text-decoration: none;
 }
 
+/* navbar css tweaks */
 .navbar .brand {
-  padding: 5px 2px 0px 5px;
+  padding: 7px 5px 0px 5px;
 }
+
+.navbar .divider-vertical {
+  margin: 0px;
+}
+
+.navbar .nav > li > a {
+  padding: 10px 10px;
+}
+
+/* carousel tweaks */
+.carousel-inner {
+  height: 60px;
+}
+
+.carousel-inner .item > div {
+  text-align: center;
+}
+
+.carousel-img {
+  display: inline;
+  max-width: 95%;
+}
+
+i.icon-med {
+  font-size: 1.25em;
+}
+
