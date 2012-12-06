@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/search.js"></script>
+
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/lib/font/font-awesome.css" rel="stylesheet">
+
+   <!-- Homepage CSS, including overrides for anything above -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div id="wrap">
+ <div id="main" class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">&nbsp;</div>
+   <div class="span3 offset9">
+     <div id="socialmedia">
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+     </div>
+   </div>
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+    <div class="navbar">
+     <div class="navbar-inner">
+      <a class="brand" href="/"><img src="/images/logo-sm.png" /></a>
+      <ul class="nav">
+       <li class="divider-vertical"></li>
+       <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+           <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-med"></i> Manuals <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/manuals/2.4.0/" title="Version 2.4.0">Version 2.4.0</a></li>
+           <li><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github-sign icon-med"></i> Github <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+          <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki (deprecated)</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+      </ul>
+      <!--
+      <form class="navbar-search pull-right" onsubmit="return false;">
+       <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+      </form>
+      -->
+     </div>
+    </div>
+   </div>
+
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+   <!-- begin content -->
+
+
+   <div class="span9">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/7_-_Koan.html">7</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
+    <h1>Cobbler Manual</h1>
+<h1>VMWare support for koan</h1>
+
+<p>One goal of Cobbler is to abstract out all your installation types.  Basically the idea is create a profile one, use it for PXE, reinstallations (--replace-self) and virtualized machines all at once.</p>
+
+<h1>Installing</h1>
+
+<p>To get this working, you will need to be using Cobbler to host your PXE infrastructure.</p>
+
+<p>You can then, using special koan syntax (one single command line invocation), install a Cobbler profile /inside/ VMware, pulling the RAM and Disk storage parameters from Cobbler.</p>
+
+<p>This allows you to treat VMware just as another installation type ... the same kickstart and parameters you use to install inside your bare metal machines and other virtualization types can be used for vmware in very similar ways.</p>
+
+<h1>Setup</h1>
+
+<p>First, grab yourself some caffeine.</p>
+
+<p>Second, set up VMware as normal.  (As of the time of writing this, we support VMware server and workstation, and there is a patch being worked on to support nearly all VMware variants)</p>
+
+<ul>
+<li>Install the latest vmware-server.  At the time of testing, I managed to get VMWare to work on EL 5.</li>
+<li>Install the latest any-any patch to make vmware actually work on said platform</li>
+<li>run /usr/bin/vmware-config.pl as appropriate</li>
+<li>enter your free serial number when requested</li>
+<li>make sure the vmware service is enabled and started</li>
+</ul>
+
+
+<p>Then do some minimal cobbler setup:</p>
+
+<ul>
+<li>add cobbler profiles and cobbler system records to taste</li>
+<li>cobbler must be set up to be your PXE infrastructure, which it should be doing already hopefully</li>
+<li>"cobbler system add" a new system and specify a mac address in the range of 00:50:56:00:00:00 to 00:50:56:3F:FF:FF (VMWare's allowed range).</li>
+</ul>
+
+
+<p>Note that MAC addresses outside that range will not work, and you cannot skip the step of creating them in that range.  Unlike Xen/KVM they are also
+not auto-generated by koan... the reason for this is, without the mapping in Cobbler, PXE control over what profile is installed is meaningless.</p>
+
+<p>Then, on the guest OS, run the following:</p>
+
+<pre><code>koan --server=cobbler.example.org --system=foosball --virt --virt-type=vmware 
+</code></pre>
+
+<h1>What Happens</h1>
+
+<p>Koan will ask cobbler for the RAM and Disk needs associated with "foosball", or rather, the profile associated with "foosball".  It will then automatically create your VMware configuration file (vmx) and disk image, and set that image up so that the rest of the installation happens over PXE.</p>
+
+<p>Thus the installation is in tandem between PXE and the VMware libraries, though all of the profile data is still managed by cobbler.</p>
+
+   </div>
+   <div class="span3">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/7/Installing-virtual-guests.html">Installing-virtual-guests</a></li><li><a href="/manuals/2.4.0/7/Vmware.html">Vmware</a></li><li><a href="/manuals/2.4.0/7/Virtual-networking-setup.html">Virtual-networking-setup</a></li><li><a href="/manuals/2.4.0/7/Reinstallation.html">Reinstallation</a></li><li><a href="/manuals/2.4.0/7/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.4.0/7/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li></ul></div>
+   </div>
+
+   <!-- end content -->
+   </div>
+  </div> <!-- end row-fluid -->
+ </div> <!-- end container -->
+</div> <!-- end wrap -->
+
+<footer>
+  <div class="container pagination-centered">&copy; 2012</div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

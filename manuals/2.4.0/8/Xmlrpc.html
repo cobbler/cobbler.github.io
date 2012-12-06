@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Cobbler Manual</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/search.js"></script>
+
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/lib/font/font-awesome.css" rel="stylesheet">
+
+   <!-- Homepage CSS, including overrides for anything above -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div id="wrap">
+ <div id="main" class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">&nbsp;</div>
+   <div class="span3 offset9">
+     <div id="socialmedia">
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+     </div>
+   </div>
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+    <div class="navbar">
+     <div class="navbar-inner">
+      <a class="brand" href="/"><img src="/images/logo-sm.png" /></a>
+      <ul class="nav">
+       <li class="divider-vertical"></li>
+       <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+           <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-med"></i> Manuals <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/manuals/2.4.0/" title="Version 2.4.0">Version 2.4.0</a></li>
+           <li><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github-sign icon-med"></i> Github <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+          <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki (deprecated)</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+      </ul>
+      <!--
+      <form class="navbar-search pull-right" onsubmit="return false;">
+       <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+      </form>
+      -->
+     </div>
+    </div>
+   </div>
+
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+   <!-- begin content -->
+
+
+   <div class="span9">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/8_-_Developer_Documentation.html">8</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
+    <h1>Cobbler Manual</h1>
+<h2>About XMLRPC</h2>
+
+<p>XMLRPC is a lightweight way for computer programs written in
+various languages to interact over the network. See
+<a href="http://www.xmlrpc.com/">http://www.xmlrpc.com/</a>.</p>
+
+<p>You should use the XMLRPC API for Cobbler if:</p>
+
+<ul>
+<li>You want to talk to Cobbler and you are not a Python
+application/script</li>
+<li>You want to talk to Cobbler and are not running on the Cobbler
+server</li>
+<li>You are a non-GPLd application that wants to talk to Cobbler
+that is to be distributed to the public or customers</li>
+</ul>
+
+
+<h2>Requirements</h2>
+
+<p>To use Cobbler's XMLRPC API, first you must set up
+<a href="Security%20Overview">Security</a> and
+ensure both Apache and cobblerd are running on your cobbler server.
+If you are using the authn_spacewalk module, set
+redhat_management_permissive: 1 in /etc/cobbler/settings.</p>
+
+<h2>About These Examples</h2>
+
+<p>Examples of XMLRPC usage are going to be given in Python below, but
+they should be easily doable in any language with XMLRPC bindings.
+Java and Ruby for instance, already have solid XMLRPC bindings.</p>
+
+<h2>Connecting and Logging In</h2>
+
+<p>To do anything with the Cobbler XMLRPC API, we must first define
+the connection. This is rather simple:</p>
+
+<pre><code>import xmlrpclib
+server = xmlrpclib.Server("http://cobbler-server.example.org/cobbler_api")
+</code></pre>
+
+<h2>Logging In</h2>
+
+<p>Cobbler information may be read without logging in, but for any
+operations that modify things on the cobbler server, or initiate
+actions, a login token is required. Once a token is acquired, the
+token is passed to any function that requires a token as the final
+argument to that remote function call.</p>
+
+<p>A used token will be renewed is used at least once every 60
+minutes. If the token expires, a new call to login is required to
+get a new token.</p>
+
+<pre><code>token = server.login("username","password")
+</code></pre>
+
+<h2>A Note About Errors And Remote Faults</h2>
+
+<p>Problems during operations will be relayed as XMLRPC remote faults
+(remote CobblerExceptions)
+rather than return codes. This prevents calling applications from
+doing tedious return code checking.</p>
+
+<p>Methods that are query-related, as well as the login call do return
+data, but otherwise return data is not significant and can be
+ignored.</p>
+
+<h2>Getting Remote Data</h2>
+
+<p>Want to see what distros, profiles, systems, images, or repos, are
+defined on a remote cobbler server? These are easily acquired.</p>
+
+<pre><code>#!/usr/bin/python
+import xmlrpclib
+server = xmlrpclib.Server("http://127.0.0.1/cobbler_api")
+print server.get_distros()
+print server.get_profiles()
+print server.get_systems()
+print server.get_images()
+print server.get_repos()
+</code></pre>
+
+<p>Each of these methods return lists of nested hashes that describe
+the remote data, showing each field in each cobbler object.</p>
+
+<h2>Search</h2>
+
+<p>Rather than retrieving all objects of a given type, it's often
+easier to just search for what you want directly.</p>
+
+<pre><code>print server.find_distro({"name":"F*"})
+</code></pre>
+
+<p>The above example returns all distributions starting with "F" and
+is good for all object types.  Any field
+type can be searched. This also works for all object types, for
+instance, systems:</p>
+
+<pre><code>print server.find_system({"hostname":"*.lab.example.org"})
+</code></pre>
+
+<p>The list data that is returned is just as from get_distros() or
+get_systems(), etc, but only contains matching results.</p>
+
+<h2>Modification Times</h2>
+
+<p>Do you want to see just the systems that have changed since your
+last XMLRPC query? This works as follows:</p>
+
+<pre><code>print server.find_systems_since(seconds_since_epoch)
+</code></pre>
+
+<h2>Blending</h2>
+
+<p>The above queries return inforamation on the data in the cobbler
+"database", but if we need to see it as koan (or PXE) (or
+templating) would evaluate it, we can methods like:</p>
+
+<pre><code>print server.get_system_as_rendered("system_name")
+</code></pre>
+
+<p>This will return things with the system data overriding the profile
+data, all the way up the chain to distros and settings.</p>
+
+<h2>Making Changes</h2>
+
+<p>In order to make changes, such as updating cobbler objects or
+triggering a "sync" operation, a login token is required.</p>
+
+<pre><code>token = server.login("username","password")
+</code></pre>
+
+<p>An exception will be raised if the login fails, and attempts are
+logged.</p>
+
+<p>We then need to get the handle of the type of object we want to
+modify.</p>
+
+<pre><code>handle = server.get_profile_handle("database-profile",token)
+</code></pre>
+
+<p>Note that while we can search by any criteria, the
+"get_*_handle" functions require a name to be passed in.</p>
+
+<p>Once we have that handle we can use it to make all sorts of
+changes:</p>
+
+<pre><code>server.modify_profile(handle, "comment", "I changed the comment field to declare my appreciation of Llamas", token)
+</code></pre>
+
+<p>Of course, as with the Python API, we must also save the object
+when we are done making changes.</p>
+
+<pre><code>server.save_profile(handle, token)
+</code></pre>
+
+<p>Note how the token has to be passed to all operations in the
+series.</p>
+
+<h3>An Example of Creating A New Object</h3>
+
+<p>We use the same steps to create a new object as we do to modify an
+existing one, though we have to first create an empty object with
+the "new_" call. Here is a complete example of making a new
+distribution.</p>
+
+<pre><code>import xmlrpclib
+server =  xmlrpclib.Server(http://127.0.0.1/cobbler_api)
+token = server.login("username","password")
+distro_id = server.new_distro(token)
+server.modify_distro(distro_id, 'name',   'example-distro',token)
+server.modify_distro(distro_id, 'kernel', '/opt/stuff/vmlinuz',token)
+server.modify_distro(distro_id, 'initrd', '/opt/stuff/initrd.img',token)
+server.save_distro(distro_id,token)
+</code></pre>
+
+<h3>An example how to add a new host</h3>
+
+<pre><code>server =  xmlrpclib.Server("http://127.0.0.1/cobbler_api")
+token = server.login(SATELLITE_USER,SATELLITE_PASSWORD)
+system_id = server.new_system(token)
+server.modify_system(system_id,"name","hostname",token)
+server.modify_system(system_id,"hostname","hostname.example.com",token)
+server.modify_system(system_id,'modify_interface', {
+        "macaddress-eth0"   : "01:02:03:04:05:06",
+        "ipaddress-eth0"    : "192.168.0.1",
+        "dnsname-eth0"      : "hostname.example.com",
+}, token)
+server.modify_system(system_id,"profile","rhel6-x86_64",token)
+server.modify_system(system_id,"kernel_options", "foo=bar some=thing", token)
+server.modify_system(system_id,"ks_meta", "foo=bar some=thing", token)
+
+server.save_system(system_id, token)
+server.sync(token)
+</code></pre>
+
+<h2>Removing Objects</h2>
+
+<pre><code>server.remove_profile("name-of-profile",token)
+</code></pre>
+
+<p>Note that the name of the profile is used here, not the profile
+handle.</p>
+
+<p>The default behaviour is a recursive deletion of subobjects below
+the object as well (such as child systems).</p>
+
+<p>To avoid this behaviour:</p>
+
+<pre><code>server.remove_profile("name-of-profile",token,False)
+</code></pre>
+
+<p>(This is one inconsistent example of a parameter appearing after
+the token parameter, which was necessary to support backwards
+compatibility in the API... apologies)</p>
+
+<h2>Power Management</h2>
+
+<p>Power management actions can be accessed over XMLRPC:</p>
+
+<pre><code>server.power_system(system_handle,power="on",token)
+server.power_system(system_handle,power="off",token)
+server.power_system(system_handle,power="reboot",token)
+</code></pre>
+
+<h2>Reading and Updating Kickstarts and Kickstart Snippets</h2>
+
+<p>It is possible to modify the contents of kickstart files and
+snippets via the API:</p>
+
+<pre><code>server.read_or_write_kickstart_template("/var/lib/cobbler/foo.ks",False,new_contents_as_a_string,token)
+server.read_or_write_snippet("/var/lib/cobbler/snippets/example_snippet,False,new_contents_as_a_string,token)
+</code></pre>
+
+<p>If you pass in "True" instead of "False" above, the data in the
+existing snippet will be returned instead. In that case the
+contents string is not used.</p>
+
+<h2>Other Actions</h2>
+
+<p>To issue a cobbler sync command:</p>
+
+<pre><code>server.sync(token)
+</code></pre>
+
+<p>Various long running operations cannot be done by XMLRPC yet, until
+cobblerd has a built in task engine, which is on the list of things
+to add.</p>
+
+<h2>Bonus Example: Using Perl to connect to the xmlrpc</h2>
+
+<p>The example code below will connect to Cobbler's XMLRPC and add a
+new system with MAC address "00:0c:29:b8:ee:fb" which will use
+profile "F8-i386"</p>
+
+<pre><code>#!/usr/bin/perl
+
+use strict;
+use XMLRPC::Lite;
+
+# Build the connection
+my $xmlrpc = XMLRPC::Lite -&gt; proxy('https://x.x.x.x/cobbler_api_rw');
+
+# Login to cobbler xmlrpm and get session token back.
+my $token = $xmlrpc-&gt;login("cobbler-xmlrpc-user", "cobbler-xmlrpc-pass")-&gt;result();
+
+# Create new system object
+my $object = $xmlrpc-&gt;new_system($token)-&gt;result();
+$xmlrpc-&gt;modify_system($object, "name", "example", $token)-&gt;result();
+$xmlrpc-&gt;modify_system($object, "profile", "F8-i386", $token)-&gt;result();
+
+# Commit the system object
+my $result = $xmlrpc-&gt;save_system($object, $token)-&gt;result();
+</code></pre>
+
+<p>This code essentially does the same as the following command line
+switch:</p>
+
+<pre><code># cobbler system add --name="00:0c:29:b8:ee:fb" --mac="00:0c:29:b8:ee:fb" --profile="F8-i386"
+</code></pre>
+
+<h2>Further Reference</h2>
+
+<p>The cobbler web application (part of Cobbler pre-2.0, or in the
+cobbler-web package for 2.0 and later) is implemented in XMLRPC API and
+can serve as a code reference.</p>
+
+<p>From a "master" source checkout, look at web/cobbler_web/views.py
+for code examples.</p>
+
+<p>Also in "remote.py" (the source code for the remote XMLRPC
+interface) there are various tests at the bottom of the file that
+show most of the XMLRPC functions in use. There is also pydoc
+available on this file that describes the remote functions.</p>
+
+<pre><code>pydoc cobbler.remote
+</code></pre>
+
+<h2>Connectivity</h2>
+
+<p>XMLRPC binds to localhost on port 25150 by default. For remote
+access, we proxy through Apache at
+<a href="http://server/cobbler_api">http://server/cobbler_api</a></p>
+
+<p>This is how SSL support is provided.</p>
+
+<h2>Logging</h2>
+
+<p>As a sidenote, Cobbler XMLRPC uses a seperate logfile,
+/var/log/cobbler/cobblerd.log, than the standard CLI operations
+(cobbler.log). Remote exceptions are logged here for you to read,
+and can be helpful for debugging.</p>
+
+   </div>
+   <div class="span3">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/8/Development-environment-tips.html">Development-environment-tips</a></li><li><a href="/manuals/2.4.0/8/Xmlrpc.html">Xmlrpc</a></li><li><a href="/manuals/2.4.0/8/Patch-process.html">Patch-process</a></li></ul></div>
+   </div>
+
+   <!-- end content -->
+   </div>
+  </div> <!-- end row-fluid -->
+ </div> <!-- end container -->
+</div> <!-- end wrap -->
+
+<footer>
+  <div class="container pagination-centered">&copy; 2012</div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

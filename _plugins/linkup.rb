@@ -21,7 +21,8 @@ module Jekyll
         def initialize(tag_name, markup, tokens)
             @attributes = {}
             @attributes['title'] = '';
-            @attributes['extrameta'] = '';
+	    @attributes['extrameta'] = '';
+            @attributes['alt'] = '';
 
             # Parse parameters
             if markup =~ Syntax
@@ -36,9 +37,16 @@ module Jekyll
                 raise SyntaxError.new("You must specify a title when using the 'linkup' plugin.")
             end
 
+            # remove quotes from the title parameter
             quotedata = /^\"(.*)\"$/.match(@attributes['title'])
             if quotedata
                 @attributes['title'] = quotedata[1]
+            end
+
+            # remove quotes from the alt parameter
+            quotedata = /^\"(.*)\"$/.match(@attributes['alt'])
+            if quotedata
+                @attributes['alt'] = quotedata[1]
             end
 
             @attributes['extrameta'] = @attributes['extrameta'].split(',')
@@ -59,7 +67,11 @@ module Jekyll
                             next
                         end
                     end
-                    html = "<a href=\"#{page.dir}#{page.url}\">#{page.data['title'].strip()}</a>"
+                    title = page.data['title'].strip()
+                    if @attributes['alt'] != ''
+                       title = @attributes['alt'].strip()
+                    end
+                    html = "<a href=\"#{page.dir}#{page.url}\">#{title}</a>"
                     break
                 end
             end
