@@ -1,6 +1,12 @@
-<div id="footer">
-  <div class="contact">&copy; 2012</div>
-</div>
+   <!-- end content -->
+   </div>
+  </div> <!-- end row-fluid -->
+ </div> <!-- end container -->
+</div> <!-- end wrap -->
+
+<footer>
+  <div class="container pagination-centered">&copy; 2012</div>
+</footer>
 
 <!-- Google Analytics -->
 <script type="text/javascript">

@@ -5,9 +5,6 @@
    <title>{{ page.title }}</title>
    <meta name="author" content="Cobbler development team" />
 
-   <!-- Homepage CSS -->
-   <link rel="stylesheet" href="/css/style.css" type="text/css" />
-
    <!-- Fonts -->
    <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
 
@@ -17,11 +14,18 @@
    <!-- Icon -->
    <link rel="icon" type="image/png" href="/images/favicon.png" />
 
-   <!-- searching -->
+   <!-- JQuery/Bootstrap/custom scripts -->
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/search.js"></script>
+
    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-   <script type="text/javascript" src="/scripts/search.js"></script>
+   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/lib/font/font-awesome.css" rel="stylesheet">
+
+   <!-- Homepage CSS, including overrides for anything above -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
 </head>
 <body>
 
@@ -30,3 +34,21 @@
 var WRInitTime=(new Date()).getTime();
 </script>
 <!-- ClickTale end of Top part -->
+
+<div id="wrap">
+ <div id="main" class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">&nbsp;</div>
+   <div class="span3 offset9">
+     <div id="socialmedia">
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+     </div>
+   </div>
+  </div>
+  <div class="row-fluid">
+{% include navigation.md %}
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+   <!-- begin content -->

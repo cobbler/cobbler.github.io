@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Distro Signatures</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/search.js"></script>
+
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/lib/font/font-awesome.css" rel="stylesheet">
+
+   <!-- Homepage CSS, including overrides for anything above -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div id="wrap">
+ <div id="main" class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">&nbsp;</div>
+   <div class="span3 offset9">
+     <div id="socialmedia">
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+     </div>
+   </div>
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+    <div class="navbar">
+     <div class="navbar-inner">
+      <a class="brand" href="/"><img src="/images/logo-sm.png" /></a>
+      <ul class="nav">
+       <li class="divider-vertical"></li>
+       <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+           <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-med"></i> Manuals <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/manuals/2.4.0/" title="Version 2.4.0">Version 2.4.0</a></li>
+           <li><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github-sign icon-med"></i> Github <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+          <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki (deprecated)</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+      </ul>
+      <!--
+      <form class="navbar-search pull-right" onsubmit="return false;">
+       <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+      </form>
+      -->
+     </div>
+    </div>
+   </div>
+
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+   <!-- begin content -->
+
+
+   <div class="span9">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Distro Signatures</li></ul>
+    <h1>Distro Signatures</h1>
+<p>Prior to Cobbler 2.4.0, import modules for each supported distro were separate and customized for each specific distribution. The values for breed and os-version were hard-coded into cobbler, so adding support for new distros or newer versions of an already supported distro required code changes and a complete Cobbler upgrade.</p>
+
+<p>Cobbler 2.4.0 introduces the concept of distro signatures to make adding support for newer distro versions without requiring an upgrade to the rest of the system.</p>
+
+<h3>Distro Signatures File</h3>
+
+<p>The distro signatures are stored in <strong>/var/lib/cobbler/distro_signatures.json</strong>. As the extension indicates, this is a JSON-formatted file, with the following structure:</p>
+
+<p>This file is read in when cobblerd starts, and logs a message noting how many breeds and os-versions it has loaded:</p>
+
+<div class="highlight"><pre><code class="bash">INFO | 9 breeds and 21 OS versions <span class="nb">read </span>from the signature file
+</code></pre>
+</div>
+
+
+<h3>CLI Commands</h3>
+
+<p>The signature CLI command has the following sub-commands:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature --help
+<span class="nv">usage</span>
+<span class="o">=====</span>
+cobbler signature report
+cobbler signature update
+</code></pre>
+</div>
+
+
+<h4>cobbler signature report</h4>
+
+<p>This command prints out a report of the currently loaded signatures and os-versions.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature report
+Currently loaded signatures:
+debian:
+    squeeze
+freebsd:
+    8.2
+    8.3
+    9.0
+generic:
+    <span class="o">(</span>none<span class="o">)</span>
+redhat:
+    fedora16
+    fedora17
+    fedora18
+    rhel4
+    rhel5
+    rhel6
+suse:
+    opensuse11.2
+    opensuse11.3
+    opensuse11.4
+    opensuse12.1
+    opensuse12.2
+ubuntu:
+    oneiric
+    precise
+    quantal
+unix:
+    <span class="o">(</span>none<span class="o">)</span>
+vmware:
+    esx4
+    esxi4
+    esxi5
+windows:
+    <span class="o">(</span>none<span class="o">)</span>
+
+9 breeds with 21 total signatures loaded
+</code></pre>
+</div>
+
+
+<p>An optional --name parameter can be specified to limit the report to one breed:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature report --name<span class="o">=</span>ubuntu
+Currently loaded signatures:
+ubuntu:
+    oneiric
+    precise
+    quantal
+
+Breed <span class="s1">&#39;ubuntu&#39;</span> has 3 total signatures
+</code></pre>
+</div>
+
+
+<h4>cobbler signature update</h4>
+
+<p>This command will cause Cobbler to go and fetch the latest distro signature file from http://cobbler.github.con/signatures/latest.json, and load the signatures in that file. This file will be tested first, to ensure it is formatted correctly.</p>
+
+<div class="highlight"><pre><code class="bash">cobbler signature update
+task started: 2012-11-21_222926_sigupdate
+task started <span class="o">(</span><span class="nv">id</span><span class="o">=</span>Updating Signatures, <span class="nb">time</span><span class="o">=</span>Wed Nov 21 22:29:26 2012<span class="o">)</span>
+Successfully got file from http://cobbler.github.com/signatures/latest.json
+*** TASK COMPLETE ***
+</code></pre>
+</div>
+
+
+<p>This command currently takes no options.</p>
+
+   </div>
+   <div class="span3">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/4/2/1_-_Check.html">1 - Check</a></li><li><a href="/manuals/2.4.0/4/2/2_-_Sync.html">2 - Sync</a></li><li><a href="/manuals/2.4.0/4/2/3_-_Distro_Signatures.html">3 - Distro Signatures</a></li><li><a href="/manuals/2.4.0/4/2/4_-_Import.html">4 - Import</a></li><ul class="dirtree"><li><a href="/manuals/2.4.0/4/2/4/1_-_Import_Notes.html">4.1 - Import Notes</a></li></ul><li><a href="/manuals/2.4.0/4/2/5_-_Reposync.html">5 - Reposync</a></li><li><a href="/manuals/2.4.0/4/2/6_-_Build_ISO.html">6 - Build ISO</a></li><li><a href="/manuals/2.4.0/4/2/7_-_Command_Line_Search.html">7 - Command Line Search</a></li><li><a href="/manuals/2.4.0/4/2/8_-_Replication.html">8 - Replication</a></li><li><a href="/manuals/2.4.0/4/2/9_-_Validate_Kickstart.html">9 - Validate Kickstart</a></li><li><a href="/manuals/2.4.0/4/2/10_-_ACL_Setup.html">10 - ACL Setup</a></li><li><a href="/manuals/2.4.0/4/2/11_-_Dynamic_Settings.html">11 - Dynamic Settings</a></li><li><a href="/manuals/2.4.0/4/2/12_-_Version.html">12 - Version</a></li></ul></div>
+   </div>
+
+   <!-- end content -->
+   </div>
+  </div> <!-- end row-fluid -->
+ </div> <!-- end container -->
+</div> <!-- end wrap -->
+
+<footer>
+  <div class="container pagination-centered">&copy; 2012</div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+
