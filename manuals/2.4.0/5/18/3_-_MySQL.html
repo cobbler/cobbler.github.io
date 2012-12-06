@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Alternative Storage Backends - MySQL</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/search.js"></script>
+
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/lib/font/font-awesome.css" rel="stylesheet">
+
+   <!-- Homepage CSS, including overrides for anything above -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div id="wrap">
+ <div id="main" class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">&nbsp;</div>
+   <div class="span3 offset9">
+     <div id="socialmedia">
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+     </div>
+   </div>
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+    <div class="navbar">
+     <div class="navbar-inner">
+      <a class="brand" href="/"><img src="/images/logo-sm.png" /></a>
+      <ul class="nav">
+       <li class="divider-vertical"></li>
+       <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+           <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-med"></i> Manuals <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/manuals/2.4.0/" title="Version 2.4.0">Version 2.4.0</a></li>
+           <li><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github-sign icon-med"></i> Github <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+          <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki (deprecated)</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+      </ul>
+      <!--
+      <form class="navbar-search pull-right" onsubmit="return false;">
+       <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+      </form>
+      -->
+     </div>
+    </div>
+   </div>
+
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+   <!-- begin content -->
+
+
+   <div class="span9">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/5_-_Advanced_Topics.html">5</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/5/1_-_Advanced_Networking.html">18</a> <span class="divider">/</span></li><li class="active">Alternative Storage Backends - MySQL</li></ul>
+    <h1>Alternative Storage Backends - MySQL</h1>
+<p>Cobbler 2.4.0 introduced support for MySQL as alternate storage backend. Currently, support for this backend is ALPHA-quality, and it should not be used for critical production systems.</p>
+
+<h3>Serializer Setup</h3>
+
+<p>Add or modify the following section in the /etc/cobbler/modules.conf configuration file:</p>
+
+<div class="highlight"><pre><code class="ini"><span class="k">[serializers]</span>
+<span class="na">settings</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
+<span class="na">distro</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
+<span class="na">profile</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
+<span class="na">system</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
+<span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
+<span class="err">etc...</span>
+</code></pre>
+</div>
+
+
+<p><strong>NOTE</strong> Be sure to leave the settings serializer set to serializer_catalog.</p>
+
+<h3>MySQL Schema</h3>
+
+<p>The schema for the cobbler database is very simple, and essentially uses MySQL as a key/value store with a TEXT field storing the JSON for each object. The schema is as follows:</p>
+
+<div class="highlight"><pre><code class="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">cobbler</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">cobbler</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;cobbler&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;testing123&#39;</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">distro</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">profile</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">system</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">image</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">repo</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">mgmtclass</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">file</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">package</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+</code></pre>
+</div>
+
+
+<h3>MySQL Configuration File</h3>
+
+<p>This serializer does not yet have a configuration file, and unfortunately still hard-codes certain database values in the cobbler/modules/serializer_mysql.py file. If you modify the privileges or database name in the schema above, you must edit the .py module as well (be sure to remove the .pyo/.pyc files for that modules) and restart cobblerd.</p>
+
+   </div>
+   <div class="span3">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/5/18/1_-_CouchDB.html">1 - CouchDB</a></li><li><a href="/manuals/2.4.0/5/18/2_-_MongoDB.html">2 - MongoDB</a></li><li><a href="/manuals/2.4.0/5/18/3_-_MySQL.html">3 - MySQL</a></li></ul></div>
+   </div>
+
+   <!-- end content -->
+   </div>
+  </div> <!-- end row-fluid -->
+ </div> <!-- end container -->
+</div> <!-- end wrap -->
+
+<footer>
+  <div class="container pagination-centered">&copy; 2012</div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Installing Cobbler From Packages</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/search.js"></script>
+
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/lib/font/font-awesome.css" rel="stylesheet">
+
+   <!-- Homepage CSS, including overrides for anything above -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div id="wrap">
+ <div id="main" class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">&nbsp;</div>
+   <div class="span3 offset9">
+     <div id="socialmedia">
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+     </div>
+   </div>
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+    <div class="navbar">
+     <div class="navbar-inner">
+      <a class="brand" href="/"><img src="/images/logo-sm.png" /></a>
+      <ul class="nav">
+       <li class="divider-vertical"></li>
+       <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+           <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-med"></i> Manuals <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/manuals/2.4.0/" title="Version 2.4.0">Version 2.4.0</a></li>
+           <li><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github-sign icon-med"></i> Github <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+          <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki (deprecated)</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+      </ul>
+      <!--
+      <form class="navbar-search pull-right" onsubmit="return false;">
+       <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+      </form>
+      -->
+     </div>
+    </div>
+   </div>
+
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+   <!-- begin content -->
+
+
+   <div class="span9">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/3_-_Installing_Cobbler.html">3</a> <span class="divider">/</span></li><li class="active">Installing Cobbler From Packages</li></ul>
+    <h1>Installing Cobbler From Packages</h1>
+<p>Cobbler is available for installation for many Linux variants through their packaging systems.</p>
+
+<h2>Fedora</h2>
+
+<p>Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the yum command:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install cobbler
+</code></pre>
+</div>
+
+
+<p>With Fedora's packaging system, new releases are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler for Fedora (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install --enablerepo<span class="o">=</span>updates-testing cobbler
+<span class="c"># or</span>
+<span class="nv">$ </span>sudo yum update --enablerepo<span class="o">=</span>updates-testing cobbler
+</code></pre>
+</div>
+
+
+<p>Once cobbler is installed, start and enable the service:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>systemctl start cobblerd.service
+<span class="nv">$ </span>systemctl <span class="nb">enable </span>cobblerd.service
+<span class="nv">$ </span>systemctl status cobblerd.service
+cobblerd.service - Cobbler Helper Daemon
+      Loaded: loaded <span class="o">(</span>/lib/systemd/system/cobblerd.service; enabled<span class="o">)</span>
+      Active: active <span class="o">(</span>running<span class="o">)</span> since Sun, 17 Jun 2012 13:01:28 -0500; 1min 44s ago
+    Main PID: 1234 <span class="o">(</span>cobblerd<span class="o">)</span>
+      CGroup: <span class="nv">name</span><span class="o">=</span>systemd:/system/cobblerd.service
+          └ 1234 /usr/bin/python /usr/bin/cobblerd -F
+</code></pre>
+</div>
+
+
+<h2>RHEL/CentOS/Scientific Linux</h2>
+
+<p>Cobbler is packaged for RHEL variants through the <a href="http://fedoraproject.org/wiki/EPEL">Fedora EPEL</a> (Extra Packages for Enterprise Linux) system. Follow the directions there to install the correct repo RPM for your RHEL version and architecture. For example, on for a RHEL6.x x86_64 system:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-X-Y.noarch.rpm
+</code></pre>
+</div>
+
+
+<p>Be sure to use the most recent X.Y version of the epel-release package.</p>
+
+<p>Once that is complete, simply use the yum command to install the cobbler package:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install cobbler
+</code></pre>
+</div>
+
+
+<p>As noted above, new releases in the Fedora packaging system are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler through EPEL (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install --enablerepo<span class="o">=</span>epel-testing cobbler
+<span class="c"># or</span>
+<span class="nv">$ </span>sudo yum update --enablerepo<span class="o">=</span>epel-testing cobbler
+</code></pre>
+</div>
+
+
+<p>Once cobbler is installed, start and enable the service:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>service cobblerd start
+<span class="nv">$ </span>chkconfig cobblerd on
+</code></pre>
+</div>
+
+
+<h2>Debian/Ubuntu</h2>
+
+<p>Coming soon.</p>
+
+<h2>SuSE</h2>
+
+<p>Coming soon.</p>
+
+   </div>
+   <div class="span3">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/3/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.4.0/3/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><li><a href="/manuals/2.4.0/3/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.4.0/3/4_-_Configuration_Files.html">4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.4.0/3/4/1_-_Settings_File.html">4.1 - Settings File</a></li><li><a href="/manuals/2.4.0/3/4/2_-_Modules_Configuration.html">4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.4.0/3/5_-_Relocating_Your_Installation.html">5 - Relocating Your Installation</a></li><li><a href="/manuals/2.4.0/3/6_-_Installation_Notes.html">6 - Installation Notes</a></li></ul></div>
+   </div>
+
+   <!-- end content -->
+   </div>
+  </div> <!-- end row-fluid -->
+ </div> <!-- end container -->
+</div> <!-- end wrap -->
+
+<footer>
+  <div class="container pagination-centered">&copy; 2012</div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

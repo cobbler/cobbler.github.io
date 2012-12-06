@@ -2,6 +2,28 @@
 
 html, body {height: 100%;}
 
+h1, h2 {
+  border-bottom: 1px solid black;
+}
+
+h3 {
+  padding: 7px;
+  margin: 35px 0 10px;
+  line-height: 20px;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+  background-color: #F3EEB7;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  /*border-radius: 4px;*/
+  /*-webkit-border-radius: 4px;*/
+  /*-moz-border-radius: 4px;*/
+}
+
+h4 {
+}
+
 #wrap {
   min-height: 100%;
 }
@@ -35,7 +57,7 @@ a:hover {
 
 /* navbar css tweaks */
 .navbar .brand {
-  padding: 7px 5px 0px 5px;
+  padding: 7px 8px 0px 5px;
 }
 
 .navbar .divider-vertical {
@@ -43,7 +65,7 @@ a:hover {
 }
 
 .navbar .nav > li > a {
-  padding: 10px 10px;
+  padding: 10px 12px 10px 10px;
 }
 
 /* carousel tweaks */
@@ -62,5 +84,17 @@ a:hover {
 
 i.icon-med {
   font-size: 1.25em;
+}
+
+.center {
+  text-align: center;
+}
+
+.box_rotate {
+     -moz-transform: rotate(-90deg);  /* FF3.5+ */
+       -o-transform: rotate(-90deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5)"; /* IE8 */
 }
 

@@ -17,6 +17,7 @@
        <li class="dropdown">
          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-med"></i> Manuals <b class="caret"></b></a>
          <ul class="dropdown-menu">
+           <li><a href="/manuals/2.4.0/" title="Version 2.4.0">Version 2.4.0</a></li>
            <li><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
          </ul>
        </li>
@@ -31,9 +32,11 @@
        </li>
        <li class="divider-vertical"></li>
       </ul>
+      <!--
       <form class="navbar-search pull-right" onsubmit="return false;">
        <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
       </form>
+      -->
      </div>
     </div>
    </div>

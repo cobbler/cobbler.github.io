@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Profiles & Sub-Profiles</title>
+   <meta name="author" content="Cobbler development team" />
+
+   <!-- Fonts -->
+   <link href='http://fonts.googleapis.com/css?family=Signika|Ovo' rel='stylesheet' type='text/css'>
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/search.js"></script>
+
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+   <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/lib/font/font-awesome.css" rel="stylesheet">
+
+   <!-- Homepage CSS, including overrides for anything above -->
+   <link rel="stylesheet" href="/css/style.css" type="text/css" />
+</head>
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div id="wrap">
+ <div id="main" class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">&nbsp;</div>
+   <div class="span3 offset9">
+     <div id="socialmedia">
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+     </div>
+   </div>
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+    <div class="navbar">
+     <div class="navbar-inner">
+      <a class="brand" href="/"><img src="/images/logo-sm.png" /></a>
+      <ul class="nav">
+       <li class="divider-vertical"></li>
+       <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+           <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-med"></i> Manuals <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+           <li><a href="/manuals/2.4.0/" title="Version 2.4.0">Version 2.4.0</a></li>
+           <li><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+       <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github-sign icon-med"></i> Github <b class="caret"></b></a>
+         <ul class="dropdown-menu">
+          <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki (deprecated)</a></li>
+         </ul>
+       </li>
+       <li class="divider-vertical"></li>
+      </ul>
+      <!--
+      <form class="navbar-search pull-right" onsubmit="return false;">
+       <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+      </form>
+      -->
+     </div>
+    </div>
+   </div>
+
+  </div>
+  <div class="row-fluid">
+   <div class="span10 offset1">
+   <!-- begin content -->
+
+
+   <div class="span9">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4/1_-_Cobbler_Primatives.html">1</a> <span class="divider">/</span></li><li class="active">Profiles & Sub-Profiles</li></ul>
+    <h1>Profiles & Sub-Profiles</h1>
+<p>A profile associates a distribution to additional specialized options, such as a kickstart automation file. Profiles are the core unit of provisioning and at least one profile must exist for every distribution to be provisioned. A profile might represent, for instance, a web server or desktop configuration. In this way, profiles define a role to be performed.</p>
+
+<p>The profile command has the following sub-commands:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler profile --help
+<span class="nv">usage</span>
+<span class="o">=====</span>
+cobbler profile add
+cobbler profile copy
+cobbler profile dumpvars
+cobbler profile edit
+cobbler profile find
+cobbler profile getks
+cobbler profile list
+cobbler profile remove
+cobbler profile rename
+cobbler profile report
+</code></pre>
+</div>
+
+
+<h3>Add/Edit Options</h3>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler profile add --name<span class="o">=</span>string --distro<span class="o">=</span>string <span class="o">[</span>options<span class="o">]</span>
+</code></pre>
+</div>
+
+
+<h4>--name (required)</h4>
+
+<p>A descriptive name. This could be something like "rhel5webservers" or "f9desktops".</p>
+
+<h4>--distro (required)</h4>
+
+<p>The name of a previously defined cobbler distribution. This value is required.</p>
+
+<h4>--boot-files</h4>
+
+<p>This option is used to specify additional files that should be copied to the TFTP directory for the distro so that they can be fetched during earlier stages of the installation. Some distributions (for example, VMware ESXi) require this option to function correctly.</p>
+
+<h4>--clobber</h4>
+
+<p>This option allows "add" to overwrite an existing profile with the same name, so use it with caution.</p>
+
+<h4>--comment</h4>
+
+<p>An optional comment to associate with this profile.</p>
+
+<h4>--dhcp-tag</h4>
+
+<p>DHCP tags are used in the dhcp.template when using multiple networks.</p>
+
+<p>Please refer to the <a href="/manuals/2.4.0/4/4/1_-_Managing_DHCP.html">Managing DHCP</a> section for more details.</p>
+
+<h4>--enable-gpxe</h4>
+
+<p>When enabled, the system will use gPXE instead of regular PXE for booting.</p>
+
+<p>Please refer to the <a href="/manuals/2.4.0/5/19_-_Using_gPXE.html">Using gPXE</a> section for details on using gPXE for booting over a network.</p>
+
+<h4>--enable-menu</h4>
+
+<p>When managing TFTP, Cobbler writes the ${tftproot}/pxelinux.cfg/default file, which contains entries for all profiles. When this option is enabled for a given profile, it will not be added to the default menu.</p>
+
+<h4>--fetchable-files</h4>
+
+<p>This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The "value" portion of the name is the path/name they will be available as via TFTP.</p>
+
+<p>Please see the <a href="/manuals/2.4.0/4/4/4_-_Managing_TFTP.html">Managing TFTP</a> section for more details on using the python-based TFTP server.</p>
+
+<h4>--in-place</h4>
+
+<p>By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no preserve the contents. To preserve the contents of these fields, --in-place should be specified. This option is also required is using a key with multiple values (for example, "foo=bar foo=baz").</p>
+
+<h4>--kickstart</h4>
+
+<p>Local filesystem path to a kickstart file. http:// URLs (even CGI’s) are also accepted, but a local file path is recommended, so that the kickstart templating engine can be taken advantage of.</p>
+
+<p>If this parameter is not provided, the kickstart file will default to /var/lib/cobbler/kickstarts/default.ks. This file is initially blank, meaning default kickstarts are not automated "out of the box". Admins can change the default.ks if they desire.</p>
+
+<p>When using kickstart files, they can be placed anywhere on the filesystem, but the recommended path is /var/lib/cobbler/kickstarts. If using the webapp to create new kickstarts, this is where the web application will put them.</p>
+
+<h4>--kopts</h4>
+
+<p>Sets kernel command-line arguments that the profile, and sub-profiles/systems dependant on it, will use during installation only. This field is a hash field, and accepts a set of key=value pairs:</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash">--kopts<span class="o">=</span><span class="s2">&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</span>
+</code></pre>
+</div>
+
+
+<h4>--kopts-post</h4>
+
+<p>This is just like --kopts, though it governs kernel options on the installed OS, as opposed to kernel options fed to the installer. This requires some special snippets to be found in your kickstart template to work correctly.</p>
+
+<h4>--ksmeta</h4>
+
+<p>This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts a set of key=value pairs:</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash">--ksmeta<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf&quot;</span>
+</code></pre>
+</div>
+
+
+<p>See the section on <a href="/manuals/2.4.0/4/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
+
+<h4>--mgmt-classes and --mgmt-parameters</h4>
+
+<p>Management classes and parameters that should be associated with this profile for use with configuration management systems.</p>
+
+<p>Please see the <a href="/manuals/2.4.0/5/3_-_Configuration_Management.html">Configuration Management</a> section for more details on integrating Cobbler with configuration management systems.</p>
+
+<h4>--name-servers</h4>
+
+<p>If your nameservers are not provided by DHCP, you can specify a space seperated list of addresses here to configure each of the installed nodes to use them (provided the kickstarts used are installed on a per-system basis). Users with DHCP setups should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for each system record.</p>
+
+<h4>--name-servers-search</h4>
+
+<p>As with the --name-servers option, this can be used to specify the default domain search line. Users with DHCP setups should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for each system record.</p>
+
+<h4>--owners</h4>
+
+<p>The value for --owners is a space seperated list of users and groups as specified in /etc/cobbler/users.conf.</p>
+
+<p>Users with small sites and a limited number of admins can probably ignore this option, since it only applies to the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell. Furthermore, this is only respected when using the "authz_ownership" module which must be enabled and is not the default.</p>
+
+<p>Please see the <a href="/manuals/2.4.0/6/3_-_Web_Authorization.html">Web Authorization</a> section for more details.</p>
+
+<h4>--parent</h4>
+
+<p>This is an advanced feature.</p>
+
+<p>Profiles may inherit from other profiles in lieu of specifing --distro. Inherited profiles will override any settings specified in their parent, with the exception of --ksmeta (templating) and --kopts (kernel options), which will be blended together.</p>
+
+<p><strong>Example:</strong></p>
+
+<p>If profile A has --kopts="x=7 y=2", B inherits from A, and B has --kopts="x=9 z=2", the actual kernel options that will be used for B are "x=9 y=2 z=2".</p>
+
+<p><strong>Example:</strong></p>
+
+<p>If profile B has --virt-ram=256 and A has --virt-ram of 512, profile B will use the value 256.</p>
+
+<p><strong>Example:</strong></p>
+
+<p>If profile A has a --virt-file-size of 5 and B does not specify a size, B will use the value from A.</p>
+
+<h4>--proxy</h4>
+
+<p>Specifies a proxy to use during the installation stage.</p>
+
+<p><strong>Note:</strong> Not all distributions support using a proxy in this manner.</p>
+
+<h4>--redhat-management-key</h4>
+
+<p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
+
+<p>Please see the <a href="/manuals/2.4.0/Appendix/D_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+
+<h4>--redhat-management-server</h4>
+
+<p>The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
+
+<p>Please see the <a href="/manuals/2.4.0/Appendix/D_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+
+<h4>--repos</h4>
+
+<p>This is a space delimited list of all the repos (created with "cobbler repo add" and updated with "cobbler reposync") that this profile can make use of during kickstart installation. For example, an example might be --repos="fc6i386updates fc6i386extras" if the profile wants to access these two mirrors that are already mirrored on the cobbler server. Repo management is described in greater depth later in the manpage.</p>
+
+<h4>--server</h4>
+
+<p>This parameter should be useful only in select circumstances. If machines are on a subnet that cannot access the cobbler server using the name/IP as configured in the cobbler settings file, use this parameter to override that server name. See also --dhcp-tag for configuring the next server and DHCP informmation of the system if you are also using Cobbler to help manage your DHCP configuration.</p>
+
+<h4>--template-files</h4>
+
+<p>This feature allows cobbler to be used as a configuration management system. The argument is a space delimited string of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the system. Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function as a lightweight templated configuration management system.</p>
+
+<p>Please see the <a href="/manuals/2.4.0/5/3/1_-_Built-In_Configuration_Management.html">Built-In Configuration Management</a> section for more details on using template files.</p>
+
+<h4>--template-remote-kickstarts</h4>
+
+<p>If enabled, any kickstart with a remote path (http://, ftp://, etc.) will not be passed through Cobbler's template engine.</p>
+
+<h4>--virt-auto-boot</h4>
+
+<p><strong>(Virt-only)</strong> When set, the VM will be configured to automatically start when the host reboots.</p>
+
+<h4>--virt-bridge</h4>
+
+<p><strong>(Virt-only)</strong> This specifies the default bridge to use for all systems defined under this profile. If not specified, it will assume the default value in the cobbler settings file, which as shipped in the RPM is ’xenbr0’. If using KVM, this is most likely not correct. You may want to override this setting in the system object. Bridge settings are important as they define how outside networking will reach the guest. For more information on bridge setup, see the Cobbler Wiki, where there is a section describing koan usage.</p>
+
+<h4>--virt-cpus</h4>
+
+<p><strong>(Virt-only)</strong> How many virtual CPUs should koan give the virtual machine?  The default for this value is set in the <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> file, and should be set as an integer.</p>
+
+<h4>--virt-disk-driver</h4>
+
+<p><strong>(Virt-only)</strong> The type of disk driver to use for the disk image, for example "raw" or "qcow2".</p>
+
+<h4>--virt-file-size</h4>
+
+<p><strong>(Virt-only)</strong> How large the disk image should be in Gigabytes. The default for this value is set in the <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> file. This can be a space seperated list (ex: "5,6,7") to allow for multiple disks of different sizes depending on what is given to --virt-path. This should be input as a integer or decimal value without units.</p>
+
+<h4>--virt-path</h4>
+
+<p><strong>(Virt-only)</strong> Where to store the virtual image on the host system. Except for advanced cases, this parameter can usually be omitted. For disk images, the value is usually an absolute path to an existing directory with an optional file name component. There is support for specifying partitions "/dev/sda4" or volume groups "VolGroup00", etc.</p>
+
+<p>For multiple disks, seperate the values with commas such as "VolGroup00,VolGroup00" or "/dev/sda4,/dev/sda5". Both those examples would create two disks for the VM.</p>
+
+<h4>--virt-ram</h4>
+
+<p><strong>(Virt-only)</strong> How many megabytes of RAM to consume. The default for this value is set in the <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> file. This should be input as an integer without units, and will be interpretted as MB.</p>
+
+<h4>--virt-type</h4>
+
+<p><strong>(Virt-only)</strong> Koan can install images using several different virutalization types. Choose one or the other strings to specify, or values will default to attempting to find a compatible installation type on the client system ("auto"). See the <a href="/manuals/2.4.0/7_-_Koan.html">Koan</a> section for more documentation. The default for this value is set in the <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> file.</p>
+
+<h3>Get Kickstart (getks)</h3>
+
+<p>The getks command shows the rendered kickstart/response file (preseed, etc.) for the given profile. This is useful for previewing what will be downloaded from Cobbler when the system is building. This is also a good opportunity to catch snippets that are not rendering correctly.</p>
+
+<p>As with remove, the --name option is required and is the only valid argument.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler profile getks --name<span class="o">=</span>foo | less
+</code></pre>
+</div>
+
+
+
+
+   </div>
+   <div class="span3">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.4.0/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.4.0/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.4.0/4/1/4_-_Images.html">4 - Images</a></li><li><a href="/manuals/2.4.0/4/1/5_-_Repos.html">5 - Repos</a></li><li><a href="/manuals/2.4.0/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.4.0/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.4.0/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
+   </div>
+
+   <!-- end content -->
+   </div>
+  </div> <!-- end row-fluid -->
+ </div> <!-- end container -->
+</div> <!-- end wrap -->
+
+<footer>
+  <div class="container pagination-centered">&copy; 2012</div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+
