@@ -38,10 +38,10 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap">
  <div id="main" class="container-fluid">
   <div class="row-fluid">
-   <div class="span12">&nbsp;</div>
-   <div class="span3 offset9">
+   <div class="span12"></div>
+   <div class="span10 offset1">
      <div id="socialmedia">
-      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-align="right" data-width="95%">Follow @cobblerista</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
      </div>
    </div>
@@ -201,7 +201,10 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 </div>
 
 
-<p><strong>Note:</strong> While valid syntax, this could cause problems for some fields where Cobbler expects a value (for example, --template-files).</p>
+
+
+<div class="alert alert-info alert-block"><b>Note:</b> While valid syntax, this could cause problems for some fields where Cobbler expects a value (for example, --template-files).</div>
+
 
 <h4>Keys With Multiple Values</h4>
 
@@ -214,7 +217,10 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 </div>
 
 
-<p><strong>Note:</strong> You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.</p>
+
+
+<div class="alert alert-info alert-block"><b>Note:</b> You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.</div>
+
 
 <h2>Standard Primative Sub-commands</h2>
 
@@ -255,7 +261,8 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 
 <p>The remove command uses only the --name option.</p>
 
-<p><strong>Note:</strong> Removing an object will also remove any child objects (profiles, sub-profiles and/or systems). Prior versions of Cobbler required an additional --recursive option to enable this behavior, but it has become the default in recent versions so use remove with caution.</p>
+<div class="alert alert-info alert-block"><b>Note:</b> Removing an object will also remove any child objects (profiles, sub-profiles and/or systems). Prior versions of Cobbler required an additional --recursive option to enable this behavior, but it has become the default in recent versions so use remove with caution.</div>
+
 
 <p><strong>Example:</strong></p>
 

@@ -139,7 +139,7 @@ Cobbler contains features that enable integration with power management for easi
 #### --proxy
 Specifies a proxy to use during the installation stage.
 
-**Note:** Not all distributions support using a proxy in this manner.
+<div class="alert alert-info alert-block"><b>Note:</b> Not all distributions support using a proxy in this manner.</div>
 
 #### --redhat-management-key
 If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in {% linkup title:"Cobbler Settings" extrameta:2.4.0 %} will be used if this field is left blank.
@@ -202,7 +202,7 @@ System primatives are unique in that they are the only object in Cobbler that em
 
 All interface options require the use of the --interface=ifname option. If this is omitted, Cobbler will default to using the interface name "eth0", which may not be what you want. We may also change this default behavior in the future, so in general it is always best to explicitly specify the interface name with this option.
 
-**Note: You can only edit one interface at a time!** If you specify multiple --interface options, only the last one will be used.
+<div class="alert alert-info alert-block"><b>Note:</b> **You can only edit one interface at a time!** If you specify multiple --interface options, only the last one will be used.</div>
 
 **Interface naming notes:**
 
@@ -245,7 +245,7 @@ This is a per-interface parameter. If you have multiple interfaces, it may be di
 #### --interface-type and --interface-master
 One of the other advanced networking features supported by Cobbler is NIC bonding and bridging. You can use this to bond multiple physical network interfaces to one single logical interface to reduce single points of failure in your network, or to create bridged interfaces for things like tunnels and virtual machine networks. Supported values for the --interface-type parameter are "bond", "bond_slave", "bridge", "bridge_slave" and "bonded_bridge_slave". If one of the "_slave" options is specified, you also need to define the master-interface for this bond using --interface-master=INTERFACE.
 
-**Note:** The options "master" and "slave" are deprecated, and are assumed to me "bond" and "bond_slave" when encountered. When a system object is saved, the deprecated values will be overwritten with the new, correct values.
+<div class="alert alert-info alert-block"><b>Note:</b> The options "master" and "slave" are deprecated, and are assumed to me "bond" and "bond_slave" when encountered. When a system object is saved, the deprecated values will be overwritten with the new, correct values.</div>
 
 For more details on using these interface types, please see the {% linkup title:"Advanced Networking" extrameta:2.4.0 %} section.
 
@@ -268,7 +268,7 @@ When using the CIDR notation trick, don’t specify any arguments other than --n
 #### --ipv6-address
 The IPv6 address to use for this interface.
 
-**Note:** This is not mutually exclusive with the --ipv6-autoconfiguration option, as interfaces can have many IPv6 addresses.
+<div class="alert alert-info alert-block"><b>Note:</b> This is not mutually exclusive with the --ipv6-autoconfiguration option, as interfaces can have many IPv6 addresses.</div>
 
 #### --ipv6-autoconfiguration
 Use autoconfiguration mode to obtain the IPv6 address for this interface.

@@ -235,4 +235,4 @@ Key:
  </tr>
 </table>
 
-**Note:** This list does not include support for images, which can be just about any OS.
+<div class="alert alert-info alert-block"><b>Note:</b> This list does not include support for images, which can be just about any OS.</div>

@@ -370,7 +370,7 @@ A dictionary of key/value pairs that will be added to the kernel command line du
 
 By default, each key/value pair will be show up as key=value in the kernel command line. Setting the value for a given key to '~' (tilde) will cause the option to be printed by itself with no '='.
 
-**Note:** The kernel command line has a maximum character limitation of 256 characters. Cobbler will print a warning if you exceed this limit.
+<div class="alert alert-info alert-block"><b>Note:</b> The kernel command line has a maximum character limitation of 256 characters. Cobbler will print a warning if you exceed this limit.</div>
 
 ### kernel_options_s390x
 * **type:** Dictionary

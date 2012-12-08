@@ -59,7 +59,7 @@ TFTP at the same time.
 You should install the semanage rules that "cobbler check" tells
 you about to ensure everything works according to plan.
 
-Also Note: you may run into some problems if you need to relocate
+Also note, you may run into some problems if you need to relocate
 your /var/www elsewhere, which most users should not need to do. If
 you do, read
 [RelocatingYourInstall](/cobbler/wiki/RelocatingYourInstall) and

@@ -14,7 +14,7 @@ This example shows the two required arguments for import: --path and --name.
 
 ## Alternative set-up from existing filesystem
 
-_(Note: the description of "--available-as" is probably inadequate.)_
+_(<b>Note:</b> the description of "--available-as" is probably inadequate.)_
 
 What if you don't want to mirror the install content on your
 install server? Say you already have the trees from all your DVDs
@@ -32,9 +32,9 @@ above commands to add them to Cobbler.
 
 ## Importing Trees
 
-_(Note: this topic was imported from "Advanced Topics", and needs to be more properly integrated into this document.)_
+_(<b>Note:</b> this topic was imported from "Advanced Topics", and needs to be more properly integrated into this document.)_
 
-_(Note: the description of "--available-as" is probably inadequate.)_
+_(<b>Note:</b> the description of "--available-as" is probably inadequate.)_
 
 
 Cobbler can auto-add distributions and profiles from remote sources, whether this is a filesystem path or an rsync mirror.  This can save a lot of time when setting up a new provisioning environment.  Import is a feature that many users will want to take advantage of, and is very simple to use.

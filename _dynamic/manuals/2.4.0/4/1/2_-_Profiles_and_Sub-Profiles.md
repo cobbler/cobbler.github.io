@@ -135,7 +135,7 @@ If profile A has a --virt-file-size of 5 and B does not specify a size, B will u
 #### --proxy
 Specifies a proxy to use during the installation stage.
 
-**Note:** Not all distributions support using a proxy in this manner.
+<div class="alert alert-info alert-block"><b>Note:</b> Not all distributions support using a proxy in this manner.</div>
 
 #### --redhat-management-key
 If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in {% linkup title:"Cobbler Settings" extrameta:2.4.0 %} will be used if this field is left blank.

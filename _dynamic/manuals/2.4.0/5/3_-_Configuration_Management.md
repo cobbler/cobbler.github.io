@@ -101,7 +101,7 @@ Cobbler provides one, so configure puppet to use
     [main]
     external_nodes = /usr/bin/cobbler-ext-nodes
 
-Note: if you are using puppet 0.24 or later then you will want to
+<div class="alert alert-info alert-block"><b>Note:</b> if you are using puppet 0.24 or later then you will want to</div>
 also add the following to your configuration file
 
     node_terminus = exec

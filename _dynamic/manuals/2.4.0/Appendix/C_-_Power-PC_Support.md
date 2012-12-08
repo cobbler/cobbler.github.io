@@ -96,7 +96,7 @@ following commands demonstrate adding additional MAC addresses:
     cobbler system edit --name ibm-505-lp1 --interface 1 --mac 00:11:25:7e:28:65
     cobbler system edit --name ibm-505-lp1 --interface 2 --mac 00:0d:60:b9:6b:c8
 
-Note: Providing a MAC address is required for proper network boot
+<div class="alert alert-info alert-block"><b>Note:</b> Providing a MAC address is required for proper network boot</div>
 support using yaboot.
 
 ## Profile-based configuration

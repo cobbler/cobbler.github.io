@@ -38,10 +38,10 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap">
  <div id="main" class="container-fluid">
   <div class="row-fluid">
-   <div class="span12">&nbsp;</div>
-   <div class="span3 offset9">
+   <div class="span12"></div>
+   <div class="span10 offset1">
      <div id="socialmedia">
-      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-align="right" data-width="95%">Follow @cobblerista</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
      </div>
    </div>
@@ -205,8 +205,10 @@ your DNS, which you don't have to be doing).</p>
 external_nodes = /usr/bin/cobbler-ext-nodes
 </code></pre>
 
-<p>Note: if you are using puppet 0.24 or later then you will want to
-also add the following to your configuration file</p>
+<div class="alert alert-info alert-block"><b>Note:</b> if you are using puppet 0.24 or later then you will want to</div>
+
+
+<p>also add the following to your configuration file</p>
 
 <pre><code>node_terminus = exec
 </code></pre>

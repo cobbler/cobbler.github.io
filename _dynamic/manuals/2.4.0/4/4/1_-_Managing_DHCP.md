@@ -23,7 +23,7 @@ module = manage_dnsmasq
 module = manage_dnsmasq
 {% endhighlight %}
 
-**Note:** Using dnsmasq for DHCP requires that you use it for DNS, even if you disable `manage_dns` in your {% linkup title:"Cobbler Settings" extrameta:2.4.0 %}. You should not try to mix the ISC module with the dnsmasq module.
+<div class="alert alert-info alert-block"><b>Note:</b> Using dnsmasq for DHCP requires that you use it for DNS, even if you disable `manage_dns` in your {% linkup title:"Cobbler Settings" extrameta:2.4.0 %}. You should not try to mix the ISC module with the dnsmasq module.</div>
 
 You also need to enable such management; this is done in {% linkup title:"Cobbler Settings" extrameta:2.4.0 alt:"your settings" %}.
 

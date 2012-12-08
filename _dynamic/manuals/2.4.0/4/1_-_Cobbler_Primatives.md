@@ -95,7 +95,7 @@ $ cobbler distro report --name=foo | grep "Kickstart Meta"
 Kickstart Metadata             : {'a': '~', 'c': '~', 'b': '~'}
 {% endhighlight %}
 
-**Note:** While valid syntax, this could cause problems for some fields where Cobbler expects a value (for example, --template-files).
+<div class="alert alert-info alert-block"><b>Note:</b> While valid syntax, this could cause problems for some fields where Cobbler expects a value (for example, --template-files).</div>
 
 #### Keys With Multiple Values
 
@@ -107,7 +107,7 @@ $ cobbler distro report --name=foo | grep "Kickstart Meta"
 Kickstart Metadata             : {'a': ['b', 'c', 'd']}
 {% endhighlight %}
 
-**Note:** You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.
+<div class="alert alert-info alert-block"><b>Note:</b> You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.</div>
 
 ## Standard Primative Sub-commands
 
@@ -147,7 +147,7 @@ As with the list command, the report command is also available as a top-level co
 
 The remove command uses only the --name option.
 
-**Note:** Removing an object will also remove any child objects (profiles, sub-profiles and/or systems). Prior versions of Cobbler required an additional --recursive option to enable this behavior, but it has become the default in recent versions so use remove with caution.
+<div class="alert alert-info alert-block"><b>Note:</b> Removing an object will also remove any child objects (profiles, sub-profiles and/or systems). Prior versions of Cobbler required an additional --recursive option to enable this behavior, but it has become the default in recent versions so use remove with caution.</div>
 
 **Example:**
 

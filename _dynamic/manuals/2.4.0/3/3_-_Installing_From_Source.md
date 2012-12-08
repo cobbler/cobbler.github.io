@@ -25,7 +25,7 @@ $ cd cobbler
 $ git checkout release24
 {% endhighlight %}
 
-**Note:** The release24 branch corresponds to the official release version for the 2.4.x series. The master branch is the development series, and always uses an odd number for the minor version (for example, 2.5.0).
+<div class="alert alert-info alert-block"><b>Note:</b> The release24 branch corresponds to the official release version for the 2.4.x series. The master branch is the development series, and always uses an odd number for the minor version (for example, 2.5.0).</div>
 
 ## Installing
 
@@ -47,7 +47,7 @@ To install the Cobbler web GUI, use this command:
 $ make webtest
 {% endhighlight %}
 
-**Note:** This will do a full install, not just the web GUI. "make webtest" is a wrapper around "make devinstall", so your configuration files will also be saved when running this command.
+<div class="alert alert-info alert-block"><b>Note:</b> This will do a full install, not just the web GUI. "make webtest" is a wrapper around "make devinstall", so your configuration files will also be saved when running this command.</div>
 
 ### Building Packages from Source
 

@@ -38,10 +38,10 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap">
  <div id="main" class="container-fluid">
   <div class="row-fluid">
-   <div class="span12">&nbsp;</div>
-   <div class="span3 offset9">
+   <div class="span12"></div>
+   <div class="span10 offset1">
      <div id="socialmedia">
-      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @cobblerista</a>
+      <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-align="right" data-width="95%">Follow @cobblerista</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
      </div>
    </div>
@@ -263,7 +263,8 @@ cobbler system report
 
 <p>Specifies a proxy to use during the installation stage.</p>
 
-<p><strong>Note:</strong> Not all distributions support using a proxy in this manner.</p>
+<div class="alert alert-info alert-block"><b>Note:</b> Not all distributions support using a proxy in this manner.</div>
+
 
 <h4>--redhat-management-key</h4>
 
@@ -341,7 +342,8 @@ cobbler system report
 
 <p>All interface options require the use of the --interface=ifname option. If this is omitted, Cobbler will default to using the interface name "eth0", which may not be what you want. We may also change this default behavior in the future, so in general it is always best to explicitly specify the interface name with this option.</p>
 
-<p><strong>Note: You can only edit one interface at a time!</strong> If you specify multiple --interface options, only the last one will be used.</p>
+<div class="alert alert-info alert-block"><b>Note:</b> **You can only edit one interface at a time!** If you specify multiple --interface options, only the last one will be used.</div>
+
 
 <p><strong>Interface naming notes:</strong></p>
 
@@ -392,7 +394,8 @@ cobbler system report
 
 <p>One of the other advanced networking features supported by Cobbler is NIC bonding and bridging. You can use this to bond multiple physical network interfaces to one single logical interface to reduce single points of failure in your network, or to create bridged interfaces for things like tunnels and virtual machine networks. Supported values for the --interface-type parameter are "bond", "bond_slave", "bridge", "bridge_slave" and "bonded_bridge_slave". If one of the "_slave" options is specified, you also need to define the master-interface for this bond using --interface-master=INTERFACE.</p>
 
-<p><strong>Note:</strong> The options "master" and "slave" are deprecated, and are assumed to me "bond" and "bond_slave" when encountered. When a system object is saved, the deprecated values will be overwritten with the new, correct values.</p>
+<div class="alert alert-info alert-block"><b>Note:</b> The options "master" and "slave" are deprecated, and are assumed to me "bond" and "bond_slave" when encountered. When a system object is saved, the deprecated values will be overwritten with the new, correct values.</div>
+
 
 <p>For more details on using these interface types, please see the <a href="/manuals/2.4.0/5/1_-_Advanced_Networking.html">Advanced Networking</a> section.</p>
 
@@ -419,7 +422,8 @@ cobbler system report
 
 <p>The IPv6 address to use for this interface.</p>
 
-<p><strong>Note:</strong> This is not mutually exclusive with the --ipv6-autoconfiguration option, as interfaces can have many IPv6 addresses.</p>
+<div class="alert alert-info alert-block"><b>Note:</b> This is not mutually exclusive with the --ipv6-autoconfiguration option, as interfaces can have many IPv6 addresses.</div>
+
 
 <h4>--ipv6-autoconfiguration</h4>
 
