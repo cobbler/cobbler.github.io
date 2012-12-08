@@ -20,7 +20,7 @@ If this behavior is not desired, run "cobbler system add --name=default --profil
 
 When using PXE menu deployment exclusively, it is not neccessary to make cobbler system records, although the two can easily be mixed.
 
-Additionally, note that all files generated for the pxe menu configurations are templatable, so if you wish to change the color scheme or equivalent, see the files in /etc/cobbler.
+Additionally, note that all files generated for the pxe menu configurations are templatable, so if you wish to change the color scheme or equivalent, see the files in `/etc/cobbler`.
 
 ### Default boot behavior
 
@@ -52,9 +52,9 @@ If the avahi-tools package is installed, cobblerd will broadcast it's presence o
 
 This has already been covered a good bit in the command reference section.
 
-Yum repository management is an optional feature, and is not required to provision through cobbler.  However, if cobbler is configured to mirror certain repositories, it can then be used to associate profiles with those repositories.  Systems installed under those profiles will then be autoconfigured to use these repository mirrors in /etc/yum.repos.d, and if supported (Fedora Core 6 and later) these repositories can be leveraged even within Anaconda.  This can be useful if (A) you have a large install base, (B) you want fast installation and upgrades for your systems, or (C) have some extra software not in a standard repository but want provisioned systems to know about that repository.
+Yum repository management is an optional feature, and is not required to provision through cobbler.  However, if cobbler is configured to mirror certain repositories, it can then be used to associate profiles with those repositories.  Systems installed under those profiles will then be autoconfigured to use these repository mirrors in `/etc/yum.repos.d`, and if supported (Fedora Core 6 and later) these repositories can be leveraged even within Anaconda.  This can be useful if (A) you have a large install base, (B) you want fast installation and upgrades for your systems, or (C) have some extra software not in a standard repository but want provisioned systems to know about that repository.
 
-Make sure there is plenty of space in cobbler's webdir, which defaults to /var/www/cobbler.
+Make sure there is plenty of space in cobbler's webdir, which defaults to `/var/www/cobbler`.
 
     cobbler reposync [--tries=N] [--no-fail]
 
@@ -69,7 +69,7 @@ If you ever want to update a certain repository you can run:
 
 When updating repos by name, a repo will be updated even if it is set to be not updated during a regular reposync operation (ex: cobbler repo edit --name=reponame1 --keep-updated=0).
 
-Note that if a cobbler import provides enough information to use the boot server as a yum mirror for core packages, cobbler can set up kickstarts to use the cobbler server as a mirror instead of the outside world.  If this feature is desirable, it can be turned on by setting yum_post_install_mirror to 1 in /etc/settings ((and running "cobbler sync").  You should not use this feature if machines are provisioned on a different VLAN/network than production, or if you are provisioning laptops that will want to acquire updates on multiple networks.
+Note that if a cobbler import provides enough information to use the boot server as a yum mirror for core packages, cobbler can set up kickstarts to use the cobbler server as a mirror instead of the outside world.  If this feature is desirable, it can be turned on by setting yum_post_install_mirror to 1 in `/etc/cobbler/settings` (and running "cobbler sync").  You should not use this feature if machines are provisioned on a different VLAN/network than production, or if you are provisioning laptops that will want to acquire updates on multiple networks.
 
 The flags --tries=N (for example, --tries=3) and --no-fail should likely be used when putting reposync on a crontab.  They ensure network glitches in one repo can be retried and also that a failure to synchronize one repo does not stop other repositories from being synchronized.
 

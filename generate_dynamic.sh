@@ -2,6 +2,7 @@
 
 cp -a {_plugins,_includes,_layouts} _dynamic/
 cd _dynamic
+rm _plugins/gensearch.rb
 rm -rf test.idx
 mkdir _site
 jekyll

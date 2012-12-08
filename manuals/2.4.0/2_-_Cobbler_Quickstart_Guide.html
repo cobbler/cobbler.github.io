@@ -126,7 +126,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Before starting the cobblerd service, there are a few things you should modify.</p>
 
-<p>Settings for cobbler/cobblerd are stored in /etc/cobbler/settings. This file is a YAML formatted data file, so be sure to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running.</p>
+<p>Settings for cobbler/cobblerd are stored in <code>/etc/cobbler/settings</code>. This file is a YAML formatted data file, so be sure to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running.</p>
 
 <h3>Default Encrypted Password</h3>
 
@@ -210,9 +210,9 @@ var WRInitTime=(new Date()).getTime();
 
 <h2>Files and Directory Notes</h2>
 
-<p>Cobbler makes heavy use of the /var directory. The /var/www/cobbler/ks_mirror directory is where all of the distrubtion and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import.</p>
+<p>Cobbler makes heavy use of the <code>/var</code> directory. The <code>/var/www/cobbler/ks_mirror</code> directory is where all of the distrubtion and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import.</p>
 
-<p>If you have installed cobbler onto a system that has very little free space in the partition containing /var, please read the <a href="/manuals/2.4.0/3/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> section of the manual to learn how you can relocate your installation properly.</p>
+<p>If you have installed cobbler onto a system that has very little free space in the partition containing <code>/var</code>, please read the <a href="/manuals/2.4.0/3/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> section of the manual to learn how you can relocate your installation properly.</p>
 
 <h2>Starting and Enabling the Cobbler Service</h2>
 

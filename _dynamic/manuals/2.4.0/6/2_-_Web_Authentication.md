@@ -46,7 +46,7 @@ This option lets Apache do the authentication and Cobbler will defer to what it 
     [authentication]
     module = authn_ldap
 
-This option authenticates against [LDAP](LDAP) using parameters from /etc/cobbler/settings. This is a direct connection to LDAP without relying on Apache.
+This option authenticates against [LDAP](LDAP) using parameters from `/etc/cobbler/settings`. This is a direct connection to LDAP without relying on Apache.
 
 ## Spacewalk
 

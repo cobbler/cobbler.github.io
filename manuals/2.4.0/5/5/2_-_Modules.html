@@ -115,8 +115,8 @@ modules so it's easy to add new commands)</li>
 <h2>Python Files And modules.conf</h2>
 
 <p>To create a module, add a python file in
-/usr/lib/python$version/site-packages/cobbler/modules. Then, in the
-apppropriate part of /etc/cobbler/modules.conf, reference the name
+<code>/usr/lib/python$version/site-packages/cobbler/modules</code>. Then, in the
+apppropriate part of <code>/etc/cobbler/modules.conf</code>, reference the name
 of your module so cobbler knows that you want to activate the
 module.</p>
 
@@ -130,7 +130,7 @@ this file, they are auto-loaded)</p>
 settings = serializer_catalog
 </code></pre>
 
-<p>The format of /etc/cobbler/modules.conf is that of Python's
+<p>The format of <code>/etc/cobbler/modules.conf</code> is that of Python's
 ConfigParser module.</p>
 
 <pre><code>    A setup file consists of sections, lead by a "[section]" header,

@@ -5,7 +5,7 @@ meta: 2.4.0
 ---
 Snippets are a way of reusing common blocks of code between kickstarts (though this also works on files other than kickstart templates, but that's a sidenote). For instance, the default Cobbler installation has a snippet called "$SNIPPET('func\_register\_if\_enabled')" that can help set up the application called Func ([http://fedorahosted.org/func](http://fedorahosted.org/func)).
 
-This means that every time that this SNIPPET text appears in a kickstart file it is replaced by the contents of /var/lib/cobbler/snippets/func\_register\_if\_enabled. This allows this block of text to be reused in every kickstart template -- you may think of snippets, if you like, as templates for templates!
+This means that every time that this SNIPPET text appears in a kickstart file it is replaced by the contents of `/var/lib/cobbler/snippets/func_register_if_enabled`. This allows this block of text to be reused in every kickstart template -- you may think of snippets, if you like, as templates for templates!
 
 To review, the syntax looks like:
 
@@ -40,7 +40,7 @@ all share.
 
 This could also be used to set up a package list -- for instance,
 you could store the base package list to install in
-/var/lib/cobbler/snippets/package\_list, but override it for
+`/var/lib/cobbler/snippets/package_list`, but override it for
 certain profiles and systems. This would allow you to ultimately
 create less kickstart templates and leverage the kickstart
 templating engine more by just editing the smaller and more easily
@@ -59,7 +59,7 @@ the following paths in order, finding the first one if it exists
 As with the rest of cobbler, systems override profiles as they are
 more specific, though if the system file did not exist, it would
 use the profile file. As a general safeguard, always create the
-/var/lib/cobbler/snippets/$snippet\_name file if you create the
+`/var/lib/cobbler/snippets/$snippet_name` file if you create the
 per\_system and per\_profile ones.
 
 ## Subdirectories
@@ -206,7 +206,7 @@ want to do.
 NOTE: Content provided here is not part of Cobbler's "core" code so
 we may not be able to help you on the mailing list or IRC with
 snippets that aren't yet part of cobbler's core distribution.
-Cobbler does ship a few in /var/lib/cobbler/snippets that we can
+Cobbler does ship a few in `/var/lib/cobbler/snippets` that we can
 answer questions on, and in general, if you have a good idea, we'd
 love to work with you to get it shipped with Cobbler.
 

@@ -111,11 +111,11 @@ var WRInitTime=(new Date()).getTime();
 
 <p>RHEL has a tool installed called rhnreg_ks that you may not be familiar with. It's what you call in the %post of a kickstart file to make a system automatically register itself with Satellite or the RHN Hosted offering.</p>
 
-<p>You may want to read up on rhnreg_ks for all the options it provides, but Cobbler ships with a snippet ("redhat_register") that can help you register systems. It should be in the /var/lib/cobbler/kickstarts/sample*.ks files by default, for you to look at. It is configured by various settings in /etc/cobbler/settings</p>
+<p>You may want to read up on rhnreg_ks for all the options it provides, but Cobbler ships with a snippet ("redhat_register") that can help you register systems. It should be in the <code>/var/lib/cobbler/kickstarts/sample*.ks</code> files by default, for you to look at. It is configured by various settings in <code>/etc/cobbler/settings</code>.</p>
 
 <h3>Authenticating XMLRPC/Web users against Satellite / Spacewalk's API</h3>
 
-<p>In /etc/cobbler/modules.conf, if you are using authn_spacewalk for authentication, Cobbler can talk to Satellite (5.3 and later) or Spacewalk for authentication. Authentication is cleared when users have the role "org_admin", or "kickstart_admin" roles. Authorization can later be supplied via cobbler modules as normal, for example, authz_allowall (default) or authn_ownership, but should probably be left as authz_allowall.</p>
+<p>In <code>/etc/cobbler/modules.conf</code>, if you are using authn_spacewalk for authentication, Cobbler can talk to Satellite (5.3 and later) or Spacewalk for authentication. Authentication is cleared when users have the role "org_admin", or "kickstart_admin" roles. Authorization can later be supplied via cobbler modules as normal, for example, authz_allowall (default) or authn_ownership, but should probably be left as authz_allowall.</p>
 
 <p>See CustomizableSecurity</p>
 

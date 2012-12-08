@@ -9,7 +9,7 @@ Cobbler 2.2.x introduced support for MongoDB as alternate storage backend, due t
 
 ### Serializer Setup
 
-Add or modify the following section in the /etc/cobbler/modules.conf configuration file:
+Add or modify the following section in the `/etc/cobbler/modules.conf` configuration file:
 
 {% highlight ini %}
 [serializers]
@@ -25,7 +25,7 @@ etc...
 
 ### MongoDB Configuration File
 
-The configuration file for the MongoDB serializer is /etc/cobbler/mongodb.conf. This is an INI-style configuration file, which has the following default entries:
+The configuration file for the MongoDB serializer is `/etc/cobbler/mongodb.conf`. This is an INI-style configuration file, which has the following default entries:
 
 {% highlight ini %}
 [connection]

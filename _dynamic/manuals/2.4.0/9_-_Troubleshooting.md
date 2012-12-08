@@ -114,7 +114,7 @@ internal virbr0/192.168.122.1 only. For ISC dhcpd you can set in
 
     DHCPDARGS=eth0
 
-For dnsmasq you can set in /etc/dnsmasq.conf:
+For dnsmasq you can set in `/etc/dnsmasq.conf`:
 
     interface=eth0
     except-interface=lo
@@ -263,7 +263,7 @@ internal virbr0/192.168.122.1 only. For ISC dhcpd you can set in
 
     DHCPDARGS=eth0
 
-For dnsmasq you can set in /etc/dnsmasq.conf:
+For dnsmasq you can set in `/etc/dnsmasq.conf`:
 
     interface=eth0
     except-interface=lo

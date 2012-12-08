@@ -96,7 +96,7 @@ your DNS, which you don't have to be doing).
 For more documentation on Puppet's external nodes feature, see docs.puppetlabs.com
 
 Cobbler provides one, so configure puppet to use
-/usr/bin/cobbler-ext-nodes:
+`/usr/bin/cobbler-ext-nodes`:
 
     [main]
     external_nodes = /usr/bin/cobbler-ext-nodes
@@ -137,7 +137,7 @@ organized in one place.
 
 What if you have global parameters or classes to add? No problem.
 You can also add more classes by editing the following fields in
-/etc/cobbler/settings:
+`/etc/cobbler/settings`:
 
     
     # cobbler has a feature that allows for integration with config management
@@ -153,9 +153,9 @@ You can also add more classes by editing the following fields in
 
 Attached at puppet\_node.py is an alternate external node script
 that fills in the nodes with items from a manifests repository (at
-/etc/puppet/manifests/) and networking information from cobbler. It
+`/etc/puppet/manifests/`) and networking information from cobbler. It
 is configured like the above from the puppet side, and then looks
-for /etc/puppet/external\_node.yaml for cobbler side configuration.
+for `/etc/puppet/external_node.yaml` for cobbler side configuration.
 The configuration is as follows.
 
     base: /etc/puppet/manifests/nodes

@@ -114,7 +114,7 @@ based distributions, it has several shortcomings.</p>
 
 <h4>Only captures syslog</h4>
 
-<p>The <em>syslog=</em> approach will only capture syslog-style messages. Any command-specific output (/tmp/lvmout, /tmp/ks-script, /tmp/X.config) or installation failure (/tmp/anacdump.txt) information is not sent.</p>
+<p>The <em>syslog=</em> approach will only capture syslog-style messages. Any command-specific output (<code>/tmp/lvmout</code>, <code>/tmp/ks-script</code>, <code>/tmp/X.config</code>) or installation failure (<code>/tmp/anacdump.txt</code>) information is not sent.</p>
 
 <h4>Unsupported on older distros</h4>
 
@@ -143,7 +143,7 @@ based distributions, it has several shortcomings.</p>
 </div>
 
 
-<p>Anamon can also send /var/log/messages and /var/log/boot.log once your provisioned system has booted. To also enable post-install boot notification, you must enable the following snippet:</p>
+<p>Anamon can also send <code>/var/log/messages</code> and <code>/var/log/boot.log</code> once your provisioned system has booted. To also enable post-install boot notification, you must enable the following snippet:</p>
 
 <div class="highlight"><pre><code class="bash">%post
 <span class="nv">$SNIPPET</span><span class="o">(</span><span class="s1">&#39;post_anamon&#39;</span><span class="o">)</span>

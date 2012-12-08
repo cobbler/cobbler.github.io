@@ -15,7 +15,7 @@ you are new to Cheetah, see the documentation at
 and pay special attention to the \#def directive.
 
 To create new functions, add your Cheetah code to
-/etc/cobbler/cheetah\_macros. This file will be sourced in all
+`/etc/cobbler/cheetah_macros`. This file will be sourced in all
 Cheetah templates automatically, making it possible to write custom
 functions and use them from this file.
 

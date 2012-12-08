@@ -15,7 +15,7 @@ To begin, you need to first configure a Cobbler server.  Cobbler can be run on a
 
 We will assume static networking is used for System z guests.
 
-After the Cobbler server is running, and you have imported at least one s390x install tree, you can customize the default kickstart template.  Cobbler provides a sample kickstart template that you can start with called /var/lib/cobbler/kickstarts/sample.ks.  You will want to copy this sample, and modify it by adding the following snippet in %post:
+After the Cobbler server is running, and you have imported at least one s390x install tree, you can customize the default kickstart template.  Cobbler provides a sample kickstart template that you can start with called `/var/lib/cobbler/kickstarts/sample.ks`.  You will want to copy this sample, and modify it by adding the following snippet in %post:
 
     $SNIPPET('post_s390_reboot')
 
@@ -79,7 +79,7 @@ Next, the client uses the z/VM TFTP client to contact the server specified in ZP
     * {{{/s390x/s_systemname_conf}}}
  1. {{{/s390x/profile_list}}}
 
-When netboot is enabled on the cobbler server, it places a file called s_''systemname'' (where ''systemname'' = z/VM user ID) into /var/lib/tftpboot/s390x/ which contains the following lines:
+When netboot is enabled on the cobbler server, it places a file called s_''systemname'' (where ''systemname'' = z/VM user ID) into `/var/lib/tftpboot/s390x/` which contains the following lines:
 
 
     /images/RHEL-5-Server-U3-s390x/kernel.img

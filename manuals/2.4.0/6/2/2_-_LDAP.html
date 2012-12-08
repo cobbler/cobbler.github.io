@@ -116,7 +116,7 @@ should work in the same manner.</p>
 <pre><code>yum install python-ldap
 </code></pre>
 
-<p>\1. In /etc/cobbler/modules.conf change the authn/authz sections to
+<p>\1. In <code>/etc/cobbler/modules.conf</code> change the authn/authz sections to
  look like:</p>
 
 <pre><code>[authentication]
@@ -128,9 +128,9 @@ module = authz_configfile
 
 <p>The above specifies that you authenticating against LDAP and will
 list which LDAP users are valid by looking at
-/etc/cobbler/users.conf.</p>
+<code>/etc/cobbler/users.conf</code>.</p>
 
-<p>\2. In /etc/cobbler/settings, set the following to appropriate
+<p>\2. In <code>/etc/cobbler/settings</code>, set the following to appropriate
  values to configure the LDAP parts. The values below are examples
  that show us pointing to an LDAP server, which is not running on
  the cobbler box, for authentication. Note that authorization is
@@ -153,8 +153,7 @@ field.</p>
 <pre><code>openssl s_client -connect servername:636
 </code></pre>
 
-<p>\4. Copy everything between BEGIN and END in the above output to
- /etc/openldap/cacerts/ldap.pem</p>
+<p>\4. Copy everything between BEGIN and END in the above output to <code>/etc/openldap/cacerts/ldap.pem</code></p>
 
 <p>\5. Ensure that the CA certificate is correctly hashed</p>
 
@@ -169,13 +168,13 @@ cacertdir_rehash command:</p>
 <pre><code>cacertdir_rehash /etc/openldap/cacerts
 </code></pre>
 
-<p>\6. Configure /etc/openldap/ldap.conf to include the following:</p>
+<p>\6. Configure <code>/etc/openldap/ldap.conf</code> to include the following:</p>
 
 <pre><code>TLS_CACERTDIR   /etc/openldap/cacerts
 TLS_REQCERT     allow
 </code></pre>
 
-<p>\7. Edit /etc/cobbler/users.conf to include the list of users
+<p>\7. Edit <code>/etc/cobbler/users.conf</code> to include the list of users
  allowed access to cobbler resources. These must match names in
  LDAP. The group names are just comments.</p>
 
@@ -187,7 +186,7 @@ jack = ""
 
 <p>\8. Done! Cobbler now authenticates against ldap instead of the
  digest file, and you can limit what users can edit things by
- changing the /etc/cobbler/users.conf file.</p>
+ changing the <code>/etc/cobbler/users.conf</code> file.</p>
 
 <h2>Troubleshooting LDAP</h2>
 
@@ -203,7 +202,7 @@ with your python version, for instance 2.4 or 2.5, etc.</p>
 <p>Just run the above and look at the output. You should see a
 traceback if problems are encountered, which may point to problems
 in your configuration if you specified a valid username/password.
-Restart cobblerd after changing /etc/cobbler/settings in order for
+Restart cobblerd after changing <code>/etc/cobbler/settings</code> (if you're not using <a href="/manuals/2.4.0/4/3/1_-_Dynamic_Settings.html">Dynamic Settings</a>) in order for
 them to take effect.</p>
 
    </div>

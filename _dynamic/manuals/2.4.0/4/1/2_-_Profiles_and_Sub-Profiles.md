@@ -57,7 +57,7 @@ When enabled, the system will use gPXE instead of regular PXE for booting.
 Please refer to the {% linkup title:"Using gPXE" extrameta:2.4.0 %} section for details on using gPXE for booting over a network.
 
 #### --enable-menu
-When managing TFTP, Cobbler writes the ${tftproot}/pxelinux.cfg/default file, which contains entries for all profiles. When this option is enabled for a given profile, it will not be added to the default menu.
+When managing TFTP, Cobbler writes the `${tftproot}/pxelinux.cfg/default` file, which contains entries for all profiles. When this option is enabled for a given profile, it will not be added to the default menu.
 
 #### --fetchable-files
 This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The "value" portion of the name is the path/name they will be available as via TFTP.
@@ -70,9 +70,9 @@ By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no pr
 #### --kickstart
 Local filesystem path to a kickstart file. http:// URLs (even CGI’s) are also accepted, but a local file path is recommended, so that the kickstart templating engine can be taken advantage of.
 
-If this parameter is not provided, the kickstart file will default to /var/lib/cobbler/kickstarts/default.ks. This file is initially blank, meaning default kickstarts are not automated "out of the box". Admins can change the default.ks if they desire.
+If this parameter is not provided, the kickstart file will default to `/var/lib/cobbler/kickstarts/default.ks`. This file is initially blank, meaning default kickstarts are not automated "out of the box". Admins can change the default.ks if they desire.
 
-When using kickstart files, they can be placed anywhere on the filesystem, but the recommended path is /var/lib/cobbler/kickstarts. If using the webapp to create new kickstarts, this is where the web application will put them.
+When using kickstart files, they can be placed anywhere on the filesystem, but the recommended path is `/var/lib/cobbler/kickstarts`. If using the webapp to create new kickstarts, this is where the web application will put them.
 
 #### --kopts
 Sets kernel command-line arguments that the profile, and sub-profiles/systems dependant on it, will use during installation only. This field is a hash field, and accepts a set of key=value pairs:
@@ -109,7 +109,7 @@ If your nameservers are not provided by DHCP, you can specify a space seperated 
 As with the --name-servers option, this can be used to specify the default domain search line. Users with DHCP setups should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for each system record.
 
 #### --owners
-The value for --owners is a space seperated list of users and groups as specified in /etc/cobbler/users.conf.
+The value for --owners is a space seperated list of users and groups as specified in `/etc/cobbler/users.conf`.
 
 Users with small sites and a limited number of admins can probably ignore this option, since it only applies to the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell. Furthermore, this is only respected when using the "authz_ownership" module which must be enabled and is not the default.
 

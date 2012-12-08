@@ -99,11 +99,11 @@ var WRInitTime=(new Date()).getTime();
    <div class="span9">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">3</a> <span class="divider">/</span></li><li class="active">Dynamic Settings</li></ul>
     <h1>Dynamic Settings</h1>
-<p>Prior to Cobbler 2.4.0, any changes to /etc/cobbler/settings required a restart of the cobblerd daemon for those changes to take affect. Now, with 2.4.0+, you can easily modify settings on the fly via the "cobbler setting" command.</p>
+<p>Prior to Cobbler 2.4.0, any changes to <code>/etc/cobbler/settings</code> required a restart of the cobblerd daemon for those changes to take affect. Now, with 2.4.0+, you can easily modify settings on the fly via the "cobbler setting" command.</p>
 
 <h3>Enabling Dynamic Settings</h3>
 
-<p>Dynamic settings are not enabled by default. In order to enable them, you must set "allow_dynamic_settings: 1" in /etc/cobbler/settings and restart cobblerd.</p>
+<p>Dynamic settings are not enabled by default. In order to enable them, you must set "allow_dynamic_settings: 1" in <code>/etc/cobbler/settings</code> and restart cobblerd.</p>
 
 <h3>Caveats</h3>
 

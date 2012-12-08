@@ -18,8 +18,8 @@ These features include storage of data (serialization), authorization, and authe
 ## Python Files And modules.conf
 
 To create a module, add a python file in
-/usr/lib/python$version/site-packages/cobbler/modules. Then, in the
-apppropriate part of /etc/cobbler/modules.conf, reference the name
+`/usr/lib/python$version/site-packages/cobbler/modules`. Then, in the
+apppropriate part of `/etc/cobbler/modules.conf`, reference the name
 of your module so cobbler knows that you want to activate the
 module.
 
@@ -32,7 +32,7 @@ An example from the serializers is:
     [serializers]
     settings = serializer_catalog
 
-The format of /etc/cobbler/modules.conf is that of Python's
+The format of `/etc/cobbler/modules.conf` is that of Python's
 ConfigParser module.
 
         A setup file consists of sections, lead by a "[section]" header,

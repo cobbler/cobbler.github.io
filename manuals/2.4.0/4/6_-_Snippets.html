@@ -101,7 +101,7 @@ var WRInitTime=(new Date()).getTime();
     <h1>Snippets</h1>
 <p>Snippets are a way of reusing common blocks of code between kickstarts (though this also works on files other than kickstart templates, but that's a sidenote). For instance, the default Cobbler installation has a snippet called "$SNIPPET('func_register_if_enabled')" that can help set up the application called Func (<a href="http://fedorahosted.org/func">http://fedorahosted.org/func</a>).</p>
 
-<p>This means that every time that this SNIPPET text appears in a kickstart file it is replaced by the contents of /var/lib/cobbler/snippets/func_register_if_enabled. This allows this block of text to be reused in every kickstart template -- you may think of snippets, if you like, as templates for templates!</p>
+<p>This means that every time that this SNIPPET text appears in a kickstart file it is replaced by the contents of <code>/var/lib/cobbler/snippets/func_register_if_enabled</code>. This allows this block of text to be reused in every kickstart template -- you may think of snippets, if you like, as templates for templates!</p>
 
 <p>To review, the syntax looks like:</p>
 
@@ -139,7 +139,7 @@ all share.</p>
 
 <p>This could also be used to set up a package list -- for instance,
 you could store the base package list to install in
-/var/lib/cobbler/snippets/package_list, but override it for
+<code>/var/lib/cobbler/snippets/package_list</code>, but override it for
 certain profiles and systems. This would allow you to ultimately
 create less kickstart templates and leverage the kickstart
 templating engine more by just editing the smaller and more easily
@@ -159,7 +159,7 @@ the following paths in order, finding the first one if it exists
 <p>As with the rest of cobbler, systems override profiles as they are
 more specific, though if the system file did not exist, it would
 use the profile file. As a general safeguard, always create the
-/var/lib/cobbler/snippets/$snippet_name file if you create the
+<code>/var/lib/cobbler/snippets/$snippet_name</code> file if you create the
 per_system and per_profile ones.</p>
 
 <h2>Subdirectories</h2>
@@ -323,7 +323,7 @@ want to do.</p>
 <p>NOTE: Content provided here is not part of Cobbler's "core" code so
 we may not be able to help you on the mailing list or IRC with
 snippets that aren't yet part of cobbler's core distribution.
-Cobbler does ship a few in /var/lib/cobbler/snippets that we can
+Cobbler does ship a few in <code>/var/lib/cobbler/snippets</code> that we can
 answer questions on, and in general, if you have a good idea, we'd
 love to work with you to get it shipped with Cobbler.</p>
 

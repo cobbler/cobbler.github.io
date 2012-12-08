@@ -124,66 +124,78 @@ cobbler distro report
 
 <p>If you want to be explicit with distribution definition, however, here’s how it works:</p>
 
-<p><strong>Example:</strong></p>
+<p><b>Example:</b></p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro add --name<span class="o">=</span>string --kernel<span class="o">=</span>path --initrd<span class="o">=</span>path <span class="o">[</span>options<span class="o">]</span>
 </code></pre>
 </div>
 
 
-<h4>--name (required)</h4>
 
-<p>a string identifying the distribution, this should be something like "rhel4".</p>
 
-<h4>--kernel (required)</h4>
-
-<p>An absolute filesystem path to a kernel image.</p>
-
-<h4>--initrd (required)</h4>
-
-<p>An absolute filesystem path to a initrd image.</p>
-
-<h4>--arch</h4>
-
-<p>Sets the architecture for the PXE bootloader and also controls how koan’s --replace-self option will operate.</p>
-
-<p>The default setting (’standard’) will use pxelinux. Set to ’ia64’ to use elilo. ’ppc’ and ’ppc64’ use yaboot. ’s390x’ is not PXEable, but koan supports it for reinstalls.</p>
-
-<p>’x86’ and ’x86_64’ effectively do the same thing as standard.</p>
-
-<p>If you perform a cobbler import, the arch field will be auto-assigned.</p>
-
-<h4>--boot-files</h4>
-
-<p>This option is used to specify additional files that should be copied to the TFTP directory for the distro so that they can be fetched during earlier stages of the installation. Some distributions (for example, VMware ESXi) require this option to function correctly.</p>
-
-<h4>--breed</h4>
-
-<p>Controls how various physical and virtual parameters, including kernel arguments for automatic installation, are to be treated. Defaults to "redhat", which is a suitable value for Fedora and CentOS as well. It means anything redhat based.</p>
-
-<p>There is limited experimental support for specifying "debian", "ubuntu", or "suse", which treats the kickstart file as a different format and changes the kernel arguments appropriately. Support for other types of distributions is possible in the future. See the Wiki for the latest information about support for these distributions.</p>
-
-<p>The file used for the answer file, regardless of the breed setting, is the value used for --kickstart when creating the profile. In other words, if another distro calls their answer file something other than a "kickstart", the kickstart parameter still governs where that answer file is.</p>
-
-<h4>--clobber</h4>
-
-<p>This option allows "add" to overwrite an existing distro with the same name, so use it with caution.</p>
-
-<h4>--comment</h4>
-
-<p>An optional comment to associate with this distro.</p>
-
-<h4>--fetchable-files</h4>
-
-<p>This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The "value" portion of the name is the path/name they will be available as via TFTP.</p>
-
-<p>Please see the <a href="/manuals/2.4.0/4/4/4_-_Managing_TFTP.html">Managing TFTP</a> section for more details on using the python-based TFTP server.</p>
-
-<h4>--in-place</h4>
-
-<p>By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no preserve the contents.</p>
-
-<p><strong>Example:</strong></p>
+<table class="table table-condensed table-striped">
+<thead>
+ <tr>
+  <th>Field Name</th>
+  <th>Description</th>
+ </tr>
+</thead>
+<tbody>
+ <tr>
+  <td class="nowrap">--name (required)</td>
+  <td>A string identifying the distribution, this should be something like "rhel4".</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--kernel (required)</td>
+  <td>An absolute filesystem path to a kernel image.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--initrd (required)</td>
+  <td>An absolute filesystem path to a initrd image.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--arch</td>
+  <td>
+   <p>Sets the architecture for the PXE bootloader and also controls how koan’s --replace-self option will operate.</p>
+   <p>The default setting (’standard’) will use pxelinux. Set to ’ia64’ to use elilo. ’ppc’ and ’ppc64’ use yaboot. ’s390x’ is not PXEable, but koan supports it for reinstalls.</p>
+   <p>’x86’ and ’x86_64’ effectively do the same thing as standard.</p>
+   <p>If you perform a cobbler import, the arch field will be auto-assigned.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--boot-files</td>
+  <td>
+   <p>This option is used to specify additional files that should be copied to the TFTP directory for the distro so that they can be fetched during earlier stages of the installation. Some distributions (for example, VMware ESXi) require this option to function correctly.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--breed</td>
+  <td>
+   <p>Controls how various physical and virtual parameters, including kernel arguments for automatic installation, are to be treated. Defaults to "redhat", which is a suitable value for Fedora and CentOS as well. It means anything redhat based.</p>
+   <p>There is limited experimental support for specifying "debian", "ubuntu", or "suse", which treats the kickstart file as a different format and changes the kernel arguments appropriately. Support for other types of distributions is possible in the future. See the Wiki for the latest information about support for these distributions.</p>
+   <p>The file used for the answer file, regardless of the breed setting, is the value used for --kickstart when creating the profile. In other words, if another distro calls their answer file something other than a "kickstart", the kickstart parameter still governs where that answer file is.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--clobber</td>
+  <td>This option allows "add" to overwrite an existing distro with the same name, so use it with caution.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--comment</td>
+  <td>An optional comment to associate with this distro.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--fetchable-files</td>
+  <td>
+   <p>This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The "value" portion of the name is the path/name they will be available as via TFTP.</p>
+   <p>Please see the <a href="/manuals/2.4.0/4/4/4_-_Managing_TFTP.html">Managing TFTP</a> section for more details on using the python-based TFTP server.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--in-place</td>
+  <td>
+   <p>By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no preserve the contents.</p>
+   <p><b>Example:</b></p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
@@ -195,7 +207,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e
 </div>
 
 
-<p>To preserve the contents of these fields, --in-place should be specified:</p>
+   <p>To preserve the contents of these fields, --in-place should be specified:</P>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
@@ -207,69 +219,82 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 </div>
 
 
-<h4>--kopts</h4>
-
-<p>Sets kernel command-line arguments that the distro, and profiles/systems dependant on it, will use during installation only. This field is a hash field, and accepts a set of key=value pairs:</p>
-
-<p><strong>Example:</strong></p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--kopts</td>
+  <td>
+   <p>Sets kernel command-line arguments that the distro, and profiles/systems dependant on it, will use during installation only. This field is a hash field, and accepts a set of key=value pairs:</p>
+   <p><b>Example:</b></p>
 
 <div class="highlight"><pre><code class="bash">--kopts<span class="o">=</span><span class="s2">&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</span>
 </code></pre>
 </div>
 
 
-<h4>--kopts-post</h4>
-
-<p>This is just like --kopts, though it governs kernel options on the installed OS, as opposed to kernel options fed to the installer. This requires some special snippets to be found in your kickstart template to work correctly.</p>
-
-<h4>--ksmeta</h4>
-
-<p>This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts a set of key=value pairs:</p>
-
-<p><strong>Example:</strong></p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--kopts-post</td>
+  <td>This is just like --kopts, though it governs kernel options on the installed OS, as opposed to kernel options fed to the installer. This requires some special snippets to be found in your kickstart template to work correctly.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--ksmeta</td>
+  <td>
+   <p>This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts a set of key=value pairs:</p>
+   <p><b>Example:</b></p>
 
 <div class="highlight"><pre><code class="bash">--ksmeta<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf&quot;</span>
 </code></pre>
 </div>
 
 
-<p>See the section on <a href="/manuals/2.4.0/4/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
+   <p>See the section on <a href="/manuals/2.4.0/4/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--mgmt-classes</td>
+  <td>
+   <p>Management classes that should be associated with this distro for use with configuration management systems.</p>
+   <p>Please see the <a href="/manuals/2.4.0/5/3_-_Configuration_Management.html">Configuration Management</a> section for more details on integrating Cobbler with configuration management systems.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--os-version</td>
+  <td>Generally this field can be ignored. It is intended to alter some hardware setup for virtualized instances when provisioning guests with koan. The valid options for --os-version vary depending on what is specified for --breed. If you specify an invalid option, the error message will contain a list of valid os versions that can be used. If you do not know the os version or it does not appear in the list, omitting this argument or using "other" should be perfectly fine. Largely this is needed to support older distributions in virtualized settings, such as "rhel2.1", one of the OS choices if the breed is set to "redhat". If you do not encounter any problems with virtualized instances, this option can be safely ignored.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--owners</td>
+  <td>
+   <p>The value for --owners is a space seperated list of users and groups as specified in <code>/etc/cobbler/users.conf</code>.</p>
+   <p>Users with small sites and a limited number of admins can probably ignore this option, since it only applies to the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell. Furthermore, this is only respected when using the "authz_ownership" module which must be enabled and is not the default.</p>
+   <p>Please see the <a href="/manuals/2.4.0/6/3_-_Web_Authorization.html">Web Authorization</a> section for more details.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--redhat-management-key</td>
+  <td>
+   <p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
+   <p>Please see the <a href="/manuals/2.4.0/Appendix/D_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--redhat-management-server</td>
+  <td>
+   <p>The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
+   <p>Please see the <a href="/manuals/2.4.0/Appendix/D_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--template-files</td>
+  <td>
+   <p>This feature allows cobbler to be used as a configuration management system. The argument is a space delimited string of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the system. Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function as a lightweight templated configuration management system.</p>
+   <p>Please see the <a href="/manuals/2.4.0/5/3/1_-_Built-In_Configuration_Management.html">Built-In Configuration Management</a> section for more details on using template files.</p>
+  </td>
+ </tr>
+</tbody>
+</table>
 
-<h4>--mgmt-classes</h4>
-
-<p>Management classes that should be associated with this distro for use with configuration management systems.</p>
-
-<p>Please see the <a href="/manuals/2.4.0/5/3_-_Configuration_Management.html">Configuration Management</a> section for more details on integrating Cobbler with configuration management systems.</p>
-
-<h4>--os-version</h4>
-
-<p>Generally this field can be ignored. It is intended to alter some hardware setup for virtualized instances when provisioning guests with koan. The valid options for --os-version vary depending on what is specified for --breed. If you specify an invalid option, the error message will contain a list of valid os versions that can be used. If you do not know the os version or it does not appear in the list, omitting this argument or using "other" should be perfectly fine. Largely this is needed to support older distributions in virtualized settings, such as "rhel2.1", one of the OS choices if the breed is set to "redhat". If you do not encounter any problems with virtualized instances, this option can be safely ignored.</p>
-
-<h4>--owners</h4>
-
-<p>The value for --owners is a space seperated list of users and groups as specified in /etc/cobbler/users.conf.</p>
-
-<p>Users with small sites and a limited number of admins can probably ignore this option, since it only applies to the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell. Furthermore, this is only respected when using the "authz_ownership" module which must be enabled and is not the default.</p>
-
-<p>Please see the <a href="/manuals/2.4.0/6/3_-_Web_Authorization.html">Web Authorization</a> section for more details.</p>
-
-<h4>--redhat-management-key</h4>
-
-<p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
-
-<p>Please see the <a href="/manuals/2.4.0/Appendix/D_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
-
-<h4>--redhat-management-server</h4>
-
-<p>The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in <a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
-
-<p>Please see the <a href="/manuals/2.4.0/Appendix/D_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
-
-<h4>--template-files</h4>
-
-<p>This feature allows cobbler to be used as a configuration management system. The argument is a space delimited string of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the system. Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function as a lightweight templated configuration management system.</p>
-
-<p>Please see the <a href="/manuals/2.4.0/5/3/1_-_Built-In_Configuration_Management.html">Built-In Configuration Management</a> section for more details on using template files.</p>
 
    </div>
    <div class="span3">

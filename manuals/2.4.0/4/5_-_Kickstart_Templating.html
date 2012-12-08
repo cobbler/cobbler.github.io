@@ -191,7 +191,7 @@ cobbler profile edit --name=foo --ksmeta="noun=spot verb=run"
 cobbler system add --name=bar --profile=foo --ksmeta="verb=jump"
 </code></pre>
 
-<p>And the kickstart template /opt/cobbler/templates/example:</p>
+<p>And the kickstart template <code>/opt/cobbler/templates/example</code>:</p>
 
 <pre><code>See $noun $verb
 </code></pre>
@@ -433,9 +433,9 @@ kickstart/Anaconda did not support the "repo" directive.</li>
 <li>$yum_config_stanza -- this is replaced with the code
 neccessary to configure the installed system to use the yum repos
 set up during install time for regular operation. In other words,
-it sets up /etc/yum.repos.d on the provisioned system. This works
+it sets up <code>/etc/yum.repos.d</code> on the provisioned system. This works
 for all machines that can have yum installed. If the value in
-/var/lib/cobbler/settings for "yum_post_install_mirror" is set,
+<code>/var/lib/cobbler/settings</code> for "yum_post_install_mirror" is set,
 in addition, the provisioned system will be pointed to the boot
 server as an install source for "core" packages as well as any
 additional repos.</li>
@@ -500,7 +500,7 @@ $time.strftime('%m/%d/%Y')
 
 <p>However what modules you can import are very limited for security
 reasons. If you see a module cobbler won't let you import, add it
-to the whitelist in /etc/cobbler/settings.</p>
+to the whitelist in <code>/etc/cobbler/settings</code>.</p>
 
 <h2>Comments</h2>
 
@@ -513,7 +513,7 @@ file at all.</p>
 <p>Both styles of comments may be mixed. You can use "##" to
 describe what you are doing in your templates, and those "##"
 comments won't show up when someone looks at the rendered kickstart
-file in /var/www/cobbler.</p>
+file in <code>/var/www/cobbler</code>.</p>
 
 <p>If this sounds complicated, it is. It's even more complicated in
 that Cheetah has special meanings for some things starting with

@@ -90,6 +90,10 @@ i.icon-med {
   text-align: center;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 .box_rotate {
      -moz-transform: rotate(-90deg);  /* FF3.5+ */
        -o-transform: rotate(-90deg);  /* Opera 10.5 */

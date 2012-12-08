@@ -11,7 +11,7 @@ Currently, CouchDB must be configured and running on the same system as the cobb
 
 ### Serializer Setup
 
-Add or modify the following section in the /etc/cobbler/modules.conf configuration file:
+Add or modify the following section in the `/etc/cobbler/modules.conf` configuration file:
 
 {% highlight ini %}
 [serializers]

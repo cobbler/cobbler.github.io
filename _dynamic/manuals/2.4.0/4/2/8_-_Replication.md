@@ -42,7 +42,7 @@ appropriate flags with cobbler replicate.
 ## Setup
 
 On each replica-to-be cobbler server, just install cobbler as
-normal, and make sure /etc/cobbler/settings and
+normal, and make sure `/etc/cobbler/settings` and
 /etc/cobbler/modules.conf are appropriate. Use "cobbler check" to
 spot check your work. Cobbler replicate will not configure these
 files, and you may want different site-specific settings for
@@ -81,7 +81,7 @@ keep an active installation.
 
 ## Load Balancing
 
-Similar to the HA / Disaster Recovery case, consider using a
+Similar to the HA/Disaster Recovery case, consider using a
 [CobblerTrigger](Triggers) to notify the other
 server to pull new metadata when commands are issued.
 

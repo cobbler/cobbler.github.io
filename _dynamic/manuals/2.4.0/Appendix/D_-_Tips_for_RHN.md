@@ -15,11 +15,11 @@ Then use "cobbler import" to import the ISO's to get an install tree.
 
 RHEL has a tool installed called rhnreg_ks that you may not be familiar with. It's what you call in the %post of a kickstart file to make a system automatically register itself with Satellite or the RHN Hosted offering.
 
-You may want to read up on rhnreg_ks for all the options it provides, but Cobbler ships with a snippet ("redhat_register") that can help you register systems. It should be in the /var/lib/cobbler/kickstarts/sample*.ks files by default, for you to look at. It is configured by various settings in /etc/cobbler/settings
+You may want to read up on rhnreg_ks for all the options it provides, but Cobbler ships with a snippet ("redhat_register") that can help you register systems. It should be in the `/var/lib/cobbler/kickstarts/sample*.ks` files by default, for you to look at. It is configured by various settings in `/etc/cobbler/settings`.
 
 ### Authenticating XMLRPC/Web users against Satellite / Spacewalk's API
 
-In /etc/cobbler/modules.conf, if you are using authn_spacewalk for authentication, Cobbler can talk to Satellite (5.3 and later) or Spacewalk for authentication. Authentication is cleared when users have the role "org_admin", or "kickstart_admin" roles. Authorization can later be supplied via cobbler modules as normal, for example, authz_allowall (default) or authn_ownership, but should probably be left as authz_allowall.
+In `/etc/cobbler/modules.conf`, if you are using authn_spacewalk for authentication, Cobbler can talk to Satellite (5.3 and later) or Spacewalk for authentication. Authentication is cleared when users have the role "org_admin", or "kickstart_admin" roles. Authorization can later be supplied via cobbler modules as normal, for example, authz_allowall (default) or authn_ownership, but should probably be left as authz_allowall.
 
 See CustomizableSecurity
 

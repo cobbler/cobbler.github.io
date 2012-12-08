@@ -111,7 +111,7 @@ and
 <h2>Even Easier Integration</h2>
 
 <p>Cobbler makes it even easier to deploy Func though. We have two
-settings in /etc/cobbler/settings:</p>
+settings in <code>/etc/cobbler/settings</code>:</p>
 
 <pre><code>func_master: overlord.example.org
 func_auto_setup: 1
@@ -132,7 +132,7 @@ is set up</p>
 <p>This is all powered by cobbler's
 <a href="Kickstart%20Templating">Kickstart Templating</a> and
 <a href="Kickstart%20Snippets">Kickstart Snippets</a> feature, with
-two snippets that ship stock in /var/lib/cobbler/snippets</p>
+two snippets that ship stock in <code>/var/lib/cobbler/snippets</code></p>
 
 <pre><code>%packages
 koan
@@ -145,7 +145,7 @@ SNIPPET:func_register_if_enabled
 </code></pre>
 
 <p>If curious you can read the implementations in
-/var/lib/cobbler/snippets and these are of course controlled by the
+<code>/var/lib/cobbler/snippets</code> and these are of course controlled by the
 aforemented values in settings.</p>
 
 <p>The "func_register_if_enabled" snippet is pretty basic.</p>
@@ -154,7 +154,7 @@ aforemented values in settings.</p>
 certificates and enables the service. When the node boots into the
 OS it will request the certificate (see note on autosigning below)
 and func is now operational. If there are problems, see
-/var/log/func and /var/log/certmaster for debugging info (or other
+<code>/var/log/func</code> and <code>/var/log/certmaster</code> for debugging info (or other
 resources and information on the Func Wiki page). Func also has an
 IRC channel and mailing list as indicated on
 <a href="http://fedorahosted.org/func">http://fedorahosted.org/func</a></p>

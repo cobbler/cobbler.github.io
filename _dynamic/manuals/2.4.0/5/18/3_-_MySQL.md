@@ -8,7 +8,7 @@ Cobbler 2.4.0 introduced support for MySQL as alternate storage backend. Current
 
 ### Serializer Setup
 
-Add or modify the following section in the /etc/cobbler/modules.conf configuration file:
+Add or modify the following section in the `/etc/cobbler/modules.conf` configuration file:
 
 {% highlight ini %}
 [serializers]

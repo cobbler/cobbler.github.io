@@ -150,7 +150,7 @@ cobbler profile add --name=liveF9 --distro=liveF9
 
 <h3>Space Considerations</h3>
 
-<p>The Live Images are very large.  Cobbler will try to hardlink them if the vmlinuz/initrd files are on the same device, but it cannot symlink because of the way TFTP (needed for PXE) requires a chroot environment.  If your distro add command takes a long time, this is because of the copy, please make sure you have the extra space in your TFTP boot directory's partition (either /var/lib/tftpboot or /tftpboot depending on OS).</p>
+<p>The Live Images are very large.  Cobbler will try to hardlink them if the vmlinuz/initrd files are on the same device, but it cannot symlink because of the way TFTP (needed for PXE) requires a chroot environment.  If your distro add command takes a long time, this is because of the copy, please make sure you have the extra space in your TFTP boot directory's partition (either <code>/var/lib/tftpboot</code> or <code>/tftpboot</code> depending on OS).</p>
 
 <h3>Troubleshooting</h3>
 

@@ -114,11 +114,11 @@ here.</p>
 
 <p>These steps also work for kerberizing Cobbler XMLRPC transactions
 provided those URLs are the Apache proxied versions as specified in
-/var/lib/cobbler/httpd.conf</p>
+<code>/var/lib/cobbler/httpd.conf</code></p>
 
 <h2>Configure the Authentication and Authorization Modes</h2>
 
-<p>Edit /etc/cobbler/modules.conf:</p>
+<p>Edit <code>/etc/cobbler/modules.conf</code>:</p>
 
 <pre><code>[authentication]
 module = authn_passthru
@@ -136,11 +136,11 @@ for more info.</p>
 <p>The authn_passthru mode is only as secure as your Apache
 configuraton. If you make the Apache configuration permit everyone
 now, everyone will have access. For this reason you may want to
-test your Apache config on a test path like "/var/www/html/test"
+test your Apache config on a test path like <code>/var/www/html/test</code>
 first, before using those controls to replace your default cobbler
 controls.</p>
 
-<h2>Configure your /etc/krb5.conf</h2>
+<h2>Configure your <code>/etc/krb5.conf</code></h2>
 
 <p>NOTE: This is based on my file which I created during testing. Your
 kerberos configuration could be rather different.</p>
@@ -181,8 +181,8 @@ kerberos configuration could be rather different.</p>
 
 <h2>Modify your Apache configuration file</h2>
 
-<p>There's a section in /etc/httpd/conf.d/cobbler.conf that controls
-access to "/var/www/cobbler/web". We are going to modify that
+<p>There's a section in <code>/etc/httpd/conf.d/cobbler.conf</code> that controls
+access to <code>/var/www/cobbler/web</code>. We are going to modify that
 section. Replace that specific "Directory" section with:</p>
 
 <p>(Note that for Cobbler >= 2.0, the path is actually
@@ -238,7 +238,7 @@ started.</p>
 "user@EXAMPLE.COM" not "user".</p>
 
 <p>If you are using one of the authorization mechanisms that uses
-/etc/cobbler/users.conf, make sure these match and that you do not
+<code>/etc/cobbler/users.conf</code>, make sure these match and that you do not
 use just the short form.</p>
 
 <h2>Customizations</h2>

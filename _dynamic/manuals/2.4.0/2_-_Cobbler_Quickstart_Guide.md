@@ -30,7 +30,7 @@ This will pull in all of the requirements you need for a basic setup.
 
 Before starting the cobblerd service, there are a few things you should modify.
 
-Settings for cobbler/cobblerd are stored in /etc/cobbler/settings. This file is a YAML formatted data file, so be sure to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running. 
+Settings for cobbler/cobblerd are stored in `/etc/cobbler/settings`. This file is a YAML formatted data file, so be sure to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running. 
 
 ### Default Encrypted Password 
 
@@ -105,9 +105,9 @@ $ man dhcpd.conf
 
 ## Files and Directory Notes
 
-Cobbler makes heavy use of the /var directory. The /var/www/cobbler/ks_mirror directory is where all of the distrubtion and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
+Cobbler makes heavy use of the `/var` directory. The `/var/www/cobbler/ks_mirror` directory is where all of the distrubtion and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
 
-If you have installed cobbler onto a system that has very little free space in the partition containing /var, please read the {% linkup title:"Relocating Your Installation" extrameta:2.4.0 %} section of the manual to learn how you can relocate your installation properly.
+If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please read the {% linkup title:"Relocating Your Installation" extrameta:2.4.0 %} section of the manual to learn how you can relocate your installation properly.
 
 ## Starting and Enabling the Cobbler Service
 

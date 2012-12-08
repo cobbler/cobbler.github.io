@@ -4,7 +4,7 @@ title: Complete Settings List
 meta: 2.4.0
 ---
 
-This page documents all settings /etc/cobbler/settings available for configuring both cobblerd and the cobbler CLI command. Be sure to restart the cobblerd service after making changes to this file.
+This page documents all settings `/etc/cobbler/settings` available for configuring both cobblerd and the cobbler CLI command. Be sure to restart the cobblerd service after making changes to this file.
 
 **NOTE:** The defaults shown here are noted via JSON syntax. The settings file is stored as YAML, so be sure to format it correctly or cobblerd and the CLI command will not work properly.
 
@@ -506,7 +506,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.4.0 %} sec
 
 #### Description:
 
-If enabled, Cobbler will rewrite the dhcpd.conf file based on the template /etc/cobbler/dhcp.template. If you are using static IP addresses for interfaces, you must enable this option so that static lease entries are written and available for the PXE phase of the installation.
+If enabled, Cobbler will rewrite the dhcpd.conf file based on the template `/etc/cobbler/dhcp.template`. If you are using static IP addresses for interfaces, you must enable this option so that static lease entries are written and available for the PXE phase of the installation.
 
 Alternatively, if DNSMASQ is being used for DNS/DHCP, it will manage those configuration files.
 
@@ -704,7 +704,7 @@ Please refer to the {% linkup title:"Tips For RHN" extrameta:2.4.0 %} section fo
 
 #### Description:
 
-If enabled, this allows /usr/bin/cobbler-register (part of the koan package) to be used to remotely add new cobbler system records to cobbler. This effectively allows for registration of new hardware from system records, even during the build process when building a system based only on a profile.
+If enabled, this allows `/usr/bin/cobbler-register` (part of the koan package) to be used to remotely add new cobbler system records to cobbler. This effectively allows for registration of new hardware from system records, even during the build process when building a system based only on a profile.
 
 Please refer to the {% linkup title:"Automatic Registration" extrameta:2.4.0 %} section for more details.
 
@@ -798,7 +798,7 @@ Please refer to the {% linkup title:"Data Revision Control" extrameta:2.4.0 %} s
 
 If scm_track_enabled is set to true, Cobbler will use the source control method specified by this setting to revision control data objects. Currently, only "git" and "hg" are supported.
 
-**NOTE:** Only data in /var/lib/cobbler is revision controlled.
+**NOTE:** Only data in `/var/lib/cobbler` is revision controlled.
 
 Please refer to the {% linkup title:"Data Revision Control" extrameta:2.4.0 %} section for more details.
 

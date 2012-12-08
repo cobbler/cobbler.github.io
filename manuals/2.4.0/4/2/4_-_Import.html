@@ -135,9 +135,9 @@ above commands to add them to Cobbler.</p>
 
 <p>Cobbler can auto-add distributions and profiles from remote sources, whether this is a filesystem path or an rsync mirror.  This can save a lot of time when setting up a new provisioning environment.  Import is a feature that many users will want to take advantage of, and is very simple to use.</p>
 
-<p>After an import is run, cobbler will try to detect the distribution type and automatically assign kickstarts.  By default, it will provision the system by erasing the hard drive, setting up eth0 for dhcp, and using a default password of "cobbler".  If this is undesirable, edit the kickstart files in /etc/cobbler to do something else or change the kickstart setting after cobbler creates the profile.</p>
+<p>After an import is run, cobbler will try to detect the distribution type and automatically assign kickstarts.  By default, it will provision the system by erasing the hard drive, setting up eth0 for dhcp, and using a default password of "cobbler".  If this is undesirable, edit the kickstart files in <code>/var/lib/cobbler/kickstarts</code> to do something else or change the kickstart setting after cobbler creates the profile.</p>
 
-<p>Mirrored content is saved automatically in /var/www/cobbler/ks_mirror.</p>
+<p>Mirrored content is saved automatically in <code>/var/www/cobbler/ks_mirror</code>.</p>
 
 <pre><code>Example1:  cobbler import --path=rsync://mirrorserver.example.com/path/ --name=fedora --arch=x86
 
@@ -153,9 +153,9 @@ Example5:  cobbler import --path=/path/where/filer/is/mounted --name=anyname \
 
 <p>Once imported, run a "cobbler list" or "cobbler report" to see what you've added.</p>
 
-<p>By default, the rsync operations will exclude content of certain architectures, debug RPMs, and ISO images -- to change what is excluded during an import, see /etc/cobbler/rsync.exclude.</p>
+<p>By default, the rsync operations will exclude content of certain architectures, debug RPMs, and ISO images -- to change what is excluded during an import, see <code>/etc/cobbler/rsync.exclude</code>.</p>
 
-<p>Note that all of the import commands will mirror install tree content into /var/www/cobbler unless a network accessible location is given with --available-as.  --available-as will be primarily used when importing distros stored on an external NAS box, or potentially on another partition on the same machine that is already accessible via http:// or ftp://.</p>
+<p>Note that all of the import commands will mirror install tree content into <code>/var/www/cobbler</code> unless a network accessible location is given with --available-as.  --available-as will be primarily used when importing distros stored on an external NAS box, or potentially on another partition on the same machine that is already accessible via http:// or ftp://.</p>
 
 <p>For import methods using rsync, additional flags can be passed to rsync with the option --rsync-flags.</p>
 

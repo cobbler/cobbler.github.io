@@ -9,13 +9,13 @@ Cobbler allows for linking your power management systems with cobbler, making it
 
 ## Fence Agents
 
-Cobbler relies on fencing agents, provided by the 'cman' package for some distributions or 'fence-agents' for others. These scripts are installed in the /usr/sbin directories. Cobbler will automatically find any files in that directory named fence_* and allow them to be used for power management.
+Cobbler relies on fencing agents, provided by the 'cman' package for some distributions or 'fence-agents' for others. These scripts are installed in the `/usr/sbin` directories. Cobbler will automatically find any files in that directory named fence_* and allow them to be used for power management.
 
-**NOTE:** Some distros may place the fencing agents in /sbin - this is currently a known bug. To work around this for now, symlink the /sbin/fence_* scripts you wish to use to /usr/sbin so cobbler can find them. This will be fixed in a future version.
+**NOTE:** Some distros may place the fencing agents in `/sbin` - this is currently a known bug. To work around this for now, symlink the `/sbin/fence_*` scripts you wish to use to `/usr/sbin` so cobbler can find them. This will be fixed in a future version.
 
 ## Changes From Older Versions
 
-Cobbler versions prior to 2.2.3-2 used templates stored in /etc/cobbler/power to generate commands that were run as shell commands. This was changed in 2.2.3-2 to use the fencing agents ability to instead read the parameters from STDIN. This is safer, as no passwords are shown in plaintext command line options, nor can a malformed variable be used to inject improper shell commands during the fencing agent execution.
+Cobbler versions prior to 2.2.3-2 used templates stored in `/etc/cobbler/power` to generate commands that were run as shell commands. This was changed in 2.2.3-2 to use the fencing agents ability to instead read the parameters from STDIN. This is safer, as no passwords are shown in plaintext command line options, nor can a malformed variable be used to inject improper shell commands during the fencing agent execution.
 
 ### New Power Templates
 
@@ -29,19 +29,19 @@ ipaddr=$power_address
 port=$power_id
 {% endhighlight %}
 
-The variables above correspond to the --power-* options available when adding/editing a system (or via the "Power Management" tab in the Web UI). If you wish to add aditional options, you can create a template in /etc/cobbler/power named fence_&lt;name&gt;.template, where name is the fencing agent you wish to use.
+The variables above correspond to the --power-* options available when adding/editing a system (or via the "Power Management" tab in the Web UI). If you wish to add aditional options, you can create a template in `/etc/cobbler/power` named fence_&lt;name&gt;.template, where name is the fencing agent you wish to use.
 
 Any additional options should be added one per line, as described in the fencing agents man page. Additional variables can be used if they are set in --ksmeta.
 
 ### Custom Fencing Agents
 
-If you would like to use a custom fencing agent not provided by your distribution, you can do so easily by placing it in the /usr/sbin directory and name it fence_&lt;mytype&gt;. Just make sure that your custom program reads its options from STDIN, as noted above.
+If you would like to use a custom fencing agent not provided by your distribution, you can do so easily by placing it in the `/usr/sbin` directory and name it fence_&lt;mytype&gt;. Just make sure that your custom program reads its options from STDIN, as noted above.
 
 ## Defaults
 
 If --power-user and --power-pass are left blank, the values of default\_power\_user and default\_power\_pass will be loaded from cobblerd's environment at the time of usage.
 
---power-type also has a default value in /etc/cobbler/settings, initially set to "ipmilan".
+--power-type also has a default value in `/etc/cobbler/settings`, initially set to "ipmilan".
 
 ## Important: Security Implications
 

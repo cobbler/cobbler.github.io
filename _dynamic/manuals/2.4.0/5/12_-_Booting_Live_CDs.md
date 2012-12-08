@@ -52,7 +52,7 @@ When you boot this profile it will take a relatively long time (3-5 minutes?) an
 
 ### Space Considerations
 
-The Live Images are very large.  Cobbler will try to hardlink them if the vmlinuz/initrd files are on the same device, but it cannot symlink because of the way TFTP (needed for PXE) requires a chroot environment.  If your distro add command takes a long time, this is because of the copy, please make sure you have the extra space in your TFTP boot directory's partition (either /var/lib/tftpboot or /tftpboot depending on OS).
+The Live Images are very large.  Cobbler will try to hardlink them if the vmlinuz/initrd files are on the same device, but it cannot symlink because of the way TFTP (needed for PXE) requires a chroot environment.  If your distro add command takes a long time, this is because of the copy, please make sure you have the extra space in your TFTP boot directory's partition (either `/var/lib/tftpboot` or `/tftpboot` depending on OS).
 
 ### Troubleshooting
 

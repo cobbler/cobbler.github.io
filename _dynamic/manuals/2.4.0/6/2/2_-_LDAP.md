@@ -20,7 +20,7 @@ should work in the same manner.
 
     yum install python-ldap
 
-\1. In /etc/cobbler/modules.conf change the authn/authz sections to
+\1. In `/etc/cobbler/modules.conf` change the authn/authz sections to
  look like:
 
     
@@ -33,9 +33,9 @@ should work in the same manner.
 
 The above specifies that you authenticating against LDAP and will
 list which LDAP users are valid by looking at
-/etc/cobbler/users.conf.
+`/etc/cobbler/users.conf`.
 
-\2. In /etc/cobbler/settings, set the following to appropriate
+\2. In `/etc/cobbler/settings`, set the following to appropriate
  values to configure the LDAP parts. The values below are examples
  that show us pointing to an LDAP server, which is not running on
  the cobbler box, for authentication. Note that authorization is
@@ -57,8 +57,7 @@ field.
 
     openssl s_client -connect servername:636
 
-\4. Copy everything between BEGIN and END in the above output to
- /etc/openldap/cacerts/ldap.pem
+\4. Copy everything between BEGIN and END in the above output to `/etc/openldap/cacerts/ldap.pem`
 
 \5. Ensure that the CA certificate is correctly hashed
 
@@ -71,12 +70,12 @@ cacertdir\_rehash command:
 
     cacertdir_rehash /etc/openldap/cacerts
 
-\6. Configure /etc/openldap/ldap.conf to include the following:
+\6. Configure `/etc/openldap/ldap.conf` to include the following:
 
     TLS_CACERTDIR   /etc/openldap/cacerts
     TLS_REQCERT     allow
 
-\7. Edit /etc/cobbler/users.conf to include the list of users
+\7. Edit `/etc/cobbler/users.conf` to include the list of users
  allowed access to cobbler resources. These must match names in
  LDAP. The group names are just comments.
 
@@ -87,7 +86,7 @@ cacertdir\_rehash command:
 
 \8. Done! Cobbler now authenticates against ldap instead of the
  digest file, and you can limit what users can edit things by
- changing the /etc/cobbler/users.conf file.
+ changing the `/etc/cobbler/users.conf` file.
 
 ## Troubleshooting LDAP
 
@@ -102,6 +101,6 @@ with your python version, for instance 2.4 or 2.5, etc.
 Just run the above and look at the output. You should see a
 traceback if problems are encountered, which may point to problems
 in your configuration if you specified a valid username/password.
-Restart cobblerd after changing /etc/cobbler/settings in order for
+Restart cobblerd after changing `/etc/cobbler/settings` (if you're not using {% linkup title:"Dynamic Settings" extrameta:2.4.0 %}) in order for
 them to take effect.
 

@@ -116,14 +116,14 @@ See <a href="Kerberos">Kerberos</a> and
 <a href="Ldap">LDAP</a> for details on how
 to set those up. Failing that, using the authn_digest is perfectly
 fine, but don't share passwords among the users. Logging goes to
-/var/log/cobbler/*.log and can be used to see what user does
+<code>/var/log/cobbler/\*.log</code> and can be used to see what user does
 what.</p>
 
 <p>For <a href="Security%20Overview">Customizable Security</a>,
 choose authz_ownership, as this will allow users to only edit
 things that they create unless you declare certain users to be
 admins. You should then define groups for users in
-/etc/cobbler/users.conf following the format of that file, then
+<code>/etc/cobbler/users.conf</code> following the format of that file, then
 assign objects in cobbler (like distros, etc) ownership as
 described in
 <a href="/cobbler/wiki/AuthorizationWithOwnership">AuthorizationWithOwnership</a>.</p>
@@ -155,7 +155,7 @@ TFTP at the same time.</p>
 you about to ensure everything works according to plan.</p>
 
 <p>Also note, you may run into some problems if you need to relocate
-your /var/www elsewhere, which most users should not need to do. If
+your <code>/var/www elsewhere</code>, which most users should not need to do. If
 you do, read
 <a href="/cobbler/wiki/RelocatingYourInstall">RelocatingYourInstall</a> and
 that mentioned details about context.</p>

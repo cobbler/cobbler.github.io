@@ -99,7 +99,7 @@ var WRInitTime=(new Date()).getTime();
    <div class="span9">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4/3_-_Cobbler_Settings.html">3</a> <span class="divider">/</span></li><li class="active">Complete Settings List</li></ul>
     <h1>Complete Settings List</h1>
-<p>This page documents all settings /etc/cobbler/settings available for configuring both cobblerd and the cobbler CLI command. Be sure to restart the cobblerd service after making changes to this file.</p>
+<p>This page documents all settings <code>/etc/cobbler/settings</code> available for configuring both cobblerd and the cobbler CLI command. Be sure to restart the cobblerd service after making changes to this file.</p>
 
 <p><strong>NOTE:</strong> The defaults shown here are noted via JSON syntax. The settings file is stored as YAML, so be sure to format it correctly or cobblerd and the CLI command will not work properly.</p>
 
@@ -819,7 +819,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Description:</h4>
 
-<p>If enabled, Cobbler will rewrite the dhcpd.conf file based on the template /etc/cobbler/dhcp.template. If you are using static IP addresses for interfaces, you must enable this option so that static lease entries are written and available for the PXE phase of the installation.</p>
+<p>If enabled, Cobbler will rewrite the dhcpd.conf file based on the template <code>/etc/cobbler/dhcp.template</code>. If you are using static IP addresses for interfaces, you must enable this option so that static lease entries are written and available for the PXE phase of the installation.</p>
 
 <p>Alternatively, if DNSMASQ is being used for DNS/DHCP, it will manage those configuration files.</p>
 
@@ -1094,7 +1094,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Description:</h4>
 
-<p>If enabled, this allows /usr/bin/cobbler-register (part of the koan package) to be used to remotely add new cobbler system records to cobbler. This effectively allows for registration of new hardware from system records, even during the build process when building a system based only on a profile.</p>
+<p>If enabled, this allows <code>/usr/bin/cobbler-register</code> (part of the koan package) to be used to remotely add new cobbler system records to cobbler. This effectively allows for registration of new hardware from system records, even during the build process when building a system based only on a profile.</p>
 
 <p>Please refer to the <a href="/manuals/2.4.0/5/11_-_Auto-Registration.html">Automatic Registration</a> section for more details.</p>
 
@@ -1224,7 +1224,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If scm_track_enabled is set to true, Cobbler will use the source control method specified by this setting to revision control data objects. Currently, only "git" and "hg" are supported.</p>
 
-<p><strong>NOTE:</strong> Only data in /var/lib/cobbler is revision controlled.</p>
+<p><strong>NOTE:</strong> Only data in <code>/var/lib/cobbler</code> is revision controlled.</p>
 
 <p>Please refer to the <a href="/manuals/2.4.0/5/20_-_Data_Revision_Control.html">Data Revision Control</a> section for more details.</p>
 

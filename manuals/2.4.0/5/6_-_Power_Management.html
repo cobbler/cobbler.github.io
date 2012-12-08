@@ -103,13 +103,13 @@ var WRInitTime=(new Date()).getTime();
 
 <h2>Fence Agents</h2>
 
-<p>Cobbler relies on fencing agents, provided by the 'cman' package for some distributions or 'fence-agents' for others. These scripts are installed in the /usr/sbin directories. Cobbler will automatically find any files in that directory named fence_* and allow them to be used for power management.</p>
+<p>Cobbler relies on fencing agents, provided by the 'cman' package for some distributions or 'fence-agents' for others. These scripts are installed in the <code>/usr/sbin</code> directories. Cobbler will automatically find any files in that directory named fence_* and allow them to be used for power management.</p>
 
-<p><strong>NOTE:</strong> Some distros may place the fencing agents in /sbin - this is currently a known bug. To work around this for now, symlink the /sbin/fence_* scripts you wish to use to /usr/sbin so cobbler can find them. This will be fixed in a future version.</p>
+<p><strong>NOTE:</strong> Some distros may place the fencing agents in <code>/sbin</code> - this is currently a known bug. To work around this for now, symlink the <code>/sbin/fence_*</code> scripts you wish to use to <code>/usr/sbin</code> so cobbler can find them. This will be fixed in a future version.</p>
 
 <h2>Changes From Older Versions</h2>
 
-<p>Cobbler versions prior to 2.2.3-2 used templates stored in /etc/cobbler/power to generate commands that were run as shell commands. This was changed in 2.2.3-2 to use the fencing agents ability to instead read the parameters from STDIN. This is safer, as no passwords are shown in plaintext command line options, nor can a malformed variable be used to inject improper shell commands during the fencing agent execution.</p>
+<p>Cobbler versions prior to 2.2.3-2 used templates stored in <code>/etc/cobbler/power</code> to generate commands that were run as shell commands. This was changed in 2.2.3-2 to use the fencing agents ability to instead read the parameters from STDIN. This is safer, as no passwords are shown in plaintext command line options, nor can a malformed variable be used to inject improper shell commands during the fencing agent execution.</p>
 
 <h3>New Power Templates</h3>
 
@@ -124,19 +124,19 @@ var WRInitTime=(new Date()).getTime();
 </div>
 
 
-<p>The variables above correspond to the --power-* options available when adding/editing a system (or via the "Power Management" tab in the Web UI). If you wish to add aditional options, you can create a template in /etc/cobbler/power named fence_&lt;name&gt;.template, where name is the fencing agent you wish to use.</p>
+<p>The variables above correspond to the --power-* options available when adding/editing a system (or via the "Power Management" tab in the Web UI). If you wish to add aditional options, you can create a template in <code>/etc/cobbler/power</code> named fence_&lt;name&gt;.template, where name is the fencing agent you wish to use.</p>
 
 <p>Any additional options should be added one per line, as described in the fencing agents man page. Additional variables can be used if they are set in --ksmeta.</p>
 
 <h3>Custom Fencing Agents</h3>
 
-<p>If you would like to use a custom fencing agent not provided by your distribution, you can do so easily by placing it in the /usr/sbin directory and name it fence_&lt;mytype&gt;. Just make sure that your custom program reads its options from STDIN, as noted above.</p>
+<p>If you would like to use a custom fencing agent not provided by your distribution, you can do so easily by placing it in the <code>/usr/sbin</code> directory and name it fence_&lt;mytype&gt;. Just make sure that your custom program reads its options from STDIN, as noted above.</p>
 
 <h2>Defaults</h2>
 
 <p>If --power-user and --power-pass are left blank, the values of default_power_user and default_power_pass will be loaded from cobblerd's environment at the time of usage.</p>
 
-<p>--power-type also has a default value in /etc/cobbler/settings, initially set to "ipmilan".</p>
+<p>--power-type also has a default value in <code>/etc/cobbler/settings</code>, initially set to "ipmilan".</p>
 
 <h2>Important: Security Implications</h2>
 

@@ -93,7 +93,7 @@ Given the following commands
     cobbler profile edit --name=foo --ksmeta="noun=spot verb=run"
     cobbler system add --name=bar --profile=foo --ksmeta="verb=jump"
 
-And the kickstart template /opt/cobbler/templates/example:
+And the kickstart template `/opt/cobbler/templates/example`:
 
     See $noun $verb
 
@@ -315,9 +315,9 @@ variables:
 -   $yum\_config\_stanza -- this is replaced with the code
     neccessary to configure the installed system to use the yum repos
     set up during install time for regular operation. In other words,
-    it sets up /etc/yum.repos.d on the provisioned system. This works
+    it sets up `/etc/yum.repos.d` on the provisioned system. This works
     for all machines that can have yum installed. If the value in
-    /var/lib/cobbler/settings for "yum\_post\_install\_mirror" is set,
+    `/var/lib/cobbler/settings` for "yum\_post\_install\_mirror" is set,
     in addition, the provisioned system will be pointed to the boot
     server as an install source for "core" packages as well as any
     additional repos.
@@ -377,7 +377,7 @@ Example:
 
 However what modules you can import are very limited for security
 reasons. If you see a module cobbler won't let you import, add it
-to the whitelist in /etc/cobbler/settings.
+to the whitelist in `/etc/cobbler/settings`.
 
 ## Comments
 
@@ -390,7 +390,7 @@ Kickstart comments "\#" will show up in the rendered output.
 Both styles of comments may be mixed. You can use "\#\#" to
 describe what you are doing in your templates, and those "\#\#"
 comments won't show up when someone looks at the rendered kickstart
-file in /var/www/cobbler.
+file in `/var/www/cobbler`.
 
 If this sounds complicated, it is. It's even more complicated in
 that Cheetah has special meanings for some things starting with

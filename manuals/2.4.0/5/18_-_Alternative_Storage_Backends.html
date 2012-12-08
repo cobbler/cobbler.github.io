@@ -101,9 +101,9 @@ var WRInitTime=(new Date()).getTime();
     <h1>Alternative Storage Backends</h1>
 <p>Cobbler saves object data via serializers implemented as Cobbler <a href="/manuals/2.4.0/5/5/2_-_Modules.html">Modules</a>. This means Cobbler can be extended to support other storage backends for those that want to do it. Today, cobbler ships two such modules alternate backends: MongoDB and CouchDB.</p>
 
-<p>The default serializer is <strong>serializer_catalog</strong> which uses JSON in /var/lib/cobbler/config/&lt;object&gt; directories, with one file for each object definition. It is very fast, however people with a large number of systems can still experience slowness, especially if cobbler lives on a disk partition that is slow or heavily utilized. Users with such setups should ensure /var/lib/cobbler is mounted on a dedicated disk that offers higher performance (15K SAS or a SAN LUN for example).</p>
+<p>The default serializer is <strong>serializer_catalog</strong> which uses JSON in <code>/var/lib/cobbler/config/&amp;lt;object&amp;gt;</code> directories, with one file for each object definition. It is very fast, however people with a large number of systems can still experience slowness, especially if cobbler lives on a disk partition that is slow or heavily utilized. Users with such setups should ensure <code>/var/lib/cobbler</code> is mounted on a dedicated disk that offers higher performance (15K SAS or a SAN LUN for example).</p>
 
-<p>An older legacy serializer, "serializer_yaml" is deprecated and is only around to support older installs that have not yet upgraded to serializer_catalog by changing the serializer values in /etc/cobbler/modules.conf and restarting cobblerd.</p>
+<p>An older legacy serializer, "serializer_yaml" is deprecated and is only around to support older installs that have not yet upgraded to serializer_catalog by changing the serializer values in <code>/etc/cobbler/modules.conf</code> and restarting cobblerd.</p>
 
 <h3>Details</h3>
 
@@ -141,7 +141,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h3>One Note of Warning</h3>
 
-<p>The "settings" serializer should always be "serializer_catalog", or at least should read /var/lib/cobbler/settings and treat it as a YAML file. Don't change it unless you know what you are doing, as that file (in YAML format) is packaged as part of the Cobbler RPM.</p>
+<p>The "settings" serializer should always be "serializer_catalog", or at least should read <code>/var/lib/cobbler/settings</code> and treat it as a YAML file. Don't change it unless you know what you are doing, as that file (in YAML format) is packaged as part of the Cobbler RPM.</p>
 
 <p>Future versions of Cobbler may change this default, and revert to using the YAML config only if no JSON config is found.</p>
 

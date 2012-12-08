@@ -20,7 +20,7 @@ The kernel command-line has a limited amount of space, relying on *syslog=someho
 
 #### Only captures syslog
 
-The *syslog=* approach will only capture syslog-style messages. Any command-specific output (/tmp/lvmout, /tmp/ks-script, /tmp/X.config) or installation failure (/tmp/anacdump.txt) information is not sent.
+The *syslog=* approach will only capture syslog-style messages. Any command-specific output (`/tmp/lvmout`, `/tmp/ks-script`, `/tmp/X.config`) or installation failure (`/tmp/anacdump.txt`) information is not sent.
 
 #### Unsupported on older distros
 
@@ -47,7 +47,7 @@ You will also need to update your kickstart templates to include the following s
 $SNIPPET('pre_anamon')
 {% endhighlight %}
 
-Anamon can also send /var/log/messages and /var/log/boot.log once your provisioned system has booted. To also enable post-install boot notification, you must enable the following snippet:
+Anamon can also send `/var/log/messages` and `/var/log/boot.log` once your provisioned system has booted. To also enable post-install boot notification, you must enable the following snippet:
 
 {% highlight bash %}
 %post

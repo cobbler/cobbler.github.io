@@ -24,7 +24,7 @@ To use Cobbler's XMLRPC API, first you must set up
 [Security](Security Overview) and
 ensure both Apache and cobblerd are running on your cobbler server.
 If you are using the authn\_spacewalk module, set
-redhat\_management\_permissive: 1 in /etc/cobbler/settings.
+redhat\_management\_permissive: 1 in `/etc/cobbler/settings`.
 
 ## About These Examples
 
@@ -288,6 +288,6 @@ This is how SSL support is provided.
 ## Logging
 
 As a sidenote, Cobbler XMLRPC uses a seperate logfile,
-/var/log/cobbler/cobblerd.log, than the standard CLI operations
+`/var/log/cobbler/cobblerd.log`, than the standard CLI operations
 (cobbler.log). Remote exceptions are logged here for you to read,
 and can be helpful for debugging.

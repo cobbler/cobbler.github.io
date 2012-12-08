@@ -3,11 +3,11 @@ layout: manpage
 title: Dynamic Settings
 meta: 2.4.0
 ---
-Prior to Cobbler 2.4.0, any changes to /etc/cobbler/settings required a restart of the cobblerd daemon for those changes to take affect. Now, with 2.4.0+, you can easily modify settings on the fly via the "cobbler setting" command.
+Prior to Cobbler 2.4.0, any changes to `/etc/cobbler/settings` required a restart of the cobblerd daemon for those changes to take affect. Now, with 2.4.0+, you can easily modify settings on the fly via the "cobbler setting" command.
 
 ### Enabling Dynamic Settings
 
-Dynamic settings are not enabled by default. In order to enable them, you must set "allow_dynamic_settings: 1" in /etc/cobbler/settings and restart cobblerd. 
+Dynamic settings are not enabled by default. In order to enable them, you must set "allow_dynamic_settings: 1" in `/etc/cobbler/settings` and restart cobblerd. 
 
 ### Caveats
 

@@ -21,14 +21,14 @@ See [Kerberos](Kerberos) and
 [LDAP](Ldap) for details on how
 to set those up. Failing that, using the authn\_digest is perfectly
 fine, but don't share passwords among the users. Logging goes to
-/var/log/cobbler/\*.log and can be used to see what user does
+`/var/log/cobbler/\*.log` and can be used to see what user does
 what.
 
 For [Customizable Security](Security Overview),
 choose authz\_ownership, as this will allow users to only edit
 things that they create unless you declare certain users to be
 admins. You should then define groups for users in
-/etc/cobbler/users.conf following the format of that file, then
+`/etc/cobbler/users.conf` following the format of that file, then
 assign objects in cobbler (like distros, etc) ownership as
 described in
 [AuthorizationWithOwnership](/cobbler/wiki/AuthorizationWithOwnership).
@@ -60,7 +60,7 @@ You should install the semanage rules that "cobbler check" tells
 you about to ensure everything works according to plan.
 
 Also note, you may run into some problems if you need to relocate
-your /var/www elsewhere, which most users should not need to do. If
+your `/var/www elsewhere`, which most users should not need to do. If
 you do, read
 [RelocatingYourInstall](/cobbler/wiki/RelocatingYourInstall) and
 that mentioned details about context.

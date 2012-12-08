@@ -87,7 +87,7 @@ want a version of yum-utils at least equal to 1.0.4.
 
 If you want your installed systems to be automatically configured
 to use your install server for updates, go into
-/etc/cobbler/settings and set the following:
+`/etc/cobbler/settings` and set the following:
 
     yum_post_install_mirror: 1
 

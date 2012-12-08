@@ -33,10 +33,10 @@ $ ln -s /srv/tftp /var/lib/tftpboot
 $ chown www-data /var/lib/cobbler/webui_sessions
 {% endhighlight %}
 
-* Change all /var/www/cobbler in /etc/apache2/conf.d/cobbler.conf to /usr/share/cobbler/webroot/
+* Change all `/var/www/cobbler` in `/etc/apache2/conf.d/cobbler.conf` to `/usr/share/cobbler/webroot/`
 * init script
   - add Required-Stop line
-  - path needs to be /usr/local/... or fix the install location
+  - path needs to be `/usr/local/...` or fix the install location
 </pre>
 
 The same steps will most likely be required on the current 2.2.x stable branch.

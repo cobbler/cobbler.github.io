@@ -87,5 +87,5 @@ You can setup DBAN to autowipe the system in question by supplying the kernel op
 
 It should go without saying that, while it might be a mildly fun prank, you shouldn't set this to be your default pxe boot menu choice. You'll most likely get fired and/or beat up by your fellow employees.
 
-If you do set this profile, it will show up as an option in the PXE menus. If this concerns you, set up a syslinux password by editing the templates in /etc/cobbler to ensure no one walks up to a system and blitzes it involuntarily. An option to keep a profile out of the PXE menu is doable if enough people request it or someone wants to submit a patch...
+If you do set this profile, it will show up as an option in the PXE menus. If this concerns you, set up a syslinux password by editing the templates in `/etc/cobbler` to ensure no one walks up to a system and blitzes it involuntarily. An option to keep a profile out of the PXE menu is doable if enough people request it or someone wants to submit a patch...
 

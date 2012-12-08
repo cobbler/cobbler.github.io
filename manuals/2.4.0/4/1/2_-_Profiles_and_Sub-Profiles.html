@@ -163,7 +163,7 @@ cobbler profile report
 
 <h4>--enable-menu</h4>
 
-<p>When managing TFTP, Cobbler writes the ${tftproot}/pxelinux.cfg/default file, which contains entries for all profiles. When this option is enabled for a given profile, it will not be added to the default menu.</p>
+<p>When managing TFTP, Cobbler writes the <code>${tftproot}/pxelinux.cfg/default</code> file, which contains entries for all profiles. When this option is enabled for a given profile, it will not be added to the default menu.</p>
 
 <h4>--fetchable-files</h4>
 
@@ -179,9 +179,9 @@ cobbler profile report
 
 <p>Local filesystem path to a kickstart file. http:// URLs (even CGI’s) are also accepted, but a local file path is recommended, so that the kickstart templating engine can be taken advantage of.</p>
 
-<p>If this parameter is not provided, the kickstart file will default to /var/lib/cobbler/kickstarts/default.ks. This file is initially blank, meaning default kickstarts are not automated "out of the box". Admins can change the default.ks if they desire.</p>
+<p>If this parameter is not provided, the kickstart file will default to <code>/var/lib/cobbler/kickstarts/default.ks</code>. This file is initially blank, meaning default kickstarts are not automated "out of the box". Admins can change the default.ks if they desire.</p>
 
-<p>When using kickstart files, they can be placed anywhere on the filesystem, but the recommended path is /var/lib/cobbler/kickstarts. If using the webapp to create new kickstarts, this is where the web application will put them.</p>
+<p>When using kickstart files, they can be placed anywhere on the filesystem, but the recommended path is <code>/var/lib/cobbler/kickstarts</code>. If using the webapp to create new kickstarts, this is where the web application will put them.</p>
 
 <h4>--kopts</h4>
 
@@ -227,7 +227,7 @@ cobbler profile report
 
 <h4>--owners</h4>
 
-<p>The value for --owners is a space seperated list of users and groups as specified in /etc/cobbler/users.conf.</p>
+<p>The value for --owners is a space seperated list of users and groups as specified in <code>/etc/cobbler/users.conf</code>.</p>
 
 <p>Users with small sites and a limited number of admins can probably ignore this option, since it only applies to the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell. Furthermore, this is only respected when using the "authz_ownership" module which must be enabled and is not the default.</p>
 

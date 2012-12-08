@@ -29,7 +29,7 @@ cobbler system report
 
 Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though they are useful when system specific customizations are required. One such customization would be defining the MAC address. If there is a specific role inteded for a given machine, system records should be created for it.
 
-System commands have a wider variety of control offered over network details. In order to use these to the fullest possible extent, the kickstart template used by cobbler must contain certain kickstart snippets (sections of code specifically written for Cobbler to make these values become reality). Compare your kickstart templates with the stock ones in /var/lib/cobbler/kickstarts if you have upgraded, to make sure you can take advantage of all options to their fullest potential. If you are a new cobbler user, base your kickstarts off of these templates. Non-kickstart based distributions, while supported by Cobbler, may not be able to use all of these features.
+System commands have a wider variety of control offered over network details. In order to use these to the fullest possible extent, the kickstart template used by cobbler must contain certain kickstart snippets (sections of code specifically written for Cobbler to make these values become reality). Compare your kickstart templates with the stock ones in `/var/lib/cobbler/kickstarts` if you have upgraded, to make sure you can take advantage of all options to their fullest potential. If you are a new cobbler user, base your kickstarts off of these templates. Non-kickstart based distributions, while supported by Cobbler, may not be able to use all of these features.
 
 **Example:**
 
@@ -76,10 +76,10 @@ This option is used to specify a list of key=value files that can be fetched via
 Please see the {% linkup title:"Managing TFTP" extrameta:2.4.0 %} section for more details on using the python-based TFTP server.
 
 #### --gateway
-Sets the default gateway, which in Redhat-based systems is typically in /etc/sysconfig/network. Per-interface gateways are not supported at this time. This option will be ignored unless --static=1 is also set on the interface.
+Sets the default gateway, which in Redhat-based systems is typically in `/etc/sysconfig/network`. Per-interface gateways are not supported at this time. This option will be ignored unless --static=1 is also set on the interface.
 
 #### --hostname
-This field corresponds to the hostname set in a systems /etc/sysconfig/network file. This has no bearing on DNS, even when manage_dns is enabled. Use --dns-name instead for that feature, which is a per-interface setting.
+This field corresponds to the hostname set in a systems `/etc/sysconfig/network` file. This has no bearing on DNS, even when manage_dns is enabled. Use --dns-name instead for that feature, which is a per-interface setting.
 
 #### --in-place
 By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no preserve the contents. To preserve the contents of these fields, --in-place should be specified. This option is also required is using a key with multiple values (for example, "foo=bar foo=baz").
@@ -128,10 +128,10 @@ If your nameservers are not provided by DHCP, you can specify a space seperated 
 As with the --name-servers option, this can be used to specify the default domain search line. Users with DHCP setups should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for each system record.
 
 #### --netboot-enabled
-If set false, the system will be provisionable through koan but not through standard PXE. This will allow the system to fall back to default PXE boot behavior without deleting the cobbler system object. The default value allows PXE. Cobbler contains a PXE boot loop prevention feature (pxe_just_once, can be enabled in /etc/cobbler/settings) that can automatically trip off this value after a system gets done installing. This can prevent installs from appearing in an endless loop when the system is set to PXE first in the BIOS order.
+If set false, the system will be provisionable through koan but not through standard PXE. This will allow the system to fall back to default PXE boot behavior without deleting the cobbler system object. The default value allows PXE. Cobbler contains a PXE boot loop prevention feature (pxe_just_once, can be enabled in `/etc/cobbler/settings`) that can automatically trip off this value after a system gets done installing. This can prevent installs from appearing in an endless loop when the system is set to PXE first in the BIOS order.
 
 #### --owners
-The value for --owners is a space seperated list of users and groups as specified in /etc/cobbler/users.conf.
+The value for --owners is a space seperated list of users and groups as specified in `/etc/cobbler/users.conf`.
 
 #### --power-address, --power-type, --power-user, --power-password, --power-id
 Cobbler contains features that enable integration with power management for easier installation, reinstallation, and management of machines in a datacenter environment. These parameters are described in the {% linkup title:"Power Management" extrameta:2.4.0 %} section under {% linkup title:"Advanced Topics" extrameta:2.4.0 %}. If you have a power-managed datacenter/lab setup, usage of these features may be something you are interested in.
@@ -240,7 +240,7 @@ If using the DNS management feature (see advanced section -- cobbler supports au
 --dns-name=mycomputer.example.com
 {% endhighlight %}
 
-This is a per-interface parameter. If you have multiple interfaces, it may be different for each interface, for example, assume a DMZ / dual-homed setup.
+This is a per-interface parameter. If you have multiple interfaces, it may be different for each interface, for example, assume a DMZ/dual-homed setup.
 
 #### --interface-type and --interface-master
 One of the other advanced networking features supported by Cobbler is NIC bonding and bridging. You can use this to bond multiple physical network interfaces to one single logical interface to reduce single points of failure in your network, or to create bridged interfaces for things like tunnels and virtual machine networks. Supported values for the --interface-type parameter are "bond", "bond_slave", "bridge", "bridge_slave" and "bonded_bridge_slave". If one of the "_slave" options is specified, you also need to define the master-interface for this bond using --interface-master=INTERFACE.
@@ -293,7 +293,7 @@ Specifying a mac address via --mac allows the system object to boot directly to 
 
 MAC addresses have the format AA:BB:CC:DD:EE:FF. It’s higly recommended to register your MAC-addresses in Cobbler if you’re using static adressing with multiple interfaces, or if you are using any of the advanced networking features like bonding, bridges or VLANs.
 
-Cobbler does contain a feature (enabled in /etc/cobbler/settings) that can automatically add new system records when it finds profiles being provisioned on hardware it has seen before. This may help if you do not have a report of all the MAC addresses in your datacenter/lab configuration.
+Cobbler does contain a feature (enabled in `/etc/cobbler/settings`) that can automatically add new system records when it finds profiles being provisioned on hardware it has seen before. This may help if you do not have a report of all the MAC addresses in your datacenter/lab configuration.
 
 #### --mtu
 Sets the MTU (max transfer unit) property for the interface. Normally, this is set to 9000 to enable jumbo frames, but remember you must also enable it on in your switch configuration to function properly.
