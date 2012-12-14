@@ -10,7 +10,7 @@ Cobbler 2.4.0 introduces the concept of distro signatures to make adding support
 
 ### Distro Signatures File
 
-The distro signatures are stored in **/var/lib/cobbler/distro_signatures.json**. As the extension indicates, this is a JSON-formatted file, with the following structure:
+The distro signatures are stored in `/var/lib/cobbler/distro_signatures.json`. As the extension indicates, this is a JSON-formatted file, with the following structure:
 
 {% highlight json %}
 {"breeds":
