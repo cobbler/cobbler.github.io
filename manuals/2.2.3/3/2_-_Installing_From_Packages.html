@@ -106,8 +106,7 @@ var WRInitTime=(new Date()).getTime();
 <p>Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the yum command:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install cobbler
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>With Fedora's packaging system, new releases are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler for Fedora (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
@@ -115,8 +114,7 @@ var WRInitTime=(new Date()).getTime();
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install --enablerepo<span class="o">=</span>updates-testing cobbler
 <span class="c"># or</span>
 <span class="nv">$ </span>sudo yum update --enablerepo<span class="o">=</span>updates-testing cobbler
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Once cobbler is installed, start and enable the service:</p>
@@ -130,8 +128,7 @@ cobblerd.service - Cobbler Helper Daemon
     Main PID: 1234 <span class="o">(</span>cobblerd<span class="o">)</span>
       CGroup: <span class="nv">name</span><span class="o">=</span>systemd:/system/cobblerd.service
           └ 1234 /usr/bin/python /usr/bin/cobblerd -F
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h2>RHEL/CentOS/Scientific Linux</h2>
@@ -139,8 +136,7 @@ cobblerd.service - Cobbler Helper Daemon
 <p>Cobbler is packaged for RHEL variants through the <a href="http://fedoraproject.org/wiki/EPEL">Fedora EPEL</a> (Extra Packages for Enterprise Linux) system. Follow the directions there to install the correct repo RPM for your RHEL version and architecture. For example, on for a RHEL6.x x86_64 system:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-X-Y.noarch.rpm
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Be sure to use the most recent X.Y version of the epel-release package.</p>
@@ -148,8 +144,7 @@ cobblerd.service - Cobbler Helper Daemon
 <p>Once that is complete, simply use the yum command to install the cobbler package:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install cobbler
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>As noted above, new releases in the Fedora packaging system are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler through EPEL (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
@@ -157,16 +152,14 @@ cobblerd.service - Cobbler Helper Daemon
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo yum install --enablerepo<span class="o">=</span>epel-testing cobbler
 <span class="c"># or</span>
 <span class="nv">$ </span>sudo yum update --enablerepo<span class="o">=</span>epel-testing cobbler
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Once cobbler is installed, start and enable the service:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>service cobblerd start
 <span class="nv">$ </span>chkconfig cobblerd on
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h2>Debian/Ubuntu</h2>

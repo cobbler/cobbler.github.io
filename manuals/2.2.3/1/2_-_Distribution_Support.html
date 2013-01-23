@@ -110,8 +110,7 @@ var WRInitTime=(new Date()).getTime();
 <p>Support for Ubuntu has increased dramatically in the 2.2.x releases, however there is still some work to be done - particularly around automation and snippet support. The preseed format also allows for only a single script to be run for pre and post installation actions, so right now the only option is to manually configure something like the following:</p>
 
 <div class="highlight"><pre><code class="bash">wget -O- http://server/path/to/post-install-script | bash -s
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>In the future, we will be looking to add native support for that in cobbler for the preseed format.</p>
@@ -141,15 +140,13 @@ var WRInitTime=(new Date()).getTime();
 <p>I would recommend that you put your sles distro folder (suse10x86sp2) in /var/www/ks_mirror where all the others are kept. Then change your path in the command below:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro add --arch<span class="o">=</span>x86 --breed<span class="o">=</span>suse --initrd<span class="o">=</span>/var/www/ks_mirror/suse10x86sp2/boot/i386/loader/initrd --kernel<span class="o">=</span>/var/www/ks_mirror/suse10x86sp2/boot/i386/loader/linux --name<span class="o">=</span>SLES10-x86-sp2 --os-version<span class="o">=</span>sles10
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>You will also want to append the following kernel arg with --kopts:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">install</span><span class="o">=</span>http://IP/cobbler/ks_mirror/sles9-i386
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h2>VMWare ESX/ESXi</h2>

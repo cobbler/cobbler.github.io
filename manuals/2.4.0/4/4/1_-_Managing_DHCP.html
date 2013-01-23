@@ -105,8 +105,7 @@ var WRInitTime=(new Date()).getTime();
 
 <div class="highlight"><pre><code class="ini"><span class="k">[dhcp]</span>
 <span class="na">module</span> <span class="o">=</span> <span class="s">manage_isc</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>To use dnsmasq, it should contain:</p>
@@ -116,8 +115,7 @@ var WRInitTime=(new Date()).getTime();
 
 <span class="k">[dhcp]</span>
 <span class="na">module</span> <span class="o">=</span> <span class="s">manage_dnsmasq</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -129,8 +127,7 @@ var WRInitTime=(new Date()).getTime();
 
 <div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">manage_dhcp</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
 <span class="l-Scalar-Plain">restart_dhcp</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>The relevant software packages also need to be present; <a href="/manuals/2.4.0/4/2/1_-_Check.html">Cobbler Check</a> will verify this.</p>
@@ -157,8 +154,7 @@ var WRInitTime=(new Date()).getTime();
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span>foo --profile<span class="o">=</span>&lt;profile name&gt; 
   --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC:DD:EE:FF --ip-address<span class="o">=</span>192.168.1.1
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>That will take the template file in <code>/etc/cobbler/dhcp.template</code>, fill in the appropriate fields, and generate a fuller configuration file <code>/etc/dhcpd.conf</code> that includes this machine, and ensures that when AA:BB:CC:DD:EE:FF asks for an IP, it gets 192.168.1.1. The <code>--ip-address=...</code> specification is optional; DHCP can make dynamic assignments within a configured range.</p>
@@ -166,8 +162,7 @@ var WRInitTime=(new Date()).getTime();
 <p>To make this active, run:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler sync
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>As noted in the <a href="/manuals/2.4.0/4/2/2_-_Sync.html">Cobbler Sync</a> section, managing DHCP with the ISC module is one of the few times you will need to use the full sync via <code>cobbler sync</code>.</p>

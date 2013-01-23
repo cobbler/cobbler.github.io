@@ -107,11 +107,26 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The distro signatures are stored in <code>/var/lib/cobbler/distro_signatures.json</code>. As the extension indicates, this is a JSON-formatted file, with the following structure:</p>
 
+<div class="highlight"><pre><code class="json"><span class="p">{</span><span class="nt">&quot;breeds&quot;</span><span class="p">:</span>
+ <span class="p">{</span>
+  <span class="nt">&quot;&amp;lt;breed-name&amp;gt;&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;&amp;lt;os-version1&amp;gt;&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;signatures&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;default_kickstart&quot;</span><span class="p">:</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="err">...</span>
+   <span class="p">},</span>
+   <span class="err">...</span>
+  <span class="p">}</span>
+  <span class="err">...</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
 <p>This file is read in when cobblerd starts, and logs a message noting how many breeds and os-versions it has loaded:</p>
 
 <div class="highlight"><pre><code class="bash">INFO | 9 breeds and 21 OS versions <span class="nb">read </span>from the signature file
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>CLI Commands</h3>
@@ -123,8 +138,7 @@ var WRInitTime=(new Date()).getTime();
 <span class="o">=====</span>
 cobbler signature report
 cobbler signature update
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h4>cobbler signature report</h4>
@@ -168,8 +182,7 @@ windows:
     <span class="o">(</span>none<span class="o">)</span>
 
 9 breeds with 21 total signatures loaded
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>An optional --name parameter can be specified to limit the report to one breed:</p>
@@ -182,8 +195,7 @@ ubuntu:
     quantal
 
 Breed <span class="s1">&#39;ubuntu&#39;</span> has 3 total signatures
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h4>cobbler signature update</h4>
@@ -195,8 +207,7 @@ task started: 2012-11-21_222926_sigupdate
 task started <span class="o">(</span><span class="nv">id</span><span class="o">=</span>Updating Signatures, <span class="nb">time</span><span class="o">=</span>Wed Nov 21 22:29:26 2012<span class="o">)</span>
 Successfully got file from http://cobbler.github.com/signatures/latest.json
 *** TASK COMPLETE ***
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>This command currently takes no options.</p>

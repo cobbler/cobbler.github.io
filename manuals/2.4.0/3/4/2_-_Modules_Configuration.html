@@ -101,17 +101,16 @@ var WRInitTime=(new Date()).getTime();
     <h1>Modules Configuration</h1>
 <p>Cobbler supports add-on modules, some of which can provide the same functionality (for instance, the authentication/authorization modules discussed in the <a href="/manuals/2.2.3/6/2_-_Web_Authentication.html">Web Authentication</a> section). Modules of this nature are configured via the <code>/etc/cobbler/modules.conf file</code>, for example:</p>
 
-<div class="highlight"><pre><code class="ini"><span class="c"># dns:</span>
-<span class="c"># chooses the DNS management engine if manage_dns is enabled</span>
-<span class="c"># in /etc/cobbler/settings, which is off by default.</span>
-<span class="c"># choices:</span>
-<span class="c">#    manage_bind    -- default, uses BIND/named</span>
-<span class="c">#    manage_dnsmasq -- uses dnsmasq, also must select dnsmasq for dhcp below</span>
+<div class="highlight"><pre><code class="ini"><span class="c1"># dns:</span>
+<span class="c1"># chooses the DNS management engine if manage_dns is enabled</span>
+<span class="c1"># in /etc/cobbler/settings, which is off by default.</span>
+<span class="c1"># choices:</span>
+<span class="c1">#    manage_bind    -- default, uses BIND/named</span>
+<span class="c1">#    manage_dnsmasq -- uses dnsmasq, also must select dnsmasq for dhcp below</span>
 
 <span class="k">[dns]</span>
 <span class="na">module</span> <span class="o">=</span> <span class="s">manage_bind</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>As you can see above, this file has a typical INI-style syntax where sections are denoted with the <strong>[]</strong> brackets and entries are of the form <strong>"key = value"</strong>.</p>

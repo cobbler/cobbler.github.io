@@ -123,8 +123,7 @@ for each system.</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo1.bar.local --interface<span class="o">=</span>mgmt --mac<span class="o">=</span>AA:BB:CC:DD:EE:F0
 <span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo1.bar.local --interface<span class="o">=</span>dmz --mac<span class="o">=</span>AA:BB:CC:DD:EE:F1
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>The default interface is named eth0, but you don't have to call it that.</p>
@@ -137,8 +136,7 @@ for each system.</p>
 specify a list of name servers to assign to the systems.</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC::DD:EE:FF --static<span class="o">=</span>1 --name-servers<span class="o">=</span><span class="s2">&quot;&lt;ip1&gt; &lt;ip2&gt;&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h2>Static routes</h2>
@@ -152,8 +150,7 @@ network/CIDR:gateway
 <p>So, for example to route the 192.168.1.0/24 network through 192.168.1.254:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --static-routes<span class="o">=</span><span class="s2">&quot;192.168.1.0/24:192.168.1.254&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>As with all lists in cobbler, the --static-routes list is space-separated so you can specify multiple static routes if needed.</p>

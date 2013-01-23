@@ -124,8 +124,7 @@ var WRInitTime=(new Date()).getTime();
 <p><strong>Example:</strong></p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> edit --name<span class="o">=</span>foo --field<span class="o">=</span><span class="s2">&quot;a b c d&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>Hash Fields (key=value)</h3>
@@ -144,8 +143,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>To preserve the contents of these fields, --in-place should be specified:</p>
@@ -156,8 +154,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span>, <span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h4>Removing Values</h4>
@@ -170,8 +167,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s1">&#39;~a&#39;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h4>Suppressing Values</h4>
@@ -184,8 +180,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s1">&#39;-a&#39;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;-a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>In this case, the key=value pair will be ignored when the field is accessed.</p>
@@ -197,8 +192,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;-
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a b c&quot;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;~&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;~&#39;</span>, <span class="s1">&#39;b&#39;</span>: <span class="s1">&#39;~&#39;</span><span class="o">}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -213,8 +207,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;a=b a=c a=d&quot;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="o">[</span><span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>, <span class="s1">&#39;d&#39;</span><span class="o">]}</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -245,8 +238,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
    sl6.2-x86_64
    ubuntu-12.10-i386
    ubuntu-12.10-x86_64
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>The list command is actually available as a top-level command as well, in which case it will iterate through every object type and list everything currently stored in your Cobbler database.</p>
@@ -267,8 +259,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <p><strong>Example:</strong></p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> remove --name<span class="o">=</span>foo
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>Copy/Rename</h3>
@@ -280,8 +271,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> copy --name<span class="o">=</span>foo --newname<span class="o">=</span>bar
 <span class="c"># or</span>
 <span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> rename --name<span class="o">=</span>foo --newname<span class="o">=</span>bar
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>Find</h3>

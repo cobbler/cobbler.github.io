@@ -105,8 +105,7 @@ var WRInitTime=(new Date()).getTime();
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler repo add --mirror<span class="o">=</span>url --name<span class="o">=</span>string <span class="o">[</span>--rpmlist<span class="o">=</span>list<span class="o">]</span> <span class="o">[</span>--creatrepo-flags<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
 <span class="o">[</span>--keep-updated<span class="o">=</span>Y/N<span class="o">]</span> <span class="o">[</span>--priority<span class="o">=</span>number<span class="o">]</span> <span class="o">[</span>--arch<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--mirror-locally<span class="o">=</span>Y/N<span class="o">]</span> <span class="o">[</span>--breed<span class="o">=</span>yum|rsync|rhn<span class="o">]</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>mirror</h3>
@@ -120,8 +119,7 @@ var WRInitTime=(new Date()).getTime();
 <div class="highlight"><pre><code class="bash">rsync://yourmirror.example.com/fedora-linux-core/updates/6/i386 <span class="o">(</span><span class="k">for </span>rsync protocol<span class="o">)</span>
 http://mirrors.kernel.org/fedora/extras/6/i386/ <span class="o">(</span><span class="k">for </span>http://<span class="o">)</span>
 user@yourmirror.example.com/fedora-linux-core/updates/6/i386  <span class="o">(</span><span class="k">for </span>SSH<span class="o">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Experimental support is also provided for mirroring RHN content when you need a fast local mirror.  The mirror syntax for this is --mirror=rhn://channel-name and you must have entitlements for this to work.  This requires the cobbler server to be installed on RHEL5 or later.  You will also need a version of yum-utils equal or greater to 1.0.4.</p>

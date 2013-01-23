@@ -116,8 +116,7 @@ var WRInitTime=(new Date()).getTime();
 <span class="na">system</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
 <span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
 <span class="err">etc...</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p><strong>NOTE</strong> Be sure to add a line for every object type supported in your version of cobbler. Read the <a href="/manuals/2.4.0/4/1_-_Cobbler_Primatives.html">Cobbler Primatives</a> section for more details.</p>
@@ -131,8 +130,7 @@ var WRInitTime=(new Date()).getTime();
 <span class="na">system</span> <span class="o">=</span> <span class="s">serializer_xml</span>
 <span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_xml</span>
 <span class="err">etc...</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>This is all just an example -- in your environment, you may have more complex needs -- or even some weird ones.</p>
@@ -153,15 +151,13 @@ var WRInitTime=(new Date()).getTime();
 /var/lib/cobbler/config/profiles.d
 /var/lib/cobbler/config/systems.d
 etc...
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Files are named after the name of each object, for instance:</p>
 
 <div class="highlight"><pre><code class="bash">/var/lib/cobbler/config/systems.d/foo.json
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>On EL 4 and before, the simplejson implementation has some unicode issues, so YAML is still the default on those systems. YAML is significantly slower, so this is more reason to install Cobbler on EL 5 and later. (Or rather, json is 300x faster!)</p>
@@ -169,8 +165,7 @@ etc...
 <p>The filenames for YAML files do not have an extension.</p>
 
 <div class="highlight"><pre><code class="bash">/var/lib/cobbler/config/systems.d/foo
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Cobbler knows how to upgrade YAML files to JSON if it is running on a platform that can use JSON, and will do so transparently.</p>

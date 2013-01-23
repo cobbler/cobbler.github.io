@@ -120,8 +120,7 @@ var WRInitTime=(new Date()).getTime();
 <span class="nv">passwd</span><span class="o">=</span><span class="nv">$power_pass</span>
 <span class="nv">ipaddr</span><span class="o">=</span><span class="nv">$power_address</span>
 <span class="nv">port</span><span class="o">=</span><span class="nv">$power_id</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>The variables above correspond to the --power-* options available when adding/editing a system (or via the "Power Management" tab in the Web UI). If you wish to add aditional options, you can create a template in <code>/etc/cobbler/power</code> named fence_&lt;name&gt;.template, where name is the fencing agent you wish to use.</p>
@@ -147,8 +146,7 @@ var WRInitTime=(new Date()).getTime();
 <p>This may also be too insecure for some, so in this case, don't set these, and supply --power-user and --power-pass when running commands like "cobbler system poweron" and "cobbler system poweroff". The values used on the command line are always used, regardless of the value stored in Cobbler or the environment, if so provided.</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweron --name<span class="o">=</span>foo --power-user<span class="o">=</span>X --power-pass<span class="o">=</span>Y
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Be advised of current limitations in storing passwords, make your choices accordingly and in relation to the ease-of-use that you need, and secure your networks appropriately.</p>
@@ -160,22 +158,19 @@ var WRInitTime=(new Date()).getTime();
 <p>You have a DRAC based blade:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>drac --power-address<span class="o">=</span>blade-mgmt.example.org --power-user<span class="o">=</span>Administrator --power-pass<span class="o">=</span>PASSWORD --power-id<span class="o">=</span>blade7
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>You have an IPMI based system:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>ipmilan --power-address<span class="o">=</span>foo-mgmt.example.org --power-user<span class="o">=</span>Administrator --power-pass<span class="o">=</span>PASSWORD
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>You have a IBM HMC managed system:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>lpar --power-address<span class="o">=</span>ibm-hmc.example.org --power-user<span class="o">=</span>hscroot --power-pass<span class="o">=</span>PASSWORD --power-id<span class="o">=</span>system:partition
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p><strong>NOTE</strong>: The --power-id option is used to indicate both the managed system name <strong>and</strong> a logical partition name. Since an IBM HMC is responsible for managing more than one system, you must supply the managed system name and logical partition name separated by a colon (':') in the --power-id command-line option.</p>
@@ -183,8 +178,7 @@ var WRInitTime=(new Date()).getTime();
 <p>You have an IBM Bladecenter:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>bladecenter --power-address<span class="o">=</span>blademm.example.org --power-user<span class="o">=</span>USERID --power-pass<span class="o">=</span>PASSW0RD --power-id<span class="o">=</span>6
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p><strong>NOTE</strong>: The <em>--power-id</em> option is used to specify what slot your blade is connected.</p>
@@ -192,15 +186,13 @@ var WRInitTime=(new Date()).getTime();
 <h3>Powering Off A System</h3>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweroff --name<span class="o">=</span>foo
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>Powering On A System</h3>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweron --name<span class="o">=</span>foo
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>If --netboot-enabled is not set to false, the system could potentially reinstall itself if PXE has been configured, so make sure to disable that option when using power management features.</p>
@@ -208,8 +200,7 @@ var WRInitTime=(new Date()).getTime();
 <h3>Rebooting A System</h3>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system reboot --name<span class="o">=</span>foo
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Since not all power management systems support reboot, this is a "power off, sleep for 1 second, and power on" operation.</p>

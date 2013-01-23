@@ -5,7 +5,6 @@ server_port: 4000
 pygments: true
 markdown: rdiscount
 permalink: date
-include: _dynamic
 exclude: readme.md test.idx
 cobbler:
     version: 2.2.3-1

@@ -129,8 +129,7 @@ based distributions, it has several shortcomings.</p>
 <p>To enable anamon for your Red Hat based distribution installations, edit <em>/etc/cobbler/settings</em> and set:</p>
 
 <div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">anamon_enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p><strong>NOTE:</strong> Enabling anamon allows an xmlrpc call to send create and update log files in the anamon directory, without authentication, so enable only if you are ok with this limitation. It could be potentially used by users to flood the log files or fill up the server, which you probably don't want in an untrusted environment.  However, even so, it may be good for debugging complex installs.</p>
@@ -139,16 +138,14 @@ based distributions, it has several shortcomings.</p>
 
 <div class="highlight"><pre><code class="bash">%pre
 <span class="nv">$SNIPPET</span><span class="o">(</span><span class="s1">&#39;pre_anamon&#39;</span><span class="o">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>Anamon can also send <code>/var/log/messages</code> and <code>/var/log/boot.log</code> once your provisioned system has booted. To also enable post-install boot notification, you must enable the following snippet:</p>
 
 <div class="highlight"><pre><code class="bash">%post
 <span class="nv">$SNIPPET</span><span class="o">(</span><span class="s1">&#39;post_anamon&#39;</span><span class="o">)</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h2>Where Is Information Saved?</h2>
@@ -157,8 +154,7 @@ based distributions, it has several shortcomings.</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>ls /var/log/cobbler/anamon/vguest3
 anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.log
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h2>Older Distributions</h2>
@@ -183,8 +179,7 @@ anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.lo
 <span class="nv">$ </span>cp /usr/lib64/python2.3/lib-dynload/operator.* <span class="nv">$tmpdir</span>/cobbler
 <span class="nv">$ </span>umount <span class="nv">$tmpdir</span>
 <span class="nv">$ </span>rmdir <span class="nv">$tmpdir</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>More information on building and using an <em>updates.img</em> is available from <a href="http://fedoraproject.org/wiki/Anaconda/Updates">http://fedoraproject.org/wiki/Anaconda/Updates</a>.</p>

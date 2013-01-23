@@ -106,8 +106,7 @@ var WRInitTime=(new Date()).getTime();
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F0 --interface-type<span class="o">=</span>bridge_slave --interface-master<span class="o">=</span>br0
 <span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth1 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F1 --interface-type<span class="o">=</span>bridge_slave --interface-master<span class="o">=</span>br0
 <span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>br0 --interface-type<span class="o">=</span>bridge --bridge-opts<span class="o">=</span><span class="s2">&quot;stp=no&quot;</span> --ip-address<span class="o">=</span>192.168.1.100 --netmask<span class="o">=</span>255.255.255.0
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>You can specify any bridging options you would like, so please read the brctl manpage for details if you are unfamiliar with bridging.</p>

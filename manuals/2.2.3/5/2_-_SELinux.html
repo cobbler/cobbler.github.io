@@ -108,8 +108,7 @@ var WRInitTime=(new Date()).getTime();
 <p>If you see this when you run "cobbler check" or any other cobbler command, it means SELinux is blocking httpd from talking with cobblerd. The command to fix this is:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo setsebool -P httpd_can_network_connect <span class="nb">true</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h2>Fedora 16 / RHEL6 / CentOS6 - Python MemoryError</h2>
@@ -128,8 +127,7 @@ from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
 File <span class="s2">&quot;/usr/lib64/python2.6/ctypes/init.py&quot;</span>, line 546, in
 CFUNCTYPE<span class="o">(</span>c_int<span class="o">)(</span>lambda: None<span class="o">)</span>
 MemoryError
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>This error is caused by SELinux blocking python ctypes. To resolve this, you can use audit2allow to enable the execution of temp files or you can remove the authn_pam.py module from the site-packages/cobbler/modules/ directory (as long as you're not using PAM authentication for the Web UI).</p>

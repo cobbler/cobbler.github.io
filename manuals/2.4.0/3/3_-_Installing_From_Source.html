@@ -117,8 +117,7 @@ var WRInitTime=(new Date()).getTime();
 
 <span class="nv">$ </span><span class="nb">cd </span>cobbler
 <span class="nv">$ </span>git checkout release24
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -131,22 +130,19 @@ var WRInitTime=(new Date()).getTime();
 <p>When building from source, make sure you have the correct <a href="/manuals/2.4.0/3/1_-_Prerequisites.html">Prerequisites for Installation</a>. Once they are, you can install cobbler with the following command:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>make install
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>This command will rewrite all configuration files on your system if you have an existing installation of Cobbler (whether it was installed via packages or from an older source tree). To preserve your existing configuration files, snippets and kickstarts, run this command:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>make devinstall
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>To install the Cobbler web GUI, use this command:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>make webtest
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -166,8 +162,7 @@ Wrote: /path/to/cobbler/rpm-build/cobbler-2.4.0-1.fc17.src.rpm
 Wrote: /path/to/cobbler/rpm-build/cobbler-2.4.0-1.fc17.noarch.rpm
 Wrote: /path/to/cobbler/rpm-build/koan-2.4.0-1.fc17.noarch.rpm
 Wrote: /path/to/cobbler/rpm-build/cobbler-web-2.4.0-1.fc17.noarch.rpm
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <p>As you can see, an RPM is output for each component of cobbler, as well as a source RPM. This command was run on a system running Fedora 17, thus the fc17 in the RPM name - this will be different based on the distribution you're running.</p>

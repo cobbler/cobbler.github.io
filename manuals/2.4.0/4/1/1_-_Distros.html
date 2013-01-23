@@ -114,8 +114,7 @@ cobbler distro list
 cobbler distro remove
 cobbler distro rename
 cobbler distro report
-</code></pre>
-</div>
+</code></pre></div>
 
 
 <h3>Add/Edit Options</h3>
@@ -127,8 +126,7 @@ cobbler distro report
 <p><b>Example:</b></p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro add --name<span class="o">=</span>string --kernel<span class="o">=</span>path --initrd<span class="o">=</span>path <span class="o">[</span>options<span class="o">]</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 
 
@@ -203,9 +201,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 
    <p>To preserve the contents of these fields, --in-place should be specified:</P>
 
@@ -215,9 +211,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
 <span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span>, <span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 
   </td>
  </tr>
@@ -228,9 +222,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
    <p><b>Example:</b></p>
 
 <div class="highlight"><pre><code class="bash">--kopts<span class="o">=</span><span class="s2">&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 
   </td>
  </tr>
@@ -245,9 +237,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
    <p><b>Example:</b></p>
 
 <div class="highlight"><pre><code class="bash">--ksmeta<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf&quot;</span>
-</code></pre>
-</div>
-
+</code></pre></div>
 
    <p>See the section on <a href="/manuals/2.4.0/4/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
   </td>
