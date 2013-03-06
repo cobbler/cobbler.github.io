@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp -a {_plugins,_includes,_layouts} _dynamic/
+cp -a {_plugins,_includes,_layouts,_posts} _dynamic/
 cd _dynamic
 rm _plugins/gensearch.rb
 rm -rf test.idx
