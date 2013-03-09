@@ -7,14 +7,15 @@ users:
   - img: autotest
   - img: beaker
   - img: beantown
+  - img: bytecode
   - img: carol
   - img: dell
   - img: dw
+  - img: eucalyptus
   - img: flpc
   - img: genome
   - img: kynetx
   - img: linkshare
-  - img: luminoso
   - img: mi
   - img: ohio
   - img: ouit
@@ -40,23 +41,64 @@ $('document').ready(function() {
 
 <div id="hero" class="hero-unit">
  <div class="container">
-   <h1>Welcome to Cobbler!</h1>
-   <p>Cobbler is a Linux installation server that allows for rapid setup of network installation environments. It glues together and automates many associated Linux tasks so you do not have to hop between lots of various commands and applications when rolling out new systems, and, in some cases, changing existing ones. It can help with installation, DNS, DHCP, package updates, power management, configuration management orchestration, and much more.</p>
-  <p><a href="/manuals/2.4.0/3_-_Installing_Cobbler.html" class="btn btn-info btn-large">Get Started Now!</a></p>
+  <div class="row-fluid">
+   <div class="span9">
+    <h1>Welcome to Cobbler!</h1>
+    <p class="mainblurb">Cobbler is a Linux installation server that allows for rapid setup of network installation environments. It glues together and automates many associated Linux tasks so you do not have to hop between many various commands and applications when deploying new systems, and, in some cases, changing existing ones. Cobbler can help with provisioning, managing DNS and DHCP, package updates, power management, configuration management orchestration, and much more.</p>
+    <p><a href="/manuals/2.4.0/3_-_Installing_Cobbler.html" class="btn btn-info btn-large">Get Started Now!</a></p>
+   </div>
+   <div class="span3">
+    <div class="row well heroblurb posts">
+{% for post in site.posts limit:1 %}
+     <div class="header">Latest Version:</div>
+     <div class="version">2.2.3-2</div>
+     <div class="release">released on June 17, 2012</div>
+     <div><hr /></div>
+     <div class="header">Latest News:</div>
+     <div class="post">
+      <div class="title"><a href="{{ post.url}}">{{ post.title}}</a></div>
+      <div class="author">by {{ post.author }} on {{ post.date | date: "%Y.%m.%d" }}</div>
+      <div class="content">{{post.summary}}</div>
+     </div>
+{% endfor %}
+    </div>
+    <div class="row well heroblurb">
+     <div class="header">Thanks to all our supporters!</div>
+     <div><a href="/supporters.html" class="btn btn-info btn-small">More Info</a></div>
+    </div>
+   </div>
+  </div>
  </div>
 </div>
 
 <div class="row-fluid">
  <div class="span2 offset2">
-  <div><img src="/images/gears.jpg" alt="gears" /></div>
+  <div><img src="/images/gears.jpg" class="img-polaroid" alt="gears" /></div>
  </div>
  <div class="span6">
   <h4>How Does Cobbler Help?</h4>
-  <p>Automation is the key to speed, consistency and repeatability. These properties are critical to managing an infrastructure, whether it is comprised of a few servers or a few thousand servers. Cobbler helps by automating the process of provisioning of servers from bare metal or when deploying virtual machines.</p>
+  <p>Automation is the key to speed, consistency and repeatability. These properties are critical to managing an infrastructure, whether it is comprised of a few servers or a few thousand servers. Cobbler helps by automating the process of provisioning servers from bare metal, or when deploying virtual machines onto various hypervisors.</p>
+ </div>
+</div>
+
+<div class="row-fluid row-divider">
+ <div class="span10 offset1">
+  <hr />
  </div>
 </div>
 
 <div class="row-fluid">
+ <div class="span2 offset2">
+  <div><img src="/images/recycle.png" class="img-polaroid" alt="recycle" /></div>
+ </div>
+ <div class="span6">
+  <h4>Reduce, Reuse...</h4>
+  <p>Just as configuration management systems rely on templates to simplify updates, so too does Cobbler. Templates are used extensively for management of services like DNS and DHCP, and the response files given to the various distributions (kickstart, preseed, etc.) are all templated to maximize code reuse.</p>
+  <p>In addition to templates, Cobbler relies on a system of snippets - small chunks of code (which is really another template) that can be embedded in other templates. This allows admins to write things once, use it wherever they need it via a simple include, all while managing the content in just one place.</p>
+ </div>
+</div>
+
+<div class="row-fluid row-divider">
  <div class="span10 offset1">
   <hr />
  </div>
@@ -76,7 +118,7 @@ $('document').ready(function() {
  </div>
  <div class="span6">
   <h4>Who's using Cobbler?</h4>
-  <p>The companies to the right are just a sample of the hundreds of companies, universities and government orgnaizations that rely on Cobbler every day to build their infrastructure.</p>
+  <p>These are just a small sample of the hundreds of companies, universities and government orgnaizations that rely on Cobbler every day to build their infrastructure.</p>
   <p><a href="/users.html" class="btn btn-info btn-small">More Info</a></p>
  </div>
 </div>

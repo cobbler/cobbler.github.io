@@ -22,10 +22,6 @@ body:before {
   margin-top:-32767px;
 }
 
-header {
-  background: rgba(0,0,0,0.6) !important;
-}
-
 .navbar.navbar-static-top {
   margin-bottom: 35px;
 }
@@ -56,7 +52,7 @@ header {
 .navbar-inverse .nav > li > a {
   font-weight: bold;
   color: #fff;
-  opacity: .6;
+  opacity: 0.6;
   filter: alpha(opacity=60);
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
@@ -112,12 +108,12 @@ h3, h4 {
 }
 
 hr {
-  margin: 30px 0px 10px 0px;
+  margin: 30px 0px 30px 0px;
   border-top: 1px solid #cccccc;
 }
 
 #hero {
-  padding: 175px 0px 75px 0px;
+  padding: 150px 0px 50px 0px;
   background-image: url('/images/hero.png');
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -125,14 +121,50 @@ hr {
 }
 
 #hero h1 {
-  margin: 0px 0px 15px -5px;
+  margin: 10px 0px 15px -5px;
 }
 
-#hero .btn {
+#hero .mainblurb {
+  padding: 20px 50px 0px 0px;
+}
+
+#hero .btn-large {
   font-size: 1.1em;
   font-weight: bolder;
   margin-top: 15px;
   padding: 15px 30px;
+}
+
+#hero .header {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 20px;
+  color: #999999;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+#hero .version {
+  font-size: 2.0em;
+  font-weight: bolder;
+  line-height: 25px;
+  padding-left: 5px;
+}
+#hero .release {
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 5px;
+}
+
+.heroblurb {
+  opacity:0.6;
+  filter:alpha(opacity=50);
+}
+
+.heroblurb hr {
+  margin: 10px 0px;
 }
 
 a:hover {
@@ -166,6 +198,15 @@ a:hover {
   padding-top: 20px;
 }
 
+.logolist {
+  margin-bottom: 25px;
+}
+
+.userlogo {
+  text-align: center;
+  padding: 10px 0px;
+}
+
 i.icon-med {
   font-size: 1.25em;
 }
@@ -190,8 +231,7 @@ i.icon-med {
 footer {
   text-size: 0.95em;
   min-height: 200px;
-  margin-top: 15px;
-  /*background: rgba(0,0,0,0.85);*/
+  margin-top: 30px;
   background-color: #262626;
   color: #fff;
   padding: 35px 0px 35px 0px;
@@ -201,25 +241,26 @@ footer {
 footer .posts {
   margin-top: 10px;
 }
-footer .posts .post {
+posts .post {
   border-bottom: 1px solid black;
 }
-footer .posts .post:last-child {
+.posts .post:last-child {
   border: none;
 }
-footer .posts .post .title {
+.posts .post .title {
   display: block;
   color: #b5b5b6;
   margin: 0px;
   font-size: 0.95em;
 }
-footer .posts .post .author{
+.posts .post .author{
   margin: 0px;
   font-size: 0.8em;
   font-style: italic;
 }
-footer .posts .post .content {
+.posts .post .content {
   margin: 7px 0px 0px 0px;
+  font-size: 0.85em;
 }
 
 footer .credits {
@@ -259,6 +300,23 @@ footer .column_header {
   color: #999999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
+}
+
+footer .ending {
+  font-size: 0.8em;
+  /*text-align: center;*/
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid black;
+}
+
+footer .browsers {
+  /*text-align: center;*/
+  margin-top: 10px;
+}
+
+footer .browsers i {
+  padding: 0px 5px;
 }
 
 /* nav list in footer */

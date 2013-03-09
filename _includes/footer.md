@@ -35,6 +35,17 @@
          </ul>
         </div>
        </div>
+    <div class="row-fluid">
+    </div>
+    <div class="row-fluid">
+     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
+     <p class="browsers">
+      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
+      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
+      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
+      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
+     </p>
+    </div>
       </div>
       <div class="span3 posts">
         <p class="column_header">Recent Posts:</p>
@@ -42,7 +53,6 @@
         <div class="post">
           <p class="title"><a href="{{ post.url}}">{{ post.title}}</a></p>
           <p class="author">Posted by {{ post.author }} on {{ post.date | date: "%A, %B %d, %Y" }}</p>
-          <p class="content">{{post.summary}}</p>
         </div>
 {% endfor %}
       </div>
@@ -53,11 +63,11 @@
         </div>
         <div class="attributions">
           <p class="column_header">Attributions:</p>
-          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="http://creativity103.com/bmers/creativitybloggry.gif" /></a></div>
+          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
           <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
         </div>
         <div class="copyright">
-          All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata
+          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
           <script>$("#copyyear").text((new Date).getFullYear());</script>
         </div>
       </div>            

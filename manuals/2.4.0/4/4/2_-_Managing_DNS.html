@@ -10,8 +10,9 @@
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
    <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
    <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
    <link rel="stylesheet" type="text/css" href="/css/style.css" />
 
@@ -47,7 +48,7 @@ var WRInitTime=(new Date()).getTime();
     <ul class="nav pull-right">
      <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
      <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-med"></i> Manuals <b class="caret"></b></a>
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
        <ul class="dropdown-menu">
          <li><a href="/manuals/2.4.0/" title="Version 2.4.0">Version 2.4.0</a></li>
          <li><a href="/manuals/2.2.3/" title="Version 2.2.3">Version 2.2.3</a></li>
@@ -61,7 +62,7 @@ var WRInitTime=(new Date()).getTime();
        </ul>
      </li>
      <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github-sign icon-med"></i> Github <b class="caret"></b></a>
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i> Github <b class="caret"></b></a>
        <ul class="dropdown-menu">
         <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
         <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
@@ -214,32 +215,39 @@ manage_reverse_zones: ['10.0.0', '192.168', '172.16.123']
          </ul>
         </div>
        </div>
+    <div class="row-fluid">
+    </div>
+    <div class="row-fluid">
+     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
+     <p class="browsers">
+      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
+      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
+      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
+      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
+     </p>
+    </div>
       </div>
       <div class="span3 posts">
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/2012/12/05/Fundraising_Complete_and_a_New_Website.html">Fundraising Complete and New Website</a></p>
+          <p class="author">Posted by James on Wednesday, December 05, 2012</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/2012/12/05/Fundraising_Complete_and_New_Website.html">Fundraising Complete and New Website</a></p>
           <p class="author">Posted by James on Wednesday, December 05, 2012</p>
-          <p class="content"></p>
         </div>
 
         <div class="post">
           <p class="title"><a href="/2012/10/05/Fundraising.html">Fundraising!</a></p>
           <p class="author">Posted by James on Friday, October 05, 2012</p>
-          <p class="content"></p>
         </div>
 
         <div class="post">
           <p class="title"><a href="/2012/06/22/new-search-capability.html">New Search Capability</a></p>
           <p class="author">Posted by James on Friday, June 22, 2012</p>
-          <p class="content"></p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/2012/06/17/cobbler_2.2.3-2_released.html">Cobbler 2.2.3-2 Released</a></p>
-          <p class="author">Posted by James on Sunday, June 17, 2012</p>
-          <p class="content"></p>
         </div>
 
       </div>
@@ -250,11 +258,11 @@ manage_reverse_zones: ['10.0.0', '192.168', '172.16.123']
         </div>
         <div class="attributions">
           <p class="column_header">Attributions:</p>
-          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="http://creativity103.com/bmers/creativitybloggry.gif" /></a></div>
+          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
           <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
         </div>
         <div class="copyright">
-          All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata
+          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
           <script>$("#copyyear").text((new Date).getFullYear());</script>
         </div>
       </div>            

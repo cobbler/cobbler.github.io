@@ -1,6 +1,68 @@
 ---
 layout: default
 title: Who's Using Cobbler
+users:
+  - img: acision
+    url: http://www.acision.com
+  - img: alstom
+    url: http://www.alstom.com/
+  - img: beantown
+    url: http://beantownhost.com
+  - img: carol
+    url: http://www.carol.com/
+  - img: dell
+    url: http://www.dell.com
+  - img: eucalyptus
+    url: http://www.eucalyptus.com/
+  - img: flpc
+    url: http://www.uclug.org/flpc
+  - img: kynetx
+    url: http://www.kynetx.com
+  - img: linkshare
+    url: http://linkshare.com
+  - img: mi
+    url: http://www.mcclatchyinteractive.com/
+  - img: ohio
+    url: http://www.ohio.edu
+  - img: ouit
+    url: http://www.ou.edu/ouit
+  - img: pnnl
+    url: http://pnl.gov
+  - img: puzzleitc
+    url: http://puzzle.ch
+  - img: speakeasy
+    url: http://speakeasy.net
+  - img: spi
+    url: http://imageworks.com/
+  - img: stoneit
+    url: http://www.stone-it.com
+  - img: sulair
+    url: http://library.stanford.edu
+  - img: sunypotsdam
+    url: http://www.potsdam.edu
+  - img: tomtom
+    url: http://www.tomtom.com
+  - img: tripleit
+    url: http://www.triple-it.nl/
+  - img: widexs
+    url: http://www.widexs.nl
+projects:
+  - img: autotest
+    url: http://autotest.github.com/
+  - img: beaker
+    url: http://beaker-project.org/
+  - img: bytecode
+    url: http://www.byte-code.com
+  - img: dw
+    url: http://dashwire.com
+  - img: genome
+    url: http://genome.et.redhat.com
+  - img: reliam
+    url: http://reliam.com
+  - img: spacewalk
+    url: http://fedorahosted.org/spacewalk
+  - img: symbolic
+    url: http://www.opensymbolic.org
 ---
 
 # Who's Using Cobbler
@@ -11,59 +73,31 @@ The following is an opt-in list of some Cobbler users. To either add or remove y
 
 ## Companies Using Cobbler
 
-<table class="users">
- <tr>
-  <td><a href="http://www.dell.com"><img src="/images/who/Dell_Logo_Tagline.jpg" alt="Dell Inc." /></a></td>
-  <td><a href="http://www.kynetx.com"><img src="/images/who/KynetxLogo273.png" alt="Kynetx" /></a></td>
-  <td><a href="http://www.acision.com"><img src="/images/who/Acision_red_grey_strapline.png" alt="Acision" /></a></td>
- </tr>
- <tr>
-  <td><a href="http://imageworks.com"><img src="/images/who/SPI_logo_small.jpg" /></a></td>
-  <td><a href="http://pnl.gov"><img src="/images/who/pnnl_logo.png" /></a></td>
-  <td><a href="http://www.ohio.edu"><img src="/images/who/ohio.gif" /></a><br/><a href="http://www.math.ohiou.edu"> Department of Mathematics</a></td>
- </tr>
- <tr>
-  <td><a href="http://speakeasy.net"><img src="/images/who/speakeasy.png" alt="Speakeasy"  /></a></td>
-  <td><a href="http://www.triple-it.nl/"><img src="/images/who/triple-it.gif" /></a></td>
-  <td><a href="http://www.uclug.org/flpc"><img src="/images/who/flpc.2.jpg" alt="FreeLinuxPC.org"/></a></td>
- </tr>
- <tr>
-  <td><a href="http://www.mcclatchyinteractive.com/"><img src="/images/who/mi_logo_d.gif" ></a></td>
-  <td><a href="http://www.carol.com/"><img src="/images/who/carol_logo.gif" ></a></td>
-  <td><a href="http://www.widexs.nl"><img src="/images/who/widexs.gif" alt="WideXS" ></a></td>
- </tr>
- <tr>
-  <td><a href="http://linkshare.com"><img src="/images/who/linkshare_logo.gif" alt="LinkShare" ></a></td>
-  <td><a href="http://puzzle.ch"><img src="/images/who/puzzleitc-small.gif"></a></td>
-  <td><a href="http://library.stanford.edu"><img src="/images/who/sulair_logo.gif" alt="Stanford University Libraries"></a></td>
- </tr>
- <tr>
-  <td><a href="http://www.alstom.com/"><img src="/images/who/Alstom.png" alt="Alstom"></a></td>
-  <td><a href="http://www.tomtom.com"><img src="/images/who/tomtom_logo.png" /></a></td>
-  <td><a href="http://www.stone-it.com"><img src="/images/who/stone-it.png" /></a></td>
- </tr>
- <tr>
-  <td><a href="http://www.potsdam.edu"><img src="/images/who/suny-potsdam.jpg" alt="SUNY Potsdam" /></a><br/><a href="http://www.potsdam.edu/CTS/">Computing &amp; Technology Services</a></td>
-  <td><a href="http://beantownhost.com"><img src="/images/who/beantown-logo.png" alt="Bean Town Host"></a>
-  <td><a href="http://www.ou.edu/ouit"><img src="/images/who/OUIT_rgb.jpg" alt="OU IT"/></a><br/>Infrastructure - Unix/Linux Services</td>
- </tr>
-</table>
+<div class="container logolist">
+ <div class="row-fluid">
+{% for user in page.users %}
+  <div class="span3 userlogo"><a href="{{ user.url }}"><img src="/images/who/{{ user.img }}_logo_sm.png" alt="" /></a></div>
+ {% capture current %}{% cycle 'users': '','','','goose' %}{% endcapture %}
+ {% if current != '' %}
+ </div>
+ <div class="row-fluid">
+ {% endif %}
+{% endfor %}
+ </div>
+</div>
 
 ## Applications Using Cobbler (As a Service)
 
-<table class="users">
- <tr>
-  <td><a href="http://genome.et.redhat.com"><img src="/images/who/glogo.gif" alt="Genome"/></a></td>
-  <td><a href="http://fedorahosted.org/spacewalk"><img src="/images/who/spacewalk-logo.png" alt="Spacewalk"></a></td> 
-  <td><a href="http://fedorahosted.org/beaker"><img src="/images/who/Beaker-logo-1b.png" alt="Beaker"/></a></td>
- </tr>
- <tr>
-  <td><a href="http://reliam.com"><img src="/images/who/reliam.png" alt="Reliam"/></a></td>
-  <td><a href="http://www.opensymbolic.org"><img src="/images/who/symbolic_logo.png" alt="Open Symbolic"/></a></td>
-  <td><a href="http://www.byte-code.com"><img src="/images/who/LogoLuminoso.png" width="40%" alt="Byte-Code"/></a></td>
- </tr>
- <tr>
-  <td><a href="http://dashwire.com"><img src="/images/who/dwlogo-300x132.png" alt="Dashwire"/></a></td>
- </tr>
-</table>
+<div class="container logolist">
+ <div class="row-fluid">
+{% for project in page.projects %}
+  <div class="span3 userlogo"><a href="{{ project.url }}"><img src="/images/who/{{ project.img }}_logo_sm.png" alt="" /></a></div>
+ {% capture current %}{% cycle 'projects': '','','','goose' %}{% endcapture %}
+ {% if current != '' %}
+ </div>
+ <div class="row-fluid">
+ {% endif %}
+{% endfor %}
+ </div>
+</div>
 
