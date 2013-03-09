@@ -113,7 +113,7 @@ hr {
 }
 
 #hero {
-  padding: 150px 0px 50px 0px;
+  padding: 125px 0px 40px 0px;
   background-image: url('/images/hero.png');
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -121,11 +121,11 @@ hr {
 }
 
 #hero h1 {
-  margin: 10px 0px 15px -5px;
+  margin: 35px 0px 15px -5px;
 }
 
 #hero .mainblurb {
-  padding: 20px 50px 0px 0px;
+  padding: 20px 70px 0px 0px;
 }
 
 #hero .btn-large {
@@ -144,6 +144,9 @@ hr {
   color: #999999;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
+}
+#hero .header.supporters {
+  margin-bottom: 0;
 }
 
 #hero .version {
@@ -165,6 +168,10 @@ hr {
 
 .heroblurb hr {
   margin: 10px 0px;
+}
+
+.heroblurb .btn-small {
+  margin-top: 7px;
 }
 
 a:hover {

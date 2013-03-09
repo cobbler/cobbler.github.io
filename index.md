@@ -54,7 +54,7 @@ $('document').ready(function() {
      <div class="version">2.2.3-2</div>
      <div class="release">released on June 17, 2012</div>
      <div><hr /></div>
-     <div class="header">Latest News:</div>
+     <div class="header latestnews">Latest News:</div>
      <div class="post">
       <div class="title"><a href="{{ post.url}}">{{ post.title}}</a></div>
       <div class="author">by {{ post.author }} on {{ post.date | date: "%Y.%m.%d" }}</div>
@@ -63,7 +63,8 @@ $('document').ready(function() {
 {% endfor %}
     </div>
     <div class="row well heroblurb">
-     <div class="header">Thanks to all our supporters!</div>
+     <div class="header supporters">Thanks to all our supporters!</div>
+     <div class="supporter"><a href="http://www.eucalyptus.com/"><img src="/images/supporters/eucalyptus.png" /></a></div>
      <div><a href="/supporters.html" class="btn btn-info btn-small">More Info</a></div>
     </div>
    </div>
@@ -94,7 +95,7 @@ $('document').ready(function() {
  <div class="span6">
   <h4>Reduce, Reuse...</h4>
   <p>Just as configuration management systems rely on templates to simplify updates, so too does Cobbler. Templates are used extensively for management of services like DNS and DHCP, and the response files given to the various distributions (kickstart, preseed, etc.) are all templated to maximize code reuse.</p>
-  <p>In addition to templates, Cobbler relies on a system of snippets - small chunks of code (which is really another template) that can be embedded in other templates. This allows admins to write things once, use it wherever they need it via a simple include, all while managing the content in just one place.</p>
+  <p>In addition to templates, Cobbler relies on a system of snippets - small chunks of code (which are really templates themselves) that can be embedded in other templates. This allows admins to write things once, use it wherever they need it via a simple include, all while managing the content in just one place.</p>
  </div>
 </div>
 
