@@ -64,7 +64,10 @@ $('document').ready(function() {
     </div>
     <div class="row well heroblurb">
      <div class="header supporters">Thanks to all our supporters!</div>
-     <div class="supporter"><a href="http://www.eucalyptus.com/"><img src="/images/supporters/eucalyptus.png" /></a></div>
+     <div class="row-fluid supporter">
+      <div class="span6"><a href="http://www.eucalyptus.com/"><img src="/images/supporters/eucalyptus.png" /></a></div>
+      <div class="span6"><a href="http://www.ansibleworks.com/"><img src="/images/supporters/ansible.png" /></a></div>
+     </div>
      <div><a href="/supporters.html" class="btn btn-info btn-small">More Info</a></div>
     </div>
    </div>

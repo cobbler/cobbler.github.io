@@ -146,7 +146,9 @@ hr {
   text-transform: uppercase;
 }
 #hero .header.supporters {
-  margin-bottom: 0;
+  margin-bottom: 5px;
+}
+#hero supporter {
 }
 
 #hero .version {
