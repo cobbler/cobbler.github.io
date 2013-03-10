@@ -73,7 +73,7 @@ $('document').ready(function() {
       <div class="span6"><a href="http://www.spilgames.com/careers/"><img src="/images/supporters/spilgames.png" /></a></div>
       <div class="span6"><a href="http://www.puzzle.ch/"><img src="/images/supporters/puzzleitc.png" /></a></div>
      </div>
-     <div><a href="/supporters.html" class="btn btn-info btn-small">View All Supporters</a></div>
+     <div class="viewall"><a href="/supporters.html">view all supporters</a></div>
     </div>
    </div>
   </div>

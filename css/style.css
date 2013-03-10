@@ -150,6 +150,10 @@ hr {
 }
 #hero supporter {
 }
+#hero .heroblurb .viewall {
+  font-size: 0.85em;
+  margin-top: 5px;
+}
 
 #hero .version {
   font-size: 2.0em;
