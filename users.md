@@ -34,6 +34,8 @@ users:
     url: http://speakeasy.net
   - img: spi
     url: http://imageworks.com/
+  - img: spilgames
+    url: http://www.spilgames.com/careers/
   - img: stoneit
     url: http://www.stone-it.com
   - img: sulair

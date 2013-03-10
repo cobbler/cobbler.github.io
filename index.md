@@ -25,6 +25,7 @@ users:
   - img: spacewalk
   - img: speakeasy
   - img: spi
+  - img: spilgames
   - img: stoneit
   - img: sulair
   - img: sunypotsdam
@@ -68,7 +69,11 @@ $('document').ready(function() {
       <div class="span6"><a href="http://www.eucalyptus.com/"><img src="/images/supporters/eucalyptus.png" /></a></div>
       <div class="span6"><a href="http://www.ansibleworks.com/"><img src="/images/supporters/ansible.png" /></a></div>
      </div>
-     <div><a href="/supporters.html" class="btn btn-info btn-small">More Info</a></div>
+     <div class="row-fluid supporter">
+      <div class="span6"><a href="http://www.spilgames.com/careers/"><img src="/images/supporters/spilgames.png" /></a></div>
+      <div class="span6"><a href="http://www.puzzle.ch/"><img src="/images/supporters/puzzleitc.png" /></a></div>
+     </div>
+     <div><a href="/supporters.html" class="btn btn-info btn-small">View All Supporters</a></div>
     </div>
    </div>
   </div>
