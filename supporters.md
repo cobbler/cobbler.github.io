@@ -7,7 +7,9 @@ contributors:
     - name: Eucalyptus
       url: http://www.eucalyptus.com/
       logo: eucalyptus_big.png
-    - name: John Rose
+    - name: The Fedora Project
+      url: http://fedoraproject.org/
+      logo: fedora_big.png
     - name: Spil Games 
       url: http://www.spilgames.com/careers/
     - name: Puzzle ITC

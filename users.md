@@ -14,6 +14,8 @@ users:
     url: http://www.dell.com
   - img: eucalyptus
     url: http://www.eucalyptus.com/
+  - img: fedora
+    url: http://www.fedoraproject.org/
   - img: flpc
     url: http://www.uclug.org/flpc
   - img: kynetx
