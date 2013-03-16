@@ -10,7 +10,7 @@ Speaking of which, the [indiegogo campaign](http://www.indiegogo.com/cobbler24) 
 
 Special thanks goes to our platinum-level contributors, lead by the [Eucalyptus team](http://www.eucalyptus.com/) which matched all contributions during the last week and seriously pushed us over the top.
 
-![Eucalyptus](/images/eucalyptus-logo.png)
+![Eucalyptus](/images/supporters/eucalyptus_big.png)
 
 As I noted in the updates section of the campaign, I've already bought 3 of the 4 servers I wanted to get, and I'm waiting on final word from a hardware vendor in regards to a donation of another server. Once that is finalized, I will use some of the funds to add RAM to the servers I have purchased already ([HP N40L Micro Servers](http://h10010.www1.hp.com/wwpc/us/en/sm/WF06b/15351-15351-4237916-4237918-4237917-4248009-5153252-5153253.html?dnr=1)), which only came with 2GB installed. A portion of the funds will be held in reserve to cover costs of maintaining these systems, for example power costs and replacement parts. Since part of the goal was to enable pushes of images and systems directly into IaaS platforms, I may use some of this funding in the future to support testing on Amazon and other platforms as well.
 
