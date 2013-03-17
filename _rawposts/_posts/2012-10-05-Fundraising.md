@@ -2,6 +2,7 @@
 layout: post
 title: Fundraising!
 author: James
+summary: Announcing a fundraiser for Cobbler, to raise money to buy new hardware to help facilitate testing and to create a new continuous integration environment.
 ---
 As cloud infrastructures (specifically Infrastructure as a Service platforms) become more commonplace, Cobbler will need to be adapted to provide the same flexibility in image management as it does for bare-metal. The main challenge to adding these features to date has been a lack of hardware for testing.
 

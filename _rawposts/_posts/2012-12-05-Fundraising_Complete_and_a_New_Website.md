@@ -2,7 +2,7 @@
 layout: post
 title: Fundraising Complete and New Website
 author: James
-summary: An update on our Indiegogo fundraiser, and a special thanks to the Eucalyptus team!
+summary: Web page updates, an update on the status of the fundraising campaign, and a special thanks to the Eucalyptus team!
 ---
 First off, welcome to the new site! This redesign is basically just to add some polish to the site, which is now using the [Twitter Bootstrap framework](http://twitter.github.com/bootstrap/) (as opposed to no framework). This new update also includes the draft version of the [2.4.0 manual](/manuals/2.4.0/), which has received a *lot* of work (with much more to come). In the coming weeks, I'll be redesigning the front page even more in order to give it a less "bloggy" feel, and to promote the platinum level sponsors from the fundraising campaign.
 

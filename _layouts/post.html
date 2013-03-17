@@ -1,9 +1,31 @@
 ---
 layout: default
 ---
-<div class="post">
-<h2>{{ page.title }}</h2>
-<p class="postauthor"><i>Posted by {{ page.author }} on {{ page.date | date: "%A, %B %d, %Y" }}</i></p>
-{{ content }}
+<div class="container">
+ <div class="row-fluid">
+  <div class="span9 posts">
+   <div class="row-fluid">
+    <ul class="pager">
+     {% if page.next.url %}
+     <li class="previous"><a href="{{ page.next.url }}"><i class="icon-angle-left"></i> {{ page.next.title }}</i></a></li>
+     {% endif %}
+     {% if page.previous.url %}
+     <li class="next"><a href="{{ page.previous.url }}">{{ page.previous.title }} <i class="icon-angle-right"></i></a></li>
+     {% endif %}
+    </ul>
+   </div>
+   <div class="row-fluid">
+    <div class="post">
+     <h2 class="header">{{ page.title }}</h2>
+     <div class="author"><i>Posted by {{ page.author }} on {{ page.date | date: "%A, %B %d, %Y" }}</i></div>
+     <div class="content">{{ content }}</div>
+     <div class="">{% post_index %}</div>
+    </div>
+   </div>
+  </div>
+  <div class="span3">
+  {% related_posts_by_date %}
+  </div>
+ </div>
 </div>
 

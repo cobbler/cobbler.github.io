@@ -121,7 +121,7 @@ hr {
 }
 
 #hero h1 {
-  margin: 35px 0px 15px -5px;
+  margin: 50px 0px 15px -5px;
 }
 
 #hero .mainblurb {
@@ -153,6 +153,11 @@ hr {
 #hero .heroblurb .viewall {
   font-size: 0.85em;
   margin-top: 5px;
+}
+#hero .heroblurb .post {
+  border-bottom: none;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 #hero .version {
@@ -254,11 +259,15 @@ footer {
 footer .posts {
   margin-top: 10px;
 }
-posts .post {
+.posts .post {
   border-bottom: 1px solid black;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
 }
 .posts .post:last-child {
-  border: none;
+  border-bottom: none;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 .posts .post .title {
   display: block;
@@ -274,6 +283,12 @@ posts .post {
 .posts .post .content {
   margin: 7px 0px 0px 0px;
   font-size: 0.85em;
+}
+.posts .post .readmore {
+  margin: 5px 0px 0px 0px;
+}
+.posts .post .header {
+  margin-bottom: 0px;
 }
 
 footer .credits {

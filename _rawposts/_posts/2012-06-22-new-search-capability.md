@@ -2,6 +2,7 @@
 layout: post
 title: New Search Capability
 author: James
+summary: I've added a new search function to the site, which will search the manual documentation. Since github uses jekyll for their page hosting, all site content has to be static, which really limits the search capability. Some third-party services exist to get around this issue, but I decided to go a different direction and wrote a jekyll plugin (using ferret to index the text) to generate a searchable JSON index. JQuery is used on the client side to grab that index and find the results based on a fuzzy matching algorithm.
 ---
 I've added a new search function to the site, which will search the manual documentation. Since github uses jekyll for their page hosting, all site content has to be static, which really limits the search capability. Some third-party services exist to get around this issue, but I decided to go a different direction and wrote a jekyll plugin (using ferret to index the text) to generate a searchable JSON index. JQuery is used on the client side to grab that index and find the results based on a fuzzy matching algorithm.
 

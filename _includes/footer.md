@@ -9,6 +9,7 @@
          <ul class="nav nav-list">
           <li class="nav-header">Pages</li>
           <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Blog Posts</a></li>
           <li><a href="/about.html">About Cobbler</a></li>
          </ul>
         </div>

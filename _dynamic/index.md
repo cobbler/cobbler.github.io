@@ -1,6 +1,9 @@
 ---
 layout: index
 title: Cobbler - Linux install and update server
+cobbler:
+  version: 2.2.3-2
+  release: June 17th, 2012
 users:
   - img: acision
   - img: alstom
@@ -51,18 +54,19 @@ $('document').ready(function() {
    </div>
    <div class="span3">
     <div class="row well heroblurb posts">
-{% for post in site.posts limit:1 %}
      <div class="header">Latest Version:</div>
-     <div class="version">2.2.3-2</div>
-     <div class="release">released on June 17, 2012</div>
+     <div class="version">{{ page.cobbler.version }}</div>
+     <div class="release">released on {{ page.cobbler.release }}</div>
      <div><hr /></div>
      <div class="header latestnews">Latest News:</div>
+{% for post in site.posts limit:1 %}
      <div class="post">
       <div class="title"><a href="{{ post.url}}">{{ post.title}}</a></div>
-      <div class="author">by {{ post.author }} on {{ post.date | date: "%Y.%m.%d" }}</div>
-      <div class="content">{{post.summary}}</div>
+      <div class="author">by {{ post.author }} on {{ post.date | date: "%B %d, %Y" }}</div>
+      <!-- <div class="content">{{post.summary}}</div> -->
      </div>
 {% endfor %}
+     <div class="viewall"><a href="/posts/"><i class="icon-double-angle-right"> view all posts</i></a></div>
     </div>
     <div class="row well heroblurb">
      <div class="header supporters">Thanks to all our supporters!</div>
@@ -132,7 +136,7 @@ $('document').ready(function() {
  <div class="span6">
   <h4>Who's using Cobbler?</h4>
   <p>These are just a small sample of the hundreds of companies, universities and government orgnaizations that rely on Cobbler every day to build their infrastructure.</p>
-  <p><a href="/users.html" class="btn btn-info btn-small">More Info</a></p>
+  <div class="viewall"><a href="/users.html"><i class="icon-double-angle-right"> view more</i></a></div>
  </div>
 </div>
 
