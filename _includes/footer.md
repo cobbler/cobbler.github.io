@@ -25,6 +25,7 @@
           <li class="nav-header">Community</li>
           <li><a href="/community.html">How to Get Help</a></li>
           <li><a href="/supporters.html">Supporters</a></li>
+          <li><a href="/users.html">Who's Using Cobbler</a></li>
          </ul>
         </div>
         <div class="span4 sitemap">
