@@ -348,6 +348,24 @@ footer .browsers i {
 }
 
 /* nav list in footer */
-.nav-list > li > a {
+.nav-list > li > a,
+footer a {
   text-shadow: none;
+  color: #0077bb;
+  opacity: 0.7;
+  filter: alpha(opacity=60);
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
 }
+footer a:hover,
+footer a:active,
+.nav-list > li > a:hover,
+.nav-list > li > a:active {
+  opacity: 1;
+  font-weight: bold;
+  color: #1199ee; /* 0088cc */
+  filter: alpha(opacity=100);
+  background: transparent;
+}
+
