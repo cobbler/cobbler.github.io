@@ -14,7 +14,8 @@ contributors:
       url: http://www.spilgames.com/careers/
     - name: Puzzle ITC
       url: http://cobbler.github.com/images/supporters/puzzleitc.png
-    - name: Andrew Dibble
+    - name: Quantcast
+      url: http://www.quantcast.com/
   - name: Gold
     items:
     - name: Andrew Hamilton

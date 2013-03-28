@@ -32,6 +32,8 @@ users:
     url: http://pnl.gov
   - img: puzzleitc
     url: http://puzzle.ch
+  - img: quantcast
+    url: http://www.quantcast.com/
   - img: speakeasy
     url: http://speakeasy.net
   - img: spi
