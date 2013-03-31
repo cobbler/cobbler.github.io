@@ -96,8 +96,13 @@ module Jekyll
               if index == 0
                 res.push("<li class=\"active\">#{title}</li>")
               else
+                begin
+                  part_num = part.split("_",1)[0]
+                rescue
+                  part_num = ""
+                end
                 parent = oparts[(index+1)..-1].reverse.join("/")
-                search = "#{parent}/#{part[0..0]}_-_.*\.html"
+                search = "#{parent}/#{part_num}_-_.*\.html"
                 target = find_match(search,context)
                 if !target
                   link = parent+"/"+part
