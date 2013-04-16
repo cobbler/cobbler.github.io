@@ -15,8 +15,8 @@ The distro signatures are stored in `/var/lib/cobbler/distro_signatures.json`. A
 {% highlight json %}
 {"breeds":
  {
-  "&lt;breed-name&gt;": {
-   "&lt;os-version1&gt;": {
+  "<breed-name>": {
+   "<os-version1>": {
     "signatures": "...",
     "default_kickstart":"...",
     ...
