@@ -16,12 +16,14 @@ First and foremost, cobbler requires Python. Any version over 2.3 should work, t
 * httpd (apache2 for Debian/Ubuntu)
 * mkisofs
 * mod_wsgi (libapache2-mod-wsgi for Debian/Ubuntu)
+* mod_ssl (libapache2-mod-ssl)
 * python-cheetah
 * python-netaddr
 * python-simplejson
 * python-urlgrabber
 * PyYAML (python-yaml for Debian/Ubuntu)
 * rsync
+* syslinux
 * tftp-server (atftpd for Debian/Ubuntu, though others _may_ work)
 * yum-utils
 
