@@ -39,7 +39,7 @@ users:
   - img: spi
     url: http://imageworks.com/
   - img: spilgames
-    url: http://www.spilgames.com/careers/
+    url: http://spil.com/cobbler
   - img: stoneit
     url: http://www.stone-it.com
   - img: sulair

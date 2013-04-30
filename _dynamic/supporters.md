@@ -11,7 +11,7 @@ contributors:
       url: http://fedoraproject.org/
       logo: fedora_big.png
     - name: Spil Games 
-      url: http://www.spilgames.com/careers/
+      url: http://spil.com/cobbler
     - name: Puzzle ITC
       url: http://cobbler.github.com/images/supporters/puzzleitc.png
     - name: Quantcast
