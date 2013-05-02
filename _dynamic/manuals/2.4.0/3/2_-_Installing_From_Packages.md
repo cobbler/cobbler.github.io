@@ -37,6 +37,13 @@ cobblerd.service - Cobbler Helper Daemon
 		  └ 1234 /usr/bin/python /usr/bin/cobblerd -F
 {% endhighlight %}
 
+And (re)start/enable Apache:
+
+{% highlight bash %}
+$ systemctl start httpd.service
+$ systemctl enable httpd.service
+{% endhighlight %}
+
 ## RHEL/CentOS/Scientific Linux
 
 Cobbler is packaged for RHEL variants through the [Fedora EPEL](http://fedoraproject.org/wiki/EPEL) (Extra Packages for Enterprise Linux) system. Follow the directions there to install the correct repo RPM for your RHEL version and architecture. For example, on for a RHEL6.x x86_64 system:
@@ -66,6 +73,13 @@ Once cobbler is installed, start and enable the service:
 {% highlight bash %}
 $ service cobblerd start
 $ chkconfig cobblerd on
+{% endhighlight %}
+
+And (re)start/enable Apache:
+
+{% highlight bash %}
+$ service httpd start
+$ service cobblerd on
 {% endhighlight %}
 
 ## Debian/Ubuntu

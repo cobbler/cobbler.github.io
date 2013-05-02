@@ -122,6 +122,13 @@ cobblerd.service - Cobbler Helper Daemon
 </code></pre></div>
 
 
+<p>And (re)start/enable Apache:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>systemctl start httpd.service
+<span class="nv">$ </span>systemctl <span class="nb">enable </span>httpd.service
+</code></pre></div>
+
+
 <h2>RHEL/CentOS/Scientific Linux</h2>
 
 <p>Cobbler is packaged for RHEL variants through the <a href="http://fedoraproject.org/wiki/EPEL">Fedora EPEL</a> (Extra Packages for Enterprise Linux) system. Follow the directions there to install the correct repo RPM for your RHEL version and architecture. For example, on for a RHEL6.x x86_64 system:</p>
@@ -150,6 +157,13 @@ cobblerd.service - Cobbler Helper Daemon
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>service cobblerd start
 <span class="nv">$ </span>chkconfig cobblerd on
+</code></pre></div>
+
+
+<p>And (re)start/enable Apache:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>service httpd start
+<span class="nv">$ </span>service cobblerd on
 </code></pre></div>
 
 
