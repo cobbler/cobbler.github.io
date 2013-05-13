@@ -82,13 +82,13 @@ keep an active installation.
 ## Load Balancing
 
 Similar to the HA/Disaster Recovery case, consider using a
-[CobblerTrigger](Triggers) to notify the other
+{% linkup title:"Triggers" extrameta:2.4.0 %} to notify the other
 server to pull new metadata when commands are issued.
 
 ## Multiple Geographies
 
 Several remote servers pull from the master, either triggered by a
-[CobblerTrigger](Triggers) on the central
+{% linkup title:"Triggers" extrameta:2.4.0 %} on the central
 server, or otherwise on daily cron. This allows for establishing
 install mirrors that are closer and therefore faster and less
 bandwidth hungry. The admin can choose whether or not system
