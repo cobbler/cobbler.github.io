@@ -71,7 +71,7 @@ module Jekyll
                     if @attributes['alt'] != ''
                        title = @attributes['alt'].strip()
                     end
-                    html = "<a href=\"#{page.dir}#{page.url}\">#{title}</a>"
+                    html = "<a href=\"#{page.url}\">#{title}</a>"
                     break
                 end
             end
