@@ -79,6 +79,15 @@ body:before {
   text-decoration: none;
 }
 
+/* search form stuff */
+.nav li form {
+  margin: 0;
+}
+
+#st-search-input {
+  margin: 5px 0px 0px 20px;
+}
+
 #wrap {
   min-height: 100%;
   padding-top: 100px;

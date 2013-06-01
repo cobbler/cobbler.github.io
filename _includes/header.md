@@ -15,6 +15,7 @@
    <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
    <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="/css/search.css" />
 
    <!-- Fonts -->
    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
@@ -29,8 +30,9 @@
    <!-- JQuery/Bootstrap/custom scripts -->
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-   <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="/js/search.js"></script>
+   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.swiftype.search.js"></script>
 </head>
 <body class="pull_up">
 
