@@ -25,7 +25,7 @@ repo = serializer_catalog
 etc...
 {% endhighlight %}
 
-**NOTE** Be sure to add a line for every object type supported in your version of cobbler. Read the {% linkup title:"Cobbler Primatives" extrameta:2.4.0 %} section for more details.
+**NOTE** Be sure to add a line for every object type supported in your version of cobbler. Read the {% linkup title:"Cobbler Primitives" extrameta:2.4.0 %} section for more details.
 
 Suppose, however, that you (just to be contrary), want to save everything in Marshalled XML because you liked angle brackets a whole lot (we don't!). Easy enough, just write a new serializer module that did this and then could change the file to:
 

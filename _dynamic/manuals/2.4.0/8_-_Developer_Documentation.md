@@ -36,3 +36,4 @@ XMLRPC API is used to interact with cobbler via the cobblerd daemon.  In additio
 ## Debugging
 
    * [epdb](http://michaeldehaan.net/2011/07/08/better-remote-python-debugging/)
+

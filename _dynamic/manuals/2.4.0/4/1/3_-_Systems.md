@@ -196,7 +196,7 @@ For multiple disks, seperate the values with commas such as "VolGroup00,VolGroup
 
 ### Interface Specific Commands
 
-System primatives are unique in that they are the only object in Cobbler that embeds another complex object - interfaces. As such, there is an entire subset of options that are specific to interfaces only.
+System primitives are unique in that they are the only object in Cobbler that embeds another complex object - interfaces. As such, there is an entire subset of options that are specific to interfaces only.
 
 #### --interface
 
