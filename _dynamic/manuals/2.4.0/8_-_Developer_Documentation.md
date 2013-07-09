@@ -17,8 +17,8 @@ Note that cobbler has its own development mailing list, which is:
 
 Various information about how to get involved with the Cobbler project.
 
-   * [Patch Process](Patch Process) -- How to contribute code/patches/docs
-   * [Development Environment Tips](Development Environment Tips) -- How to get your development setup going
+   * {% linkup title:"Patch Process" extrameta:2.4.0 %} -- How to contribute code/patches/docs
+   * {% linkup title:"Development Environment Tips" exrtameta:2.4.0 %} -- How to get your development setup going
 
 ## First, Read The Source
 
