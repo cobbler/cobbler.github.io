@@ -23,7 +23,7 @@ This syntax of this command is as follows:
 $ cobbler setting edit --name=option --value=value
 {% endhighlight %}
 
-As with other cobbler primatives, settings that are array-based should be space-separated while hashes should be a space-separated list of key=value pairs.
+As with other cobbler primitives, settings that are array-based should be space-separated while hashes should be a space-separated list of key=value pairs.
 
 ### cobbler setting report
 

@@ -1,16 +1,16 @@
 ---
 layout: manpage
-title: Cobbler Primatives
+title: Cobbler Primitives
 meta: 2.4.0
 ---
 
-Primatives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section of the {% linkup title:"Introduction to Cobbler" extrameta:2.4.0 %} page. These objects are generally loosely related, though the distro/profile/system relation is somewhat more strict.
+Primitives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section of the {% linkup title:"Introduction to Cobbler" extrameta:2.4.0 %} page. These objects are generally loosely related, though the distro/profile/system relation is somewhat more strict.
 
 This section covers the creation and use of these objects, as well as how they relate to each other - including the methodology by which attributes are inherited from parent objects.
 
 ## Standard Rules
 
-Cobbler has a standard set of rules for manipulating primative field values and, in the case of distros/profiles/systems, how those values are inherited from parents to children.
+Cobbler has a standard set of rules for manipulating primitive field values and, in the case of distros/profiles/systems, how those values are inherited from parents to children.
 
 ### Inheritance of Values
 
@@ -109,9 +109,9 @@ Kickstart Metadata             : {'a': ['b', 'c', 'd']}
 
 <div class="alert alert-info alert-block"><b>Note:</b> You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.</div>
 
-## Standard Primative Sub-commands
+## Standard Primitive Sub-commands
 
-All primative objects support the following standard sub-commands:
+All primitive objects support the following standard sub-commands:
 
 ### List
 
