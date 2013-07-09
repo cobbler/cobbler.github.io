@@ -60,6 +60,18 @@ You're also welcome to hang out in \#cobbler and
 \#cobbler-devel on irc.freenode.net, as there are folks around to
 answer questions, etc.
 
+## Contributing to the website: http://www.cobblerd.org
+
+The github-based git repository for the www.cobblerd.org website itself is at [ https://github.com/cobbler/cobbler.github.com ]( https://github.com/cobbler/cobbler.github.com ).
+
+If you want to contribute changes to the website, you will need [jekyll](http://jekyllrb.com).
+
+You will probably want to:
+
+-   edit the files in _dynamic
+-   run the generate_dynamic.sh script
+-   add both the .md and resulting .html files in your git commit
+
 ## Mailing List
 
 We have a development mailing list at [https://fedorahosted.org/mailman/listinfo/cobbler-devel](https://fedorahosted.org/mailman/listinfo/cobbler-devel).  Discuss development related questions,
