@@ -127,8 +127,6 @@ var WRInitTime=(new Date()).getTime();
 <li>createrepo</li>
 <li>httpd (apache2 for Debian/Ubuntu)</li>
 <li>mkisofs</li>
-<li>mod_wsgi (libapache2-mod-wsgi for Debian/Ubuntu)</li>
-<li>mod_ssl (libapache2-mod-ssl)</li>
 <li>python-cheetah</li>
 <li>python-netaddr</li>
 <li>python-simplejson</li>
@@ -143,10 +141,12 @@ var WRInitTime=(new Date()).getTime();
 
 <h2>Cobbler-Web</h2>
 
-<p>Cobbler web only has one other requirement besides cobbler itself:</p>
+<p>Cobbler web only has the following requirements besides cobbler itself:</p>
 
 <ul>
 <li>Django (python-django for Debian/Ubuntu)</li>
+<li>mod_ssl (libapache2-mod-ssl)</li>
+<li>mod_wsgi (libapache2-mod-wsgi for Debian/Ubuntu)</li>
 </ul>
 
 
