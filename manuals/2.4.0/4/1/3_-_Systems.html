@@ -113,7 +113,7 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4/1_-_Cobbler_Primatives.html">1</a> <span class="divider">/</span></li><li class="active">Systems</li></ul>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">Systems</li></ul>
    <h1>Systems</h1>
 <p>System records map a piece of hardware (or a virtual machine) with the cobbler profile to be assigned to run on it. This may be thought of as chosing a role for a specific system.</p>
 
@@ -145,7 +145,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span>string <span class="o">[</span>--profile<span class="o">=</span>name|--image<span class="o">=</span>name<span class="o">]</span> <span class="o">[</span>options<span class="o">]</span>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span>string <span class="o">[</span>--profile<span class="o">=</span>name<span class="p">|</span>--image<span class="o">=</span>name<span class="o">]</span> <span class="o">[</span>options<span class="o">]</span>
 </code></pre></div>
 
 
@@ -348,7 +348,7 @@ cobbler system report
 
 <h3>Interface Specific Commands</h3>
 
-<p>System primatives are unique in that they are the only object in Cobbler that embeds another complex object - interfaces. As such, there is an entire subset of options that are specific to interfaces only.</p>
+<p>System primitives are unique in that they are the only object in Cobbler that embeds another complex object - interfaces. As such, there is an entire subset of options that are specific to interfaces only.</p>
 
 <h4>--interface</h4>
 
@@ -501,7 +501,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system getks --name<span class="o">=</span>foo | less
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system getks --name<span class="o">=</span>foo <span class="p">|</span> less
 </code></pre></div>
 
 
@@ -596,6 +596,11 @@ cobbler system report
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/02/03/cobbler_2.4.1_released.html">Cobbler 2.4.1 Released</a></p>
+          <p class="author">Posted by Jörgen on Monday, February 03, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2013/06/20/cobbler_2.4.0-1_released.html">Cobbler 2.4.0-1 Released</a></p>
           <p class="author">Posted by James on Thursday, June 20, 2013</p>
         </div>
@@ -608,11 +613,6 @@ cobbler system report
         <div class="post">
           <p class="title"><a href="/posts/2012/12/05/Fundraising_Complete_and_a_New_Website.html">Fundraising Complete and New Website</a></p>
           <p class="author">Posted by James on Wednesday, December 05, 2012</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2012/10/05/Fundraising.html">Fundraising!</a></p>
-          <p class="author">Posted by James on Friday, October 05, 2012</p>
         </div>
 
       </div>
