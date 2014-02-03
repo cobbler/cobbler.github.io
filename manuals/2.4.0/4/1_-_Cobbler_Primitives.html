@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Primatives</title>
+   <title>Cobbler Primitives</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -113,15 +113,15 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Cobbler Primatives</li></ul>
-   <h1>Cobbler Primatives</h1>
-<p>Primatives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section of the <a href="/manuals/2.4.0/1_-_About_Cobbler.html">Introduction to Cobbler</a> page. These objects are generally loosely related, though the distro/profile/system relation is somewhat more strict.</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Cobbler Primitives</li></ul>
+   <h1>Cobbler Primitives</h1>
+<p>Primitives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section of the <a href="/manuals/2.4.0/1_-_About_Cobbler.html">Introduction to Cobbler</a> page. These objects are generally loosely related, though the distro/profile/system relation is somewhat more strict.</p>
 
 <p>This section covers the creation and use of these objects, as well as how they relate to each other - including the methodology by which attributes are inherited from parent objects.</p>
 
 <h2>Standard Rules</h2>
 
-<p>Cobbler has a standard set of rules for manipulating primative field values and, in the case of distros/profiles/systems, how those values are inherited from parents to children.</p>
+<p>Cobbler has a standard set of rules for manipulating primitive field values and, in the case of distros/profiles/systems, how those values are inherited from parents to children.</p>
 
 <h3>Inheritance of Values</h3>
 
@@ -154,10 +154,10 @@ var WRInitTime=(new Date()).getTime();
 <p><strong>Example:</strong></p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
 </code></pre></div>
 
@@ -165,10 +165,10 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e
 <p>To preserve the contents of these fields, --in-place should be specified:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span>, <span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
 </code></pre></div>
 
@@ -178,10 +178,10 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <p>To remove a single value from the hash, use the '~' (tilde) character along with --in-place:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s1">&#39;~a&#39;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
 </code></pre></div>
 
@@ -191,10 +191,10 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;c
 <p>You can also suppress values from being used, by specifying the '-' character in front of the key name:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
 <span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s1">&#39;-a&#39;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;-a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
 </code></pre></div>
 
@@ -206,7 +206,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;-
 <p>You can always specify keys without a value:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a b c&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;~&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;~&#39;</span>, <span class="s1">&#39;b&#39;</span>: <span class="s1">&#39;~&#39;</span><span class="o">}</span>
 </code></pre></div>
 
@@ -221,7 +221,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <p>It is also possible to specify multiple values for the same key. In this situation, Cobbler will convert the value portion to an array:</p>
 
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;a=b a=c a=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo | grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
 Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="o">[</span><span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>, <span class="s1">&#39;d&#39;</span><span class="o">]}</span>
 </code></pre></div>
 
@@ -231,9 +231,9 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 <div class="alert alert-info alert-block"><b>Note:</b> You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.</div>
 
 
-<h2>Standard Primative Sub-commands</h2>
+<h2>Standard Primitive Sub-commands</h2>
 
-<p>All primative objects support the following standard sub-commands:</p>
+<p>All primitive objects support the following standard sub-commands:</p>
 
 <h3>List</h3>
 
@@ -379,6 +379,11 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/02/03/cobbler_2.4.1_released.html">Cobbler 2.4.1 Released</a></p>
+          <p class="author">Posted by Jörgen on Monday, February 03, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2013/06/20/cobbler_2.4.0-1_released.html">Cobbler 2.4.0-1 Released</a></p>
           <p class="author">Posted by James on Thursday, June 20, 2013</p>
         </div>
@@ -391,11 +396,6 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
         <div class="post">
           <p class="title"><a href="/posts/2012/12/05/Fundraising_Complete_and_a_New_Website.html">Fundraising Complete and New Website</a></p>
           <p class="author">Posted by James on Wednesday, December 05, 2012</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2012/10/05/Fundraising.html">Fundraising!</a></p>
-          <p class="author">Posted by James on Friday, October 05, 2012</p>
         </div>
 
       </div>

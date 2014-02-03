@@ -247,35 +247,18 @@ derivative distributions.</p>
 <p>cobblerd won't start and say:</p>
 
 <blockquote><p>Starting cobbler daemon: Traceback (most recent call last):
-  File "/usr/bin/cobblerd", line 76, in main</p>
-
-<pre><code>api = cobbler_api.BootAPI(is_cobblerd=True)
-</code></pre>
-
-<p>  File "/usr/lib/python2.6/site-packages/cobbler/api.py", line 127, in <strong>init</strong></p>
-
-<pre><code>module_loader.load_modules()
-</code></pre>
-
-<p>  File "/usr/lib/python2.6/site-packages/cobbler/module_loader.py", line 62, in load_modules</p>
-
-<pre><code>blip =  __import__("modules.%s" % ( modname), globals(), locals(), [modname])
-</code></pre>
-
-<p>  File "/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py", line 53, in <module></p>
-
-<pre><code>from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
-</code></pre>
-
-<p>  File "/usr/lib64/python2.6/ctypes/<strong>init</strong>.py", line 546, in <module></p>
-
-<pre><code>CFUNCTYPE(c_int)(lambda: None)
-</code></pre>
-
-<p>MemoryError</p>
-
-<pre><code>                                                       [  OK  ]
-</code></pre></blockquote>
+  File "/usr/bin/cobblerd", line 76, in main
+    api = cobbler_api.BootAPI(is_cobblerd=True)
+  File "/usr/lib/python2.6/site-packages/cobbler/api.py", line 127, in <strong>init</strong>
+    module_loader.load_modules()
+  File "/usr/lib/python2.6/site-packages/cobbler/module_loader.py", line 62, in load_modules
+    blip =  <strong>import</strong>("modules.%s" % ( modname), globals(), locals(), [modname])
+  File "/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py", line 53, in <module>
+    from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
+  File "/usr/lib64/python2.6/ctypes/<strong>init</strong>.py", line 546, in <module>
+    CFUNCTYPE(c_int)(lambda: None)
+MemoryError
+                                                           [  OK  ]</p></blockquote>
 
 <p>Check your SELinux. Immediate fix is to disable selinux:</p>
 
@@ -418,35 +401,18 @@ derivative distributions.</p>
 <p>cobblerd won't start and say:</p>
 
 <blockquote><p>Starting cobbler daemon: Traceback (most recent call last):
-  File "/usr/bin/cobblerd", line 76, in main</p>
-
-<pre><code>api = cobbler_api.BootAPI(is_cobblerd=True)
-</code></pre>
-
-<p>  File "/usr/lib/python2.6/site-packages/cobbler/api.py", line 127, in <strong>init</strong></p>
-
-<pre><code>module_loader.load_modules()
-</code></pre>
-
-<p>  File "/usr/lib/python2.6/site-packages/cobbler/module_loader.py", line 62, in load_modules</p>
-
-<pre><code>blip =  __import__("modules.%s" % ( modname), globals(), locals(), [modname])
-</code></pre>
-
-<p>  File "/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py", line 53, in <module></p>
-
-<pre><code>from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
-</code></pre>
-
-<p>  File "/usr/lib64/python2.6/ctypes/<strong>init</strong>.py", line 546, in <module></p>
-
-<pre><code>CFUNCTYPE(c_int)(lambda: None)
-</code></pre>
-
-<p>MemoryError</p>
-
-<pre><code>                                                       [  OK  ]
-</code></pre></blockquote>
+  File "/usr/bin/cobblerd", line 76, in main
+    api = cobbler_api.BootAPI(is_cobblerd=True)
+  File "/usr/lib/python2.6/site-packages/cobbler/api.py", line 127, in <strong>init</strong>
+    module_loader.load_modules()
+  File "/usr/lib/python2.6/site-packages/cobbler/module_loader.py", line 62, in load_modules
+    blip =  <strong>import</strong>("modules.%s" % ( modname), globals(), locals(), [modname])
+  File "/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py", line 53, in <module>
+    from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
+  File "/usr/lib64/python2.6/ctypes/<strong>init</strong>.py", line 546, in <module>
+    CFUNCTYPE(c_int)(lambda: None)
+MemoryError
+                                                           [  OK  ]</p></blockquote>
 
 <p>Check your SELinux. Immediate fix is to disable selinux:</p>
 
@@ -473,7 +439,7 @@ derivative distributions.</p>
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/9/Virtualization-troubleshooting.html">Virtualization-troubleshooting</a></li><li><a href="/manuals/2.2.3/9/Debugging-tips.html">Debugging-tips</a></li><li><a href="/manuals/2.2.3/9/Hints-redhat.html">Hints-redhat</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/9/Debugging-tips.html">Debugging-tips</a></li><li><a href="/manuals/2.2.3/9/Hints-redhat.html">Hints-redhat</a></li><li><a href="/manuals/2.2.3/9/Virtualization-troubleshooting.html">Virtualization-troubleshooting</a></li></ul></div>
   </div>
  </div>
 </div>
@@ -532,6 +498,11 @@ derivative distributions.</p>
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/02/03/cobbler_2.4.1_released.html">Cobbler 2.4.1 Released</a></p>
+          <p class="author">Posted by Jörgen on Monday, February 03, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2013/06/20/cobbler_2.4.0-1_released.html">Cobbler 2.4.0-1 Released</a></p>
           <p class="author">Posted by James on Thursday, June 20, 2013</p>
         </div>
@@ -544,11 +515,6 @@ derivative distributions.</p>
         <div class="post">
           <p class="title"><a href="/posts/2012/12/05/Fundraising_Complete_and_a_New_Website.html">Fundraising Complete and New Website</a></p>
           <p class="author">Posted by James on Wednesday, December 05, 2012</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2012/10/05/Fundraising.html">Fundraising!</a></p>
-          <p class="author">Posted by James on Friday, October 05, 2012</p>
         </div>
 
       </div>
