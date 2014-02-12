@@ -115,13 +115,84 @@ var WRInitTime=(new Date()).getTime();
   <div class="span8">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/9_-_Troubleshooting.html">9</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
    <h1>Cobbler Manual</h1>
-<h1>Debugging Cobbler Web</h1>
+<h1>Frequently Asked Virtualization Trouble Shooting Questions</h1>
 
-<p>Most of the action in cobbler happens inside cobblerd, and the web server actually talks to it over XMLRPC.</p>
+<p>This section covers some questions that frequently come up in IRC,
+some of which are problems, and some of which are things about
+Cobbler that are not really problems, but are things folks just ask
+questions about frequently... all related to virtualization.</p>
 
-<p>Using epdb is probably the easiest way to debug things remotely:</p>
+<p>See also <a href="TroubleShooting">TroubleShooting</a> for
+general items</p>
 
-<p><a href="http://michaeldehaan.net/2011/07/08/better-remote-python-debugging/">epdb post on michaeldehaan.net</a></p>
+<h2>Why don't I see this Xen distribution in my PXE menu</h2>
+
+<p>There are two types of installer kernel/initrd pairs. There's a
+normal one (for all physical installations) and a Xen paravirt one.
+If you "cobbler import" an install tree (say from a DVD image) and
+get some "xen" distributions, these distributions will then not
+show up in your PXE menu -- just because Cobbler knows it's
+impossible to PXE boot them on physical hardware.</p>
+
+<p>If you want to install virtual guests, read "man koan" for details
+and also
+<a href="Installing%20Virtual%20Guests">Installing Virtual Guests</a></p>
+
+<p>If you want to install a physical host, use the standard
+distribution, the one without "xen" in the name. Instead, in the
+"%packages" section of the kickstart, add the package named
+"kernel-xen".</p>
+
+<p>This only applies for Xen, of course, if you are using KVM, it's
+simpler and there is only one installer kernel/initrd pair to worry
+about -- the main one.</p>
+
+<p>In recent versions of Fedora, the Xen kernels have merged again, so
+this is not a problem.</p>
+
+<h2>I'm having problems using Koan to install virtual guests</h2>
+
+<p>If you use virt-type xenpv, make sure the profile you are
+installing uses a distro with "xen" in the name. These are the
+paravirtualized versions of the installer kernel/initrd pair.</p>
+
+<p>Make sure your host arch matches your guest arch</p>
+
+<p>If installing Xen and using virsh console or xm console, if you
+don't use --nogfx at one point the installer will appear to hang.
+Most likely it did not, it switched over to using VNC which you can
+view with virt-manager. If you would like to keep using the text
+console, use --nogfx instead. This does not apply to other virt
+types, only Xen.</p>
+
+<p>There really aren't any KVM gotchas, other than making sure
+/dev/kvm is present (you need the right kernel module installed on
+the host) otherwise things will install with qemu and appear to be
+very slow.</p>
+
+<p>See also
+<a href="Installing%20Virtual%20Guests">Installing Virtual Guests</a></p>
+
+<h2>What Is This Strange Message From Xen?</h2>
+
+<pre><code>libvir: Xen error : Domain not found: xenUnifiedDomainLookupByUUID
+libvir: Xen error : Domain not found: xenUnifiedDomainLookupByName
+</code></pre>
+
+<p>If you see the above, it's not an error. These strange messages are
+perfectly normal and are coming from Xen as it's looking for an
+existing domain. It does not come from Cobbler/koan and your
+installation will not be affected. We agree they are confusing but
+they are not coming from Cobbler or Koan.</p>
+
+<h2>VirtualBox version 4+ won't PXE boot, DHCP logs show up nothing</h2>
+
+<p>If you setup cobbler all correctly and you are trying to network book with PXE and you receive this error right after the VirtualBox POST:</p>
+
+<pre><code>FATAL: No bootable medium found! System halted. 
+</code></pre>
+
+<p>Be sure to install to install the VirtualBox Extensions Pack to enable PXE boot support.</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -143,7 +214,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/9/Debugging-tips.html">Debugging-tips</a></li><li><a href="/manuals/2.4.0/9/Hints-redhat.html">Hints-redhat</a></li><li><a href="/manuals/2.4.0/9/Virtualization-troubleshooting.html">Virtualization-troubleshooting</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/9/1_-_Debugging-tips.html">1 - Debugging-tips</a></li><li><a href="/manuals/2.4.0/9/2_-_Hints-redhat.html">2 - Hints-redhat</a></li><li><a href="/manuals/2.4.0/9/3_-_Virtualization-troubleshooting.html">3 - Virtualization-troubleshooting</a></li></ul></div>
   </div>
  </div>
 </div>
