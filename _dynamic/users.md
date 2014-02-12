@@ -52,6 +52,8 @@ users:
     url: http://www.triple-it.nl/
   - img: widexs
     url: http://www.widexs.nl
+  - img: inventx
+    url: http://www.inventx.ch
 projects:
   - img: autotest
     url: http://autotest.github.com/
