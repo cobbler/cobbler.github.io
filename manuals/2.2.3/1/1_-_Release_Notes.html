@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>File System Information</title>
+   <title>Release Notes</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -113,108 +113,58 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3">2.2.3</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">File System Information</li></ul>
-   <h1>File System Information</h1>
-<p>A typical Cobbler install looks something as follows. Note that in general Cobbler manages its own directories. Editing templates and configuration files is intended. Deleting directories will result in very loud alarms. Please do not ask for help if you decide to delete core directories or move them around.</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3">2.2.3</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">Release Notes</li></ul>
+   <h1>Release Notes</h1>
+<h2>2.2.3</h2>
 
-<p>See <a href="/manuals/2.2.3/3/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> if you have space problems.</p>
+<h2>2.2.2</h2>
 
-<h2>/var/log/cobbler</h2>
+<h2>2.2.1</h2>
 
-<p>All Cobbler logs go here. Cobbler does not dump to /var/log/messages, though other system services relating to netbooting do.</p>
+<h2>2.2.0</h2>
 
-<h2>/var/www/cobbler</h2>
-
-<p>This is a Cobbler owned and managed directory for serving up various content that we need to serve up via http. Further selected details are below. As tempting as it is to self-garden this directory, do not do so. Manage it using the "cobbler" command or the Cobbler web app.</p>
-
-<h3>/var/www/cobbler/web/</h3>
-
-<p>Here is where the mod_python web interface and supporting service scripts live for Cobbler pre 2.0</p>
-
-<h3>/var/www/cobbler/webui/</h3>
-
-<p>Here is where content for the (pre 2.0) webapp lives that is not a template. Web templates for all versions live in /usr/share/cobbler.</p>
-
-<h3>/var/www/cobbler/aux/</h3>
-
-<p>This is used to serve up certain scripts to anaconda, such as anamon (See <a href="/manuals/2.2.3/5/4_-_Anaconda_Monitoring.html">Anaconda Monitoring</a> for more information on anamon).</p>
-
-<h3>/var/www/cobbler/svc/</h3>
-
-<p>This is where the mod_wsgi script for Cobbler lives.</p>
-
-<h3>/var/www/cobbler/images/</h3>
-
-<p>Kernel and initrd files are copied/symlinked here for usage by koan.</p>
-
-<h3>/var/www/cobbler/ks_mirror/</h3>
-
-<p>Install trees are copied here.</p>
-
-<h3>/var/www/cobbler/repo_mirror/</h3>
-
-<p>Cobbler repo objects (i.e. yum, apt-mirror) are copied here.</p>
-
-<h2>/var/lib/cobbler/</h2>
-
-<p>This is the main data directory for Cobbler. See individual descriptions of subdirectories below.</p>
-
-<h3>/var/lib/cobbler/config/</h3>
-
-<p>Here Cobbler stores configuration files that it creates when you make or edit Cobbler objects. If you are using serializer_catalog in modules.conf, these will exist in various ".d" directories under this main directory.</p>
-
-<h3>/var/lib/cobbler/backups/</h3>
-
-<p>This is a backup of the config directory created on RPM upgrades.  The configuration format is intended to be forward compatible (i.e.  upgrades without user intervention are supported) though this file is kept around in case something goes wrong during an install (though it never should, it never hurts to be safe).</p>
-
-<h3>/var/lib/cobbler/kickstarts/</h3>
-
-<p>This is where Cobbler's shipped kickstart templates are stored. You may also keep yours here if you like. If you want to edit kickstarts in the web application this is the recommended place for them. Though other distributions may have templates that are not explicitly 'kickstarts', we also keep them here.</p>
-
-<h3>/var/lib/cobbler/snippets/</h3>
-
-<p>This is where Cobbler keeps snippet files, which are pieces of text that can be reused between multiple kickstarts.</p>
-
-<h3>/var/lib/cobbler/triggers/</h3>
-
-<p>Various user-scripts to extend Cobbler to perform certain actions can be dropped into subdirectories of this directory. See the <a href="/manuals/2.2.3/5/5/1_-_Triggers.html">Triggers</a> section for more information.</p>
-
-<h2>/usr/share/cobbler/web</h2>
-
-<p>This is where the cobbler-web package (for Cobbler 2.0 and later) lives. It is a Django app.</p>
-
-<h2>/etc/cobbler/</h2>
+<h3>Features</h3>
 
 <ul>
-<li><strong>cobbler.conf</strong> - Cobbler's most important config file. Self-explanatory with comments, in YAML format.</li>
-<li><strong>modules.conf</strong> - auxilliary config file. controls Cobbler security, and what DHCP/DNS engine is attached, see <a href="/manuals/2.2.3/5/5/2_-_Modules.html">Modules</a> for developer-level details, and also <a href="/manuals/2.2.3/6/1_-_Security_Overview.html">Security Overview</a>. This file is in an INI-style format that can be read by the ConfigParser class.</li>
-<li><strong>users.digest</strong> - if using the digest authorization module this is where your web app username/passwords live. Refer to the <a href="/manuals/2.2.3/6_-_Web_Interface.html">Cobbler Web User Interface</a> section for more info.</li>
+<li>Ubuntu and Debian support again!</li>
+<li>Support for SuSE</li>
+<li>Support for FreeBSD</li>
+<li>Support for ESX 4+/ESXi</li>
+<li>Integration with the python TFTP server (pytftpd)</li>
+<li>"fetchable files" and "boot files" support for distros that need to get more files from the TFTP server</li>
+<li>Faster sync using link cache</li>
+<li>Support for EFI grub booting</li>
+<li>Support for bridged interfaces</li>
+<li>WSGI instead of mod_python for the web interface.</li>
+<li>Lots of Web UI improvements</li>
+<li>MongoDB backend support</li>
 </ul>
 
 
-<h3>/etc/cobbler/power</h3>
+<h3>Bugfixes</h3>
 
-<p>Here we keep the templates for the various power management modules Cobbler supports. Please refer to the <a href="/manuals/2.2.3/5/6_-_Power_Management.html">Power Management</a> section for more details on configuring power management features.</p>
+<p>Seriously way too many to list individually. Read the change log, there were almost 1000 commits since the last release!</p>
 
-<h3>/etc/cobbler/pxe</h3>
+<h3>Upgrade notes</h3>
 
-<p>Various templates related to netboot installation, not neccessarily "pxe".</p>
+<p>Before upgrading be sure to make a backup of /etc/cobbler and /var/lib/cobbler, this is where all your data resides. As some things have changed, read these notes before you get into reading about all the new features.</p>
 
-<h3>/etc/cobbler/zone_templates</h3>
+<ul>
+<li>Review/modify the /etc/cobbler/modules.conf.rpmnew file to include your site specific settings. Then move the new file into place.</li>
+<li>Review/modify the /etc/httpd/conf.d/cobbler_web.conf.rpmnew file and move it into place.</li>
+<li>Remove mod_python and install the mod_wsgi package</li>
+<li>Uncomment the LoadModule command in /etc/httpd/conf.d/wsgi.conf</li>
+<li>Change <code>$kickstart_start</code> / <code>$kickstart_done</code> to <code>$SNIPPET('kickstart_start')</code> / <code>$SNIPPET('kickstart_done')</code> in the default kickstart template.</li>
+<li>The buildiso subcommand now wants a space (instead of a comma) delimited list (eg. cobbler buildiso --systems="sys1 sys2 sys3")</li>
+</ul>
 
-<p>If the chosen DNS management module for DNS is BIND, this directory is where templates for each zone file live. dnsmasq does not use this directory.</p>
 
-<h3>/etc/cobbler/reporting</h3>
+<p>Internal changes:
+- The "subnet" field has been renamed to "netmask". You might want to review your kickstarts/templates
+- The "bonding" &amp; "bond_master" interface types are deprecated and replaced by new fields: "interface_type" &amp; "interface_master"</p>
 
-<p>Templates for various reporting related functions of Cobbler, most notably the new system email feature in Cobbler 1.5 and later.</p>
-
-<h2>/usr/lib/python${VERSION}/site-packages/cobbler/</h2>
-
-<p>The source code to Cobbler lives here. If you have multiple versions of python installed, make sure Cobbler is in the site-packages directory for the correct python version (you can use symlinks to make it available to multiple versions).</p>
-
-<h3>/usr/lib/python${VERSION}/site-packages/cobbler/modules/</h3>
-
-<p>This is a directory where modules can be dropped to extend Cobbler without modifying the core. See <a href="/manuals/2.2.3/5/5/2_-_Modules.html">Modules</a> for more information.</p>
+<p>By loading and saving system objects any old fields/values will be translated to the new fields/values.
+As always, if you have any questions, please feel free to ask the mailing list or hop on #cobbler on irc.freenode.net -- that's what we are there for!</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -236,7 +186,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/1/1_-_How_We_Model_Things.html">1 - How We Model Things</a></li><li><a href="/manuals/2.2.3/1/2_-_Distribution_Support.html">2 - Distribution Support</a></li><li><a href="/manuals/2.2.3/1/3_-_File_System_Information.html">3 - File System Information</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/1/1_-_Release_Notes.html">1 - Release Notes</a></li><li><a href="/manuals/2.2.3/1/2_-_How_We_Model_Things.html">2 - How We Model Things</a></li><li><a href="/manuals/2.2.3/1/3_-_Distribution_Support.html">3 - Distribution Support</a></li><li><a href="/manuals/2.2.3/1/4_-_File_System_Information.html">4 - File System Information</a></li></ul></div>
   </div>
  </div>
 </div>

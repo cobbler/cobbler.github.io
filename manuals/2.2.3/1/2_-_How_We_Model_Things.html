@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Distribution Support</title>
+   <title>How We Model Things</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -113,234 +113,9 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3">2.2.3</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">Distribution Support</li></ul>
-   <h1>Distribution Support</h1>
-<p>Cobbler was originally written to support Fedora, Red Hat, and derivative distributions such as CentOS or Scientific Linux. Cobbler now works for managing other environments, including mixed environments, occasionally with some limitations. Debian and SuSE support is quite strong, with patches coming in from developers working on those distributions as well.</p>
-
-<h2>Debian and Ubuntu</h2>
-
-<p>Most Debian and Ubuntu versions should be correctly recognized when using the "cobbler import" command.</p>
-
-<p>There is currently no support for using the --available-as option with import, unless you're pointing at a web location that does not house multiple versions of the distro.</p>
-
-<p>Support for Ubuntu has increased dramatically in the 2.2.x releases, however there is still some work to be done - particularly around automation and snippet support. The preseed format also allows for only a single script to be run for pre and post installation actions, so right now the only option is to manually configure something like the following:</p>
-
-<div class="highlight"><pre><code class="bash">wget -O- http://server/path/to/post-install-script <span class="p">|</span> bash -s
-</code></pre></div>
-
-
-<p>In the future, we will be looking to add native support for that in cobbler for the preseed format.</p>
-
-<p>APT repositories can be managed from RPM based systems, as long as you install the debmirror package for your distribution.</p>
-
-<h3>Notes About Debian</h3>
-
-<p>The Debian distribution does not currently have a focus on network-based automated installs. As such, there are a few extra steps that must be taken to convert a normal DVD distribution to one that can be installed via PXE. Instructions for doing this are currently out of the scope of this manual, however a quick Google search should turn up what you steps you need to take to make this happen.</p>
-
-<h2>SuSE</h2>
-
-<p>Most SuSE versions should be correctly recognized when using the "cobbler import" command.</p>
-
-<p>When used, the "--kickstart" argument for "cobbler profile add" references a AutoYaST XML file, not an actual kickstart, though the templating works the same.</p>
-
-<p>SuSE repos can be managed with yum, so that works as with the Red Hat based distributions.</p>
-
-<p>Unlike Red Hat, SuSE (SLES) keeps its bootup files in a much different directory. For SLES 10, they are located here where "arch" is i386 or x86_64:</p>
-
-<ol>
-<li>/boot/arch/loader/linux (kernel file)</li>
-<li>/boot/arch/loader/initrd (initrd file)</li>
-</ol>
-
-
-<p>I would recommend that you put your sles distro folder (suse10x86sp2) in /var/www/ks_mirror where all the others are kept. Then change your path in the command below:</p>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro add --arch<span class="o">=</span>x86 --breed<span class="o">=</span>suse --initrd<span class="o">=</span>/var/www/ks_mirror/suse10x86sp2/boot/i386/loader/initrd --kernel<span class="o">=</span>/var/www/ks_mirror/suse10x86sp2/boot/i386/loader/linux --name<span class="o">=</span>SLES10-x86-sp2 --os-version<span class="o">=</span>sles10
-</code></pre></div>
-
-
-<p>You will also want to append the following kernel arg with --kopts:</p>
-
-<div class="highlight"><pre><code class="bash"><span class="nv">install</span><span class="o">=</span>http://IP/cobbler/ks_mirror/sles9-i386
-</code></pre></div>
-
-
-<h2>VMWare ESX/ESXi</h2>
-
-<p>Older versions of ESX and ESXi (before version 5) should work fine with not much extra work. ESX3/4 essentially used a variant of RHEL as the Dom0, so installation follows the regular RHEL/CentOS methods. ESXi4 was slightly different, but should work out of the box as well.</p>
-
-<p>ESXi5 now has BETA support, but requires the use of gPXE, which is new in Cobbler 2.2.3. The build process for this has receieved limited support beyond verifying that cobbler will import the distro and configure things somewhat automatically. Be sure to install the correct gPXE packages for your distribution.</p>
-
-<h2>FreeBSD</h2>
-
-<p>The following steps are required to enable FreeBSD support in Cobbler.</p>
-
-<p>You can grab the patches and scripts from the following github repos:</p>
-
-<p><a href="git://github.com/jsabo/cobbler_misc.git">git://github.com/jsabo/cobbler_misc.git</a></p>
-
-<p>This would not be possible without the help from Doug Kilpatrick. Thanks Doug!</p>
-
-<h3>Stuff to do once</h3>
-
-<p>* Install FreeBSD with full sources</p>
-
-<ul>
-<li>Select "Standard" installation</li>
-<li>Use entire disk</li>
-<li>Install a standard MBR</li>
-<li>Create a new slice and use the entire disk</li>
-<li>Mount it at /</li>
-<li><p>Choose the "Developer" distribution</p>
-
-<ul>
-<li>Full sources, binaries and doc but no games</li>
-</ul>
-</li>
-<li><p>Install from a FreeBSD CD/DVD</p></li>
-<li>Setup networking to copy files back and forth</li>
-<li>In the post install "Package Selection" scroll down and select
-shells
-
-<ul>
-<li>Install bash</li>
-<li>chsh -s /usr/local/bin/bash username or vipw</li>
-</ul>
-</li>
-</ul>
-
-
-<p>* Rebuild pxeboot with tftp support</p>
-
-<pre><code>  (cd /sys/boot; make clean; make LOADER_TFTP_SUPPORT=yes; make install)
-</code></pre>
-
-<p>Copy the pxeboot to the Cobbler server.</p>
-
-<h3>Stuff to do every supported release</h3>
-
-<p>* Patch sysinstall with http install support</p>
-
-<ul>
-<li>The media location is hard coded in this patch and has to be
-updated every release. Just look for 8.X and change it.</li>
-</ul>
-
-
-<p>The standard sysinstall doesn't really support HTTP. This patch
-adds full http support to sysinstall.</p>
-
-<pre><code>  (cd /usr; patch -p0 &lt; /root/http_install.patch)
-</code></pre>
-
-<p>* Rebuild FreeBSD mfsroot</p>
-
-<p>We'll use "crunchgen" to create the contents of /stand in a ramdisk
-image. Crunchgen creates a single statically linked binary that
-acts like different normal binaries depending on how it's called.
-We need to include "fetch" and a few other binaries. This is a
-multi step process.</p>
-
-<pre><code>  (mkdir /tmp/bootcrunch; cd /tmp/bootcrunch; crunchgen -o /root/boot_crunch.conf; make -f boot_crunch.mk)
-</code></pre>
-
-<p>Once we've added our additional binaries we need to create a larger
-ramdisk.</p>
-
-<p>Create a new, larger ramdisk, and mount it.</p>
-
-<pre><code>  dd if=/dev/zero of=/tmp/mfsroot bs=1024 count=$((1024 * 5))
-  dev0=`mdconfig -f /tmp/mfsroot`;newfs $dev0;mkdir /mnt/mfsroot_new;mount /dev/$dev0 /mnt/mfsroot_new
-</code></pre>
-
-<p>Mount the standard installer's mfsroot</p>
-
-<pre><code>  mkdir /mnt/cdrom; mount -t cd9660 -o -e /dev/acd0 /mnt/cdrom
-  cp /mnt/cdrom/boot/mfsroot.gz /tmp/mfsroot.old.gz
-  gzip -d /tmp/mfsroot.old.gz; dev1=`mdconfig -f /tmp/mfsroot.old`
-  mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old
-</code></pre>
-
-<p>Copy everything from the old one to the new one. You'll be
-replacing the binaries, but it's simpler to just copy it all over.</p>
-
-<pre><code>  (cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)
-</code></pre>
-
-<p>Next copy over the new bootcrunch file and create all of the
-symlinks after removing the old binaries.</p>
-
-<pre><code>  cd /mnt/mfsroot_new/stand; rm -- *; cp /tmp/bootcrunch/boot_crunch ./
-  for i in $(./boot_crunch 2&gt;&amp;1|grep -v usage);do if [ "$i" != "boot_crunch" ];then rm -f ./"$i";ln ./boot_crunch "$i";fi;done
-</code></pre>
-
-<p>Sysinstall uses install.cfg to start the install off. We've created
-a version of the install.cfg that uses fetch to pull down another
-configuration file from the Cobbler server which allows us to
-dynamically control the install. install.cfg uses a script called
-"doconfig.sh" to determine where the Cobbler installer is via the
-DHCP next-server field.</p>
-
-<p>Copy both install.cfg and doconfig.sh into place.</p>
-
-<pre><code>  cp {install.cfg,doconfig.sh} /mnt/mfsroot_new/stand
-</code></pre>
-
-<p>Now just unmount the ramdisk and compress the file</p>
-
-<pre><code>  umount /mnt/mfsroot_new; umount /mnt/mfsroot_old
-  mdconfig -d -u $dev0; mdconfig -d -u $dev1
-  gzip /tmp/mfsroot
-</code></pre>
-
-<p>Copy the mfsroot.gz to the Cobbler server.</p>
-
-<h3>Stuff to do in Cobbler</h3>
-
-<p>* Enable Cobbler's tftp server in modules.conf</p>
-
-<pre><code>[tftpd]
-module = manage_tftpd_py
-</code></pre>
-
-<p>* Mount the media</p>
-
-<pre><code>  mount /dev/cdrom /mnt
-</code></pre>
-
-<p>* Import the distro</p>
-
-<pre><code>  cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64
-</code></pre>
-
-<p>* Copy the mfsroot.gz and the pxeboot.bs into the distro</p>
-
-<pre><code>  cp pxeboot.bs /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
-  cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
-</code></pre>
-
-<p>* Configure a system to use the profile, turn on netboot, and off
-you go.</p>
-
-<p>DHCP will tell the system to request pxelinux.0, so it will.
-Pxelinux will request it's configuration file, which will have
-pxeboot.bs as the "kernel". Pxelinux will request pxeboot.bs, use
-the extention (.bs) to realize it's another boot loader, and chain
-to it. Pxeboot will then request all the .rc, .4th, the kernel, and
-mfsroot.gz. It will mount the ramdisk and start the installer. The
-installer will connect back to the Cobbler server to fetch the
-install.cfg (the kickstart file), and do the install as instructed,
-rebooting at the end.</p>
-
-<h2>Where the Cobbler Server Can Be Installed</h2>
-
-<p>Cobbler runs happiest on Red Hat Enterprise Linux, Fedora, or RHEL clone like CentOS. We are continuing to work on supporting running cobbler on other distributions, however this support should be considered BETA for the time being.</p>
-
-<p>Please refer to the <a href="/manuals/2.2.3/3_-_Installing_Cobbler.html">Installing Cobbler</a> section for details regarding the installation on various platforms.</p>
-
-<h2>Reinstallation, Virtualization, and Koan in general</h2>
-
-<p>Koan works fine on Fedora, Red Hat Enterprise Linux, or CentOS.  It is intended to work on other (Linux) platforms as well, when it does not, please file a bug report or send us a patch!</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3">2.2.3</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">How We Model Things</li></ul>
+   <h1>How We Model Things</h1>
+<p><img src="/images/how-we-do.png" alt="object tree diagram" /></p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -362,7 +137,7 @@ rebooting at the end.</p>
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/1/1_-_How_We_Model_Things.html">1 - How We Model Things</a></li><li><a href="/manuals/2.2.3/1/2_-_Distribution_Support.html">2 - Distribution Support</a></li><li><a href="/manuals/2.2.3/1/3_-_File_System_Information.html">3 - File System Information</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/1/1_-_Release_Notes.html">1 - Release Notes</a></li><li><a href="/manuals/2.2.3/1/2_-_How_We_Model_Things.html">2 - How We Model Things</a></li><li><a href="/manuals/2.2.3/1/3_-_Distribution_Support.html">3 - Distribution Support</a></li><li><a href="/manuals/2.2.3/1/4_-_File_System_Information.html">4 - File System Information</a></li></ul></div>
   </div>
  </div>
 </div>
