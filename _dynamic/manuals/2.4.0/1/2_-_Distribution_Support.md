@@ -49,7 +49,25 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
-  <td class="span2">Fedora 18 (beta)</td>
+  <td class="span2">Fedora 18</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Fedora 19</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Fedora 20</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -84,7 +102,25 @@ Key:
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">RHEL/CentOS 7</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">Ubuntu</td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Lucid</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
  <tr>
   <td class="span2"></td>
@@ -107,6 +143,24 @@ Key:
  <tr>
   <td class="span2"></td>
   <td class="span2">Quantal</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Raring</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Saucy</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -174,6 +228,69 @@ Key:
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">OpenSuSE 12.3</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">OpenSuSE 13.1</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">SLES 10 sp4</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">SLES 11</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">SLES 11 sp1</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">SLES 11 sp2</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">SLES 11 sp3</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">VMware</td>
  </tr>
  <tr>
@@ -204,6 +321,24 @@ Key:
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">ESXi 5.1</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">ESXi 5.5</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">FreeBSD</td>
  </tr>
  <tr>
@@ -226,6 +361,15 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
+  <td class="span2">8.4</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
   <td class="span2">9.0</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
@@ -233,6 +377,28 @@ Key:
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
  </tr>
+ <tr>
+  <td colspan="7">Xen</td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">XCP 1.6</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">XenServer 6.2</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+
 </table>
 
 <div class="alert alert-info alert-block"><b>Note:</b> This list does not include support for images, which can be just about any OS.</div>
