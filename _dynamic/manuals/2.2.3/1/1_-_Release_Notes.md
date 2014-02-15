@@ -6,11 +6,50 @@ meta: 2.2.3
 
 ## 2.2.3
 
+### Features
+
+### Bugfixes
+
+### Upgrade notes
+
+None.
+
 ## 2.2.2
+
+### Features
+
+- Initial support for configurable on-disk format on virtual disks
+- Add support for Fedora16, rawhide, OpenSuSE 11.x and 12.1
+- Several small webui improvements
+
+### Bugfixes
+
+- Serveral webui fixes
+- Overriding nameservers via kopts in buildiso now works
+- Images without distro caused a stack dump in pxegen
+- Code cleanup and improvements in distro importers
+- Code cleanup sub_process handling
+- Old import modules are removed
+- Duplicate kopts in buildiso are now supported
+- Several bugfixes to koan
+
+### Upgrade notes
+
+None
 
 ## 2.2.1
 
+### Features
 
+- Add support for systemd in the Cobbler spec file
+
+### Bugfixes
+
+None.
+
+### Upgrade notes
+
+None.
 
 ## 2.2.0
 
