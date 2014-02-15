@@ -119,7 +119,24 @@ var WRInitTime=(new Date()).getTime();
 
 <h3>Features</h3>
 
+<ul>
+<li>BETA support for ESXi5 and gPXE</li>
+<li>BETA support for using other template languages, like jinja2</li>
+<li>Security: CSRF support for the web GUI</li>
+<li>Security: the web GUI now defaults to using https</li>
+<li>Support for bind in chroot'd environments</li>
+<li>Koan now uses virt-install cli instead of virtinst API</li>
+<li>Various improvements for SuSE and autoyast, especially for PPC64-based systems</li>
+</ul>
+
+
 <h3>Bugfixes</h3>
+
+<ul>
+<li>Security: Power management subsystem completely re-worked to prevent command-injection (CVE-2012-2395).</li>
+<li>Many, many more..</li>
+</ul>
+
 
 <h3>Upgrade notes</h3>
 

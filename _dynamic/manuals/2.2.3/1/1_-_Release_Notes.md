@@ -8,7 +8,18 @@ meta: 2.2.3
 
 ### Features
 
+- BETA support for ESXi5 and gPXE
+- BETA support for using other template languages, like jinja2
+- Security: CSRF support for the web GUI
+- Security: the web GUI now defaults to using https
+- Support for bind in chroot'd environments
+- Koan now uses virt-install cli instead of virtinst API
+- Various improvements for SuSE and autoyast, especially for PPC64-based systems
+
 ### Bugfixes
+
+- Security: Power management subsystem completely re-worked to prevent command-injection (CVE-2012-2395).
+- Many, many more..
 
 ### Upgrade notes
 
