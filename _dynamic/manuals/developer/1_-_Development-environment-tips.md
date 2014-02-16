@@ -9,7 +9,7 @@ Check out cobbler from git, all work should be done against the master branch, u
 
 If using CentOS, install the appropriate EPEL rpm.  
 
-    Ex: http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm
+    rpm -i http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm
 
 Install dependencies:
 
@@ -31,14 +31,14 @@ It should go without saying, but do not develop for cobbler on your main deploym
 
 ### Testing Your Development Environment Is Ready
 
-   sudo service cobblerd restart
-   sudo service httpd restart
-   cobbler list
+    sudo service cobblerd restart
+    sudo service httpd restart
+    cobbler list
 
 If you encounter a message about apache not running or proxying cobblerd, it could be an SELinux problem.  You probably want to just enable the httpd_can_network_connect boolean, but here's a quick test of that:
 
-   setenforce 0
-   cobbler test
+    setenforce 0
+    cobbler test
 
 You should now be good to go.
 
