@@ -31,14 +31,14 @@ It should go without saying, but do not develop for cobbler on your main deploym
 
 ### Testing Your Development Environment Is Ready
 
-   sudo service cobblerd restart
-   sudo service httpd restart
-   cobbler list
+    sudo service cobblerd restart
+    sudo service httpd restart
+    cobbler list
 
 If you encounter a message about apache not running or proxying cobblerd, it could be an SELinux problem.  You probably want to just enable the httpd_can_network_connect boolean, but here's a quick test of that:
 
-   setenforce 0
-   cobbler test
+    setenforce 0
+    cobbler test
 
 You should now be good to go.
 

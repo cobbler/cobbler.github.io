@@ -147,14 +147,16 @@ var WRInitTime=(new Date()).getTime();
 
 <h3>Testing Your Development Environment Is Ready</h3>
 
-<p>   sudo service cobblerd restart
-   sudo service httpd restart
-   cobbler list</p>
+<pre><code>sudo service cobblerd restart
+sudo service httpd restart
+cobbler list
+</code></pre>
 
 <p>If you encounter a message about apache not running or proxying cobblerd, it could be an SELinux problem.  You probably want to just enable the httpd_can_network_connect boolean, but here's a quick test of that:</p>
 
-<p>   setenforce 0
-   cobbler test</p>
+<pre><code>setenforce 0
+cobbler test
+</code></pre>
 
 <p>You should now be good to go.</p>
 
