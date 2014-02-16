@@ -18,6 +18,7 @@ users:
   - img: fedora
   - img: flpc
   - img: genome
+  - img: iventx
   - img: kynetx
   - img: linkshare
   - img: mi
@@ -38,7 +39,6 @@ users:
   - img: tomtom
   - img: tripleit
   - img: widexs
-  - img: iventx
 ---
 <script>
 $('document').ready(function() {
