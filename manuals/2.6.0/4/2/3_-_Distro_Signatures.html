@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Distro Signatures</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -110,27 +110,148 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Distro Signatures</li></ul>
+   <h1>Distro Signatures</h1>
+<p>Prior to Cobbler 2.4.0, import modules for each supported distro were separate and customized for each specific distribution. The values for breed and os-version were hard-coded into cobbler, so adding support for new distros or newer versions of an already supported distro required code changes and a complete Cobbler upgrade.</p>
 
-<h3>User Manuals</h3>
+<p>Cobbler 2.4.0 introduces the concept of distro signatures to make adding support for newer distro versions without requiring an upgrade to the rest of the system.</p>
 
-<ul>
-<li><a href="/manuals/2.4.0">2.4.x</a></li>
-<li><a href="/manuals/2.2.3">2.2.x</a></li>
-</ul>
+<h3>Distro Signatures File</h3>
+
+<p>The distro signatures are stored in <code>/var/lib/cobbler/distro_signatures.json</code>. As the extension indicates, this is a JSON-formatted file, with the following structure:</p>
+
+<div class="highlight"><pre><code class="json"><span class="p">{</span><span class="nt">&quot;breeds&quot;</span><span class="p">:</span>
+ <span class="p">{</span>
+  <span class="nt">&quot;&lt;breed-name&gt;&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nt">&quot;&lt;os-version1&gt;&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;signatures&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;default_kickstart&quot;</span><span class="p">:</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+    <span class="err">...</span>
+   <span class="p">},</span>
+   <span class="err">...</span>
+  <span class="p">}</span>
+  <span class="err">...</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
-<h3>Developer Manuals</h3>
+<p>This file is read in when cobblerd starts, and logs a message noting how many breeds and os-versions it has loaded:</p>
 
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
+<div class="highlight"><pre><code class="bash">INFO <span class="p">|</span> 9 breeds and 21 OS versions <span class="nb">read </span>from the signature file
+</code></pre></div>
 
 
-</div> <!-- end wrap -->
+<h3>CLI Commands</h3>
 
+<p>The signature CLI command has the following sub-commands:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature --help
+<span class="nv">usage</span>
+<span class="o">=====</span>
+cobbler signature report
+cobbler signature update
+</code></pre></div>
+
+
+<h4>cobbler signature report</h4>
+
+<p>This command prints out a report of the currently loaded signatures and os-versions.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature report
+Currently loaded signatures:
+debian:
+    squeeze
+freebsd:
+    8.2
+    8.3
+    9.0
+generic:
+    <span class="o">(</span>none<span class="o">)</span>
+redhat:
+    fedora16
+    fedora17
+    fedora18
+    rhel4
+    rhel5
+    rhel6
+suse:
+    opensuse11.2
+    opensuse11.3
+    opensuse11.4
+    opensuse12.1
+    opensuse12.2
+ubuntu:
+    oneiric
+    precise
+    quantal
+unix:
+    <span class="o">(</span>none<span class="o">)</span>
+vmware:
+    esx4
+    esxi4
+    esxi5
+windows:
+    <span class="o">(</span>none<span class="o">)</span>
+
+9 breeds with 21 total signatures loaded
+</code></pre></div>
+
+
+<p>An optional --name parameter can be specified to limit the report to one breed:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature report --name<span class="o">=</span>ubuntu
+Currently loaded signatures:
+ubuntu:
+    oneiric
+    precise
+    quantal
+
+Breed <span class="s1">&#39;ubuntu&#39;</span> has 3 total signatures
+</code></pre></div>
+
+
+<h4>cobbler signature update</h4>
+
+<p>This command will cause Cobbler to go and fetch the latest distro signature file from http://cobbler.github.con/signatures/latest.json, and load the signatures in that file. This file will be tested first, to ensure it is formatted correctly.</p>
+
+<div class="highlight"><pre><code class="bash">cobbler signature update
+task started: 2012-11-21_222926_sigupdate
+task started <span class="o">(</span><span class="nv">id</span><span class="o">=</span>Updating Signatures, <span class="nb">time</span><span class="o">=</span>Wed Nov 21 22:29:26 2012<span class="o">)</span>
+Successfully got file from http://cobbler.github.com/signatures/latest.json
+*** TASK COMPLETE ***
+</code></pre></div>
+
+
+<p>This command currently takes no options.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/2/1_-_Check.html">1 - Check</a></li><li><a href="/manuals/2.6.0/4/2/2_-_Sync.html">2 - Sync</a></li><li><a href="/manuals/2.6.0/4/2/3_-_Distro_Signatures.html">3 - Distro Signatures</a></li><li><a href="/manuals/2.6.0/4/2/4_-_Import.html">4 - Import</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/2/4/1_-_Import_Notes.html">4.1 - Import Notes</a></li></ul><li><a href="/manuals/2.6.0/4/2/5_-_Reposync.html">5 - Reposync</a></li><li><a href="/manuals/2.6.0/4/2/6_-_Build_ISO.html">6 - Build ISO</a></li><li><a href="/manuals/2.6.0/4/2/7_-_Command_Line_Search.html">7 - Command Line Search</a></li><li><a href="/manuals/2.6.0/4/2/8_-_Replication.html">8 - Replication</a></li><li><a href="/manuals/2.6.0/4/2/9_-_Validate_Kickstart.html">9 - Validate Kickstart</a></li><li><a href="/manuals/2.6.0/4/2/10_-_ACL_Setup.html">10 - ACL Setup</a></li><li><a href="/manuals/2.6.0/4/2/11_-_Dynamic_Settings.html">11 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/4/2/12_-_Version.html">12 - Version</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

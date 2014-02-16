@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Patch Process</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -110,27 +110,121 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/developer">developer</a> <span class="divider">/</span></li><li class="active">Patch Process</li></ul>
+   <h1>Patch Process</h1>
+<p>You'd like to contribute features or fixes to Cobbler? Great! We'd
+love to have them.</p>
 
-<h3>User Manuals</h3>
+<p>It is highly recommended that you have a github.com account if you would
+like to contribute code.   Create an account, log in, and then go
+to github.com/cobbler/cobbler to "fork" the project.</p>
+
+<p>Create a new branch named after the feature you are working on.</p>
+
+<p>Do the work on your local machine and push to your personal github
+branch (e.g. github.com/yourname/cobbler)</p>
+
+<p>Then use the "submit pull request" feature of github to request that
+the official repo pull in your changes.  Be sure to include a full
+description of what your change does in the comments, including
+what you have tested (and other things that you may have not been
+able to test well and need help with).</p>
+
+<p>If the patch needs more work, we'll let you know in the comments.</p>
+
+<p>Do not mix work on different features in different pull requests/branches if at
+all possible as this makes it difficult to take only some of the work at
+one time, and to quickly slurp in some changes why others get hammered out.</p>
+
+<p>Once we merge in your pull request, you can remove the branch from your repo if you
+like.</p>
+
+<p>If not already there, please add yourself to the AUTHORS file in the root of the checkout.</p>
+
+<h2>Branches</h2>
+
+<p>Cobbler has a development branch called "master"
+(where the action is), and a branch for each release that are in maintaince mode.
+In nearly all cases, your patches should go against master and we can, if we decide,
+backport them to release branches if we want to do an incremental release.</p>
+
+<h2>Standards</h2>
+
+<p>We're not overly picky, but please follow the usual python PEP8 standards
+within reason.</p>
 
 <ul>
-<li><a href="/manuals/2.4.0">2.4.x</a></li>
-<li><a href="/manuals/2.2.3">2.2.x</a></li>
+<li>always use under_scores, not camelCase</li>
+<li>always spaces, not tabs</li>
+<li>avoid one line if statements</li>
+<li>keep things simple -- make sure everyone can read and     understand your code -- avoid "magic" such as very
+complex list comprehensions.   The audience for Cobbler     includes folks with a wide range of programming skills and
+this is not the place to show off</li>
+<li>use modules that are available in EPEL or the base OS, therwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines</li>
+<li>at least for now we have to support Python 2.3 for Cobbler and
+Python 2.2 for koan, so stay away from metaclasses and fancy stuff
+:).  (We should discuss dropping support for these soon)</li>
 </ul>
 
 
-<h3>Developer Manuals</h3>
+<p>You're also welcome to hang out in #cobbler and
+#cobbler-devel on irc.freenode.net, as there are folks around to
+answer questions, etc.</p>
+
+<h2>Contributing to the website: http://www.cobblerd.org</h2>
+
+<p>The github-based git repository for the www.cobblerd.org website itself is at <a href="https://github.com/cobbler/cobbler.github.com"> https://github.com/cobbler/cobbler.github.com </a>.</p>
+
+<p>If you want to contribute changes to the website, you will need <a href="http://jekyllrb.com">jekyll</a>.</p>
+
+<p>You will probably want to:</p>
 
 <ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
+<li>edit the files in _dynamic</li>
+<li>run the generate_dynamic.sh script</li>
+<li>add both the .md and resulting .html files in your git commit</li>
 </ul>
 
 
-</div> <!-- end wrap -->
+<h2>Mailing List</h2>
 
+<p>We have a development mailing list at <a href="https://fedorahosted.org/mailman/listinfo/cobbler-devel">https://fedorahosted.org/mailman/listinfo/cobbler-devel</a>.  Discuss development related questions,
+roadmap, and other things there, rather than on the general user list.</p>
+
+<p>It is a very good idea to mention your pull request (copy/paste, etc) to the development mailing
+list for discussion.</p>
+
+<h2>The End</h2>
+
+<p>Thanks for the interest and happy patching!</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/developer/1_-_Development-environment-tips.html">1 - Development-environment-tips</a></li><li><a href="/manuals/developer/2_-_Patch-process.html">2 - Patch-process</a></li><li><a href="/manuals/developer/3_-_Xmlrpc.html">3 - Xmlrpc</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

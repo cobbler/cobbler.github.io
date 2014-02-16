@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Installation Notes</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -110,27 +110,78 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_Installing_Cobbler.html">3</a> <span class="divider">/</span></li><li class="active">Installation Notes</li></ul>
+   <h1>Installation Notes</h1>
+<p>The purpose of this page is to document installation requirements (especially when installing from source) on distros that don't have official packaging or for those that want the most up to date version of cobbler.</p>
 
-<h3>User Manuals</h3>
+<h2>Debian Squeeze (2.3.0 devel tested on 6.0.4)</h2>
+
+<p>To install cobbler from source on Debian Squeeze, the following steps need to be made:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>apt-get install make <span class="c"># for build</span>
+<span class="nv">$ </span>apt-get install git <span class="c"># for build</span>
+<span class="nv">$ </span>apt-get install python-yaml
+<span class="nv">$ </span>apt-get install python-cheetah
+<span class="nv">$ </span>apt-get install python-netaddr
+<span class="nv">$ </span>apt-get install python-simplejson
+<span class="nv">$ </span>apt-get install python-urlgrabber
+<span class="nv">$ </span>apt-get install libapache2-mod-wsgi
+<span class="nv">$ </span>apt-get install python-django
+<span class="nv">$ </span>apt-get install atftpd
+
+<span class="nv">$ </span>a2enmod proxy
+<span class="nv">$ </span>a2enmod proxy_http
+<span class="nv">$ </span>a2enmod rewrite
+
+<span class="nv">$ </span>ln -s /usr/local/lib/python2.6/dist-packages/cobbler /usr/lib/python2.6/dist-packages/
+<span class="nv">$ </span>ln -s /srv/tftp /var/lib/tftpboot
+
+<span class="nv">$ </span>chown www-data /var/lib/cobbler/webui_sessions
+</code></pre></div>
+
 
 <ul>
-<li><a href="/manuals/2.4.0">2.4.x</a></li>
-<li><a href="/manuals/2.2.3">2.2.x</a></li>
+<li>Change all <code>/var/www/cobbler</code> in <code>/etc/apache2/conf.d/cobbler.conf</code> to <code>/usr/share/cobbler/webroot/</code></li>
+<li>init script
+
+<ul>
+<li>add Required-Stop line</li>
+<li>path needs to be <code>/usr/local/...</code> or fix the install location
+</pre></li>
+</ul>
+</li>
 </ul>
 
 
-<h3>Developer Manuals</h3>
+<p>The same steps will most likely be required on the current 2.2.x stable branch.</p>
 
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/3/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><li><a href="/manuals/2.6.0/3/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/3/4_-_Configuration_Files.html">4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/4/1_-_Settings_File.html">4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/3/4/2_-_Modules_Configuration.html">4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/3/5_-_Relocating_Your_Installation.html">5 - Relocating Your Installation</a></li><li><a href="/manuals/2.6.0/3/6_-_Installation_Notes.html">6 - Installation Notes</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

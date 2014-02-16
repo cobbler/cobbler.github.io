@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>File Resources</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -110,27 +110,79 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">File Resources</li></ul>
+   <h1>File Resources</h1>
+<p>File resources are managed using cobbler file add, allowing you to create and delete files on a system.</p>
 
-<h3>User Manuals</h3>
+<h2>Actions</h2>
 
-<ul>
-<li><a href="/manuals/2.4.0">2.4.x</a></li>
-<li><a href="/manuals/2.2.3">2.2.x</a></li>
-</ul>
+<h3>create</h3>
+
+<p>Create the file. [Default]</p>
+
+<h3>remove</h3>
+
+<p>Remove the file.</p>
+
+<h2>Attributes</h2>
+
+<h3>mode</h3>
+
+<p>Permission mode (as in chmod).</p>
+
+<h3>group</h3>
+
+<p>The group owner of the file.</p>
+
+<h3>user</h3>
+
+<p>The user for the file.</p>
+
+<h3>path</h3>
+
+<p>The path for the file.</p>
+
+<h3>template</h3>
+
+<p>The template for the file.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="bash">       
+<span class="nv">$ </span>cobbler file add --name<span class="o">=</span>string --comment<span class="o">=</span>string <span class="o">[</span>--action<span class="o">=</span>string<span class="o">]</span> --mode<span class="o">=</span>string --group<span class="o">=</span>string <span class="se">\</span>
+--user<span class="o">=</span>string --path<span class="o">=</span>string <span class="o">[</span>--template<span class="o">=</span>string<span class="o">]</span>
+</code></pre></div>
 
 
-<h3>Developer Manuals</h3>
-
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
 
 
-</div> <!-- end wrap -->
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
 
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.6.0/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Images.html">4 - Images</a></li><li><a href="/manuals/2.6.0/4/1/5_-_Repos.html">5 - Repos</a></li><li><a href="/manuals/2.6.0/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.6.0/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.6.0/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

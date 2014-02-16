@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Cobbler development team" />
+
+   <title>Cobbler Quickstart Guide</title>
+
+   <!-- CSS -->
+   <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
+   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="/css/search.css" />
+
+   <!-- Fonts -->
+   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
+
+   <!--[if lt IE 9]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   <![endif]-->
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.swiftype.search.js"></script>
+</head>
+<body class="pull_up">
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div class="navbar transparent navbar-inverse navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container">
+   <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
+   <div class="nav-collapse collapse">
+    <ul class="nav pull-right">
+     <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+     <li><a href="/posts/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">Version 2.4.x</a></li>
+         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">Version 2.2.x</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+         <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         <li><a href="/users.html" title="Cobbler Users">Who's Using Cobbler</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i> Github <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+        <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki (deprecated)</a></li>
+       </ul>
+     </li>
+     <li>
+      <form class="pull-right">
+       <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+     </li>
+    </ul>
+    <!-- <div id="st-results-container"></div> -->
+    <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+      (function() {
+        Swiftype.key = 'ybEhsDqz2mEFrMtBHiwB';
+        Swiftype.inputElement = '#st-search-input';
+        Swiftype.resultContainingElement = '#st-results-container';
+        Swiftype.attachElement = '#st-search-input';
+        Swiftype.renderStyle = "new_page";
+        Swiftype.resultPageURL = '/search.html';
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = "//swiftype.com/embed.js";
+        var entry = document.getElementsByTagName('script')[0];
+        entry.parentNode.insertBefore(script, entry);
+      }());
+    </script>
+   </div>
+   <!--
+   <form class="navbar-search pull-right" onsubmit="return false;">
+    <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+   </form>
+   -->
+  </div>
+ </div>
+</div>
+
+
+<!-- begin content -->
+
+<div id="wrap" class="container">
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li class="active">Cobbler Quickstart Guide</li></ul>
+   <h1>Cobbler Quickstart Guide</h1>
+<p>Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your choosen distribution.</p>
+
+<p>This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora (specifically version 17), however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the <a href="/manuals/2.4.0/3_-_Installing_Cobbler.html">Installing Cobbler</a> section for details on installation and prerequisites for your specific OS version.</p>
+
+<p>Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: <a href="/manuals/2.4.0/6_-_Web_Interface.html">Cobbler Web User Interface</a></p>
+
+<h2>Disable SELinux (optional)</h2>
+
+<p>Before getting started with cobbler, it may be a good idea to either disable SELinux or set it to "permissive" mode, especially if you are unfamiliar with SELinux troubleshooting or modifying SELinux policy. Cobbler constantly evolves to assist in managing new system technologies, and the policy that ships with your OS can sometimes lag behind the feature-set we provide, resulting in AVC denials that break cobbler's functionality.</p>
+
+<p>If you would like to continue using SELinux on the system running cobblerd, be sure to read the <a href="/manuals/2.4.0/5/2_-_SELinux.html">SELinux With Cobbler</a> section in this manual.</p>
+
+<h2>Installing Cobbler</h2>
+
+<p>Installation is done simply through yum:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>yum install cobbler
+</code></pre></div>
+
+
+<p>This will pull in all of the requirements you need for a basic setup.</p>
+
+<h2>Changing Settings</h2>
+
+<p>Before starting the cobblerd service, there are a few things you should modify.</p>
+
+<p>Settings for cobbler/cobblerd are stored in <code>/etc/cobbler/settings</code>. This file is a YAML formatted data file, so be sure to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running.</p>
+
+<h3>Default Encrypted Password</h3>
+
+<p>This setting controls the root password that is set for new systems during the kickstart.</p>
+
+<div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">default_password_crypted</span><span class="p-Indicator">:</span> <span class="s">&quot;$1$bfI7WLZz$PxXetL97LkScqJFxnW7KS1&quot;</span>
+</code></pre></div>
+
+
+<p>You should modify this by running the following command and inserting the output into the above string (be sure to save the quote marks):</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>openssl passwd -1
+</code></pre></div>
+
+
+<h3>Server and Next_Server</h3>
+
+<p>The server option sets the IP that will be used for the address of the cobbler server. <strong><em>DO NOT</em></strong> use 0.0.0.0, as it is not the listening address. This should be set to the IP you want hosts that are being built to contact the cobbler server on for such protocols as HTTP and TFTP.</p>
+
+<div class="highlight"><pre><code class="yaml"><span class="c1"># default, localhost</span>
+<span class="l-Scalar-Plain">server</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">127.0.0.1</span>
+</code></pre></div>
+
+
+<p>The next_server option is used for DHCP/PXE as the IP of the TFTP server from which network boot files are downloaded. Usually, this will be the same IP as the server setting.</p>
+
+<div class="highlight"><pre><code class="yaml"><span class="c1"># default, localhost</span>
+<span class="l-Scalar-Plain">next_server</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">127.0.0.1</span>
+</code></pre></div>
+
+
+<h3>DHCP Management and DHCP Server Template</h3>
+
+<p>In order to PXE boot, you need a DHCP server to hand out addresses and direct the booting system to the TFTP server where it can download the network boot files. Cobbler can manage this for you, via the manage_dhcp setting:</p>
+
+<div class="highlight"><pre><code class="yaml"><span class="c1"># default, don&#39;t manage</span>
+<span class="l-Scalar-Plain">manage_dhcp</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+</code></pre></div>
+
+
+<p>Change that setting to 1 so cobbler will generate the dhcpd.conf file based on the dhcp.template that is included with cobbler. This template will most likely need to be modified as well, based on your network settings:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>vi /etc/cobbler/dhcp.template
+</code></pre></div>
+
+
+<p>For most uses, you'll only need to modify this block:</p>
+
+<div class="highlight"><pre><code class="cheetah"><span class="x">subnet 192.168.1.0 netmask 255.255.255.0 {</span>
+<span class="x">     option routers             192.168.1.1;</span>
+<span class="x">     option domain-name-servers 192.168.1.210,192.168.1.211;</span>
+<span class="x">     option subnet-mask         255.255.255.0;</span>
+<span class="x">     filename                   &quot;/pxelinux.0&quot;;</span>
+<span class="x">     default-lease-time         21600;</span>
+<span class="x">     max-lease-time             43200;</span>
+<span class="x">     next-server                </span><span class="cp">$</span><span class="n">next_server</span><span class="x">;</span>
+<span class="x">}</span>
+</code></pre></div>
+
+
+<p>No matter what, make sure you do not modify the "next-server $next_server;" line, as that is how the next_server setting is pulled into the configuration. This file is a cheetah template, so be sure not to modify anything starting after this line:</p>
+
+<div class="highlight"><pre><code class="cheetah"><span class="cp">#for</span> <span class="n">dhcp_tag</span> <span class="ow">in</span> <span class="cp">$</span><span class="n">dhcp_tags</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span><span class="x"></span>
+</code></pre></div>
+
+
+<p>Completely going through the dhcpd.conf configuration syntax is beyond the scope of this document, but for more information see the man page for more details:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>man dhcpd.conf
+</code></pre></div>
+
+
+<h2>Files and Directory Notes</h2>
+
+<p>Cobbler makes heavy use of the <code>/var</code> directory. The <code>/var/www/cobbler/ks_mirror</code> directory is where all of the distrubtion and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import.</p>
+
+<p>If you have installed cobbler onto a system that has very little free space in the partition containing <code>/var</code>, please read the <a href="/manuals/2.4.0/3/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> section of the manual to learn how you can relocate your installation properly.</p>
+
+<h2>Starting and Enabling the Cobbler Service</h2>
+
+<p>Once you have updated your settings, you're ready to start the service. Fedora now uses systemctl to manage services, but you can still use the regular init script:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>systemctl start cobblerd.service
+<span class="nv">$ </span>systemctl <span class="nb">enable </span>cobblerd.service
+<span class="nv">$ </span>systemctl status cobblerd.service
+<span class="c"># or </span>
+<span class="nv">$ </span>service cobblerd start 
+<span class="nv">$ </span>chkconfig cobblerd on
+<span class="nv">$ </span>service cobblerd status
+</code></pre></div>
+
+
+<p>If everything has gone well, you should see output from the status command like this:</p>
+
+<div class="highlight"><pre><code class="bash">cobblerd.service - Cobbler Helper Daemon
+          Loaded: loaded <span class="o">(</span>/lib/systemd/system/cobblerd.service<span class="p">;</span> enabled<span class="o">)</span>
+          Active: active <span class="o">(</span>running<span class="o">)</span> since Sun, 17 Jun 2012 13:01:28 -0500<span class="p">;</span> 1min 44s ago
+        Main PID: 1234 <span class="o">(</span>cobblerd<span class="o">)</span>
+          CGroup: <span class="nv">name</span><span class="o">=</span>systemd:/system/cobblerd.service
+                  └ 1234 /usr/bin/python /usr/bin/cobblerd -F
+</code></pre></div>
+
+
+<h2>Checking for Problems and Your First Sync</h2>
+
+<p>Now that the cobblerd service is up and running, it's time to check for problems. Cobbler's check command will make some suggestions, but it is important to remember that <em>these are mainly only suggestions</em> and probably aren't critical for basic functionality. If you are running iptables or SELinux, it is important to review any messages concering those that check may report.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler check
+The following are potential configuration items that you may want to fix:
+
+1. ....
+2. ....
+
+Restart cobblerd and <span class="k">then </span>run <span class="s1">&#39;cobbler sync&#39;</span> to apply changes.
+</code></pre></div>
+
+
+<p>If you decide to follow any of the suggestions, such as installing extra packages, making configuration changes, etc., be sure to restart the cobblerd service as it suggests so the changes are applied.</p>
+
+<p>Once you are done reviewing the output of "cobbler check", it is time to synchronize things for the first time. This is not critical, but a failure to properly sync at this point can reveal a configuration problem.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler sync
+task started: 2012-06-24_224243_sync
+task started <span class="o">(</span><span class="nv">id</span><span class="o">=</span>Sync, <span class="nb">time</span><span class="o">=</span>Sun Jun 24 22:42:43 2012<span class="o">)</span>
+running pre-sync triggers
+...
+rendering DHCP files
+generating /etc/dhcp/dhcpd.conf
+rendering TFTPD files
+generating /etc/xinetd.d/tftp
+cleaning link caches
+running: find /var/lib/tftpboot/images/.link_cache -maxdepth 1 -type f -links 1 -exec rm -f <span class="s1">&#39;{}&#39;</span> <span class="s1">&#39;;&#39;</span>
+received on stdout: 
+received on stderr: 
+running post-sync triggers
+running python triggers from /var/lib/cobbler/triggers/sync/post/*
+running python trigger cobbler.modules.sync_post_restart_services
+running: dhcpd -t -q
+received on stdout: 
+received on stderr: 
+running: service dhcpd restart
+received on stdout: 
+received on stderr: 
+running shell triggers from /var/lib/cobbler/triggers/sync/post/*
+running python triggers from /var/lib/cobbler/triggers/change/*
+running python trigger cobbler.modules.scm_track
+running shell triggers from /var/lib/cobbler/triggers/change/*
+*** TASK COMPLETE ***
+</code></pre></div>
+
+
+<p>Assuming all went well and no errors were reported, you are ready to move on to the next step.</p>
+
+<h2>Importing Your First Distribution</h2>
+
+<p>Cobbler automates adding distributions and profiles via the "cobbler import" command. This command can (usually) automatically detect the type and version of the distribution your importing and create (one or more) profiles with the correct settings for you.</p>
+
+<h3>Download an ISO Image</h3>
+
+<p>In order to import a distribution, you will need a DVD ISO for your distribution. <strong>NOTE:</strong> You must use a full DVD, and not a "Live CD" ISO. For this example, we'll be using the Fedora 17 x86_64 ISO, <a href="http://download.fedoraproject.org/pub/fedora/linux/releases/17/Fedora/x86_64/iso/Fedora-17-x86_64-DVD.iso">available for download here</a>.</p>
+
+<p>Once this file is downloaded, mount it somewhere:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>mount -t iso9660 -o loop,ro /path/to/isos/Fedora-17-x86_64-DVD.iso /mnt
+</code></pre></div>
+
+
+<h3>Run the Import</h3>
+
+<p>You are now ready to import the distribution. The name and path arguments are the only required options for import:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler import --name<span class="o">=</span>fedora17 --arch<span class="o">=</span>x86_64 --path<span class="o">=</span>/mnt
+</code></pre></div>
+
+
+<p>The --arch option need not be specified, as it will normally be auto-detected. We're doing so in this example in order to prevent multiple architectures from being found (Fedora ships i386 packages on the full DVD, and cobbler will create both x86_64 and i386 distros by default).</p>
+
+<h3>Listing Objects</h3>
+
+<p>If no errors were reported during the import, you can view details about the distros and profiles that were created during the import.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># list distros</span>
+<span class="nv">$ </span>cobbler distro list
+
+<span class="c"># list profiles</span>
+<span class="nv">$ </span>cobbler profile list
+</code></pre></div>
+
+
+<p>The import command will typically create at least one distro/profile pair, which will have the same name as shown above. In some cases (for instance when a xen-based kernel is found), more than one distro/profile pair will be created.</p>
+
+<h3>Object Details</h3>
+
+<p>The report command shows the details of objects in cobbler:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>fedora17-x86_64
+Name                           : fedora17-x86_64
+Architecture                   : x86_64
+TFTP Boot Files                : <span class="o">{}</span>
+Breed                          : redhat
+Comment                        : 
+Fetchable Files                : <span class="o">{}</span>
+Initrd                         : /var/www/cobbler/ks_mirror/fedora17-x86_64/images/pxeboot/initrd.img
+Kernel                         : /var/www/cobbler/ks_mirror/fedora17-x86_64/images/pxeboot/vmlinuz
+Kernel Options                 : <span class="o">{}</span>
+Kernel Options <span class="o">(</span>Post Install<span class="o">)</span>  : <span class="o">{}</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;tree&#39;</span>: <span class="s1">&#39;http://@@http_server@@/cblr/links/fedora17-x86_64&#39;</span><span class="o">}</span>
+Management Classes             : <span class="o">[]</span>
+OS Version                     : fedora17
+Owners                         : <span class="o">[</span><span class="s1">&#39;admin&#39;</span><span class="o">]</span>
+Red Hat Management Key         : <span class="s">&lt;&lt;inherit&gt;&gt;</span>
+<span class="s">Red Hat Management Server      : &lt;&lt;inherit</span>&gt;&gt;
+Template Files                 : <span class="o">{}</span>
+</code></pre></div>
+
+
+<p>As you can see above, the import command filled out quite a few fields automatically, such as the breed, OS version, and initrd/kernel file locations. The "Kickstart Metadata" field (--ksmeta internally) is used for miscellaneous variables, and contains the critical "tree" variable. This is used in the kickstart templates to specify the URL where the installation files can be found.</p>
+
+<p>Something else to note: some fields are set to "&lt;&lt;inherit&gt;&gt;". This means they will use either the default setting (found in the settings file), or (in the case of profiles, sub-profiles, and systems) will use whatever is set in the parent object.</p>
+
+<h2>Creating a System</h2>
+
+<p>Now that you have a distro and profile, you can create a system. Profiles can be used to PXE boot, but most of the features in cobbler revolve around system objects. The more information you give about a system, the more cobbler will do automatically for you.</p>
+
+<p>First, we'll create a system object based on the profile that was created during the import. When creating a system, the name and profile are the only two required fields:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span><span class="nb">test</span> --profile<span class="o">=</span>fedora17-x86_64
+<span class="nv">$ </span>cobbler system list
+<span class="nb">test</span>
+<span class="nv">$ </span>cobbler system report --name<span class="o">=</span><span class="nb">test</span>
+Name                           : <span class="nb">test</span>
+TFTP Boot Files                : <span class="o">{}</span>
+Comment                        : 
+Enable gPXE?                   : 0
+Fetchable Files                : <span class="o">{}</span>
+Gateway                        : 
+Hostname                       : 
+Image                          : 
+IPv6 Autoconfiguration         : False
+IPv6 Default Device            : 
+Kernel Options                 : <span class="o">{}</span>
+Kernel Options <span class="o">(</span>Post Install<span class="o">)</span>  : <span class="o">{}</span>
+Kickstart                      : <span class="s">&lt;&lt;inherit&gt;&gt;</span>
+<span class="s">Kickstart Metadata             : {}</span>
+<span class="s">LDAP Enabled                   : False</span>
+<span class="s">LDAP Management Type           : authconfig</span>
+<span class="s">Management Classes             : []</span>
+<span class="s">Management Parameters          : &lt;&lt;inherit</span>&gt;&gt;
+Monit Enabled                  : False
+Name Servers                   : <span class="o">[]</span>
+Name Servers Search Path       : <span class="o">[]</span>
+Netboot Enabled                : True
+Owners                         : <span class="o">[</span><span class="s1">&#39;admin&#39;</span><span class="o">]</span>
+Power Management Address       : 
+Power Management ID            : 
+Power Management Password      : 
+Power Management Type          : ipmitool
+Power Management Username      : 
+Profile                        : fedora17-x86_64
+Proxy                          : <span class="s">&lt;&lt;inherit&gt;&gt;</span>
+<span class="s">Red Hat Management Key         : &lt;&lt;inherit</span>&gt;&gt;
+Red Hat Management Server      : <span class="s">&lt;&lt;inherit&gt;&gt;</span>
+<span class="s">Repos Enabled                  : False</span>
+<span class="s">Server Override                : &lt;&lt;inherit</span>&gt;&gt;
+Status                         : production
+Template Files                 : <span class="o">{}</span>
+Virt Auto Boot                 : <span class="s">&lt;&lt;inherit&gt;&gt;</span>
+<span class="s">Virt CPUs                      : &lt;&lt;inherit</span>&gt;&gt;
+Virt Disk Driver Type          : <span class="s">&lt;&lt;inherit&gt;&gt;</span>
+<span class="s">Virt File Size(GB)             : &lt;&lt;inherit</span>&gt;&gt;
+Virt Path                      : <span class="s">&lt;&lt;inherit&gt;&gt;</span>
+<span class="s">Virt RAM (MB)                  : &lt;&lt;inherit</span>&gt;&gt;
+Virt Type                      : <span class="s">&lt;&lt;inheri</span>t&gt;&gt;
+</code></pre></div>
+
+
+<p>The primary reason for creating a system object is network configuration. When using profiles, you're limited to DHCP interfaces, but with systems you can specify many more network configuration options.</p>
+
+<p>So now we'll setup a single, simple interface in the 192.168.1/24 network:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span><span class="nb">test</span> --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>00:11:22:AA:BB:CC --ip-address<span class="o">=</span>192.168.1.100 --netmask<span class="o">=</span>255.255.255.0 --static<span class="o">=</span>1 --dns-name<span class="o">=</span>test.mydomain.com 
+</code></pre></div>
+
+
+<p>The default gateway isn't specified per-NIC, so just add that separately (along with the hostname):</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span><span class="nb">test</span> --gateway<span class="o">=</span>192.168.1.1 --hostname<span class="o">=</span>test.mydomain.com
+</code></pre></div>
+
+
+<p>The --hostname field corresponds to the local system name and is returned by the "hostname" command. The --dns-name (which can be set per-NIC) should correspond to a DNS A-record tied to the IP of that interface. Neither are required, but it is a good practice to specify both. Some advanced features (like configuration management) rely on the --dns-name field for system record look-ups.</p>
+
+<p>Whenever a system is edited, cobbler executes what is known as a "lite sync", which regenerates critical files like the PXE boot file in the TFTP root directory. One thing it will <strong>NOT</strong> do is execute service management actions, like regenerating the dhcpd.conf and restarting the DHCP service. After adding a system with a static interface it is a good idea to execute a full "cobbler sync" to ensure the dhcpd.conf file is rewritten with the correct static lease and the service is bounced (OMAPI support is planned for future releases to remove this requirement).</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1 - About Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/1_-_Release_Notes.html">1.1 - Release Notes</a></li><li><a href="/manuals/2.6.0/1/2_-_Distribution_Support.html">1.2 - Distribution Support</a></li></ul><li><a href="/manuals/2.6.0/2_-_Cobbler_Quickstart_Guide.html">2 - Cobbler Quickstart Guide</a></li><li><a href="/manuals/2.6.0/3_-_Installing_Cobbler.html">3 - Installing Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1_-_Prerequisites.html">3.1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/3/2_-_Installing_From_Packages.html">3.2 - Installing From Packages</a></li><li><a href="/manuals/2.6.0/3/3_-_Installing_From_Source.html">3.3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/3/4_-_Configuration_Files.html">3.4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/4/1_-_Settings_File.html">3.4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/3/4/2_-_Modules_Configuration.html">3.4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/3/5_-_Relocating_Your_Installation.html">3.5 - Relocating Your Installation</a></li><li><a href="/manuals/2.6.0/3/6_-_Installation_Notes.html">3.6 - Installation Notes</a></li></ul><li><a href="/manuals/2.6.0/4_-_General_Topics.html">4 - General Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1_-_Cobbler_Primitives.html">4.1 - Cobbler Primitives</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Distros.html">4.1.1 - Distros</a></li><li><a href="/manuals/2.6.0/4/1/2_-_Profiles_and_Sub-Profiles.html">4.1.2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Systems.html">4.1.3 - Systems</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Images.html">4.1.4 - Images</a></li><li><a href="/manuals/2.6.0/4/1/5_-_Repos.html">4.1.5 - Repos</a></li><li><a href="/manuals/2.6.0/4/1/6_-_Management_Classes.html">4.1.6 - Management Classes</a></li><li><a href="/manuals/2.6.0/4/1/7_-_File_Resources.html">4.1.7 - File Resources</a></li><li><a href="/manuals/2.6.0/4/1/8_-_Package_Resources.html">4.1.8 - Package Resources</a></li></ul><li><a href="/manuals/2.6.0/4/2_-_Cobbler_Direct_Commands.html">4.2 - Cobbler Direct Commands</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/2/1_-_Check.html">4.2.1 - Check</a></li><li><a href="/manuals/2.6.0/4/2/2_-_Sync.html">4.2.2 - Sync</a></li><li><a href="/manuals/2.6.0/4/2/3_-_Distro_Signatures.html">4.2.3 - Distro Signatures</a></li><li><a href="/manuals/2.6.0/4/2/4_-_Import.html">4.2.4 - Import</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/2/4/1_-_Import_Notes.html">4.2.4.1 - Import Notes</a></li></ul><li><a href="/manuals/2.6.0/4/2/5_-_Reposync.html">4.2.5 - Reposync</a></li><li><a href="/manuals/2.6.0/4/2/6_-_Build_ISO.html">4.2.6 - Build ISO</a></li><li><a href="/manuals/2.6.0/4/2/7_-_Command_Line_Search.html">4.2.7 - Command Line Search</a></li><li><a href="/manuals/2.6.0/4/2/8_-_Replication.html">4.2.8 - Replication</a></li><li><a href="/manuals/2.6.0/4/2/9_-_Validate_Kickstart.html">4.2.9 - Validate Kickstart</a></li><li><a href="/manuals/2.6.0/4/2/10_-_ACL_Setup.html">4.2.10 - ACL Setup</a></li><li><a href="/manuals/2.6.0/4/2/11_-_Dynamic_Settings.html">4.2.11 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/4/2/12_-_Version.html">4.2.12 - Version</a></li></ul><li><a href="/manuals/2.6.0/4/3_-_Cobbler_Settings.html">4.3 - Cobbler Settings</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Dynamic_Settings.html">4.3.1 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Complete_Settings_List.html">4.3.2 - Complete Settings List</a></li></ul><li><a href="/manuals/2.6.0/4/4_-_Managing_Services_With_Cobbler.html">4.4 - Managing Services With Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/4/1_-_Managing_DHCP.html">4.4.1 - Managing DHCP</a></li><li><a href="/manuals/2.6.0/4/4/2_-_Managing_DNS.html">4.4.2 - Managing DNS</a></li><li><a href="/manuals/2.6.0/4/4/3_-_Managing_rsync.html">4.4.3 - Managing rsync</a></li><li><a href="/manuals/2.6.0/4/4/4_-_Managing_TFTP.html">4.4.4 - Managing TFTP</a></li></ul><li><a href="/manuals/2.6.0/4/5_-_Kickstart_Templating.html">4.5 - Kickstart Templating</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/5/1_-_Advanced_Kickstarts.html">4.5.1 - Advanced Kickstarts</a></li></ul><li><a href="/manuals/2.6.0/4/6_-_Snippets.html">4.6 - Snippets</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/6/1_-_Advanced_Snippets.html">4.6.1 - Advanced Snippets</a></li></ul><li><a href="/manuals/2.6.0/4/7_-_Package_Management_and_Mirroring.html">4.7 - Package Management and Mirroring</a></li><li><a href="/manuals/2.6.0/4/8_-_File_System_Information.html">4.8 - File System Information</a></li></ul><li><a href="/manuals/2.6.0/5_-_Advanced_Topics.html">5 - Advanced Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/1_-_Advanced_Networking.html">5.1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/1/1_-_Bonding.html">5.1.1 - Bonding</a></li><li><a href="/manuals/2.6.0/5/1/2_-_VLANs.html">5.1.2 - VLANs</a></li><li><a href="/manuals/2.6.0/5/1/3_-_Bridging.html">5.1.3 - Bridging</a></li><li><a href="/manuals/2.6.0/5/1/4_-_Bonded_Bridging.html">5.1.4 - Bonded Bridging</a></li></ul><li><a href="/manuals/2.6.0/5/2_-_SELinux.html">5.2 - SELinux</a></li><li><a href="/manuals/2.6.0/5/3_-_Configuration_Management.html">5.3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/3/1_-_Built-In_Configuration_Management.html">5.3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/5/3/2_-_Puppet_Integration.html">5.3.2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/5/3/3_-_Func_Integration.html">5.3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.6.0/5/4_-_Anaconda_Monitoring.html">5.4 - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/5/5_-_Extending_Cobbler.html">5.5 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/5/1_-_Triggers.html">5.5.1 - Triggers</a></li><li><a href="/manuals/2.6.0/5/5/2_-_Modules.html">5.5.2 - Modules</a></li><li><a href="/manuals/2.6.0/5/5/3_-_Extending_Cheetah.html">5.5.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.6.0/5/6_-_Power_Management.html">5.6 - Power Management</a></li><li><a href="/manuals/2.6.0/5/7_-_Alternative_Template_Formats.html">5.7 - Alternative Template Formats</a></li><li><a href="/manuals/2.6.0/5/8_-_Multi-Homed_Cobbler_Servers.html">5.8 - Multi-Homed Cobbler Servers</a></li><li><a href="/manuals/2.6.0/5/9_-_Memtest.html">5.9 - Memtest</a></li><li><a href="/manuals/2.6.0/5/10_-_Virtual_Image_Cloning.html">5.10 - Virtual Image Cloning</a></li><li><a href="/manuals/2.6.0/5/11_-_Auto-Registration.html">5.11 - Auto-Registration</a></li><li><a href="/manuals/2.6.0/5/12_-_Booting_Live_CDs.html">5.12 - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/5/13_-_Clonezilla_Integration.html">5.13 - Clonezilla Integration</a></li><li><a href="/manuals/2.6.0/5/14_-_Batch_Editing.html">5.14 - Batch Editing</a></li><li><a href="/manuals/2.6.0/5/15_-_Moving_to_a_New_Server.html">5.15 - Moving to a New Server</a></li><li><a href="/manuals/2.6.0/5/16_-_PXE-boot_Menu_Passwords.html">5.16 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.6.0/5/17_-_System_Retirement.html">5.17 - System Retirement</a></li><li><a href="/manuals/2.6.0/5/18_-_Alternative_Storage_Backends.html">5.18 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/18/1_-_CouchDB.html">5.18.1 - CouchDB</a></li><li><a href="/manuals/2.6.0/5/18/2_-_MongoDB.html">5.18.2 - MongoDB</a></li><li><a href="/manuals/2.6.0/5/18/3_-_MySQL.html">5.18.3 - MySQL</a></li></ul><li><a href="/manuals/2.6.0/5/19_-_Using_gPXE.html">5.19 - Using gPXE</a></li><li><a href="/manuals/2.6.0/5/20_-_Data_Revision_Control.html">5.20 - Data Revision Control</a></li></ul><li><a href="/manuals/2.6.0/6_-_Web_Interface.html">6 - Web Interface</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/6/1_-_Security_Overview.html">6.1 - Security Overview</a></li><li><a href="/manuals/2.6.0/6/2_-_Web_Authentication.html">6.2 - Web Authentication</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/6/2/1_-_PAM.html">6.2.1 - PAM</a></li><li><a href="/manuals/2.6.0/6/2/2_-_LDAP.html">6.2.2 - LDAP</a></li><li><a href="/manuals/2.6.0/6/2/3_-_Kerberos.html">6.2.3 - Kerberos</a></li><li><a href="/manuals/2.6.0/6/2/4_-_Spacewalk.html">6.2.4 - Spacewalk</a></li><li><a href="/manuals/2.6.0/6/2/5_-_Passthru.html">6.2.5 - Passthru</a></li><li><a href="/manuals/2.6.0/6/2/6_-_Digest.html">6.2.6 - Digest</a></li></ul><li><a href="/manuals/2.6.0/6/3_-_Web_Authorization.html">6.3 - Web Authorization</a></li><li><a href="/manuals/2.6.0/6/4_-_Locking_Down_Cobbler.html">6.4 - Locking Down Cobbler</a></li></ul><li><a href="/manuals/2.6.0/7_-_Koan.html">7 - Koan</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/7/1_-_Koan_Basics.html">7.1 - Koan Basics</a></li><li><a href="/manuals/2.6.0/7/2_-_Koan_With_ISOs.html">7.2 - Koan With ISOs</a></li><li><a href="/manuals/2.6.0/7/3_-_Installing-virtual-guests.html">7.3 - Installing-virtual-guests</a></li><li><a href="/manuals/2.6.0/7/4_-_Reinstallation.html">7.4 - Reinstallation</a></li><li><a href="/manuals/2.6.0/7/5_-_Virtual-networking-setup.html">7.5 - Virtual-networking-setup</a></li><li><a href="/manuals/2.6.0/7/6_-_Vmware.html">7.6 - Vmware</a></li></ul><li><a href="/manuals/2.6.0/8_-_Troubleshooting.html">8 - Troubleshooting</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/8/1_-_Debugging-tips.html">8.1 - Debugging-tips</a></li><li><a href="/manuals/2.6.0/8/2_-_Hints-redhat.html">8.2 - Hints-redhat</a></li><li><a href="/manuals/2.6.0/8/3_-_Virtualization-troubleshooting.html">8.3 - Virtualization-troubleshooting</a></li></ul><li>Appendix</li><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_API.html">Appendix.A - API</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_S390_Support.html">Appendix.B - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Power-PC_Support.html">Appendix.C - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/D_-_Tips_for_RHN.html">Appendix.D - Tips for RHN</a></li></ul></ul></div>
+  </div>
+ </div>
+</div>
+<!-- end content -->
+
+<footer>
+  <div class="container">
+    <div class="row-fluid sections">
+      <div class="span6 footmenu">
+       <div class="row-fluid">
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Pages</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Blog Posts</a></li>
+          <li><a href="/about.html">About Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span2 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Manuals</li>
+          <li><a href="/manuals/2.4.0/">2.4.x</a></li>
+          <li><a href="/manuals/2.2.3/">2.2.x</a></li>
+         </ul>
+        </div>
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Community</li>
+          <li><a href="/community.html">How to Get Help</a></li>
+          <li><a href="/supporters.html">Supporters</a></li>
+          <li><a href="/users.html">Who's Using Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span4 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Github</li>
+          <li><a href="https://github.com/cobbler/cobbler">Main Code Repository</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki">Wiki (deprecated)</a></li>
+         </ul>
+        </div>
+       </div>
+    <div class="row-fluid">
+    </div>
+    <div class="row-fluid">
+     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
+     <p class="browsers">
+      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
+      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
+      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
+      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
+     </p>
+    </div>
+      </div>
+      <div class="span3 posts">
+        <p class="column_header">Recent Posts:</p>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/02/15/cobbler_2.4.2_released.html">Cobbler 2.4.2 Released</a></p>
+          <p class="author">Posted by Jörgen on Saturday, February 15, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/02/03/cobbler_2.4.1_released.html">Cobbler 2.4.1 Released</a></p>
+          <p class="author">Posted by Jörgen on Monday, February 03, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2013/06/20/cobbler_2.4.0-1_released.html">Cobbler 2.4.0-1 Released</a></p>
+          <p class="author">Posted by James on Thursday, June 20, 2013</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2013/04/10/New_Domain.html">New Domain - cobblerd.org</a></p>
+          <p class="author">Posted by James on Wednesday, April 10, 2013</p>
+        </div>
+
+      </div>
+      <div class="span3 credits">
+        <div class="social">
+          <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-width="100%">Follow @cobblerista</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="attributions">
+          <p class="column_header">Attributions:</p>
+          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
+          <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
+        </div>
+        <div class="copyright">
+          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
+          <script>$("#copyyear").text((new Date).getFullYear());</script>
+        </div>
+      </div>            
+    </div>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Import Notes</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -110,27 +110,219 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/2/4_-_Import.html">4</a> <span class="divider">/</span></li><li class="active">Import Notes</li></ul>
+   <h1>Import Notes</h1>
+<p>Cobbler was originally written to support Fedora, Red Hat, and derivative distributions such as CentOS or Scientific Linux. Cobbler now works for managing other environments, including mixed environments, occasionally with some limitations. Debian and SuSE support is quite strong, with patches coming in from developers working on those distributions as well.</p>
 
-<h3>User Manuals</h3>
+<p>However, in some cases (especially for newer distribution versions), a little extra work may be required after an import in order to make things work smoothly.</p>
+
+<h2>Debian and Ubuntu</h2>
+
+<p>Most Debian and Ubuntu versions should be correctly recognized when using the "cobbler import" command.</p>
+
+<p>There is currently no support for using the --available-as option with import, unless you're pointing at a web location that does not house multiple versions of the distro.</p>
+
+<p>Support for Ubuntu has increased dramatically in the 2.4.x releases, however there is still some work to be done - particularly around automation and snippet support.</p>
+
+<p>APT repositories can be managed from RPM based systems, as long as you install the debmirror package for your distribution.</p>
+
+<h3>Notes About Debian</h3>
+
+<p>The Debian distribution does not currently have a focus on network-based automated installs. As such, there are a few extra steps that must be taken to convert a normal DVD distribution to one that can be installed via PXE. Instructions for doing this are currently out of the scope of this manual, however a quick Google search should turn up what you steps you need to take to make this happen.</p>
+
+<h2>SuSE</h2>
+
+<p>Most SuSE versions should be correctly recognized when using the "cobbler import" command.</p>
+
+<p>SuSE repos can be managed with yum, so that works as with the Red Hat based distributions.</p>
+
+<h2>VMWare ESX/ESXi</h2>
+
+<p>Older versions of ESX and ESXi (before version 5) should work fine with not much extra work. ESX3/4 essentially used a variant of RHEL as the Dom0, so installation follows the regular RHEL/CentOS methods. ESXi4 was slightly different, but should work out of the box as well.</p>
+
+<p>ESXi5 now has BETA support, but requires the use of gPXE, which was introduced in Cobbler 2.2.3. The build process for this has receieved limited support beyond verifying that cobbler will import the distro and configure things somewhat automatically. Be sure to install the correct gPXE packages for your distribution.</p>
+
+<p>Since gPXE is now deprecated, we will be looking to move Cobbler towards support for iPXE in the near future.</p>
+
+<h2>FreeBSD</h2>
+
+<p>The following steps are required to enable FreeBSD support in Cobbler.</p>
+
+<p>You can grab the patches and scripts from the following github repos:</p>
+
+<p><a href="git://github.com/jsabo/cobbler_misc.git">git://github.com/jsabo/cobbler_misc.git</a></p>
+
+<p>This would not be possible without the help from Doug Kilpatrick. Thanks Doug!</p>
+
+<h3>Stuff to do once</h3>
+
+<p>* Install FreeBSD with full sources</p>
 
 <ul>
-<li><a href="/manuals/2.4.0">2.4.x</a></li>
-<li><a href="/manuals/2.2.3">2.2.x</a></li>
+<li>Select "Standard" installation</li>
+<li>Use entire disk</li>
+<li>Install a standard MBR</li>
+<li>Create a new slice and use the entire disk</li>
+<li>Mount it at /</li>
+<li><p>Choose the "Developer" distribution</p>
+
+<ul>
+<li>Full sources, binaries and doc but no games</li>
+</ul>
+</li>
+<li><p>Install from a FreeBSD CD/DVD</p></li>
+<li>Setup networking to copy files back and forth</li>
+<li>In the post install "Package Selection" scroll down and select
+shells
+
+<ul>
+<li>Install bash</li>
+<li>chsh -s /usr/local/bin/bash username or vipw</li>
+</ul>
+</li>
 </ul>
 
 
-<h3>Developer Manuals</h3>
+<p>* Rebuild pxeboot with tftp support</p>
+
+<pre><code>  (cd /sys/boot; make clean; make LOADER_TFTP_SUPPORT=yes; make install)
+</code></pre>
+
+<p>Copy the pxeboot to the Cobbler server.</p>
+
+<h3>Stuff to do every supported release</h3>
+
+<p>* Patch sysinstall with http install support</p>
 
 <ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
+<li>The media location is hard coded in this patch and has to be
+updated every release. Just look for 8.X and change it.</li>
 </ul>
 
 
-</div> <!-- end wrap -->
+<p>The standard sysinstall doesn't really support HTTP. This patch
+adds full http support to sysinstall.</p>
 
+<pre><code>  (cd /usr; patch -p0 &lt; /root/http_install.patch)
+</code></pre>
+
+<p>* Rebuild FreeBSD mfsroot</p>
+
+<p>We'll use "crunchgen" to create the contents of /stand in a ramdisk
+image. Crunchgen creates a single statically linked binary that
+acts like different normal binaries depending on how it's called.
+We need to include "fetch" and a few other binaries. This is a
+multi step process.</p>
+
+<pre><code>  (mkdir /tmp/bootcrunch; cd /tmp/bootcrunch; crunchgen -o /root/boot_crunch.conf; make -f boot_crunch.mk)
+</code></pre>
+
+<p>Once we've added our additional binaries we need to create a larger
+ramdisk.</p>
+
+<p>Create a new, larger ramdisk, and mount it.</p>
+
+<pre><code>  dd if=/dev/zero of=/tmp/mfsroot bs=1024 count=$((1024 * 5))
+  dev0=`mdconfig -f /tmp/mfsroot`;newfs $dev0;mkdir /mnt/mfsroot_new;mount /dev/$dev0 /mnt/mfsroot_new
+</code></pre>
+
+<p>Mount the standard installer's mfsroot</p>
+
+<pre><code>  mkdir /mnt/cdrom; mount -t cd9660 -o -e /dev/acd0 /mnt/cdrom
+  cp /mnt/cdrom/boot/mfsroot.gz /tmp/mfsroot.old.gz
+  gzip -d /tmp/mfsroot.old.gz; dev1=`mdconfig -f /tmp/mfsroot.old`
+  mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old
+</code></pre>
+
+<p>Copy everything from the old one to the new one. You'll be
+replacing the binaries, but it's simpler to just copy it all over.</p>
+
+<pre><code>  (cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)
+</code></pre>
+
+<p>Next copy over the new bootcrunch file and create all of the
+symlinks after removing the old binaries.</p>
+
+<pre><code>  cd /mnt/mfsroot_new/stand; rm -- *; cp /tmp/bootcrunch/boot_crunch ./
+  for i in $(./boot_crunch 2&gt;&amp;1|grep -v usage);do if [ "$i" != "boot_crunch" ];then rm -f ./"$i";ln ./boot_crunch "$i";fi;done
+</code></pre>
+
+<p>Sysinstall uses install.cfg to start the install off. We've created
+a version of the install.cfg that uses fetch to pull down another
+configuration file from the Cobbler server which allows us to
+dynamically control the install. install.cfg uses a script called
+"doconfig.sh" to determine where the Cobbler installer is via the
+DHCP next-server field.</p>
+
+<p>Copy both install.cfg and doconfig.sh into place.</p>
+
+<pre><code>  cp {install.cfg,doconfig.sh} /mnt/mfsroot_new/stand
+</code></pre>
+
+<p>Now just unmount the ramdisk and compress the file</p>
+
+<pre><code>  umount /mnt/mfsroot_new; umount /mnt/mfsroot_old
+  mdconfig -d -u $dev0; mdconfig -d -u $dev1
+  gzip /tmp/mfsroot
+</code></pre>
+
+<p>Copy the mfsroot.gz to the Cobbler server.</p>
+
+<h3>Stuff to do in Cobbler</h3>
+
+<p>* Enable Cobbler's tftp server in modules.conf</p>
+
+<pre><code>[tftpd]
+module = manage_tftpd_py
+</code></pre>
+
+<p>* Mount the media</p>
+
+<pre><code>  mount /dev/cdrom /mnt
+</code></pre>
+
+<p>* Import the distro</p>
+
+<pre><code>  cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64
+</code></pre>
+
+<p>* Copy the mfsroot.gz and the pxeboot.bs into the distro</p>
+
+<pre><code>  cp pxeboot.bs /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
+  cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
+</code></pre>
+
+<p>* Configure a system to use the profile, turn on netboot, and off you go.</p>
+
+<p>DHCP will tell the system to request pxelinux.0, so it will.  Pxelinux will request it's configuration file, which will have pxeboot.bs as the "kernel". Pxelinux will request pxeboot.bs, use the extention (.bs) to realize it's another boot loader, and chain to it. Pxeboot will then request all the .rc, .4th, the kernel, and mfsroot.gz. It will mount the ramdisk and start the installer. The installer will connect back to the Cobbler server to fetch the install.cfg (the kickstart file), and do the install as instructed, rebooting at the end.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/2/4/1_-_Import_Notes.html">1 - Import Notes</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>
