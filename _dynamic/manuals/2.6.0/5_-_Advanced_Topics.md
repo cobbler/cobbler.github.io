@@ -1,7 +1,7 @@
 ---
 layout: manpage
 title: Advanced Topics
-meta: 2.4.0
+meta: 2.6.0
 ---
 
 This section of the manual covers the more advanced use cases for Cobbler, including methods for customizing and extending cobbler without needing to write code.

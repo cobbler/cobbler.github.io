@@ -117,15 +117,15 @@ var WRInitTime=(new Date()).getTime();
    <h1>Cobbler Quickstart Guide</h1>
 <p>Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your choosen distribution.</p>
 
-<p>This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora (specifically version 17), however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the <a href="/manuals/2.4.0/3_-_Installing_Cobbler.html">Installing Cobbler</a> section for details on installation and prerequisites for your specific OS version.</p>
+<p>This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora (specifically version 17), however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the <a href="/manuals/2.6.0/3_-_Installing_Cobbler.html">Installing Cobbler</a> section for details on installation and prerequisites for your specific OS version.</p>
 
-<p>Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: <a href="/manuals/2.4.0/6_-_Web_Interface.html">Cobbler Web User Interface</a></p>
+<p>Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: <a href="/manuals/2.6.0/6_-_Web_Interface.html">Cobbler Web User Interface</a></p>
 
 <h2>Disable SELinux (optional)</h2>
 
 <p>Before getting started with cobbler, it may be a good idea to either disable SELinux or set it to "permissive" mode, especially if you are unfamiliar with SELinux troubleshooting or modifying SELinux policy. Cobbler constantly evolves to assist in managing new system technologies, and the policy that ships with your OS can sometimes lag behind the feature-set we provide, resulting in AVC denials that break cobbler's functionality.</p>
 
-<p>If you would like to continue using SELinux on the system running cobblerd, be sure to read the <a href="/manuals/2.4.0/5/2_-_SELinux.html">SELinux With Cobbler</a> section in this manual.</p>
+<p>If you would like to continue using SELinux on the system running cobblerd, be sure to read the <strong>UNDEFINED REFERENCE (SELinux With Cobbler, meta=2.6.0)</strong> section in this manual.</p>
 
 <h2>Installing Cobbler</h2>
 
@@ -218,7 +218,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Cobbler makes heavy use of the <code>/var</code> directory. The <code>/var/www/cobbler/ks_mirror</code> directory is where all of the distrubtion and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import.</p>
 
-<p>If you have installed cobbler onto a system that has very little free space in the partition containing <code>/var</code>, please read the <a href="/manuals/2.4.0/3/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> section of the manual to learn how you can relocate your installation properly.</p>
+<p>If you have installed cobbler onto a system that has very little free space in the partition containing <code>/var</code>, please read the <strong>UNDEFINED REFERENCE (Relocating Your Installation, meta=2.6.0)</strong> section of the manual to learn how you can relocate your installation properly.</p>
 
 <h2>Starting and Enabling the Cobbler Service</h2>
 

@@ -1,20 +1,20 @@
 ---
 layout: manpage
 title: Cobbler Quickstart Guide
-meta: 2.4.0
+meta: 2.6.0
 ---
 
 Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your choosen distribution. 
 
-This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora (specifically version 17), however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the {% linkup title:"Installing Cobbler" extrameta:2.4.0 %} section for details on installation and prerequisites for your specific OS version.
+This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora (specifically version 17), however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the {% linkup title:"Installing Cobbler" extrameta:2.6.0 %} section for details on installation and prerequisites for your specific OS version.
 
-Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: {% linkup title:"Cobbler Web User Interface" extrameta:2.4.0 %}
+Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: {% linkup title:"Cobbler Web User Interface" extrameta:2.6.0 %}
 
 ## Disable SELinux (optional)
 
 Before getting started with cobbler, it may be a good idea to either disable SELinux or set it to "permissive" mode, especially if you are unfamiliar with SELinux troubleshooting or modifying SELinux policy. Cobbler constantly evolves to assist in managing new system technologies, and the policy that ships with your OS can sometimes lag behind the feature-set we provide, resulting in AVC denials that break cobbler's functionality.
 
-If you would like to continue using SELinux on the system running cobblerd, be sure to read the {% linkup title:"SELinux With Cobbler" extrameta:2.4.0 %} section in this manual.
+If you would like to continue using SELinux on the system running cobblerd, be sure to read the {% linkup title:"SELinux With Cobbler" extrameta:2.6.0 %} section in this manual.
 
 ## Installing Cobbler
 
@@ -107,7 +107,7 @@ $ man dhcpd.conf
 
 Cobbler makes heavy use of the `/var` directory. The `/var/www/cobbler/ks_mirror` directory is where all of the distrubtion and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
 
-If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please read the {% linkup title:"Relocating Your Installation" extrameta:2.4.0 %} section of the manual to learn how you can relocate your installation properly.
+If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please read the {% linkup title:"Relocating Your Installation" extrameta:2.6.0 %} section of the manual to learn how you can relocate your installation properly.
 
 ## Starting and Enabling the Cobbler Service
 

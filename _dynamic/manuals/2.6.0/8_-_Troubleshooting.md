@@ -1,7 +1,7 @@
 ---
 layout: manpage
 title: Cobbler Manual
-meta: 2.4.0
+meta: 2.6.0
 ---
 # Frequently Asked Trouble Shooting Questions
 
