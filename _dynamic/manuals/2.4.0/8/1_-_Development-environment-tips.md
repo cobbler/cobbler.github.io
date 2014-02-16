@@ -9,7 +9,7 @@ Check out cobbler from git, all work should be done against the master branch, u
 
 If using CentOS, install the appropriate EPEL rpm.  
 
-    Ex: http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm
+    rpm -i http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm
 
 Install dependencies:
 
