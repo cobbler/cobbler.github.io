@@ -18,7 +18,6 @@ users:
   - img: fedora
   - img: flpc
   - img: genome
-  - img: iventx
   - img: kynetx
   - img: linkshare
   - img: mi

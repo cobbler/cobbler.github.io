@@ -53,8 +53,9 @@ var WRInitTime=(new Date()).getTime();
      <li class="dropdown">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
        <ul class="dropdown-menu">
-         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">Version 2.4.x</a></li>
-         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">Version 2.2.x</a></li>
+         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
+         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">User Manual 2.2.x</a></li>
        </ul>
      </li>
      <li class="dropdown">
@@ -115,7 +116,20 @@ var WRInitTime=(new Date()).getTime();
   <div class="span8">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/developer">developer</a> <span class="divider">/</span></li><li class="active">Development Environment</li></ul>
    <h1>Development Environment</h1>
-<p>Check out cobbler from git, all work should be done against the master branch, unless we decide to cherry-pick bugfixes back to previous releases to do releases for critical bugs.</p>
+<p>All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes into the master branch.</p>
+
+<p>The most practical workflow is to send pull-requests to all appropiate branches on Github.</p>
+
+<h3>Get the sources</h3>
+
+<pre><code>git clone https://github.com/cobbler/cobbler.git
+</code></pre>
+
+<h3>Decide which branch to work on</h3>
+
+<pre><code>git branch -r
+git checkout &lt;branch&gt;
+</code></pre>
 
 <h3>Setup</h3>
 
@@ -209,8 +223,9 @@ cobbler test
         <div class="span2 sitemap">
          <ul class="nav nav-list">
           <li class="nav-header">Manuals</li>
-          <li><a href="/manuals/2.4.0/">2.4.x</a></li>
-          <li><a href="/manuals/2.2.3/">2.2.x</a></li>
+          <li><a href="/manuals/developer/">Developer Guide</a></li>
+          <li><a href="/manuals/2.4.0/">User Manual 2.4.x</a></li>
+          <li><a href="/manuals/2.2.3/">User Manual 2.2.x</a></li>
          </ul>
         </div>
         <div class="span3 sitemap">

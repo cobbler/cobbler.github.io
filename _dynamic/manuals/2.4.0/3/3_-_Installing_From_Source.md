@@ -10,8 +10,6 @@ Cobbler is licensed under the General Public License (GPL), version 2 or later. 
 
 The latest source code (it's all Python) is available through [git](https://github.com/cobbler/cobbler).
 
-Potential contributors should read the {% linkup title:"Patch Process" extrameta:2.4.0 %} section for details on contributing patches.
-
 ### Getting the Code
 
 Clone the repo using git:

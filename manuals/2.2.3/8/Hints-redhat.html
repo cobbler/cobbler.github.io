@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Patch Process</title>
+   <title>Cobbler Manual</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -53,8 +53,9 @@ var WRInitTime=(new Date()).getTime();
      <li class="dropdown">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
        <ul class="dropdown-menu">
-         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">Version 2.4.x</a></li>
-         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">Version 2.2.x</a></li>
+         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
+         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">User Manual 2.2.x</a></li>
        </ul>
      </li>
      <li class="dropdown">
@@ -113,93 +114,64 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/8_-_Developer_Documentation.html">8</a> <span class="divider">/</span></li><li class="active">Patch Process</li></ul>
-   <h1>Patch Process</h1>
-<p>You'd like to contribute features or fixes to Cobbler? Great! We'd
-love to have them.</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3">2.2.3</a> <span class="divider">/</span></li><li><a href="/manuals/2.2.3/8_-_Troubleshooting.html">8</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
+   <h1>Cobbler Manual</h1>
+<h1>Hints and tips: Redhat</h1>
 
-<p>It is highly recommended that you have a github.com account if you would
-like to contribute code.   Create an account, log in, and then go
-to github.com/cobbler/cobbler to "fork" the project.</p>
+<p>A collection of tips for using Cobbler to deploy and support Redhat-based machines, including CentOS, Fedora, Scientific Linux, etc.</p>
 
-<p>Create a new branch named after the feature you are working on.</p>
+<h2>rescue mode</h2>
 
-<p>Do the work on your local machine and push to your personal github
-branch (e.g. github.com/yourname/cobbler)</p>
+<p>Redhat-based systems offer a "rescue" mode, typically used for trying to analyse and recover after a major OS problem.  The usual way of doing this is booting from a DVD and selecting "rescue" mode at the relevant point.  But it is also possible to do this via Cobbler.  Indeed, if the machine lacks a DVD drive, alternatives such as this are vital for attempted rescue operations.</p>
 
-<p>Then use the "submit pull request" feature of github to request that
-the official repo pull in your changes.  Be sure to include a full
-description of what your change does in the comments, including
-what you have tested (and other things that you may have not been
-able to test well and need help with).</p>
+<p><strong>RISK:</strong>  <em>Because you are using this Cobbler deployment system that usually installs machines, there is the risk that this procedure could overwrite the very machine you are attempting to rescue.  So it is strongly recommended that, as part of your normal workflow, you develop and periodically verify this procedure in a safe, non-production, non-emergency environment.</em></p>
 
-<p>If the patch needs more work, we'll let you know in the comments.</p>
+<p>The example below illustrates RHEL 5.6.  The detail may vary for other Redhat-like flavours.</p>
 
-<p>Do not mix work on different features in different pull requests/branches if at
-all possible as this makes it difficult to take only some of the work at
-one time, and to quickly slurp in some changes why others get hammered out.</p>
-
-<p>Once we merge in your pull request, you can remove the branch from your repo if you
-like.</p>
-
-<p>If not already there, please add yourself to the AUTHORS file in the root of the checkout.</p>
-
-<h2>Branches</h2>
-
-<p>Cobbler has a development branch called "master"
-(where the action is), and a branch for each release that are in maintaince mode.
-In nearly all cases, your patches should go against master and we can, if we decide,
-backport them to release branches if we want to do an incremental release.</p>
-
-<h2>Standards</h2>
-
-<p>We're not overly picky, but please follow the usual python PEP8 standards
-within reason.</p>
+<h3>Assumptions</h3>
 
 <ul>
-<li>always use under_scores, not camelCase</li>
-<li>always spaces, not tabs</li>
-<li>avoid one line if statements</li>
-<li>keep things simple -- make sure everyone can read and     understand your code -- avoid "magic" such as very
-complex list comprehensions.   The audience for Cobbler     includes folks with a wide range of programming skills and
-this is not the place to show off</li>
-<li>use modules that are available in EPEL or the base OS, therwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines</li>
-<li>at least for now we have to support Python 2.3 for Cobbler and
-Python 2.2 for koan, so stay away from metaclasses and fancy stuff
-:).  (We should discuss dropping support for these soon)</li>
+<li>Your target machine's Cobbler network deployment is supported by exactly one active DHCP server.</li>
+<li>Your deployed machines are already present in Cobbler for their earlier deployment purposes.</li>
+<li>A deployed machine's <code>kopts</code> setting field is usually null.</li>
+<li>A deployed machine's <code>netboot-enabled</code> setting is false outside deployment time.</li>
 </ul>
 
 
-<p>You're also welcome to hang out in #cobbler and
-#cobbler-devel on irc.freenode.net, as there are folks around to
-answer questions, etc.</p>
+<h3>Procedure</h3>
 
-<h2>Contributing to the website: http://www.cobblerd.org</h2>
+<p>As stated above: <em>verify this periodically, outside emergency times, in a non-production environment.</em></p>
 
-<p>The github-based git repository for the www.cobblerd.org website itself is at <a href="https://github.com/cobbler/cobbler.github.com"> https://github.com/cobbler/cobbler.github.com </a>.</p>
+<p>On the Cobbler server:</p>
 
-<p>If you want to contribute changes to the website, you will need <a href="http://jekyllrb.com">jekyll</a>.</p>
+<pre><code>cobbler system edit --name=sick-machine --kopts='rescue'
+cobbler system edit --name=sick-machine --netboot-enabled=true
+cobbler sync
+</code></pre>
 
-<p>You will probably want to:</p>
+<p>As always, don't forget that "cobbler sync".</p>
+
+<p>At the client "sick-machine", start a normal deployment-style network boot.  During this you should eventually see:</p>
 
 <ul>
-<li>edit the files in _dynamic</li>
-<li>run the generate_dynamic.sh script</li>
-<li>add both the .md and resulting .html files in your git commit</li>
+<li>Usual blue screen: <code>Loading SCSI driver</code>.  There may be a couple of similar screens.</li>
+<li>Usual blue screen: <code>Sending request for IP information for eth0...</code>.  (The exact value of that "eth0" is dependent on your machine.)</li>
+<li>Usual blue screen: repeat <code>Sending request for IP...</code> , but this time the header bar at the top should have <code>Rescue Mode</code> appended.</li>
+<li>Usual back-to-black: <code>running anaconda</code> and a couple of related lines.</li>
+<li>Blue screen with header bar <code>Rescue</code> and options "Continue", "Read-Only", "Skip".</li>
 </ul>
 
 
-<h2>Mailing List</h2>
+<p>In particular, if the second <code>Sending request for IP...</code> screen fails to say <code>Rescue Mode</code>, it is strongly recommended that you immediately abort the process to avoid the risk of overwriting the machine.</p>
 
-<p>We have a development mailing list at <a href="https://fedorahosted.org/mailman/listinfo/cobbler-devel">https://fedorahosted.org/mailman/listinfo/cobbler-devel</a>.  Discuss development related questions,
-roadmap, and other things there, rather than on the general user list.</p>
+<p>At this point you select whichever option is appropriate for your rescue and follow the Redhat rescue procedures.  (The detail is independent of, and beyond the scope of, this Cobbler procedure.)</p>
 
-<p>It is a very good idea to mention your pull request (copy/paste, etc) to the development mailing
-list for discussion.</p>
+<p>When you have finished, on the Cobbler server nullify the rescue:</p>
 
-<h2>The End</h2>
-
-<p>Thanks for the interest and happy patching!</p>
+<pre><code>cobbler system edit --name=sick-machine --kopts=''
+cobbler system edit --name=sick-machine --netboot-enabled=false
+cobbler sync
+</code></pre>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -221,7 +193,7 @@ list for discussion.</p>
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.4.0/8/1_-_Development-environment-tips.html">1 - Development-environment-tips</a></li><li><a href="/manuals/2.4.0/8/2_-_Patch-process.html">2 - Patch-process</a></li><li><a href="/manuals/2.4.0/8/3_-_Xmlrpc.html">3 - Xmlrpc</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.2.3/8/Debugging-tips.html">Debugging-tips</a></li><li><a href="/manuals/2.2.3/8/Hints-redhat.html">Hints-redhat</a></li><li><a href="/manuals/2.2.3/8/Virtualization-troubleshooting.html">Virtualization-troubleshooting</a></li></ul></div>
   </div>
  </div>
 </div>
@@ -243,8 +215,9 @@ list for discussion.</p>
         <div class="span2 sitemap">
          <ul class="nav nav-list">
           <li class="nav-header">Manuals</li>
-          <li><a href="/manuals/2.4.0/">2.4.x</a></li>
-          <li><a href="/manuals/2.2.3/">2.2.x</a></li>
+          <li><a href="/manuals/developer/">Developer Guide</a></li>
+          <li><a href="/manuals/2.4.0/">User Manual 2.4.x</a></li>
+          <li><a href="/manuals/2.2.3/">User Manual 2.2.x</a></li>
          </ul>
         </div>
         <div class="span3 sitemap">

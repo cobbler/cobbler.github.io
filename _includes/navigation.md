@@ -9,8 +9,9 @@
      <li class="dropdown">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
        <ul class="dropdown-menu">
-         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">Version 2.4.x</a></li>
-         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">Version 2.2.x</a></li>
+         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
+         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">User Manual 2.2.x</a></li>
        </ul>
      </li>
      <li class="dropdown">
