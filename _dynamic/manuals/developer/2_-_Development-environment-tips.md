@@ -4,15 +4,13 @@ title: Development Environment
 meta: 2.6.0
 ---
 
-All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes into the master branch.
-
-The most practical workflow is to send pull-requests to all appropiate branches on Github.
-
-### Get the sources
+### Get the source
 
     git clone https://github.com/cobbler/cobbler.git
 
 ### Decide which branch to work on
+
+All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes back into the master branch.
 
     git branch -r
     git checkout <branch>

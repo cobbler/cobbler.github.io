@@ -147,10 +147,12 @@ like.</p>
 
 <h2>Branches</h2>
 
-<p>Cobbler has a development branch called "master"
-(where the action is), and a branch for each release that are in maintaince mode.
-In nearly all cases, your patches should go against master and we can, if we decide,
-backport them to release branches if we want to do an incremental release.</p>
+<p>Cobbler has a development branch called "master" (where the action is),
+and a branch for each release that are in maintaince mode.</p>
+
+<p>All work on new features should be done against the master branch.
+If you want to address bugs then please target the latest release branch,
+the maintainers will then cherry-pick those changes into the master branch.</p>
 
 <h2>Standards</h2>
 
@@ -164,10 +166,10 @@ within reason.</p>
 <li>keep things simple -- make sure everyone can read and     understand your code -- avoid "magic" such as very
 complex list comprehensions.   The audience for Cobbler     includes folks with a wide range of programming skills and
 this is not the place to show off</li>
-<li>use modules that are available in EPEL or the base OS, therwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines</li>
-<li>at least for now we have to support Python 2.3 for Cobbler and
+<li>use modules that are available in EPEL or the base OS, otherwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines</li>
+<li>at least for now we have to support Python 2.6 for Cobbler and
 Python 2.2 for koan, so stay away from metaclasses and fancy stuff
-:).  (We should discuss dropping support for these soon)</li>
+:).</li>
 </ul>
 
 
@@ -222,7 +224,7 @@ list for discussion.</p>
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/developer/1_-_Development-environment-tips.html">1 - Development-environment-tips</a></li><li><a href="/manuals/developer/2_-_Patch-process.html">2 - Patch-process</a></li><li><a href="/manuals/developer/3_-_Xmlrpc.html">3 - Xmlrpc</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/developer/1_-_Patch-process.html">1 - Patch-process</a></li><li><a href="/manuals/developer/2_-_Development-environment-tips.html">2 - Development-environment-tips</a></li><li><a href="/manuals/developer/3_-_Xmlrpc.html">3 - Xmlrpc</a></li></ul></div>
   </div>
  </div>
 </div>

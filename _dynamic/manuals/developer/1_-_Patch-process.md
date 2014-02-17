@@ -35,10 +35,12 @@ If not already there, please add yourself to the AUTHORS file in the root of the
 
 ## Branches
 
-Cobbler has a development branch called "master"
-(where the action is), and a branch for each release that are in maintaince mode.
-In nearly all cases, your patches should go against master and we can, if we decide,
-backport them to release branches if we want to do an incremental release.
+Cobbler has a development branch called "master" (where the action is),
+and a branch for each release that are in maintaince mode.
+
+All work on new features should be done against the master branch. 
+If you want to address bugs then please target the latest release branch,
+the maintainers will then cherry-pick those changes into the master branch.
 
 ## Standards
 
@@ -51,10 +53,10 @@ within reason.
 -   keep things simple -- make sure everyone can read and     understand your code -- avoid "magic" such as very
     complex list comprehensions.   The audience for Cobbler     includes folks with a wide range of programming skills and
     this is not the place to show off
--   use modules that are available in EPEL or the base OS, therwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines
--   at least for now we have to support Python 2.3 for Cobbler and
+-   use modules that are available in EPEL or the base OS, otherwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines
+-   at least for now we have to support Python 2.6 for Cobbler and
     Python 2.2 for koan, so stay away from metaclasses and fancy stuff
-    :).  (We should discuss dropping support for these soon)
+    :).
 
 You're also welcome to hang out in \#cobbler and
 \#cobbler-devel on irc.freenode.net, as there are folks around to
