@@ -48,7 +48,7 @@ We're not overly picky, but please follow the usual python PEP8 standards
 within reason.   
 
 -   always use under\_scores, not camelCase
--   always spaces, not tabs
+-   always four (4) spaces, not tabs
 -   avoid one line if statements
 -   keep things simple -- make sure everyone can read and     understand your code -- avoid "magic" such as very
     complex list comprehensions.   The audience for Cobbler     includes folks with a wide range of programming skills and
