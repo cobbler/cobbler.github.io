@@ -13,13 +13,12 @@ what if you can't have that? Suppose you have no working DNS. Now
 you need to be able to have different values for the address of the
 cobbler server.
 
-Each profile and system object can take a --server-override
+Each profile and system object can take a --server
 parameter, which will replace the value used for 'server' in the
 cobbler settings file.
 
-    cobbler system edit --name=foo --server-override=server2.example.org
+    cobbler system edit --name=foo --server=server2.example.org
 
 This parameter can also be used to support multiple cobbler servers
 from a centrally managed configuration (though cobbler replicate is
-better suited to the task, see
-[Replication](Replication) for information)
+better suited to the task.
