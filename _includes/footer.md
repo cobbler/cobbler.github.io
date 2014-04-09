@@ -17,6 +17,7 @@
          <ul class="nav nav-list">
           <li class="nav-header">Manuals</li>
           <li><a href="/manuals/developer/">Developer</a></li>
+          <li><a href="/manuals/2.6.0/">2.6.x</a></li>
           <li><a href="/manuals/2.4.0/">2.4.x</a></li>
           <li><a href="/manuals/2.2.3/">2.2.x</a></li>
          </ul>

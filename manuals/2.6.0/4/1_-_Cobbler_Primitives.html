@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Cobbler development team" />
+
+   <title>Cobbler Primitives</title>
+
+   <!-- CSS -->
+   <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
+   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="/css/search.css" />
+
+   <!-- Fonts -->
+   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
+
+   <!--[if lt IE 9]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   <![endif]-->
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.swiftype.search.js"></script>
+</head>
+<body class="pull_up">
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div class="navbar transparent navbar-inverse navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container">
+   <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
+   <div class="nav-collapse collapse">
+    <ul class="nav pull-right">
+     <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+     <li><a href="/posts/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
+         <li><a href="/manuals/2.6.0/" title="Version 2.6.x">User Manual 2.6.x</a></li>
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
+         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">User Manual 2.2.x</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+         <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         <li><a href="/users.html" title="Cobbler Users">Who's Using Cobbler</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i> Github <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+        <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+       </ul>
+     </li>
+     <li>
+      <form class="pull-right">
+       <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+     </li>
+    </ul>
+    <!-- <div id="st-results-container"></div> -->
+    <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+      (function() {
+        Swiftype.key = 'ybEhsDqz2mEFrMtBHiwB';
+        Swiftype.inputElement = '#st-search-input';
+        Swiftype.resultContainingElement = '#st-results-container';
+        Swiftype.attachElement = '#st-search-input';
+        Swiftype.renderStyle = "new_page";
+        Swiftype.resultPageURL = '/search.html';
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = "//swiftype.com/embed.js";
+        var entry = document.getElementsByTagName('script')[0];
+        entry.parentNode.insertBefore(script, entry);
+      }());
+    </script>
+   </div>
+   <!--
+   <form class="navbar-search pull-right" onsubmit="return false;">
+    <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+   </form>
+   -->
+  </div>
+ </div>
+</div>
+
+
+<!-- begin content -->
+
+<div id="wrap" class="container">
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_General_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Cobbler Primitives</li></ul>
+   <h1>Cobbler Primitives</h1>
+<p>Primitives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section of the <a href="/manuals/2.6.0/1_-_About_Cobbler.html">Introduction to Cobbler</a> page. These objects are generally loosely related, though the distro/profile/system relation is somewhat more strict.</p>
+
+<p>This section covers the creation and use of these objects, as well as how they relate to each other - including the methodology by which attributes are inherited from parent objects.</p>
+
+<h2>Standard Rules</h2>
+
+<p>Cobbler has a standard set of rules for manipulating primitive field values and, in the case of distros/profiles/systems, how those values are inherited from parents to children.</p>
+
+<h3>Inheritance of Values</h3>
+
+<p>Inheritance of values is based on the field type.</p>
+
+<ul>
+<li>For regular fields and arrays, the value will only be inherited if the field is set to '&lt;&lt;inherit&gt;&gt;'. Since distros and other objects like repos do not have a parent, these values are inherited from the defaults in <a href="/manuals/2.6.0/4/3_-_Cobbler_Settings.html">Cobbler Settings</a>. If the field is specifically set to an empty string, no value will be inherited.</li>
+<li>For hashes, the values from the parent will always be inherited and blended with the child values. If the parent and child have the same key, the child's values will win an override the parent's.</li>
+</ul>
+
+
+<h3>Array Fields</h3>
+
+<p>Some fields in Cobbler (for example, the --name-servers field) are stored as arrays. These arrays are always considered arrays of strings, and are always specified in Cobbler as a space-separated list when using add/edit.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> edit --name<span class="o">=</span>foo --field<span class="o">=</span><span class="s2">&quot;a b c d&quot;</span>
+</code></pre></div>
+
+
+<h3>Hash Fields (key=value)</h3>
+
+<p>Other fields in Cobbler (for example, the --ksmeta field) are stored as hashes - that is a list of key=value pairs. As with arrays, both the keys and values are always interpreted as strings.</p>
+
+<h4>Preserving Values When Editing</h4>
+
+<p>By default, any time a hash field is manipulated during an edit, the contents of the field are replaced completely with the new values specified during the edit.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
+<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
+</code></pre></div>
+
+
+<p>To preserve the contents of these fields, --in-place should be specified:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
+<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span>, <span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
+</code></pre></div>
+
+
+<h4>Removing Values</h4>
+
+<p>To remove a single value from the hash, use the '~' (tilde) character along with --in-place:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
+<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s1">&#39;~a&#39;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
+</code></pre></div>
+
+
+<h4>Suppressing Values</h4>
+
+<p>You can also suppress values from being used, by specifying the '-' character in front of the key name:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
+<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s1">&#39;-a&#39;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;-a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
+</code></pre></div>
+
+
+<p>In this case, the key=value pair will be ignored when the field is accessed.</p>
+
+<h4>Keys Without Values</h4>
+
+<p>You can always specify keys without a value:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a b c&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;~&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;~&#39;</span>, <span class="s1">&#39;b&#39;</span>: <span class="s1">&#39;~&#39;</span><span class="o">}</span>
+</code></pre></div>
+
+
+
+
+<div class="alert alert-info alert-block"><b>Note:</b> While valid syntax, this could cause problems for some fields where Cobbler expects a value (for example, --template-files).</div>
+
+
+<h4>Keys With Multiple Values</h4>
+
+<p>It is also possible to specify multiple values for the same key. In this situation, Cobbler will convert the value portion to an array:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;a=b a=c a=d&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="o">[</span><span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>, <span class="s1">&#39;d&#39;</span><span class="o">]}</span>
+</code></pre></div>
+
+
+
+
+<div class="alert alert-info alert-block"><b>Note:</b> You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.</div>
+
+
+<h2>Standard Primitive Sub-commands</h2>
+
+<p>All primitive objects support the following standard sub-commands:</p>
+
+<h3>List</h3>
+
+<p>The list command simply prints out an alphabetically sorted list of all objects.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro list
+   centos6.3-x86_64
+   debian6.0.5-x86_64
+   f17-x86_64
+   f18-beta6-x86_64
+   opensuse12.2-i386
+   opensuse12.2-x86_64
+   opensuse12.2-xen-i386
+   opensuse12.2-xen-x86_64
+   sl6.2-i386
+   sl6.2-x86_64
+   ubuntu-12.10-i386
+   ubuntu-12.10-x86_64
+</code></pre></div>
+
+
+<p>The list command is actually available as a top-level command as well, in which case it will iterate through every object type and list everything currently stored in your Cobbler database.</p>
+
+<h3>Report</h3>
+
+<p>The report command prints a formatted report of each objects configuration. The optional --name argument can be used to limit the output to a single object, otherwise a report will be printed out for every object (if you have a lot of objects in a given category, this can be somewhat slow).</p>
+
+<p>As with the list command, the report command is also available as a top-level command, in which case it will print a report for every object that is stored in your Cobbler database.</p>
+
+<h3>Remove</h3>
+
+<p>The remove command uses only the --name option.</p>
+
+<div class="alert alert-info alert-block"><b>Note:</b> Removing an object will also remove any child objects (profiles, sub-profiles and/or systems). Prior versions of Cobbler required an additional --recursive option to enable this behavior, but it has become the default in recent versions so use remove with caution.</div>
+
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> remove --name<span class="o">=</span>foo
+</code></pre></div>
+
+
+<h3>Copy/Rename</h3>
+
+<p>The copy and rename commands work similarly, with both requiring a --name and --newname options.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> copy --name<span class="o">=</span>foo --newname<span class="o">=</span>bar
+<span class="c"># or</span>
+<span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> rename --name<span class="o">=</span>foo --newname<span class="o">=</span>bar
+</code></pre></div>
+
+
+<h3>Find</h3>
+
+<p>The find command allows you to search for objects based on object attributes.</p>
+
+<p>Please refer to the <a href="/manuals/2.6.0/4/2/7_-_Command_Line_Search.html">Command Line Search</a> section for more details regarding the find sub-command.</p>
+
+<h3>Dumpvars (Debugging)</h3>
+
+<p>The dumpvars command is intended to be used for debugging purposes, and for those writing snippets. In general, it is not required for day-to-day use.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.6.0/4/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Images.html">4 - Images</a></li><li><a href="/manuals/2.6.0/4/1/5_-_Repos.html">5 - Repos</a></li><li><a href="/manuals/2.6.0/4/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.6.0/4/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.6.0/4/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
+  </div>
+ </div>
+</div>
+<!-- end content -->
+
+<footer>
+  <div class="container">
+    <div class="row-fluid sections">
+      <div class="span6 footmenu">
+       <div class="row-fluid">
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Pages</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Blog Posts</a></li>
+          <li><a href="/about.html">About Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span2 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Manuals</li>
+          <li><a href="/manuals/developer/">Developer</a></li>
+          <li><a href="/manuals/2.6.0/">2.6.x</a></li>
+          <li><a href="/manuals/2.4.0/">2.4.x</a></li>
+          <li><a href="/manuals/2.2.3/">2.2.x</a></li>
+         </ul>
+        </div>
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Community</li>
+          <li><a href="/community.html">How to Get Help</a></li>
+          <li><a href="/supporters.html">Supporters</a></li>
+          <li><a href="/users.html">Who's Using Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span4 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Github</li>
+          <li><a href="https://github.com/cobbler/cobbler">Code Repository</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki">Wiki</a></li>
+         </ul>
+        </div>
+       </div>
+    <div class="row-fluid">
+    </div>
+    <div class="row-fluid">
+     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
+     <p class="browsers">
+      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
+      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
+      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
+      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
+     </p>
+    </div>
+      </div>
+      <div class="span3 posts">
+        <p class="column_header">Recent Posts:</p>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/03/09/cobbler_2.4.3_released.html">Cobbler 2.4.3 Released</a></p>
+          <p class="author">Posted by Jörgen on Sunday, March 09, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/02/15/cobbler_2.4.2_released.html">Cobbler 2.4.2 Released</a></p>
+          <p class="author">Posted by Jörgen on Saturday, February 15, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/02/03/cobbler_2.4.1_released.html">Cobbler 2.4.1 Released</a></p>
+          <p class="author">Posted by Jörgen on Monday, February 03, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2013/06/20/cobbler_2.4.0-1_released.html">Cobbler 2.4.0-1 Released</a></p>
+          <p class="author">Posted by James on Thursday, June 20, 2013</p>
+        </div>
+
+      </div>
+      <div class="span3 credits">
+        <div class="social">
+          <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-width="100%">Follow @cobblerista</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="attributions">
+          <p class="column_header">Attributions:</p>
+          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
+          <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
+        </div>
+        <div class="copyright">
+          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
+          <script>$("#copyyear").text((new Date).getFullYear());</script>
+        </div>
+      </div>            
+    </div>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+
