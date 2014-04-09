@@ -10,6 +10,11 @@ title: Cobbler Manuals
 * <a href="/manuals/2.4.0">User Manual 2.4.x</a>
 * <a href="/manuals/2.2.3">User Manual 2.2.x</a>
 
+### Quickstart Guide
+
+* <a href="/manuals/quickstart">Quickstart Guide</a>
+
 ### Developer Manuals
 
 * <a href="/manuals/developer">Developer Guide</a>
+
