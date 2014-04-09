@@ -8,15 +8,15 @@ meta: 2.4.0
 
 ### Feature improvements
 
-Improve support for ESXi when using updated sources
-Add support for SLES 12 to distro_signatures
-Add support for Oracle Enterprise Linux to distro_signatures
+- Improve support for ESXi when using updated sources
+- Add support for SLES 12 to distro_signatures
+- Add support for Oracle Enterprise Linux to distro_signatures
 
 ### Bugfixes
 
-Manual page correction regarding the use of the --server parameter
-Minor corrections to the build MANIFEST
-Fix a SyntaxError in Koan / OVZ install
+- Manual page correction regarding the use of the --server parameter
+- Minor corrections to the build MANIFEST
+- Fix a SyntaxError in Koan / OVZ install
 
 ### Upgrade notes
 

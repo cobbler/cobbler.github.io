@@ -300,6 +300,15 @@ Key:
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">SLES 12</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">VMware</td>
  </tr>
  <tr>
