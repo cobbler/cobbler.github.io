@@ -357,6 +357,15 @@ Key:
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">ESXi 6</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">FreeBSD</td>
  </tr>
  <tr>
@@ -416,6 +425,19 @@ Key:
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
  </tr>
+ <tr>
+  <td colspan="7">Nexenta</td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Nexenta 3.1.x</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+
 
 </table>
 

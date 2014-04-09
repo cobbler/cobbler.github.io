@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Cobbler development team" />
+
+   <title>Power Management</title>
+
+   <!-- CSS -->
+   <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
+   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="/css/search.css" />
+
+   <!-- Fonts -->
+   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
+
+   <!--[if lt IE 9]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   <![endif]-->
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.swiftype.search.js"></script>
+</head>
+<body class="pull_up">
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div class="navbar transparent navbar-inverse navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container">
+   <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
+   <div class="nav-collapse collapse">
+    <ul class="nav pull-right">
+     <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+     <li><a href="/posts/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
+         <li><a href="/manuals/2.6.0/" title="Version 2.6.x">User Manual 2.6.x</a></li>
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
+         <li><a href="/manuals/2.2.3/" title="Version 2.2.x">User Manual 2.2.x</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+         <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         <li><a href="/users.html" title="Cobbler Users">Who's Using Cobbler</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i> Github <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+        <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+       </ul>
+     </li>
+     <li>
+      <form class="pull-right">
+       <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+     </li>
+    </ul>
+    <!-- <div id="st-results-container"></div> -->
+    <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+      (function() {
+        Swiftype.key = 'ybEhsDqz2mEFrMtBHiwB';
+        Swiftype.inputElement = '#st-search-input';
+        Swiftype.resultContainingElement = '#st-results-container';
+        Swiftype.attachElement = '#st-search-input';
+        Swiftype.renderStyle = "new_page";
+        Swiftype.resultPageURL = '/search.html';
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = "//swiftype.com/embed.js";
+        var entry = document.getElementsByTagName('script')[0];
+        entry.parentNode.insertBefore(script, entry);
+      }());
+    </script>
+   </div>
+   <!--
+   <form class="navbar-search pull-right" onsubmit="return false;">
+    <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+   </form>
+   -->
+  </div>
+ </div>
+</div>
+
+
+<!-- begin content -->
+
+<div id="wrap" class="container">
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Power Management</li></ul>
+   <h1>Power Management</h1>
+<p>Cobbler allows for linking your power management systems with cobbler, making it very easy to make changes to your systems when you want to reinstall them, or just use it to remember what the power management settings for all of your systems are. For instance, you can just change what profile they should run and flip their power states to begin the reinstall!</p>
+
+<h2>Fence Agents</h2>
+
+<p>Cobbler relies on fencing agents, provided by the 'cman' package for some distributions or 'fence-agents' for others. These scripts are installed in the <code>/usr/sbin</code> directories. Cobbler will automatically find any files in that directory named fence_* and allow them to be used for power management.</p>
+
+<p><strong>NOTE:</strong> Some distros may place the fencing agents in <code>/sbin</code> - this is currently a known bug. To work around this for now, symlink the <code>/sbin/fence_*</code> scripts you wish to use to <code>/usr/sbin</code> so cobbler can find them. This will be fixed in a future version.</p>
+
+<h2>Changes From Older Versions</h2>
+
+<p>Cobbler versions prior to 2.2.3-2 used templates stored in <code>/etc/cobbler/power</code> to generate commands that were run as shell commands. This was changed in 2.2.3-2 to use the fencing agents ability to instead read the parameters from STDIN. This is safer, as no passwords are shown in plaintext command line options, nor can a malformed variable be used to inject improper shell commands during the fencing agent execution.</p>
+
+<h3>New Power Templates</h3>
+
+<p>By default, the following options are passed in to the fencing agent's STDIN:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">action</span><span class="o">=</span><span class="nv">$power_mode</span>
+<span class="nv">login</span><span class="o">=</span><span class="nv">$power_user</span>
+<span class="nv">passwd</span><span class="o">=</span><span class="nv">$power_pass</span>
+<span class="nv">ipaddr</span><span class="o">=</span><span class="nv">$power_address</span>
+<span class="nv">port</span><span class="o">=</span><span class="nv">$power_id</span>
+</code></pre></div>
+
+
+<p>The variables above correspond to the --power-* options available when adding/editing a system (or via the "Power Management" tab in the Web UI). If you wish to add aditional options, you can create a template in <code>/etc/cobbler/power</code> named fence_&lt;name&gt;.template, where name is the fencing agent you wish to use.</p>
+
+<p>Any additional options should be added one per line, as described in the fencing agents man page. Additional variables can be used if they are set in --ksmeta.</p>
+
+<h3>Custom Fencing Agents</h3>
+
+<p>If you would like to use a custom fencing agent not provided by your distribution, you can do so easily by placing it in the <code>/usr/sbin</code> directory and name it fence_&lt;mytype&gt;. Just make sure that your custom program reads its options from STDIN, as noted above.</p>
+
+<h2>Defaults</h2>
+
+<p>If --power-user and --power-pass are left blank, the values of default_power_user and default_power_pass will be loaded from cobblerd's environment at the time of usage.</p>
+
+<p>--power-type also has a default value in <code>/etc/cobbler/settings</code>, initially set to "ipmilan".</p>
+
+<h2>Important: Security Implications</h2>
+
+<p>Storing the power control usernames and passwords in Cobbler means that information is essentially public (this data is available via XMLRPC without access control), therefore you will want to control what machines have network access to contact the power management devices if you use this feature (such as /only/ the cobbler machine, and then control who has local access to the cobbler machine). Also do not reuse important passwords for your power management devices. If this concerns you, you can still use this feature, just don't store the username/password in Cobbler for your power management devices.</p>
+
+<p>If you are not going to to store power control passwords in Cobbler, leave the username and password fields blank. Cobbler will first try to source them from it's environment using the COBBLER_POWER_USER and COBBLER_POWER_PASS variables.</p>
+
+<p>This may also be too insecure for some, so in this case, don't set these, and supply --power-user and --power-pass when running commands like "cobbler system poweron" and "cobbler system poweroff". The values used on the command line are always used, regardless of the value stored in Cobbler or the environment, if so provided.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweron --name<span class="o">=</span>foo --power-user<span class="o">=</span>X --power-pass<span class="o">=</span>Y
+</code></pre></div>
+
+
+<p>Be advised of current limitations in storing passwords, make your choices accordingly and in relation to the ease-of-use that you need, and secure your networks appropriately.</p>
+
+<h2>Sample Use</h2>
+
+<h3>Configuring Power Options on a System</h3>
+
+<p>You have a DRAC based blade:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>drac --power-address<span class="o">=</span>blade-mgmt.example.org --power-user<span class="o">=</span>Administrator --power-pass<span class="o">=</span>PASSWORD --power-id<span class="o">=</span>blade7
+</code></pre></div>
+
+
+<p>You have an IPMI based system:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>ipmilan --power-address<span class="o">=</span>foo-mgmt.example.org --power-user<span class="o">=</span>Administrator --power-pass<span class="o">=</span>PASSWORD
+</code></pre></div>
+
+
+<p>You have a IBM HMC managed system:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>lpar --power-address<span class="o">=</span>ibm-hmc.example.org --power-user<span class="o">=</span>hscroot --power-pass<span class="o">=</span>PASSWORD --power-id<span class="o">=</span>system:partition
+</code></pre></div>
+
+
+<p><strong>NOTE</strong>: The --power-id option is used to indicate both the managed system name <strong>and</strong> a logical partition name. Since an IBM HMC is responsible for managing more than one system, you must supply the managed system name and logical partition name separated by a colon (':') in the --power-id command-line option.</p>
+
+<p>You have an IBM Bladecenter:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>bladecenter --power-address<span class="o">=</span>blademm.example.org --power-user<span class="o">=</span>USERID --power-pass<span class="o">=</span>PASSW0RD --power-id<span class="o">=</span>6
+</code></pre></div>
+
+
+<p><strong>NOTE</strong>: The <em>--power-id</em> option is used to specify what slot your blade is connected.</p>
+
+<h3>Powering Off A System</h3>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweroff --name<span class="o">=</span>foo
+</code></pre></div>
+
+
+<h3>Powering On A System</h3>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweron --name<span class="o">=</span>foo
+</code></pre></div>
+
+
+<p>If --netboot-enabled is not set to false, the system could potentially reinstall itself if PXE has been configured, so make sure to disable that option when using power management features.</p>
+
+<h3>Rebooting A System</h3>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system reboot --name<span class="o">=</span>foo
+</code></pre></div>
+
+
+<p>Since not all power management systems support reboot, this is a "power off, sleep for 1 second, and power on" operation.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Bonding.html">1.1 - Bonding</a></li><li><a href="/manuals/2.6.0/4/1/2_-_VLANs.html">1.2 - VLANs</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Bridging.html">1.3 - Bridging</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Bonded_Bridging.html">1.4 - Bonded Bridging</a></li></ul><li><a href="/manuals/2.6.0/4/2_-_SELinux.html">2 - SELinux</a></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Puppet_Integration.html">3.2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/4/3/3_-_Func_Integration.html">3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.6.0/4/4_-_Anaconda_Monitoring.html">4 - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/4/5_-_Extending_Cobbler.html">5 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/5/1_-_Triggers.html">5.1 - Triggers</a></li><li><a href="/manuals/2.6.0/4/5/2_-_Modules.html">5.2 - Modules</a></li><li><a href="/manuals/2.6.0/4/5/3_-_Extending_Cheetah.html">5.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.6.0/4/6_-_Power_Management.html">6 - Power Management</a></li><li><a href="/manuals/2.6.0/4/7_-_Alternative_Template_Formats.html">7 - Alternative Template Formats</a></li><li><a href="/manuals/2.6.0/4/8_-_Multi-Homed_Cobbler_Servers.html">8 - Multi-Homed Cobbler Servers</a></li><li><a href="/manuals/2.6.0/4/9_-_Memtest.html">9 - Memtest</a></li><li><a href="/manuals/2.6.0/4/10_-_Virtual_Image_Cloning.html">10 - Virtual Image Cloning</a></li><li><a href="/manuals/2.6.0/4/11_-_Auto-Registration.html">11 - Auto-Registration</a></li><li><a href="/manuals/2.6.0/4/12_-_Booting_Live_CDs.html">12 - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/4/13_-_Clonezilla_Integration.html">13 - Clonezilla Integration</a></li><li><a href="/manuals/2.6.0/4/14_-_Batch_Editing.html">14 - Batch Editing</a></li><li><a href="/manuals/2.6.0/4/15_-_Moving_to_a_New_Server.html">15 - Moving to a New Server</a></li><li><a href="/manuals/2.6.0/4/16_-_PXE-boot_Menu_Passwords.html">16 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.6.0/4/17_-_System_Retirement.html">17 - System Retirement</a></li><li><a href="/manuals/2.6.0/4/18_-_Alternative_Storage_Backends.html">18 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/18/1_-_CouchDB.html">18.1 - CouchDB</a></li><li><a href="/manuals/2.6.0/4/18/2_-_MongoDB.html">18.2 - MongoDB</a></li><li><a href="/manuals/2.6.0/4/18/3_-_MySQL.html">18.3 - MySQL</a></li></ul><li><a href="/manuals/2.6.0/4/19_-_Using_gPXE.html">19 - Using gPXE</a></li><li><a href="/manuals/2.6.0/4/20_-_Data_Revision_Control.html">20 - Data Revision Control</a></li></ul></div>
+  </div>
+ </div>
+</div>
+<!-- end content -->
+
+<footer>
+  <div class="container">
+    <div class="row-fluid sections">
+      <div class="span6 footmenu">
+       <div class="row-fluid">
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Pages</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Blog Posts</a></li>
+          <li><a href="/about.html">About Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span2 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Manuals</li>
+          <li><a href="/manuals/developer/">Developer</a></li>
+          <li><a href="/manuals/2.6.0/">2.6.x</a></li>
+          <li><a href="/manuals/2.4.0/">2.4.x</a></li>
+          <li><a href="/manuals/2.2.3/">2.2.x</a></li>
+         </ul>
+        </div>
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Community</li>
+          <li><a href="/community.html">How to Get Help</a></li>
+          <li><a href="/supporters.html">Supporters</a></li>
+          <li><a href="/users.html">Who's Using Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span4 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Github</li>
+          <li><a href="https://github.com/cobbler/cobbler">Code Repository</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki">Wiki</a></li>
+         </ul>
+        </div>
+       </div>
+    <div class="row-fluid">
+    </div>
+    <div class="row-fluid">
+     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
+     <p class="browsers">
+      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
+      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
+      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
+      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
+     </p>
+    </div>
+      </div>
+      <div class="span3 posts">
+        <p class="column_header">Recent Posts:</p>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/03/09/cobbler_2.4.3_released.html">Cobbler 2.4.3 Released</a></p>
+          <p class="author">Posted by Jörgen on Sunday, March 09, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/02/15/cobbler_2.4.2_released.html">Cobbler 2.4.2 Released</a></p>
+          <p class="author">Posted by Jörgen on Saturday, February 15, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/02/03/cobbler_2.4.1_released.html">Cobbler 2.4.1 Released</a></p>
+          <p class="author">Posted by Jörgen on Monday, February 03, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2013/06/20/cobbler_2.4.0-1_released.html">Cobbler 2.4.0-1 Released</a></p>
+          <p class="author">Posted by James on Thursday, June 20, 2013</p>
+        </div>
+
+      </div>
+      <div class="span3 credits">
+        <div class="social">
+          <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-width="100%">Follow @cobblerista</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="attributions">
+          <p class="column_header">Attributions:</p>
+          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
+          <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
+        </div>
+        <div class="copyright">
+          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
+          <script>$("#copyyear").text((new Date).getFullYear());</script>
+        </div>
+      </div>            
+    </div>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+
