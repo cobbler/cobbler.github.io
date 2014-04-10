@@ -4,7 +4,6 @@ title: openSUSE
 meta: 2.6.0
 ---
 
-## openSUSE
 
 Enabled require apache modules (/etc/sysconfig/apache2:APACHE_MODULES)
 

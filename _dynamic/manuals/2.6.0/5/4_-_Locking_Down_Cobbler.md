@@ -60,10 +60,7 @@ You should install the semanage rules that "cobbler check" tells
 you about to ensure everything works according to plan.
 
 Also note, you may run into some problems if you need to relocate
-your `/var/www elsewhere`, which most users should not need to do. If
-you do, read
-[RelocatingYourInstall](/cobbler/wiki/RelocatingYourInstall) and
-that mentioned details about context.
+your `/var/www elsewhere`, which most users should not need to do.
 
 ## Default Paswords
 
@@ -104,7 +101,5 @@ them -- they are not about denying access to data in the
 provisioning server, such as the contents of kickstarts. If you
 need to be transferring sensitive files, a long "HERE" document in
 kickstart %post is not the place to do it. scp those later or use a
-config management system (or Func
-([http://fedorahosted.org/func](http://fedorahosted.org/func))) to
-move the files.
+config management system to move the files.
 
