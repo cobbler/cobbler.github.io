@@ -430,7 +430,7 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
-  <td class="span2">Nexenta 3.1.x</td>
+  <td class="span2">Nexenta 4</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
