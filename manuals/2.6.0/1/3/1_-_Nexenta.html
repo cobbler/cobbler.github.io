@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>What's New</title>
+   <title>Nexenta</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -116,35 +116,91 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">What's New</li></ul>
-   <h1>What's New</h1>
-<h2>2.6.0</h2>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1/3_-_Distribution_Notes.html">3</a> <span class="divider">/</span></li><li class="active">Nexenta</li></ul>
+   <h1>Nexenta</h1>
+<h2>Installing NexentaStor with Cobbler</h2>
 
-<h3>Features</h3>
+<p>The following steps outline the Nexenta install process when using Cobbler.</p>
 
-<ul>
-<li>We now build RPMs for RHEL/CentOS 6, Fedora 18/19/20, OpenSUSE 12.3/13.1/Factory</li>
-<li>Massive overhaul to python building &amp; packaging infrastructure enabling alternate install prefix</li>
-<li>Initial support for Nexenta 4: distro import and manual PXE booting</li>
-<li>Added support for ESXi 6</li>
-</ul>
+<p>1) Assuming that Cobbler has been setup previously, verify that the signature file contains the entry for Nexenta:</p>
 
+<p>{ highlight bash }
+  "nexenta": {
+    "4": {
+      "signatures":["boot"],
+      "version_file": "platform",
+      "version_file_regex": null,
+      "supported_arches":["x86_64"],
+      "supported_repo_breeds":["apt"],
+      "kernel_file":"platform/i86pc/kernel/amd64/unix",
+      "initrd_file":"platform/i86pc/amd64/miniroot",
+      "isolinux_ok":false,
+      "kernel_options":"",
+      "kernel_options_post":"",
+      "boot_files":[]
+    }
+  }
+{ endhighlight }</p>
 
-<h3>Bugfixes</h3>
+<p>2) Obtain a Nexenta iso from http://www.nexenta.com/corp/nexentastor-download and mount it:</p>
 
-<ul>
-<li>Lots of code cleanup</li>
-</ul>
+<p>{ highlight bash }
+mkdir -p /mnt/nexenta4 &amp;&amp; mnt /path/to/nexenta4.iso /mnt/nexenta4 -o loop`
+{ endhighlight }</p>
 
+<p>3) Import the distribution into Cobbler:</p>
 
-<h3>Upgrade notes</h3>
+<p>{ highlight bash }
+cobbler import --name=nexenta-4 --path=/mnt/nexenta4
+{ endhighlight }</p>
 
-<ul>
-<li>Support for python 2.4 (eg. RHEL5) has been dropped, we now require python 2.6+</li>
-</ul>
+<p>Verify that a Nexenta distirbution is available via Cobbler: cobbler list
+Once the import is done, you can unmount the ISO:</p>
 
+<p>{ highlight bash }
+sudo umount /mnt/nexenta4
+{ endhighlight }</p>
 
-<p>None.</p>
+<p>4) Nexenta uses a PXE Grub executable different from other, linux-like systems. To install a Nexenta on a desired system, you have to specify the PXE Grub file for that system. This can be done by using either a MAC address, or a subnet definition in your DHCP configuration file. In /etc/cobbler/dhcp.template:</p>
+
+<p>{ highlight bash }
+  host test-1 {
+    hardware ethernet 00:0C:29:10:B6:10;
+    fixed-address 10.3.30.91;
+    filename "boot/grub/pxegrub";
+  }
+  host test-2 {
+    hardware ethernet 00:0c:29:d1:9c:26;
+    fixed-address 10.3.30.97;
+    filename "boot/grub/pxegrub";
+  }
+{ endhighlight }</p>
+
+<p>OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host definition in your dhcp config file.</p>
+
+<p>Note: the path <code>boot/grub/pxegrub</code> is a hardcoded default in the Nexenta boot process.</p>
+
+<p>5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The profiles are placed in /var/lib/cobbler/kickstarts/install_profiles. Each profile should be a file with the filename <code>machine.AACC003355FF</code> where AA..FF stand for the mac address of the machine, without <code>:</code> (columns). The contents of each profile should look like the following:</p>
+
+<p>{ highlight bash }
+<strong>PF_gateway="IP address" (required)
+</strong>PF_nic_primary="NIC NAME" (required)
+<strong>PF_dns_ip_1="IP address" (required)
+</strong>PF_dns_ip_2="IP address" (optional)
+<strong>PF_dns_ip_3="IP address" (optional)
+</strong>PF_loghost="IP address" (optional)
+<strong>PF_logport="Port Number" (optional)
+</strong>PF_syspool_luns="list of space separated LUNs that will be used to create syspool" (required)
+<strong>PF_syspool_spare="list of space separated LUNs that will be used as syspool spare" (optional)
+</strong>PF_ipaddr_NIC_NAME="IP address" (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
+<strong>PF_netmask_NIC_NAME="NETMASK" (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
+</strong>PF_nlm_key="LICENSE KEY" (required)
+<strong>PF_language="en" (used to choose localzation, but now only "en" is supported) (required)
+</strong>PF_ssh_enable=1 (enable SSH, by default SSH is disabled) (optional)
+__PF_ssh_port="PORT where SSH server will wait for incoming connections" (optional)
+{ endhighlight }</p>
+
+<p>6) Power on the hardware. NexentaStor should boot from this setup.</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -166,7 +222,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1/1_-_Release_Notes.html">1 - Release Notes</a></li><li><a href="/manuals/2.6.0/1/2_-_Distribution_Support.html">2 - Distribution Support</a></li><li><a href="/manuals/2.6.0/1/3_-_Distribution_Notes.html">3 - Distribution Notes</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/3/1_-_Nexenta.html">3.1 - Nexenta</a></li></ul></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1/3/1_-_Nexenta.html">1 - Nexenta</a></li></ul></div>
   </div>
  </div>
 </div>
