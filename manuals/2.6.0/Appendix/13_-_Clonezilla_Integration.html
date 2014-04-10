@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Relocating Your Installation</title>
+   <title>Cobbler Manual</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -116,29 +116,47 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2</a> <span class="divider">/</span></li><li class="active">Relocating Your Installation</li></ul>
-   <h1>Relocating Your Installation</h1>
-<p>Often folks don't have a very large <code>/var</code> partition, which is what cobbler uses by default for mirroring install trees and the like.</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
+   <h1>Cobbler Manual</h1>
+<h2>Clonezilla live integration</h2>
 
-<p>You'll notice you can reconfigure the webdir location just by going into <code>/etc/cobbler/settings</code>, but it's not the best way to do things -- especially as the RPM packaging does include some files and directories in the stock path. This means that, for upgrades and the like, you'll be breaking things somewhat. Rather than attempting to reconfigure cobbler, your Apache configuration, your file permissions, and your SELinux rules, the recommended course of action is very simple.</p>
+<p>Since many of us need to support non-linux systems in addition to
+Linux systems, some facility for support of these systems is
+helpful - especially if your dhcp server is pointing pxe boots to
+your cobbler server. PXE booting a clonezilla live CD as an option
+under cobbler provides a unified starting point for all system
+installation tasks.</p>
 
-<ol>
-<li>Copy everything you have already in <code>/var/www/cobbler</code> to another location -- for instance, <code>/opt/cobbler_data</code></li>
-<li>Now just create a symlink or bind mount at <code>/var/www/cobbler</code> that points to <code>/opt/cobbler_data</code>.</li>
-</ol>
+<h2>Step-by-step (as of 2.2.2)</h2>
 
+<p> \1. Download clonezilla live image from here here:
+ <a href="http://clonezilla.org/downloads.php">http://clonezilla.org/downloads.php</a>
+ . I used the ubuntu based "experimental" version because the Debian
+ based clonezilla's don't have necessary network drivers for many
+ Dell servers.</p>
 
-<p>Done. You're up and running.</p>
+<p>\2. Unpack the zip file to a location on the machine, and run an add the distribution
+  cobbler distro add  --name=clonezilla1-2-22-37 --arch=x86_64 --breed=other --os-version=other --boot-files="'$img_path/filesystem.squashfs'='<path_to_your_folder>/live/filesystem.squashfs'" --kernel=<path_to_your_folder>/live/vmlinuz --initrd=<path_to_your_folder>/live/initrd.img</p>
 
-<div class="alert alert-block alert-info"><b>Note:</b> If you decided to access cobbler's data store over NFS (not recommended) you really want to mount NFS on <code>/var/www/cobbler</code> with SELinux context passed in as a parameter to mount versus the symlink. You may also have to deal with problems related to rootsquash. However if you are making a mirror of a Cobbler server for a multi-site setup, mounting read only is ok there.</div>
+<p>\3. Set up the kickstart kernel options needed for booting to at least:
+  nomodeset edd=on ocs_live_run=ocs-live-general ocs_live_keymap=NONE boot=live vga=788 noswap noprompt nosplash ocs_live_batch=no ocs_live_extra_param ocs_lang=en_US.UTF-8 ocs_lang=None nolocales config fetch=tftp://<Your_TFTP_ServerIP>/images/<your_Profile_NAME>/filesystem.squashfs</p>
 
+<p>\4. You should then be able to create a profile for the clonezilla distro and then add to the kernel options, and be able to customize the startup procedure from there using the clonezilla docs.</p>
 
+<p>\5. Run "cobbler sync" to set up the template for the systems you need.</p>
 
+<h2>Limitations and work needed</h2>
 
-<div class="alert alert-block alert-info"><b>Also Note:</b> <code>/var/lib/cobbler</code> can not live on NFS, as this interferes with locking ("flock") cobbler does around it's storage files.</div>
+<p>\1. I've seen the download of the squashfs skipped on more than one
+ occaision, resulting in a kernel panic. Not sure why this happens,
+ but trying again fixes the problem (or could just be because I'm
+ still experimenting too much).</p>
 
+<p>\2. Would be nice if clonezilla UI was integrated into cobbler
+ somewhat (i.e. it knew the IP of the server saving the images and
+ maybe had an ssh key so it could get access without a password).</p>
 
-
+<p>\3. <strong>Still very experimental.</strong></p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -160,7 +178,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">5 - Relocating Your Installation</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/4_-_Anaconda_Monitoring.html">4 - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/9_-_Memtest.html">9 - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/12_-_Booting_Live_CDs.html">12 - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/13_-_Clonezilla_Integration.html">13 - Clonezilla Integration</a></li><li><a href="/manuals/2.6.0/Appendix/17_-_System_Retirement.html">17 - System Retirement</a></li></ul></div>
   </div>
  </div>
 </div>

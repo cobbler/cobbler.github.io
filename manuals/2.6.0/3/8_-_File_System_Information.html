@@ -140,7 +140,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>/var/www/cobbler/aux/</h4>
 
-<p>This is used to serve up certain scripts to anaconda, such as anamon (See <a href="/manuals/2.6.0/4/4_-_Anaconda_Monitoring.html">Anaconda Monitoring</a> for more information on anamon).</p>
+<p>This is used to serve up certain scripts to anaconda, such as anamon (See <a href="/manuals/2.6.0/Appendix/4_-_Anaconda_Monitoring.html">Anaconda Monitoring</a> for more information on anamon).</p>
 
 <h4>/var/www/cobbler/svc/</h4>
 
@@ -180,7 +180,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>/var/lib/cobbler/triggers/</h4>
 
-<p>Various user-scripts to extend Cobbler to perform certain actions can be dropped into subdirectories of this directory. See the <a href="/manuals/2.6.0/4/5/1_-_Triggers.html">Triggers</a> section for more information.</p>
+<p>Various user-scripts to extend Cobbler to perform certain actions can be dropped into subdirectories of this directory. See the <a href="/manuals/2.6.0/4/4/1_-_Triggers.html">Triggers</a> section for more information.</p>
 
 <h3>/usr/share/cobbler/web</h3>
 
@@ -190,14 +190,14 @@ var WRInitTime=(new Date()).getTime();
 
 <ul>
 <li><strong>cobbler.conf</strong> - Cobbler's most important config file. Self-explanatory with comments, in YAML format.</li>
-<li><strong>modules.conf</strong> - auxilliary config file. controls Cobbler security, and what DHCP/DNS engine is attached, see <a href="/manuals/2.6.0/4/5/2_-_Modules.html">Modules</a> for developer-level details, and also <a href="/manuals/2.6.0/5/1_-_Security_Overview.html">Security Overview</a>. This file is in an INI-style format that can be read by the ConfigParser class.</li>
+<li><strong>modules.conf</strong> - auxilliary config file. controls Cobbler security, and what DHCP/DNS engine is attached, see <a href="/manuals/2.6.0/4/4/2_-_Modules.html">Modules</a> for developer-level details, and also <a href="/manuals/2.6.0/5/1_-_Security_Overview.html">Security Overview</a>. This file is in an INI-style format that can be read by the ConfigParser class.</li>
 <li><strong>users.digest</strong> - if using the digest authorization module this is where your web app username/passwords live. Refer to the <a href="/manuals/2.6.0/5_-_Web_Interface.html">Cobbler Web User Interface</a> section for more info.</li>
 </ul>
 
 
 <h4>/etc/cobbler/power</h4>
 
-<p>Here we keep the templates for the various power management modules Cobbler supports. Please refer to the <a href="/manuals/2.6.0/4/6_-_Power_Management.html">Power Management</a> section for more details on configuring power management features.</p>
+<p>Here we keep the templates for the various power management modules Cobbler supports. Please refer to the <a href="/manuals/2.6.0/4/5_-_Power_Management.html">Power Management</a> section for more details on configuring power management features.</p>
 
 <h4>/etc/cobbler/pxe</h4>
 
@@ -217,7 +217,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>/usr/lib/python${VERSION}/site-packages/cobbler/modules/</h4>
 
-<p>This is a directory where modules can be dropped to extend Cobbler without modifying the core. See <a href="/manuals/2.6.0/4/5/2_-_Modules.html">Modules</a> for more information.</p>
+<p>This is a directory where modules can be dropped to extend Cobbler without modifying the core. See <a href="/manuals/2.6.0/4/4/2_-_Modules.html">Modules</a> for more information.</p>
 
      <hr>
      <div id="disqus_thread"></div>

@@ -182,7 +182,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If set, anamon will be enabled during the Anaconda kickstart process. This is specific to Red Hat style kickstarts only.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/4_-_Anaconda_Monitoring.html">Anaconda Monitoring</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/Appendix/4_-_Anaconda_Monitoring.html">Anaconda Monitoring</a> section for more details.</p>
 
 <h3>bind_chroot_path</h3>
 
@@ -460,7 +460,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The default template type to use when parsing kickstarts and snippets. The default template type is Cheetah, and changing this value will currently break all snippets and templates currently shipped with Cobbler.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/7_-_Alternative_Template_Formats.html">Alternative Template Formats</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/6_-_Alternative_Template_Formats.html">Alternative Template Formats</a> section for more details.</p>
 
 <h3>default_virt_bridge</h3>
 
@@ -536,7 +536,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If set, Cobbler will enable the use of gPXE.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/19_-_Using_gPXE.html">Using gPXE</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">Using gPXE</a> section for more details.</p>
 
 <h3>enable_menu</h3>
 
@@ -955,7 +955,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If manage_dhcp is enabled, this will be the default next-server value passed to systems that are PXE booting. This value can be overriden on a per-system basis via the --server option.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/8_-_Multi-Homed_Cobbler_Servers.html">Multi-Homed Cobbler Servers</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/7_-_Multi-Homed_Cobbler_Servers.html">Multi-Homed Cobbler Servers</a> section for more details.</p>
 
 <h3>power_management_default_type</h3>
 
@@ -969,7 +969,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The default power management type, when using Cobbler's power management feature.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/6_-_Power_Management.html">Power Management</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/5_-_Power_Management.html">Power Management</a> section for more details.</p>
 
 <h3>power_template_dir</h3>
 
@@ -983,7 +983,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The path to the directory containing templates that will be used for generating data sent to the various power management functions (typically provided by cluster fencing agents). As of 2.2.3, templates are no longer required for the default function of most fence agents.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/6_-_Power_Management.html">Power Management</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/5_-_Power_Management.html">Power Management</a> section for more details.</p>
 
 <h3>puppet_auto_setup</h3>
 
@@ -1114,7 +1114,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If enabled, this allows <code>/usr/bin/cobbler-register</code> (part of the koan package) to be used to remotely add new cobbler system records to cobbler. This effectively allows for registration of new hardware from system records, even during the build process when building a system based only on a profile.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/11_-_Auto-Registration.html">Automatic Registration</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/8_-_Auto-Registration.html">Automatic Registration</a> section for more details.</p>
 
 <h3>remove_old_puppet_certs_automatically</h3>
 
@@ -1214,7 +1214,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p><strong>NOTE:</strong> Disabling this will break the "cobbler status" command, which relies on installation triggers to generate the start and stop times for the builds.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/5/1_-_Triggers.html">Triggers</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/4/1_-_Triggers.html">Triggers</a> section for more details.</p>
 
 <h3>scm_track_enabled</h3>
 
@@ -1228,7 +1228,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If enabled, Cobbler will execute a trigger for all add/edit/sync events which uses the scm_track_mode option to revision control Cobbler's data objects.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/20_-_Data_Revision_Control.html">Data Revision Control</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/14_-_Data_Revision_Control.html">Data Revision Control</a> section for more details.</p>
 
 <h3>scm_track_mode</h3>
 
@@ -1244,7 +1244,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p><strong>NOTE:</strong> Only data in <code>/var/lib/cobbler</code> is revision controlled.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/20_-_Data_Revision_Control.html">Data Revision Control</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/14_-_Data_Revision_Control.html">Data Revision Control</a> section for more details.</p>
 
 <h3>serializer_pretty_json</h3>
 
@@ -1272,7 +1272,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>This value is also used by the cobbler CLI command, unless the client_use_localhost setting is enabled.</p>
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/8_-_Multi-Homed_Cobbler_Servers.html">Multi-Homed Cobbler Servers</a> section for more details.</p>
+<p>Please refer to the <a href="/manuals/2.6.0/4/7_-_Multi-Homed_Cobbler_Servers.html">Multi-Homed Cobbler Servers</a> section for more details.</p>
 
 <h3>sign_puppet_certs_automatically</h3>
 

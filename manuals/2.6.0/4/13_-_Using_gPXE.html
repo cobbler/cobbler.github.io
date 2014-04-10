@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Relocating Your Installation</title>
+   <title>Using gPXE</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -116,29 +116,71 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2</a> <span class="divider">/</span></li><li class="active">Relocating Your Installation</li></ul>
-   <h1>Relocating Your Installation</h1>
-<p>Often folks don't have a very large <code>/var</code> partition, which is what cobbler uses by default for mirroring install trees and the like.</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Using gPXE</li></ul>
+   <h1>Using gPXE</h1>
+<p>Support for gPXE (and by extension, iPXE) was added in 2.2.3 for booting ESXi5 installations, however it can be used for other installations as well.</p>
 
-<p>You'll notice you can reconfigure the webdir location just by going into <code>/etc/cobbler/settings</code>, but it's not the best way to do things -- especially as the RPM packaging does include some files and directories in the stock path. This means that, for upgrades and the like, you'll be breaking things somewhat. Rather than attempting to reconfigure cobbler, your Apache configuration, your file permissions, and your SELinux rules, the recommended course of action is very simple.</p>
-
-<ol>
-<li>Copy everything you have already in <code>/var/www/cobbler</code> to another location -- for instance, <code>/opt/cobbler_data</code></li>
-<li>Now just create a symlink or bind mount at <code>/var/www/cobbler</code> that points to <code>/opt/cobbler_data</code>.</li>
-</ol>
+<div class="alert alert-info alert-block"><b>Note:</b> gPXE/iPXE support is still somewhat experimental, so use it only when required.</div>
 
 
-<p>Done. You're up and running.</p>
+<h2>Setup</h2>
 
-<div class="alert alert-block alert-info"><b>Note:</b> If you decided to access cobbler's data store over NFS (not recommended) you really want to mount NFS on <code>/var/www/cobbler</code> with SELinux context passed in as a parameter to mount versus the symlink. You may also have to deal with problems related to rootsquash. However if you are making a mirror of a Cobbler server for a multi-site setup, mounting read only is ok there.</div>
+<p>First, install the gpxe/ipxe boot images package for your OS (for RHEL variants and Fedora, the package name is gpxe-bootimgs or ipxe-bootimgs). Cobbler sync does not currently copy the undionly.kpxe file to the TFTP root directory. Again, for RHEL/Fedora you'd do something like this:</p>
 
-
-
-
-<div class="alert alert-block alert-info"><b>Also Note:</b> <code>/var/lib/cobbler</code> can not live on NFS, as this interferes with locking ("flock") cobbler does around it's storage files.</div>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cp /usr/share/ipxe/undionly.kpxe /var/lib/tftpboot/
+</code></pre></div>
 
 
+<h2>Configuring Systems/Profiles</h2>
 
+<p>Via the CLI or Web UI, just enable the gpxe option. For example:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --enable-gpxe<span class="o">=</span>1 --interface<span class="o">=</span>eth0 --static<span class="o">=</span>1
+</code></pre></div>
+
+
+<p>When using <code>manage_dhcp</code>, a new entry for systems with static interfaces will be created as follows (following a "cobbler sync"):</p>
+
+<div class="highlight"><pre><code class="bash">    host generic1 <span class="o">{</span>
+        hardware ethernet xx:xx:xx:xx:xx:xx<span class="p">;</span>
+        <span class="k">if </span>exists user-class and option user-class <span class="o">=</span> <span class="s2">&quot;gPXE&quot;</span> <span class="o">{</span>
+            filename <span class="s2">&quot;http://&lt;cobbler server ip&gt;/cblr/svc/op/gpxe/system/foo&quot;</span><span class="p">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            filename <span class="s2">&quot;undionly.kpxe&quot;</span><span class="p">;</span>
+        <span class="o">}</span>
+        next-server &lt;next-server setting&gt;<span class="p">;</span>
+    <span class="o">}</span>
+</code></pre></div>
+
+
+<p>Profiles and systems that use DHCP for addresses are handled by the default network block included in the <code>dhcp.template</code>.</p>
+
+<p>If you're not using DHCP locally, you can just use the URL above with your custom gPXE/iPXE script: <code>http://&lt;cobbler server ip&gt;/cblr/svc/op/gpxe/system/foo</code>.</p>
+
+<p>Here is a sample of the rendered configuration:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c">#!gpxe</span>
+kernel http://&lt;cobbler server ip&gt;/cobbler/images/centos6.3-x86_64/vmlinuz
+imgargs vmlinuz  <span class="nv">ksdevice</span><span class="o">=</span>bootif <span class="nv">lang</span><span class="o">=</span> text kssendmac  <span class="nv">ks</span><span class="o">=</span>http://&lt;cobbler server ip&gt;/cblr/svc/op/ks/system/foo
+initrd http://192.168.122.1/cobbler/images/centos6.3-x86_64/initrd.img
+boot
+</code></pre></div>
+
+
+<h2>Templates</h2>
+
+<p>The templates for gPXE are stored with the other PXE templates for cobbler, in <code>/etc/cobbler/pxe</code>. The default for systems/profiles is <code>/etc/cobbler/pxe/gpxe_system_linux.template</code>, which you can see is the source for the above output:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cat /etc/cobbler/pxe/gpxe_system_linux.template 
+<span class="c">#!gpxe</span>
+kernel http://<span class="nv">$server</span>/cobbler/images/<span class="nv">$distro</span>/<span class="nv">$kernel_name</span>
+imgargs <span class="nv">$kernel_name</span> <span class="nv">$append_line</span>
+initrd http://<span class="nv">$server</span>/cobbler/images/<span class="nv">$distro</span>/<span class="nv">$initrd_name</span>
+boot
+</code></pre></div>
+
+
+<p>As with all PXE templates, the <code>$append_line</code> variable is generated internally by cobbler, and contains the kopts arguments as well as other distro defaults that may be configured.</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -160,7 +202,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">5 - Relocating Your Installation</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Bonding.html">1.1 - Bonding</a></li><li><a href="/manuals/2.6.0/4/1/2_-_VLANs.html">1.2 - VLANs</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Bridging.html">1.3 - Bridging</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Bonded_Bridging.html">1.4 - Bonded Bridging</a></li></ul><li><a href="/manuals/2.6.0/4/2_-_SELinux.html">2 - SELinux</a></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Puppet_Integration.html">3.2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/4/3/3_-_Func_Integration.html">3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.6.0/4/4_-_Extending_Cobbler.html">4 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/4/1_-_Triggers.html">4.1 - Triggers</a></li><li><a href="/manuals/2.6.0/4/4/2_-_Modules.html">4.2 - Modules</a></li><li><a href="/manuals/2.6.0/4/4/3_-_Extending_Cheetah.html">4.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.6.0/4/5_-_Power_Management.html">5 - Power Management</a></li><li><a href="/manuals/2.6.0/4/6_-_Alternative_Template_Formats.html">6 - Alternative Template Formats</a></li><li><a href="/manuals/2.6.0/4/7_-_Multi-Homed_Cobbler_Servers.html">7 - Multi-Homed Cobbler Servers</a></li><li><a href="/manuals/2.6.0/4/8_-_Auto-Registration.html">8 - Auto-Registration</a></li><li><a href="/manuals/2.6.0/4/9_-_Batch_Editing.html">9 - Batch Editing</a></li><li><a href="/manuals/2.6.0/4/10_-_Moving_to_a_New_Server.html">10 - Moving to a New Server</a></li><li><a href="/manuals/2.6.0/4/11_-_PXE-boot_Menu_Passwords.html">11 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.6.0/4/12_-_Alternative_Storage_Backends.html">12 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/12/1_-_CouchDB.html">12.1 - CouchDB</a></li><li><a href="/manuals/2.6.0/4/12/2_-_MongoDB.html">12.2 - MongoDB</a></li><li><a href="/manuals/2.6.0/4/12/3_-_MySQL.html">12.3 - MySQL</a></li></ul><li><a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">13 - Using gPXE</a></li><li><a href="/manuals/2.6.0/4/14_-_Data_Revision_Control.html">14 - Data Revision Control</a></li></ul></div>
   </div>
  </div>
 </div>

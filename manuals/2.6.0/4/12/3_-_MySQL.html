@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Relocating Your Installation</title>
+   <title>Alternative Storage Backends - MySQL</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -116,29 +116,46 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2</a> <span class="divider">/</span></li><li class="active">Relocating Your Installation</li></ul>
-   <h1>Relocating Your Installation</h1>
-<p>Often folks don't have a very large <code>/var</code> partition, which is what cobbler uses by default for mirroring install trees and the like.</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/12_-_Alternative_Storage_Backends.html">12</a> <span class="divider">/</span></li><li class="active">Alternative Storage Backends - MySQL</li></ul>
+   <h1>Alternative Storage Backends - MySQL</h1>
+<p>Cobbler 2.4.0 introduced support for MySQL as alternate storage backend. Currently, support for this backend is ALPHA-quality, and it should not be used for critical production systems.</p>
 
-<p>You'll notice you can reconfigure the webdir location just by going into <code>/etc/cobbler/settings</code>, but it's not the best way to do things -- especially as the RPM packaging does include some files and directories in the stock path. This means that, for upgrades and the like, you'll be breaking things somewhat. Rather than attempting to reconfigure cobbler, your Apache configuration, your file permissions, and your SELinux rules, the recommended course of action is very simple.</p>
+<h3>Serializer Setup</h3>
 
-<ol>
-<li>Copy everything you have already in <code>/var/www/cobbler</code> to another location -- for instance, <code>/opt/cobbler_data</code></li>
-<li>Now just create a symlink or bind mount at <code>/var/www/cobbler</code> that points to <code>/opt/cobbler_data</code>.</li>
-</ol>
+<p>Add or modify the following section in the <code>/etc/cobbler/modules.conf</code> configuration file:</p>
 
-
-<p>Done. You're up and running.</p>
-
-<div class="alert alert-block alert-info"><b>Note:</b> If you decided to access cobbler's data store over NFS (not recommended) you really want to mount NFS on <code>/var/www/cobbler</code> with SELinux context passed in as a parameter to mount versus the symlink. You may also have to deal with problems related to rootsquash. However if you are making a mirror of a Cobbler server for a multi-site setup, mounting read only is ok there.</div>
-
-
-
-
-<div class="alert alert-block alert-info"><b>Also Note:</b> <code>/var/lib/cobbler</code> can not live on NFS, as this interferes with locking ("flock") cobbler does around it's storage files.</div>
+<div class="highlight"><pre><code class="ini"><span class="k">[serializers]</span>
+<span class="na">settings</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
+<span class="na">distro</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
+<span class="na">profile</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
+<span class="na">system</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
+<span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
+<span class="err">etc...</span>
+</code></pre></div>
 
 
+<p><strong>NOTE</strong> Be sure to leave the settings serializer set to serializer_catalog.</p>
 
+<h3>MySQL Schema</h3>
+
+<p>The schema for the cobbler database is very simple, and essentially uses MySQL as a key/value store with a TEXT field storing the JSON for each object. The schema is as follows:</p>
+
+<div class="highlight"><pre><code class="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">cobbler</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">cobbler</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;cobbler&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;testing123&#39;</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">distro</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">profile</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">system</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">image</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">repo</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">mgmtclass</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">file</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">package</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
+</code></pre></div>
+
+
+<h3>MySQL Configuration File</h3>
+
+<p>This serializer does not yet have a configuration file, and unfortunately still hard-codes certain database values in the cobbler/modules/serializer_mysql.py file. If you modify the privileges or database name in the schema above, you must edit the .py module as well (be sure to remove the .pyo/.pyc files for that modules) and restart cobblerd.</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -160,7 +177,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">5 - Relocating Your Installation</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/12/1_-_CouchDB.html">1 - CouchDB</a></li><li><a href="/manuals/2.6.0/4/12/2_-_MongoDB.html">2 - MongoDB</a></li><li><a href="/manuals/2.6.0/4/12/3_-_MySQL.html">3 - MySQL</a></li></ul></div>
   </div>
  </div>
 </div>

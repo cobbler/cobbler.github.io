@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Relocating Your Installation</title>
+   <title>Cobbler Manual</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -116,29 +116,101 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2</a> <span class="divider">/</span></li><li class="active">Relocating Your Installation</li></ul>
-   <h1>Relocating Your Installation</h1>
-<p>Often folks don't have a very large <code>/var</code> partition, which is what cobbler uses by default for mirroring install trees and the like.</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
+   <h1>Cobbler Manual</h1>
+<h2>Using DBAN with Cobbler to automate system retirement</h2>
 
-<p>You'll notice you can reconfigure the webdir location just by going into <code>/etc/cobbler/settings</code>, but it's not the best way to do things -- especially as the RPM packaging does include some files and directories in the stock path. This means that, for upgrades and the like, you'll be breaking things somewhat. Rather than attempting to reconfigure cobbler, your Apache configuration, your file permissions, and your SELinux rules, the recommended course of action is very simple.</p>
+<h3>Introduction</h3>
+
+<p>The following method details using <a href="http://dban.sourceforge.net/">DBAN</a> with Cobbler to create a PXE boot image that will securely wipe the disk of the system being retired. This could also be used if you are shipping a disk back to the manufacturer and wanted to ensure all data is "securely" wiped.</p>
+
+<h3>Steps</h3>
+
+<h4>DBAN 2.2.6</h4>
+
+<p>Retrieve the extra loader parts that DBAN 2.2.6 needs:</p>
+
+<pre><code>cobbler get-loaders
+</code></pre>
+
+<p>Download DBAN:</p>
+
+<pre><code>wget -O /tmp/dban-2.2.6_i586.iso http://prdownloads.sourceforge.net/dban/dban-2.2.6_i586.iso
+</code></pre>
+
+<p>Mount the ISO and copy the kernel image file and (optionally) the boot configuration file:</p>
+
+<pre><code>mount -o loop,ro /tmp/dban-2.2.6_i586.iso /mnt
+mkdir -p /opt/cobbler/dban-2.2.6
+cp -p /mnt/dban.bzi /opt/cobbler/dban-2.2.6/
+cp -p /mnt/isolinux.cfg /opt/cobbler/dban-2.2.6/
+chmod -x /opt/cobbler/dban-2.2.6/*
+umount /mnt
+</code></pre>
+
+<p>Add the DBAN distro and profile to Cobbler.  Run sync to copy the loaders into place:</p>
+
+<pre><code>cobbler distro add --name=DBAN-2.2.6-i586 --kernel=/opt/cobbler/dban-2.2.6/dban.bzi \
+  --initrd=/opt/cobbler/dban-2.2.6/dban.bzi --kopts="nuke=dwipe silent"
+cobbler profile add --name=DBAN-2.2.6-i586 --distro=DBAN-2.2.6-i586
+cobbler sync
+</code></pre>
+
+<h4>DBAN 1.0.7</h4>
+
+<p>Download DBAN:</p>
+
+<pre><code>wget -O /tmp/dban-1.0.7_i386.iso http://prdownloads.sourceforge.net/dban/dban-1.0.7_i386.iso
+</code></pre>
+
+<p>Mount the ISO and copy the floppy disk image file:</p>
+
+<pre><code>mount -o loop,ro /tmp/dban-1.0.7_i386.iso /mnt
+cp -p /mnt/dban_1_0_7_i386.ima /tmp/
+umount /mnt
+</code></pre>
+
+<p>Mount the floppy disk image file and copy the kernel image file, initial ram disk, and (optionally) the boot configuration file:</p>
+
+<pre><code>mount -o loop,ro /tmp/dban_1_0_7_i386.ima /mnt
+mkdir -p /opt/cobbler/dban-1.0.7
+cp -p /mnt/initrd.gz /opt/cobbler/dban-1.0.7/
+cp -p /mnt/kernel.bzi /opt/cobbler/dban-1.0.7/
+cp -p /mnt/syslinux.cfg /opt/cobbler/dban-1.0.7/
+chmod -x /opt/cobbler/dban-1.0.7/*
+umount /mnt
+</code></pre>
+
+<p>Add the DBAN distro and profile to Cobbler:</p>
+
+<pre><code>cobbler distro add --name=DBAN-1.0.7-i386 --kernel=/opt/cobbler/dban-1.0.7/kernel.bzi \
+  --initrd=/opt/cobbler/dban-1.0.7/initrd.gz --kopts="root=/dev/ram0 init=/rc nuke=dwipe floppy=0,16,cmos"
+cobbler profile add --name=DBAN-1.0.7-i386 --distro=DBAN-1.0.7-i386
+</code></pre>
+
+<h3>Test</h3>
 
 <ol>
-<li>Copy everything you have already in <code>/var/www/cobbler</code> to another location -- for instance, <code>/opt/cobbler_data</code></li>
-<li>Now just create a symlink or bind mount at <code>/var/www/cobbler</code> that points to <code>/opt/cobbler_data</code>.</li>
+<li><p>Add a system to be destroyed:</p>
+
+<p> cobbler system add --name=00:15:c5:c0:05:58 --profile=DBAN-1.0.7-i386</p></li>
+<li><p>Sync cobbler:</p>
+
+<p> cobbler sync</p></li>
+<li><p>Boot the system via PXE. The DBAN menu will pop up. Select the drives and hit F10 to start the wipe.</p></li>
+<li><p>Remove the system from this profile so that you don't accidentally boot and wipe in the future:</p>
+
+<p> cobbler system remove --name=00:15:c5:c0:05:58</p></li>
 </ol>
 
 
-<p>Done. You're up and running.</p>
+<h3>Notes</h3>
 
-<div class="alert alert-block alert-info"><b>Note:</b> If you decided to access cobbler's data store over NFS (not recommended) you really want to mount NFS on <code>/var/www/cobbler</code> with SELinux context passed in as a parameter to mount versus the symlink. You may also have to deal with problems related to rootsquash. However if you are making a mirror of a Cobbler server for a multi-site setup, mounting read only is ok there.</div>
+<p>You can setup DBAN to autowipe the system in question by supplying the kernel option of nuke="dwipe --autonuke". We are not doing it in this example because people sometimes only half-read things and it would suck to find out too late that you'd wiped a system you didn't mean to.</p>
 
+<p>It should go without saying that, while it might be a mildly fun prank, you shouldn't set this to be your default pxe boot menu choice. You'll most likely get fired and/or beat up by your fellow employees.</p>
 
-
-
-<div class="alert alert-block alert-info"><b>Also Note:</b> <code>/var/lib/cobbler</code> can not live on NFS, as this interferes with locking ("flock") cobbler does around it's storage files.</div>
-
-
-
+<p>If you do set this profile, it will show up as an option in the PXE menus. If this concerns you, set up a syslinux password by editing the templates in <code>/etc/cobbler</code> to ensure no one walks up to a system and blitzes it involuntarily. An option to keep a profile out of the PXE menu is doable if enough people request it or someone wants to submit a patch...</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -160,7 +232,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">5 - Relocating Your Installation</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/4_-_Anaconda_Monitoring.html">4 - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/9_-_Memtest.html">9 - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/12_-_Booting_Live_CDs.html">12 - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/13_-_Clonezilla_Integration.html">13 - Clonezilla Integration</a></li><li><a href="/manuals/2.6.0/Appendix/17_-_System_Retirement.html">17 - System Retirement</a></li></ul></div>
   </div>
  </div>
 </div>

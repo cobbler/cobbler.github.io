@@ -5,8 +5,6 @@ meta: 2.6.0
 ---
 
 
-## Fedora
-
 Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the yum command:
 
 {% highlight bash %}

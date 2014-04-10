@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Relocating Your Installation</title>
+   <title>Power Management</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -116,29 +116,113 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2</a> <span class="divider">/</span></li><li class="active">Relocating Your Installation</li></ul>
-   <h1>Relocating Your Installation</h1>
-<p>Often folks don't have a very large <code>/var</code> partition, which is what cobbler uses by default for mirroring install trees and the like.</p>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Power Management</li></ul>
+   <h1>Power Management</h1>
+<p>Cobbler allows for linking your power management systems with cobbler, making it very easy to make changes to your systems when you want to reinstall them, or just use it to remember what the power management settings for all of your systems are. For instance, you can just change what profile they should run and flip their power states to begin the reinstall!</p>
 
-<p>You'll notice you can reconfigure the webdir location just by going into <code>/etc/cobbler/settings</code>, but it's not the best way to do things -- especially as the RPM packaging does include some files and directories in the stock path. This means that, for upgrades and the like, you'll be breaking things somewhat. Rather than attempting to reconfigure cobbler, your Apache configuration, your file permissions, and your SELinux rules, the recommended course of action is very simple.</p>
+<h2>Fence Agents</h2>
 
-<ol>
-<li>Copy everything you have already in <code>/var/www/cobbler</code> to another location -- for instance, <code>/opt/cobbler_data</code></li>
-<li>Now just create a symlink or bind mount at <code>/var/www/cobbler</code> that points to <code>/opt/cobbler_data</code>.</li>
-</ol>
+<p>Cobbler relies on fencing agents, provided by the 'cman' package for some distributions or 'fence-agents' for others. These scripts are installed in the <code>/usr/sbin</code> directories. Cobbler will automatically find any files in that directory named fence_* and allow them to be used for power management.</p>
+
+<p><strong>NOTE:</strong> Some distros may place the fencing agents in <code>/sbin</code> - this is currently a known bug. To work around this for now, symlink the <code>/sbin/fence_*</code> scripts you wish to use to <code>/usr/sbin</code> so cobbler can find them. This will be fixed in a future version.</p>
+
+<h2>Changes From Older Versions</h2>
+
+<p>Cobbler versions prior to 2.2.3-2 used templates stored in <code>/etc/cobbler/power</code> to generate commands that were run as shell commands. This was changed in 2.2.3-2 to use the fencing agents ability to instead read the parameters from STDIN. This is safer, as no passwords are shown in plaintext command line options, nor can a malformed variable be used to inject improper shell commands during the fencing agent execution.</p>
+
+<h3>New Power Templates</h3>
+
+<p>By default, the following options are passed in to the fencing agent's STDIN:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">action</span><span class="o">=</span><span class="nv">$power_mode</span>
+<span class="nv">login</span><span class="o">=</span><span class="nv">$power_user</span>
+<span class="nv">passwd</span><span class="o">=</span><span class="nv">$power_pass</span>
+<span class="nv">ipaddr</span><span class="o">=</span><span class="nv">$power_address</span>
+<span class="nv">port</span><span class="o">=</span><span class="nv">$power_id</span>
+</code></pre></div>
 
 
-<p>Done. You're up and running.</p>
+<p>The variables above correspond to the --power-* options available when adding/editing a system (or via the "Power Management" tab in the Web UI). If you wish to add aditional options, you can create a template in <code>/etc/cobbler/power</code> named fence_&lt;name&gt;.template, where name is the fencing agent you wish to use.</p>
 
-<div class="alert alert-block alert-info"><b>Note:</b> If you decided to access cobbler's data store over NFS (not recommended) you really want to mount NFS on <code>/var/www/cobbler</code> with SELinux context passed in as a parameter to mount versus the symlink. You may also have to deal with problems related to rootsquash. However if you are making a mirror of a Cobbler server for a multi-site setup, mounting read only is ok there.</div>
+<p>Any additional options should be added one per line, as described in the fencing agents man page. Additional variables can be used if they are set in --ksmeta.</p>
+
+<h3>Custom Fencing Agents</h3>
+
+<p>If you would like to use a custom fencing agent not provided by your distribution, you can do so easily by placing it in the <code>/usr/sbin</code> directory and name it fence_&lt;mytype&gt;. Just make sure that your custom program reads its options from STDIN, as noted above.</p>
+
+<h2>Defaults</h2>
+
+<p>If --power-user and --power-pass are left blank, the values of default_power_user and default_power_pass will be loaded from cobblerd's environment at the time of usage.</p>
+
+<p>--power-type also has a default value in <code>/etc/cobbler/settings</code>, initially set to "ipmilan".</p>
+
+<h2>Important: Security Implications</h2>
+
+<p>Storing the power control usernames and passwords in Cobbler means that information is essentially public (this data is available via XMLRPC without access control), therefore you will want to control what machines have network access to contact the power management devices if you use this feature (such as /only/ the cobbler machine, and then control who has local access to the cobbler machine). Also do not reuse important passwords for your power management devices. If this concerns you, you can still use this feature, just don't store the username/password in Cobbler for your power management devices.</p>
+
+<p>If you are not going to to store power control passwords in Cobbler, leave the username and password fields blank. Cobbler will first try to source them from it's environment using the COBBLER_POWER_USER and COBBLER_POWER_PASS variables.</p>
+
+<p>This may also be too insecure for some, so in this case, don't set these, and supply --power-user and --power-pass when running commands like "cobbler system poweron" and "cobbler system poweroff". The values used on the command line are always used, regardless of the value stored in Cobbler or the environment, if so provided.</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweron --name<span class="o">=</span>foo --power-user<span class="o">=</span>X --power-pass<span class="o">=</span>Y
+</code></pre></div>
 
 
+<p>Be advised of current limitations in storing passwords, make your choices accordingly and in relation to the ease-of-use that you need, and secure your networks appropriately.</p>
+
+<h2>Sample Use</h2>
+
+<h3>Configuring Power Options on a System</h3>
+
+<p>You have a DRAC based blade:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>drac --power-address<span class="o">=</span>blade-mgmt.example.org --power-user<span class="o">=</span>Administrator --power-pass<span class="o">=</span>PASSWORD --power-id<span class="o">=</span>blade7
+</code></pre></div>
 
 
-<div class="alert alert-block alert-info"><b>Also Note:</b> <code>/var/lib/cobbler</code> can not live on NFS, as this interferes with locking ("flock") cobbler does around it's storage files.</div>
+<p>You have an IPMI based system:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>ipmilan --power-address<span class="o">=</span>foo-mgmt.example.org --power-user<span class="o">=</span>Administrator --power-pass<span class="o">=</span>PASSWORD
+</code></pre></div>
 
 
+<p>You have a IBM HMC managed system:</p>
 
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>lpar --power-address<span class="o">=</span>ibm-hmc.example.org --power-user<span class="o">=</span>hscroot --power-pass<span class="o">=</span>PASSWORD --power-id<span class="o">=</span>system:partition
+</code></pre></div>
+
+
+<p><strong>NOTE</strong>: The --power-id option is used to indicate both the managed system name <strong>and</strong> a logical partition name. Since an IBM HMC is responsible for managing more than one system, you must supply the managed system name and logical partition name separated by a colon (':') in the --power-id command-line option.</p>
+
+<p>You have an IBM Bladecenter:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --power-type<span class="o">=</span>bladecenter --power-address<span class="o">=</span>blademm.example.org --power-user<span class="o">=</span>USERID --power-pass<span class="o">=</span>PASSW0RD --power-id<span class="o">=</span>6
+</code></pre></div>
+
+
+<p><strong>NOTE</strong>: The <em>--power-id</em> option is used to specify what slot your blade is connected.</p>
+
+<h3>Powering Off A System</h3>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweroff --name<span class="o">=</span>foo
+</code></pre></div>
+
+
+<h3>Powering On A System</h3>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweron --name<span class="o">=</span>foo
+</code></pre></div>
+
+
+<p>If --netboot-enabled is not set to false, the system could potentially reinstall itself if PXE has been configured, so make sure to disable that option when using power management features.</p>
+
+<h3>Rebooting A System</h3>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system reboot --name<span class="o">=</span>foo
+</code></pre></div>
+
+
+<p>Since not all power management systems support reboot, this is a "power off, sleep for 1 second, and power on" operation.</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -160,7 +244,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">5 - Relocating Your Installation</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Bonding.html">1.1 - Bonding</a></li><li><a href="/manuals/2.6.0/4/1/2_-_VLANs.html">1.2 - VLANs</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Bridging.html">1.3 - Bridging</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Bonded_Bridging.html">1.4 - Bonded Bridging</a></li></ul><li><a href="/manuals/2.6.0/4/2_-_SELinux.html">2 - SELinux</a></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Puppet_Integration.html">3.2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/4/3/3_-_Func_Integration.html">3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.6.0/4/4_-_Extending_Cobbler.html">4 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/4/1_-_Triggers.html">4.1 - Triggers</a></li><li><a href="/manuals/2.6.0/4/4/2_-_Modules.html">4.2 - Modules</a></li><li><a href="/manuals/2.6.0/4/4/3_-_Extending_Cheetah.html">4.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.6.0/4/5_-_Power_Management.html">5 - Power Management</a></li><li><a href="/manuals/2.6.0/4/6_-_Alternative_Template_Formats.html">6 - Alternative Template Formats</a></li><li><a href="/manuals/2.6.0/4/7_-_Multi-Homed_Cobbler_Servers.html">7 - Multi-Homed Cobbler Servers</a></li><li><a href="/manuals/2.6.0/4/8_-_Auto-Registration.html">8 - Auto-Registration</a></li><li><a href="/manuals/2.6.0/4/9_-_Batch_Editing.html">9 - Batch Editing</a></li><li><a href="/manuals/2.6.0/4/10_-_Moving_to_a_New_Server.html">10 - Moving to a New Server</a></li><li><a href="/manuals/2.6.0/4/11_-_PXE-boot_Menu_Passwords.html">11 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.6.0/4/12_-_Alternative_Storage_Backends.html">12 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/12/1_-_CouchDB.html">12.1 - CouchDB</a></li><li><a href="/manuals/2.6.0/4/12/2_-_MongoDB.html">12.2 - MongoDB</a></li><li><a href="/manuals/2.6.0/4/12/3_-_MySQL.html">12.3 - MySQL</a></li></ul><li><a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">13 - Using gPXE</a></li><li><a href="/manuals/2.6.0/4/14_-_Data_Revision_Control.html">14 - Data Revision Control</a></li></ul></div>
   </div>
  </div>
 </div>
