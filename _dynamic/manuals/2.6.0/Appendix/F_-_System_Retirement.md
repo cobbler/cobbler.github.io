@@ -1,6 +1,6 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: System retirement
 meta: 2.6.0
 ---
 ## Using DBAN with Cobbler to automate system retirement

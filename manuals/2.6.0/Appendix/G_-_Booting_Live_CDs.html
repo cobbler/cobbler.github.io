@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manual</title>
+   <title>Booting Live CD's</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -116,48 +116,59 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h2>Memtest</h2>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Booting Live CD's</li></ul>
+   <h1>Booting Live CD's</h1>
+<p>Live CD's can be used for a variety of tasks.  They might update firmware, run diagnostics, assist with cloning systems, or just serve up a desktop environment.</p>
 
-<p>If installed, cobbler will put an entry into all of your PXE menus
-allowing you to run memtest on physical systems without making
-changes in Cobbler. This can be handy for some simple diagnostics.</p>
+<h3>With Cobbler</h3>
 
-<p>Steps to get memtest to show up in your PXE menus:</p>
+<p>Somewhat unintuitively, LiveCD's are booted by transforming the CD ISO's to kernel+initrd files.</p>
 
-<pre><code># yum install memtest86+
-# cobbler image add --name=memtest86+ --file=/path/to/memtest86+ --image-type=direct
-# cobbler sync
+<p>Take the livecd and install livecd-tools.  You may need a recent Fedora (F9+) to find livecd-tools.  What we are about to do is convert the live image to something that is PXEable.  It will produce a kernel image and a VERY large initrd which essnetially contains the entire ISO.  Once this is done it is PXE-bootable, but we still have to provide the right kernel arguments.</p>
+
+<pre><code>livecd-iso-to-pxeboot live-image.iso
 </code></pre>
 
-<p>memtest will appear at the bottom of your menus after all of the
-profiles.</p>
+<p>This will produce a subdirectory in the current directory called ./tftpboot.  You need to save the initrd and the vmlinuz from this directory, and as a warning, the initrd is as big as the live image.  Make sure you have space.</p>
 
-<h2>Targeted Memtesting</h2>
+<pre><code>mkdir -p /srv/livecd
+cp /path/to/cwd/tftpboot/vmlinuz0 /srv/livecd/vmlinuz0
+cp /path/to/cwd/tftpboot/initrd.img /srv/livecd/initrd.img
 
-<p>However, if you already have a cobbler system record for the
-system, you can't get the menu. No problem!</p>
-
-<pre><code>cobbler image add --name=foo --file=/path/to/memtest86 --image-type=direct
-
-cobbler system edit --name=bar --mac=AA:BB:CC:DD:EE:FF --image=foo --netboot-enabled=1
+cobbler distro add --name=liveF9 --kernel=/srv/livecd/vmlinuz0 --initrd=/srv/livecd/initrd.img
 </code></pre>
 
-<p>The system will boot to memtest until you put it back to it's
-original profile.</p>
+<p>Now we must add some parameters to the kernel and create a dummy profile object.  Note we are passing in some extra kernel options and telling cobbler it doesn't need many of the default ones because it can save space.  Be sure the "/name-goes-here.iso" part of the path matches up with the ISO you ran livecd-iso-to-pxeboot against exactly or the booting will not be successful.</p>
 
-<p>CAUTION!</p>
-
-<p>When restoring the system back from memtest, make sure you turn
-it's netboot flag /off/ if you have it set to PXE first in the BIOS
-order, unless you want to reinstall the system!</p>
-
-<pre><code>cobbler system edit --name=bar --profile=old_profile_name --netboot-enabled=0
+<pre><code>cobbler distro edit --name=liveF9 --kopts='root=/f9live.iso rootfstype=iso9660 rootflags=loop !text !lang !ksdevice'
+cobbler profile add --name=liveF9 --distro=liveF9
 </code></pre>
 
-<p>Naturally if you /do/ want to reinstall it after running memtest,
-just use --netboot-enabled=1</p>
+<p>At this point it will work as though it is a normal "profile", though it will boot the live image as opposed to an installer image.</p>
+
+<p>For instance, if we wanted to deploy the live image to all machines on a specific subnet we could do it as follows:</p>
+
+<pre><code>cobbler system add --name=live_network --ip-address=123.45.00.00/24 --profile=liveF9
+</code></pre>
+
+<p>Or of course we could just deploy it to a specific system:</p>
+
+<pre><code>cobbler system add --name=xyz --mac=AA:BB:CC:DD:EE:FF --profile=liveF9
+</code></pre>
+
+<p>And of course this will show up in the PXE menus automatically as well.</p>
+
+<h3>Notes</h3>
+
+<p>When you boot this profile it will take a relatively long time (3-5 minutes?) and you will see a lot of dots printed on the screen.  This is expected behavior as it has to transfer a large amount of data.</p>
+
+<h3>Space Considerations</h3>
+
+<p>The Live Images are very large.  Cobbler will try to hardlink them if the vmlinuz/initrd files are on the same device, but it cannot symlink because of the way TFTP (needed for PXE) requires a chroot environment.  If your distro add command takes a long time, this is because of the copy, please make sure you have the extra space in your TFTP boot directory's partition (either <code>/var/lib/tftpboot</code> or <code>/tftpboot</code> depending on OS).</p>
+
+<h3>Troubleshooting</h3>
+
+<p>If you boot into the live environment and it does not work right, most likely the rootflags and other parameters are incorrect.   Recheck them with "cobbler distro report --name=foo"</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -179,7 +190,7 @@ just use --netboot-enabled=1</p>
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/4_-_Anaconda_Monitoring.html">4 - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/9_-_Memtest.html">9 - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/12_-_Booting_Live_CDs.html">12 - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/13_-_Clonezilla_Integration.html">13 - Clonezilla Integration</a></li><li><a href="/manuals/2.6.0/Appendix/17_-_System_Retirement.html">17 - System Retirement</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/D_-_Memtest.html">D - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/E_-_Anaconda_Monitoring.html">E - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/F_-_System_Retirement.html">F - System Retirement</a></li><li><a href="/manuals/2.6.0/Appendix/G_-_Booting_Live_CDs.html">G - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/H_-_Clonezilla_Integration.html">H - Clonezilla Integration</a></li></ul></div>
   </div>
  </div>
 </div>

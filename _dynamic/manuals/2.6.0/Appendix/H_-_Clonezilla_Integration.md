@@ -1,9 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Clonezilla integration
 meta: 2.6.0
 ---
-## Clonezilla live integration
+
 
 Since many of us need to support non-linux systems in addition to
 Linux systems, some facility for support of these systems is
