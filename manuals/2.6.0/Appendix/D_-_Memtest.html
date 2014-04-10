@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manual</title>
+   <title>Memtest</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -116,101 +116,46 @@ var WRInitTime=(new Date()).getTime();
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h2>Using DBAN with Cobbler to automate system retirement</h2>
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Memtest</li></ul>
+   <h1>Memtest</h1>
+<p>If installed, cobbler will put an entry into all of your PXE menus
+allowing you to run memtest on physical systems without making
+changes in Cobbler. This can be handy for some simple diagnostics.</p>
 
-<h3>Introduction</h3>
+<p>Steps to get memtest to show up in your PXE menus:</p>
 
-<p>The following method details using <a href="http://dban.sourceforge.net/">DBAN</a> with Cobbler to create a PXE boot image that will securely wipe the disk of the system being retired. This could also be used if you are shipping a disk back to the manufacturer and wanted to ensure all data is "securely" wiped.</p>
-
-<h3>Steps</h3>
-
-<h4>DBAN 2.2.6</h4>
-
-<p>Retrieve the extra loader parts that DBAN 2.2.6 needs:</p>
-
-<pre><code>cobbler get-loaders
+<pre><code># yum install memtest86+
+# cobbler image add --name=memtest86+ --file=/path/to/memtest86+ --image-type=direct
+# cobbler sync
 </code></pre>
 
-<p>Download DBAN:</p>
+<p>memtest will appear at the bottom of your menus after all of the
+profiles.</p>
 
-<pre><code>wget -O /tmp/dban-2.2.6_i586.iso http://prdownloads.sourceforge.net/dban/dban-2.2.6_i586.iso
+<h2>Targeted Memtesting</h2>
+
+<p>However, if you already have a cobbler system record for the
+system, you can't get the menu. No problem!</p>
+
+<pre><code>cobbler image add --name=foo --file=/path/to/memtest86 --image-type=direct
+
+cobbler system edit --name=bar --mac=AA:BB:CC:DD:EE:FF --image=foo --netboot-enabled=1
 </code></pre>
 
-<p>Mount the ISO and copy the kernel image file and (optionally) the boot configuration file:</p>
+<p>The system will boot to memtest until you put it back to it's
+original profile.</p>
 
-<pre><code>mount -o loop,ro /tmp/dban-2.2.6_i586.iso /mnt
-mkdir -p /opt/cobbler/dban-2.2.6
-cp -p /mnt/dban.bzi /opt/cobbler/dban-2.2.6/
-cp -p /mnt/isolinux.cfg /opt/cobbler/dban-2.2.6/
-chmod -x /opt/cobbler/dban-2.2.6/*
-umount /mnt
+<p>CAUTION!</p>
+
+<p>When restoring the system back from memtest, make sure you turn
+it's netboot flag /off/ if you have it set to PXE first in the BIOS
+order, unless you want to reinstall the system!</p>
+
+<pre><code>cobbler system edit --name=bar --profile=old_profile_name --netboot-enabled=0
 </code></pre>
 
-<p>Add the DBAN distro and profile to Cobbler.  Run sync to copy the loaders into place:</p>
-
-<pre><code>cobbler distro add --name=DBAN-2.2.6-i586 --kernel=/opt/cobbler/dban-2.2.6/dban.bzi \
-  --initrd=/opt/cobbler/dban-2.2.6/dban.bzi --kopts="nuke=dwipe silent"
-cobbler profile add --name=DBAN-2.2.6-i586 --distro=DBAN-2.2.6-i586
-cobbler sync
-</code></pre>
-
-<h4>DBAN 1.0.7</h4>
-
-<p>Download DBAN:</p>
-
-<pre><code>wget -O /tmp/dban-1.0.7_i386.iso http://prdownloads.sourceforge.net/dban/dban-1.0.7_i386.iso
-</code></pre>
-
-<p>Mount the ISO and copy the floppy disk image file:</p>
-
-<pre><code>mount -o loop,ro /tmp/dban-1.0.7_i386.iso /mnt
-cp -p /mnt/dban_1_0_7_i386.ima /tmp/
-umount /mnt
-</code></pre>
-
-<p>Mount the floppy disk image file and copy the kernel image file, initial ram disk, and (optionally) the boot configuration file:</p>
-
-<pre><code>mount -o loop,ro /tmp/dban_1_0_7_i386.ima /mnt
-mkdir -p /opt/cobbler/dban-1.0.7
-cp -p /mnt/initrd.gz /opt/cobbler/dban-1.0.7/
-cp -p /mnt/kernel.bzi /opt/cobbler/dban-1.0.7/
-cp -p /mnt/syslinux.cfg /opt/cobbler/dban-1.0.7/
-chmod -x /opt/cobbler/dban-1.0.7/*
-umount /mnt
-</code></pre>
-
-<p>Add the DBAN distro and profile to Cobbler:</p>
-
-<pre><code>cobbler distro add --name=DBAN-1.0.7-i386 --kernel=/opt/cobbler/dban-1.0.7/kernel.bzi \
-  --initrd=/opt/cobbler/dban-1.0.7/initrd.gz --kopts="root=/dev/ram0 init=/rc nuke=dwipe floppy=0,16,cmos"
-cobbler profile add --name=DBAN-1.0.7-i386 --distro=DBAN-1.0.7-i386
-</code></pre>
-
-<h3>Test</h3>
-
-<ol>
-<li><p>Add a system to be destroyed:</p>
-
-<p> cobbler system add --name=00:15:c5:c0:05:58 --profile=DBAN-1.0.7-i386</p></li>
-<li><p>Sync cobbler:</p>
-
-<p> cobbler sync</p></li>
-<li><p>Boot the system via PXE. The DBAN menu will pop up. Select the drives and hit F10 to start the wipe.</p></li>
-<li><p>Remove the system from this profile so that you don't accidentally boot and wipe in the future:</p>
-
-<p> cobbler system remove --name=00:15:c5:c0:05:58</p></li>
-</ol>
-
-
-<h3>Notes</h3>
-
-<p>You can setup DBAN to autowipe the system in question by supplying the kernel option of nuke="dwipe --autonuke". We are not doing it in this example because people sometimes only half-read things and it would suck to find out too late that you'd wiped a system you didn't mean to.</p>
-
-<p>It should go without saying that, while it might be a mildly fun prank, you shouldn't set this to be your default pxe boot menu choice. You'll most likely get fired and/or beat up by your fellow employees.</p>
-
-<p>If you do set this profile, it will show up as an option in the PXE menus. If this concerns you, set up a syslinux password by editing the templates in <code>/etc/cobbler</code> to ensure no one walks up to a system and blitzes it involuntarily. An option to keep a profile out of the PXE menu is doable if enough people request it or someone wants to submit a patch...</p>
+<p>Naturally if you /do/ want to reinstall it after running memtest,
+just use --netboot-enabled=1</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -232,7 +177,7 @@ cobbler profile add --name=DBAN-1.0.7-i386 --distro=DBAN-1.0.7-i386
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/4_-_Anaconda_Monitoring.html">4 - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/9_-_Memtest.html">9 - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/12_-_Booting_Live_CDs.html">12 - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/13_-_Clonezilla_Integration.html">13 - Clonezilla Integration</a></li><li><a href="/manuals/2.6.0/Appendix/17_-_System_Retirement.html">17 - System Retirement</a></li></ul></div>
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/D_-_Memtest.html">D - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/E_-_Anaconda_Monitoring.html">E - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/F_-_System_Retirement.html">F - System Retirement</a></li><li><a href="/manuals/2.6.0/Appendix/G_-_Booting_Live_CDs.html">G - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/H_-_Clonezilla_Integration.html">H - Clonezilla Integration</a></li></ul></div>
   </div>
  </div>
 </div>

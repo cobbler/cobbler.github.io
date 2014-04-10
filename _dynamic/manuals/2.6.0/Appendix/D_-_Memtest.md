@@ -1,9 +1,8 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Memtest
 meta: 2.6.0
 ---
-## Memtest
 
 If installed, cobbler will put an entry into all of your PXE menus
 allowing you to run memtest on physical systems without making

@@ -1,11 +1,8 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Booting Live CD's
 meta: 2.6.0
 ---
-### Live CDs
-
-<div class="alert alert-info alert-block"><b>Note:</b> this page refers to Linux-style Live CDs.  For information on how to boot a DOS-style live CD check out the [All About Images](https://github.com/cobbler/cobbler/wiki/All-About-Images) page.</div>
 
 Live CD's can be used for a variety of tasks.  They might update firmware, run diagnostics, assist with cloning systems, or just serve up a desktop environment.
 
