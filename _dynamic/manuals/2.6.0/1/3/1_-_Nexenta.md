@@ -88,3 +88,36 @@ __PF_ssh_port="PORT where SSH server will wait for incoming connections" (option
 
 6) Power on the hardware. NexentaStor should boot from this setup. 
 
+## Hints & Notes
+
+This process has been tested with Cobbler Release 2.6.0 running on Ubuntu 12.04 LTS.
+
+The install of Nexenta is automatic. That means that each machine to be booted with nexenta has to be configurated with a profile in kickstarts/install_profiles directory. To boot Nexenta nodes manually, in the file /var/lib/tftpboot/boot/grub/menu.lst replace the line:
+
+{ highlight bash } 
+    kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install=1
+{ endhighlight }
+
+With
+
+{ highlight bash }
+    kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64
+{ endhighlight }
+
+If you are adding a new distro, don't forget to enable NFS access to it! NFS share must be configured on the boot server. In particular, the directories in /var/www/cobbler/links/<distro-name> are exported. As an example, there is a /etc/exports file:
+
+{ highlight bash }
+# /etc/exports: the access control list for filesystems which may be exported
+#    to NFS clients.  See exports(5).
+#
+# Example for NFSv2 and NFSv3:
+# /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)
+#
+# Example for NFSv4:
+# /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
+# /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
+#
+/var/www/cobbler/links/nexenta-a-x86_64 *(ro,sync,no_subtree_check)
+/var/www/cobbler/links/<nexenta-distribution-name> *(ro,sync,no_subtree_check)
+{ endhighlight }
+
