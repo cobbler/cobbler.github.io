@@ -10,7 +10,7 @@ The following steps outline the Nexenta install process when using Cobbler.
 
 1) Assuming that Cobbler has been setup previously, verify that the signature file contains the entry for Nexenta: 
 
-{ highlight bash }
+{% highlight bash %}
   "nexenta": {
     "4": {
       "signatures":["boot"],
@@ -26,30 +26,30 @@ The following steps outline the Nexenta install process when using Cobbler.
       "boot_files":[]
     }
   }
-{ endhighlight }
+{% endhighlight %}
 
 2) Obtain a Nexenta iso from http://www.nexenta.com/corp/nexentastor-download and mount it: 
 
-{ highlight bash }
+{% highlight bash %}
 mkdir -p /mnt/nexenta4 && mnt /path/to/nexenta4.iso /mnt/nexenta4 -o loop`
-{ endhighlight }
+{% endhighlight %}
 
 3) Import the distribution into Cobbler: 
 
-{ highlight bash }
+{% highlight bash %}
 cobbler import --name=nexenta-4 --path=/mnt/nexenta4
-{ endhighlight }
+{% endhighlight %}
 
 Verify that a Nexenta distirbution is available via Cobbler: cobbler list
 Once the import is done, you can unmount the ISO: 
 
-{ highlight bash }
+{% highlight bash %}
 sudo umount /mnt/nexenta4
-{ endhighlight }
+{% endhighlight %}
 
 4) Nexenta uses a PXE Grub executable different from other, linux-like systems. To install a Nexenta on a desired system, you have to specify the PXE Grub file for that system. This can be done by using either a MAC address, or a subnet definition in your DHCP configuration file. In /etc/cobbler/dhcp.template:
 
-{ highlight bash }
+{% highlight bash %}
   host test-1 {
     hardware ethernet 00:0C:29:10:B6:10;
     fixed-address 10.3.30.91;
@@ -60,7 +60,7 @@ sudo umount /mnt/nexenta4
     fixed-address 10.3.30.97;
     filename "boot/grub/pxegrub";
   }
-{ endhighlight }
+{% endhighlight %}
 
 OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host definition in your dhcp config file.
 
@@ -68,7 +68,7 @@ Note: the path `boot/grub/pxegrub` is a hardcoded default in the Nexenta boot pr
 
 5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The profiles are placed in /var/lib/cobbler/kickstarts/install_profiles. Each profile should be a file with the filename `machine.AACC003355FF` where AA..FF stand for the mac address of the machine, without `:` (columns). The contents of each profile should look like the following:
 
-{ highlight bash }
+{% highlight bash %}
 __PF_gateway="IP address" (required)
 __PF_nic_primary="NIC NAME" (required)
 __PF_dns_ip_1="IP address" (required)
@@ -84,7 +84,7 @@ __PF_nlm_key="LICENSE KEY" (required)
 __PF_language="en" (used to choose localzation, but now only "en" is supported) (required)
 __PF_ssh_enable=1 (enable SSH, by default SSH is disabled) (optional)
 __PF_ssh_port="PORT where SSH server will wait for incoming connections" (optional)
-{ endhighlight }
+{% endhighlight %}
 
 6) Power on the hardware. NexentaStor should boot from this setup. 
 
@@ -94,19 +94,19 @@ This process has been tested with Cobbler Release 2.6.0 running on Ubuntu 12.04 
 
 The install of Nexenta is automatic. That means that each machine to be booted with nexenta has to be configurated with a profile in kickstarts/install_profiles directory. To boot Nexenta nodes manually, in the file /var/lib/tftpboot/boot/grub/menu.lst replace the line:
 
-{ highlight bash } 
+{% highlight bash %} 
     kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install=1
-{ endhighlight }
+{% endhighlight %}
 
 With
 
-{ highlight bash }
+{% highlight bash %}
     kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64
-{ endhighlight }
+{% endhighlight %}
 
 If you are adding a new distro, don't forget to enable NFS access to it! NFS share must be configured on the boot server. In particular, the directories in /var/www/cobbler/links/<distro-name> are exported. As an example, there is a /etc/exports file:
 
-{ highlight bash }
+{% highlight bash %}
 # /etc/exports: the access control list for filesystems which may be exported
 #    to NFS clients.  See exports(5).
 #
@@ -119,5 +119,5 @@ If you are adding a new distro, don't forget to enable NFS access to it! NFS sha
 #
 /var/www/cobbler/links/nexenta-a-x86_64 *(ro,sync,no_subtree_check)
 /var/www/cobbler/links/<nexenta-distribution-name> *(ro,sync,no_subtree_check)
-{ endhighlight }
+{% endhighlight %}
 
