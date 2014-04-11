@@ -209,13 +209,13 @@ Once the import is done, you can unmount the ISO:</p>
 <p>The install of Nexenta is automatic. That means that each machine to be booted with nexenta has to be configurated with a profile in kickstarts/install_profiles directory. To boot Nexenta nodes manually, in the file /var/lib/tftpboot/boot/grub/menu.lst replace the line:</p>
 
 <div class="highlight"><pre><code class="bash"> 
-    kernel<span class="nv">$ </span>/images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B <span class="nv">iso_nfs_path</span><span class="o">=</span>10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install<span class="o">=</span>1
+kernel<span class="nv">$ </span>/images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B <span class="nv">iso_nfs_path</span><span class="o">=</span>10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install<span class="o">=</span>1
 </code></pre></div>
 
 
 <p>With</p>
 
-<div class="highlight"><pre><code class="bash">    kernel<span class="nv">$ </span>/images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B <span class="nv">iso_nfs_path</span><span class="o">=</span>10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64
+<div class="highlight"><pre><code class="bash">kernel<span class="nv">$ </span>/images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B <span class="nv">iso_nfs_path</span><span class="o">=</span>10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64
 </code></pre></div>
 
 

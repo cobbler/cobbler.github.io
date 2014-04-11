@@ -127,6 +127,8 @@ var WRInitTime=(new Date()).getTime();
 <li>Massive overhaul to python building &amp; packaging infrastructure enabling alternate install prefix</li>
 <li>Initial support for Nexenta 4: distro import and manual PXE booting</li>
 <li>Added support for ESXi 6</li>
+<li>Improved support for running Cobbler inside a chroot() or container</li>
+<li>Added a config setting (always_write_dhcp_entries) to always write DHCP entries regardless of netboot setting</li>
 </ul>
 
 
@@ -134,6 +136,7 @@ var WRInitTime=(new Date()).getTime();
 
 <ul>
 <li>Lots of code cleanup</li>
+<li>Minor improvements to the documentation</li>
 </ul>
 
 
@@ -143,8 +146,6 @@ var WRInitTime=(new Date()).getTime();
 <li>Support for python 2.4 (eg. RHEL5) has been dropped, we now require python 2.6+</li>
 </ul>
 
-
-<p>None.</p>
 
      <hr>
      <div id="disqus_thread"></div>
