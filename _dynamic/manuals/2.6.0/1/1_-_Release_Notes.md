@@ -7,10 +7,19 @@ meta: 2.6.0
 
 ## 2.6.0
 
+This release cycle was primarily aimed at providing our software directly to our users.
+A substantial overhaul of our building & packaging infrastructure allows us to provide packages and repositories for:
+- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-6/">CentOS 6</a>
+- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-6/">RHEL 6</a>
+- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_18/">Fedora 18</a>
+- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_19/">Fedora 19</a>
+- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_20/">Fedora 20</a>
+- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_12.3/">openSUSE 12.3</a>
+- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_13.1/">openSUSE 13.1</a>
+- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_Factory/">openSUSE Factory</a>
+
 ### Features
 
-- We now build RPMs for RHEL/CentOS 6, Fedora 18/19/20, OpenSUSE 12.3/13.1/Factory
-- Massive overhaul to python building & packaging infrastructure enabling alternate install prefix
 - Initial support for Nexenta 4: distro import and manual PXE booting
 - Added support for ESXi 6
 - Improved support for running Cobbler inside a chroot() or container
@@ -18,7 +27,7 @@ meta: 2.6.0
 
 ### Bugfixes
 
-- Lots of code cleanup
+- Lots of code cleanup & bugfixes
 - Minor improvements to the documentation
 
 ### Upgrade notes
