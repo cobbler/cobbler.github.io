@@ -4,9 +4,9 @@
    <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
    <div class="nav-collapse collapse">
     <ul class="nav pull-right">
-     <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+     <li><a href="/about.html" title="About"><i class="icon-cloud icon-med"></i> About </a></li>
      <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Get <b class="caret"></b></a>
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Downloads <b class="caret"></b></a>
        <ul class="dropdown-menu">
          <li><a href="/downloads/source.html" title="Source">Source</a></li>
          <li><a href="/downloads/packages.html" title="Packages">Packages</a></li>
