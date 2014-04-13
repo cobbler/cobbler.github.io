@@ -5,6 +5,15 @@
    <div class="nav-collapse collapse">
     <ul class="nav pull-right">
      <li><a href="/about.html" title="About Cobbler"><i class="icon-cloud icon-med"></i> About Cobbler</a></li>
+
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Downloads <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/downloads/source/" title="Source">Source</a></li>
+         <li><a href="/downloads/packages/" title="Packages">Packages</a></li>
+       </ul>
+     </li>
+
      <li><a href="/posts/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
      <li class="dropdown">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
