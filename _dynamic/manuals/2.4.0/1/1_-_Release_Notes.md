@@ -10,11 +10,12 @@ meta: 2.4.0
 
 - Add a distro_signature for Ubuntu 14.04
 - Add an option to always write DHCP entries regardless of netboot setting
+- Improve support for running inside chroot() and/or containers
+- Improve performance of the "cobbler sync" operation
 
 ### Bugfixes
 
-- #784. Fix infinite loop in get_file_device_path() in chroot environment
-- Improve performance of the "cobbler sync" operation
+- Fix infinite loop in get_file_device_path() in chroot environment
 - Fixed an Exception in Koans get_insert_script() function
 
 ### Upgrade notes
