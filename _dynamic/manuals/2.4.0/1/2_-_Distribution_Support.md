@@ -168,6 +168,15 @@ Key:
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">Trusty</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">Debian</td>
  </tr>
  <tr>
