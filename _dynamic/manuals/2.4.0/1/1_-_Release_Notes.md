@@ -4,6 +4,24 @@ title: What's New
 meta: 2.4.0
 ---
 
+## 2.4.4
+
+### Feature improvements
+
+- Add a distro_signature for Ubuntu 14.04
+- Add an option to always write DHCP entries regardless of netboot setting
+
+### Bugfixes
+
+- #784. Fix infinite loop in get_file_device_path() in chroot environment
+- Improve performance of the "cobbler sync" operation
+- Fixed an Exception in Koans get_insert_script() function
+
+### Upgrade notes
+
+None.
+
+
 ## 2.4.3
 
 ### Feature improvements
