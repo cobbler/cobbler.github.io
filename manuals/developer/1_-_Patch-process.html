@@ -133,7 +133,8 @@ to github.com/cobbler/cobbler to "fork" the project.</p>
 
 <p>Create a new branch named after the feature you are working on.</p>
 
-<p>Do the work on your local machine and push to your personal github
+<p>Do the work on your local machine, please make sure your work passes Cobbler's
+coding standards by using 'make qa'. Only then push to your personal github
 branch (e.g. github.com/yourname/cobbler)</p>
 
 <p>Then use the "submit pull request" feature of github to request that
@@ -171,6 +172,7 @@ within reason.</p>
 <li>always use under_scores, not camelCase</li>
 <li>always four (4) spaces, not tabs</li>
 <li>avoid one line if statements</li>
+<li>validate your code by using 'make qa'</li>
 <li>keep things simple -- make sure everyone can read and     understand your code -- avoid "magic" such as very
 complex list comprehensions.   The audience for Cobbler     includes folks with a wide range of programming skills and
 this is not the place to show off</li>
