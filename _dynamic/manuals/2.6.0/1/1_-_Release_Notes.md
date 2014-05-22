@@ -4,6 +4,23 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.1
+
+### Feature improvements
+
+- Add a distro_signature for Ubuntu 14.04
+- Improve performance of the "cobbler sync" operation
+- Provide Debian and Ubuntu packages on the openSUSE build service
+- Add support for a wget repo breed
+- Cobbler and koan are now seperated debian packages
+
+### Bugfixes
+
+- Improve support for running inside chroot() and/or containers
+- Added missing docs to the RPM packages
+- Improved virt-install detection on non-rpm distros
+- Several fixes for running Cobbler on Debian like systems
+- Fixed typos in default kickstart files
 
 ## 2.6.0
 
