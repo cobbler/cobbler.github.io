@@ -5,6 +5,7 @@ title: Source releases
 
 ## 2.6.x
 
+* <a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.1">Cobbler 2.6.1</a>
 * <a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.0">Cobbler 2.6.0</a>
 
 ## 2.4.x
