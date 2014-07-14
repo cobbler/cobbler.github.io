@@ -10,6 +10,7 @@ title: Source releases
 
 ## 2.4.x
 
+* <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.5">Cobbler 2.4.5</a>
 * <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.4">Cobbler 2.4.4</a>
 * <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.3">Cobbler 2.4.3</a>
 * <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.2">Cobbler 2.4.2</a>
