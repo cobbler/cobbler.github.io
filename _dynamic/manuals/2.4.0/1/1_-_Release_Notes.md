@@ -4,6 +4,23 @@ title: What's New
 meta: 2.4.0
 ---
 
+## 2.4.5
+
+### Feature improvements
+
+- Add support for importing Enterprise Linux 7 (RHEL/CentOS)
+- Add support for importing CloudLinux 6
+
+### Bugfixes
+
+- Minor improvement to LDAPS configuration, fixes #217
+- pre_install_network_config snippet: only use slaves with a valid MAC address
+- remove colon from VLAN regex pattern
+
+### Upgrade notes
+
+None.
+
 ## 2.4.4
 
 ### Feature improvements
