@@ -4,6 +4,24 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.2
+
+### Feature improvements
+
+- Add EL7 (RHEL/CentOS) to distro signatures
+- Add CloudLinux6 support to distro signatures
+- Minor update to CSS; make better use of screen (tables)
+- Make Cobbler work on EL7 (RHEL/CentOS)
+
+### Bugfixes
+
+- pre_install_network_config: only use slaves with a valid MAC address
+- Remove colon from VLAN regex pattern
+- #148. Improve exception logging in BootCLI
+- Item.set_name optimizations
+- #217. Minor improvement to LDAP configuration
+- #555. Fixes to Makefile
+
 ## 2.6.1
 
 ### Feature improvements
