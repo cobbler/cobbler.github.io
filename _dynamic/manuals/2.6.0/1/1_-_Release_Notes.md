@@ -17,10 +17,10 @@ meta: 2.6.0
 
 - pre_install_network_config: only use slaves with a valid MAC address
 - Remove colon from VLAN regex pattern
-- 148. Improve exception logging in BootCLI
+- Improve exception logging in BootCLI (Issue 148)
 - Item.set_name optimizations
-- 217. Minor improvement to LDAP configuration
-- 555. Fixes to Makefile
+- Minor improvement to LDAP configuration (Issue 217)
+- Fixes to Makefile (Issue 555)
 
 ## 2.6.1
 
