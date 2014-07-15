@@ -54,6 +54,9 @@ users:
     url: http://www.widexs.nl
   - img: inventx
     url: http://www.inventx.ch
+  - img: dw
+    url: http://dashwire.com
+
 projects:
   - img: autotest
     url: http://autotest.github.com/
@@ -61,8 +64,6 @@ projects:
     url: http://beaker-project.org/
   - img: bytecode
     url: http://www.byte-code.com
-  - img: dw
-    url: http://dashwire.com
   - img: genome
     url: http://genome.et.redhat.com
   - img: reliam
