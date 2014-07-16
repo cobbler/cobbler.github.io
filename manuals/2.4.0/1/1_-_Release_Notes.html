@@ -316,10 +316,14 @@ var WRInitTime=(new Date()).getTime();
 
 <h3>Upgrade notes</h3>
 
-<p>Some fields on system objects have been renamed to accomodate support for bridged interfaces:
-- subnet => netmask
-- bond_master => interface_master
-- bond => interface_type</p>
+<p>Some fields on system objects have been renamed to accomodate support for bridged interfaces:</p>
+
+<ul>
+<li>subnet => netmask</li>
+<li>bond_master => interface_master</li>
+<li>bond => interface_type</li>
+</ul>
+
 
 <p>Cobbler has code to assist in the migration to the new field names but you must save all system objects to trigger the rename.
 You can use the following script to automate that process:</p>
@@ -335,9 +339,13 @@ for system in all_systems:
     remote.save_system(system_id, token)
 </code></pre>
 
-<p>Kickstart start/done migrated to snippets:
-- $kickstart_start => $SNIPPET('kickstart_start')
-- $kickstart_done => $SNIPPET('kickstart_done')</p>
+<p>Kickstart start/done migrated to snippets:</p>
+
+<ul>
+<li>$kickstart_start => $SNIPPET('kickstart_start')</li>
+<li>$kickstart_done => $SNIPPET('kickstart_done')</li>
+</ul>
+
 
      <hr>
      <div id="disqus_thread"></div>

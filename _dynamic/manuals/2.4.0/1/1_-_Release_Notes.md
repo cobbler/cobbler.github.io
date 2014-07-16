@@ -147,6 +147,7 @@ None.
 ### Upgrade notes
 
 Some fields on system objects have been renamed to accomodate support for bridged interfaces:
+
 - subnet => netmask
 - bond_master => interface_master
 - bond => interface_type
@@ -166,5 +167,6 @@ You can use the following script to automate that process:
 
 
 Kickstart start/done migrated to snippets:
+
 - $kickstart_start => $SNIPPET('kickstart_start')
 - $kickstart_done => $SNIPPET('kickstart_done')
