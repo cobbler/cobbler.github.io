@@ -1,7 +1,7 @@
 ---
 layout: manpage
 title: XMLRPC
-meta: 2.4.0
+meta: 2.8.0
 ---
 ## About XMLRPC
 

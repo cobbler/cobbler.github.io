@@ -124,29 +124,16 @@ var WRInitTime=(new Date()).getTime();
   <div class="span8">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/developer">developer</a> <span class="divider">/</span></li><li class="active">Development Environment</li></ul>
    <h1>Development Environment</h1>
-<h3>Get the source</h3>
-
-<pre><code>git clone https://github.com/cobbler/cobbler.git
-</code></pre>
-
-<h3>Decide which branch to work on</h3>
-
-<p>All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes back into the master branch.</p>
-
-<pre><code>git branch -r
-git checkout &lt;branch&gt;
-</code></pre>
-
 <h3>Setup</h3>
 
-<p>If using CentOS, install the appropriate EPEL rpm.</p>
+<p>The preferred development platform is CentOS 7. You also need EPEL, install the appropriate EPEL rpm.</p>
 
-<pre><code>rpm -i http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm
+<pre><code>rpm -i http://ftp.nluug.nl/pub/os/Linux/distr/fedora-epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm
 </code></pre>
 
 <p>Install dependencies:</p>
 
-<pre><code>yum install python-netaddr python-cheetah PyYAML mod_wsgi python-simplejson
+<pre><code>yum install python-netaddr mod_wsgi python-simplejson
 </code></pre>
 
 <p>Initially, to run cobbler without using the RPM:</p>
@@ -164,6 +151,19 @@ git checkout &lt;branch&gt;
 <p>You can now run cobbler commands and access the web interface at /cobbler.</p>
 
 <p>It should go without saying, but do not develop for cobbler on your main deployment server.  Develop on a production box.</p>
+
+<h3>Get the source</h3>
+
+<pre><code>git clone https://github.com/cobbler/cobbler.git
+</code></pre>
+
+<h3>Decide which branch to work on</h3>
+
+<p>All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes back into the master branch.</p>
+
+<pre><code>git branch -r
+git checkout &lt;branch&gt;
+</code></pre>
 
 <h3>Testing Your Development Environment Is Ready</h3>
 

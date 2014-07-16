@@ -146,4 +146,25 @@ None.
 
 ### Upgrade notes
 
-None.
+Some fields on system objects have been renamed to accomodate support for bridged interfaces:
+- subnet => netmask
+- bond_master => interface_master
+- bond => interface_type
+
+Cobbler has code to assist in the migration to the new field names but you must save all system objects to trigger the rename.
+You can use the following script to automate that process:
+
+    #!/usr/bin/python
+    import xmlrpclib
+
+    remote= xmlrpclib.Server("http://localhost/cobbler_api")
+    token = remote.login("testing","testing")
+    all_systems = remote.find_system()
+    for system in all_systems:
+        system_id = remote.get_system_handle(system, token)
+        remote.save_system(system_id, token)
+
+
+Kickstart start/done migrated to snippets:
+- $kickstart_start => $SNIPPET('kickstart_start')
+- $kickstart_done => $SNIPPET('kickstart_done')
