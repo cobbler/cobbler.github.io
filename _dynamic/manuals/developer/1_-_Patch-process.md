@@ -1,7 +1,7 @@
 ---
 layout: manpage
 title: Patch Process
-meta: 2.6.0
+meta: 2.8.0
 ---
 
 You'd like to contribute features or fixes to Cobbler? Great! We'd
@@ -87,4 +87,3 @@ list for discussion.
 ## The End
 
 Thanks for the interest and happy patching!
-

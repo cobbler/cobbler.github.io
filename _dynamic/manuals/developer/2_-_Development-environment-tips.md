@@ -1,29 +1,18 @@
 ---
 layout: manpage
 title: Development Environment
-meta: 2.6.0
+meta: 2.8.0
 ---
-
-### Get the source
-
-    git clone https://github.com/cobbler/cobbler.git
-
-### Decide which branch to work on
-
-All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes back into the master branch.
-
-    git branch -r
-    git checkout <branch>
 
 ### Setup
 
-If using CentOS, install the appropriate EPEL rpm.  
+The preferred development platform is CentOS 7. You also need EPEL, install the appropriate EPEL rpm.
 
-    rpm -i http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm
+    rpm -i http://ftp.nluug.nl/pub/os/Linux/distr/fedora-epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm
 
 Install dependencies:
 
-    yum install python-netaddr python-cheetah PyYAML mod_wsgi python-simplejson
+    yum install python-netaddr mod_wsgi python-simplejson
 
 Initially, to run cobbler without using the RPM:
 
@@ -38,6 +27,17 @@ This will install cobbler and restart apache/cobblerd, but move your configurati
 You can now run cobbler commands and access the web interface at /cobbler.
 
 It should go without saying, but do not develop for cobbler on your main deployment server.  Develop on a production box.
+
+### Get the source
+
+    git clone https://github.com/cobbler/cobbler.git
+
+### Decide which branch to work on
+
+All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes back into the master branch.
+
+    git branch -r
+    git checkout <branch>
 
 ### Testing Your Development Environment Is Ready
 
