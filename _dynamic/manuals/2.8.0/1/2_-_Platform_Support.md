@@ -67,12 +67,33 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
-  <td class="span2">RHEL/CentOS 7</td>
+  <td class="span2">RHEL / CentOS 7</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td colspan="7">SuSE</td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">OpenSuSE 12.3</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">OpenSuSE 13.1</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
 </table>
 
@@ -90,7 +111,38 @@ Key:
   <td class="center span1">Build ISO</td>
   <td class="center span1">Kickstarts/Snippets</td>
  </tr>
-<tr>
+ <tr>
+  <td colspan="7">Red Hat</td>
+ </tr>
+ <tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">RHEL/CentOS 4</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">RHEL/CentOS 5</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">RHEL/CentOS 6</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">Ubuntu</td>
  </tr>
  <tr>
@@ -218,24 +270,6 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
-  <td class="span2">OpenSuSE 12.3</td>
-  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
-  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
-  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
-  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
-  <td class="center span1"><i class="icon-wrench"></i></td>
- </tr>
- <tr>
-  <td class="span2"></td>
-  <td class="span2">OpenSuSE 13.1</td>
-  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
-  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
-  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
-  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
-  <td class="center span1"><i class="icon-wrench"></i></td>
- </tr>
- <tr>
-  <td class="span2"></td>
   <td class="span2">SLES 10 sp4</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -288,6 +322,22 @@ Key:
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
+</table>
+
+
+## Tier 3 platforms
+
+<table class="table table-hover">
+ <tr>
+  <td class=""></td>
+  <td class=""></td>
+  <td class="center span1">Packages</td>
+  <td class="center span1">Import</td>
+  <td class="center span1">PXE</td>
+  <td class="center span1">Build ISO</td>
+  <td class="center span1">Kickstarts/Snippets</td>
+ </tr>
+<tr>
  <tr>
   <td colspan="7">VMware</td>
  </tr>

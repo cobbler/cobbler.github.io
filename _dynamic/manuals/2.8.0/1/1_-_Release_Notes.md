@@ -17,8 +17,6 @@ meta: 2.8.0
 - Set ksdevice kernel option to MAC address for ppc systems as bootif is not used by yaboot
 - Return to list of snippets/kickstarts when snippet/kickstart is saved (cobbler-web)
 - Layout in snippet/kickstart edit form has been improved (cobbler-web)
--
--
 
 
 ### Bugfixes
@@ -32,7 +30,6 @@ meta: 2.8.0
 - Minor improvement to LDAP configuration (\#217)
 - Improvements to the unittest framework
 - The user manual has been completely reviewed and lots of errors were fixed
--
 
 ### Upgrade notes
 
