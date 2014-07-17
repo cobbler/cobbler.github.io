@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Cobbler development team" />
+
+   <title>Distros</title>
+
+   <!-- CSS -->
+   <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
+   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="/css/search.css" />
+
+   <!-- Fonts -->
+   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
+
+   <!--[if lt IE 9]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   <![endif]-->
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.swiftype.search.js"></script>
+</head>
+<body class="pull_up">
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div class="navbar transparent navbar-inverse navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container">
+   <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
+   <div class="nav-collapse collapse">
+    <ul class="nav pull-right">
+     <li><a href="/about.html" title="About"><i class="icon-cloud icon-med"></i> About </a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Downloads <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/downloads/2.6.x.html" title="Cobbler 2.6.x">2.6.x</a></li>
+         <li><a href="/downloads/2.4.x.html" title="Cobbler 2.4.x">2.4.x</a></li>
+       </ul>
+     </li>
+     <li><a href="/posts/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/manuals/quickstart/" title="Quickstart Guide">Quickstart Guide</a></li>
+         <li><a href="/manuals/2.6.0/" title="Version 2.6.x">User Manual 2.6.x</a></li>
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
+         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+         <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         <li><a href="/users.html" title="Cobbler Users">Who's Using Cobbler</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i> Github <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+        <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+       </ul>
+     </li>
+     <li>
+      <form class="pull-right">
+       <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+     </li>
+    </ul>
+    <!-- <div id="st-results-container"></div> -->
+    <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+      (function() {
+        Swiftype.key = 'ybEhsDqz2mEFrMtBHiwB';
+        Swiftype.inputElement = '#st-search-input';
+        Swiftype.resultContainingElement = '#st-results-container';
+        Swiftype.attachElement = '#st-search-input';
+        Swiftype.renderStyle = "new_page";
+        Swiftype.resultPageURL = '/search.html';
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = "//swiftype.com/embed.js";
+        var entry = document.getElementsByTagName('script')[0];
+        entry.parentNode.insertBefore(script, entry);
+      }());
+    </script>
+   </div>
+   <!--
+   <form class="navbar-search pull-right" onsubmit="return false;">
+    <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+   </form>
+   -->
+  </div>
+ </div>
+</div>
+
+
+<!-- begin content -->
+
+<div id="wrap" class="container">
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/3/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">Distros</li></ul>
+   <h1>Distros</h1>
+<p>The first step towards installing systems with Cobbler is to add a distribution record to cobbler’s configuration.</p>
+
+<p>The distro command has the following sub-commands:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro --help
+<span class="nv">usage</span>
+<span class="o">=====</span>
+cobbler distro add
+cobbler distro copy
+cobbler distro edit
+cobbler distro find
+cobbler distro list
+cobbler distro remove
+cobbler distro rename
+cobbler distro report
+</code></pre></div>
+
+
+<h3>Add/Edit Options</h3>
+
+<p>In general, it’s really a lot easier to follow the import workflow -- it only requires waiting for the mirror content to be copied and/or scanned. Imported mirrors also save time during install since they don’t have to hit external installation sources. Please read the <a href="/manuals/2.6.0/3/2/4_-_Import.html">Cobbler Import</a> documentation for more details.</p>
+
+<p>If you want to be explicit with distribution definition, however, here’s how it works:</p>
+
+<p><b>Example:</b></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro add --name<span class="o">=</span>string --kernel<span class="o">=</span>path --initrd<span class="o">=</span>path <span class="o">[</span>options<span class="o">]</span>
+</code></pre></div>
+
+
+
+
+<table class="table table-condensed table-striped">
+<thead>
+ <tr>
+  <th>Field Name</th>
+  <th>Description</th>
+ </tr>
+</thead>
+<tbody>
+ <tr>
+  <td class="nowrap">--name (required)</td>
+  <td>A string identifying the distribution, this should be something like "rhel4".</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--kernel (required)</td>
+  <td>An absolute filesystem path to a kernel image.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--initrd (required)</td>
+  <td>An absolute filesystem path to a initrd image.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--arch</td>
+  <td>
+   <p>Sets the architecture for the PXE bootloader and also controls how koan’s --replace-self option will operate.</p>
+   <p>The default setting (’standard’) will use pxelinux. Set to ’ia64’ to use elilo. ’ppc’ and ’ppc64’ use yaboot. ’s390x’ is not PXEable, but koan supports it for reinstalls.</p>
+   <p>’x86’ and ’x86_64’ effectively do the same thing as standard.</p>
+   <p>If you perform a cobbler import, the arch field will be auto-assigned.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--boot-files</td>
+  <td>
+   <p>This option is used to specify additional files that should be copied to the TFTP directory for the distro so that they can be fetched during earlier stages of the installation. Some distributions (for example, VMware ESXi) require this option to function correctly.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--breed</td>
+  <td>
+   <p>Controls how various physical and virtual parameters, including kernel arguments for automatic installation, are to be treated. Defaults to "redhat", which is a suitable value for Fedora and CentOS as well. It means anything redhat based.</p>
+   <p>There is limited experimental support for specifying "debian", "ubuntu", or "suse", which treats the kickstart file as a different format and changes the kernel arguments appropriately. Support for other types of distributions is possible in the future. See the Wiki for the latest information about support for these distributions.</p>
+   <p>The file used for the answer file, regardless of the breed setting, is the value used for --kickstart when creating the profile. In other words, if another distro calls their answer file something other than a "kickstart", the kickstart parameter still governs where that answer file is.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--clobber</td>
+  <td>This option allows "add" to overwrite an existing distro with the same name, so use it with caution.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--comment</td>
+  <td>An optional comment to associate with this distro.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--fetchable-files</td>
+  <td>
+   <p>This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The "value" portion of the name is the path/name they will be available as via TFTP.</p>
+   <p>Please see the <a href="/manuals/2.6.0/3/4/4_-_Managing_TFTP.html">Managing TFTP</a> section for more details on using the python-based TFTP server.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--in-place</td>
+  <td>
+   <p>By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no preserve the contents.</p>
+   <p><b>Example:</b></p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
+<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
+</code></pre></div>
+
+   <p>To preserve the contents of these fields, --in-place should be specified:</P>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
+<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
+<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
+Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span>, <span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
+</code></pre></div>
+
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--kopts</td>
+  <td>
+   <p>Sets kernel command-line arguments that the distro, and profiles/systems dependant on it, will use during installation only. This field is a hash field, and accepts a set of key=value pairs:</p>
+   <p><b>Example:</b></p>
+
+<div class="highlight"><pre><code class="bash">--kopts<span class="o">=</span><span class="s2">&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</span>
+</code></pre></div>
+
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--kopts-post</td>
+  <td>This is just like --kopts, though it governs kernel options on the installed OS, as opposed to kernel options fed to the installer. This requires some special snippets to be found in your kickstart template to work correctly.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--ksmeta</td>
+  <td>
+   <p>This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts a set of key=value pairs:</p>
+   <p><b>Example:</b></p>
+
+<div class="highlight"><pre><code class="bash">--ksmeta<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf&quot;</span>
+</code></pre></div>
+
+   <p>See the section on <a href="/manuals/2.6.0/3/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--mgmt-classes</td>
+  <td>
+   <p>Management classes that should be associated with this distro for use with configuration management systems.</p>
+   <p>Please see the <a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">Configuration Management</a> section for more details on integrating Cobbler with configuration management systems.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--os-version</td>
+  <td>Generally this field can be ignored. It is intended to alter some hardware setup for virtualized instances when provisioning guests with koan. The valid options for --os-version vary depending on what is specified for --breed. If you specify an invalid option, the error message will contain a list of valid os versions that can be used. If you do not know the os version or it does not appear in the list, omitting this argument or using "other" should be perfectly fine. Largely this is needed to support older distributions in virtualized settings, such as "rhel2.1", one of the OS choices if the breed is set to "redhat". If you do not encounter any problems with virtualized instances, this option can be safely ignored.</td>
+ </tr>
+ <tr>
+  <td class="nowrap">--owners</td>
+  <td>
+   <p>The value for --owners is a space seperated list of users and groups as specified in <code>/etc/cobbler/users.conf</code>.</p>
+   <p>Users with small sites and a limited number of admins can probably ignore this option, since it only applies to the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell. Furthermore, this is only respected when using the "authz_ownership" module which must be enabled and is not the default.</p>
+   <p>Please see the <a href="/manuals/2.6.0/5/3_-_Web_Authorization.html">Web Authorization</a> section for more details.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--redhat-management-key</td>
+  <td>
+   <p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
+   <p>Please see the <a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--redhat-management-server</td>
+  <td>
+   <p>The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
+   <p>Please see the <a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+  </td>
+ </tr>
+ <tr>
+  <td class="nowrap">--template-files</td>
+  <td>
+   <p>This feature allows cobbler to be used as a configuration management system. The argument is a space delimited string of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the system. Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function as a lightweight templated configuration management system.</p>
+   <p>Please see the <a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">Built-In Configuration Management</a> section for more details on using template files.</p>
+  </td>
+ </tr>
+</tbody>
+</table>
+
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/3/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.8.0/3/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.8.0/3/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.8.0/3/1/4_-_Images.html">4 - Images</a></li><li><a href="/manuals/2.8.0/3/1/5_-_Repos.html">5 - Repos</a></li><li><a href="/manuals/2.8.0/3/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.8.0/3/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.8.0/3/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
+  </div>
+ </div>
+</div>
+<!-- end content -->
+
+<footer>
+  <div class="container">
+    <div class="row-fluid sections">
+      <div class="span6 footmenu">
+       <div class="row-fluid">
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Pages</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Blog Posts</a></li>
+          <li><a href="/about.html">About Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span2 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Manuals</li>
+          <li><a href="/manuals/quickstart/">Quickstart</a></li>
+          <li><a href="/manuals/2.6.0/">2.6.x</a></li>
+          <li><a href="/manuals/2.4.0/">2.4.x</a></li>
+          <li><a href="/manuals/developer/">Developer</a></li>
+         </ul>
+        </div>
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Community</li>
+          <li><a href="/community.html">How to Get Help</a></li>
+          <li><a href="/supporters.html">Supporters</a></li>
+          <li><a href="/users.html">Who's Using Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span4 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Github</li>
+          <li><a href="https://github.com/cobbler/cobbler">Code Repository</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki">Wiki</a></li>
+         </ul>
+        </div>
+       </div>
+    <div class="row-fluid">
+    </div>
+    <div class="row-fluid">
+     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
+     <p class="browsers">
+      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
+      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
+      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
+      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
+     </p>
+    </div>
+      </div>
+      <div class="span3 posts">
+        <p class="column_header">Recent Posts:</p>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/07/15/cobbler_2.6.2_released.html">Cobbler 2.6.2 Released</a></p>
+          <p class="author">Posted by Jörgen on Tuesday, July 15, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/07/14/cobbler_2.4.5_released.html">Cobbler 2.4.5 Released</a></p>
+          <p class="author">Posted by Jörgen on Monday, July 14, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/05/22/cobbler_2.6.1_released.html">Cobbler 2.6.1 Released</a></p>
+          <p class="author">Posted by Jörgen on Thursday, May 22, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/04/22/cobbler_2.4.4_released.html">Cobbler 2.4.4 Released</a></p>
+          <p class="author">Posted by Jörgen on Tuesday, April 22, 2014</p>
+        </div>
+
+      </div>
+      <div class="span3 credits">
+        <div class="social">
+          <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-width="100%">Follow @cobblerista</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="attributions">
+          <p class="column_header">Attributions:</p>
+          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
+          <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
+        </div>
+        <div class="copyright">
+          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
+          <script>$("#copyyear").text((new Date).getFullYear());</script>
+        </div>
+      </div>            
+    </div>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+

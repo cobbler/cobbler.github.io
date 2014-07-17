@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Anaconda Monitoring</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -119,35 +119,120 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Anaconda Monitoring</li></ul>
+   <h1>Anaconda Monitoring</h1>
+<p>This page details the <strong>Ana</strong>conda <strong>Mon</strong>itoring service available in cobbler.  As anamon is rather distribution specific, support for it is considered deprecated at this time.</p>
 
-<h3>User Manuals</h3>
+<h2>History</h2>
 
-<ul>
-<li><a href="/manuals/2.6.0">User Manual 2.6.x</a></li>
-<li><a href="/manuals/2.4.0">User Manual 2.4.x</a></li>
-<li><a href="/manuals/2.2.3">User Manual 2.2.x (EOL)</a></li>
-</ul>
+<p>Prior to Cobbler 1.6 , remote monitoring of installing systems was
+limited to distributions that accept the the boot argument
+<em>syslog=</em>. While this is supported in RHEL-5 and newer Red Hat
+based distributions, it has several shortcomings.</p>
+
+<h4>Reduces available kernel command-line length</h4>
+
+<p>The kernel command-line has a limited amount of space, relying on <em>syslog=somehost.example.com</em> reduces available argument space. Cobbler has smarts to not add the <em>syslog=</em> parameter if no space is available. But doing so disables remote monitoring.</p>
+
+<h4>Only captures syslog</h4>
+
+<p>The <em>syslog=</em> approach will only capture syslog-style messages. Any command-specific output (<code>/tmp/lvmout</code>, <code>/tmp/ks-script</code>, <code>/tmp/X.config</code>) or installation failure (<code>/tmp/anacdump.txt</code>) information is not sent.</p>
+
+<h4>Unsupported on older distros</h4>
+
+<p>While capturing syslog information is key for remote monitoring of installations, the <a href="http://fedoraproject.org/wiki/Anaconda">anaconda</a> installer only supports sending syslog data for RHEL-5 and newer distributions.</p>
+
+<h2>What is Anamon?</h2>
+
+<p>In order to overcome the above obstacles, the <em>syslog=</em> remote monitoring has been replaced by a python service called <strong>anamon</strong> (Anaconda Monitor). Anamon is a python daemon (which runs inside the installer while it is installing) that connects to the cobbler server via XMLRPC and uploads a pre-determined set of files. Anamon will continue monitoring files for updates and send any new data to the cobbler server.</p>
+
+<h2>Using Anamon</h2>
+
+<p>To enable anamon for your Red Hat based distribution installations, edit <em>/etc/cobbler/settings</em> and set:</p>
+
+<div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">anamon_enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
+</code></pre></div>
 
 
-<h3>Quickstart Guide</h3>
+<p><strong>NOTE:</strong> Enabling anamon allows an xmlrpc call to send create and update log files in the anamon directory, without authentication, so enable only if you are ok with this limitation. It could be potentially used by users to flood the log files or fill up the server, which you probably don't want in an untrusted environment.  However, even so, it may be good for debugging complex installs.</p>
 
-<ul>
-<li><a href="/manuals/quickstart">Quickstart Guide</a></li>
-</ul>
+<p>You will also need to update your kickstart templates to include the following snippets.</p>
 
-
-<h3>Developer Manuals</h3>
-
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
+<div class="highlight"><pre><code class="bash">%pre
+<span class="nv">$SNIPPET</span><span class="o">(</span><span class="s1">&#39;pre_anamon&#39;</span><span class="o">)</span>
+</code></pre></div>
 
 
-</div> <!-- end wrap -->
+<p>Anamon can also send <code>/var/log/messages</code> and <code>/var/log/boot.log</code> once your provisioned system has booted. To also enable post-install boot notification, you must enable the following snippet:</p>
 
+<div class="highlight"><pre><code class="bash">%post
+<span class="nv">$SNIPPET</span><span class="o">(</span><span class="s1">&#39;post_anamon&#39;</span><span class="o">)</span>
+</code></pre></div>
+
+
+<h2>Where Is Information Saved?</h2>
+
+<p>All anamon logs are stored in a system-specific directory under <em>/var/log/cobbler/anamon/systemname</em>. For example,</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>ls /var/log/cobbler/anamon/vguest3
+anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.log
+</code></pre></div>
+
+
+<h2>Older Distributions</h2>
+
+<p>Anamon relies on a %pre installation script that uses a python <em>xmlrpc</em> library. The installation image used by Red Hat Enterprise Linux 4 and older distributions for <strong>http://</strong> installs does not provide the needed python libraries. There are several ways to get around this ...</p>
+
+<ol>
+<li>Always perform a graphical or <strong>vnc</strong> install - installing graphically (or by vnc) forces anaconda to download the <em>stage2.img</em> that includes graphics support <strong>and</strong> the required python xmlrpc library.</li>
+<li>Install your system over nfs - nfs installations will also use the <em>stage2.img</em> that includes python xmlrpc support</li>
+<li>Install using an <em>updates.img</em> - Provide the missing xmlrpc library by building an updates.img for use during installation. To construct an <em>updates.img</em>, follow the steps below:</li>
+</ol>
+
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>updates.img <span class="nv">bs</span><span class="o">=</span>1k <span class="nv">count</span><span class="o">=</span>1440
+<span class="nv">$ </span>mke2fs updates.img
+<span class="nv">$ tmpdir</span><span class="o">=</span><span class="sb">`</span>mktemp -d<span class="sb">`</span>
+<span class="nv">$ </span>mount -o loop updates.img <span class="nv">$tmpdir</span>
+<span class="nv">$ </span>mkdir <span class="nv">$tmpdir</span>/cobbler
+<span class="nv">$ </span>cp /usr/lib64/python2.3/xmlrpclib.* <span class="nv">$tmpdir</span>/cobbler
+<span class="nv">$ </span>cp /usr/lib64/python2.3/xmllib.* <span class="nv">$tmpdir</span>/cobbler
+<span class="nv">$ </span>cp /usr/lib64/python2.3/shlex.* <span class="nv">$tmpdir</span>/cobbler
+<span class="nv">$ </span>cp /usr/lib64/python2.3/lib-dynload/operator.* <span class="nv">$tmpdir</span>/cobbler
+<span class="nv">$ </span>umount <span class="nv">$tmpdir</span>
+<span class="nv">$ </span>rmdir <span class="nv">$tmpdir</span>
+</code></pre></div>
+
+
+<p>More information on building and using an <em>updates.img</em> is available from <a href="http://fedoraproject.org/wiki/Anaconda/Updates">http://fedoraproject.org/wiki/Anaconda/Updates</a>.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/Appendix/A_-_Power-PC_Support.html">A - Power-PC Support</a></li><li><a href="/manuals/2.8.0/Appendix/B_-_Tips_for_RHN.html">B - Tips for RHN</a></li><li><a href="/manuals/2.8.0/Appendix/C_-_Memtest.html">C - Memtest</a></li><li><a href="/manuals/2.8.0/Appendix/D_-_Anaconda_Monitoring.html">D - Anaconda Monitoring</a></li><li><a href="/manuals/2.8.0/Appendix/E_-_System_Retirement.html">E - System Retirement</a></li><li><a href="/manuals/2.8.0/Appendix/F_-_Booting_Live_CDs.html">F - Booting Live CDs</a></li><li><a href="/manuals/2.8.0/Appendix/G_-_Clonezilla_Integration.html">G - Clonezilla Integration</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>
