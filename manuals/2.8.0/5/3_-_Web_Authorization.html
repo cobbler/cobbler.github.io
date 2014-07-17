@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Web Authorization</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -119,35 +119,116 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/5_-_Web_Interface.html">5</a> <span class="divider">/</span></li><li class="active">Web Authorization</li></ul>
+   <h1>Web Authorization</h1>
+<p>Authorization happens after users have been <a href="Web%20Authentication">authenticated</a> and controls who is then allowed, or not allowed, to perform certain specific operations in cobbler.</p>
 
-<h3>User Manuals</h3>
+<p>Note that this applies to the <a href="Cobbler%20web%20interface">Cobbler Web Interface</a> and <a href="XmlRpc">XMLRPC</a> only -- the local cobbler instance can be modified with the command line tool "cobbler" as the root user, regardless of authorization policy.</p>
 
-<ul>
-<li><a href="/manuals/2.6.0">User Manual 2.6.x</a></li>
-<li><a href="/manuals/2.4.0">User Manual 2.4.x</a></li>
-<li><a href="/manuals/2.2.3">User Manual 2.2.x (EOL)</a></li>
-</ul>
+<p>Authorization choices are set in the <code>[authorization]</code> section of <code>/etc/cobbler/modules.conf</code>, whose options are as follows:</p>
+
+<h3>Allow All</h3>
+
+<pre><code>[authorization]
+module = authz_allowall
+</code></pre>
+
+<p>This module permits any user who has passed through authorization successfully to do anything they need to do, regardless of username.  This is a valid choice if you are authenticating against a source that only contains trusted accounts, such as the digest authentication module.  But if you are authenticating against an entire company's LDAP server or Kerberos server, however, this would be a poor choice.</p>
+
+<h3>Config File</h3>
+
+<pre><code>[authorization]
+module = authz_configfile
+</code></pre>
+
+<p>This uses the simple file <code>/etc/cobbler/users.conf</code> to provide a list of what users can access the server.  The format is described below in a separate section.  There are no
+semantics given to groups and any listed user can access cobbler to make any changes requested.  Users not in this file do not have access.  An example use of this setting
+would be if you wanted to <a href="Kerberos">authenticate admins against Kerberos</a> but kerberos contained other passwords and you wanted to allow only users
+present in your whitelist to be able to make changes.</p>
+
+<h3>Ownership</h3>
+
+<pre><code>[authorization]
+module = authz_ownership
+</code></pre>
+
+<p>This is similar to authz_configfile but now enforces group dynamics.  Each file in the users file (format described below) belongs to a group.</p>
+
+<p>The module keeps users from modifying distributions, profiles, or system records that they do not have access to.  This is a good choice if you are using cobbler in a large
+company, have multiple levels of administrators, or want to grant access to users to control specific systems.</p>
+
+<p>If a user is in a group named "admin" or "admins" they will be able to edit any object regardless of the ownership information stored on that object in Cobbler.</p>
+
+<p>Here's an example of storing ownership details in Cobbler:</p>
+
+<pre><code> cobbler system edit --name=system-name --owner=dbagroup,pete,mac,jack
+</code></pre>
+
+<p>This policy is rather detailed, so see more at AuthorizationWithOwnership for the full details on how this works.</p>
+
+<h2>Other authorization controls</h2>
+
+<h3>User Supplied Module</h3>
+
+<p>The above authentication systems aren't expected to work for everyone.</p>
+
+<p>As with any CobblerModule, users can write their own, and if they wish, submit them to the mailing list for others to use.  This allows
+for developing even finer grained access control, or adapting cobbler to more custom/unusual configurations.</p>
+
+<p>Using something like authz_ownership as a base would probably provide a very good place to start.  If you develop something interesting
+you think others may want to use for policy, sharing is greatly appreciated!</p>
+
+<h3>File Format</h3>
+
+<p>The file <code>/etc/cobbler/users.conf</code> is there to configure alternative authentication modes for modules like authz_ownership and authz_configfile.  In the default cobbler configuration (authz_allowall), this file is IGNORED, as is indicated by the comments in the file.</p>
+
+<p>Here's a sample file defining a few users and groups:</p>
+
+<pre><code>[admins]
+admin = ""
+cobbler = ""
+mdehaan = ""
+
+[superlab]
+obiwan = ""
+luke = ""
+
+[basement]
+darth = ""
+</code></pre>
+
+<p>Note that how this file is used depends entirely on what you have in <code>/etc/cobbler/modules.conf</code> (as described above in "Module Choices").   After changing this file, cobblerd must be restarted in order for the changes to take effect.</p>
+
+<p>You'll note the values have the "equals quote quote" after them.  These values are currently required, but ignored.  Basically they are reserved
+for later use.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-<h3>Quickstart Guide</h3>
-
-<ul>
-<li><a href="/manuals/quickstart">Quickstart Guide</a></li>
-</ul>
-
-
-<h3>Developer Manuals</h3>
-
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
-
-
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/5/1_-_Security_Overview.html">1 - Security Overview</a></li><li><a href="/manuals/2.8.0/5/2_-_Web_Authentication.html">2 - Web Authentication</a></li><ul class="dirtree"><li><a href="/manuals/2.8.0/5/2/1_-_PAM.html">2.1 - PAM</a></li><li><a href="/manuals/2.8.0/5/2/2_-_LDAP.html">2.2 - LDAP</a></li><li><a href="/manuals/2.8.0/5/2/3_-_Kerberos.html">2.3 - Kerberos</a></li><li><a href="/manuals/2.8.0/5/2/4_-_Spacewalk.html">2.4 - Spacewalk</a></li><li><a href="/manuals/2.8.0/5/2/5_-_Passthru.html">2.5 - Passthru</a></li><li><a href="/manuals/2.8.0/5/2/6_-_Digest.html">2.6 - Digest</a></li></ul><li><a href="/manuals/2.8.0/5/3_-_Web_Authorization.html">3 - Web Authorization</a></li><li><a href="/manuals/2.8.0/5/4_-_Locking_Down_Cobbler.html">4 - Locking Down Cobbler</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Clonezilla integration</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -119,35 +119,73 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Clonezilla integration</li></ul>
+   <h1>Clonezilla integration</h1>
+<p>Since many of us need to support non-linux systems in addition to
+Linux systems, some facility for support of these systems is
+helpful - especially if your dhcp server is pointing pxe boots to
+your cobbler server. PXE booting a clonezilla live CD as an option
+under cobbler provides a unified starting point for all system
+installation tasks.</p>
 
-<h3>User Manuals</h3>
+<h2>Step-by-step (as of 2.2.2)</h2>
 
-<ul>
-<li><a href="/manuals/2.6.0">User Manual 2.6.x</a></li>
-<li><a href="/manuals/2.4.0">User Manual 2.4.x</a></li>
-<li><a href="/manuals/2.2.3">User Manual 2.2.x (EOL)</a></li>
-</ul>
+<p> \1. Download clonezilla live image from here here:
+ <a href="http://clonezilla.org/downloads.php">http://clonezilla.org/downloads.php</a>
+ . I used the ubuntu based "experimental" version because the Debian
+ based clonezilla's don't have necessary network drivers for many
+ Dell servers.</p>
+
+<p>\2. Unpack the zip file to a location on the machine, and run an add the distribution
+  cobbler distro add  --name=clonezilla1-2-22-37 --arch=x86_64 --breed=other --os-version=other --boot-files="'$img_path/filesystem.squashfs'='<path_to_your_folder>/live/filesystem.squashfs'" --kernel=<path_to_your_folder>/live/vmlinuz --initrd=<path_to_your_folder>/live/initrd.img</p>
+
+<p>\3. Set up the kickstart kernel options needed for booting to at least:
+  nomodeset edd=on ocs_live_run=ocs-live-general ocs_live_keymap=NONE boot=live vga=788 noswap noprompt nosplash ocs_live_batch=no ocs_live_extra_param ocs_lang=en_US.UTF-8 ocs_lang=None nolocales config fetch=tftp://<Your_TFTP_ServerIP>/images/<your_Profile_NAME>/filesystem.squashfs</p>
+
+<p>\4. You should then be able to create a profile for the clonezilla distro and then add to the kernel options, and be able to customize the startup procedure from there using the clonezilla docs.</p>
+
+<p>\5. Run "cobbler sync" to set up the template for the systems you need.</p>
+
+<h2>Limitations and work needed</h2>
+
+<p>\1. I've seen the download of the squashfs skipped on more than one
+ occaision, resulting in a kernel panic. Not sure why this happens,
+ but trying again fixes the problem (or could just be because I'm
+ still experimenting too much).</p>
+
+<p>\2. Would be nice if clonezilla UI was integrated into cobbler
+ somewhat (i.e. it knew the IP of the server saving the images and
+ maybe had an ssh key so it could get access without a password).</p>
+
+<p>\3. <strong>Still very experimental.</strong></p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-<h3>Quickstart Guide</h3>
-
-<ul>
-<li><a href="/manuals/quickstart">Quickstart Guide</a></li>
-</ul>
-
-
-<h3>Developer Manuals</h3>
-
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
-
-
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/Appendix/A_-_Power-PC_Support.html">A - Power-PC Support</a></li><li><a href="/manuals/2.8.0/Appendix/B_-_Tips_for_RHN.html">B - Tips for RHN</a></li><li><a href="/manuals/2.8.0/Appendix/C_-_Memtest.html">C - Memtest</a></li><li><a href="/manuals/2.8.0/Appendix/D_-_Anaconda_Monitoring.html">D - Anaconda Monitoring</a></li><li><a href="/manuals/2.8.0/Appendix/E_-_System_Retirement.html">E - System Retirement</a></li><li><a href="/manuals/2.8.0/Appendix/F_-_Booting_Live_CDs.html">F - Booting Live CDs</a></li><li><a href="/manuals/2.8.0/Appendix/G_-_Clonezilla_Integration.html">G - Clonezilla Integration</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Cobbler Manual</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -119,35 +119,47 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/6_-_Koan.html">6</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
+   <h1>Cobbler Manual</h1>
+<p>Cobbler's helper program, koan, can be installed on remote systems.</p>
 
-<h3>User Manuals</h3>
+<p>It can then be used to reinstall systems, as well as it's original purpose of installing virtual machines.</p>
 
-<ul>
-<li><a href="/manuals/2.6.0">User Manual 2.6.x</a></li>
-<li><a href="/manuals/2.4.0">User Manual 2.4.x</a></li>
-<li><a href="/manuals/2.2.3">User Manual 2.2.x (EOL)</a></li>
-</ul>
+<p>Usage is as follows:</p>
+
+<pre><code>koan --server cobbler.example.com --profile profileName
+koan --server cobbler.example.com --system systemName
+</code></pre>
+
+<p>Koan will then configure the bootloader to reinstall the system at next boot.  This can also be used for OS upgrades with an upgrade kickstart as opposed to a kickstart that specifies a clean install.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-<h3>Quickstart Guide</h3>
-
-<ul>
-<li><a href="/manuals/quickstart">Quickstart Guide</a></li>
-</ul>
-
-
-<h3>Developer Manuals</h3>
-
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
-
-
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/6/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.8.0/6/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li><li><a href="/manuals/2.8.0/6/3_-_Installing-virtual-guests.html">3 - Installing-virtual-guests</a></li><li><a href="/manuals/2.8.0/6/4_-_Reinstallation.html">4 - Reinstallation</a></li><li><a href="/manuals/2.8.0/6/5_-_Virtual-networking-setup.html">5 - Virtual-networking-setup</a></li><li><a href="/manuals/2.8.0/6/6_-_Vmware.html">6 - Vmware</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

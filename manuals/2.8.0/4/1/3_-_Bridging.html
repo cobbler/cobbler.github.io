@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Advanced Networking - Bridging</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -119,35 +119,49 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/4/1_-_Advanced_Networking.html">1</a> <span class="divider">/</span></li><li class="active">Advanced Networking - Bridging</li></ul>
+   <h1>Advanced Networking - Bridging</h1>
+<p>A bridge is a way to connect two Ethernet segments together in a protocol independent way. Packets are forwarded based on Ethernet address, rather than IP address (like a router). Since forwarding is done at Layer 2, all protocols can go transparently through a bridge. (<a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge">reference</a>).</p>
 
-<h3>User Manuals</h3>
+<p>You can create a bridge in cobbler in the following way:</p>
 
-<ul>
-<li><a href="/manuals/2.6.0">User Manual 2.6.x</a></li>
-<li><a href="/manuals/2.4.0">User Manual 2.4.x</a></li>
-<li><a href="/manuals/2.2.3">User Manual 2.2.x (EOL)</a></li>
-</ul>
-
-
-<h3>Quickstart Guide</h3>
-
-<ul>
-<li><a href="/manuals/quickstart">Quickstart Guide</a></li>
-</ul>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F0 --interface-type<span class="o">=</span>bridge_slave --interface-master<span class="o">=</span>br0
+<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth1 --mac<span class="o">=</span>AA:BB:CC:DD:EE:F1 --interface-type<span class="o">=</span>bridge_slave --interface-master<span class="o">=</span>br0
+<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>br0 --interface-type<span class="o">=</span>bridge --bridge-opts<span class="o">=</span><span class="s2">&quot;stp=no&quot;</span> --ip-address<span class="o">=</span>192.168.1.100 --netmask<span class="o">=</span>255.255.255.0
+</code></pre></div>
 
 
-<h3>Developer Manuals</h3>
+<p>You can specify any bridging options you would like, so please read the brctl manpage for details if you are unfamiliar with bridging.</p>
 
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
+<p><strong>NOTE</strong> You must install the bridge-utils package during the build process for this to work in the %post section of your build.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/4/1/1_-_Bonding.html">1 - Bonding</a></li><li><a href="/manuals/2.8.0/4/1/2_-_VLANs.html">2 - VLANs</a></li><li><a href="/manuals/2.8.0/4/1/3_-_Bridging.html">3 - Bridging</a></li><li><a href="/manuals/2.8.0/4/1/4_-_Bonded_Bridging.html">4 - Bonded Bridging</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

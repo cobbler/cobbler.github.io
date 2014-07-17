@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Prerequisites for Installation</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -119,35 +119,93 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/2_-_Installing_Cobbler.html">2</a> <span class="divider">/</span></li><li class="active">Prerequisites for Installation</li></ul>
+   <h1>Prerequisites for Installation</h1>
+<p>Cobbler has both definite and optional prerequisites, based on the features you'd like to use. This section documents the definite prerequisites for both a basic installation and when building/installing from source. Please see the <a href="/manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.html">Managing Services With Cobbler</a> section for details on the prerequisites for managing services, and other sections may make note of other package requirements.</p>
 
-<h3>User Manuals</h3>
+<p>Please note that installing any of the packages here via a package manager (such as yum or apt) can and will require a large number of ancilary packages, which we do not document here. The package definition should automatically pull these packages in and install them along with cobbler, however it is always best to verify these requirements have been met prior to installing cobbler or any of its components.</p>
+
+<h2>Cobbler/Cobblerd</h2>
+
+<p>First and foremost, cobbler requires Python. Any version over 2.6 should work. Cobbler also requires the installation of the following packages:</p>
 
 <ul>
-<li><a href="/manuals/2.6.0">User Manual 2.6.x</a></li>
-<li><a href="/manuals/2.4.0">User Manual 2.4.x</a></li>
-<li><a href="/manuals/2.2.3">User Manual 2.2.x (EOL)</a></li>
+<li>createrepo</li>
+<li>httpd (apache2 for Debian/Ubuntu)</li>
+<li>mkisofs</li>
+<li>mod_wsgi (libapache2-mod-wsgi for Debian/Ubuntu)</li>
+<li>mod_ssl (libapache2-mod-ssl)</li>
+<li>python-cheetah</li>
+<li>python-netaddr</li>
+<li>python-simplejson</li>
+<li>python-urlgrabber</li>
+<li>PyYAML (python-yaml for Debian/Ubuntu)</li>
+<li>rsync</li>
+<li>syslinux</li>
+<li>tftp-server (atftpd for Debian/Ubuntu, though others <em>may</em> work)</li>
+<li>yum-utils</li>
 </ul>
 
 
-<h3>Quickstart Guide</h3>
+<h2>Cobbler-Web</h2>
+
+<p>Cobbler web only has one other requirement besides cobbler itself:</p>
 
 <ul>
-<li><a href="/manuals/quickstart">Quickstart Guide</a></li>
+<li>Django (python-django for Debian/Ubuntu)</li>
 </ul>
 
 
-<h3>Developer Manuals</h3>
+<h2>Koan</h2>
+
+<p>Koan can be installed apart from cobblerd, and has only the following requirement (besides python itself of course):</p>
 
 <ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
+<li>python-simplejson</li>
 </ul>
 
 
-</div> <!-- end wrap -->
+<h2>Source Prerequisites</h2>
 
+<p>Installation from source requires the following additional packages:</p>
+
+<ul>
+<li>git</li>
+<li>make</li>
+<li>python-devel</li>
+<li>python-setuptools</li>
+<li>python-cheetah</li>
+<li>openssl</li>
+</ul>
+
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/2/1_-_Prerequisites.html">1 - Prerequisites</a></li><li><a href="/manuals/2.8.0/2/2_-_Installing_From_Packages.html">2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.8.0/2/2/1_-_Fedora.html">2.1 - Fedora</a></li><li><a href="/manuals/2.8.0/2/2/2_-_RHEL_and_CentOS.html">2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.8.0/2/2/3_-_openSUSE.html">2.3 - openSUSE</a></li><li><a href="/manuals/2.8.0/2/2/4_-_Debian_and_Ubuntu.html">2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.8.0/2/3_-_Installing_From_Source.html">3 - Installing From Source</a></li><li><a href="/manuals/2.8.0/2/4_-_Configuration_Files.html">4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.8.0/2/4/1_-_Settings_File.html">4.1 - Settings File</a></li><li><a href="/manuals/2.8.0/2/4/2_-_Modules_Configuration.html">4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.8.0/2/5_-_Relocating_Your_Installation.html">5 - Relocating Your Installation</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

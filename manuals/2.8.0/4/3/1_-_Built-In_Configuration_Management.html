@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Built-In Configuration Management</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -119,35 +119,112 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
-
-<h3>User Manuals</h3>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/4/3_-_Configuration_Management.html">3</a> <span class="divider">/</span></li><li class="active">Built-In Configuration Management</li></ul>
+   <h1>Built-In Configuration Management</h1>
+<p>Cobbler is not just an installation server, it can also enable two different types of ongoing configuration management system (CMS):</p>
 
 <ul>
-<li><a href="/manuals/2.6.0">User Manual 2.6.x</a></li>
-<li><a href="/manuals/2.4.0">User Manual 2.4.x</a></li>
-<li><a href="/manuals/2.2.3">User Manual 2.2.x (EOL)</a></li>
+<li>integration with an established external CMS such as <a href="http://cfengine.com/">cfengine3</a> or <a href="http://puppetlabs.com/">puppet</a>, discussed <a href="Using%20cobbler%20with%20a%20configuration%20management%20system">elsewhere</a>;</li>
+<li>its own, much simpler, lighter-weight, internal CMS, discussed here.</li>
 </ul>
 
 
-<h3>Quickstart Guide</h3>
+<h2>Setting up</h2>
+
+<p>Cobbler's internal CMS is focused around packages and templated configuration files, and installing these on client systems.</p>
+
+<p>This all works using the same
+<a href="http://cheetahtemplate.org">Cheetah-powered</a> templating engine
+used in <a href="/cobbler/cobbler/wiki/KickstartTemplating">KickstartTemplating</a>,
+so once you learn about the power of treating your distribution
+answer files as templates, you can use the same templating to drive
+your CMS configuration files.</p>
+
+<p>For example:</p>
+
+<pre><code>cobbler profile edit --name=webserver \
+  --template-files=/srv/cobbler/x.template=/etc/foo.conf
+</code></pre>
+
+<p>A client system installed via the above profile will gain a file "/etc/foo.conf" which is the result of rendering the template given by "/srv/cobbler/x.template". Multiple files may be specified; each "template=destination" pair should be placed in a space-separated list enclosed in quotes:</p>
+
+<pre><code>--template-files="srv/cobbler/x.template=/etc/xfile.conf srv/cobbler/y.template=/etc/yfile.conf"
+</code></pre>
+
+<h2>Template files</h2>
+
+<p>Because the template files will be parsed by the Cheetah parser, they must conform to the guidelines described in <a href="Kickstart%20Templating">Kickstart Templating</a>. This is particularly important when the file is generated outside a Cheetah environment. Look for, and act on, Cheetah 'ParseError' errors in the Cobbler logs.</p>
+
+<p>Template files follows general Cheetah syntax, so can include Cheetah variables. Any variables you define anywhere in the cobbler object hierarchy (distros, profiles, and systems) are available to your templates. To see all the variables available, use the command:</p>
+
+<pre><code>cobbler profile dumpvars --name=webserver
+</code></pre>
+
+<p>Cobbler snippets and other advanced features can also be employed.</p>
+
+<h2>Ongoing maintenance</h2>
+
+<p>Koan can pull down files to keep a system updated with the latest templates and variables:</p>
+
+<pre><code>koan --server=cobbler.example.org --profile=foo --update-files
+</code></pre>
+
+<p>You could also use <code>--server=bar</code> to retrieve a more specific set of templating.(???) Koan can also autodetect the server if the MAC address is registered.</p>
+
+<h2>Further uses</h2>
+
+<p>This Cobbler/Cheetah templating system can serve up templates via the magic URLs (see "Leveraging Mod Python" below). To do this ensure that the destination path given to any <code>--template-files</code> element is relative, not absolute; then Cobbler and koan won't download those files.</p>
+
+<p>For example, in:</p>
+
+<pre><code>cobbler profile edit --name=foo \
+  --template-files="/srv/templates/a.src=/etc/foo/a.conf /srv/templates/b.src=1"
+</code></pre>
+
+<p>cobbler and koan would automatically download the rendered "a.src" to replace the file "/etc/foo/a.conf", but the b.src file would not be downloaded to anything because the destination pathname "1" is not absolute.</p>
+
+<p>This technique enables using the Cobbler/Cheetah templating system to build things that other systems can fetch and use, for instance, BIOS config files for usage from a live environment.</p>
+
+<h2>Leveraging Mod Python</h2>
+
+<p>All template files are generated dynamically at run-time. If a change is made to a template, a <code>--ks-meta</code> variable or
+some other variable in cobbler, the result of template rendering will be different on subsequent runs. This is covered in more depth in the <a href="Developer%20documentation">Developer documentation</a>.</p>
+
+<h2>Possible future developments</h2>
 
 <ul>
-<li><a href="/manuals/quickstart">Quickstart Guide</a></li>
+<li>Serving and running scripts via <code>--update-files</code> (probably staging them through "/var/spool/koan").</li>
+<li>Auto-detection of the server name if <code>--ip</code> is registered.</li>
 </ul>
 
 
-<h3>Developer Manuals</h3>
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
 
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/4/3/1_-_Built-In_Configuration_Management.html">1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.8.0/4/3/2_-_Puppet_Integration.html">2 - Puppet Integration</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

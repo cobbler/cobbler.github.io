@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler Manuals</title>
+   <title>Alternative Storage Backends - CouchDB</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -119,35 +119,55 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manuals</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/4/12_-_Alternative_Storage_Backends.html">12</a> <span class="divider">/</span></li><li class="active">Alternative Storage Backends - CouchDB</li></ul>
+   <h1>Alternative Storage Backends - CouchDB</h1>
+<p>Cobbler 2.0.x introduced support for CouchDB as alternate storage backend, primarily as a proof of concept for NoSQL style databases. Currently, support for this backend is ALPHA-quality as it has not received significant testing.</p>
 
-<h3>User Manuals</h3>
+<p>Currently, CouchDB must be configured and running on the same system as the cobblerd daemon in order for Cobbler to connect to it successfully. Additional SELinux rules may be required for this connection if SELinux is set to enforcing mode.</p>
 
-<ul>
-<li><a href="/manuals/2.6.0">User Manual 2.6.x</a></li>
-<li><a href="/manuals/2.4.0">User Manual 2.4.x</a></li>
-<li><a href="/manuals/2.2.3">User Manual 2.2.x (EOL)</a></li>
-</ul>
+<h3>Serializer Setup</h3>
 
+<p>Add or modify the following section in the <code>/etc/cobbler/modules.conf</code> configuration file:</p>
 
-<h3>Quickstart Guide</h3>
-
-<ul>
-<li><a href="/manuals/quickstart">Quickstart Guide</a></li>
-</ul>
-
-
-<h3>Developer Manuals</h3>
-
-<ul>
-<li><a href="/manuals/developer">Developer Guide</a></li>
-</ul>
+<div class="highlight"><pre><code class="ini"><span class="k">[serializers]</span>
+<span class="na">settings</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
+<span class="na">distro</span> <span class="o">=</span> <span class="s">serializer_couchdb</span>
+<span class="na">profile</span> <span class="o">=</span> <span class="s">serializer_couchdb</span>
+<span class="na">system</span> <span class="o">=</span> <span class="s">serializer_couchdb</span>
+<span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_couchdb</span>
+<span class="err">etc...</span>
+</code></pre></div>
 
 
-</div> <!-- end wrap -->
+<p><strong>NOTE</strong> Be sure to leave the settings serializer set to serializer_catalog.</p>
 
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/4/12/1_-_CouchDB.html">1 - CouchDB</a></li><li><a href="/manuals/2.8.0/4/12/2_-_MongoDB.html">2 - MongoDB</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

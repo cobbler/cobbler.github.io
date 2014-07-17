@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Cobbler development team" />
+
+   <title>Cobbler Manual</title>
+
+   <!-- CSS -->
+   <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
+   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="/css/search.css" />
+
+   <!-- Fonts -->
+   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
+
+   <!--[if lt IE 9]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   <![endif]-->
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.swiftype.search.js"></script>
+</head>
+<body class="pull_up">
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div class="navbar transparent navbar-inverse navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container">
+   <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
+   <div class="nav-collapse collapse">
+    <ul class="nav pull-right">
+     <li><a href="/about.html" title="About"><i class="icon-cloud icon-med"></i> About </a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Downloads <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/downloads/2.6.x.html" title="Cobbler 2.6.x">2.6.x</a></li>
+         <li><a href="/downloads/2.4.x.html" title="Cobbler 2.4.x">2.4.x</a></li>
+       </ul>
+     </li>
+     <li><a href="/posts/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/manuals/quickstart/" title="Quickstart Guide">Quickstart Guide</a></li>
+         <li><a href="/manuals/2.6.0/" title="Version 2.6.x">User Manual 2.6.x</a></li>
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
+         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+         <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         <li><a href="/users.html" title="Cobbler Users">Who's Using Cobbler</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i> Github <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+        <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+       </ul>
+     </li>
+     <li>
+      <form class="pull-right">
+       <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+     </li>
+    </ul>
+    <!-- <div id="st-results-container"></div> -->
+    <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+      (function() {
+        Swiftype.key = 'ybEhsDqz2mEFrMtBHiwB';
+        Swiftype.inputElement = '#st-search-input';
+        Swiftype.resultContainingElement = '#st-results-container';
+        Swiftype.attachElement = '#st-search-input';
+        Swiftype.renderStyle = "new_page";
+        Swiftype.resultPageURL = '/search.html';
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = "//swiftype.com/embed.js";
+        var entry = document.getElementsByTagName('script')[0];
+        entry.parentNode.insertBefore(script, entry);
+      }());
+    </script>
+   </div>
+   <!--
+   <form class="navbar-search pull-right" onsubmit="return false;">
+    <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+   </form>
+   -->
+  </div>
+ </div>
+</div>
+
+
+<!-- begin content -->
+
+<div id="wrap" class="container">
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
+   <h1>Cobbler Manual</h1>
+<h1>Power PC support</h1>
+
+<p>Cobbler includes support for provisioning Linux on PowerPC systems.
+This document will address how cobbler PowerPC support differs from
+cobbler support for more common architectures, including i386 and
+x86_64.</p>
+
+<h2>Setup</h2>
+
+<p>Support for network booting PowerPC systems is much like support
+for network booting x86 systems using PXE. However, since PXE is
+not available for PowerPC, <a href="http://yaboot.ozlabs.org">yaboot</a> is
+used to network boot your PowerPC systems. To start, you must
+adjust the boot device order on your system so that a network
+device is first. On x86-based architectures, this configuration
+change would be accomplished by entering the BIOS. However,
+[en.wikipedia.org/wiki/Open_Firmware Open Firmware] is often used
+in place of a BIOS on PowerPC platforms. Different PowerPC
+platforms offer different methods for accessing Open Firmware. The
+common procedures are outlined at
+<a href="http://en.wikipedia.org/wiki/Open_Firmware#Access">http://en.wikipedia.org/wiki/Open_Firmware#Access</a>.
+The following example demonstrates updating the boot device order.</p>
+
+<p>Once at an Open Firmware prompt, to display current device aliases
+use the <code>devalias</code> command. For example:</p>
+
+<pre><code>0 &gt; devalias 
+ibm,sp              /vdevice/IBM,sp@4000
+disk                /pci@800000020000002/pci@2,4/pci1069,b166@1/scsi@1/sd@5,0
+network             /pci@800000020000002/pci@2/ethernet@1
+net                 /pci@800000020000002/pci@2/ethernet@1
+network1            /pci@800000020000002/pci@2/ethernet@1,1
+scsi                /pci@800000020000002/pci@2,4/pci1069,b166@1/scsi@0
+nvram               /vdevice/nvram@4002
+rtc                 /vdevice/rtc@4001
+screen              /vdevice/vty@30000000
+ ok
+</code></pre>
+
+<p>To display the current boot device order, use the <code>printenv</code>
+command. For example:</p>
+
+<pre><code>0 &gt; printenv boot-device 
+-------------- Partition: common -------- Signature: 0x70 ---------------
+boot-device              /pci@800000020000002/pci@2,3/ide@1/disk@0 /pci@800000020000002/pci@2,4/pci1069,b166@1/scsi@1/sd@5,0 
+ ok
+</code></pre>
+
+<p>To add the device with alias <strong>network</strong> as the first boot device,
+use the <code>setenv</code> command. For example:</p>
+
+<pre><code>0 &gt; setenv boot-device network /pci@800000020000002/pci@2,3/ide@1/disk@0 /pci@800000020000002/pci@2,4/pci1069,b166@1/scsi@1/sd@5,0
+</code></pre>
+
+<p>Your system is now configured to boot off of the device with alias
+<strong>network</strong> as the first boot device. Should booting off this
+device fail, your system will fallback to the next device listed in
+the <strong>boot-device</strong> Open Firmware settings.</p>
+
+<h2>System-based configuration</h2>
+
+<p>To begin, you need to first configure a Cobbler server. Cobbler can
+be run on any Linux system accessible by the your PowerPC system,
+including an x86 system, or another PowerPC system. This server's
+primary responsibility is to host the Linux install tree(s)
+remotely, and maintain information about clients accessing it. For
+detailed instructions on configuring the Cobbler server, see:</p>
+
+<p><a href="https://fedorahosted.org/cobbler/UserDocumentation">https://fedorahosted.org/cobbler/UserDocumentation</a></p>
+
+<p>Next, it's time to add a system to cobbler. The following command
+will add a system named <em>ibm-505-lp1</em> to cobbler. Note that the
+cobbler profile specified (<em>F-11-GOLD-ppc64</em>) must already exist.</p>
+
+<pre><code>cobbler system add --name ibm-505-lp1 --hostname ibm-505-lp1.example.com \
+  --profile F-11-GOLD-ppc64 --kopts "console=hvc0 serial" \
+  --interface 0 --mac 00:11:25:7e:28:64
+</code></pre>
+
+<p>Most of the options to cobbler system add are self explanatory
+network parameters. They are fully explained in the cobbler man
+page (see man cobbler). The --kopts option is used to specify any
+system-specific kernel options required for this system. These will
+vary depending on the nature of the system and connectivity. In the
+example above, I chose to redirect console output to a device
+called <em>hvc0</em> which is a specific console device available in some
+virtualized guest environments (including KVM and PowerPC virtual
+guests).</p>
+
+<p>In the example above, only one MAC address was specified. If
+network booting from additional devices is desired, you may wish to
+add more MAC addresses to your system configuration in cobbler. The
+following commands demonstrate adding additional MAC addresses:</p>
+
+<pre><code>cobbler system edit --name ibm-505-lp1 --interface 1 --mac 00:11:25:7e:28:65
+cobbler system edit --name ibm-505-lp1 --interface 2 --mac 00:0d:60:b9:6b:c8
+</code></pre>
+
+<div class="alert alert-info alert-block"><b>Note:</b> Providing a MAC address is required for proper network boot</div>
+
+
+<p>support using yaboot.</p>
+
+<h2>Profile-based configuration</h2>
+
+<p>Profile-based network installations using yaboot are not available
+at this time. OpenFirmware is only able to load a bootloader into
+memory once. Once, yaboot is loaded into memory from a network
+location, you are not able to exit and load an on-disk yaboot.
+Additionally, yaboot requires specific device locations in order to
+properly boot. At this time there is no <em>local</em> boot target as
+there are in PXE configuration files.</p>
+
+<h2>Troubleshooting</h2>
+
+<h3>OpenFirmware Ping test</h3>
+
+<p>If available, some PowerPC systems offer a management interface
+available from the boot menu or accessible from OpenFirmware
+directly. On IBM PowerPC systems, this interface is called SMS.</p>
+
+<p>To enter SMS while your IBM PowerPC system is booting, press <em>1</em>
+when prompted during boot up. A sample boot screen is shown below:</p>
+
+<pre><code>IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM 
+IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM 
+IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM 
+IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM IBM 
+
+          1 = SMS Menu                          5 = Default Boot List
+          8 = Open Firmware Prompt              6 = Stored Boot List
+
+
+     Memory      Keyboard     Network     SCSI    
+</code></pre>
+
+<p>To enter SMS from an OpenFirmware prompt, type:</p>
+
+<pre><code>dev /packages/gui obe
+</code></pre>
+
+<p>Once you've entered the SMS, you should see an option menu similar
+to:</p>
+
+<pre><code> SMS 1.6 (c) Copyright IBM Corp. 2000,2005 All rights reserved.
+-------------------------------------------------------------------------------
+ Main Menu
+ 1.   Select Language
+ 2.   Setup Remote IPL (Initial Program Load)
+ 3.   Change SCSI Settings
+ 4.   Select Console
+ 5.   Select Boot Options
+</code></pre>
+
+<p>To perform the ping test:</p>
+
+<ol>
+<li>Select <code>Setup Remote IPL</code></li>
+<li><p>Select the appropriate network device to use
+    -------------------------------------------------------------------------------
+     NIC Adapters
+          Device                          Location Code                 Hardware
+                                                                        Address</p>
+
+<pre><code> 1.  Port 1 - IBM 2 PORT 10/100/100  U789F.001.AAA0060-P1-T1  0011257e2864
+ 2.  Port 2 - IBM 2 PORT 10/100/100  U789F.001.AAA0060-P1-T2  0011257e2865
+</code></pre></li>
+<li><p>Select <code>IP Parameters</code>
+    -------------------------------------------------------------------------------
+     Network Parameters
+    Port 1 - IBM 2 PORT 10/100/1000 Base-TX PCI-X Adapter: U789F.001.AAA0060-P1-T1</p>
+
+<pre><code> 1.   IP Parameters
+ 2.   Adapter Configuration
+ 3.   Ping Test
+ 4.   Advanced Setup: BOOTP
+</code></pre></li>
+<li><p>Enter your local network settings
+    -------------------------------------------------------------------------------
+     IP Parameters
+    Port 1 - IBM 2 PORT 10/100/1000 Base-TX PCI-X Adapter: U789F.001.AAA0060-P1-T1</p>
+
+<pre><code> 1.   Client IP Address                    [0.0.0.0]
+ 2.   Server IP Address                    [0.0.0.0]
+ 3.   Gateway IP Address                   [0.0.0.0]
+ 4.   Subnet Mask                          [0.0.0.0]
+</code></pre></li>
+<li><p>When complete, press <code>Esc</code>, and select <code>Ping Test</code></p></li>
+</ol>
+
+
+<p>The results of this test will confirm whether your network settings
+are functioning properly.</p>
+
+<h3>Confirm Cobbler Settings</h3>
+
+<p>Is your system configured to netboot? Confirm this by using the
+following command:</p>
+
+<pre><code># cobbler system report --name ibm-505-lp1 | grep netboot 
+netboot enabled?      : True
+</code></pre>
+
+<h3>Confirm Cobbler Configuration Files</h3>
+
+<p>Cobbler stores network boot information for each MAC address
+associated with a system. When a PowerPC system is configured for
+netbooting, a cobbler will create the following two files inside
+the tftp root directory:</p>
+
+<ul>
+<li>ppc/01-&lt;MAC_ADDRESS> - symlink to the ../yaboot</li>
+<li>etc/01-&lt;MAC_ADDRESS> - a yaboot.conf configuration</li>
+</ul>
+
+
+<p>Confirm that the expected boot and configuration files exist for
+each MAC address. A sample configuration is noted below:</p>
+
+<pre><code># for MAC in $(cobbler system report --name ibm-505-lp1 | grep mac | gawk '{print $4}' | tr ':' '-');
+do
+    ls /var/lib/tftpboot/{ppc,etc}/01-$MAC ;
+done
+/var/lib/tftpboot/etc/01-00-11-25-7e-28-64
+/var/lib/tftpboot/ppc/01-00-11-25-7e-28-64
+/var/lib/tftpboot/etc/01-00-11-25-7e-28-65
+/var/lib/tftpboot/ppc/01-00-11-25-7e-28-65
+/var/lib/tftpboot/etc/01-00-0d-60-b9-6b-c8
+/var/lib/tftpboot/ppc/01-00-0d-60-b9-6b-c8
+</code></pre>
+
+<h3>Confirm Permissions</h3>
+
+<p>Be sure that SELinux file context's and file permissions are
+correct. SELinux file context information can be reset according to
+your system policy by issuing the following command:</p>
+
+<pre><code># restorecon -R -v /var/lib/tftpboot 
+</code></pre>
+
+<p>To identify any additional permissions issues, monitor the system
+log file <code>/var/log/messages</code> and the SELinux audit log
+<code>/var/log/audit/audit.log</code> while attempting to netboot your
+system.</p>
+
+<h3>Latest yaboot?</h3>
+
+<p>Network boot support requires a fairly recent yaboot. The yaboot
+included in cobbler-1.4.x may not support booting recent Fedora
+derived distributions. Before reporting a bug, try updating to the
+latest yaboot binary. The latest yaboot binary is available from
+Fedora rawhide at
+<a href="http://download.fedoraproject.org/pub/fedora/linux/development/ppc/os/ppc/chrp/yaboot">http://download.fedoraproject.org/pub/fedora/linux/development/ppc/os/ppc/chrp/yaboot</a>.</p>
+
+<h2>References</h2>
+
+<ul>
+<li>Additional OpenFirmware information available at
+<a href="http://oss.gonicus.de/openpower/index.php/OpenFirmware">http://oss.gonicus.de/openpower/index.php/OpenFirmware</a></li>
+</ul>
+
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/Appendix/A_-_Power-PC_Support.html">A - Power-PC Support</a></li><li><a href="/manuals/2.8.0/Appendix/B_-_Tips_for_RHN.html">B - Tips for RHN</a></li><li><a href="/manuals/2.8.0/Appendix/C_-_Memtest.html">C - Memtest</a></li><li><a href="/manuals/2.8.0/Appendix/D_-_Anaconda_Monitoring.html">D - Anaconda Monitoring</a></li><li><a href="/manuals/2.8.0/Appendix/E_-_System_Retirement.html">E - System Retirement</a></li><li><a href="/manuals/2.8.0/Appendix/F_-_Booting_Live_CDs.html">F - Booting Live CDs</a></li><li><a href="/manuals/2.8.0/Appendix/G_-_Clonezilla_Integration.html">G - Clonezilla Integration</a></li></ul></div>
+  </div>
+ </div>
+</div>
+<!-- end content -->
+
+<footer>
+  <div class="container">
+    <div class="row-fluid sections">
+      <div class="span6 footmenu">
+       <div class="row-fluid">
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Pages</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Blog Posts</a></li>
+          <li><a href="/about.html">About Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span2 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Manuals</li>
+          <li><a href="/manuals/quickstart/">Quickstart</a></li>
+          <li><a href="/manuals/2.6.0/">2.6.x</a></li>
+          <li><a href="/manuals/2.4.0/">2.4.x</a></li>
+          <li><a href="/manuals/developer/">Developer</a></li>
+         </ul>
+        </div>
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Community</li>
+          <li><a href="/community.html">How to Get Help</a></li>
+          <li><a href="/supporters.html">Supporters</a></li>
+          <li><a href="/users.html">Who's Using Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span4 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Github</li>
+          <li><a href="https://github.com/cobbler/cobbler">Code Repository</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki">Wiki</a></li>
+         </ul>
+        </div>
+       </div>
+    <div class="row-fluid">
+    </div>
+    <div class="row-fluid">
+     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
+     <p class="browsers">
+      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
+      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
+      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
+      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
+     </p>
+    </div>
+      </div>
+      <div class="span3 posts">
+        <p class="column_header">Recent Posts:</p>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/07/15/cobbler_2.6.2_released.html">Cobbler 2.6.2 Released</a></p>
+          <p class="author">Posted by Jörgen on Tuesday, July 15, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/07/14/cobbler_2.4.5_released.html">Cobbler 2.4.5 Released</a></p>
+          <p class="author">Posted by Jörgen on Monday, July 14, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/05/22/cobbler_2.6.1_released.html">Cobbler 2.6.1 Released</a></p>
+          <p class="author">Posted by Jörgen on Thursday, May 22, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/04/22/cobbler_2.4.4_released.html">Cobbler 2.4.4 Released</a></p>
+          <p class="author">Posted by Jörgen on Tuesday, April 22, 2014</p>
+        </div>
+
+      </div>
+      <div class="span3 credits">
+        <div class="social">
+          <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-width="100%">Follow @cobblerista</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="attributions">
+          <p class="column_header">Attributions:</p>
+          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
+          <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
+        </div>
+        <div class="copyright">
+          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
+          <script>$("#copyyear").text((new Date).getFullYear());</script>
+        </div>
+      </div>            
+    </div>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+
