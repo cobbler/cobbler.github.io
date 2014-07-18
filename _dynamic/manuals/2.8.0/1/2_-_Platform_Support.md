@@ -33,7 +33,8 @@ Key:
   <td class="center span1">Import</td>
   <td class="center span1">PXE</td>
   <td class="center span1">Build ISO</td>
-  <td class="center span1">Kickstarts/Snippets</td>
+  <td class="center span1">Kickstarts</td>
+  <td class="center span1">Snippets</td>
  </tr>
  <tr>
   <td colspan="7">Red Hat</td>
@@ -41,6 +42,7 @@ Key:
  <tr>
   <td class="span2"></td>
   <td class="span2">Fedora 18</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -55,10 +57,12 @@ Key:
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
  </tr>
  <tr>
   <td class="span2"></td>
   <td class="span2">Fedora 20</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -73,26 +77,29 @@ Key:
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
  </tr>
  <tr>
   <td colspan="7">SuSE</td>
  </tr>
  <tr>
   <td class="span2"></td>
-  <td class="span2">OpenSuSE 12.3</td>
+  <td class="span2">openSUSE 12.3</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
  <tr>
   <td class="span2"></td>
-  <td class="span2">OpenSuSE 13.1</td>
+  <td class="span2">openSUSE 13.1</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
 </table>

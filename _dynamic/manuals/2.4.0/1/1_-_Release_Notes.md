@@ -4,6 +4,28 @@ title: What's New
 meta: 2.4.0
 ---
 
+## 2.4.6
+
+### Feature improvements
+
+- Improved the form for editing snippets/kickstarts (cobbler-web)
+- Minor update to CSS; make better use of screen (tables) (cobbler-web)
+- Add a new field to the system type: ipv6_prefix (\#203)
+
+### Bugfixes
+
+- Restrict kickstart/snippet paths to /var/lib/cobbler/ (\#939 and CVE-2014-3225)
+- Several improvements to the RPM specfile (redhat bugzilla \#838884)
+- Add missing icons to cobbler-web (\#679)
+- cobbler-ext-nodes was broken with mgmt_classes defined at the profile level (\#790)
+- Properly name the VLAN interface in the cobbler manpage
+- Fix wrong address of the Free Software Foundation in source headers
+
+### Upgrade notes
+
+None.
+
+
 ## 2.4.5
 
 ### Feature improvements
@@ -13,13 +35,14 @@ meta: 2.4.0
 
 ### Bugfixes
 
-- Minor improvement to LDAPS configuration, fixes #217
+- Minor improvement to LDAPS configuration (\#217)
 - pre_install_network_config snippet: only use slaves with a valid MAC address
 - remove colon from VLAN regex pattern
 
 ### Upgrade notes
 
 None.
+
 
 ## 2.4.4
 
@@ -75,6 +98,7 @@ None.
 
 None.
 
+
 ## 2.4.1
 
 ### Feature improvements
@@ -110,6 +134,7 @@ None.
 ### Upgrade notes
 
 None.
+
 
 ## 2.4.0
 
