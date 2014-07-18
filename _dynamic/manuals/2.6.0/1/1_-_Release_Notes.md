@@ -4,6 +4,23 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.3
+
+### Feature improvements
+
+- Add a new field to the system type: ipv6_prefix (\#203)
+- Return to kickstart/snippet list after save (cobbler-web)
+
+### Bugfixes
+
+- Restrict kickstart/snippet paths to /var/lib/cobbler/ (\#939 and CVE-2014-3225)
+- Several improvements to the RPM specfile
+- Add missing icons to cobbler-web (\#679)
+- cobbler-ext-nodes was broken with mgmt_classes defined at the profile level (\#790)
+- Properly name the VLAN interface in the cobbler manpage
+- Fix wrong address of the Free Software Foundation in source headers
+
+
 ## 2.6.2
 
 ### Feature improvements
@@ -22,6 +39,7 @@ meta: 2.6.0
 - Minor improvement to LDAP configuration (Issue 217)
 - Fixes to Makefile (Issue 555)
 
+
 ## 2.6.1
 
 ### Feature improvements
@@ -39,6 +57,7 @@ meta: 2.6.0
 - Improved virt-install detection on non-rpm distros
 - Several fixes for running Cobbler on Debian like systems
 - Fixed typos in default kickstart files
+
 
 ## 2.6.0
 
