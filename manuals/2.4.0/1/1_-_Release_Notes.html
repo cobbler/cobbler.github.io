@@ -124,6 +124,38 @@ var WRInitTime=(new Date()).getTime();
   <div class="span8">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0">2.4.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.4.0/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">What's New</li></ul>
    <h1>What's New</h1>
+<h2>2.4.7</h2>
+
+<h3>Feature improvements</h3>
+
+<ul>
+<li>Make kickstart selectable from a pulldown list in cobbler-web (#991)</li>
+<li>Minor adjustment to the error_page template (cobbler-web)</li>
+</ul>
+
+
+<h3>Bugfixes</h3>
+
+<ul>
+<li>Exit with an error if cobblerd executable cant be found (#1108 #1135)</li>
+<li>Fix cobbler sync bug through xmlrpc api (NoneType object has no attribute info)</li>
+<li>Add strict kickstart check in the API (again for #939)</li>
+<li>Do not allow kickstarts in /etc/cobbler</li>
+<li>Fix broken gitdate, gitstamp values in version file (cobbler version)</li>
+<li>Prevent disappearing profiles after cobblerd restart (#1030)</li>
+</ul>
+
+
+<h3>Upgrade notes</h3>
+
+<p>This release makes the use of --parent and --distro mutually exclusive.
+The consequence is that subprofiles always have the same distro as
+the parent profile. This has been the intended behaviour ever since
+subprofiles got introduced.</p>
+
+<p>Please check if you have subprofiles with different distros than the
+parent profile and reconsider and adjust your configuration.</p>
+
 <h2>2.4.6</h2>
 
 <h3>Feature improvements</h3>
@@ -455,6 +487,16 @@ for system in all_systems:
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
+          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/08/08/cobbler_2.4.7_released.html">Cobbler 2.4.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/07/18/cobbler_2.6.3_released.html">Cobbler 2.6.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, July 18, 2014</p>
         </div>
@@ -462,16 +504,6 @@ for system in all_systems:
         <div class="post">
           <p class="title"><a href="/posts/2014/07/18/cobbler_2.4.6_released.html">Cobbler 2.4.6 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, July 18, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/07/15/cobbler_2.6.2_released.html">Cobbler 2.6.2 Released</a></p>
-          <p class="author">Posted by Jörgen on Tuesday, July 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/07/14/cobbler_2.4.5_released.html">Cobbler 2.4.5 Released</a></p>
-          <p class="author">Posted by Jörgen on Monday, July 14, 2014</p>
         </div>
 
       </div>

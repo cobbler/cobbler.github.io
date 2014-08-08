@@ -4,6 +4,33 @@ title: What's New
 meta: 2.4.0
 ---
 
+## 2.4.7
+
+### Feature improvements
+
+- Make kickstart selectable from a pulldown list in cobbler-web (\#991)
+- Minor adjustment to the error_page template (cobbler-web)
+
+### Bugfixes
+
+- Exit with an error if cobblerd executable cant be found (\#1108 \#1135)
+- Fix cobbler sync bug through xmlrpc api (NoneType object has no attribute info)
+- Add strict kickstart check in the API (again for \#939)
+- Do not allow kickstarts in /etc/cobbler
+- Fix broken gitdate, gitstamp values in version file (cobbler version)
+- Prevent disappearing profiles after cobblerd restart (\#1030)
+
+### Upgrade notes
+
+This release makes the use of --parent and --distro mutually exclusive.
+The consequence is that subprofiles always have the same distro as
+the parent profile. This has been the intended behaviour ever since
+subprofiles got introduced.
+
+Please check if you have subprofiles with different distros than the
+parent profile and reconsider and adjust your configuration.
+
+
 ## 2.4.6
 
 ### Feature improvements
