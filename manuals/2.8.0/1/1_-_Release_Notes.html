@@ -133,17 +133,24 @@ var WRInitTime=(new Date()).getTime();
 <li>Integrated pep8 (coding style) into the build system and resolved thousands of issues</li>
 <li>Add a new field to the system type: ipv6_prefix (#203)</li>
 <li>Minor update to CSS; make better use of screen (tables) (cobbler-web)</li>
+<li>Add support for an empty system status</li>
 <li>If --dns-name is specified, set it as DHCP host-name in preference to the --hostname field</li>
 <li>Allow user to choose whether or not to delete item(s) recursively (cobbler-web)</li>
 <li>Set ksdevice kernel option to MAC address for ppc systems as bootif is not used by yaboot</li>
 <li>Return to list of snippets/kickstarts when snippet/kickstart is saved (cobbler-web)</li>
 <li>Layout in snippet/kickstart edit form has been improved (cobbler-web)</li>
+<li>Better handling of copy/remove actions for subprofiles (API and cobbler-web)</li>
+<li>Make kickstart selectable from a pulldown list in cobbler-web (#991)</li>
 </ul>
 
 
 <h3>Bugfixes</h3>
 
 <ul>
+<li>Dont send the Puppet environment when system status is empty (#560</li>
+<li>Cobbler-web kept only the most recent interface change (#687)</li>
+<li>Fix broken gitdate, gitstamp values in /etc/cobbler/version</li>
+<li>Prevent disappearing profiles after cobblerd restart (#1030)</li>
 <li>Add missing icons to cobbler_web/content (#679)</li>
 <li>cobbler-ext-nodes was broken with mgmt_classes defined at the profile level (#790)</li>
 <li>Properly name the VLAN interface in the manual page</li>
@@ -159,6 +166,9 @@ var WRInitTime=(new Date()).getTime();
 <h3>Upgrade notes</h3>
 
 <ul>
+<li>The template_remote_kickstarts feature has been removed</li>
+<li>All object names are now validated like that of the system object</li>
+<li>The use of --parent and --distro on subprofiles are now mutually exclusive</li>
 <li>Support for s390/s390x has been removed</li>
 <li>Support for ia64 (Itanium) has been removed</li>
 <li>Support for the MySQL backend has been removed</li>
@@ -166,6 +176,7 @@ var WRInitTime=(new Date()).getTime();
 <li>Koan now requires python 2.6</li>
 <li>Red Hat specific kernel options have been removed from the settings file</li>
 <li>Deprecated Func integration: moved to contrib</li>
+<li>Deprecated Koan LiveCD: moved to contrib</li>
 </ul>
 
 
@@ -250,6 +261,16 @@ var WRInitTime=(new Date()).getTime();
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
+          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2014/08/08/cobbler_2.4.7_released.html">Cobbler 2.4.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/07/18/cobbler_2.6.3_released.html">Cobbler 2.6.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, July 18, 2014</p>
         </div>
@@ -257,16 +278,6 @@ var WRInitTime=(new Date()).getTime();
         <div class="post">
           <p class="title"><a href="/posts/2014/07/18/cobbler_2.4.6_released.html">Cobbler 2.4.6 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, July 18, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/07/15/cobbler_2.6.2_released.html">Cobbler 2.6.2 Released</a></p>
-          <p class="author">Posted by Jörgen on Tuesday, July 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/07/14/cobbler_2.4.5_released.html">Cobbler 2.4.5 Released</a></p>
-          <p class="author">Posted by Jörgen on Monday, July 14, 2014</p>
         </div>
 
       </div>
