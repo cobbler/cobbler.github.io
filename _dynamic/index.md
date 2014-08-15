@@ -2,8 +2,8 @@
 layout: index
 title: Cobbler - Linux install and update server
 cobbler:
-  version: 2.6.4
-  release: Aug 8th, 2014
+  version: 2.6.5
+  release: Aug 15th, 2014
 users:
   - img: acision
   - img: alstom
