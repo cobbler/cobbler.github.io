@@ -4,6 +4,23 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.5
+
+### Feature improvements
+
+None.
+
+### Bugfixes
+
+- Add missing _validate_ks_template_path function so that
+kickstarts for systems can now be changed again (\#1156)
+- Remove root= argument from boot when using grubby and
+replace-self to avoid booting the currently running OS (\#638)
+
+### Upgrade notes
+
+None.
+
 ## 2.6.4
 
 ### Feature improvements

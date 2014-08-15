@@ -4,6 +4,21 @@ title: What's New
 meta: 2.4.0
 ---
 
+## 2.4.8
+
+### Feature improvements
+
+None
+
+### Bugfixes
+
+- Add missing _validate_ks_template_path function so that
+kickstarts for systems can now be changed again (\#1156)
+
+### Upgrade notes
+
+None.
+
 ## 2.4.7
 
 ### Feature improvements
