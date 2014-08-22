@@ -1,0 +1,26 @@
+** DISCLAIMER **
+
+In order to network install ("netboot") various arches, different boot loaders are required
+for each architecture.  Unfortunately for Enterprise Linux and Fedora, these packages
+are not available to all arches.
+
+The requirements for netbooting each are as follows:
+
+x86/x86_64 require syslinux (pxelinux.0), and menu.c32
+ppc/ppc64  use yaboot
+ia64       uses elilo
+
+This is further complicated by Fedora not supporting IA64 and needing to provide
+the same content to Debian and other install bases using the install server.
+
+So, to faciliate providing content for users that do not wish to source content manually
+these are supplied from cobblerd.org as an optional way of getting that content.
+
+Users may also want to use the latest versions of these packages from source or supply
+their own from another source -- these are provided only for convience.  
+
+We are not responsible for ensuring these versions are up to date, but if you would like
+to see a later version made available here email the project mailing list.
+
+
+

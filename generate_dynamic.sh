@@ -12,6 +12,7 @@ cd ..
 rsync -a --delete _dynamic/_site/manuals/ manuals/
 rsync -a --delete _dynamic/_site/posts/ posts/
 rsync -a --delete _dynamic/_site/downloads/ downloads/
+rsync -a --delete _dynamic/_site/loaders/ loaders/
 cp -a _dynamic/_site/*.html ./
 # cp _dynamic/_site/search.json .
 rm -rf _dynamic/{_includes,_layouts,_site,posts,test.idx}
