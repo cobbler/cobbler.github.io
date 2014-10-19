@@ -4,6 +4,38 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.6
+
+### Feature improvements
+
+- Add proxy support for get-loaders, signature update and reposync (\#1286)
+- Enable external YUM repo mirroring through a proxy server
+- Update yaboot to 1.3.17
+- Support virtio26 for generic qemu fallback (Koan)
+
+### Bugfixes
+
+- Changed Apache configuration directory in Ubuntu 14.04 (\#1208)
+- Add proxy support for get-loaders, signature update and reposync (\#1286)
+- Creating RPMs is done with make rpms (\#1268)
+- Post install report mails are not mailed when ignorelist is empty (\#1248)
+- Regression: kickstart edit in cobbler-web fixed
+- Regression: kickstart filepath validation
+- Make <<inherit>> a valid kickstart location
+- Blacklist gpgkey as an invalid option to the repo statement
+- gpgcheck / enabled are not valid in kickstart, only in config.repo
+- Updated man page to reflect the removal of URL support for kickstarts
+- Regression: <<inherit>> was not available as kickstart value
+- Return right value from TftpdPyManager.what method
+- Fixed a typo in the power management API
+- Ensure all variables are available in PXE generation (\#505)
+- Dont reset CONFIG_ARGS as it might have been sourced from sysconfig/defaults (\#1141)
+
+### Upgrade notes
+
+None.
+
+
 ## 2.6.5
 
 ### Feature improvements
