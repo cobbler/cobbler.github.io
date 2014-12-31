@@ -130,17 +130,16 @@ var WRInitTime=(new Date()).getTime();
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler check
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler check
 The following are potential configuration items that you may want to fix:
 
-1 : SELinux is enabled. Please review the following wiki page <span class="k">for </span>details on ensuring cobbler works correctly in your SELinux environment:
+1 : SELinux is enabled. Please review the following wiki page for details on ensuring cobbler works correctly in your SELinux environment:
     https://github.com/cobbler/cobbler/wiki/Selinux
-2 : comment <span class="s1">&#39;dists&#39;</span> on /etc/debmirror.conf <span class="k">for </span>proper debian support
-3 : comment <span class="s1">&#39;arches&#39;</span> on /etc/debmirror.conf <span class="k">for </span>proper debian support
-4 : Dynamic settings changes are enabled, be sure you run <span class="s2">&quot;sed -i &#39;s/^[[:space:]]\+/ /&#39; /etc/cobbler/settings&quot;</span> to ensure the settings file is properly indented
+2 : comment &#39;dists&#39; on /etc/debmirror.conf for proper debian support
+3 : comment &#39;arches&#39; on /etc/debmirror.conf for proper debian support
+4 : Dynamic settings changes are enabled, be sure you run &quot;sed -i &#39;s/^[[:space:]]\+/ /&#39; /etc/cobbler/settings&quot; to ensure the settings file is properly indented
 
-Restart cobblerd and <span class="k">then </span>run <span class="s1">&#39;cobbler sync&#39;</span> to apply changes.
-</code></pre></div>
+Restart cobblerd and then run &#39;cobbler sync&#39; to apply changes.</code></pre></div>
 
 
 
@@ -226,6 +225,11 @@ Restart cobblerd and <span class="k">then </span>run <span class="s1">&#39;cobbl
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -238,11 +242,6 @@ Restart cobblerd and <span class="k">then </span>run <span class="s1">&#39;cobbl
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

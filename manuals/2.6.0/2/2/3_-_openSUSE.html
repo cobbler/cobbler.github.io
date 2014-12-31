@@ -126,34 +126,31 @@ var WRInitTime=(new Date()).getTime();
    <h1>openSUSE</h1>
 <p>Enabled require apache modules (/etc/sysconfig/apache2:APACHE_MODULES)</p>
 
-<div class="highlight"><pre><code class="bash">/usr/sbin/a2enmod proxy
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/sbin/a2enmod proxy
 /usr/sbin/a2enmod proxy_http
 /usr/sbin/a2enmod proxy_connect
 /usr/sbin/a2enmod rewrite
 /usr/sbin/a2enmod ssl
 /usr/sbin/a2enmod wsgi
 /usr/sbin/a2enmod version
-/usr/sbin/a2enmod socache_shmcb <span class="o">(</span>or whatever module you are using<span class="o">)</span>
-</code></pre></div>
+/usr/sbin/a2enmod socache_shmcb (or whatever module you are using)</code></pre></div>
 
 
 <p>Setup SSL certificates in Apache (not documented here)</p>
 
 <p>Enable required apache flag (/etc/sysconfig/apache2:APACHE_SERVER_FLAGS)</p>
 
-<div class="highlight"><pre><code class="bash">/usr/sbin/a2enflag SSL
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/usr/sbin/a2enflag SSL</code></pre></div>
 
 
 <p>Make sure port 80 &amp; 443 are opened in SuSEFirewall2 (not documented here)</p>
 
 <p>Start/enable the apache2 and cobblerd services</p>
 
-<div class="highlight"><pre><code class="bash">systemctl <span class="nb">enable </span>apache2.service
-systemctl <span class="nb">enable </span>cobblerd.service
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">systemctl enable apache2.service
+systemctl enable cobblerd.service
 systemctl start apache2.service
-systemctl start cobblerd.service
-</code></pre></div>
+systemctl start cobblerd.service</code></pre></div>
 
 
 <p>Visit https://${CERTIFICATE_FQDN}/cobbler_web/</p>
@@ -239,6 +236,11 @@ systemctl start cobblerd.service
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -251,11 +253,6 @@ systemctl start cobblerd.service
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

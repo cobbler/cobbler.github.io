@@ -134,28 +134,26 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Here's what the relavant parts of modules.conf look like:</p>
 
-<div class="highlight"><pre><code class="ini"><span class="k">[serializers]</span>
-<span class="na">settings</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
-<span class="na">distro</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
-<span class="na">profile</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
-<span class="na">system</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
-<span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
-<span class="err">etc...</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
+settings = serializer_catalog
+distro = serializer_catalog
+profile = serializer_catalog
+system = serializer_catalog
+repo = serializer_catalog
+etc...</code></pre></div>
 
 
 <p><strong>NOTE</strong> Be sure to add a line for every object type supported in your version of cobbler. Read the <a href="/manuals/2.2.3/4/1_-_Cobbler_Primatives.html">Cobbler Primatives</a> section for more details.</p>
 
 <p>Suppose, however, that you (just to be contrary), want to save everything in Marshalled XML because you liked angle brackets a whole lot (we don't!). Easy enough, just write a new serializer module that did this and then could change the file to:</p>
 
-<div class="highlight"><pre><code class="ini"><span class="k">[serializers]</span>
-<span class="na">settings</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
-<span class="na">distro</span> <span class="o">=</span> <span class="s">serializer_xml</span>
-<span class="na">profile</span> <span class="o">=</span> <span class="s">serializer_xml</span>
-<span class="na">system</span> <span class="o">=</span> <span class="s">serializer_xml</span>
-<span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_xml</span>
-<span class="err">etc...</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
+settings = serializer_catalog
+distro = serializer_xml
+profile = serializer_xml
+system = serializer_xml
+repo = serializer_xml
+etc...</code></pre></div>
 
 
 <p>This is all just an example -- in your environment, you may have more complex needs -- or even some weird ones.</p>
@@ -172,25 +170,22 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Serializer catalog will save individual files in:</p>
 
-<div class="highlight"><pre><code class="bash">/var/lib/cobbler/config/distros.d
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/distros.d
 /var/lib/cobbler/config/profiles.d
 /var/lib/cobbler/config/systems.d
-etc...
-</code></pre></div>
+etc...</code></pre></div>
 
 
 <p>Files are named after the name of each object, for instance:</p>
 
-<div class="highlight"><pre><code class="bash">/var/lib/cobbler/config/systems.d/foo.json
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/systems.d/foo.json</code></pre></div>
 
 
 <p>On EL 4 and before, the simplejson implementation has some unicode issues, so YAML is still the default on those systems. YAML is significantly slower, so this is more reason to install Cobbler on EL 5 and later. (Or rather, json is 300x faster!)</p>
 
 <p>The filenames for YAML files do not have an extension.</p>
 
-<div class="highlight"><pre><code class="bash">/var/lib/cobbler/config/systems.d/foo
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/systems.d/foo</code></pre></div>
 
 
 <p>Cobbler knows how to upgrade YAML files to JSON if it is running on a platform that can use JSON, and will do so transparently.</p>
@@ -276,6 +271,11 @@ etc...
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -288,11 +288,6 @@ etc...
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

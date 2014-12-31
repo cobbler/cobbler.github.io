@@ -130,26 +130,25 @@ var WRInitTime=(new Date()).getTime();
 
 <p>To install cobbler from source on Debian Squeeze, the following steps need to be made:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>apt-get install make <span class="c"># for build</span>
-<span class="nv">$ </span>apt-get install git <span class="c"># for build</span>
-<span class="nv">$ </span>apt-get install python-yaml
-<span class="nv">$ </span>apt-get install python-cheetah
-<span class="nv">$ </span>apt-get install python-netaddr
-<span class="nv">$ </span>apt-get install python-simplejson
-<span class="nv">$ </span>apt-get install python-urlgrabber
-<span class="nv">$ </span>apt-get install libapache2-mod-wsgi
-<span class="nv">$ </span>apt-get install python-django
-<span class="nv">$ </span>apt-get install atftpd
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ apt-get install make # for build
+$ apt-get install git # for build
+$ apt-get install python-yaml
+$ apt-get install python-cheetah
+$ apt-get install python-netaddr
+$ apt-get install python-simplejson
+$ apt-get install python-urlgrabber
+$ apt-get install libapache2-mod-wsgi
+$ apt-get install python-django
+$ apt-get install atftpd
 
-<span class="nv">$ </span>a2enmod proxy
-<span class="nv">$ </span>a2enmod proxy_http
-<span class="nv">$ </span>a2enmod rewrite
+$ a2enmod proxy
+$ a2enmod proxy_http
+$ a2enmod rewrite
 
-<span class="nv">$ </span>ln -s /usr/local/lib/python2.6/dist-packages/cobbler /usr/lib/python2.6/dist-packages/
-<span class="nv">$ </span>ln -s /srv/tftp /var/lib/tftpboot
+$ ln -s /usr/local/lib/python2.6/dist-packages/cobbler /usr/lib/python2.6/dist-packages/
+$ ln -s /srv/tftp /var/lib/tftpboot
 
-<span class="nv">$ </span>chown www-data /var/lib/cobbler/webui_sessions
-</code></pre></div>
+$ chown www-data /var/lib/cobbler/webui_sessions</code></pre></div>
 
 
 <ul>
@@ -248,6 +247,11 @@ var WRInitTime=(new Date()).getTime();
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -260,11 +264,6 @@ var WRInitTime=(new Date()).getTime();
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

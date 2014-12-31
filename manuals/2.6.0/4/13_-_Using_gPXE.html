@@ -133,30 +133,27 @@ var WRInitTime=(new Date()).getTime();
 
 <p>First, install the gpxe/ipxe boot images package for your OS (for RHEL variants and Fedora, the package name is gpxe-bootimgs or ipxe-bootimgs). Cobbler sync does not currently copy the undionly.kpxe file to the TFTP root directory. Again, for RHEL/Fedora you'd do something like this:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cp /usr/share/ipxe/undionly.kpxe /var/lib/tftpboot/
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cp /usr/share/ipxe/undionly.kpxe /var/lib/tftpboot/</code></pre></div>
 
 
 <h2>Configuring Systems/Profiles</h2>
 
 <p>Via the CLI or Web UI, just enable the gpxe option. For example:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --enable-gpxe<span class="o">=</span>1 --interface<span class="o">=</span>eth0 --static<span class="o">=</span>1
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --enable-gpxe=1 --interface=eth0 --static=1</code></pre></div>
 
 
 <p>When using <code>manage_dhcp</code>, a new entry for systems with static interfaces will be created as follows (following a "cobbler sync"):</p>
 
-<div class="highlight"><pre><code class="bash">    host generic1 <span class="o">{</span>
-        hardware ethernet xx:xx:xx:xx:xx:xx<span class="p">;</span>
-        <span class="k">if </span>exists user-class and option user-class <span class="o">=</span> <span class="s2">&quot;gPXE&quot;</span> <span class="o">{</span>
-            filename <span class="s2">&quot;http://&lt;cobbler server ip&gt;/cblr/svc/op/gpxe/system/foo&quot;</span><span class="p">;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            filename <span class="s2">&quot;undionly.kpxe&quot;</span><span class="p">;</span>
-        <span class="o">}</span>
-        next-server &lt;next-server setting&gt;<span class="p">;</span>
-    <span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">host generic1 {
+        hardware ethernet xx:xx:xx:xx:xx:xx;
+        if exists user-class and option user-class = &quot;gPXE&quot; {
+            filename &quot;http://&lt;cobbler server ip&gt;/cblr/svc/op/gpxe/system/foo&quot;;
+        } else {
+            filename &quot;undionly.kpxe&quot;;
+        }
+        next-server &lt;next-server setting&gt;;
+    }</code></pre></div>
 
 
 <p>Profiles and systems that use DHCP for addresses are handled by the default network block included in the <code>dhcp.template</code>.</p>
@@ -165,25 +162,23 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Here is a sample of the rendered configuration:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="c">#!gpxe</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">#!gpxe
 kernel http://&lt;cobbler server ip&gt;/cobbler/images/centos6.3-x86_64/vmlinuz
-imgargs vmlinuz  <span class="nv">ksdevice</span><span class="o">=</span>bootif <span class="nv">lang</span><span class="o">=</span> text kssendmac  <span class="nv">ks</span><span class="o">=</span>http://&lt;cobbler server ip&gt;/cblr/svc/op/ks/system/foo
+imgargs vmlinuz  ksdevice=bootif lang= text kssendmac  ks=http://&lt;cobbler server ip&gt;/cblr/svc/op/ks/system/foo
 initrd http://192.168.122.1/cobbler/images/centos6.3-x86_64/initrd.img
-boot
-</code></pre></div>
+boot</code></pre></div>
 
 
 <h2>Templates</h2>
 
 <p>The templates for gPXE are stored with the other PXE templates for cobbler, in <code>/etc/cobbler/pxe</code>. The default for systems/profiles is <code>/etc/cobbler/pxe/gpxe_system_linux.template</code>, which you can see is the source for the above output:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cat /etc/cobbler/pxe/gpxe_system_linux.template 
-<span class="c">#!gpxe</span>
-kernel http://<span class="nv">$server</span>/cobbler/images/<span class="nv">$distro</span>/<span class="nv">$kernel_name</span>
-imgargs <span class="nv">$kernel_name</span> <span class="nv">$append_line</span>
-initrd http://<span class="nv">$server</span>/cobbler/images/<span class="nv">$distro</span>/<span class="nv">$initrd_name</span>
-boot
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cat /etc/cobbler/pxe/gpxe_system_linux.template 
+#!gpxe
+kernel http://$server/cobbler/images/$distro/$kernel_name
+imgargs $kernel_name $append_line
+initrd http://$server/cobbler/images/$distro/$initrd_name
+boot</code></pre></div>
 
 
 <p>As with all PXE templates, the <code>$append_line</code> variable is generated internally by cobbler, and contains the kopts arguments as well as other distro defaults that may be configured.</p>
@@ -269,6 +264,11 @@ boot
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -281,11 +281,6 @@ boot
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

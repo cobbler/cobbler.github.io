@@ -130,56 +130,51 @@ var WRInitTime=(new Date()).getTime();
 
 <p>1) Assuming that Cobbler has been setup previously, verify that the signature file contains the entry for Nexenta:</p>
 
-<div class="highlight"><pre><code class="bash">  <span class="s2">&quot;nexenta&quot;</span>: <span class="o">{</span>
-    <span class="s2">&quot;4&quot;</span>: <span class="o">{</span>
-      <span class="s2">&quot;signatures&quot;</span>:<span class="o">[</span><span class="s2">&quot;boot&quot;</span><span class="o">]</span>,
-      <span class="s2">&quot;version_file&quot;</span>: <span class="s2">&quot;platform&quot;</span>,
-      <span class="s2">&quot;version_file_regex&quot;</span>: null,
-      <span class="s2">&quot;supported_arches&quot;</span>:<span class="o">[</span><span class="s2">&quot;x86_64&quot;</span><span class="o">]</span>,
-      <span class="s2">&quot;supported_repo_breeds&quot;</span>:<span class="o">[</span><span class="s2">&quot;apt&quot;</span><span class="o">]</span>,
-      <span class="s2">&quot;kernel_file&quot;</span>:<span class="s2">&quot;platform/i86pc/kernel/amd64/unix&quot;</span>,
-      <span class="s2">&quot;initrd_file&quot;</span>:<span class="s2">&quot;platform/i86pc/amd64/miniroot&quot;</span>,
-      <span class="s2">&quot;isolinux_ok&quot;</span>:false,
-      <span class="s2">&quot;kernel_options&quot;</span>:<span class="s2">&quot;&quot;</span>,
-      <span class="s2">&quot;kernel_options_post&quot;</span>:<span class="s2">&quot;&quot;</span>,
-      <span class="s2">&quot;boot_files&quot;</span>:<span class="o">[]</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">&quot;nexenta&quot;: {
+    &quot;4&quot;: {
+      &quot;signatures&quot;:[&quot;boot&quot;],
+      &quot;version_file&quot;: &quot;platform&quot;,
+      &quot;version_file_regex&quot;: null,
+      &quot;supported_arches&quot;:[&quot;x86_64&quot;],
+      &quot;supported_repo_breeds&quot;:[&quot;apt&quot;],
+      &quot;kernel_file&quot;:&quot;platform/i86pc/kernel/amd64/unix&quot;,
+      &quot;initrd_file&quot;:&quot;platform/i86pc/amd64/miniroot&quot;,
+      &quot;isolinux_ok&quot;:false,
+      &quot;kernel_options&quot;:&quot;&quot;,
+      &quot;kernel_options_post&quot;:&quot;&quot;,
+      &quot;boot_files&quot;:[]
+    }
+  }</code></pre></div>
 
 
 <p>2) Obtain a Nexenta iso from http://www.nexenta.com/corp/nexentastor-download and mount it:</p>
 
-<div class="highlight"><pre><code class="bash">mkdir -p /mnt/nexenta4 <span class="o">&amp;&amp;</span> mnt /path/to/nexenta4.iso /mnt/nexenta4 -o loop<span class="sb">`</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p /mnt/nexenta4 &amp;&amp; mnt /path/to/nexenta4.iso /mnt/nexenta4 -o loop`</code></pre></div>
 
 
 <p>3) Import the distribution into Cobbler:</p>
 
-<div class="highlight"><pre><code class="bash">cobbler import --name<span class="o">=</span>nexenta-4 --path<span class="o">=</span>/mnt/nexenta4
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler import --name=nexenta-4 --path=/mnt/nexenta4</code></pre></div>
 
 
 <p>Verify that a Nexenta distirbution is available via Cobbler: cobbler list
 Once the import is done, you can unmount the ISO:</p>
 
-<div class="highlight"><pre><code class="bash">sudo umount /mnt/nexenta4
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo umount /mnt/nexenta4</code></pre></div>
 
 
 <p>4) Nexenta uses a PXE Grub executable different from other, linux-like systems. To install a Nexenta on a desired system, you have to specify the PXE Grub file for that system. This can be done by using either a MAC address, or a subnet definition in your DHCP configuration file. In /etc/cobbler/dhcp.template:</p>
 
-<div class="highlight"><pre><code class="bash">  host <span class="nb">test</span>-1 <span class="o">{</span>
-    hardware ethernet 00:0C:29:10:B6:10<span class="p">;</span>
-    fixed-address 10.3.30.91<span class="p">;</span>
-    filename <span class="s2">&quot;boot/grub/pxegrub&quot;</span><span class="p">;</span>
-  <span class="o">}</span>
-  host <span class="nb">test</span>-2 <span class="o">{</span>
-    hardware ethernet 00:0c:29:d1:9c:26<span class="p">;</span>
-    fixed-address 10.3.30.97<span class="p">;</span>
-    filename <span class="s2">&quot;boot/grub/pxegrub&quot;</span><span class="p">;</span>
-  <span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">host test-1 {
+    hardware ethernet 00:0C:29:10:B6:10;
+    fixed-address 10.3.30.91;
+    filename &quot;boot/grub/pxegrub&quot;;
+  }
+  host test-2 {
+    hardware ethernet 00:0c:29:d1:9c:26;
+    fixed-address 10.3.30.97;
+    filename &quot;boot/grub/pxegrub&quot;;
+  }</code></pre></div>
 
 
 <p>OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host definition in your dhcp config file.</p>
@@ -188,22 +183,21 @@ Once the import is done, you can unmount the ISO:</p>
 
 <p>5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The profiles are placed in /var/lib/cobbler/kickstarts/install_profiles. Each profile should be a file with the filename <code>machine.AACC003355FF</code> where AA..FF stand for the mac address of the machine, without <code>:</code> (columns). The contents of each profile should look like the following:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">__PF_gateway</span><span class="o">=</span><span class="s2">&quot;IP address&quot;</span> <span class="o">(</span>required<span class="o">)</span>
-<span class="nv">__PF_nic_primary</span><span class="o">=</span><span class="s2">&quot;NIC NAME&quot;</span> <span class="o">(</span>required<span class="o">)</span>
-<span class="nv">__PF_dns_ip_1</span><span class="o">=</span><span class="s2">&quot;IP address&quot;</span> <span class="o">(</span>required<span class="o">)</span>
-<span class="nv">__PF_dns_ip_2</span><span class="o">=</span><span class="s2">&quot;IP address&quot;</span> <span class="o">(</span>optional<span class="o">)</span>
-<span class="nv">__PF_dns_ip_3</span><span class="o">=</span><span class="s2">&quot;IP address&quot;</span> <span class="o">(</span>optional<span class="o">)</span>
-<span class="nv">__PF_loghost</span><span class="o">=</span><span class="s2">&quot;IP address&quot;</span> <span class="o">(</span>optional<span class="o">)</span>
-<span class="nv">__PF_logport</span><span class="o">=</span><span class="s2">&quot;Port Number&quot;</span> <span class="o">(</span>optional<span class="o">)</span>
-<span class="nv">__PF_syspool_luns</span><span class="o">=</span><span class="s2">&quot;list of space separated LUNs that will be used to create syspool&quot;</span> <span class="o">(</span>required<span class="o">)</span>
-<span class="nv">__PF_syspool_spare</span><span class="o">=</span><span class="s2">&quot;list of space separated LUNs that will be used as syspool spare&quot;</span> <span class="o">(</span>optional<span class="o">)</span>
-<span class="nv">__PF_ipaddr_NIC_NAME</span><span class="o">=</span><span class="s2">&quot;IP address&quot;</span> <span class="o">(</span>NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.<span class="o">)</span> <span class="o">(</span>required<span class="o">)</span>
-<span class="nv">__PF_netmask_NIC_NAME</span><span class="o">=</span><span class="s2">&quot;NETMASK&quot;</span> <span class="o">(</span>NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.<span class="o">)</span> <span class="o">(</span>required<span class="o">)</span>
-<span class="nv">__PF_nlm_key</span><span class="o">=</span><span class="s2">&quot;LICENSE KEY&quot;</span> <span class="o">(</span>required<span class="o">)</span>
-<span class="nv">__PF_language</span><span class="o">=</span><span class="s2">&quot;en&quot;</span> <span class="o">(</span>used to choose localzation, but now only <span class="s2">&quot;en&quot;</span> is supported<span class="o">)</span> <span class="o">(</span>required<span class="o">)</span>
-<span class="nv">__PF_ssh_enable</span><span class="o">=</span>1 <span class="o">(</span><span class="nb">enable </span>SSH, by default SSH is disabled<span class="o">)</span> <span class="o">(</span>optional<span class="o">)</span>
-<span class="nv">__PF_ssh_port</span><span class="o">=</span><span class="s2">&quot;PORT where SSH server will wait for incoming connections&quot;</span> <span class="o">(</span>optional<span class="o">)</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">__PF_gateway=&quot;IP address&quot; (required)
+__PF_nic_primary=&quot;NIC NAME&quot; (required)
+__PF_dns_ip_1=&quot;IP address&quot; (required)
+__PF_dns_ip_2=&quot;IP address&quot; (optional)
+__PF_dns_ip_3=&quot;IP address&quot; (optional)
+__PF_loghost=&quot;IP address&quot; (optional)
+__PF_logport=&quot;Port Number&quot; (optional)
+__PF_syspool_luns=&quot;list of space separated LUNs that will be used to create syspool&quot; (required)
+__PF_syspool_spare=&quot;list of space separated LUNs that will be used as syspool spare&quot; (optional)
+__PF_ipaddr_NIC_NAME=&quot;IP address&quot; (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
+__PF_netmask_NIC_NAME=&quot;NETMASK&quot; (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
+__PF_nlm_key=&quot;LICENSE KEY&quot; (required)
+__PF_language=&quot;en&quot; (used to choose localzation, but now only &quot;en&quot; is supported) (required)
+__PF_ssh_enable=1 (enable SSH, by default SSH is disabled) (optional)
+__PF_ssh_port=&quot;PORT where SSH server will wait for incoming connections&quot; (optional)</code></pre></div>
 
 
 <p>6) Power on the hardware. NexentaStor should boot from this setup.</p>
@@ -214,32 +208,28 @@ Once the import is done, you can unmount the ISO:</p>
 
 <p>The install of Nexenta is automatic. That means that each machine to be booted with nexenta has to be configurated with a profile in kickstarts/install_profiles directory. To boot Nexenta nodes manually, in the file /var/lib/tftpboot/boot/grub/menu.lst replace the line:</p>
 
-<div class="highlight"><pre><code class="bash"> 
-kernel<span class="nv">$ </span>/images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B <span class="nv">iso_nfs_path</span><span class="o">=</span>10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install<span class="o">=</span>1
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install=1</code></pre></div>
 
 
 <p>With</p>
 
-<div class="highlight"><pre><code class="bash">kernel<span class="nv">$ </span>/images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B <span class="nv">iso_nfs_path</span><span class="o">=</span>10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64</code></pre></div>
 
 
 <p>If you are adding a new distro, don't forget to enable NFS access to it! NFS share must be configured on the boot server. In particular, the directories in /var/www/cobbler/links/<distro-name> are exported. As an example, there is a /etc/exports file:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="c"># /etc/exports: the access control list for filesystems which may be exported</span>
-<span class="c">#    to NFS clients.  See exports(5).</span>
-<span class="c">#</span>
-<span class="c"># Example for NFSv2 and NFSv3:</span>
-<span class="c"># /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)</span>
-<span class="c">#</span>
-<span class="c"># Example for NFSv4:</span>
-<span class="c"># /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)</span>
-<span class="c"># /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)</span>
-<span class="c">#</span>
-/var/www/cobbler/links/nexenta-a-x86_64 *<span class="o">(</span>ro,sync,no_subtree_check<span class="o">)</span>
-/var/www/cobbler/links/&lt;nexenta-distribution-name&gt; *<span class="o">(</span>ro,sync,no_subtree_check<span class="o">)</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"># /etc/exports: the access control list for filesystems which may be exported
+#    to NFS clients.  See exports(5).
+#
+# Example for NFSv2 and NFSv3:
+# /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)
+#
+# Example for NFSv4:
+# /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
+# /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
+#
+/var/www/cobbler/links/nexenta-a-x86_64 *(ro,sync,no_subtree_check)
+/var/www/cobbler/links/&lt;nexenta-distribution-name&gt; *(ro,sync,no_subtree_check)</code></pre></div>
 
 
 
@@ -325,6 +315,11 @@ kernel<span class="nv">$ </span>/images/nexenta-a-x86_64/platform/i86pc/kernel/a
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -337,11 +332,6 @@ kernel<span class="nv">$ </span>/images/nexenta-a-x86_64/platform/i86pc/kernel/a
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

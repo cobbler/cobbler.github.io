@@ -139,21 +139,20 @@ var WRInitTime=(new Date()).getTime();
 </ul>
 
 
-<div class="highlight"><pre><code class="bash">-   Select <span class="s2">&quot;Standard&quot;</span> installation
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">-   Select &quot;Standard&quot; installation
 -   Use entire disk
 -   Install a standard MBR
 -   Create a new slice and use the entire disk
 -   Mount it at /
--   Choose the <span class="s2">&quot;Developer&quot;</span> distribution
+-   Choose the &quot;Developer&quot; distribution
     -   Full sources, binaries and doc but no games
 
 -   Install from a FreeBSD CD/DVD
 -   Setup networking to copy files back and forth
--   In the post install <span class="s2">&quot;Package Selection&quot;</span> scroll down and <span class="k">select</span>
-<span class="k">    </span>shells
+-   In the post install &quot;Package Selection&quot; scroll down and select
+    shells
     -   Install bash
-    -   chsh -s /usr/local/bin/bash username or vipw
-</code></pre></div>
+    -   chsh -s /usr/local/bin/bash username or vipw</code></pre></div>
 
 
 <ul>
@@ -161,11 +160,10 @@ var WRInitTime=(new Date()).getTime();
 </ul>
 
 
-<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> /sys/boot
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /sys/boot
 make clean
-make <span class="nv">LOADER_TFTP_SUPPORT</span><span class="o">=</span>yes
-make install
-</code></pre></div>
+make LOADER_TFTP_SUPPORT=yes
+make install</code></pre></div>
 
 
 <ul>
@@ -185,9 +183,8 @@ updated every release. Just look for 8.X and change it.</p></li>
 <p>The standard sysinstall doesn't really support HTTP. This patch
 adds full http support to sysinstall.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> /usr
-patch -p0 &lt; /root/http_install.patch
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /usr
+patch -p0 &lt; /root/http_install.patch</code></pre></div>
 
 
 <ul>
@@ -201,11 +198,10 @@ acts like different normal binaries depending on how it's called.
 We need to include "fetch" and a few other binaries. This is a
 multi step process.</p>
 
-<div class="highlight"><pre><code class="bash">mkdir /tmp/bootcrunch
-<span class="nb">cd</span> /tmp/bootcrunch
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /tmp/bootcrunch
+cd /tmp/bootcrunch
 crunchgen -o /root/boot_crunch.conf
-make -f boot_crunch.mk
-</code></pre></div>
+make -f boot_crunch.mk</code></pre></div>
 
 
 <p>Once we've added our additional binaries we need to create a larger ramdisk.</p>
@@ -215,9 +211,8 @@ make -f boot_crunch.mk
 </ul>
 
 
-<div class="highlight"><pre><code class="bash">dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/tmp/mfsroot <span class="nv">bs</span><span class="o">=</span>1024 <span class="nv">count</span><span class="o">=</span><span class="k">$((</span><span class="m">1024</span> <span class="o">*</span> <span class="m">5</span><span class="k">))</span>
-<span class="nv">dev0</span><span class="o">=</span><span class="sb">`</span>mdconfig -f /tmp/mfsroot<span class="sb">`</span><span class="p">;</span>newfs <span class="nv">$dev0</span><span class="p">;</span>mkdir /mnt/mfsroot_new<span class="p">;</span>mount /dev/<span class="nv">$dev0</span> /mnt/mfsroot_new
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">dd if=/dev/zero of=/tmp/mfsroot bs=1024 count=$((1024 * 5))
+dev0=`mdconfig -f /tmp/mfsroot`;newfs $dev0;mkdir /mnt/mfsroot_new;mount /dev/$dev0 /mnt/mfsroot_new</code></pre></div>
 
 
 <ul>
@@ -225,26 +220,23 @@ make -f boot_crunch.mk
 </ul>
 
 
-<div class="highlight"><pre><code class="bash">mkdir /mnt/cdrom<span class="p">;</span> mount -t cd9660 -o -e /dev/acd0 /mnt/cdrom
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /mnt/cdrom; mount -t cd9660 -o -e /dev/acd0 /mnt/cdrom
 cp /mnt/cdrom/boot/mfsroot.gz /tmp/mfsroot.old.gz
-gzip -d /tmp/mfsroot.old.gz<span class="p">;</span> <span class="nv">dev1</span><span class="o">=</span><span class="sb">`</span>mdconfig -f /tmp/mfsroot.old<span class="sb">`</span>
-mkdir /mnt/mfsroot_old<span class="p">;</span> mount /dev/<span class="nv">$dev1</span> /mnt/mfsroot_old
-</code></pre></div>
+gzip -d /tmp/mfsroot.old.gz; dev1=`mdconfig -f /tmp/mfsroot.old`
+mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old</code></pre></div>
 
 
 <p>Copy everything from the old one to the new one. You'll be
 replacing the binaries, but it's simpler to just copy it all over.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="o">(</span><span class="nb">cd</span> /mnt/mfsroot_old/<span class="p">;</span> tar -cf - .<span class="o">)</span> <span class="p">|</span> <span class="o">(</span><span class="nb">cd</span> /mnt/mfsroot_new<span class="p">;</span> tar -xf -<span class="o">)</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">(cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)</code></pre></div>
 
 
 <p>Next copy over the new bootcrunch file and create all of the
 symlinks after removing the old binaries.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> /mnt/mfsroot_new/stand<span class="p">;</span> rm -- *<span class="p">;</span> cp /tmp/bootcrunch/boot_crunch ./
-<span class="k">for </span>i in <span class="k">$(</span>./boot_crunch 2&gt;<span class="p">&amp;</span>1<span class="p">|</span>grep -v usage<span class="k">)</span><span class="p">;</span><span class="k">do if</span> <span class="o">[</span> <span class="s2">&quot;$i&quot;</span> !<span class="o">=</span> <span class="s2">&quot;boot_crunch&quot;</span> <span class="o">]</span><span class="p">;</span><span class="k">then </span>rm -f ./<span class="s2">&quot;$i&quot;</span><span class="p">;</span>ln ./boot_crunch <span class="s2">&quot;$i&quot;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="k">done</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /mnt/mfsroot_new/stand; rm -- *; cp /tmp/bootcrunch/boot_crunch ./
+for i in $(./boot_crunch 2&gt;&amp;1|grep -v usage);do if [ &quot;$i&quot; != &quot;boot_crunch&quot; ];then rm -f ./&quot;$i&quot;;ln ./boot_crunch &quot;$i&quot;;fi;done</code></pre></div>
 
 
 <p>Sysinstall uses install.cfg to start the install off. We've created
@@ -256,16 +248,14 @@ DHCP next-server field.</p>
 
 <p>Copy both install.cfg and doconfig.sh into place.</p>
 
-<div class="highlight"><pre><code class="bash">cp <span class="o">{</span>install.cfg,doconfig.sh<span class="o">}</span> /mnt/mfsroot_new/stand
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp {install.cfg,doconfig.sh} /mnt/mfsroot_new/stand</code></pre></div>
 
 
 <p>Now just unmount the ramdisk and compress the file</p>
 
-<div class="highlight"><pre><code class="bash">umount /mnt/mfsroot_new<span class="p">;</span> umount /mnt/mfsroot_old
-mdconfig -d -u <span class="nv">$dev0</span><span class="p">;</span> mdconfig -d -u <span class="nv">$dev1</span>
-gzip /tmp/mfsroot
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">umount /mnt/mfsroot_new; umount /mnt/mfsroot_old
+mdconfig -d -u $dev0; mdconfig -d -u $dev1
+gzip /tmp/mfsroot</code></pre></div>
 
 
 <p>Copy the mfsroot.gz to the Cobbler server.</p>
@@ -277,9 +267,8 @@ gzip /tmp/mfsroot
 </ul>
 
 
-<div class="highlight"><pre><code class="bash"><span class="o">[</span>tftpd<span class="o">]</span>
-<span class="nv">module</span> <span class="o">=</span> manage_tftpd_py
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">[tftpd]
+module = manage_tftpd_py</code></pre></div>
 
 
 <ul>
@@ -287,8 +276,7 @@ gzip /tmp/mfsroot
 </ul>
 
 
-<div class="highlight"><pre><code class="bash">mount /dev/cdrom /mnt
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mount /dev/cdrom /mnt</code></pre></div>
 
 
 <ul>
@@ -296,8 +284,7 @@ gzip /tmp/mfsroot
 </ul>
 
 
-<div class="highlight"><pre><code class="bash">cobbler import --path<span class="o">=</span>/mnt/ --name<span class="o">=</span>freebsd-8.2-x86_64
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64</code></pre></div>
 
 
 <ul>
@@ -305,9 +292,8 @@ gzip /tmp/mfsroot
 </ul>
 
 
-<div class="highlight"><pre><code class="bash">cp pxeboot.bs /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
-cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp pxeboot.bs /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
+cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/</code></pre></div>
 
 
 <ul>
@@ -398,6 +384,11 @@ cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -410,11 +401,6 @@ cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

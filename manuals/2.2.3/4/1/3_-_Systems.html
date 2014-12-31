@@ -134,12 +134,11 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span>string --profile<span class="o">=</span>string <span class="o">[</span>--mac<span class="o">=</span>macaddress<span class="o">]</span> <span class="o">[</span>--ip-address<span class="o">=</span>ipaddress<span class="o">]</span> <span class="se">\</span>
-<span class="o">[</span>--hostname<span class="o">=</span>hostname<span class="o">]</span> <span class="o">[</span>--kopts<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--ksmeta<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--kickstart<span class="o">=</span>path<span class="o">]</span> <span class="o">[</span>--netboot-enabled<span class="o">=</span>Y/N<span class="o">]</span> <span class="se">\</span>
-<span class="o">[</span>--server-override<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--gateway<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--dns-name<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--static-routes<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
-<span class="o">[</span>--power-address<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-type<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-user<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--power-password<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
-<span class="o">[</span>--power-id<span class="o">=</span>string<span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=string --profile=string [--mac=macaddress] [--ip-address=ipaddress] \
+[--hostname=hostname] [--kopts=string] [--ksmeta=string] [--kickstart=path] [--netboot-enabled=Y/N] \
+[--server-override=string] [--gateway=string] [--dns-name=string] [--static-routes=string] \
+[--power-address=string] [--power-type=string] [--power-user=string] [--power-password=string] \
+[--power-id=string]</code></pre></div>
 
 
 <p>Adds a cobbler System to the configuration.  Arguments are specified as per "profile add" with the following changes:</p>
@@ -168,8 +167,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash">--ip-address<span class="o">=</span>192.168.1.50
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ip-address=192.168.1.50</code></pre></div>
 
 
 <p>Note for Itanium users:  this setting is always required for IA64 regardless of whether DHCP management is enabled.</p>
@@ -186,8 +184,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash">--dns-name<span class="o">=</span>mycomputer.example.com
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--dns-name=mycomputer.example.com</code></pre></div>
 
 
 <p>This is a per-interface parameter.  If you have multiple interfaces, it may be different for each interface, for example, assume a DMZ / dual-homed setup.</p>
@@ -264,18 +261,16 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --ip-address<span class="o">=</span>192.168.1.50 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A0
-<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --ip-address<span class="o">=</span>192.168.1.51 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A1
-<span class="nv">$ </span>cobbler system report foo
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
+$ cobbler system edit --name=foo --interface=eth0 --ip-address=192.168.1.51 --mac=AA:BB:CC:DD:EE:A1
+$ cobbler system report foo</code></pre></div>
 
 
 <p>Interfaces can be deleted using the --delete-interface option.</p>
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth2 --delete-interface
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth2 --delete-interface</code></pre></div>
 
 
 <h3>--interface-type, --interface-master and --bonding-opts/--bridge-opts</h3>
@@ -286,16 +281,15 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --mac<span class="o">=</span>AA:BB:CC:DD:EE:00 --interface-type<span class="o">=</span>bond_slave <span class="se">\</span>
---interface-master<span class="o">=</span>bond0
-<span class="err">$</span>
-<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth1 --mac<span class="o">=</span>AA:BB:CC:DD:EE:01 --interface-type<span class="o">=</span>bond_slave <span class="se">\</span>
---interface-master<span class="o">=</span>bond0
-<span class="err">$</span>
-<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>bond0 --interface-type<span class="o">=</span>bond <span class="se">\</span>
---bonding-opts<span class="o">=</span><span class="s2">&quot;mode=active-backup miimon=100&quot;</span> --ip-address<span class="o">=</span>192.168.0.63 --subnet<span class="o">=</span>255.255.255.0 <span class="se">\</span>
---gateway<span class="o">=</span>192.168.0.1 --static<span class="o">=</span>1
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:00 --interface-type=bond_slave \
+--interface-master=bond0
+$
+$ cobbler system edit --name=foo --interface=eth1 --mac=AA:BB:CC:DD:EE:01 --interface-type=bond_slave \
+--interface-master=bond0
+$
+$ cobbler system edit --name=foo --interface=bond0 --interface-type=bond \
+--bonding-opts=&quot;mode=active-backup miimon=100&quot; --ip-address=192.168.0.63 --subnet=255.255.255.0 \
+--gateway=192.168.0.1 --static=1</code></pre></div>
 
 
 <p>More information about networking setup is available at https://fedorahosted.org/cobbler/wiki/AdvancedNetworking</p>
@@ -304,8 +298,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system report --name<span class="o">=</span>foo
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system report --name=foo</code></pre></div>
 
 
 
@@ -391,6 +384,11 @@ var WRInitTime=(new Date()).getTime();
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -403,11 +401,6 @@ var WRInitTime=(new Date()).getTime();
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>
