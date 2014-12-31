@@ -128,9 +128,9 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The system commmand has the following sub-commands:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system --help
-<span class="nv">usage</span>
-<span class="o">=====</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system --help
+usage
+=====
 cobbler system add
 cobbler system copy
 cobbler system dumpvars
@@ -144,8 +144,7 @@ cobbler system powerstatus
 cobbler system reboot
 cobbler system remove
 cobbler system rename
-cobbler system report
-</code></pre></div>
+cobbler system report</code></pre></div>
 
 
 <p>Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though they are useful when system specific customizations are required. One such customization would be defining the MAC address. If there is a specific role inteded for a given machine, system records should be created for it.</p>
@@ -154,8 +153,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system add --name<span class="o">=</span>string <span class="o">[</span>--profile<span class="o">=</span>name<span class="p">|</span>--image<span class="o">=</span>name<span class="o">]</span> <span class="o">[</span>options<span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=string [--profile=name|--image=name] [options]</code></pre></div>
 
 
 <p>As you can see, a system must either be assigned to a --profile or an --image, which are mutually exclusive options.</p>
@@ -226,8 +224,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash">--kopts<span class="o">=</span><span class="s2">&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></div>
 
 
 <h4>--kopts-post</h4>
@@ -240,8 +237,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash">--ksmeta<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></div>
 
 
 <p>See the section on <a href="/manuals/2.4.0/4/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
@@ -372,18 +368,16 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --ip-address<span class="o">=</span>192.168.1.50 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A0
-<span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth0 --ip-address<span class="o">=</span>192.168.1.51 --mac<span class="o">=</span>AA:BB:CC:DD:EE:A1
-<span class="nv">$ </span>cobbler system report foo
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
+$ cobbler system edit --name=foo --interface=eth0 --ip-address=192.168.1.51 --mac=AA:BB:CC:DD:EE:A1
+$ cobbler system report foo</code></pre></div>
 
 
 <p>Interfaces can be deleted using the --delete-interface option.</p>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system edit --name<span class="o">=</span>foo --interface<span class="o">=</span>eth2 --delete-interface
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth2 --delete-interface</code></pre></div>
 
 
 <h4>--bonding-opts and --bridge-opts</h4>
@@ -402,8 +396,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash">--dns-name<span class="o">=</span>mycomputer.example.com
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--dns-name=mycomputer.example.com</code></pre></div>
 
 
 <p>This is a per-interface parameter. If you have multiple interfaces, it may be different for each interface, for example, assume a DMZ/dual-homed setup.</p>
@@ -423,8 +416,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash">--ip-address<span class="o">=</span>192.168.1.50
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ip-address=192.168.1.50</code></pre></div>
 
 
 <p>Note for Itanium users:  this setting is always required for IA64 regardless of whether DHCP management is enabled.</p>
@@ -490,8 +482,7 @@ cobbler system report
 
 <p>This is a space delimited list of ip/mask:gateway routing information in that format, which will be added as extra routes on the system. Most systems will not need this information.</p>
 
-<div class="highlight"><pre><code class="bash">--static-routes<span class="o">=</span><span class="s2">&quot;192.168.1.0/16:192.168.1.1 172.16.0.0/16:172.16.0.1&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--static-routes=&quot;192.168.1.0/16:192.168.1.1 172.16.0.0/16:172.16.0.1&quot;</code></pre></div>
 
 
 <h4>--netmask (formerly --subnet)</h4>
@@ -510,8 +501,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system getks --name<span class="o">=</span>foo <span class="p">|</span> less
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system getks --name=foo | less</code></pre></div>
 
 
 <h3>Power Commands</h3>
@@ -520,8 +510,7 @@ cobbler system report
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler system poweron --name<span class="o">=</span>foo
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system poweron --name=foo</code></pre></div>
 
 
 <p>Please see the <a href="/manuals/2.4.0/5/6_-_Power_Management.html">Power Management</a> section for more details on using these commands.</p>
@@ -607,6 +596,11 @@ cobbler system report
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -619,11 +613,6 @@ cobbler system report
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

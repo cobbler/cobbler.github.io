@@ -124,6 +124,27 @@ var WRInitTime=(new Date()).getTime();
   <div class="span8">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">What's New</li></ul>
    <h1>What's New</h1>
+<h2>2.6.7</h2>
+
+<h3>Feature improvements</h3>
+
+<ul>
+<li>Use curl by default on RPM based systems instead of wget</li>
+<li>Add support for inst.stage2 install tree location to Koan</li>
+</ul>
+
+
+<h3>Bugfixes</h3>
+
+<ul>
+<li>Add missing self.logger to util.die() calls (#1326)</li>
+<li>Add default values for proxy_url_ext and proxy_url_int to settings.py (unbreak upgrades)</li>
+<li>With mirror_locally false yum_sync now writes the .repo file again</li>
+<li>Don't write exclude= twice to .repo files</li>
+<li>Map exclude/include properly to repo lines</li>
+</ul>
+
+
 <h2>2.6.6</h2>
 
 <h3>Feature improvements</h3>
@@ -403,6 +424,11 @@ A substantial overhaul of our building &amp; packaging infrastructure allows us 
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -415,11 +441,6 @@ A substantial overhaul of our building &amp; packaging infrastructure allows us 
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

@@ -148,8 +148,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> edit --name<span class="o">=</span>foo --field<span class="o">=</span><span class="s2">&quot;a b c d&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] edit --name=foo --field=&quot;a b c d&quot;</code></pre></div>
 
 
 <h3>Hash Fields (key=value)</h3>
@@ -162,50 +161,46 @@ var WRInitTime=(new Date()).getTime();
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
+$ cobbler distro edit --name=foo --ksmeta=&quot;e=f&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;e&#39;: &#39;f&#39;}</code></pre></div>
 
 
 <p>To preserve the contents of these fields, --in-place should be specified:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span>, <span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
+$ cobbler distro edit --name=foo --in-place --ksmeta=&quot;e=f&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;, &#39;e&#39;: &#39;f&#39;}</code></pre></div>
 
 
 <h4>Removing Values</h4>
 
 <p>To remove a single value from the hash, use the '~' (tilde) character along with --in-place:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s1">&#39;~a&#39;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
+$ cobbler distro edit --name=foo --in-place --ksmeta=&#39;~a&#39;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;c&#39;: &#39;d&#39;}</code></pre></div>
 
 
 <h4>Suppressing Values</h4>
 
 <p>You can also suppress values from being used, by specifying the '-' character in front of the key name:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s1">&#39;-a&#39;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;-a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
+$ cobbler distro edit --name=foo --in-place --ksmeta=&#39;-a&#39;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;-a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}</code></pre></div>
 
 
 <p>In this case, the key=value pair will be ignored when the field is accessed.</p>
@@ -214,10 +209,9 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;-
 
 <p>You can always specify keys without a value:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a b c&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;~&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;~&#39;</span>, <span class="s1">&#39;b&#39;</span>: <span class="s1">&#39;~&#39;</span><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a b c&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;~&#39;, &#39;c&#39;: &#39;~&#39;, &#39;b&#39;: &#39;~&#39;}</code></pre></div>
 
 
 
@@ -229,10 +223,9 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 
 <p>It is also possible to specify multiple values for the same key. In this situation, Cobbler will convert the value portion to an array:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;a=b a=c a=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="o">[</span><span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>, <span class="s1">&#39;d&#39;</span><span class="o">]}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --in-place --ksmeta=&quot;a=b a=c a=d&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;]}</code></pre></div>
 
 
 
@@ -250,7 +243,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro list
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro list
    centos6.3-x86_64
    debian6.0.5-x86_64
    f17-x86_64
@@ -262,8 +255,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
    sl6.2-i386
    sl6.2-x86_64
    ubuntu-12.10-i386
-   ubuntu-12.10-x86_64
-</code></pre></div>
+   ubuntu-12.10-x86_64</code></pre></div>
 
 
 <p>The list command is actually available as a top-level command as well, in which case it will iterate through every object type and list everything currently stored in your Cobbler database.</p>
@@ -283,8 +275,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> remove --name<span class="o">=</span>foo
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] remove --name=foo</code></pre></div>
 
 
 <h3>Copy/Rename</h3>
@@ -293,10 +284,9 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> copy --name<span class="o">=</span>foo --newname<span class="o">=</span>bar
-<span class="c"># or</span>
-<span class="nv">$ </span>cobbler <span class="o">[</span>object<span class="o">]</span> rename --name<span class="o">=</span>foo --newname<span class="o">=</span>bar
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] copy --name=foo --newname=bar
+# or
+$ cobbler [object] rename --name=foo --newname=bar</code></pre></div>
 
 
 <h3>Find</h3>
@@ -390,6 +380,11 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -402,11 +397,6 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

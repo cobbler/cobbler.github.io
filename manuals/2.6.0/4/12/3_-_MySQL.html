@@ -130,14 +130,13 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Add or modify the following section in the <code>/etc/cobbler/modules.conf</code> configuration file:</p>
 
-<div class="highlight"><pre><code class="ini"><span class="k">[serializers]</span>
-<span class="na">settings</span> <span class="o">=</span> <span class="s">serializer_catalog</span>
-<span class="na">distro</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
-<span class="na">profile</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
-<span class="na">system</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
-<span class="na">repo</span> <span class="o">=</span> <span class="s">serializer_mysql</span>
-<span class="err">etc...</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
+settings = serializer_catalog
+distro = serializer_mysql
+profile = serializer_mysql
+system = serializer_mysql
+repo = serializer_mysql
+etc...</code></pre></div>
 
 
 <p><strong>NOTE</strong> Be sure to leave the settings serializer set to serializer_catalog.</p>
@@ -146,17 +145,16 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The schema for the cobbler database is very simple, and essentially uses MySQL as a key/value store with a TEXT field storing the JSON for each object. The schema is as follows:</p>
 
-<div class="highlight"><pre><code class="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">cobbler</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">cobbler</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;cobbler&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;testing123&#39;</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">distro</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">profile</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">system</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">image</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">repo</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">mgmtclass</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">file</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">package</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="k">data</span> <span class="nb">TEXT</span><span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">innodb</span><span class="p">;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql">CREATE DATABASE cobbler;
+GRANT ALL PRIVILEGES ON cobbler.* TO &#39;cobbler&#39;@&#39;%&#39; IDENTIFIED BY &#39;testing123&#39;;
+CREATE TABLE distro (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=innodb;
+CREATE TABLE profile (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=innodb;
+CREATE TABLE system (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=innodb;
+CREATE TABLE image (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=innodb;
+CREATE TABLE repo (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=innodb;
+CREATE TABLE mgmtclass (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=innodb;
+CREATE TABLE file (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=innodb;
+CREATE TABLE package (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=innodb;</code></pre></div>
 
 
 <h3>MySQL Configuration File</h3>
@@ -244,6 +242,11 @@ var WRInitTime=(new Date()).getTime();
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -256,11 +259,6 @@ var WRInitTime=(new Date()).getTime();
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

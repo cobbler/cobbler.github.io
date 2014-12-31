@@ -132,9 +132,8 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro add --name<span class="o">=</span>string --kernel<span class="o">=</span>path --initrd<span class="o">=</span>path <span class="o">[</span>--kopts<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--kopts-post<span class="o">=</span>string<span class="o">]</span> <span class="se">\</span>
-<span class="o">[</span>--ksmeta<span class="o">=</span>string<span class="o">]</span> <span class="o">[</span>--arch<span class="o">=</span>x86<span class="p">|</span>x86_64<span class="p">|</span>ia64<span class="o">]</span> <span class="o">[</span>--breed<span class="o">=</span>redhat<span class="p">|</span>debian<span class="p">|</span>suse<span class="o">]</span> <span class="o">[</span>--template-files<span class="o">=</span>string<span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro add --name=string --kernel=path --initrd=path [--kopts=string] [--kopts-post=string] \
+[--ksmeta=string] [--arch=x86|x86_64|ia64] [--breed=redhat|debian|suse] [--template-files=string]</code></pre></div>
 
 
 <h3>name</h3>
@@ -155,8 +154,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash">--kopts<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf !gulp&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;foo=bar baz=3 asdf !gulp&quot;</code></pre></div>
 
 
 <p>This example passes the arguments "foo=bar baz=3 asdf" but will make sure "gulp" is not passed even if it was requested at a level higher up in the cobbler configuration.</p>
@@ -167,8 +165,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash">--kops-post<span class="o">=</span><span class="s2">&quot;noapic&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kops-post=&quot;noapic&quot;</code></pre></div>
 
 
 <h3>arch</h3>
@@ -187,8 +184,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="bash">--ksmeta<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></div>
 
 
 <p>See the section on <a href="/manuals/2.2.3/4/4_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
@@ -298,6 +294,11 @@ var WRInitTime=(new Date()).getTime();
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -310,11 +311,6 @@ var WRInitTime=(new Date()).getTime();
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

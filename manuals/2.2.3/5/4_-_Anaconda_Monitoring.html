@@ -153,33 +153,29 @@ based distributions, it has several shortcomings.</p>
 
 <p>To enable anamon for your Red Hat based distribution installations, edit <em>/etc/cobbler/settings</em> and set:</p>
 
-<div class="highlight"><pre><code class="yaml"><span class="l-Scalar-Plain">anamon_enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">anamon_enabled: 1</code></pre></div>
 
 
 <p><strong>NOTE:</strong> Enabling anamon allows an xmlrpc call to send create and update log files in the anamon directory, without authentication, so enable only if you are ok with this limitation. It could be potentially used by users to flood the log files or fill up the server, which you probably don't want in an untrusted environment.  However, even so, it may be good for debugging complex installs.</p>
 
 <p>You will also need to update your kickstart templates to include the following snippets.</p>
 
-<div class="highlight"><pre><code class="bash">%pre
-<span class="nv">$SNIPPET</span><span class="o">(</span><span class="s1">&#39;pre_anamon&#39;</span><span class="o">)</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">%pre
+$SNIPPET(&#39;pre_anamon&#39;)</code></pre></div>
 
 
 <p>Anamon can also send /var/log/messages and /var/log/boot.log once your provisioned system has booted. To also enable post-install boot notification, you must enable the following snippet:</p>
 
-<div class="highlight"><pre><code class="bash">%post
-<span class="nv">$SNIPPET</span><span class="o">(</span><span class="s1">&#39;post_anamon&#39;</span><span class="o">)</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">%post
+$SNIPPET(&#39;post_anamon&#39;)</code></pre></div>
 
 
 <h2>Where Is Information Saved?</h2>
 
 <p>All anamon logs are stored in a system-specific directory under <em>/var/log/cobbler/anamon/systemname</em>. For example,</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>ls /var/log/cobbler/anamon/vguest3
-anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.log
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ ls /var/log/cobbler/anamon/vguest3
+anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.log</code></pre></div>
 
 
 <h2>Older Distributions</h2>
@@ -193,18 +189,17 @@ anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.lo
 </ol>
 
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>updates.img <span class="nv">bs</span><span class="o">=</span>1k <span class="nv">count</span><span class="o">=</span>1440
-<span class="nv">$ </span>mke2fs updates.img
-<span class="nv">$ tmpdir</span><span class="o">=</span><span class="sb">`</span>mktemp -d<span class="sb">`</span>
-<span class="nv">$ </span>mount -o loop updates.img <span class="nv">$tmpdir</span>
-<span class="nv">$ </span>mkdir <span class="nv">$tmpdir</span>/cobbler
-<span class="nv">$ </span>cp /usr/lib64/python2.3/xmlrpclib.* <span class="nv">$tmpdir</span>/cobbler
-<span class="nv">$ </span>cp /usr/lib64/python2.3/xmllib.* <span class="nv">$tmpdir</span>/cobbler
-<span class="nv">$ </span>cp /usr/lib64/python2.3/shlex.* <span class="nv">$tmpdir</span>/cobbler
-<span class="nv">$ </span>cp /usr/lib64/python2.3/lib-dynload/operator.* <span class="nv">$tmpdir</span>/cobbler
-<span class="nv">$ </span>umount <span class="nv">$tmpdir</span>
-<span class="nv">$ </span>rmdir <span class="nv">$tmpdir</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ dd if=/dev/zero of=updates.img bs=1k count=1440
+$ mke2fs updates.img
+$ tmpdir=`mktemp -d`
+$ mount -o loop updates.img $tmpdir
+$ mkdir $tmpdir/cobbler
+$ cp /usr/lib64/python2.3/xmlrpclib.* $tmpdir/cobbler
+$ cp /usr/lib64/python2.3/xmllib.* $tmpdir/cobbler
+$ cp /usr/lib64/python2.3/shlex.* $tmpdir/cobbler
+$ cp /usr/lib64/python2.3/lib-dynload/operator.* $tmpdir/cobbler
+$ umount $tmpdir
+$ rmdir $tmpdir</code></pre></div>
 
 
 <p>More information on building and using an <em>updates.img</em> is available from <a href="http://fedoraproject.org/wiki/Anaconda/Updates">http://fedoraproject.org/wiki/Anaconda/Updates</a>.</p>
@@ -290,6 +285,11 @@ anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.lo
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -302,11 +302,6 @@ anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.lo
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

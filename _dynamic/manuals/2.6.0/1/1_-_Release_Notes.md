@@ -4,6 +4,21 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.7
+
+### Feature improvements
+
+- Use curl by default on RPM based systems instead of wget
+- Add support for inst.stage2 install tree location to Koan
+
+### Bugfixes
+
+- Add missing self.logger to util.die() calls (\#1326)
+- Add default values for proxy_url_ext and proxy_url_int to settings.py (unbreak upgrades)
+- With mirror_locally false yum_sync now writes the .repo file again
+- Don't write exclude= twice to .repo files
+- Map exclude/include properly to repo lines
+
 ## 2.6.6
 
 ### Feature improvements

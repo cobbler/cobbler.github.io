@@ -1,6 +1,6 @@
 destination: ./_site
 lsi: false
-pygments: true
+highlighter: true
 markdown: rdiscount
 paginate: 5
 paginate_path: '/posts/page:num'

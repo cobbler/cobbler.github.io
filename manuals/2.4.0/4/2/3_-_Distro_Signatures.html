@@ -132,45 +132,42 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The distro signatures are stored in <code>/var/lib/cobbler/distro_signatures.json</code>. As the extension indicates, this is a JSON-formatted file, with the following structure:</p>
 
-<div class="highlight"><pre><code class="json"><span class="p">{</span><span class="nt">&quot;breeds&quot;</span><span class="p">:</span>
- <span class="p">{</span>
-  <span class="nt">&quot;&lt;breed-name&gt;&quot;</span><span class="p">:</span> <span class="p">{</span>
-   <span class="nt">&quot;&lt;os-version1&gt;&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;signatures&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;default_kickstart&quot;</span><span class="p">:</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-   <span class="p">},</span>
-   <span class="err">...</span>
-  <span class="p">}</span>
-  <span class="err">...</span>
- <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-json" data-lang="json">{&quot;breeds&quot;:
+ {
+  &quot;&lt;breed-name&gt;&quot;: {
+   &quot;&lt;os-version1&gt;&quot;: {
+    &quot;signatures&quot;: &quot;...&quot;,
+    &quot;default_kickstart&quot;:&quot;...&quot;,
+    ...
+   },
+   ...
+  }
+  ...
+ }
+}</code></pre></div>
 
 
 <p>This file is read in when cobblerd starts, and logs a message noting how many breeds and os-versions it has loaded:</p>
 
-<div class="highlight"><pre><code class="bash">INFO <span class="p">|</span> 9 breeds and 21 OS versions <span class="nb">read </span>from the signature file
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">INFO | 9 breeds and 21 OS versions read from the signature file</code></pre></div>
 
 
 <h3>CLI Commands</h3>
 
 <p>The signature CLI command has the following sub-commands:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature --help
-<span class="nv">usage</span>
-<span class="o">=====</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler signature --help
+usage
+=====
 cobbler signature report
-cobbler signature update
-</code></pre></div>
+cobbler signature update</code></pre></div>
 
 
 <h4>cobbler signature report</h4>
 
 <p>This command prints out a report of the currently loaded signatures and os-versions.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature report
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler signature report
 Currently loaded signatures:
 debian:
     squeeze
@@ -179,7 +176,7 @@ freebsd:
     8.3
     9.0
 generic:
-    <span class="o">(</span>none<span class="o">)</span>
+    (none)
 redhat:
     fedora16
     fedora17
@@ -198,41 +195,38 @@ ubuntu:
     precise
     quantal
 unix:
-    <span class="o">(</span>none<span class="o">)</span>
+    (none)
 vmware:
     esx4
     esxi4
     esxi5
 windows:
-    <span class="o">(</span>none<span class="o">)</span>
+    (none)
 
-9 breeds with 21 total signatures loaded
-</code></pre></div>
+9 breeds with 21 total signatures loaded</code></pre></div>
 
 
 <p>An optional --name parameter can be specified to limit the report to one breed:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler signature report --name<span class="o">=</span>ubuntu
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler signature report --name=ubuntu
 Currently loaded signatures:
 ubuntu:
     oneiric
     precise
     quantal
 
-Breed <span class="s1">&#39;ubuntu&#39;</span> has 3 total signatures
-</code></pre></div>
+Breed &#39;ubuntu&#39; has 3 total signatures</code></pre></div>
 
 
 <h4>cobbler signature update</h4>
 
 <p>This command will cause Cobbler to go and fetch the latest distro signature file from http://cobbler.github.con/signatures/latest.json, and load the signatures in that file. This file will be tested first, to ensure it is formatted correctly.</p>
 
-<div class="highlight"><pre><code class="bash">cobbler signature update
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler signature update
 task started: 2012-11-21_222926_sigupdate
-task started <span class="o">(</span><span class="nv">id</span><span class="o">=</span>Updating Signatures, <span class="nb">time</span><span class="o">=</span>Wed Nov 21 22:29:26 2012<span class="o">)</span>
+task started (id=Updating Signatures, time=Wed Nov 21 22:29:26 2012)
 Successfully got file from http://cobbler.github.com/signatures/latest.json
-*** TASK COMPLETE ***
-</code></pre></div>
+*** TASK COMPLETE ***</code></pre></div>
 
 
 <p>This command currently takes no options.</p>
@@ -318,6 +312,11 @@ Successfully got file from http://cobbler.github.com/signatures/latest.json
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -330,11 +329,6 @@ Successfully got file from http://cobbler.github.com/signatures/latest.json
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

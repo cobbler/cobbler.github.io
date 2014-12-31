@@ -128,8 +128,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Make sure there is plenty of space in cobbler’s webdir, which defaults to /var/www/cobbler.</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler reposync <span class="o">[</span>--tries<span class="o">=</span>N<span class="o">]</span> <span class="o">[</span>--no-fail<span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler reposync [--tries=N] [--no-fail]</code></pre></div>
 
 
 <p>Cobbler reposync is the command to use to update repos as configured with "cobbler repo add".  Mirroring can take a long time, and usage of cobbler reposync prior to usage is needed to ensure provisioned systems have the files they need to actually use the mirrored repositories.  If you just add repos and never run "cobbler reposync", the repos will never be mirrored.  This is probably a command you would want to put on a crontab, though the frequency of that crontab and where the output goes is left up to the systems administrator.</p>
@@ -138,8 +137,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If you ever want to update a certain repository you can run:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler reposync --only<span class="o">=</span><span class="s2">&quot;reponame1&quot;</span> ...
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler reposync --only=&quot;reponame1&quot; ...</code></pre></div>
 
 
 <p>When updating repos by name, a repo will be updated even if it is set to be not updated during a regular reposync operation (ex: cobbler repo edit --name=reponame1 --keep-updated=0).</p>
@@ -229,6 +227,11 @@ var WRInitTime=(new Date()).getTime();
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -241,11 +244,6 @@ var WRInitTime=(new Date()).getTime();
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

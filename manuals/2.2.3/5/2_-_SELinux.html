@@ -132,27 +132,25 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If you see this when you run "cobbler check" or any other cobbler command, it means SELinux is blocking httpd from talking with cobblerd. The command to fix this is:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo setsebool -P httpd_can_network_connect <span class="nb">true</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo setsebool -P httpd_can_network_connect true</code></pre></div>
 
 
 <h2>Fedora 16 / RHEL6 / CentOS6 - Python MemoryError</h2>
 
 <p>When starting cobblerd for the first time (or after upgrading to 2.2.x), you may see a stack trace like the following:</p>
 
-<div class="highlight"><pre><code class="bash">Starting cobbler daemon: Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-File <span class="s2">&quot;/usr/bin/cobblerd&quot;</span>, line 76, in main
-<span class="nv">api</span> <span class="o">=</span> cobbler_api.BootAPI<span class="o">(</span><span class="nv">is_cobblerd</span><span class="o">=</span>True<span class="o">)</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/api.py&quot;</span>, line 127, in init
-module_loader.load_modules<span class="o">()</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/module_loader.py&quot;</span>, line 62, in load_modules
-<span class="nv">blip</span> <span class="o">=</span> import<span class="o">(</span><span class="s2">&quot;modules.%s&quot;</span> % <span class="o">(</span> modname<span class="o">)</span>, globals<span class="o">()</span>, locals<span class="o">()</span>, <span class="o">[</span>modname<span class="o">])</span>
-File <span class="s2">&quot;/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py&quot;</span>, line 53, in
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Starting cobbler daemon: Traceback (most recent call last):
+File &quot;/usr/bin/cobblerd&quot;, line 76, in main
+api = cobbler_api.BootAPI(is_cobblerd=True)
+File &quot;/usr/lib/python2.6/site-packages/cobbler/api.py&quot;, line 127, in init
+module_loader.load_modules()
+File &quot;/usr/lib/python2.6/site-packages/cobbler/module_loader.py&quot;, line 62, in load_modules
+blip = import(&quot;modules.%s&quot; % ( modname), globals(), locals(), [modname])
+File &quot;/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py&quot;, line 53, in
 from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
-File <span class="s2">&quot;/usr/lib64/python2.6/ctypes/init.py&quot;</span>, line 546, in
-CFUNCTYPE<span class="o">(</span>c_int<span class="o">)(</span>lambda: None<span class="o">)</span>
-MemoryError
-</code></pre></div>
+File &quot;/usr/lib64/python2.6/ctypes/init.py&quot;, line 546, in
+CFUNCTYPE(c_int)(lambda: None)
+MemoryError</code></pre></div>
 
 
 <p>This error is caused by SELinux blocking python ctypes. To resolve this, you can use audit2allow to enable the execution of temp files or you can remove the authn_pam.py module from the site-packages/cobbler/modules/ directory (as long as you're not using PAM authentication for the Web UI).</p>
@@ -238,6 +236,11 @@ MemoryError
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -250,11 +253,6 @@ MemoryError
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>

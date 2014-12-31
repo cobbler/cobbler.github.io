@@ -5,6 +5,6 @@ markdown: rdiscount
 permalink: date
 exclude: ['readme.md','test.idx']
 cobbler:
-    version: 2.6.6
-    released: 2014-10-19
-    versions: [2.6.6]
+    version: 2.6.7
+    released: 2014-12-31
+    versions: [2.6.7]

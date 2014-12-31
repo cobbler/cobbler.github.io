@@ -128,9 +128,9 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The distro command has the following sub-commands:</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro --help
-<span class="nv">usage</span>
-<span class="o">=====</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro --help
+usage
+=====
 cobbler distro add
 cobbler distro copy
 cobbler distro edit
@@ -138,8 +138,7 @@ cobbler distro find
 cobbler distro list
 cobbler distro remove
 cobbler distro rename
-cobbler distro report
-</code></pre></div>
+cobbler distro report</code></pre></div>
 
 
 <h3>Add/Edit Options</h3>
@@ -150,8 +149,7 @@ cobbler distro report
 
 <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro add --name<span class="o">=</span>string --kernel<span class="o">=</span>path --initrd<span class="o">=</span>path <span class="o">[</span>options<span class="o">]</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro add --name=string --kernel=path --initrd=path [options]</code></pre></div>
 
 
 
@@ -220,23 +218,21 @@ cobbler distro report
    <p>By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no preserve the contents.</p>
    <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
+$ cobbler distro edit --name=foo --ksmeta=&quot;e=f&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;e&#39;: &#39;f&#39;}</code></pre></div>
 
    <p>To preserve the contents of these fields, --in-place should be specified:</P>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --ksmeta<span class="o">=</span><span class="s2">&quot;a=b c=d&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span><span class="o">}</span>
-<span class="nv">$ </span>cobbler distro edit --name<span class="o">=</span>foo --in-place --ksmeta<span class="o">=</span><span class="s2">&quot;e=f&quot;</span>
-<span class="nv">$ </span>cobbler distro report --name<span class="o">=</span>foo <span class="p">|</span> grep <span class="s2">&quot;Kickstart Meta&quot;</span>
-Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a&#39;</span>: <span class="s1">&#39;b&#39;</span>, <span class="s1">&#39;c&#39;</span>: <span class="s1">&#39;d&#39;</span>, <span class="s1">&#39;e&#39;</span>: <span class="s1">&#39;f&#39;</span><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
+$ cobbler distro edit --name=foo --in-place --ksmeta=&quot;e=f&quot;
+$ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;, &#39;e&#39;: &#39;f&#39;}</code></pre></div>
 
   </td>
  </tr>
@@ -246,8 +242,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
    <p>Sets kernel command-line arguments that the distro, and profiles/systems dependant on it, will use during installation only. This field is a hash field, and accepts a set of key=value pairs:</p>
    <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="bash">--kopts<span class="o">=</span><span class="s2">&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></div>
 
   </td>
  </tr>
@@ -261,8 +256,7 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
    <p>This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts a set of key=value pairs:</p>
    <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="bash">--ksmeta<span class="o">=</span><span class="s2">&quot;foo=bar baz=3 asdf&quot;</span>
-</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></div>
 
    <p>See the section on <a href="/manuals/2.4.0/4/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
   </td>
@@ -392,6 +386,11 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/10/19/cobbler_2.6.6_released.html">Cobbler 2.6.6 Released</a></p>
           <p class="author">Posted by Jörgen on Sunday, October 19, 2014</p>
         </div>
@@ -404,11 +403,6 @@ Kickstart Metadata             : <span class="o">{</span><span class="s1">&#39;a
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/08/cobbler_2.6.4_released.html">Cobbler 2.6.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 08, 2014</p>
         </div>
 
       </div>
