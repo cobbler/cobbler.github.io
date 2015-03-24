@@ -1,4 +1,4 @@
-<div class="navbar transparent navbar-inverse navbar-fixed-top">
+<div class="navbar transparent navbar-inverse navbar-static-top">
  <div class="navbar-inner">
   <div class="container">
    <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
