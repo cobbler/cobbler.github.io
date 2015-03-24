@@ -13,6 +13,6 @@ Cobbler is a small and lightweight application (about 15k lines of Python code).
 
 ## Infrastructure United
 
-Cobbler can also optionally help with managing DHCP, DNS, and yum package mirroring infrastructure -- in this regard, it is a more generalized automation app, rather than just dealing specifically with installations. There is also a lightweight built-in configuration management system, as well as support for integrating with configuration management systems like Puppet. Cobbler has a command line interface, a web interface (screenshot), and also several API access options. 
+Cobbler can also optionally help with managing DHCP, DNS, and yum package mirroring infrastructure -- in this regard, it is a more generalized automation app, rather than just dealing specifically with installations. There is also a lightweight built-in configuration management system, as well as support for integrating with configuration management systems like Puppet. Cobbler has a command line interface, a web interface, and also several API access options.
 
 That sounds like a lot, but it's really pretty simple. New users may like to start with the web app after doing the initial setup steps on the command line (cobbler check; cobbler import) as it will give them a good idea of all of the features available. Advanced features don't have to be understood all at once, they can be incorporated over time as the need for them arises.
