@@ -211,12 +211,12 @@ customizations.</p>
 
 <p>Given the following commands</p>
 
-<pre><code>cobbler profile add --name=foo --distro=RHEL-5-i386 --kickstart=/opt/cobbler/templates/example
+<pre><code>cobbler profile add --name=foo --distro=RHEL-6-x86_64 --kickstart=/var/lib/cobbler/kickstarts/sample.ks
 cobbler profile edit --name=foo --ksmeta="noun=spot verb=run"
 cobbler system add --name=bar --profile=foo --ksmeta="verb=jump"
 </code></pre>
 
-<p>And the kickstart template <code>/opt/cobbler/templates/example</code>:</p>
+<p>And the kickstart template <code>/var/lib/cobbler/kickstarts/sample.ks</code>:</p>
 
 <pre><code>See $noun $verb
 </code></pre>

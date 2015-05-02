@@ -89,11 +89,11 @@ customizations.
 
 Given the following commands
 
-    cobbler profile add --name=foo --distro=RHEL-5-i386 --kickstart=/opt/cobbler/templates/example
+    cobbler profile add --name=foo --distro=RHEL-6-x86_64 --kickstart=/var/lib/cobbler/kickstarts/sample.ks
     cobbler profile edit --name=foo --ksmeta="noun=spot verb=run"
     cobbler system add --name=bar --profile=foo --ksmeta="verb=jump"
 
-And the kickstart template `/opt/cobbler/templates/example`:
+And the kickstart template `/var/lib/cobbler/kickstarts/sample.ks`:
 
     See $noun $verb
 
