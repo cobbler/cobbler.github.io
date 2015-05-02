@@ -105,7 +105,7 @@ $ man dhcpd.conf
 
 ## Files and Directory Notes
 
-Cobbler makes heavy use of the `/var` directory. The `/var/www/cobbler/ks_mirror` directory is where all of the distrubtion and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
+Cobbler makes heavy use of the `/var` directory. The `/var/www/cobbler/ks_mirror` directory is where all of the distribution and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
 
 If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please read the {% linkup title:"Relocating Your Installation" extrameta:2.6.0 %} section of the manual to learn how you can relocate your installation properly.
 
@@ -136,7 +136,7 @@ cobblerd.service - Cobbler Helper Daemon
 
 ## Checking for Problems and Your First Sync
 
-Now that the cobblerd service is up and running, it's time to check for problems. Cobbler's check command will make some suggestions, but it is important to remember that _these are mainly only suggestions_ and probably aren't critical for basic functionality. If you are running iptables or SELinux, it is important to review any messages concering those that check may report.
+Now that the cobblerd service is up and running, it's time to check for problems. Cobbler's check command will make some suggestions, but it is important to remember that _these are mainly only suggestions_ and probably aren't critical for basic functionality. If you are running iptables or SELinux, it is important to review any messages concerning those that check may report.
 
 {% highlight bash %}
 $ cobbler check
