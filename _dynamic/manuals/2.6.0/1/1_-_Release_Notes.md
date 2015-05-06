@@ -4,6 +4,38 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.8
+
+### Feature improvements
+
+- Add distro signature for SLES11sp4 (\#1402)
+- Add distro signature for Debian 8.0.0
+- Add distro signature for Ubuntu 15.04
+- Add distro signature for FreeBSD 10.0
+- Add distro signature for Fedora 21
+- Several improvements to the Makefile
+- Handle per interface gateway in pre_install_network_config
+- Add gPXE template support for the windows breed
+
+
+### Bugfixes
+
+- Fix cobbler check on EL7 (\#1396)
+- Remove installer_templates from RPM specfile
+- Remove duplicate entries from RPM specfile
+- Fix make webtest on Ubuntu 14.04.2 (\#1417)
+- Remove __sorter() from XMLRPC API
+- Fixes to Debian/Ubuntu packaging of /var/lib/cobbler/ content
+- Fix version comparison for python-virt double digits
+- The virt_disk_driver field is now a list
+- Fields in item_system now properly inherit from item_profile when present
+- Handle chowning repos for debians default apache group
+- elilo-ia64.efi is added to the loaders (\#1385)
+- Fix Ubuntu/Debian permission errors in cobbler-web
+- Don't write hwaddress when the macaddress is empty (\#1322)
+- Fix createrepo version comparison (\#1453)
+
+
 ## 2.6.7
 
 ### Feature improvements

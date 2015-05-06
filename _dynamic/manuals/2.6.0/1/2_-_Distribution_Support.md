@@ -76,6 +76,15 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
+  <td class="span2">Fedora 21</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
   <td class="span2">RHEL/CentOS 4</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -168,6 +177,25 @@ Key:
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">Trusty</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Vivid</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+
+ <tr>
   <td colspan="7">Debian</td>
  </tr>
  <tr>
@@ -182,6 +210,15 @@ Key:
  <tr>
   <td class="span2"></td>
   <td class="span2">Wheezy</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Jessie</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
@@ -301,6 +338,15 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
+  <td class="span2">SLES 11 sp4</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
   <td class="span2">SLES 12</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -358,7 +404,7 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
-  <td class="span2">ESXi 6</td>
+  <td class="span2">ESXi 6.0</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
@@ -398,6 +444,15 @@ Key:
  <tr>
   <td class="span2"></td>
   <td class="span2">9.0</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">10.0</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>

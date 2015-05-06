@@ -124,6 +124,42 @@ var WRInitTime=(new Date()).getTime();
   <div class="span8">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">What's New</li></ul>
    <h1>What's New</h1>
+<h2>2.6.8</h2>
+
+<h3>Feature improvements</h3>
+
+<ul>
+<li>Add distro signature for SLES11sp4 (#1402)</li>
+<li>Add distro signature for Debian 8.0.0</li>
+<li>Add distro signature for Ubuntu 15.04</li>
+<li>Add distro signature for FreeBSD 10.0</li>
+<li>Add distro signature for Fedora 21</li>
+<li>Several improvements to the Makefile</li>
+<li>Handle per interface gateway in pre_install_network_config</li>
+<li>Add gPXE template support for the windows breed</li>
+</ul>
+
+
+<h3>Bugfixes</h3>
+
+<ul>
+<li>Fix cobbler check on EL7 (#1396)</li>
+<li>Remove installer_templates from RPM specfile</li>
+<li>Remove duplicate entries from RPM specfile</li>
+<li>Fix make webtest on Ubuntu 14.04.2 (#1417)</li>
+<li>Remove __sorter() from XMLRPC API</li>
+<li>Fixes to Debian/Ubuntu packaging of /var/lib/cobbler/ content</li>
+<li>Fix version comparison for python-virt double digits</li>
+<li>The virt_disk_driver field is now a list</li>
+<li>Fields in item_system now properly inherit from item_profile when present</li>
+<li>Handle chowning repos for debians default apache group</li>
+<li>elilo-ia64.efi is added to the loaders (#1385)</li>
+<li>Fix Ubuntu/Debian permission errors in cobbler-web</li>
+<li>Don't write hwaddress when the macaddress is empty (#1322)</li>
+<li>Fix createrepo version comparison (#1453)</li>
+</ul>
+
+
 <h2>2.6.7</h2>
 
 <h3>Feature improvements</h3>
@@ -424,6 +460,11 @@ A substantial overhaul of our building &amp; packaging infrastructure allows us 
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2015/05/06/cobbler_2.6.8_released.html">Cobbler 2.6.8 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, May 06, 2015</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
           <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
         </div>
@@ -435,11 +476,6 @@ A substantial overhaul of our building &amp; packaging infrastructure allows us 
 
         <div class="post">
           <p class="title"><a href="/posts/2014/08/15/cobbler_2.6.5_released.html">Cobbler 2.6.5 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, August 15, 2014</p>
         </div>
 
