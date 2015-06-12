@@ -4,6 +4,19 @@ title: What's New
 meta: 2.4.0
 ---
 
+## 2.4.9
+
+This release works around the DNS issues we are having with the cobblerd.org domain.
+We have moved back to using hosted files on GitHub URLs.
+
+If you are using online features like `get-loaders` and `signature update` you will have
+to upgrade to this release!
+
+### Bugfixes
+
+- Fix for a yaml.parser.ParserError in cobbler-web
+
+
 ## 2.4.8
 
 ### Feature improvements

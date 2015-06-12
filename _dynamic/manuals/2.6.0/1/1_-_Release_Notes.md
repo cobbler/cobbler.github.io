@@ -4,6 +4,25 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.9
+
+This release works around the DNS issues we are having with the cobblerd.org domain.
+We have moved back to using hosted files on GitHub URLs.
+
+If you are using online features like `get-loaders` and `signature update` you will have
+to upgrade to this release!
+
+### Feature improvements
+
+- Add support for infiniband network interface type
+
+
+### Bufixes
+
+- Fix problem in networking snippets related to per interface gateways
+- Fix some issues in signaturs (duplicates, and re-add Fedora 21)
+
+
 ## 2.6.8
 
 ### Feature improvements
