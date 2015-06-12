@@ -14,10 +14,10 @@ This is further complicated by Fedora not supporting IA64 and needing to provide
 the same content to Debian and other install bases using the install server.
 
 So, to faciliate providing content for users that do not wish to source content manually
-these are supplied from cobblerd.org as an optional way of getting that content.
+these are supplied from cobbler.github.com as an optional way of getting that content.
 
 Users may also want to use the latest versions of these packages from source or supply
-their own from another source -- these are provided only for convience.  
+their own from another source -- these are provided only for convience.
 
 We are not responsible for ensuring these versions are up to date, but if you would like
 to see a later version made available here email the project mailing list.
