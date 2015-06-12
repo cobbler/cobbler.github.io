@@ -30,7 +30,7 @@ all possible as this makes it difficult to take only some of the work at
 one time, and to quickly slurp in some changes why others get hammered out.
 
 Once we merge in your pull request, you can remove the branch from your repo if you
-like.   
+like.
 
 If not already there, please add yourself to the AUTHORS file in the root of the checkout.
 
@@ -39,14 +39,14 @@ If not already there, please add yourself to the AUTHORS file in the root of the
 Cobbler has a development branch called "master" (where the action is),
 and a branch for each release that are in maintaince mode.
 
-All work on new features should be done against the master branch. 
+All work on new features should be done against the master branch.
 If you want to address bugs then please target the latest release branch,
 the maintainers will then cherry-pick those changes into the master branch.
 
 ## Standards
 
 We're not overly picky, but please follow the usual python PEP8 standards
-within reason.   
+within reason.
 
 -   always use under\_scores, not camelCase
 -   always four (4) spaces, not tabs
@@ -64,9 +64,9 @@ You're also welcome to hang out in \#cobbler and
 \#cobbler-devel on irc.freenode.net, as there are folks around to
 answer questions, etc.
 
-## Contributing to the website: http://www.cobblerd.org
+## Contributing to the website: http://cobbler.github.com/
 
-The github-based git repository for the www.cobblerd.org website itself is at [ https://github.com/cobbler/cobbler.github.com ]( https://github.com/cobbler/cobbler.github.com ).
+The github-based git repository for the Cobbler website itself is at [ https://github.com/cobbler/cobbler.github.com ]( https://github.com/cobbler/cobbler.github.com ).
 
 If you want to contribute changes to the website, you will need [jekyll](http://jekyllrb.com).
 
