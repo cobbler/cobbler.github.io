@@ -64,7 +64,7 @@ You're also welcome to hang out in \#cobbler and
 \#cobbler-devel on irc.freenode.net, as there are folks around to
 answer questions, etc.
 
-## Contributing to the website: http://cobbler.github.com/
+## Contributing to the website: https://cobbler.github.io/
 
 The github-based git repository for the Cobbler website itself is at [ https://github.com/cobbler/cobbler.github.com ]( https://github.com/cobbler/cobbler.github.com ).
 
