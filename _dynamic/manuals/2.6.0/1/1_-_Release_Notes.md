@@ -4,6 +4,23 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.10
+
+### Feature improvements
+
+- Use DNF when available (available on Fedora 22+)
+- Add Fedora 22 to signatures
+- Add Fedora 23 to signatures
+- Add openSUSE 13.2 to signatures
+- Add Debian Stretch (testing) to signatures
+- Add XenServer 6.5.0 to signatures
+
+
+### Bugfixes
+
+- Do not install distro_signatures.json in /etc/cobbler
+
+
 ## 2.6.9
 
 This release works around the DNS issues we are having with the cobblerd.org domain.

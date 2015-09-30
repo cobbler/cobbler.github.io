@@ -85,6 +85,24 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
+  <td class="span2">Fedora 22</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Fedora 23</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
   <td class="span2">RHEL/CentOS 4</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -194,6 +212,15 @@ Key:
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Wily</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
 
  <tr>
   <td colspan="7">Debian</td>
@@ -225,6 +252,16 @@ Key:
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Stretch</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+
  <tr>
   <td colspan="7">SuSE</td>
  </tr>
@@ -291,6 +328,16 @@ Key:
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">OpenSuSE 13.2</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+
  <tr>
   <td class="span2"></td>
   <td class="span2">SLES 10 sp4</td>
@@ -480,6 +527,16 @@ Key:
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
  </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">XenServer 6.5</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+
  <tr>
   <td colspan="7">Nexenta</td>
  </tr>

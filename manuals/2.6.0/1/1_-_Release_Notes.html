@@ -124,6 +124,27 @@ var WRInitTime=(new Date()).getTime();
   <div class="span8">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li class="active">What's New</li></ul>
    <h1>What's New</h1>
+<h2>2.6.10</h2>
+
+<h3>Feature improvements</h3>
+
+<ul>
+<li>Use DNF when available (available on Fedora 22+)</li>
+<li>Add Fedora 22 to signatures</li>
+<li>Add Fedora 23 to signatures</li>
+<li>Add openSUSE 13.2 to signatures</li>
+<li>Add Debian Stretch (testing) to signatures</li>
+<li>Add XenServer 6.5.0 to signatures</li>
+</ul>
+
+
+<h3>Bugfixes</h3>
+
+<ul>
+<li>Do not install distro_signatures.json in /etc/cobbler</li>
+</ul>
+
+
 <h2>2.6.9</h2>
 
 <p>This release works around the DNS issues we are having with the cobblerd.org domain.
@@ -483,6 +504,11 @@ A substantial overhaul of our building &amp; packaging infrastructure allows us 
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2015/09/30/cobbler_2.6.10_released.html">Cobbler 2.6.10 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, September 30, 2015</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2015/06/12/cobbler_2.6.9_released.html">Cobbler 2.6.9 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, June 12, 2015</p>
         </div>
@@ -495,11 +521,6 @@ A substantial overhaul of our building &amp; packaging infrastructure allows us 
         <div class="post">
           <p class="title"><a href="/posts/2015/05/06/cobbler_2.6.8_released.html">Cobbler 2.6.8 Released</a></p>
           <p class="author">Posted by Jörgen on Wednesday, May 06, 2015</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2014/12/31/cobbler_2.6.7_released.html">Cobbler 2.6.7 Released</a></p>
-          <p class="author">Posted by Jörgen on Wednesday, December 31, 2014</p>
         </div>
 
       </div>
