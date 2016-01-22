@@ -124,10 +124,118 @@ var WRInitTime=(new Date()).getTime();
   <div class="span8">
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/developer">developer</a> <span class="divider">/</span></li><li class="active">Developer Guide</li></ul>
    <h1>Developer Guide</h1>
-<p>Developer documentation is always targeted at the master branch in git.</p>
+<p>Developer Guide</p>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/developer/1_-_Patch-process.html">1 - Patch-process</a></li><li><a href="/manuals/developer/2_-_Development-environment-tips.html">2 - Development-environment-tips</a></li><li><a href="/manuals/developer/3_-_Xmlrpc.html">3 - Xmlrpc</a></li></ul></div>
+<h6>#</h6>
 
+<p>Patch process
++++++++++++++</p>
+
+<p>You'd like to contribute features or fixes to Cobbler? Great! We'd love to have them.</p>
+
+<p>It is highly recommended that you have a github.com account if you would like to contribute code. Create an account, log in, and then go to github.com/cobbler/cobbler to "fork" the project.</p>
+
+<p>Create a new branch named after the feature you are working on. Do the work on your local machine, please make sure your work passes Cobbler's coding standards by using <code>make qa</code>. Only then push to your personal Github branch (e.g. github.com/yourname/cobbler).</p>
+
+<p>Then use the "submit pull request" feature of Github to request that the official repo pull in your changes. Be sure to include a full description of what your change does in the comments, including what you have tested (and other things that you may have not been able to test well and need help with).</p>
+
+<p>If the patch needs more work, we'll let you know in the comments.</p>
+
+<p>Do not mix work on different features in different pull requests/branches if at all possible as this makes it difficult to take only some of the work at one time, and to quickly slurp in some changes why others get hammered out.</p>
+
+<p>Once we merge in your pull request, you can remove the branch from your repo if you like. The AUTHORS file is created automatically when we release.</p>
+
+<p>Setup
++++++</p>
+
+<p>The preferred development platform is CentOS 7, you will also need the EPEL repository.
+Get the latest epel-release RPM from <code>http://download.fedoraproject.org/pub/epel/7/x86_64/repoview/epel-release.html</code></p>
+
+<p>Install development dependencies:</p>
+
+<pre><code># yum install python-devel pyflakes python-pep8 python-sphinx rpm-build
+</code></pre>
+
+<p>Install runtime dependencies:</p>
+
+<pre><code># yum install git make python-netaddr python-simplejson PyYAML python-cheetah httpd mod_wsgi
+</code></pre>
+
+<p>Initially, to run Cobbler without using packages:</p>
+
+<pre><code># git clone https://github.com/&lt;your username&gt;/cobbler.git
+# cd cobbler
+# make install
+</code></pre>
+
+<p>For each successive run, do not run make install again. To avoid blowing away your configuration, run:</p>
+
+<pre><code># make webtest
+</code></pre>
+
+<p>This will install Cobbler and restart apache/cobblerd, but move your configuration files and settings aside and restore them, rather than blindly overwriting them.</p>
+
+<p>You can now run Cobbler commands and access the web interface.</p>
+
+<p>Branches
+++++++++</p>
+
+<p>Cobbler has a development branch called "master" (where the action is), and branches for all releases that are in maintaince mode. All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes into the master branch.</p>
+
+<pre><code># git branch -r
+# git checkout &lt;branch&gt;
+# git checkout -b &lt;new branch name&gt;
+</code></pre>
+
+<p>Standards
++++++++++</p>
+
+<p>We're not overly picky, but please follow the python PEP8 standards we want to adhere to (see Makefile).</p>
+
+<ul>
+<li>Always use under_scores, not camelCase.</li>
+<li>Always four (4) spaces, not tabs.</li>
+<li>Avoid one line if statements.</li>
+<li>Validate your code by using <code>make qa</code>.</li>
+<li>Keep things simple, keep in mind that this is a tool for sysadmins and not python developers.</li>
+<li>Use modules that are easily available (eg. EPEL) but preferrably in the base OS, otherwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines.</li>
+<li>At least for now we have to support Python 2.7 for Cobbler and ython 2.6 for Koan.</li>
+</ul>
+
+
+<p>You're also welcome to hang out in #cobbler and #cobbler-devel on irc.freenode.net, as there are folks around to answer questions, etc.</p>
+
+<p>Contributing to the website
++++++++++++++++++++++++++++</p>
+
+<p>The github-based git repository for the http://cobbler.github.io website itself is at https://github.com/cobbler/cobbler.github.io.</p>
+
+<p>If you want to contribute changes to the website, you will need jekyll (http://jekyllrb.com).</p>
+
+<p>You will probably want to:</p>
+
+<ul>
+<li>edit the files in _dynamic</li>
+<li>run the generate_dynamic.sh script</li>
+<li>add both the .md and resulting .html files in your git commit</li>
+</ul>
+
+
+<p>Mailing List
+++++++++++++</p>
+
+<p>We have a development mailing list at https://fedorahosted.org/mailman/listinfo/cobbler-devel
+Discuss development related questions, roadmap, and other things there, rather than on the general user list.</p>
+
+<p>It is a very good idea to mention your pull request (copy/paste, etc) to the development mailing list for discussion.</p>
+
+<p>Debugging
++++++++++</p>
+
+<p>If you need to debug a remote process, epdb provides some very nice capabilities beyond the standard python debugger, just insert a "import epdb; epdb.serve()" in your command line, and from the console:</p>
+
+<pre><code># python -c "import epdb; epdb.connect"
+</code></pre>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -149,7 +257,7 @@ var WRInitTime=(new Date()).getTime();
 
   </div>
   <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/developer/1_-_Patch-process.html">1 - Patch-process</a></li><li><a href="/manuals/developer/2_-_Development-environment-tips.html">2 - Development-environment-tips</a></li><li><a href="/manuals/developer/3_-_Xmlrpc.html">3 - Xmlrpc</a></li></ul></div>
+<div class="toc"><ul class="dirtree"></ul></div>
   </div>
  </div>
 </div>
