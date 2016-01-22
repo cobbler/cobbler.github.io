@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Cobbler development team" />
+
+   <title>Repos</title>
+
+   <!-- CSS -->
+   <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
+   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="/css/search.css" />
+
+   <!-- Fonts -->
+   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
+
+   <!--[if lt IE 9]>
+     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   <![endif]-->
+
+   <!-- Icon -->
+   <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+   <!-- JQuery/Bootstrap/custom scripts -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
+   <script type="text/javascript" src="/js/jquery.swiftype.search.js"></script>
+</head>
+<body class="pull_up">
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div class="navbar transparent navbar-inverse navbar-static-top">
+ <div class="navbar-inner">
+  <div class="container">
+   <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
+   <div class="nav-collapse collapse">
+    <ul class="nav pull-right">
+     <li><a href="/about.html" title="About"><i class="icon-cloud icon-med"></i> About </a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Downloads <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/downloads/2.6.x.html" title="Cobbler 2.6.x">2.6.x</a></li>
+         <li><a href="/downloads/2.4.x.html" title="Cobbler 2.4.x">2.4.x</a></li>
+       </ul>
+     </li>
+     <li><a href="/posts/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/manuals/quickstart/" title="Quickstart Guide">Quickstart Guide</a></li>
+         <li><a href="/manuals/2.6.0/" title="Version 2.6.x">User Manual 2.6.x</a></li>
+         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
+         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+         <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
+         <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
+         <li><a href="/users.html" title="Cobbler Users">Who's Using Cobbler</a></li>
+       </ul>
+     </li>
+     <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i> Github <b class="caret"></b></a>
+       <ul class="dropdown-menu">
+        <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
+        <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
+       </ul>
+     </li>
+     <li>
+      <form class="pull-right">
+       <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+     </li>
+    </ul>
+    <!-- <div id="st-results-container"></div> -->
+    <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+      (function() {
+        Swiftype.key = 'ybEhsDqz2mEFrMtBHiwB';
+        Swiftype.inputElement = '#st-search-input';
+        Swiftype.resultContainingElement = '#st-results-container';
+        Swiftype.attachElement = '#st-search-input';
+        Swiftype.renderStyle = "new_page";
+        Swiftype.resultPageURL = '/search.html';
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = "//swiftype.com/embed.js";
+        var entry = document.getElementsByTagName('script')[0];
+        entry.parentNode.insertBefore(script, entry);
+      }());
+    </script>
+   </div>
+   <!--
+   <form class="navbar-search pull-right" onsubmit="return false;">
+    <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
+   </form>
+   -->
+  </div>
+ </div>
+</div>
+
+
+<!-- begin content -->
+
+<div id="wrap" class="container">
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/3/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">Repos</li></ul>
+   <h1>Repos</h1>
+<p>Repository mirroring allows cobbler to mirror not only install trees ("cobbler import" does this for you) but also optional packages, 3rd party content, and even updates.   Mirroring all of this content locally on your network will result in faster, more up-to-date installations and faster updates.  If you are only provisioning a home setup, this will probably be overkill, though it can be very useful for larger setups (labs, datacenters, etc).  For information on how to keep your mirror up-to-date, see <a href="/manuals/2.8.0/3/2/5_-_Reposync.html">Reposync</a>.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler repo add --mirror=url --name=string [--rpmlist=list] [--creatrepo-flags=string] \
+[--keep-updated=Y/N] [--priority=number] [--arch=string] [--mirror-locally=Y/N] [--breed=yum|rsync|rhn]</code></pre></div>
+
+
+<h3>mirror</h3>
+
+<p>The addresss of the yum mirror.  This can be an rsync:// URL, an ssh location, or a http:// or ftp:// mirror location.  Filesystem paths also work.</p>
+
+<p>The mirror address should specify an exact repository to mirror -- just one architecture and just one distribution.  If you have a seperate repo to mirror for a different arch, add that repo seperately.</p>
+
+<h4>Example:</h4>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rsync://yourmirror.example.com/fedora-linux-core/updates/6/i386 (for rsync protocol)
+http://mirrors.kernel.org/fedora/extras/6/i386/ (for http://)
+user@yourmirror.example.com/fedora-linux-core/updates/6/i386  (for SSH)</code></pre></div>
+
+
+<p>Experimental support is also provided for mirroring RHN content when you need a fast local mirror.  The mirror syntax for this is --mirror=rhn://channel-name and you must have entitlements for this to work.  This requires the cobbler server to be installed on RHEL5 or later.  You will also need a version of yum-utils equal or greater to 1.0.4.</p>
+
+<h3>name</h3>
+
+<p>This name is used as the save location for the mirror.  If the mirror represented, say, Fedora Core 6 i386 updates, a good name would be "fc6i386updates".  Again, be specific.</p>
+
+<p>This name corresponds with values given to the --repos parameter of "cobbler profile add".  If a profile has a --repos value that matches the name given here, that repo can be automatically set up during provisioning (when supported) and installed systems will also use the boot server as a mirror (unless "yum_post_install_mirror" is disabled in the settings file).  By default the provisioning server will act as a mirror to systems it installs, which may not be desirable for laptop configurations, etc.</p>
+
+<p>Distros that can make use of yum repositories during kickstart include FC6 and later, RHEL 5 and later, and derivative distributions.</p>
+
+<p>See the documentation on "cobbler profile add" for more information.</p>
+
+<h3>rpm-list</h3>
+
+<p>By specifying a space-delimited list of package names for --rpm-list, one can decide to mirror only a part of a repo (the list of packages given, plus dependencies).  This may be helpful in conserving time/space/bandwidth.  For instance, when mirroring FC6 Extras, it may be desired to mirror just cobbler and koan, and skip all of the game packages.  To do this, use --rpm-list="cobbler koan".</p>
+
+<p>This option only works for http:// and ftp:// repositories (as it is powered by yumdownloader).  It will be ignored for other mirror types, such as local paths and rsync:// mirrors.</p>
+
+<h3>createrepo-flags</h3>
+
+<p>Specifies optional flags to feed into the createrepo tool, which is called when "cobbler reposync" is run for the given repository. The defaults are ’-c cache’.</p>
+
+<h3>keep-updated</h3>
+
+<p>Specifies that the named repository should not be updated during a normal "cobbler reposync".    The repo may still be updated by name.   The repo should be synced at least once before disabling this feature See "cobbler reposync" below.</p>
+
+<h3>mirror-locally</h3>
+
+<p>When set to "N", specifies that this yum repo is to be referenced directly via kickstarts and not mirrored locally on the cobbler server.  Only http:// and ftp:// mirror urls are supported when using --mirror-locally=N, you cannot use filesystem URLs.</p>
+
+<h3>priority</h3>
+
+<p>Specifies the priority of the repository (the lower the number, the higher the priority), which applies to installed machines using the repositories that also have the yum priorities plugin installed. The default priority for the plugin is 99, as is that of all cobbler mirrored repositories.</p>
+
+<h3>arch</h3>
+
+<p>Specifies what architecture the repository should use.  By default the current system arch (of the server) is used, which may not be desirable.  Using this to override the default arch allows mirroring of source repositories (using --arch=src).</p>
+
+<h3>yumopts</h3>
+
+<p>Sets values for additional yum options that the repo should use on installed systems.  For instance if a yum plugin takes a certain parameter "alpha" and "beta", use something like --yumopts="alpha=2 beta=3".</p>
+
+<h3>breed</h3>
+
+<p>Ordinarily cobbler’s repo system will understand what you mean without supplying this parameter, though you can set it explicitly if needed.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.8.0/3/1/1_-_Distros.html">1 - Distros</a></li><li><a href="/manuals/2.8.0/3/1/2_-_Profiles_and_Sub-Profiles.html">2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.8.0/3/1/3_-_Systems.html">3 - Systems</a></li><li><a href="/manuals/2.8.0/3/1/4_-_Images.html">4 - Images</a></li><li><a href="/manuals/2.8.0/3/1/5_-_Repos.html">5 - Repos</a></li><li><a href="/manuals/2.8.0/3/1/6_-_Management_Classes.html">6 - Management Classes</a></li><li><a href="/manuals/2.8.0/3/1/7_-_File_Resources.html">7 - File Resources</a></li><li><a href="/manuals/2.8.0/3/1/8_-_Package_Resources.html">8 - Package Resources</a></li></ul></div>
+  </div>
+ </div>
+</div>
+<!-- end content -->
+
+<footer>
+  <div class="container">
+    <div class="row-fluid sections">
+      <div class="span6 footmenu">
+       <div class="row-fluid">
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Pages</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Blog Posts</a></li>
+          <li><a href="/about.html">About Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span2 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Manuals</li>
+          <li><a href="/manuals/quickstart/">Quickstart</a></li>
+          <li><a href="/manuals/2.6.0/">2.6.x</a></li>
+          <li><a href="/manuals/2.4.0/">2.4.x</a></li>
+          <li><a href="/manuals/developer/">Developer</a></li>
+         </ul>
+        </div>
+        <div class="span3 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Community</li>
+          <li><a href="/community.html">How to Get Help</a></li>
+          <li><a href="/supporters.html">Supporters</a></li>
+          <li><a href="/users.html">Who's Using Cobbler</a></li>
+         </ul>
+        </div>
+        <div class="span4 sitemap">
+         <ul class="nav nav-list">
+          <li class="nav-header">Github</li>
+          <li><a href="https://github.com/cobbler/cobbler">Code Repository</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/issues">Issue Tracker</a></li>
+          <li><a href="https://github.com/cobbler/cobbler/wiki">Wiki</a></li>
+         </ul>
+        </div>
+       </div>
+    <div class="row-fluid">
+    </div>
+    <div class="row-fluid">
+     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
+     <p class="browsers">
+      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
+      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
+      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
+      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
+     </p>
+    </div>
+      </div>
+      <div class="span3 posts">
+        <p class="column_header">Recent Posts:</p>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2015/09/30/cobbler_2.6.10_released.html">Cobbler 2.6.10 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, September 30, 2015</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2015/06/12/cobbler_2.6.9_released.html">Cobbler 2.6.9 Released</a></p>
+          <p class="author">Posted by Jörgen on Friday, June 12, 2015</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2015/06/12/cobbler_2.4.9_released.html">Cobbler 2.4.9 Released</a></p>
+          <p class="author">Posted by Jörgen on Friday, June 12, 2015</p>
+        </div>
+
+        <div class="post">
+          <p class="title"><a href="/posts/2015/05/06/cobbler_2.6.8_released.html">Cobbler 2.6.8 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, May 06, 2015</p>
+        </div>
+
+      </div>
+      <div class="span3 credits">
+        <div class="social">
+          <a href="https://twitter.com/cobblerista" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-width="100%">Follow @cobblerista</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        <div class="attributions">
+          <p class="column_header">Attributions:</p>
+          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
+          <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
+        </div>
+        <div class="copyright">
+          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
+          <script>$("#copyyear").text((new Date).getFullYear());</script>
+        </div>
+      </div>            
+    </div>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27319020-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Analytics end -->
+
+</body>
+</html>
+
