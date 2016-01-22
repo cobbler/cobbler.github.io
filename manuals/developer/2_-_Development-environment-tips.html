@@ -128,17 +128,23 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The preferred development platform is CentOS 7. You also need EPEL, install the appropriate EPEL rpm.</p>
 
-<pre><code>rpm -i http://ftp.nluug.nl/pub/os/Linux/distr/fedora-epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm
+<pre><code>rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 </code></pre>
 
 <p>Install dependencies:</p>
 
-<pre><code>yum install python-netaddr mod_wsgi python-simplejson
+<pre><code>yum install python-netaddr mod_wsgi python-simplejson pyflakes python-pep8 python-sphinx rpm-build pykickstart
+</code></pre>
+
+<p>Checkout code:</p>
+
+<pre><code>git clone https://github.com/cobbler/cobbler.git
 </code></pre>
 
 <p>Initially, to run cobbler without using the RPM:</p>
 
-<pre><code>make install
+<pre><code>cd cobbler
+make install
 </code></pre>
 
 <p>For each successive run, do not run make install again.  To avoid blowing away your configuration, run:</p>
@@ -150,7 +156,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>You can now run cobbler commands and access the web interface at /cobbler.</p>
 
-<p>It should go without saying, but do not develop for cobbler on your main deployment server.  Develop on a production box.</p>
+<p>It should go without saying, but do not develop for cobbler on your main deployment server.  Develop on a dedicated VM.</p>
 
 <h3>Get the source</h3>
 
@@ -179,6 +185,13 @@ cobbler test
 </code></pre>
 
 <p>You should now be good to go.</p>
+
+<h3>Quality Assurance</h3>
+
+<p>After making changes to your local git repo; please check for style errors before sending a pull request.</p>
+
+<pre><code>make qa
+</code></pre>
 
 <h3>Debugging</h3>
 

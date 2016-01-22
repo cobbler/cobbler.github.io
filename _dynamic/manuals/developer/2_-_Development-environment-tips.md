@@ -8,14 +8,19 @@ meta: 2.8.0
 
 The preferred development platform is CentOS 7. You also need EPEL, install the appropriate EPEL rpm.
 
-    rpm -i http://ftp.nluug.nl/pub/os/Linux/distr/fedora-epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm
+    rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 Install dependencies:
 
-    yum install python-netaddr mod_wsgi python-simplejson
+    yum install python-netaddr mod_wsgi python-simplejson pyflakes python-pep8 python-sphinx rpm-build pykickstart
+
+Checkout code:
+
+    git clone https://github.com/cobbler/cobbler.git
 
 Initially, to run cobbler without using the RPM:
 
+    cd cobbler
     make install
 
 For each successive run, do not run make install again.  To avoid blowing away your configuration, run: 
@@ -26,7 +31,7 @@ This will install cobbler and restart apache/cobblerd, but move your configurati
 
 You can now run cobbler commands and access the web interface at /cobbler.
 
-It should go without saying, but do not develop for cobbler on your main deployment server.  Develop on a production box.
+It should go without saying, but do not develop for cobbler on your main deployment server.  Develop on a dedicated VM.
 
 ### Get the source
 
@@ -51,6 +56,12 @@ If you encounter a message about apache not running or proxying cobblerd, it cou
     cobbler test
 
 You should now be good to go.
+
+### Quality Assurance
+
+After making changes to your local git repo; please check for style errors before sending a pull request.
+
+    make qa
 
 ### Debugging
 
