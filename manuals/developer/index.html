@@ -128,8 +128,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h6>#</h6>
 
-<p>Patch process
-+++++++++++++</p>
+<h2>Patch process</h2>
 
 <p>You'd like to contribute features or fixes to Cobbler? Great! We'd love to have them.</p>
 
@@ -145,8 +144,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Once we merge in your pull request, you can remove the branch from your repo if you like. The AUTHORS file is created automatically when we release.</p>
 
-<p>Setup
-+++++</p>
+<h2>Setup</h2>
 
 <p>The preferred development platform is CentOS 7, you will also need the EPEL repository.
 Get the latest epel-release RPM from <code>http://download.fedoraproject.org/pub/epel/7/x86_64/repoview/epel-release.html</code></p>
@@ -177,8 +175,7 @@ Get the latest epel-release RPM from <code>http://download.fedoraproject.org/pub
 
 <p>You can now run Cobbler commands and access the web interface.</p>
 
-<p>Branches
-++++++++</p>
+<h2>Branches</h2>
 
 <p>Cobbler has a development branch called "master" (where the action is), and branches for all releases that are in maintaince mode. All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes into the master branch.</p>
 
@@ -187,8 +184,7 @@ Get the latest epel-release RPM from <code>http://download.fedoraproject.org/pub
 # git checkout -b &lt;new branch name&gt;
 </code></pre>
 
-<p>Standards
-+++++++++</p>
+<h2>Standards</h2>
 
 <p>We're not overly picky, but please follow the python PEP8 standards we want to adhere to (see Makefile).</p>
 
@@ -205,8 +201,7 @@ Get the latest epel-release RPM from <code>http://download.fedoraproject.org/pub
 
 <p>You're also welcome to hang out in #cobbler and #cobbler-devel on irc.freenode.net, as there are folks around to answer questions, etc.</p>
 
-<p>Contributing to the website
-+++++++++++++++++++++++++++</p>
+<h2>Contributing to the website</h2>
 
 <p>The github-based git repository for the http://cobbler.github.io website itself is at https://github.com/cobbler/cobbler.github.io.</p>
 
@@ -221,16 +216,14 @@ Get the latest epel-release RPM from <code>http://download.fedoraproject.org/pub
 </ul>
 
 
-<p>Mailing List
-++++++++++++</p>
+<h2>Mailing List</h2>
 
 <p>We have a development mailing list at https://fedorahosted.org/mailman/listinfo/cobbler-devel
 Discuss development related questions, roadmap, and other things there, rather than on the general user list.</p>
 
 <p>It is a very good idea to mention your pull request (copy/paste, etc) to the development mailing list for discussion.</p>
 
-<p>Debugging
-+++++++++</p>
+<h2>Debugging</h2>
 
 <p>If you need to debug a remote process, epdb provides some very nice capabilities beyond the standard python debugger, just insert a "import epdb; epdb.serve()" in your command line, and from the console:</p>
 

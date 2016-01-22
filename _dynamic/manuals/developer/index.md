@@ -9,7 +9,7 @@ Developer Guide
 
 
 Patch process
-+++++++++++++
+-------------
 
 You'd like to contribute features or fixes to Cobbler? Great! We'd love to have them.
 
@@ -27,7 +27,7 @@ Once we merge in your pull request, you can remove the branch from your repo if 
 
 
 Setup
-+++++
+-----
 
 The preferred development platform is CentOS 7, you will also need the EPEL repository.
 Get the latest epel-release RPM from ``http://download.fedoraproject.org/pub/epel/7/x86_64/repoview/epel-release.html``
@@ -57,7 +57,7 @@ You can now run Cobbler commands and access the web interface.
 
 
 Branches
-++++++++
+--------
 
 Cobbler has a development branch called "master" (where the action is), and branches for all releases that are in maintaince mode. All work on new features should be done against the master branch. If you want to address bugs then please target the latest release branch, the maintainers will then cherry-pick those changes into the master branch.
 
@@ -67,7 +67,7 @@ Cobbler has a development branch called "master" (where the action is), and bran
 
 
 Standards
-+++++++++
+---------
 
 We're not overly picky, but please follow the python PEP8 standards we want to adhere to (see Makefile).
 
@@ -83,7 +83,7 @@ You're also welcome to hang out in #cobbler and #cobbler-devel on irc.freenode.n
 
 
 Contributing to the website
-+++++++++++++++++++++++++++
+---------------------------
 
 The github-based git repository for the http://cobbler.github.io website itself is at https://github.com/cobbler/cobbler.github.io.
 
@@ -97,7 +97,7 @@ You will probably want to:
 
 
 Mailing List
-++++++++++++
+------------
 
 We have a development mailing list at https://fedorahosted.org/mailman/listinfo/cobbler-devel
 Discuss development related questions, roadmap, and other things there, rather than on the general user list.
@@ -106,7 +106,7 @@ It is a very good idea to mention your pull request (copy/paste, etc) to the dev
 
 
 Debugging
-+++++++++
+---------
 
 If you need to debug a remote process, epdb provides some very nice capabilities beyond the standard python debugger, just insert a "import epdb; epdb.serve()" in your command line, and from the console:
 
