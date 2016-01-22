@@ -30,16 +30,15 @@ Get the latest epel-release RPM from ``http://download.fedoraproject.org/pub/epe
 
 Install development dependencies:
 
-    # yum install python-devel pyflakes python-pep8 python-sphinx rpm-build
+    # yum install git make python-devel pyflakes python-pep8 python-sphinx rpm-build
 
 Install runtime dependencies:
 
-
-    # yum install git make python-netaddr python-simplejson PyYAML python-cheetah httpd mod_wsgi
+    # yum install python-netaddr python-simplejson PyYAML python-cheetah httpd mod_wsgi
 
 Initially, to run Cobbler without using packages:
 
-    # git clone https://github.com/<your username>/cobbler.git
+    # git clone https://github.com/cobbler/cobbler.git
     # cd cobbler
     # make install
 
@@ -73,7 +72,7 @@ We're not overly picky, but please follow the python PEP8 standards we want to a
 * Validate your code by using ``make qa``.
 * Keep things simple, keep in mind that this is a tool for sysadmins and not python developers.
 * Use modules that are easily available (eg. EPEL) but preferrably in the base OS, otherwise they have to be packaged with the app, which usually runs afoul of distribution packaging guidelines.
-* At least for now we have to support Python 2.7 for Cobbler and ython 2.6 for Koan.
+* At least for now we have to support Python 2.7 for Cobbler and Python 2.6 for Koan.
 
 You're also welcome to hang out in #cobbler and #cobbler-devel on irc.freenode.net, as there are folks around to answer questions, etc.
 
