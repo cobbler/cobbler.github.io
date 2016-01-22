@@ -4,10 +4,6 @@ title: Developer Guide
 meta: 2.8.0
 ---
 
-Developer Guide
-###############
-
-
 Patch process
 -------------
 
