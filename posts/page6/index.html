@@ -168,6 +168,17 @@ var WRInitTime=(new Date()).getTime();
  <div class="row-fluid">
   <div class="span10 posts">
    <div class="post">
+    <h2 class="header">New Search Capability</h2>
+    <div class="author"><i>Posted by James on Friday, June 22, 2012</i></div>
+    <div class="content">I've added a new search function to the site, which will search the manual documentation. Since github uses jekyll for their page hosting, all site content has to be static, which really limits the search capability. Some third-party services exist to get around this issue, but I decided to go a different direction and wrote a jekyll plugin (using ferret to index the text) to generate a searchable JSON index. JQuery is used on the client side to grab that index and find the results based on a fuzzy matching algorithm.</div>
+    <div class="readmore"><a href="/posts/2012/06/22/new-search-capability.html"><i class="icon-double-angle-right"></i> continue reading</a></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="row-fluid">
+  <div class="span10 posts">
+   <div class="post">
     <h2 class="header">Cobbler 2.2.3-2 Released</h2>
     <div class="author"><i>Posted by James on Sunday, June 17, 2012</i></div>
     <div class="content">Announcing the release of Cobbler 2.2.3-2. This release addresses a minor bug in the 2.2.3-1 release.</div>
@@ -259,6 +270,11 @@ var WRInitTime=(new Date()).getTime();
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2016/01/23/cobbler_2.6.11_released.html">Cobbler 2.6.11 Released</a></p>
+          <p class="author">Posted by Jörgen on Saturday, January 23, 2016</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2015/09/30/cobbler_2.6.10_released.html">Cobbler 2.6.10 Released</a></p>
           <p class="author">Posted by Jörgen on Wednesday, September 30, 2015</p>
         </div>
@@ -271,11 +287,6 @@ var WRInitTime=(new Date()).getTime();
         <div class="post">
           <p class="title"><a href="/posts/2015/06/12/cobbler_2.4.9_released.html">Cobbler 2.4.9 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, June 12, 2015</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2015/05/06/cobbler_2.6.8_released.html">Cobbler 2.6.8 Released</a></p>
-          <p class="author">Posted by Jörgen on Wednesday, May 06, 2015</p>
         </div>
 
       </div>
