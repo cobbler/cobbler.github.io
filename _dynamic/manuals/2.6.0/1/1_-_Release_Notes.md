@@ -4,6 +4,23 @@ title: What's New
 meta: 2.6.0
 ---
 
+## 2.6.11
+
+### Feature improvements
+
+- Add support for FreeBSD 9.1, 9.2, 9.3, 10.1 and 10.2
+- Add support for SLES 12.1 in signatures (\#1597)
+- Koan: use new dracut ip option for configuring static interfaces
+
+### Bugfixes
+
+- Improve handling of yum-utils/dnf, rsync in `cobbler check` and RPM packaging (\#1611, \#1586, \#1543, \#1427, \#791)
+- Change online Cobbler resource URL's from cobbler.github.com to cobbler.github.io
+- Fix bonding for RHEL 6 and RHEL 7
+- Koan: fix incompatibility with F21 virt-install (\#1398)
+- Koan: fix os_version conditionals
+
+
 ## 2.6.10
 
 ### Feature improvements

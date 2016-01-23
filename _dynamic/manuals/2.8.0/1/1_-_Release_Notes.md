@@ -27,11 +27,12 @@ The following list of features have been deprecated and will *not* be available 
 
 - Integrated ``pyflakes`` into the build system and fixed all reported issues
 - Add support for SLES12 SP1 to the signatures (\#1597)
+- Add support for FreeBSD 9.1, 9.2, 9.3, 10.1 and 10.2
 -
 
 ### Bugfixes
 
 - Allow the use of relative paths when importing a distro (\#1613)
--
+- Improve handling of yum-utils/dnf, rsync in `cobbler check` and RPM packaging (\#1611, \#1586, \#1543, \#1427, \#791)
 -
 
