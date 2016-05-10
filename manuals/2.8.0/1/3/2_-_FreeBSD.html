@@ -139,32 +139,33 @@ var WRInitTime=(new Date()).getTime();
 </ul>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">-   Select &quot;Standard&quot; installation
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">-   Select &quot;Standard&quot; installation
 -   Use entire disk
 -   Install a standard MBR
 -   Create a new slice and use the entire disk
 -   Mount it at /
 -   Choose the &quot;Developer&quot; distribution
-    -   Full sources, binaries and doc but no games
-
--   Install from a FreeBSD CD/DVD
--   Setup networking to copy files back and forth
--   In the post install &quot;Package Selection&quot; scroll down and select
-    shells
-    -   Install bash
-    -   chsh -s /usr/local/bin/bash username or vipw</code></pre></div>
-
+    -   Full sources, binaries and doc but no games</p>
 
 <ul>
-<li>Rebuild pxeboot with tftp support</li>
+<li>Install from a FreeBSD CD/DVD</li>
+<li>Setup networking to copy files back and forth</li>
+<li><p>In the post install &quot;Package Selection&quot; scroll down and select
+shells</p>
+
+<ul>
+<li>Install bash</li>
+<li>chsh -s /usr/local/bin/bash username or vipw</code></pre></figure></li>
+</ul>
+</li>
+<li><p>Rebuild pxeboot with tftp support</p></li>
 </ul>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /sys/boot
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /sys/boot
 make clean
 make LOADER_TFTP_SUPPORT=yes
-make install</code></pre></div>
-
+make install</code></pre></figure></p>
 
 <ul>
 <li>Copy the pxeboot file to the Cobbler server.</li>
@@ -183,9 +184,8 @@ updated every release. Just look for 8.X and change it.</p></li>
 <p>The standard sysinstall doesn't really support HTTP. This patch
 adds full http support to sysinstall.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /usr
-patch -p0 &lt; /root/http_install.patch</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /usr
+patch -p0 &lt; /root/http_install.patch</code></pre></figure></p>
 
 <ul>
 <li>Rebuild FreeBSD mfsroot</li>
@@ -198,11 +198,10 @@ acts like different normal binaries depending on how it's called.
 We need to include "fetch" and a few other binaries. This is a
 multi step process.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /tmp/bootcrunch
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /tmp/bootcrunch
 cd /tmp/bootcrunch
 crunchgen -o /root/boot_crunch.conf
-make -f boot_crunch.mk</code></pre></div>
-
+make -f boot_crunch.mk</code></pre></figure></p>
 
 <p>Once we've added our additional binaries we need to create a larger ramdisk.</p>
 
@@ -211,33 +210,29 @@ make -f boot_crunch.mk</code></pre></div>
 </ul>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">dd if=/dev/zero of=/tmp/mfsroot bs=1024 count=$((1024 * 5))
-dev0=`mdconfig -f /tmp/mfsroot`;newfs $dev0;mkdir /mnt/mfsroot_new;mount /dev/$dev0 /mnt/mfsroot_new</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">dd if=/dev/zero of=/tmp/mfsroot bs=1024 count=$((1024 * 5))
+dev0=<code>mdconfig -f /tmp/mfsroot</code>;newfs $dev0;mkdir /mnt/mfsroot_new;mount /dev/$dev0 /mnt/mfsroot_new</code></pre></figure></p>
 
 <ul>
 <li>Mount the standard installer's mfsroot</li>
 </ul>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /mnt/cdrom; mount -t cd9660 -o -e /dev/acd0 /mnt/cdrom
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /mnt/cdrom; mount -t cd9660 -o -e /dev/acd0 /mnt/cdrom
 cp /mnt/cdrom/boot/mfsroot.gz /tmp/mfsroot.old.gz
-gzip -d /tmp/mfsroot.old.gz; dev1=`mdconfig -f /tmp/mfsroot.old`
-mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old</code></pre></div>
-
+gzip -d /tmp/mfsroot.old.gz; dev1=<code>mdconfig -f /tmp/mfsroot.old</code>
+mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old</code></pre></figure></p>
 
 <p>Copy everything from the old one to the new one. You'll be
 replacing the binaries, but it's simpler to just copy it all over.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">(cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">(cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)</code></pre></figure></p>
 
 <p>Next copy over the new bootcrunch file and create all of the
 symlinks after removing the old binaries.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cd /mnt/mfsroot_new/stand; rm -- *; cp /tmp/bootcrunch/boot_crunch ./
-for i in $(./boot_crunch 2&gt;&amp;1|grep -v usage);do if [ &quot;$i&quot; != &quot;boot_crunch&quot; ];then rm -f ./&quot;$i&quot;;ln ./boot_crunch &quot;$i&quot;;fi;done</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /mnt/mfsroot_new/stand; rm -- *; cp /tmp/bootcrunch/boot_crunch ./
+for i in $(./boot_crunch 2&gt;&amp;1|grep -v usage);do if [ &quot;$i&quot; != &quot;boot_crunch&quot; ];then rm -f ./&quot;$i&quot;;ln ./boot_crunch &quot;$i&quot;;fi;done</code></pre></figure></p>
 
 <p>Sysinstall uses install.cfg to start the install off. We've created
 a version of the install.cfg that uses fetch to pull down another
@@ -248,15 +243,13 @@ DHCP next-server field.</p>
 
 <p>Copy both install.cfg and doconfig.sh into place.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp {install.cfg,doconfig.sh} /mnt/mfsroot_new/stand</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cp {install.cfg,doconfig.sh} /mnt/mfsroot_new/stand</code></pre></figure></p>
 
 <p>Now just unmount the ramdisk and compress the file</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">umount /mnt/mfsroot_new; umount /mnt/mfsroot_old
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">umount /mnt/mfsroot_new; umount /mnt/mfsroot_old
 mdconfig -d -u $dev0; mdconfig -d -u $dev1
-gzip /tmp/mfsroot</code></pre></div>
-
+gzip /tmp/mfsroot</code></pre></figure></p>
 
 <p>Copy the mfsroot.gz to the Cobbler server.</p>
 
@@ -267,34 +260,30 @@ gzip /tmp/mfsroot</code></pre></div>
 </ul>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">[tftpd]
-module = manage_tftpd_py</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">[tftpd]
+module = manage_tftpd_py</code></pre></figure></p>
 
 <ul>
 <li>Mount the media</li>
 </ul>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mount /dev/cdrom /mnt</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">mount /dev/cdrom /mnt</code></pre></figure></p>
 
 <ul>
 <li>Import the distro</li>
 </ul>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64</code></pre></figure></p>
 
 <ul>
 <li>Copy the mfsroot.gz and the pxeboot.bs into the distro</li>
 </ul>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cp pxeboot.bs /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
-cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cp pxeboot.bs /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
+cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/</code></pre></figure></p>
 
 <ul>
 <li>Configure a system to use the profile, turn on netboot, and off you go.</li>

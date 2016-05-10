@@ -130,23 +130,21 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Usage of this command allows the administrator to grant access to other users without granting them the ability to run cobbler as root.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler aclsetup --help
-Usage: cobbler aclsetup  [ARGS]
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler aclsetup --help
+Usage: cobbler aclsetup  [ARGS]</p>
 
-Options:
+<p>Options:
   -h, --help            show this help message and exit
   --adduser=ADDUSER     give acls to this user
   --addgroup=ADDGROUP   give acls to this group
   --removeuser=REMOVEUSER
                         remove acls from this user
   --removegroup=REMOVEGROUP
-                        remove acls from this group</code></pre></div>
-
+                        remove acls from this group</code></pre></figure></p>
 
 <p>Example:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler aclsetup --adduser=timmy</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler aclsetup --adduser=timmy</code></pre></figure></p>
 
 <p>The above example gives timmy access to run cobbler commands.</p>
 

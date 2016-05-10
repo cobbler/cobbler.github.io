@@ -142,7 +142,6 @@ var WRInitTime=(new Date()).getTime();
 <li>redhat_management (Spacewalk/Satellite)</li>
 <li>Remote kickstart files/tempaltes (other than on the Cobbler server)</li>
 <li>The concurrent use of <code>parent</code> and <code>distro</code> on subprofiles</li>
-<li>Support for Python 2.6.x based systems</li>
 </ul>
 
 
@@ -150,20 +149,15 @@ var WRInitTime=(new Date()).getTime();
 
 <ul>
 <li>Integrated <code>pyflakes</code> into the build system and fixed all reported issues</li>
-<li>Add support for SLES12 SP1 to the signatures (#1597)
-
-<h2>- Add support for FreeBSD 9.1, 9.2, 9.3, 10.1 and 10.2</h2></li>
+<li>Integrated Travis CI into the build system (<code>make qa</code>)</li>
+<li>Allow https method in repo management (#1587)</li>
+<li>Add support for Ubuntu 16.04</li>
 </ul>
 
 
 <h3>Bugfixes</h3>
 
-<ul>
-<li>Allow the use of relative paths when importing a distro (#1613)
-
-<h2>- Improve handling of yum-utils/dnf, rsync in <code>cobbler check</code> and RPM packaging (#1611, #1586, #1543, #1427, #791)</h2></li>
-</ul>
-
+<h2>- Allow the use of relative paths when importing a distro (#1613)</h2>
 
      <hr>
      <div id="disqus_thread"></div>

@@ -134,27 +134,25 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Here's what the relavant parts of modules.conf look like:</p>
 
-<div class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
+<p><figure class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
 settings = serializer_catalog
 distro = serializer_catalog
 profile = serializer_catalog
 system = serializer_catalog
 repo = serializer_catalog
-etc...</code></pre></div>
-
+etc...</code></pre></figure></p>
 
 <p><strong>NOTE</strong> Be sure to add a line for every object type supported in your version of cobbler. Read the <a href="/manuals/2.8.0/3/1_-_Cobbler_Primitives.html">Cobbler Primitives</a> section for more details.</p>
 
 <p>Suppose, however, that you (just to be contrary), want to save everything in Marshalled XML because you liked angle brackets a whole lot (we don't!). Easy enough, just write a new serializer module that did this and then could change the file to:</p>
 
-<div class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
+<p><figure class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
 settings = serializer_catalog
 distro = serializer_xml
 profile = serializer_xml
 system = serializer_xml
 repo = serializer_xml
-etc...</code></pre></div>
-
+etc...</code></pre></figure></p>
 
 <p>This is all just an example -- in your environment, you may have more complex needs -- or even some weird ones.</p>
 
@@ -170,23 +168,20 @@ etc...</code></pre></div>
 
 <p>Serializer catalog will save individual files in:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/distros.d
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/distros.d
 /var/lib/cobbler/config/profiles.d
 /var/lib/cobbler/config/systems.d
-etc...</code></pre></div>
-
+etc...</code></pre></figure></p>
 
 <p>Files are named after the name of each object, for instance:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/systems.d/foo.json</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/systems.d/foo.json</code></pre></figure></p>
 
 <p>On EL 4 and before, the simplejson implementation has some unicode issues, so YAML is still the default on those systems. YAML is significantly slower, so this is more reason to install Cobbler on EL 5 and later. (Or rather, json is 300x faster!)</p>
 
 <p>The filenames for YAML files do not have an extension.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/systems.d/foo</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">/var/lib/cobbler/config/systems.d/foo</code></pre></figure></p>
 
 <p>Cobbler knows how to upgrade YAML files to JSON if it is running on a platform that can use JSON, and will do so transparently.</p>
 

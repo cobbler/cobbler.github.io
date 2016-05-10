@@ -128,29 +128,24 @@ var WRInitTime=(new Date()).getTime();
 
 <p>To use ISC, your <code>/etc/cobbler/modules.conf</code> should contain:</p>
 
-<div class="highlight"><pre><code class="language-ini" data-lang="ini">[dhcp]
-module = manage_isc</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-ini" data-lang="ini">[dhcp]
+module = manage_isc</code></pre></figure></p>
 
 <p>To use dnsmasq, it should contain:</p>
 
-<div class="highlight"><pre><code class="language-ini" data-lang="ini">[dns]
-module = manage_dnsmasq
+<p><figure class="highlight"><pre><code class="language-ini" data-lang="ini">[dns]
+module = manage_dnsmasq</p>
 
-[dhcp]
-module = manage_dnsmasq</code></pre></div>
-
-
-
+<p>[dhcp]
+module = manage_dnsmasq</code></pre></figure></p>
 
 <div class="alert alert-info alert-block"><b>Note:</b> Using dnsmasq for DHCP requires that you use it for DNS, even if you disable `manage_dns` in your <a href="/manuals/2.8.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a>. You should not try to mix the ISC module with the dnsmasq module.</div>
 
 
 <p>You also need to enable such management; this is done in <a href="/manuals/2.8.0/3/3_-_Cobbler_Settings.html">your settings</a>.</p>
 
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">manage_dhcp: 1
-restart_dhcp: 1</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">manage_dhcp: 1
+restart_dhcp: 1</code></pre></figure></p>
 
 <p>The relevant software packages also need to be present; <a href="/manuals/2.8.0/3/2/1_-_Check.html">Cobbler Check</a> will verify this.</p>
 
@@ -174,16 +169,14 @@ restart_dhcp: 1</code></pre></div>
 
 <p>Suppose the following command is given (where &lt;profile name&gt; is an existing profile in cobbler):</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=foo --profile=&lt;profile name&gt; 
-  --interface=eth0 --mac=AA:BB:CC:DD:EE:FF --ip-address=192.168.1.1</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=foo --profile=&lt;profile name&gt;
+  --interface=eth0 --mac=AA:BB:CC:DD:EE:FF --ip-address=192.168.1.1</code></pre></figure></p>
 
 <p>That will take the template file in <code>/etc/cobbler/dhcp.template</code>, fill in the appropriate fields, and generate a fuller configuration file <code>/etc/dhcpd.conf</code> that includes this machine, and ensures that when AA:BB:CC:DD:EE:FF asks for an IP, it gets 192.168.1.1. The <code>--ip-address=...</code> specification is optional; DHCP can make dynamic assignments within a configured range.</p>
 
 <p>To make this active, run:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler sync</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler sync</code></pre></figure></p>
 
 <p>As noted in the <a href="/manuals/2.8.0/3/2/2_-_Sync.html">Cobbler Sync</a> section, managing DHCP with the ISC module is one of the few times you will need to use the full sync via <code>cobbler sync</code>.</p>
 

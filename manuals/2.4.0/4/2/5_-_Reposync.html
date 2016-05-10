@@ -128,8 +128,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Make sure there is plenty of space in cobbler’s webdir, which defaults to <code>/var/www/cobbler</code>.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler reposync [--tries=N] [--no-fail]</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler reposync [--tries=N] [--no-fail]</code></pre></figure></p>
 
 <p>Cobbler reposync is the command to use to update repos as configured with "cobbler repo add".  Mirroring can take a long time, and usage of cobbler reposync prior to usage is needed to ensure provisioned systems have the files they need to actually use the mirrored repositories.  If you just add repos and never run "cobbler reposync", the repos will never be mirrored.  This is probably a command you would want to put on a crontab, though the frequency of that crontab and where the output goes is left up to the systems administrator.</p>
 
@@ -137,8 +136,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If you ever want to update a certain repository you can run:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler reposync --only=&quot;reponame1&quot; ...</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler reposync --only=&quot;reponame1&quot; ...</code></pre></figure></p>
 
 <p>When updating repos by name, a repo will be updated even if it is set to be not updated during a regular reposync operation (ex: cobbler repo edit --name=reponame1 --keep-updated=0).</p>
 

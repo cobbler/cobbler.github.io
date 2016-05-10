@@ -128,10 +128,9 @@ var WRInitTime=(new Date()).getTime();
 
 <p>You can set up a bond, to join interfaces eth0 and eth1 to a failover (active-backup) interface bond0 as follows:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 --interface-type=bond_slave --interface-master=bond0
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 --interface-type=bond_slave --interface-master=bond0
 $ cobbler system edit --name=foo --interface=eth1 --mac=AA:BB:CC:DD:EE:F1 --interface-type=bond_slave --interface-master=bond0
-$ cobbler system edit --name=foo --interface=bond0 --interface-type=bond --bonding-opts=&quot;miimon=100 mode=1&quot; --ip-address=192.168.1.100 --netmask=255.255.255.0</code></pre></div>
-
+$ cobbler system edit --name=foo --interface=bond0 --interface-type=bond --bonding-opts=&quot;miimon=100 mode=1&quot; --ip-address=192.168.1.100 --netmask=255.255.255.0</code></pre></figure></p>
 
 <p>You can specify any bonding options you would like, so please read the kernel documentation if you are unfamiliar with the various bonding modes Linux can support.</p>
 

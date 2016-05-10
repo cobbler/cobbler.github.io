@@ -153,30 +153,26 @@ based distributions, it has several shortcomings.</p>
 
 <p>To enable anamon for your Red Hat based distribution installations, edit <em>/etc/cobbler/settings</em> and set:</p>
 
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">anamon_enabled: 1</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">anamon_enabled: 1</code></pre></figure></p>
 
 <p><strong>NOTE:</strong> Enabling anamon allows an xmlrpc call to send create and update log files in the anamon directory, without authentication, so enable only if you are ok with this limitation. It could be potentially used by users to flood the log files or fill up the server, which you probably don't want in an untrusted environment.  However, even so, it may be good for debugging complex installs.</p>
 
 <p>You will also need to update your kickstart templates to include the following snippets.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">%pre
-$SNIPPET(&#39;pre_anamon&#39;)</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">%pre
+$SNIPPET(&#39;pre_anamon&#39;)</code></pre></figure></p>
 
 <p>Anamon can also send /var/log/messages and /var/log/boot.log once your provisioned system has booted. To also enable post-install boot notification, you must enable the following snippet:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">%post
-$SNIPPET(&#39;post_anamon&#39;)</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">%post
+$SNIPPET(&#39;post_anamon&#39;)</code></pre></figure></p>
 
 <h2>Where Is Information Saved?</h2>
 
 <p>All anamon logs are stored in a system-specific directory under <em>/var/log/cobbler/anamon/systemname</em>. For example,</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ ls /var/log/cobbler/anamon/vguest3
-anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.log</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ ls /var/log/cobbler/anamon/vguest3
+anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.log</code></pre></figure></p>
 
 <h2>Older Distributions</h2>
 
@@ -189,18 +185,17 @@ anaconda.log  boot.log  dmesg  install.log  ks.cfg  lvmout.log  messages  sys.lo
 </ol>
 
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ dd if=/dev/zero of=updates.img bs=1k count=1440
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ dd if=/dev/zero of=updates.img bs=1k count=1440
 $ mke2fs updates.img
-$ tmpdir=`mktemp -d`
+$ tmpdir=<code>mktemp -d</code>
 $ mount -o loop updates.img $tmpdir
 $ mkdir $tmpdir/cobbler
-$ cp /usr/lib64/python2.3/xmlrpclib.* $tmpdir/cobbler
-$ cp /usr/lib64/python2.3/xmllib.* $tmpdir/cobbler
-$ cp /usr/lib64/python2.3/shlex.* $tmpdir/cobbler
-$ cp /usr/lib64/python2.3/lib-dynload/operator.* $tmpdir/cobbler
+$ cp /usr/lib64/python2.3/xmlrpclib.<em> $tmpdir/cobbler
+$ cp /usr/lib64/python2.3/xmllib.</em> $tmpdir/cobbler
+$ cp /usr/lib64/python2.3/shlex.<em> $tmpdir/cobbler
+$ cp /usr/lib64/python2.3/lib-dynload/operator.</em> $tmpdir/cobbler
 $ umount $tmpdir
-$ rmdir $tmpdir</code></pre></div>
-
+$ rmdir $tmpdir</code></pre></figure></p>
 
 <p>More information on building and using an <em>updates.img</em> is available from <a href="http://fedoraproject.org/wiki/Anaconda/Updates">http://fedoraproject.org/wiki/Anaconda/Updates</a>.</p>
 

@@ -128,10 +128,9 @@ var WRInitTime=(new Date()).getTime();
 
 <p>You can create a bridge in cobbler in the following way:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 --interface-type=bridge_slave --interface-master=br0
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 --interface-type=bridge_slave --interface-master=br0
 $ cobbler system edit --name=foo --interface=eth1 --mac=AA:BB:CC:DD:EE:F1 --interface-type=bridge_slave --interface-master=br0
-$ cobbler system edit --name=foo --interface=br0 --interface-type=bridge --bridge-opts=&quot;stp=no&quot; --ip-address=192.168.1.100 --netmask=255.255.255.0</code></pre></div>
-
+$ cobbler system edit --name=foo --interface=br0 --interface-type=bridge --bridge-opts=&quot;stp=no&quot; --ip-address=192.168.1.100 --netmask=255.255.255.0</code></pre></figure></p>
 
 <p>You can specify any bridging options you would like, so please read the brctl manpage for details if you are unfamiliar with bridging.</p>
 

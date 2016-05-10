@@ -128,10 +128,11 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The profile command has the following sub-commands:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler profile --help
-usage
-=====
-cobbler profile add
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler profile --help</p>
+
+<h1>usage</h1>
+
+<p>cobbler profile add
 cobbler profile copy
 cobbler profile dumpvars
 cobbler profile edit
@@ -140,17 +141,13 @@ cobbler profile getks
 cobbler profile list
 cobbler profile remove
 cobbler profile rename
-cobbler profile report</code></pre></div>
-
+cobbler profile report</code></pre></figure></p>
 
 <h3>Add/Edit Options</h3>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler profile add --name=string --distro=string [options]</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler profile add --name=string --distro=string [options]</code></pre></figure></p>
 
 <table class="table table-condensed table-striped">
 <thead>
@@ -223,7 +220,7 @@ cobbler profile report</code></pre></div>
    <p>Sets kernel command-line arguments that the profile, and sub-profiles/systems dependant on it, will use during installation only. This field is a hash field, and accepts a set of key=value pairs:</p>
    <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></figure>
 
   </td>
  </tr>
@@ -237,7 +234,7 @@ cobbler profile report</code></pre></div>
    <p>This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts a set of key=value pairs:</p>
    <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></figure>
 
    <p>See the section on <a href="/manuals/2.6.0/3/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
   </td>
@@ -367,10 +364,7 @@ cobbler profile report</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler profile getks --name=foo | less</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler profile getks --name=foo | less</code></pre></figure></p>
 
      <hr>
      <div id="disqus_thread"></div>

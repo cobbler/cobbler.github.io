@@ -6,7 +6,7 @@ module Jekyll
 
     def get_current_page(context)
       purl = context.environments.first["page"]["url"]
-      context.registers[:site].posts.each do |p|
+      context.registers[:site].posts.docs.each do |p|
         if p.url == purl
           return p
         end
@@ -20,7 +20,7 @@ module Jekyll
       output = ""
 
       posts = context.registers[:site].posts
-      posts.reverse.each_with_index do |post,i|
+      posts.docs.reverse.each_with_index do |post,i|
         if post.url == thispage.url
           index = i/maxpages
           if index == 0

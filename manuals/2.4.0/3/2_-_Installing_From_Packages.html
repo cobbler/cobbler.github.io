@@ -130,19 +130,19 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the yum command:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install cobbler</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install cobbler</code></pre></figure></p>
 
 <p>With Fedora's packaging system, new releases are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler for Fedora (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install --enablerepo=updates-testing cobbler
-# or
-$ sudo yum update --enablerepo=updates-testing cobbler</code></pre></div>
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install --enablerepo=updates-testing cobbler</p>
 
+<h1>or</h1>
+
+<p>$ sudo yum update --enablerepo=updates-testing cobbler</code></pre></figure></p>
 
 <p>Once cobbler is installed, start and enable the service:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ systemctl start cobblerd.service
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ systemctl start cobblerd.service
 $ systemctl enable cobblerd.service
 $ systemctl status cobblerd.service
 cobblerd.service - Cobbler Helper Daemon
@@ -150,47 +150,42 @@ cobblerd.service - Cobbler Helper Daemon
       Active: active (running) since Sun, 17 Jun 2012 13:01:28 -0500; 1min 44s ago
     Main PID: 1234 (cobblerd)
       CGroup: name=systemd:/system/cobblerd.service
-          └ 1234 /usr/bin/python /usr/bin/cobblerd -F</code></pre></div>
-
+          └ 1234 /usr/bin/python /usr/bin/cobblerd -F</code></pre></figure></p>
 
 <p>And (re)start/enable Apache:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ systemctl start httpd.service
-$ systemctl enable httpd.service</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ systemctl start httpd.service
+$ systemctl enable httpd.service</code></pre></figure></p>
 
 <h2>RHEL/CentOS/Scientific Linux</h2>
 
 <p>Cobbler is packaged for RHEL variants through the <a href="http://fedoraproject.org/wiki/EPEL">Fedora EPEL</a> (Extra Packages for Enterprise Linux) system. Follow the directions there to install the correct repo RPM for your RHEL version and architecture. For example, on for a RHEL6.x x86_64 system:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-X-Y.noarch.rpm</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-X-Y.noarch.rpm</code></pre></figure></p>
 
 <p>Be sure to use the most recent X.Y version of the epel-release package.</p>
 
 <p>Once that is complete, simply use the yum command to install the cobbler package:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install cobbler</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install cobbler</code></pre></figure></p>
 
 <p>As noted above, new releases in the Fedora packaging system are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler through EPEL (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install --enablerepo=epel-testing cobbler
-# or
-$ sudo yum update --enablerepo=epel-testing cobbler</code></pre></div>
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install --enablerepo=epel-testing cobbler</p>
 
+<h1>or</h1>
+
+<p>$ sudo yum update --enablerepo=epel-testing cobbler</code></pre></figure></p>
 
 <p>Once cobbler is installed, start and enable the service:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ service cobblerd start
-$ chkconfig cobblerd on</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ service cobblerd start
+$ chkconfig cobblerd on</code></pre></figure></p>
 
 <p>And (re)start/enable Apache:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ service httpd start
-$ service cobblerd on</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ service httpd start
+$ service cobblerd on</code></pre></figure></p>
 
 <h2>Debian/Ubuntu</h2>
 

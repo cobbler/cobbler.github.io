@@ -130,19 +130,16 @@ var WRInitTime=(new Date()).getTime();
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler check
-The following are potential configuration items that you may want to fix:
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler check
+The following are potential configuration items that you may want to fix:</p>
 
-1 : SELinux is enabled. Please review the following wiki page for details on ensuring cobbler works correctly in your SELinux environment:
+<p>1 : SELinux is enabled. Please review the following wiki page for details on ensuring cobbler works correctly in your SELinux environment:
     https://github.com/cobbler/cobbler/wiki/Selinux
 2 : comment &#39;dists&#39; on /etc/debmirror.conf for proper debian support
 3 : comment &#39;arches&#39; on /etc/debmirror.conf for proper debian support
-4 : Dynamic settings changes are enabled, be sure you run &quot;sed -i &#39;s/^[[:space:]]\+/ /&#39; /etc/cobbler/settings&quot; to ensure the settings file is properly indented
+4 : Dynamic settings changes are enabled, be sure you run &quot;sed -i &#39;s/^[[:space:]]+/ /&#39; /etc/cobbler/settings&quot; to ensure the settings file is properly indented</p>
 
-Restart cobblerd and then run &#39;cobbler sync&#39; to apply changes.</code></pre></div>
-
-
-
+<p>Restart cobblerd and then run &#39;cobbler sync&#39; to apply changes.</code></pre></figure></p>
 
      <hr>
      <div id="disqus_thread"></div>

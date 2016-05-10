@@ -148,8 +148,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] edit --name=foo --field=&quot;a b c d&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] edit --name=foo --field=&quot;a b c d&quot;</code></pre></figure></p>
 
 <h3>Hash Fields (key=value)</h3>
 
@@ -161,47 +160,43 @@ var WRInitTime=(new Date()).getTime();
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
 Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
 $ cobbler distro edit --name=foo --ksmeta=&quot;e=f&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
-Kickstart Metadata             : {&#39;e&#39;: &#39;f&#39;}</code></pre></div>
-
+Kickstart Metadata             : {&#39;e&#39;: &#39;f&#39;}</code></pre></figure></p>
 
 <p>To preserve the contents of these fields, --in-place should be specified:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
 Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
 $ cobbler distro edit --name=foo --in-place --ksmeta=&quot;e=f&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
-Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;, &#39;e&#39;: &#39;f&#39;}</code></pre></div>
-
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;, &#39;e&#39;: &#39;f&#39;}</code></pre></figure></p>
 
 <h4>Removing Values</h4>
 
 <p>To remove a single value from the hash, use the '~' (tilde) character along with --in-place:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
 Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
 $ cobbler distro edit --name=foo --in-place --ksmeta=&#39;~a&#39;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
-Kickstart Metadata             : {&#39;c&#39;: &#39;d&#39;}</code></pre></div>
-
+Kickstart Metadata             : {&#39;c&#39;: &#39;d&#39;}</code></pre></figure></p>
 
 <h4>Suppressing Values</h4>
 
 <p>You can also suppress values from being used, by specifying the '-' character in front of the key name:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
 Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
 $ cobbler distro edit --name=foo --in-place --ksmeta=&#39;-a&#39;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
-Kickstart Metadata             : {&#39;-a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}</code></pre></div>
-
+Kickstart Metadata             : {&#39;-a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}</code></pre></figure></p>
 
 <p>In this case, the key=value pair will be ignored when the field is accessed.</p>
 
@@ -209,12 +204,9 @@ Kickstart Metadata             : {&#39;-a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d
 
 <p>You can always specify keys without a value:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a b c&quot;
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a b c&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
-Kickstart Metadata             : {&#39;a&#39;: &#39;~&#39;, &#39;c&#39;: &#39;~&#39;, &#39;b&#39;: &#39;~&#39;}</code></pre></div>
-
-
-
+Kickstart Metadata             : {&#39;a&#39;: &#39;~&#39;, &#39;c&#39;: &#39;~&#39;, &#39;b&#39;: &#39;~&#39;}</code></pre></figure></p>
 
 <div class="alert alert-info alert-block"><b>Note:</b> While valid syntax, this could cause problems for some fields where Cobbler expects a value (for example, --template-files).</div>
 
@@ -223,12 +215,9 @@ Kickstart Metadata             : {&#39;a&#39;: &#39;~&#39;, &#39;c&#39;: &#39;~&
 
 <p>It is also possible to specify multiple values for the same key. In this situation, Cobbler will convert the value portion to an array:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --in-place --ksmeta=&quot;a=b a=c a=d&quot;
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --in-place --ksmeta=&quot;a=b a=c a=d&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
-Kickstart Metadata             : {&#39;a&#39;: [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;]}</code></pre></div>
-
-
-
+Kickstart Metadata             : {&#39;a&#39;: [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;]}</code></pre></figure></p>
 
 <div class="alert alert-info alert-block"><b>Note:</b> You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.</div>
 
@@ -243,7 +232,7 @@ Kickstart Metadata             : {&#39;a&#39;: [&#39;b&#39;, &#39;c&#39;, &#39;d
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro list
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro list
    centos6.3-x86_64
    debian6.0.5-x86_64
    f17-x86_64
@@ -255,8 +244,7 @@ Kickstart Metadata             : {&#39;a&#39;: [&#39;b&#39;, &#39;c&#39;, &#39;d
    sl6.2-i386
    sl6.2-x86_64
    ubuntu-12.10-i386
-   ubuntu-12.10-x86_64</code></pre></div>
-
+   ubuntu-12.10-x86_64</code></pre></figure></p>
 
 <p>The list command is actually available as a top-level command as well, in which case it will iterate through every object type and list everything currently stored in your Cobbler database.</p>
 
@@ -275,8 +263,7 @@ Kickstart Metadata             : {&#39;a&#39;: [&#39;b&#39;, &#39;c&#39;, &#39;d
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] remove --name=foo</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] remove --name=foo</code></pre></figure></p>
 
 <h3>Copy/Rename</h3>
 
@@ -284,10 +271,11 @@ Kickstart Metadata             : {&#39;a&#39;: [&#39;b&#39;, &#39;c&#39;, &#39;d
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] copy --name=foo --newname=bar
-# or
-$ cobbler [object] rename --name=foo --newname=bar</code></pre></div>
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler [object] copy --name=foo --newname=bar</p>
 
+<h1>or</h1>
+
+<p>$ cobbler [object] rename --name=foo --newname=bar</code></pre></figure></p>
 
 <h3>Find</h3>
 

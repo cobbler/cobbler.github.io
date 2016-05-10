@@ -134,12 +134,11 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=string --profile=string [--mac=macaddress] [--ip-address=ipaddress] \
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=string --profile=string [--mac=macaddress] [--ip-address=ipaddress] \
 [--hostname=hostname] [--kopts=string] [--ksmeta=string] [--kickstart=path] [--netboot-enabled=Y/N] \
 [--server-override=string] [--gateway=string] [--dns-name=string] [--static-routes=string] \
 [--power-address=string] [--power-type=string] [--power-user=string] [--power-password=string] \
-[--power-id=string]</code></pre></div>
-
+[--power-id=string]</code></pre></figure></p>
 
 <p>Adds a cobbler System to the configuration.  Arguments are specified as per "profile add" with the following changes:</p>
 
@@ -167,8 +166,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ip-address=192.168.1.50</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--ip-address=192.168.1.50</code></pre></figure></p>
 
 <p>Note for Itanium users:  this setting is always required for IA64 regardless of whether DHCP management is enabled.</p>
 
@@ -184,8 +182,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--dns-name=mycomputer.example.com</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--dns-name=mycomputer.example.com</code></pre></figure></p>
 
 <p>This is a per-interface parameter.  If you have multiple interfaces, it may be different for each interface, for example, assume a DMZ / dual-homed setup.</p>
 
@@ -261,17 +258,15 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
 $ cobbler system edit --name=foo --interface=eth0 --ip-address=192.168.1.51 --mac=AA:BB:CC:DD:EE:A1
-$ cobbler system report foo</code></pre></div>
-
+$ cobbler system report foo</code></pre></figure></p>
 
 <p>Interfaces can be deleted using the --delete-interface option.</p>
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth2 --delete-interface</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth2 --delete-interface</code></pre></figure></p>
 
 <h3>--interface-type, --interface-master and --bonding-opts/--bridge-opts</h3>
 
@@ -281,7 +276,7 @@ $ cobbler system report foo</code></pre></div>
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:00 --interface-type=bond_slave \
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:00 --interface-type=bond_slave \
 --interface-master=bond0
 $
 $ cobbler system edit --name=foo --interface=eth1 --mac=AA:BB:CC:DD:EE:01 --interface-type=bond_slave \
@@ -289,8 +284,7 @@ $ cobbler system edit --name=foo --interface=eth1 --mac=AA:BB:CC:DD:EE:01 --inte
 $
 $ cobbler system edit --name=foo --interface=bond0 --interface-type=bond \
 --bonding-opts=&quot;mode=active-backup miimon=100&quot; --ip-address=192.168.0.63 --subnet=255.255.255.0 \
---gateway=192.168.0.1 --static=1</code></pre></div>
-
+--gateway=192.168.0.1 --static=1</code></pre></figure></p>
 
 <p>More information about networking setup is available at https://fedorahosted.org/cobbler/wiki/AdvancedNetworking</p>
 
@@ -298,10 +292,7 @@ $ cobbler system edit --name=foo --interface=bond0 --interface-type=bond \
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system report --name=foo</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system report --name=foo</code></pre></figure></p>
 
      <hr>
      <div id="disqus_thread"></div>

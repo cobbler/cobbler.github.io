@@ -132,14 +132,13 @@ var WRInitTime=(new Date()).getTime();
 
 <p>If you see this when you run "cobbler check" or any other cobbler command, it means SELinux is blocking httpd from talking with cobblerd. The command to fix this is:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo setsebool -P httpd_can_network_connect true</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo setsebool -P httpd_can_network_connect true</code></pre></figure></p>
 
 <h2>Fedora 16 / RHEL6 / CentOS6 - Python MemoryError</h2>
 
 <p>When starting cobblerd for the first time (or after upgrading to 2.2.x), you may see a stack trace like the following:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">Starting cobbler daemon: Traceback (most recent call last):
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">Starting cobbler daemon: Traceback (most recent call last):
 File &quot;/usr/bin/cobblerd&quot;, line 76, in main
 api = cobbler_api.BootAPI(is_cobblerd=True)
 File &quot;/usr/lib/python2.6/site-packages/cobbler/api.py&quot;, line 127, in init
@@ -150,8 +149,7 @@ File &quot;/usr/lib/python2.6/site-packages/cobbler/modules/authn_pam.py&quot;, 
 from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
 File &quot;/usr/lib64/python2.6/ctypes/init.py&quot;, line 546, in
 CFUNCTYPE(c_int)(lambda: None)
-MemoryError</code></pre></div>
-
+MemoryError</code></pre></figure></p>
 
 <p>This error is caused by SELinux blocking python ctypes. To resolve this, you can use audit2allow to enable the execution of temp files or you can remove the authn_pam.py module from the site-packages/cobbler/modules/ directory (as long as you're not using PAM authentication for the Web UI).</p>
 

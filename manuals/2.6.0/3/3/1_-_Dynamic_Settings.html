@@ -134,8 +134,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Over the years, the Cobbler settings file has grown organically, and as such has not always had consistent spacing applied to the YAML entries it contains. In order to ensure that augeas can correctly rewrite the settings, you must run the following sed command:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ sed -i &#39;s/^[[:space:]]\+/ /&#39; /etc/cobbler/settings</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sed -i &#39;s/^[[:space:]]+/ /&#39; /etc/cobbler/settings</code></pre></figure></p>
 
 <p>When dynamic settings are enabled, the "cobbler check" command will also print out this recommendation.</p>
 

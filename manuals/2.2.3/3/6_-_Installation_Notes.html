@@ -130,7 +130,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>To install cobbler from source on Debian Squeeze, the following steps need to be made:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ apt-get install make # for build
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ apt-get install make # for build
 $ apt-get install git # for build
 $ apt-get install python-yaml
 $ apt-get install python-cheetah
@@ -139,17 +139,16 @@ $ apt-get install python-simplejson
 $ apt-get install python-urlgrabber
 $ apt-get install libapache2-mod-wsgi
 $ apt-get install python-django
-$ apt-get install atftpd
+$ apt-get install atftpd</p>
 
-$ a2enmod proxy
+<p>$ a2enmod proxy
 $ a2enmod proxy_http
-$ a2enmod rewrite
+$ a2enmod rewrite</p>
 
-$ ln -s /usr/local/lib/python2.6/dist-packages/cobbler /usr/lib/python2.6/dist-packages/
-$ ln -s /srv/tftp /var/lib/tftpboot
+<p>$ ln -s /usr/local/lib/python2.6/dist-packages/cobbler /usr/lib/python2.6/dist-packages/
+$ ln -s /srv/tftp /var/lib/tftpboot</p>
 
-$ chown www-data /var/lib/cobbler/webui_sessions</code></pre></div>
-
+<p>$ chown www-data /var/lib/cobbler/webui_sessions</code></pre></figure></p>
 
 <ul>
 <li>Change all /var/www/cobbler in /etc/apache2/conf.d/cobbler.conf to /usr/share/cobbler/webroot/</li>

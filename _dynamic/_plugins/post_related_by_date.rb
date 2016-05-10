@@ -6,7 +6,7 @@ module Jekyll
 
     def get_current_page(context)
       purl = context.environments.first["page"]["url"]
-      context.registers[:site].posts.each do |p|
+      context.registers[:site].posts.docs.each do |p|
         if p.url == purl
           return p
         end
@@ -18,9 +18,9 @@ module Jekyll
       thispage = get_current_page(context)
 
       posts = context.registers[:site].posts
-      posts.sort!
+      posts.docs.sort!
       matching_posts = []
-      posts.each do |post|
+      posts.docs.each do |post|
         if post.date.year == thispage.date.year and post.date.month == thispage.date.month
           matching_posts << post
         end

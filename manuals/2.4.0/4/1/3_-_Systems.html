@@ -128,10 +128,11 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The system commmand has the following sub-commands:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system --help
-usage
-=====
-cobbler system add
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system --help</p>
+
+<h1>usage</h1>
+
+<p>cobbler system add
 cobbler system copy
 cobbler system dumpvars
 cobbler system edit
@@ -144,8 +145,7 @@ cobbler system powerstatus
 cobbler system reboot
 cobbler system remove
 cobbler system rename
-cobbler system report</code></pre></div>
-
+cobbler system report</code></pre></figure></p>
 
 <p>Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though they are useful when system specific customizations are required. One such customization would be defining the MAC address. If there is a specific role inteded for a given machine, system records should be created for it.</p>
 
@@ -153,8 +153,7 @@ cobbler system report</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=string [--profile=name|--image=name] [options]</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=string [--profile=name|--image=name] [options]</code></pre></figure></p>
 
 <p>As you can see, a system must either be assigned to a --profile or an --image, which are mutually exclusive options.</p>
 
@@ -224,8 +223,7 @@ cobbler system report</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></figure></p>
 
 <h4>--kopts-post</h4>
 
@@ -237,8 +235,7 @@ cobbler system report</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></figure></p>
 
 <p>See the section on <a href="/manuals/2.4.0/4/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
 
@@ -368,17 +365,15 @@ cobbler system report</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
 $ cobbler system edit --name=foo --interface=eth0 --ip-address=192.168.1.51 --mac=AA:BB:CC:DD:EE:A1
-$ cobbler system report foo</code></pre></div>
-
+$ cobbler system report foo</code></pre></figure></p>
 
 <p>Interfaces can be deleted using the --delete-interface option.</p>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth2 --delete-interface</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth2 --delete-interface</code></pre></figure></p>
 
 <h4>--bonding-opts and --bridge-opts</h4>
 
@@ -396,8 +391,7 @@ $ cobbler system report foo</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--dns-name=mycomputer.example.com</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--dns-name=mycomputer.example.com</code></pre></figure></p>
 
 <p>This is a per-interface parameter. If you have multiple interfaces, it may be different for each interface, for example, assume a DMZ/dual-homed setup.</p>
 
@@ -416,8 +410,7 @@ $ cobbler system report foo</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ip-address=192.168.1.50</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--ip-address=192.168.1.50</code></pre></figure></p>
 
 <p>Note for Itanium users:  this setting is always required for IA64 regardless of whether DHCP management is enabled.</p>
 
@@ -482,8 +475,7 @@ $ cobbler system report foo</code></pre></div>
 
 <p>This is a space delimited list of ip/mask:gateway routing information in that format, which will be added as extra routes on the system. Most systems will not need this information.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--static-routes=&quot;192.168.1.0/16:192.168.1.1 172.16.0.0/16:172.16.0.1&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--static-routes=&quot;192.168.1.0/16:192.168.1.1 172.16.0.0/16:172.16.0.1&quot;</code></pre></figure></p>
 
 <h4>--netmask (formerly --subnet)</h4>
 
@@ -501,8 +493,7 @@ $ cobbler system report foo</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system getks --name=foo | less</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system getks --name=foo | less</code></pre></figure></p>
 
 <h3>Power Commands</h3>
 
@@ -510,8 +501,7 @@ $ cobbler system report foo</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system poweron --name=foo</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system poweron --name=foo</code></pre></figure></p>
 
 <p>Please see the <a href="/manuals/2.4.0/5/6_-_Power_Management.html">Power Management</a> section for more details on using these commands.</p>
 

@@ -128,7 +128,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>You can create a bonded_bridge_slave in cobbler in the following way:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 \
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 \
                       --interface-type=bond_slave --interface-master=bond0
 $ cobbler system edit --name=foo --interface=eth1 --mac=AA:BB:CC:DD:EE:F1 \
                       --interface-type=bond_slave --interface-master=bond0
@@ -136,8 +136,7 @@ $ cobbler system edit --name=foo --interface=bond0 --interface-type=bonded_bridg
                       --bonding-opts=&quot;miimon=100 mode=1&quot; --interface-master=br0
 $ cobbler system edit --name=foo --interface=br0 --interface-type=bridge \
                       --bridge-opts=&quot;stp=no&quot; --ip-address=192.168.1.100 \
-                      --netmask=255.255.255.0 --static=1</code></pre></div>
-
+                      --netmask=255.255.255.0 --static=1</code></pre></figure></p>
 
 <p><strong>NOTE</strong> Please reference the <a href="/manuals/2.4.0/5/1/1_-_Bonding.html">Advanced Networking - Bonding</a> and <a href="/manuals/2.4.0/5/1/3_-_Bridging.html">Advanced Networking - Bridging</a> sections for requirements specific to each of these interface types.</p>
 

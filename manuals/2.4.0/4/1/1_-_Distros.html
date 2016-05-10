@@ -128,18 +128,18 @@ var WRInitTime=(new Date()).getTime();
 
 <p>The distro command has the following sub-commands:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro --help
-usage
-=====
-cobbler distro add
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro --help</p>
+
+<h1>usage</h1>
+
+<p>cobbler distro add
 cobbler distro copy
 cobbler distro edit
 cobbler distro find
 cobbler distro list
 cobbler distro remove
 cobbler distro rename
-cobbler distro report</code></pre></div>
-
+cobbler distro report</code></pre></figure></p>
 
 <h3>Add/Edit Options</h3>
 
@@ -149,10 +149,7 @@ cobbler distro report</code></pre></div>
 
 <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro add --name=string --kernel=path --initrd=path [options]</code></pre></div>
-
-
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro add --name=string --kernel=path --initrd=path [options]</code></pre></figure></p>
 
 <table class="table table-condensed table-striped">
 <thead>
@@ -218,21 +215,21 @@ cobbler distro report</code></pre></div>
    <p>By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no preserve the contents.</p>
    <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
 Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
 $ cobbler distro edit --name=foo --ksmeta=&quot;e=f&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
-Kickstart Metadata             : {&#39;e&#39;: &#39;f&#39;}</code></pre></div>
+Kickstart Metadata             : {&#39;e&#39;: &#39;f&#39;}</code></pre></figure>
 
    <p>To preserve the contents of these fields, --in-place should be specified:</P>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro edit --name=foo --ksmeta=&quot;a=b c=d&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
 Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;}
 $ cobbler distro edit --name=foo --in-place --ksmeta=&quot;e=f&quot;
 $ cobbler distro report --name=foo | grep &quot;Kickstart Meta&quot;
-Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;, &#39;e&#39;: &#39;f&#39;}</code></pre></div>
+Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&#39;, &#39;e&#39;: &#39;f&#39;}</code></pre></figure>
 
   </td>
  </tr>
@@ -242,7 +239,7 @@ Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&
    <p>Sets kernel command-line arguments that the distro, and profiles/systems dependant on it, will use during installation only. This field is a hash field, and accepts a set of key=value pairs:</p>
    <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></figure>
 
   </td>
  </tr>
@@ -256,7 +253,7 @@ Kickstart Metadata             : {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: &#39;d&
    <p>This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts a set of key=value pairs:</p>
    <p><b>Example:</b></p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></figure>
 
    <p>See the section on <a href="/manuals/2.4.0/4/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
   </td>

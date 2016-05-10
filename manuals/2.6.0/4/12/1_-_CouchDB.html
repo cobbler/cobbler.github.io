@@ -132,14 +132,13 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Add or modify the following section in the <code>/etc/cobbler/modules.conf</code> configuration file:</p>
 
-<div class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
+<p><figure class="highlight"><pre><code class="language-ini" data-lang="ini">[serializers]
 settings = serializer_catalog
 distro = serializer_couchdb
 profile = serializer_couchdb
 system = serializer_couchdb
 repo = serializer_couchdb
-etc...</code></pre></div>
-
+etc...</code></pre></figure></p>
 
 <p><strong>NOTE</strong> Be sure to leave the settings serializer set to serializer_catalog.</p>
 

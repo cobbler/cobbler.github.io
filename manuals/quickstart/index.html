@@ -140,8 +140,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>Installation is done simply through yum:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ yum install cobbler</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ yum install cobbler</code></pre></figure></p>
 
 <p>This will pull in all of the requirements you need for a basic setup.</p>
 
@@ -155,44 +154,38 @@ var WRInitTime=(new Date()).getTime();
 
 <p>This setting controls the root password that is set for new systems during the kickstart.</p>
 
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">default_password_crypted: &quot;$1$bfI7WLZz$PxXetL97LkScqJFxnW7KS1&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">default_password_crypted: &quot;$1$bfI7WLZz$PxXetL97LkScqJFxnW7KS1&quot;</code></pre></figure></p>
 
 <p>You should modify this by running the following command and inserting the output into the above string (be sure to save the quote marks):</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ openssl passwd -1</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ openssl passwd -1</code></pre></figure></p>
 
 <h3>Server and Next_Server</h3>
 
 <p>The server option sets the IP that will be used for the address of the cobbler server. <strong><em>DO NOT</em></strong> use 0.0.0.0, as it is not the listening address. This should be set to the IP you want hosts that are being built to contact the cobbler server on for such protocols as HTTP and TFTP.</p>
 
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"># default, localhost
-server: 127.0.0.1</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"># default, localhost
+server: 127.0.0.1</code></pre></figure></p>
 
 <p>The next_server option is used for DHCP/PXE as the IP of the TFTP server from which network boot files are downloaded. Usually, this will be the same IP as the server setting.</p>
 
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"># default, localhost
-next_server: 127.0.0.1</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"># default, localhost
+next_server: 127.0.0.1</code></pre></figure></p>
 
 <h3>DHCP Management and DHCP Server Template</h3>
 
 <p>In order to PXE boot, you need a DHCP server to hand out addresses and direct the booting system to the TFTP server where it can download the network boot files. Cobbler can manage this for you, via the manage_dhcp setting:</p>
 
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"># default, don&#39;t manage
-manage_dhcp: 0</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"># default, don&#39;t manage
+manage_dhcp: 0</code></pre></figure></p>
 
 <p>Change that setting to 1 so cobbler will generate the dhcpd.conf file based on the dhcp.template that is included with cobbler. This template will most likely need to be modified as well, based on your network settings:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ vi /etc/cobbler/dhcp.template</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ vi /etc/cobbler/dhcp.template</code></pre></figure></p>
 
 <p>For most uses, you'll only need to modify this block:</p>
 
-<div class="highlight"><pre><code class="language-cheetah" data-lang="cheetah">subnet 192.168.1.0 netmask 255.255.255.0 {
+<p><figure class="highlight"><pre><code class="language-cheetah" data-lang="cheetah">subnet 192.168.1.0 netmask 255.255.255.0 {
      option routers             192.168.1.1;
      option domain-name-servers 192.168.1.210,192.168.1.211;
      option subnet-mask         255.255.255.0;
@@ -200,18 +193,15 @@ manage_dhcp: 0</code></pre></div>
      default-lease-time         21600;
      max-lease-time             43200;
      next-server                $next_server;
-}</code></pre></div>
-
+}</code></pre></figure></p>
 
 <p>No matter what, make sure you do not modify the "next-server $next_server;" line, as that is how the next_server setting is pulled into the configuration. This file is a cheetah template, so be sure not to modify anything starting after this line:</p>
 
-<div class="highlight"><pre><code class="language-cheetah" data-lang="cheetah">#for dhcp_tag in $dhcp_tags.keys():</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-cheetah" data-lang="cheetah">#for dhcp_tag in $dhcp_tags.keys():</code></pre></figure></p>
 
 <p>Completely going through the dhcpd.conf configuration syntax is beyond the scope of this document, but for more information see the man page for more details:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ man dhcpd.conf</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ man dhcpd.conf</code></pre></figure></p>
 
 <h2>Files and Directory Notes</h2>
 
@@ -223,43 +213,45 @@ manage_dhcp: 0</code></pre></div>
 
 <p>Once you have updated your settings, you're ready to start the service. Fedora now uses systemctl to manage services, but you can still use the regular init script:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ systemctl start cobblerd.service
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ systemctl start cobblerd.service
 $ systemctl enable cobblerd.service
-$ systemctl status cobblerd.service
-# or 
-$ service cobblerd start 
-$ chkconfig cobblerd on
-$ service cobblerd status</code></pre></div>
+$ systemctl status cobblerd.service</p>
 
+<h1>or</h1>
+
+<p>$ service cobblerd start
+$ chkconfig cobblerd on
+$ service cobblerd status</code></pre></figure></p>
 
 <p>If everything has gone well, you should see output from the status command like this:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cobblerd.service - Cobbler Helper Daemon
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cobblerd.service - Cobbler Helper Daemon
           Loaded: loaded (/lib/systemd/system/cobblerd.service; enabled)
           Active: active (running) since Sun, 17 Jun 2012 13:01:28 -0500; 1min 44s ago
         Main PID: 1234 (cobblerd)
           CGroup: name=systemd:/system/cobblerd.service
-                  └ 1234 /usr/bin/python /usr/bin/cobblerd -F</code></pre></div>
-
+                  └ 1234 /usr/bin/python /usr/bin/cobblerd -F</code></pre></figure></p>
 
 <h2>Checking for Problems and Your First Sync</h2>
 
 <p>Now that the cobblerd service is up and running, it's time to check for problems. Cobbler's check command will make some suggestions, but it is important to remember that <em>these are mainly only suggestions</em> and probably aren't critical for basic functionality. If you are running iptables or SELinux, it is important to review any messages concerning those that check may report.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler check
-The following are potential configuration items that you may want to fix:
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler check
+The following are potential configuration items that you may want to fix:</p>
 
-1. ....
-2. ....
+<ol>
+<li>....</li>
+<li>....</li>
+</ol>
 
-Restart cobblerd and then run &#39;cobbler sync&#39; to apply changes.</code></pre></div>
 
+<p>Restart cobblerd and then run &#39;cobbler sync&#39; to apply changes.</code></pre></figure></p>
 
 <p>If you decide to follow any of the suggestions, such as installing extra packages, making configuration changes, etc., be sure to restart the cobblerd service as it suggests so the changes are applied.</p>
 
 <p>Once you are done reviewing the output of "cobbler check", it is time to synchronize things for the first time. This is not critical, but a failure to properly sync at this point can reveal a configuration problem.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler sync
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler sync
 task started: 2012-06-24_224243_sync
 task started (id=Sync, time=Sun Jun 24 22:42:43 2012)
 running pre-sync triggers
@@ -270,23 +262,22 @@ rendering TFTPD files
 generating /etc/xinetd.d/tftp
 cleaning link caches
 running: find /var/lib/tftpboot/images/.link_cache -maxdepth 1 -type f -links 1 -exec rm -f &#39;{}&#39; &#39;;&#39;
-received on stdout: 
-received on stderr: 
+received on stdout:
+received on stderr:
 running post-sync triggers
-running python triggers from /var/lib/cobbler/triggers/sync/post/*
+running python triggers from /var/lib/cobbler/triggers/sync/post/<em>
 running python trigger cobbler.modules.sync_post_restart_services
 running: dhcpd -t -q
-received on stdout: 
-received on stderr: 
+received on stdout:
+received on stderr:
 running: service dhcpd restart
-received on stdout: 
-received on stderr: 
-running shell triggers from /var/lib/cobbler/triggers/sync/post/*
-running python triggers from /var/lib/cobbler/triggers/change/*
+received on stdout:
+received on stderr:
+running shell triggers from /var/lib/cobbler/triggers/sync/post/</em>
+running python triggers from /var/lib/cobbler/triggers/change/<em>
 running python trigger cobbler.modules.scm_track
-running shell triggers from /var/lib/cobbler/triggers/change/*
-*** TASK COMPLETE ***</code></pre></div>
-
+running shell triggers from /var/lib/cobbler/triggers/change/</em>
+<strong><em> TASK COMPLETE </em></strong></code></pre></figure></p>
 
 <p>Assuming all went well and no errors were reported, you are ready to move on to the next step.</p>
 
@@ -300,15 +291,13 @@ running shell triggers from /var/lib/cobbler/triggers/change/*
 
 <p>Once this file is downloaded, mount it somewhere:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ mount -t iso9660 -o loop,ro /path/to/isos/Fedora-17-x86_64-DVD.iso /mnt</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ mount -t iso9660 -o loop,ro /path/to/isos/Fedora-17-x86_64-DVD.iso /mnt</code></pre></figure></p>
 
 <h3>Run the Import</h3>
 
 <p>You are now ready to import the distribution. The name and path arguments are the only required options for import:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler import --name=fedora17 --arch=x86_64 --path=/mnt</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler import --name=fedora17 --arch=x86_64 --path=/mnt</code></pre></figure></p>
 
 <p>The --arch option need not be specified, as it will normally be auto-detected. We're doing so in this example in order to prevent multiple architectures from being found (Fedora ships i386 packages on the full DVD, and cobbler will create both x86_64 and i386 distros by default).</p>
 
@@ -316,12 +305,12 @@ running shell triggers from /var/lib/cobbler/triggers/change/*
 
 <p>If no errors were reported during the import, you can view details about the distros and profiles that were created during the import.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"># list distros
-$ cobbler distro list
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"># list distros
+$ cobbler distro list</p>
 
-# list profiles
-$ cobbler profile list</code></pre></div>
+<h1>list profiles</h1>
 
+<p>$ cobbler profile list</code></pre></figure></p>
 
 <p>The import command will typically create at least one distro/profile pair, which will have the same name as shown above. In some cases (for instance when a xen-based kernel is found), more than one distro/profile pair will be created.</p>
 
@@ -329,12 +318,12 @@ $ cobbler profile list</code></pre></div>
 
 <p>The report command shows the details of objects in cobbler:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro report --name=fedora17-x86_64
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro report --name=fedora17-x86_64
 Name                           : fedora17-x86_64
 Architecture                   : x86_64
 TFTP Boot Files                : {}
 Breed                          : redhat
-Comment                        : 
+Comment                        :
 Fetchable Files                : {}
 Initrd                         : /var/www/cobbler/ks_mirror/fedora17-x86_64/images/pxeboot/initrd.img
 Kernel                         : /var/www/cobbler/ks_mirror/fedora17-x86_64/images/pxeboot/vmlinuz
@@ -346,8 +335,7 @@ OS Version                     : fedora17
 Owners                         : [&#39;admin&#39;]
 Red Hat Management Key         : &lt;&lt;inherit&gt;&gt;
 Red Hat Management Server      : &lt;&lt;inherit&gt;&gt;
-Template Files                 : {}</code></pre></div>
-
+Template Files                 : {}</code></pre></figure></p>
 
 <p>As you can see above, the import command filled out quite a few fields automatically, such as the breed, OS version, and initrd/kernel file locations. The "Kickstart Metadata" field (--ksmeta internally) is used for miscellaneous variables, and contains the critical "tree" variable. This is used in the kickstart templates to specify the URL where the installation files can be found.</p>
 
@@ -359,20 +347,20 @@ Template Files                 : {}</code></pre></div>
 
 <p>First, we'll create a system object based on the profile that was created during the import. When creating a system, the name and profile are the only two required fields:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=test --profile=fedora17-x86_64
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=test --profile=fedora17-x86_64
 $ cobbler system list
 test
 $ cobbler system report --name=test
 Name                           : test
 TFTP Boot Files                : {}
-Comment                        : 
+Comment                        :
 Enable gPXE?                   : 0
 Fetchable Files                : {}
-Gateway                        : 
-Hostname                       : 
-Image                          : 
+Gateway                        :
+Hostname                       :
+Image                          :
 IPv6 Autoconfiguration         : False
-IPv6 Default Device            : 
+IPv6 Default Device            :
 Kernel Options                 : {}
 Kernel Options (Post Install)  : {}
 Kickstart                      : &lt;&lt;inherit&gt;&gt;
@@ -386,11 +374,11 @@ Name Servers                   : []
 Name Servers Search Path       : []
 Netboot Enabled                : True
 Owners                         : [&#39;admin&#39;]
-Power Management Address       : 
-Power Management ID            : 
-Power Management Password      : 
+Power Management Address       :
+Power Management ID            :
+Power Management Password      :
 Power Management Type          : ipmitool
-Power Management Username      : 
+Power Management Username      :
 Profile                        : fedora17-x86_64
 Proxy                          : &lt;&lt;inherit&gt;&gt;
 Red Hat Management Key         : &lt;&lt;inherit&gt;&gt;
@@ -405,20 +393,17 @@ Virt Disk Driver Type          : &lt;&lt;inherit&gt;&gt;
 Virt File Size(GB)             : &lt;&lt;inherit&gt;&gt;
 Virt Path                      : &lt;&lt;inherit&gt;&gt;
 Virt RAM (MB)                  : &lt;&lt;inherit&gt;&gt;
-Virt Type                      : &lt;&lt;inherit&gt;&gt;</code></pre></div>
-
+Virt Type                      : &lt;&lt;inherit&gt;&gt;</code></pre></figure></p>
 
 <p>The primary reason for creating a system object is network configuration. When using profiles, you're limited to DHCP interfaces, but with systems you can specify many more network configuration options.</p>
 
 <p>So now we'll setup a single, simple interface in the 192.168.1/24 network:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=test --interface=eth0 --mac=00:11:22:AA:BB:CC --ip-address=192.168.1.100 --netmask=255.255.255.0 --static=1 --dns-name=test.mydomain.com</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=test --interface=eth0 --mac=00:11:22:AA:BB:CC --ip-address=192.168.1.100 --netmask=255.255.255.0 --static=1 --dns-name=test.mydomain.com</code></pre></figure></p>
 
 <p>The default gateway isn't specified per-NIC, so just add that separately (along with the hostname):</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=test --gateway=192.168.1.1 --hostname=test.mydomain.com</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=test --gateway=192.168.1.1 --hostname=test.mydomain.com</code></pre></figure></p>
 
 <p>The --hostname field corresponds to the local system name and is returned by the "hostname" command. The --dns-name (which can be set per-NIC) should correspond to a DNS A-record tied to the IP of that interface. Neither are required, but it is a good practice to specify both. Some advanced features (like configuration management) rely on the --dns-name field for system record look-ups.</p>
 

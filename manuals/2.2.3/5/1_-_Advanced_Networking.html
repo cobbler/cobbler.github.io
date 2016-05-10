@@ -146,9 +146,8 @@ for each system.</p>
 
 <p>You can give your network interface (almost) any name you like.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo1.bar.local --interface=mgmt --mac=AA:BB:CC:DD:EE:F0
-$ cobbler system edit --name=foo1.bar.local --interface=dmz --mac=AA:BB:CC:DD:EE:F1</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo1.bar.local --interface=mgmt --mac=AA:BB:CC:DD:EE:F0
+$ cobbler system edit --name=foo1.bar.local --interface=dmz --mac=AA:BB:CC:DD:EE:F1</code></pre></figure></p>
 
 <p>The default interface is named eth0, but you don't have to call it that.</p>
 
@@ -159,8 +158,7 @@ $ cobbler system edit --name=foo1.bar.local --interface=dmz --mac=AA:BB:CC:DD:EE
 <p>For static systems, the --name-servers parameter can be used to
 specify a list of name servers to assign to the systems.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC::DD:EE:FF --static=1 --name-servers=&quot;&lt;ip1&gt; &lt;ip2&gt;&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC::DD:EE:FF --static=1 --name-servers=&quot;&lt;ip1&gt; &lt;ip2&gt;&quot;</code></pre></figure></p>
 
 <h2>Static routes</h2>
 
@@ -172,8 +170,7 @@ network/CIDR:gateway
 
 <p>So, for example to route the 192.168.1.0/24 network through 192.168.1.254:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --static-routes=&quot;192.168.1.0/24:192.168.1.254&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --static-routes=&quot;192.168.1.0/24:192.168.1.254&quot;</code></pre></figure></p>
 
 <p>As with all lists in cobbler, the --static-routes list is space-separated so you can specify multiple static routes if needed.</p>
 

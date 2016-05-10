@@ -132,9 +132,8 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro add --name=string --kernel=path --initrd=path [--kopts=string] [--kopts-post=string] \
-[--ksmeta=string] [--arch=x86|x86_64|ia64] [--breed=redhat|debian|suse] [--template-files=string]</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro add --name=string --kernel=path --initrd=path [--kopts=string] [--kopts-post=string] \
+[--ksmeta=string] [--arch=x86|x86_64|ia64] [--breed=redhat|debian|suse] [--template-files=string]</code></pre></figure></p>
 
 <h3>name</h3>
 
@@ -154,8 +153,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;foo=bar baz=3 asdf !gulp&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;foo=bar baz=3 asdf !gulp&quot;</code></pre></figure></p>
 
 <p>This example passes the arguments "foo=bar baz=3 asdf" but will make sure "gulp" is not passed even if it was requested at a level higher up in the cobbler configuration.</p>
 
@@ -165,8 +163,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--kops-post=&quot;noapic&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--kops-post=&quot;noapic&quot;</code></pre></figure></p>
 
 <h3>arch</h3>
 
@@ -184,8 +181,7 @@ var WRInitTime=(new Date()).getTime();
 
 <h4>Example:</h4>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></figure></p>
 
 <p>See the section on <a href="/manuals/2.2.3/4/4_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
 

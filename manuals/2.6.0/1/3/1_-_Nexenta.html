@@ -130,7 +130,7 @@ var WRInitTime=(new Date()).getTime();
 
 <p>1) Assuming that Cobbler has been setup previously, verify that the signature file contains the entry for Nexenta:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">&quot;nexenta&quot;: {
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">&quot;nexenta&quot;: {
     &quot;4&quot;: {
       &quot;signatures&quot;:[&quot;boot&quot;],
       &quot;version_file&quot;: &quot;platform&quot;,
@@ -144,28 +144,24 @@ var WRInitTime=(new Date()).getTime();
       &quot;kernel_options_post&quot;:&quot;&quot;,
       &quot;boot_files&quot;:[]
     }
-  }</code></pre></div>
-
+  }</code></pre></figure></p>
 
 <p>2) Obtain a Nexenta iso from http://www.nexenta.com/corp/nexentastor-download and mount it:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p /mnt/nexenta4 &amp;&amp; mnt /path/to/nexenta4.iso /mnt/nexenta4 -o loop`</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p /mnt/nexenta4 &amp;&amp; mnt /path/to/nexenta4.iso /mnt/nexenta4 -o loop`</code></pre></figure></p>
 
 <p>3) Import the distribution into Cobbler:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler import --name=nexenta-4 --path=/mnt/nexenta4</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler import --name=nexenta-4 --path=/mnt/nexenta4</code></pre></figure></p>
 
 <p>Verify that a Nexenta distirbution is available via Cobbler: cobbler list
 Once the import is done, you can unmount the ISO:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo umount /mnt/nexenta4</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo umount /mnt/nexenta4</code></pre></figure></p>
 
 <p>4) Nexenta uses a PXE Grub executable different from other, linux-like systems. To install a Nexenta on a desired system, you have to specify the PXE Grub file for that system. This can be done by using either a MAC address, or a subnet definition in your DHCP configuration file. In /etc/cobbler/dhcp.template:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">host test-1 {
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">host test-1 {
     hardware ethernet 00:0C:29:10:B6:10;
     fixed-address 10.3.30.91;
     filename &quot;boot/grub/pxegrub&quot;;
@@ -174,8 +170,7 @@ Once the import is done, you can unmount the ISO:</p>
     hardware ethernet 00:0c:29:d1:9c:26;
     fixed-address 10.3.30.97;
     filename &quot;boot/grub/pxegrub&quot;;
-  }</code></pre></div>
-
+  }</code></pre></figure></p>
 
 <p>OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host definition in your dhcp config file.</p>
 
@@ -183,22 +178,21 @@ Once the import is done, you can unmount the ISO:</p>
 
 <p>5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The profiles are placed in /var/lib/cobbler/kickstarts/install_profiles. Each profile should be a file with the filename <code>machine.AACC003355FF</code> where AA..FF stand for the mac address of the machine, without <code>:</code> (columns). The contents of each profile should look like the following:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">__PF_gateway=&quot;IP address&quot; (required)
-__PF_nic_primary=&quot;NIC NAME&quot; (required)
-__PF_dns_ip_1=&quot;IP address&quot; (required)
-__PF_dns_ip_2=&quot;IP address&quot; (optional)
-__PF_dns_ip_3=&quot;IP address&quot; (optional)
-__PF_loghost=&quot;IP address&quot; (optional)
-__PF_logport=&quot;Port Number&quot; (optional)
-__PF_syspool_luns=&quot;list of space separated LUNs that will be used to create syspool&quot; (required)
-__PF_syspool_spare=&quot;list of space separated LUNs that will be used as syspool spare&quot; (optional)
-__PF_ipaddr_NIC_NAME=&quot;IP address&quot; (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
-__PF_netmask_NIC_NAME=&quot;NETMASK&quot; (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
-__PF_nlm_key=&quot;LICENSE KEY&quot; (required)
-__PF_language=&quot;en&quot; (used to choose localzation, but now only &quot;en&quot; is supported) (required)
-__PF_ssh_enable=1 (enable SSH, by default SSH is disabled) (optional)
-__PF_ssh_port=&quot;PORT where SSH server will wait for incoming connections&quot; (optional)</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"><strong>PF_gateway=&quot;IP address&quot; (required)
+</strong>PF_nic_primary=&quot;NIC NAME&quot; (required)
+<strong>PF_dns_ip_1=&quot;IP address&quot; (required)
+</strong>PF_dns_ip_2=&quot;IP address&quot; (optional)
+<strong>PF_dns_ip_3=&quot;IP address&quot; (optional)
+</strong>PF_loghost=&quot;IP address&quot; (optional)
+<strong>PF_logport=&quot;Port Number&quot; (optional)
+</strong>PF_syspool_luns=&quot;list of space separated LUNs that will be used to create syspool&quot; (required)
+<strong>PF_syspool_spare=&quot;list of space separated LUNs that will be used as syspool spare&quot; (optional)
+</strong>PF_ipaddr_NIC_NAME=&quot;IP address&quot; (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
+<strong>PF_netmask_NIC_NAME=&quot;NETMASK&quot; (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
+</strong>PF_nlm_key=&quot;LICENSE KEY&quot; (required)
+<strong>PF_language=&quot;en&quot; (used to choose localzation, but now only &quot;en&quot; is supported) (required)
+</strong>PF_ssh_enable=1 (enable SSH, by default SSH is disabled) (optional)
+__PF_ssh_port=&quot;PORT where SSH server will wait for incoming connections&quot; (optional)</code></pre></figure></p>
 
 <p>6) Power on the hardware. NexentaStor should boot from this setup.</p>
 
@@ -208,31 +202,35 @@ __PF_ssh_port=&quot;PORT where SSH server will wait for incoming connections&quo
 
 <p>The install of Nexenta is automatic. That means that each machine to be booted with nexenta has to be configurated with a profile in kickstarts/install_profiles directory. To boot Nexenta nodes manually, in the file /var/lib/tftpboot/boot/grub/menu.lst replace the line:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install=1</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install=1</code></pre></figure></p>
 
 <p>With</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64</code></pre></div>
-
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64</code></pre></figure></p>
 
 <p>If you are adding a new distro, don't forget to enable NFS access to it! NFS share must be configured on the boot server. In particular, the directories in /var/www/cobbler/links/<distro-name> are exported. As an example, there is a /etc/exports file:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"># /etc/exports: the access control list for filesystems which may be exported
-#    to NFS clients.  See exports(5).
-#
-# Example for NFSv2 and NFSv3:
-# /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)
-#
-# Example for NFSv4:
-# /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
-# /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
-#
-/var/www/cobbler/links/nexenta-a-x86_64 *(ro,sync,no_subtree_check)
-/var/www/cobbler/links/&lt;nexenta-distribution-name&gt; *(ro,sync,no_subtree_check)</code></pre></div>
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"># /etc/exports: the access control list for filesystems which may be exported</p>
 
+<h1>to NFS clients.  See exports(5).</h1>
 
+<p>#</p>
 
+<h1>Example for NFSv2 and NFSv3:</h1>
+
+<h1>/srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)</h1>
+
+<p>#</p>
+
+<h1>Example for NFSv4:</h1>
+
+<h1>/srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)</h1>
+
+<h1>/srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)</h1>
+
+<p>#
+/var/www/cobbler/links/nexenta-a-x86_64 <em>(ro,sync,no_subtree_check)
+/var/www/cobbler/links/&lt;nexenta-distribution-name&gt; </em>(ro,sync,no_subtree_check)</code></pre></figure></p>
 
      <hr>
      <div id="disqus_thread"></div>
