@@ -28,9 +28,14 @@ The following list of features have been deprecated and will *not* be available 
 - Integrated Travis CI into the build system (``make qa``)
 - Allow https method in repo management (\#1587)
 - Add support for Ubuntu 16.04
+- Add support for the ``ppc64le`` architecture
+- Backport gpxe mac search argument
+- Added support for fixed DHCP IPs when using vlan over bond
+- Add support for Django 1.7.x and 1.8.x
 
 ### Bugfixes
 
 - Allow the use of relative paths when importing a distro (\#1613)
--
-
+- Fix /etc/xinetd.d/rsync check (\#1651)
+- Exit with a appropiate message when signature file can't be parsed
+- Handle cases where virt-install respond to --version on stderr (Koan)

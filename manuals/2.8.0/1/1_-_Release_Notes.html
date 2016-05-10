@@ -152,12 +152,22 @@ var WRInitTime=(new Date()).getTime();
 <li>Integrated Travis CI into the build system (<code>make qa</code>)</li>
 <li>Allow https method in repo management (#1587)</li>
 <li>Add support for Ubuntu 16.04</li>
+<li>Add support for the <code>ppc64le</code> architecture</li>
+<li>Backport gpxe mac search argument</li>
+<li>Added support for fixed DHCP IPs when using vlan over bond</li>
+<li>Add support for Django 1.7.x and 1.8.x</li>
 </ul>
 
 
 <h3>Bugfixes</h3>
 
-<h2>- Allow the use of relative paths when importing a distro (#1613)</h2>
+<ul>
+<li>Allow the use of relative paths when importing a distro (#1613)</li>
+<li>Fix /etc/xinetd.d/rsync check (#1651)</li>
+<li>Exit with a appropiate message when signature file can't be parsed</li>
+<li>Handle cases where virt-install respond to --version on stderr (Koan)</li>
+</ul>
+
 
      <hr>
      <div id="disqus_thread"></div>
