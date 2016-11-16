@@ -8,6 +8,7 @@
      <li class="dropdown">
        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Downloads <b class="caret"></b></a>
        <ul class="dropdown-menu">
+         <li><a href="/downloads/2.8.x.html" title="Cobbler 2.8.x">2.8.x</a></li>
          <li><a href="/downloads/2.6.x.html" title="Cobbler 2.6.x">2.6.x</a></li>
          <li><a href="/downloads/2.4.x.html" title="Cobbler 2.4.x">2.4.x</a></li>
        </ul>
@@ -17,6 +18,7 @@
        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
        <ul class="dropdown-menu">
          <li><a href="/manuals/quickstart/" title="Quickstart Guide">Quickstart Guide</a></li>
+         <li><a href="/manuals/2.8.0/" title="Version 2.8.x">User Manual 2.8.x</a></li>
          <li><a href="/manuals/2.6.0/" title="Version 2.6.x">User Manual 2.6.x</a></li>
          <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
          <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
