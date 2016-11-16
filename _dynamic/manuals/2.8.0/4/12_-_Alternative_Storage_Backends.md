@@ -7,7 +7,7 @@ meta: 2.8.0
 
 Cobbler saves object data via serializers implemented as Cobbler {% linkup title:"Modules" extrameta:2.8.0 %}. This means Cobbler can be extended to support other storage backends for those that want to do it. Today, cobbler ships three such modules alternate backends: MySQL, MongoDB and CouchDB.
 
-The default serializer is **serializer_catalog** which uses JSON in `/var/lib/cobbler/config/&lt;object&gt;` directories, with one file for each object definition. It is very fast, however people with a large number of systems can still experience slowness, especially if cobbler lives on a disk partition that is slow or heavily utilized. Users with such setups should ensure `/var/lib/cobbler` is mounted on a dedicated disk that offers higher performance (15K SAS or a SAN LUN for example).
+The default serializer is **serializer_catalog** which uses JSON in `/var/lib/cobbler/config/\<object\>` directories, with one file for each object definition. It is very fast, however people with a large number of systems can still experience slowness, especially if cobbler lives on a disk partition that is slow or heavily utilized. Users with such setups should ensure `/var/lib/cobbler` is mounted on a dedicated disk that offers higher performance (15K SAS or a SAN LUN for example).
 
 An older legacy serializer, "serializer_yaml" is deprecated and is only around to support older installs that have not yet upgraded to serializer_catalog by changing the serializer values in `/etc/cobbler/modules.conf` and restarting cobblerd.
 

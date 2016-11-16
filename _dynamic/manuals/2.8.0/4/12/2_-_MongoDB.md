@@ -4,6 +4,10 @@ title: Alternative Storage Backends - MongoDB
 meta: 2.8.0
 ---
 
+<aside class="warning">
+THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0
+</aside>
+
 Cobbler 2.2.x introduced support for MongoDB as alternate storage backend, due to the native use of JSON. Currently, support for this backend is BETA-quality, and it should not be used for critical production systems.
 
 ### Serializer Setup

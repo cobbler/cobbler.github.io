@@ -4,6 +4,10 @@ title: Func Integration
 meta: 2.8.0
 ---
 
+<aside class="warning">
+THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0
+</aside>
+
 Func is a neat tool, (which, in full disclosure, Michael had a part
 in creating). Read all about it at
 [https://fedorahosted.org/func](https://fedorahosted.org/func)

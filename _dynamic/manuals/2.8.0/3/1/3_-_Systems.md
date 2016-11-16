@@ -118,8 +118,12 @@ Management classes and parameters that should be associated with this system for
 
 Please see the {% linkup title:"Configuration Management" extrameta:2.8.0 %} section for more details on integrating Cobbler with configuration management systems.
 
+<aside class="warning">
+THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0
+
 #### --monit-enabled
 If set true, koan will reload monit after each configuration run. The default value is false.
+</aside>
 
 #### --name-servers
 If your nameservers are not provided by DHCP, you can specify a space seperated list of addresses here to configure each of the installed nodes to use them (provided the kickstarts used are installed on a per-system basis). Users with DHCP setups should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for each system record.
@@ -141,6 +145,9 @@ Specifies a proxy to use during the installation stage.
 
 <div class="alert alert-info alert-block"><b>Note:</b> Not all distributions support using a proxy in this manner.</div>
 
+<aside class="warning">
+THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0
+
 #### --redhat-management-key
 If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in {% linkup title:"Cobbler Settings" extrameta:2.8.0 %} will be used if this field is left blank.
 
@@ -150,6 +157,8 @@ Please see the {% linkup title:"Tips For RHN" extrameta:2.8.0 %} section for mor
 The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in {% linkup title:"Cobbler Settings" extrameta:2.8.0 %} will be used if this field is left blank.
 
 Please see the {% linkup title:"Tips For RHN" extrameta:2.8.0 %} section for more details on integrating Cobbler with RHN/Spacewalk.
+
+</aside>
 
 #### --repos-enabled
 If set true, koan can reconfigure repositories after installation.

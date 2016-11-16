@@ -141,9 +141,9 @@ var WRInitTime=(new Date()).getTime();
 <p>$ git clone https://github.com/cobbler/cobbler.git</p>
 
 <p>$ cd cobbler
-$ git checkout release24</code></pre></figure></p>
+$ git checkout release28</code></pre></figure></p>
 
-<div class="alert alert-info alert-block"><b>Note:</b> The release24 branch corresponds to the official release version for the 2.4.x series. The master branch is the development series, and always uses an odd number for the minor version (for example, 2.5.0).</div>
+<div class="alert alert-info alert-block"><b>Note:</b> The release28 branch corresponds to the official release version for the 2.8.x series. The master branch is the development series, and always uses an odd number for the minor version (for example, 2.9.0).</div>
 
 
 <h2>Installing</h2>
@@ -171,10 +171,10 @@ $ git checkout release24</code></pre></figure></p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ make rpms
 ... (lots of output) ...
-Wrote: /path/to/cobbler/rpm-build/cobbler-2.8.0-1.fc20.src.rpm
-Wrote: /path/to/cobbler/rpm-build/cobbler-2.8.0-1.fc20.noarch.rpm
-Wrote: /path/to/cobbler/rpm-build/koan-2.8.0-1.fc20.noarch.rpm
-Wrote: /path/to/cobbler/rpm-build/cobbler-web-2.8.0-1.fc20.noarch.rpm</code></pre></figure></p>
+Wrote: /path/to/cobbler/rpm-build/cobbler-2.8.0-1.fc24.src.rpm
+Wrote: /path/to/cobbler/rpm-build/cobbler-2.8.0-1.fc24.noarch.rpm
+Wrote: /path/to/cobbler/rpm-build/koan-2.8.0-1.fc24.noarch.rpm
+Wrote: /path/to/cobbler/rpm-build/cobbler-web-2.8.0-1.fc24.noarch.rpm</code></pre></figure></p>
 
 <p>As you can see, an RPM is output for each component of cobbler, as well as a source RPM. This command was run on a system running Fedora 20, thus the fc20 in the RPM name - this will be different based on the distribution you're running.</p>
 
@@ -214,8 +214,6 @@ $ ln -s /srv/tftp /var/lib/tftpboot</p>
 </li>
 </ul>
 
-
-<p>The same steps will most likely be required on the current 2.2.x stable branch.</p>
 
      <hr>
      <div id="disqus_thread"></div>
@@ -298,6 +296,11 @@ $ ln -s /srv/tftp /var/lib/tftpboot</p>
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2016/11/16/cobbler_2.8.0_released.html">Cobbler 2.8.0 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, November 16, 2016</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2016/01/23/cobbler_2.6.11_released.html">Cobbler 2.6.11 Released</a></p>
           <p class="author">Posted by Jörgen on Saturday, January 23, 2016</p>
         </div>
@@ -309,11 +312,6 @@ $ ln -s /srv/tftp /var/lib/tftpboot</p>
 
         <div class="post">
           <p class="title"><a href="/posts/2015/06/12/cobbler_2.6.9_released.html">Cobbler 2.6.9 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, June 12, 2015</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2015/06/12/cobbler_2.4.9_released.html">Cobbler 2.4.9 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, June 12, 2015</p>
         </div>
 

@@ -4,7 +4,9 @@ title: Alternative Storage Backends - CouchDB
 meta: 2.8.0
 ---
 
-**THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0**
+<aside class="warning">
+THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0
+</aside>
 
 Cobbler 2.0.x introduced support for CouchDB as alternate storage backend, primarily as a proof of concept for NoSQL style databases. Currently, support for this backend is ALPHA-quality as it has not received significant testing.
 

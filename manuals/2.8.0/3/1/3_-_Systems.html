@@ -249,9 +249,13 @@ cobbler system report</code></pre></figure></p>
 
 <p>Please see the <a href="/manuals/2.8.0/4/3_-_Configuration_Management.html">Configuration Management</a> section for more details on integrating Cobbler with configuration management systems.</p>
 
+<p><aside class="warning">
+THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0</p>
+
 <h4>--monit-enabled</h4>
 
-<p>If set true, koan will reload monit after each configuration run. The default value is false.</p>
+<p>If set true, koan will reload monit after each configuration run. The default value is false.
+</aside></p>
 
 <h4>--name-servers</h4>
 
@@ -280,6 +284,9 @@ cobbler system report</code></pre></figure></p>
 <div class="alert alert-info alert-block"><b>Note:</b> Not all distributions support using a proxy in this manner.</div>
 
 
+<p><aside class="warning">
+THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0</p>
+
 <h4>--redhat-management-key</h4>
 
 <p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in <a href="/manuals/2.8.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
@@ -291,6 +298,8 @@ cobbler system report</code></pre></figure></p>
 <p>The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in <a href="/manuals/2.8.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
 
 <p>Please see the <a href="/manuals/2.8.0/Appendix/C_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+
+<p></aside></p>
 
 <h4>--repos-enabled</h4>
 
@@ -586,6 +595,11 @@ $ cobbler system report foo</code></pre></figure></p>
         <p class="column_header">Recent Posts:</p>
 
         <div class="post">
+          <p class="title"><a href="/posts/2016/11/16/cobbler_2.8.0_released.html">Cobbler 2.8.0 Released</a></p>
+          <p class="author">Posted by Jörgen on Wednesday, November 16, 2016</p>
+        </div>
+
+        <div class="post">
           <p class="title"><a href="/posts/2016/01/23/cobbler_2.6.11_released.html">Cobbler 2.6.11 Released</a></p>
           <p class="author">Posted by Jörgen on Saturday, January 23, 2016</p>
         </div>
@@ -597,11 +611,6 @@ $ cobbler system report foo</code></pre></figure></p>
 
         <div class="post">
           <p class="title"><a href="/posts/2015/06/12/cobbler_2.6.9_released.html">Cobbler 2.6.9 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, June 12, 2015</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/posts/2015/06/12/cobbler_2.4.9_released.html">Cobbler 2.4.9 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, June 12, 2015</p>
         </div>
 

@@ -20,10 +20,10 @@ $ git clone git://github.com/cobbler/cobbler.git
 $ git clone https://github.com/cobbler/cobbler.git
 
 $ cd cobbler
-$ git checkout release24
+$ git checkout release28
 {% endhighlight %}
 
-<div class="alert alert-info alert-block"><b>Note:</b> The release24 branch corresponds to the official release version for the 2.4.x series. The master branch is the development series, and always uses an odd number for the minor version (for example, 2.5.0).</div>
+<div class="alert alert-info alert-block"><b>Note:</b> The release28 branch corresponds to the official release version for the 2.8.x series. The master branch is the development series, and always uses an odd number for the minor version (for example, 2.9.0).</div>
 
 ## Installing
 
@@ -56,10 +56,10 @@ To build RPMs from source, use this command:
 {% highlight bash %}
 $ make rpms
 ... (lots of output) ...
-Wrote: /path/to/cobbler/rpm-build/cobbler-2.8.0-1.fc20.src.rpm
-Wrote: /path/to/cobbler/rpm-build/cobbler-2.8.0-1.fc20.noarch.rpm
-Wrote: /path/to/cobbler/rpm-build/koan-2.8.0-1.fc20.noarch.rpm
-Wrote: /path/to/cobbler/rpm-build/cobbler-web-2.8.0-1.fc20.noarch.rpm
+Wrote: /path/to/cobbler/rpm-build/cobbler-2.8.0-1.fc24.src.rpm
+Wrote: /path/to/cobbler/rpm-build/cobbler-2.8.0-1.fc24.noarch.rpm
+Wrote: /path/to/cobbler/rpm-build/koan-2.8.0-1.fc24.noarch.rpm
+Wrote: /path/to/cobbler/rpm-build/cobbler-web-2.8.0-1.fc24.noarch.rpm
 {% endhighlight %}
 
 As you can see, an RPM is output for each component of cobbler, as well as a source RPM. This command was run on a system running Fedora 20, thus the fc20 in the RPM name - this will be different based on the distribution you're running.
@@ -95,6 +95,4 @@ $ chown www-data /var/lib/cobbler/webui_sessions
   - add Required-Stop line
   - path needs to be `/usr/local/...` or fix the install location
 </pre>
-
-The same steps will most likely be required on the current 2.2.x stable branch.
 
