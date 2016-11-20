@@ -10,7 +10,7 @@ Live CD's can be used for a variety of tasks.  They might update firmware, run d
 
 Somewhat unintuitively, LiveCD's are booted by transforming the CD ISO's to kernel+initrd files.
 
-Take the livecd and install livecd-tools.  You may need a recent Fedora (F9+) to find livecd-tools.  What we are about to do is convert the live image to something that is PXEable.  It will produce a kernel image and a VERY large initrd which essnetially contains the entire ISO.  Once this is done it is PXE-bootable, but we still have to provide the right kernel arguments.
+Take the livecd and install livecd-tools.  You may need a recent Fedora to find livecd-tools.  What we are about to do is convert the live image to something that is PXEable.  It will produce a kernel image and a VERY large initrd which essnetially contains the entire ISO.  Once this is done it is PXE-bootable, but we still have to provide the right kernel arguments.
 
     livecd-iso-to-pxeboot live-image.iso
 

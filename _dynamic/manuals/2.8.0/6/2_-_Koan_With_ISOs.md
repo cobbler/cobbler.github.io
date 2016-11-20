@@ -37,4 +37,3 @@ part of a kickstart can't happen for an image based install.
 Avoid image based installs if at all possible -- use kickstart
 where you can, and images for foreign content where you can not.
 
-n

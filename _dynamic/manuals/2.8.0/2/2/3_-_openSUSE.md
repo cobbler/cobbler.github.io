@@ -5,7 +5,7 @@ meta: 2.8.0
 ---
 
 
-Enabled require apache modules (/etc/sysconfig/apache2:APACHE_MODULES)
+Enable required apache modules (/etc/sysconfig/apache2:APACHE_MODULES)
 
 {% highlight bash %}
 /usr/sbin/a2enmod proxy

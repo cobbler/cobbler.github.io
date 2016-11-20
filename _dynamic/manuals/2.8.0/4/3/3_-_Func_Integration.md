@@ -4,9 +4,7 @@ title: Func Integration
 meta: 2.8.0
 ---
 
-<aside class="warning">
-THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0
-</aside>
+<div class="alert alert-info alert-block"><b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.</div>
 
 Func is a neat tool, (which, in full disclosure, Michael had a part
 in creating). Read all about it at

@@ -4,9 +4,7 @@ title: Alternative Storage Backends - MySQL
 meta: 2.8.0
 ---
 
-<aside class="warning">
-THIS FEATURE HAS BEEN DEPRECATED AND WILL NOT BE AVAILABLE IN COBBLER 3.0
-</aside>
+<div class="alert alert-info alert-block"><b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.</div>
 
 Cobbler 2.4.0 introduced support for MySQL as alternate storage backend. Currently, support for this backend is ALPHA-quality, and it should not be used for critical production systems.
 

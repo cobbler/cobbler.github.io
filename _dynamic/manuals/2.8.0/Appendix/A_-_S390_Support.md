@@ -3,6 +3,9 @@ layout: manpage
 title: Cobbler Manual
 meta: 2.8.0
 ---
+
+<div class="alert alert-info alert-block"><b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.</div>
+
 ### Introduction
 
 Cobbler includes support for provisioning Linux on virtualized guests under z/VM, the System z hypervisor. 
