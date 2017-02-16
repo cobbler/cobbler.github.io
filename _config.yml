@@ -1,6 +1,6 @@
 destination: ./_site
 lsi: false
-highlighter: true
+highlighter: rouge
 markdown: rdiscount
 permalink: date
 exclude: ['readme.md','test.idx']
