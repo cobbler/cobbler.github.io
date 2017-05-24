@@ -121,6 +121,15 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
+  <td class="span2">Fedora 26</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
   <td class="span2">RHEL/CentOS 4</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -258,6 +267,15 @@ Key:
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">Zesty</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">Debian</td>
  </tr>
  <tr>
@@ -296,7 +314,6 @@ Key:
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
-
  <tr>
   <td colspan="7">SuSE</td>
  </tr>
@@ -445,6 +462,15 @@ Key:
   <td class="center span1"><i class="icon-wrench"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">SLES 12 SP2</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
   <td colspan="7">VMware</td>
  </tr>
  <tr>
@@ -495,6 +521,15 @@ Key:
  <tr>
   <td class="span2"></td>
   <td class="span2">ESXi 6.0</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">ESXi 6.5</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
@@ -595,6 +630,25 @@ Key:
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
  </tr>
  <tr>
+  <td class="span2"></td>
+  <td class="span2">10.3</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">11</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+
+ <tr>
   <td colspan="7">Xen</td>
  </tr>
  <tr>
@@ -618,6 +672,24 @@ Key:
  <tr>
   <td class="span2"></td>
   <td class="span2">XenServer 6.5</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">XenServer 7.0</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">XenServer 7.1</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-wrench"></i></td>
