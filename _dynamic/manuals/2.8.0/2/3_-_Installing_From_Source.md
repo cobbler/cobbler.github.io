@@ -84,6 +84,8 @@ $ a2enmod proxy
 $ a2enmod proxy_http
 $ a2enmod rewrite
 
+$ a2ensite cobbler.conf
+
 $ ln -s /usr/local/lib/python2.6/dist-packages/cobbler /usr/lib/python2.6/dist-packages/
 $ ln -s /srv/tftp /var/lib/tftpboot
 
