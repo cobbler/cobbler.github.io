@@ -30,5 +30,5 @@ The devel channel is very lightly used currently (mainly reserved for highly tec
 
 ## Twitter
 
-We use the twitter account [@cobblerista](http://twitter.com/#!/cobblerista) to post notifications of new versions and other relevant information.
+We use the twitter account [@cobblerproject](http://twitter.com/#!/cobblerproject) to post notifications of new versions and other relevant information.
 
