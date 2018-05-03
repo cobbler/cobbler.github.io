@@ -2,6 +2,6 @@ destination: ./_site
 lsi: false
 highlighter: true
 markdown: rdiscount
-plugins: [jekyll-paginate]
+gems: [jekyll-paginate]
 paginate: 5
 paginate_path: '/posts/page:num'
