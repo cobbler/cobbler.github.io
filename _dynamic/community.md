@@ -9,9 +9,7 @@ There are many ways to connect to the Cobbler community, for both regular users 
 
 ## Mailing List
 
-The primary mailing list for Cobbler is [cobbler@lists.fedorahosted.org](https://fedorahosted.org/mailman/listinfo/cobbler).
-
-Development questions/code should be sent here: [cobbler-devel@lists.fedorahosted.org](https://fedorahosted.org/mailman/listinfo/cobbler-devel). If you're sending patches for review, please be sure to read the "Developer Documentation" section of the manual first.
+The primary mailing list for Cobbler is [cobbler-users@googlegroups.com](https://groups.google.com/forum/#!forum/cobbler-users).
 
 ## Github
 
