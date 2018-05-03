@@ -249,6 +249,40 @@
     "boot_files":[],
     "boot_loaders":{"ppc64":["grub2"]}
    },
+   "fedora27": {
+    "signatures":["Packages"],
+    "version_file":"(fedora)-release-27-(.*)\\.noarch\\.rpm",
+    "version_file_regex":null,
+    "kernel_arch":"kernel-(.*)\\.rpm",
+    "kernel_arch_regex":null,
+    "supported_arches":["aarch64","i386","x86_64","ppc64","ppc64le"],
+    "supported_repo_breeds":["rsync", "rhn", "yum"],
+    "kernel_file":"vmlinuz(.*)",
+    "initrd_file":"initrd(.*)\\.img",
+    "isolinux_ok":false,
+    "default_autoinstall":"sample.ks",
+    "kernel_options":"repo=$tree",
+    "kernel_options_post":"",
+    "boot_files":[],
+    "boot_loaders":{"ppc64":["grub2"]}
+   },
+   "fedora28": {
+    "signatures":["Packages"],
+    "version_file":"(fedora)-release-28-(.*)\\.noarch\\.rpm",
+    "version_file_regex":null,
+    "kernel_arch":"kernel-(.*)\\.rpm",
+    "kernel_arch_regex":null,
+    "supported_arches":["aarch64","i386","x86_64","ppc64","ppc64le"],
+    "supported_repo_breeds":["rsync", "rhn", "yum"],
+    "kernel_file":"vmlinuz(.*)",
+    "initrd_file":"initrd(.*)\\.img",
+    "isolinux_ok":false,
+    "default_autoinstall":"sample.ks",
+    "kernel_options":"repo=$tree",
+    "kernel_options_post":"",
+    "boot_files":[],
+    "boot_loaders":{"ppc64":["grub2"]}
+   },
    "cloudlinux6": {
     "signatures":["Packages"],
     "version_file":"(cloudlinux)-release-(.*)\\.rpm",
@@ -333,6 +367,40 @@
    }
   },
   "ubuntu": {
+   "artful": {
+    "signatures":["dists", ".disk"],
+    "version_file":"Release|mini-info",
+    "version_file_regex":"Codename: artful|Ubuntu 17.10",
+    "kernel_arch":"linux-headers-(.*)\\.deb",
+    "kernel_arch_regex":null,
+    "supported_arches":["i386","amd64","ppc64el"],
+    "supported_repo_breeds":["apt"],
+    "kernel_file":"(vm)?linux(.*)",
+    "initrd_file":"initrd(.*)\\.gz",
+    "isolinux_ok":false,
+    "default_autoinstall":"sample.seed",
+    "kernel_options":"",
+    "kernel_options_post":"",
+    "boot_files":[],
+    "boot_loaders":{"ppc64el":["grub2"]}
+   },
+   "bionic": {
+    "signatures":["dists", ".disk"],
+    "version_file":"Release|mini-info",
+    "version_file_regex":"Codename: bionic|Ubuntu 18.04",
+    "kernel_arch":"linux-headers-(.*)\\.deb",
+    "kernel_arch_regex":null,
+    "supported_arches":["i386","amd64","ppc64el"],
+    "supported_repo_breeds":["apt"],
+    "kernel_file":"(vm)?linux(.*)",
+    "initrd_file":"initrd(.*)\\.gz",
+    "isolinux_ok":false,
+    "default_autoinstall":"sample.seed",
+    "kernel_options":"",
+    "kernel_options_post":"",
+    "boot_files":[],
+    "boot_loaders":{"ppc64el":["grub2"]}
+   },
    "lucid": {
     "signatures":["dists", ".disk"],
     "version_file":"Release|mini-info",
@@ -824,6 +892,23 @@
     "kernel_options_post":"",
     "boot_files":[],
     "boot_loaders":{"ppc64le":["grub2"]}
+   },
+   "sles12sp3": {
+    "signatures":["suse"],
+    "version_file":"(sles|SLES-for-VMware)-release-12.3-(.*).rpm",
+    "version_file_regex":null,
+    "kernel_arch":"kernel-(.*)\\.rpm",
+    "kernel_arch_regex":null,
+    "supported_arches":["i386","i586","x86_64","ppc64le"],
+    "supported_repo_breeds":["yum"],
+    "kernel_file":"linux[64.gz]?",
+    "initrd_file":"initrd[64]?",
+    "isolinux_ok":false,
+    "default_autoinstall":"sample_autoyast.xml",
+    "kernel_options":"install=$tree",
+    "kernel_options_post":"",
+    "boot_files":[],
+    "boot_loaders":{"ppc64le":["grub2"]}
    }
   },
   "vmware": {
@@ -926,10 +1011,27 @@
     "kernel_options_post":"",
     "template_files":"/etc/cobbler/boot_loader_conf/bootcfg_esxi60.template=$local_img_path/cobbler-boot.cfg",
     "boot_files":["*.*"]
+   },
+   "esxi65": {
+    "signatures":["tboot.b00"],
+    "version_file":"vmware-esx-base-osl\\.txt",
+    "version_file_regex":"^(VMware )?ESXi (v)?6\\.5.*$",
+    "kernel_arch":"tools\\.t00",
+    "kernel_arch_regex":"^.*(x86_64).*$",
+    "supported_arches":["x86_64"],
+    "supported_repo_breeds":[],
+    "kernel_file":"mboot\\.c32",
+    "initrd_file":"imgpayld\\.tgz",
+    "isolinux_ok":false,
+    "default_autoinstall":"sample_esxi6.ks",
+    "kernel_options":"",
+    "kernel_options_post":"",
+    "template_files":"/etc/cobbler/boot_loader_conf/bootcfg_esxi65.template=$local_img_path/cobbler-boot.cfg",
+    "boot_files":["*.*"]
    }
   },
   "freebsd": {
-   "8.2": {
+   "freebsd8.2": {
     "signatures":["boot"],
     "version_file":"8\\.2-RELEASE",
     "version_file_regex":null,
@@ -945,7 +1047,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "8.3": {
+   "freebsd8.3": {
     "signatures":["boot"],
     "version_file":"8\\.3-RELEASE",
     "version_file_regex":null,
@@ -961,7 +1063,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "8.4": {
+   "freebsd8.4": {
     "signatures":["boot"],
     "version_file":"8\\.4-RELEASE",
     "version_file_regex":null,
@@ -977,7 +1079,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "9.0": {
+   "freebsd9.0": {
     "signatures":["boot"],
     "version_file":"device\\.hints",
     "version_file_regex":"^.*FreeBSD: release/9.0(.*)/sys/(.*)/conf/GENERIC.hints.*$",
@@ -993,7 +1095,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "9.1": {
+   "freebsd9.1": {
     "signatures":["boot"],
     "version_file":"device\\.hints",
     "version_file_regex":"^.*FreeBSD: release/9.1(.*)/sys/(.*)/conf/GENERIC.hints.*$",
@@ -1009,7 +1111,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "9.2": {
+   "freebsd9.2": {
     "signatures":["boot"],
     "version_file":"device\\.hints",
     "version_file_regex":"^.*FreeBSD: release/9.2(.*)/sys/(.*)/conf/GENERIC.hints.*$",
@@ -1025,7 +1127,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "9.3": {
+   "freebsd9.3": {
     "signatures":["boot"],
     "version_file":"device\\.hints",
     "version_file_regex":"^.*FreeBSD: release/9.3(.*)/sys/(.*)/conf/GENERIC.hints.*$",
@@ -1041,7 +1143,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "10.0": {
+   "freebsd10.0": {
     "signatures":["boot"],
     "version_file":"freebsd-version",
     "version_file_regex":"USERLAND_VERSION=\"10.0-RELEASE\"",
@@ -1057,7 +1159,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "10.1": {
+   "freebsd10.1": {
     "signatures":["boot"],
     "version_file":"freebsd-version",
     "version_file_regex":"USERLAND_VERSION=\"10.1-RELEASE\"",
@@ -1073,7 +1175,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "10.2": {
+   "freebsd10.2": {
     "signatures":["boot"],
     "version_file":"freebsd-version",
     "version_file_regex":"USERLAND_VERSION=\"10.2-RELEASE\"",
@@ -1089,7 +1191,7 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "10.3": {
+   "freebsd10.3": {
     "signatures":["boot"],
     "version_file":"freebsd-version",
     "version_file_regex":"USERLAND_VERSION=\"10.3-RELEASE\"",
@@ -1105,10 +1207,42 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
-   "11.0": {
+   "freebsd10.4": {
+    "signatures":["boot"],
+    "version_file":"freebsd-version",
+    "version_file_regex":"USERLAND_VERSION=\"10.4-RELEASE\"",
+    "kernel_arch":"device\\.hints",
+    "kernel_arch_regex":null,
+    "supported_arches":["i386","amd64"],
+    "supported_repo_breeds":[],
+    "kernel_file":"base.txz",
+    "initrd_file":"base.txz",
+    "isolinux_ok":false,
+    "default_kickstart":"",
+    "kernel_options":"",
+    "kernel_options_post":"",
+    "boot_files":[]
+   },
+   "freebsd11.0": {
     "signatures":["boot"],
     "version_file":"freebsd-version",
     "version_file_regex":"USERLAND_VERSION=\"11.0-RELEASE.*\"",
+    "kernel_arch":"device\\.hints",
+    "kernel_arch_regex":null,
+    "supported_arches":["i386","amd64"],
+    "supported_repo_breeds":[],
+    "kernel_file":"base.txz",
+    "initrd_file":"base.txz",
+    "isolinux_ok":false,
+    "default_kickstart":"",
+    "kernel_options":"",
+    "kernel_options_post":"",
+    "boot_files":[]
+   },
+   "freebsd11.1": {
+    "signatures":["boot"],
+    "version_file":"freebsd-version",
+    "version_file_regex":"USERLAND_VERSION=\"11.1-RELEASE.*\"",
     "kernel_arch":"device\\.hints",
     "kernel_arch_regex":null,
     "supported_arches":["i386","amd64"],
@@ -1191,6 +1325,22 @@
     "signatures":["packages.xenserver"],
     "version_file":"^XS-REPOSITORY$",
     "version_file_regex":"^.*product=\"XenServer\" version=\"7\\.1\\.([0-9]+)\".*$",
+    "kernel_arch":"xen\\.gz",
+    "kernel_arch_regex":"^.*(x86_64).*$",
+    "supported_arches":["x86_64"],
+    "supported_repo_breeds":[],
+    "kernel_file":"mboot\\.c32",
+    "initrd_file":"xen\\.gz",
+    "isolinux_ok":false,
+    "default_kickstart":"",
+    "kernel_options":"",
+    "kernel_options_post":"",
+    "boot_files":["install.img"]
+   },
+   "xenserver720": {
+    "signatures":["packages.xenserver"],
+    "version_file":"^XS-REPOSITORY$",
+    "version_file_regex":"^.*product=\"XenServer\" version=\"7\\.2\\.([0-9]+)\".*$",
     "kernel_arch":"xen\\.gz",
     "kernel_arch_regex":"^.*(x86_64).*$",
     "supported_arches":["x86_64"],
