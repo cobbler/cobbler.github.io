@@ -128,15 +128,15 @@ var WRInitTime=(new Date()).getTime();
    <h1>Cobbler Quickstart Guide</h1>
 <p>Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your choosen distribution.</p>
 
-<p>This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora (specifically version 17), however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the <a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">Installing Cobbler</a> section for details on installation and prerequisites for your specific OS version.</p>
+<p>This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora, however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the <a href="/manuals/2.8.0/2_-_Installing_Cobbler.html">Installing Cobbler</a> section for details on installation and prerequisites for your specific OS version.</p>
 
-<p>Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: <a href="/manuals/2.6.0/5_-_Web_Interface.html">Cobbler Web User Interface</a></p>
+<p>Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: <a href="/manuals/2.8.0/5_-_Web_Interface.html">Cobbler Web User Interface</a></p>
 
 <h2>Disable SELinux (optional)</h2>
 
 <p>Before getting started with cobbler, it may be a good idea to either disable SELinux or set it to "permissive" mode, especially if you are unfamiliar with SELinux troubleshooting or modifying SELinux policy. Cobbler constantly evolves to assist in managing new system technologies, and the policy that ships with your OS can sometimes lag behind the feature-set we provide, resulting in AVC denials that break cobbler's functionality.</p>
 
-<p>If you would like to continue using SELinux on the system running cobblerd, be sure to read the <a href="/manuals/2.6.0/4/2_-_SELinux.html">SELinux With Cobbler</a> section in this manual.</p>
+<p>If you would like to continue using SELinux on the system running cobblerd, be sure to read the <a href="/manuals/2.8.0/4/2_-_SELinux.html">SELinux With Cobbler</a> section in this manual.</p>
 
 <h2>Installing Cobbler</h2>
 
@@ -192,7 +192,7 @@ manage_dhcp: 0</code></pre></figure></p>
      option domain-name-servers 192.168.1.210,192.168.1.211;
      option subnet-mask         255.255.255.0;
      filename                   &quot;/pxelinux.0&quot;;
-     default-lease-time         21600;
+     default-lease-time         2.8.0;
      max-lease-time             43200;
      next-server                $next_server;
 }</code></pre></figure></p>
@@ -209,7 +209,7 @@ manage_dhcp: 0</code></pre></figure></p>
 
 <p>Cobbler makes heavy use of the <code>/var</code> directory. The <code>/var/www/cobbler/ks_mirror</code> directory is where all of the distribution and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import.</p>
 
-<p>If you have installed cobbler onto a system that has very little free space in the partition containing <code>/var</code>, please read the <a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> section of the manual to learn how you can relocate your installation properly.</p>
+<p>If you have installed cobbler onto a system that has very little free space in the partition containing <code>/var</code>, please read the <a href="/manuals/2.8.0/2/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> section of the manual to learn how you can relocate your installation properly.</p>
 
 <h2>Starting and Enabling the Cobbler Service</h2>
 
@@ -289,17 +289,17 @@ running shell triggers from /var/lib/cobbler/triggers/change/</em>
 
 <h3>Download an ISO Image</h3>
 
-<p>In order to import a distribution, you will need a DVD ISO for your distribution. <strong>NOTE:</strong> You must use a full DVD, and not a "Live CD" ISO. For this example, we'll be using the Fedora 17 x86_64 ISO, <a href="http://download.fedoraproject.org/pub/fedora/linux/releases/17/Fedora/x86_64/iso/Fedora-17-x86_64-DVD.iso">available for download here</a>.</p>
+<p>In order to import a distribution, you will need a DVD ISO for your distribution. <strong>NOTE:</strong> You must use a full DVD, and not a "Live CD" ISO. For this example, we'll be using the Fedora 28 x86_64 ISO, <a href="http://download.fedoraproject.org/pub/fedora/linux/releases/28/Server/x86_64/iso/Fedora-Server-dvd-x86_64-28-1.1.iso">available for download here</a>.</p>
 
 <p>Once this file is downloaded, mount it somewhere:</p>
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ mount -t iso9660 -o loop,ro /path/to/isos/Fedora-17-x86_64-DVD.iso /mnt</code></pre></figure></p>
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ mount -t iso9660 -o loop,ro /path/to/isos/Fedora-Server-dvd-x86_64-28-1.1.iso /mnt</code></pre></figure></p>
 
 <h3>Run the Import</h3>
 
 <p>You are now ready to import the distribution. The name and path arguments are the only required options for import:</p>
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler import --name=fedora17 --arch=x86_64 --path=/mnt</code></pre></figure></p>
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler import --name=fedora28 --arch=x86_64 --path=/mnt</code></pre></figure></p>
 
 <p>The --arch option need not be specified, as it will normally be auto-detected. We're doing so in this example in order to prevent multiple architectures from being found (Fedora ships i386 packages on the full DVD, and cobbler will create both x86_64 and i386 distros by default).</p>
 
@@ -320,20 +320,20 @@ $ cobbler distro list</p>
 
 <p>The report command shows the details of objects in cobbler:</p>
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro report --name=fedora17-x86_64
-Name                           : fedora17-x86_64
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler distro report --name=fedora28-x86_64
+Name                           : fedora28-x86_64
 Architecture                   : x86_64
 TFTP Boot Files                : {}
 Breed                          : redhat
 Comment                        :
 Fetchable Files                : {}
-Initrd                         : /var/www/cobbler/ks_mirror/fedora17-x86_64/images/pxeboot/initrd.img
-Kernel                         : /var/www/cobbler/ks_mirror/fedora17-x86_64/images/pxeboot/vmlinuz
+Initrd                         : /var/www/cobbler/ks_mirror/fedora28-x86_64/images/pxeboot/initrd.img
+Kernel                         : /var/www/cobbler/ks_mirror/fedora28-x86_64/images/pxeboot/vmlinuz
 Kernel Options                 : {}
 Kernel Options (Post Install)  : {}
-Kickstart Metadata             : {&#39;tree&#39;: &#39;http://@@http_server@@/cblr/links/fedora17-x86_64&#39;}
+Kickstart Metadata             : {&#39;tree&#39;: &#39;http://@@http_server@@/cblr/links/fedora28-x86_64&#39;}
 Management Classes             : []
-OS Version                     : fedora17
+OS Version                     : fedora28
 Owners                         : [&#39;admin&#39;]
 Red Hat Management Key         : &lt;&lt;inherit&gt;&gt;
 Red Hat Management Server      : &lt;&lt;inherit&gt;&gt;
@@ -349,7 +349,7 @@ Template Files                 : {}</code></pre></figure></p>
 
 <p>First, we'll create a system object based on the profile that was created during the import. When creating a system, the name and profile are the only two required fields:</p>
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=test --profile=fedora17-x86_64
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=test --profile=fedora28-x86_64
 $ cobbler system list
 test
 $ cobbler system report --name=test
@@ -381,7 +381,7 @@ Power Management ID            :
 Power Management Password      :
 Power Management Type          : ipmitool
 Power Management Username      :
-Profile                        : fedora17-x86_64
+Profile                        : fedora28-x86_64
 Proxy                          : &lt;&lt;inherit&gt;&gt;
 Red Hat Management Key         : &lt;&lt;inherit&gt;&gt;
 Red Hat Management Server      : &lt;&lt;inherit&gt;&gt;

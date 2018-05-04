@@ -1,20 +1,20 @@
 ---
 layout: manpage
 title: Cobbler Quickstart Guide
-meta: 2.6.0
+meta: 2.8.0
 ---
 
 Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your choosen distribution. 
 
-This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora (specifically version 17), however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the {% linkup title:"Installing Cobbler" extrameta:2.6.0 %} section for details on installation and prerequisites for your specific OS version.
+This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora, however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the {% linkup title:"Installing Cobbler" extrameta:2.8.0 %} section for details on installation and prerequisites for your specific OS version.
 
-Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: {% linkup title:"Cobbler Web User Interface" extrameta:2.6.0 %}
+Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: {% linkup title:"Cobbler Web User Interface" extrameta:2.8.0 %}
 
 ## Disable SELinux (optional)
 
 Before getting started with cobbler, it may be a good idea to either disable SELinux or set it to "permissive" mode, especially if you are unfamiliar with SELinux troubleshooting or modifying SELinux policy. Cobbler constantly evolves to assist in managing new system technologies, and the policy that ships with your OS can sometimes lag behind the feature-set we provide, resulting in AVC denials that break cobbler's functionality.
 
-If you would like to continue using SELinux on the system running cobblerd, be sure to read the {% linkup title:"SELinux With Cobbler" extrameta:2.6.0 %} section in this manual.
+If you would like to continue using SELinux on the system running cobblerd, be sure to read the {% linkup title:"SELinux With Cobbler" extrameta:2.8.0 %} section in this manual.
 
 ## Installing Cobbler
 
@@ -85,7 +85,7 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
      option domain-name-servers 192.168.1.210,192.168.1.211;
      option subnet-mask         255.255.255.0;
      filename                   "/pxelinux.0";
-     default-lease-time         21600;
+     default-lease-time         2.8.0;
      max-lease-time             43200;
      next-server                $next_server;
 }
@@ -107,7 +107,7 @@ $ man dhcpd.conf
 
 Cobbler makes heavy use of the `/var` directory. The `/var/www/cobbler/ks_mirror` directory is where all of the distribution and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
 
-If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please read the {% linkup title:"Relocating Your Installation" extrameta:2.6.0 %} section of the manual to learn how you can relocate your installation properly.
+If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please read the {% linkup title:"Relocating Your Installation" extrameta:2.8.0 %} section of the manual to learn how you can relocate your installation properly.
 
 ## Starting and Enabling the Cobbler Service
 
@@ -190,12 +190,12 @@ Cobbler automates adding distributions and profiles via the "cobbler import" com
 
 ### Download an ISO Image
 
-In order to import a distribution, you will need a DVD ISO for your distribution. **NOTE:** You must use a full DVD, and not a "Live CD" ISO. For this example, we'll be using the Fedora 17 x86_64 ISO, [available for download here](http://download.fedoraproject.org/pub/fedora/linux/releases/17/Fedora/x86_64/iso/Fedora-17-x86_64-DVD.iso).
+In order to import a distribution, you will need a DVD ISO for your distribution. **NOTE:** You must use a full DVD, and not a "Live CD" ISO. For this example, we'll be using the Fedora 28 x86_64 ISO, [available for download here](http://download.fedoraproject.org/pub/fedora/linux/releases/28/Server/x86_64/iso/Fedora-Server-dvd-x86_64-28-1.1.iso).
 
 Once this file is downloaded, mount it somewhere:
 
 {% highlight bash %}
-$ mount -t iso9660 -o loop,ro /path/to/isos/Fedora-17-x86_64-DVD.iso /mnt
+$ mount -t iso9660 -o loop,ro /path/to/isos/Fedora-Server-dvd-x86_64-28-1.1.iso /mnt
 {% endhighlight %}
 
 ### Run the Import 
@@ -203,7 +203,7 @@ $ mount -t iso9660 -o loop,ro /path/to/isos/Fedora-17-x86_64-DVD.iso /mnt
 You are now ready to import the distribution. The name and path arguments are the only required options for import:
 
 {% highlight bash %}
-$ cobbler import --name=fedora17 --arch=x86_64 --path=/mnt
+$ cobbler import --name=fedora28 --arch=x86_64 --path=/mnt
 {% endhighlight %}
 
 The --arch option need not be specified, as it will normally be auto-detected. We're doing so in this example in order to prevent multiple architectures from being found (Fedora ships i386 packages on the full DVD, and cobbler will create both x86_64 and i386 distros by default).
@@ -227,20 +227,20 @@ The import command will typically create at least one distro/profile pair, which
 The report command shows the details of objects in cobbler:
 
 {% highlight bash %}
-$ cobbler distro report --name=fedora17-x86_64
-Name                           : fedora17-x86_64
+$ cobbler distro report --name=fedora28-x86_64
+Name                           : fedora28-x86_64
 Architecture                   : x86_64
 TFTP Boot Files                : {}
 Breed                          : redhat
 Comment                        : 
 Fetchable Files                : {}
-Initrd                         : /var/www/cobbler/ks_mirror/fedora17-x86_64/images/pxeboot/initrd.img
-Kernel                         : /var/www/cobbler/ks_mirror/fedora17-x86_64/images/pxeboot/vmlinuz
+Initrd                         : /var/www/cobbler/ks_mirror/fedora28-x86_64/images/pxeboot/initrd.img
+Kernel                         : /var/www/cobbler/ks_mirror/fedora28-x86_64/images/pxeboot/vmlinuz
 Kernel Options                 : {}
 Kernel Options (Post Install)  : {}
-Kickstart Metadata             : {'tree': 'http://@@http_server@@/cblr/links/fedora17-x86_64'}
+Kickstart Metadata             : {'tree': 'http://@@http_server@@/cblr/links/fedora28-x86_64'}
 Management Classes             : []
-OS Version                     : fedora17
+OS Version                     : fedora28
 Owners                         : ['admin']
 Red Hat Management Key         : <<inherit>>
 Red Hat Management Server      : <<inherit>>
@@ -258,7 +258,7 @@ Now that you have a distro and profile, you can create a system. Profiles can be
 First, we'll create a system object based on the profile that was created during the import. When creating a system, the name and profile are the only two required fields:
 
 {% highlight bash %}
-$ cobbler system add --name=test --profile=fedora17-x86_64
+$ cobbler system add --name=test --profile=fedora28-x86_64
 $ cobbler system list
 test
 $ cobbler system report --name=test
@@ -290,7 +290,7 @@ Power Management ID            :
 Power Management Password      : 
 Power Management Type          : ipmitool
 Power Management Username      : 
-Profile                        : fedora17-x86_64
+Profile                        : fedora28-x86_64
 Proxy                          : <<inherit>>
 Red Hat Management Key         : <<inherit>>
 Red Hat Management Server      : <<inherit>>
