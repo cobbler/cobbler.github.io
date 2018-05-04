@@ -130,6 +130,24 @@ Key:
  </tr>
  <tr>
   <td class="span2"></td>
+  <td class="span2">Fedora 27</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Fedora 28</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
   <td class="span2">RHEL/CentOS 4</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
@@ -269,6 +287,24 @@ Key:
  <tr>
   <td class="span2"></td>
   <td class="span2">Zesty</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Artful</td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
+  <td class="center span1"><i class="icon-wrench"></i></td>
+ </tr>
+ <tr>
+  <td class="span2"></td>
+  <td class="span2">Bionic</td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
   <td class="center span1"><i class="icon-ban-circle text-error"></i></td>
   <td class="center span1"><i class="icon-ok-sign text-success"></i></td>
