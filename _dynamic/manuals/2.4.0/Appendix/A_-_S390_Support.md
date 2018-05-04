@@ -74,10 +74,10 @@ Now let's take a look at how zPXE works.  First, it defines a 50 MB VDISK, which
 
 Next, the client uses the z/VM TFTP client to contact the server specified in ZPXE CONF.  It attempts to retrieve, in the following order:
 
- 1. {{{/s390x/s_systemname}}}, if found, the following files will be downloaded:
-    * {{{/s390x/s_systemname_parm}}}
-    * {{{/s390x/s_systemname_conf}}}
- 1. {{{/s390x/profile_list}}}
+ 1. /s390x/s_systemname, if found, the following files will be downloaded:
+    * /s390x/s_systemname_parm
+    * /s390x/s_systemname_conf
+ 1. /s390x/profile_list
 
 When netboot is enabled on the cobbler server, it places a file called s_''systemname'' (where ''systemname'' = z/VM user ID) into `/var/lib/tftpboot/s390x/` which contains the following lines:
 
