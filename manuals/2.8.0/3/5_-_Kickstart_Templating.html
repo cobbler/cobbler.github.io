@@ -174,7 +174,7 @@ complicated, it's not required that you understand all of it.</p>
 
 <h2>First off</h2>
 
-<p>Cobbler uses <a href="http://cheetahtemplate.org/learn.html">Cheetah</a> for
+<p>Cobbler uses <a href="http://cheetahtemplate.org">Cheetah</a> for
 its kickstart templating engine. Read more at the Cheetah page and
 you will learn a lot of advanced features you can employ in your
 kickstart templates. However, knowledge of all parts of Cheetah are
@@ -243,7 +243,7 @@ settings, timezones, etc.</p>
 several different kickstart templates, cobbler snippets are for
 you.</p>
 
-<p>Read more at <a href="Kickstart-snippets">Kickstart Snippets</a></p>
+<p>Read more at <a href="6_-_Snippets">Kickstart Snippets</a></p>
 
 <p>That page also includes some user contributed snippet examples --
 some of which make some heavy use of the Cheetah template engine.
@@ -367,7 +367,7 @@ in Cobbler templating, you do it as follows:</p>
 dumpvars --name=foo"</p>
 
 <p>Again, usually you should not have to access these directly, see
-<a href="Advanced%20Networking">Advanced Networking</a> for details
+<a href="manuals/2.8.0/4/1_-_Advanced_Networking.html">Advanced Networking</a> for details
 about Cobbler templates all the network info out for you.</p>
 
 <h2>Built-in functions and extensibility</h2>
@@ -375,7 +375,7 @@ about Cobbler templates all the network info out for you.</p>
 <p>You can optionally expose custom-written functions to all Cheetah
 templates. To see a list of these functions you have configured for
 your site (Cobbler doesn't currently ship with any) and/or add new
-functions, see <a href="Extending%20Cheetah">Extending Cheetah</a>.</p>
+functions, see <a href="manuals/2.8.0/4/4/3_-_Extending_Cheetah.html">Extending Cheetah</a>.</p>
 
 <h2>Raw Escaping</h2>
 
@@ -474,7 +474,7 @@ implementation of what "kickstart_done" means may vary depending
 on the cobbler version, but it should always be placed in a
 kickstart template as the last line in %post. Beware in version 2.2.0, $kickstart_done does not exist anymore. Use $SNIPPLET('kickstart_done') instead between a cheetah stanza.</li>
 <li>(there may be other
-<a href="Kickstart%20Snippets">Kickstart Snippets</a> and macros
+<a href="6_-_Snippets">Kickstart Snippets</a> and macros
 used not listed above)</li>
 </ul>
 
