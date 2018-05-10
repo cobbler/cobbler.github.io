@@ -215,10 +215,8 @@ The --arch option need not be specified, as it will normally be auto-detected. W
 If no errors were reported during the import, you can view details about the distros and profiles that were created during the import. 
 
 {% highlight bash %}
-# list distros
 $ cobbler distro list
 
-# list profiles
 $ cobbler profile list
 {% endhighlight %}
 
