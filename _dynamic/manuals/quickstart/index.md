@@ -4,7 +4,7 @@ title: Cobbler Quickstart Guide
 meta: 2.8.0
 ---
 
-Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your choosen distribution. 
+Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your chosen distribution. 
 
 This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora, however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the {% linkup title:"Installing Cobbler" extrameta:2.8.0 %} section for details on installation and prerequisites for your specific OS version.
 
