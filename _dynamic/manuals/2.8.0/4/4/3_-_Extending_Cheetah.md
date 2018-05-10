@@ -1,6 +1,6 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Extending Cheetah
 meta: 2.8.0
 ---
 

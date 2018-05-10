@@ -363,8 +363,6 @@ For systems:
 
     cobbler system getks --name=system-name
 
-(see [ModPythonDetails](/cobbler/wiki/ModPythonDetails) for the
-URLs the installer actually uses to get to this content)
 
 ## Calling Python Code
 
