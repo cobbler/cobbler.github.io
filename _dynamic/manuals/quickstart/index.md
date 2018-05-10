@@ -117,7 +117,9 @@ Once you have updated your settings, you're ready to start the service. Fedora n
 $ systemctl start cobblerd.service
 $ systemctl enable cobblerd.service
 $ systemctl status cobblerd.service
-# or 
+
+or 
+
 $ service cobblerd start 
 $ chkconfig cobblerd on
 $ service cobblerd status

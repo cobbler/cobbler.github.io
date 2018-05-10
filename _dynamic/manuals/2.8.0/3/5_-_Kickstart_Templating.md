@@ -115,7 +115,7 @@ If you find yourself reusing a lot of pieces of code between
 several different kickstart templates, cobbler snippets are for
 you.
 
-Read more at [Snippets](snippets)
+Read more at [snippets](Snippets)
 
 That page also includes some user contributed snippet examples --
 some of which make some heavy use of the Cheetah template engine.
