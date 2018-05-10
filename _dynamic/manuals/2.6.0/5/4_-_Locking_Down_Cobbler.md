@@ -62,7 +62,7 @@ you about to ensure everything works according to plan.
 Also note, you may run into some problems if you need to relocate
 your `/var/www elsewhere`, which most users should not need to do.
 
-## Default Paswords
+## Default Passwords
 
 Run "cobbler check" and it will warn you if any of the sample
 kickstarts still have "cobbler" as the password. If you are using
