@@ -53,7 +53,7 @@ complicated, it's not required that you understand all of it.
 
 ## First off
 
-Cobbler uses [Cheetah](http://cheetahtemplate.org/learn.html) for
+Cobbler uses [Cheetah](http://cheetahtemplate.org/) for
 its kickstart templating engine. Read more at the Cheetah page and
 you will learn a lot of advanced features you can employ in your
 kickstart templates. However, knowledge of all parts of Cheetah are
@@ -115,7 +115,7 @@ If you find yourself reusing a lot of pieces of code between
 several different kickstart templates, cobbler snippets are for
 you.
 
-Read more at [snippets](Snippets)
+Read more at {%linkup title:"Snippets" extrameta:2.8.0 %}
 
 That page also includes some user contributed snippet examples --
 some of which make some heavy use of the Cheetah template engine.
@@ -227,7 +227,7 @@ This should also be apparent in the output from "cobbler system
 dumpvars --name=foo"
 
 Again, usually you should not have to access these directly, see
-[Advanced Networking](Advanced Networking) for details
+{% linkup title:"Advanced Networking" extrameta:2.8.0 %} for details
 about Cobbler templates all the network info out for you.
 
 ## Built-in functions and extensibility
@@ -235,7 +235,7 @@ about Cobbler templates all the network info out for you.
 You can optionally expose custom-written functions to all Cheetah
 templates. To see a list of these functions you have configured for
 your site (Cobbler doesn't currently ship with any) and/or add new
-functions, see [Extending Cheetah](Extending Cheetah).
+functions, see {% linkup title:"Extending Cheetah" extrameta:2.8.0 %}.
 
 ## Raw Escaping
 
@@ -329,7 +329,7 @@ variables:
     on the cobbler version, but it should always be placed in a
     kickstart template as the last line in %post. Beware in version 2.2.0, $kickstart_done does not exist anymore. Use $SNIPPLET('kickstart_done') instead between a cheetah stanza.
 -   (there may be other
-    [Snippets](Snippets) and macros
+    {% linkup title:"Snippets" extrameta:2.8.0 %} and macros
     used not listed above)
 
 Over time these will become first class Cobbler snippets.
