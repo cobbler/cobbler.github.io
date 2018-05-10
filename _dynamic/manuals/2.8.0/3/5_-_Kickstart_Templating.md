@@ -115,7 +115,7 @@ If you find yourself reusing a lot of pieces of code between
 several different kickstart templates, cobbler snippets are for
 you.
 
-Read more at [Kickstart Snippets](Kickstart-snippets)
+Read more at [Snippets](snippets)
 
 That page also includes some user contributed snippet examples --
 some of which make some heavy use of the Cheetah template engine.
@@ -329,7 +329,7 @@ variables:
     on the cobbler version, but it should always be placed in a
     kickstart template as the last line in %post. Beware in version 2.2.0, $kickstart_done does not exist anymore. Use $SNIPPLET('kickstart_done') instead between a cheetah stanza.
 -   (there may be other
-    [Kickstart Snippets](Kickstart Snippets) and macros
+    [Snippets](Snippets) and macros
     used not listed above)
 
 Over time these will become first class Cobbler snippets.
