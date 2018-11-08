@@ -273,6 +273,22 @@
     "kernel_options_post":"",
     "boot_files":[]
    },
+   "fedora29": {
+    "signatures":["Packages"],
+    "version_file":"(fedora)-release-29-(.*)\\.noarch\\.rpm",
+    "version_file_regex":null,
+    "kernel_arch":"kernel-(.*)\\.rpm",
+    "kernel_arch_regex":null,
+    "supported_arches":["i386","x86_64","ppc64","ppc64le"],
+    "supported_repo_breeds":["rsync", "rhn", "yum"],
+    "kernel_file":"vmlinuz(.*)",
+    "initrd_file":"initrd(.*)\\.img",
+    "isolinux_ok":false,
+    "default_kickstart":"/var/lib/cobbler/kickstarts/sample_end.ks",
+    "kernel_options":"repo=$tree",
+    "kernel_options_post":"",
+    "boot_files":[]
+   },
    "cloudlinux6": {
     "signatures":["Packages"],
     "version_file":"(cloudlinux)-release-(.*)\\.rpm",
@@ -972,6 +988,23 @@
     "kernel_options":"",
     "kernel_options_post":"",
     "template_files":"/etc/cobbler/pxe/bootcfg_esxi65.template=$local_img_path/cobbler-boot.cfg",
+    "boot_files":["*.*"]
+   },
+   "esxi67": {
+    "signatures":["b.b00"],
+    "version_file":"vmware-esx-base-osl\\.txt",
+    "version_file_regex":"^(VMware )?ESXi (v)?6\\.7.*$",
+    "kernel_arch":"tools\\.t00",
+    "kernel_arch_regex":"^.*(x86_64).*$",
+    "supported_arches":["x86_64"],
+    "supported_repo_breeds":[],
+    "kernel_file":"mboot\\.c32",
+    "initrd_file":"imgpayld\\.tgz",
+    "isolinux_ok":false,
+    "default_kickstart":"/var/lib/cobbler/kickstarts/sample_esxi6.ks",
+    "kernel_options":"",
+    "kernel_options_post":"",
+    "template_files":"/etc/cobbler/pxe/bootcfg_esxi67.template=$local_img_path/cobbler-boot.cfg",
     "boot_files":["*.*"]
    }
   },
