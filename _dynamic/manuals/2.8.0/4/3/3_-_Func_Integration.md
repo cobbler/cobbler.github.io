@@ -7,15 +7,9 @@ meta: 2.8.0
 <div class="alert alert-info alert-block"><b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.</div>
 
 Func is a neat tool, (which, in full disclosure, Michael had a part
-in creating). Read all about it at
-[https://fedorahosted.org/func](https://fedorahosted.org/func)
+in creating). 
 
-Integration with kickstart is pretty easy, see
-[https://fedorahosted.org/func/wiki/InstallAndSetupGuide](https://fedorahosted.org/func/wiki/InstallAndSetupGuide)
-and
-[https://fedorahosted.org/func/wiki/IntegratingWithProvisioning](https://fedorahosted.org/func/wiki/IntegratingWithProvisioning)
-
-## Even Easier Integration
+## Integration
 
 Cobbler makes it even easier to deploy Func though. We have two
 settings in `/etc/cobbler/settings`:
@@ -60,9 +54,7 @@ certificates and enables the service. When the node boots into the
 OS it will request the certificate (see note on autosigning below)
 and func is now operational. If there are problems, see
 `/var/log/func` and `/var/log/certmaster` for debugging info (or other
-resources and information on the Func Wiki page). Func also has an
-IRC channel and mailing list as indicated on
-[http://fedorahosted.org/func](http://fedorahosted.org/func)
+resources and information on the Func Wiki page).
 
 ## Notes about Func Autosigning
 
