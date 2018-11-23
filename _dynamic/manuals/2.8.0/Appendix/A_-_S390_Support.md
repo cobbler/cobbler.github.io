@@ -12,9 +12,7 @@ Cobbler includes support for provisioning Linux on virtualized guests under z/VM
 
 ### Quickstart Guide
 
-To begin, you need to first configure a Cobbler server.  Cobbler can be run on any Linux system accessible by the mainframe, including an x86 system or another System z guest.  This server's primary responsibility is to host the Linux install tree(s) remotely, and maintain information about clients accessing it.  For detailed instructions on configuring the Cobbler server, see:
-
-     https://fedorahosted.org/cobbler/UserDocumentation
+To begin, you need to first configure a Cobbler server.  Cobbler can be run on any Linux system accessible by the mainframe, including an x86 system or another System z guest.  This server's primary responsibility is to host the Linux install tree(s) remotely, and maintain information about clients accessing it.  For detailed instructions on configuring the Cobbler server read the Cobbler manual.
 
 We will assume static networking is used for System z guests.
 

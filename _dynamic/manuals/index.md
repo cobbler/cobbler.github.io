@@ -7,7 +7,6 @@ title: Cobbler Manuals
 ### User Manuals
 
 * <a href="/manuals/2.8.0">User Manual 2.8.x</a>
-* <a href="/manuals/2.6.0">User Manual 2.6.x (EOL)</a>
 
 ### Quickstart Guide
 

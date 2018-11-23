@@ -94,7 +94,7 @@ You will probably want to:
 Mailing List
 ------------
 
-We have a development mailing list at https://fedorahosted.org/mailman/listinfo/cobbler-devel
+We have a development mailing list at https://groups.google.com/forum/#!forum/cobbler-users
 Discuss development related questions, roadmap, and other things there, rather than on the general user list.
 
 It is a very good idea to mention your pull request (copy/paste, etc) to the development mailing list for discussion.

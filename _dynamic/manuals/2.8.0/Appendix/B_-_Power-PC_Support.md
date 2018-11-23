@@ -66,9 +66,7 @@ be run on any Linux system accessible by the your PowerPC system,
 including an x86 system, or another PowerPC system. This server's
 primary responsibility is to host the Linux install tree(s)
 remotely, and maintain information about clients accessing it. For
-detailed instructions on configuring the Cobbler server, see:
-
-[https://fedorahosted.org/cobbler/UserDocumentation](https://fedorahosted.org/cobbler/UserDocumentation)
+detailed instructions on configuring the Cobbler server, see the manual.
 
 Next, it's time to add a system to cobbler. The following command
 will add a system named *ibm-505-lp1* to cobbler. Note that the

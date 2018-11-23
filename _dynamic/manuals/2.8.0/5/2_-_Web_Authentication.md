@@ -53,7 +53,7 @@ This option authenticates against [LDAP](LDAP) using parameters from `/etc/cobbl
     [authentication]
     module = authn_spacewalk
 
-This module allows http://fedorahosted.org/spacewalk to use its own specific authorization scheme to log into Cobbler, since Cobbler is a software service used by Spacewalk.
+This module allows Spacewalk to use its own specific authorization scheme to log into Cobbler, since Cobbler is a software service used by Spacewalk.
 
 There are settings in `/etc/cobbler/settings` to configure this, for instance redhat_management_permissive if set to 1 will enable users with admin rights in Spacewalk (or RHN Satellite Server) to access Cobbler web using the same username/password combinations.  
 
