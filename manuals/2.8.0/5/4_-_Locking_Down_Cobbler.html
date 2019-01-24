@@ -127,7 +127,7 @@ var WRInitTime=(new Date()).getTime();
 <ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0">2.8.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.8.0/5_-_Web_Interface.html">5</a> <span class="divider">/</span></li><li class="active">Locking Down Cobbler</li></ul>
    <h1>Locking Down Cobbler</h1>
 <p>If you want to enable the
-<a href="Cobbler%20web%20interface">Cobbler web interface</a> for a lot
+<a href="/manuals/2.8.0/5_-_Web_Interface.html">Cobbler web interface</a> for a lot
 of users, and don't trust all of them to know what they are doing
 all of the time, here are some tips on some good configuration
 practices to allow for configuring a server that is hard for
@@ -137,23 +137,23 @@ as defined by you and your site specific policy.</p>
 <h2>/etc/cobbler/modules.conf</h2>
 
 <p>For
-<a href="Web%20Authentication">Web Authentication</a>,
+<a href="2_-_Web_Authentication.html">Web Authentication</a>,
 choose authn_kerberos or authn_ldap if you don't have Kerberos.
-See <a href="Kerberos">Kerberos</a> and
-<a href="Ldap">LDAP</a> for details on how
+See <a href="2/3_-_Kerberos.html">Kerberos</a> and
+<a href="2/2_-_LDAP.html">LDAP</a> for details on how
 to set those up. Failing that, using the authn_digest is perfectly
 fine, but don't share passwords among the users. Logging goes to
 <code>/var/log/cobbler/\*.log</code> and can be used to see what user does
 what.</p>
 
-<p>For <a href="Security%20Overview">Customizable Security</a>,
+<p>For <a href="1_-_Security_Overview.html">Customizable Security</a>,
 choose authz_ownership, as this will allow users to only edit
 things that they create unless you declare certain users to be
 admins. You should then define groups for users in
 <code>/etc/cobbler/users.conf</code> following the format of that file, then
 assign objects in cobbler (like distros, etc) ownership as
 described in
-<a href="/cobbler/wiki/AuthorizationWithOwnership">AuthorizationWithOwnership</a>.</p>
+<a href="3_-_Web_Authorization.html#ownership">AuthorizationWithOwnership</a>.</p>
 
 <h2>Firewall</h2>
 
@@ -167,7 +167,7 @@ server, you'll need to unblock 25151.</p>
 
 <p>While it may be tempting to disable cobblerd, don't... cobbler uses
 cobblerd to generate dynamic content such as
-<a href="Kickstart%20Templates">Kickstart Templates</a> and this
+<a href="/manuals/2.8.0/3/5_-_Kickstart_Templating.html">Kickstart Templates</a> and this
 will mean nothing will work. Koan additionally communicates with
 cobblerd.</p>
 
@@ -340,7 +340,7 @@ config management system to move the files.</p>
           <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
           <script>$("#copyyear").text((new Date).getFullYear());</script>
         </div>
-      </div>            
+      </div>
     </div>
   </div>
 </footer>
