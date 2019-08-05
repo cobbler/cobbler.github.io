@@ -5,7 +5,7 @@ lsi: false
 highlighter: rouge
 markdown: rdiscount
 permalink: date
-exclude: ['README.md', 'Dockerfile', 'Gemfile', 'Gemfile.lock', 'dockerfiles']
+exclude: ['README.md', 'Dockerfile', 'Gemfile', 'Gemfile.lock', 'dockerfiles', '_site']
 plugins:
   - jekyll-coffeescript
   - jekyll-gist

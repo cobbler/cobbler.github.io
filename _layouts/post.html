@@ -25,16 +25,19 @@ layout: default
   </div>
   <div class="span3">
       <div class='posts related_by_date'>
-          {% assign postsByYearMonth = site.posts | group_by_exp:"post", "post.date | date: '%Y %b'"  %}
+          {% assign postsByYearMonth = site.posts | group_by_exp:"post", "post.date | date: '%Y %b'" %}
           {% assign curDate = page.date | date: '%Y %b' %}
           {% for yearMonth in postsByYearMonth %}
           {% if yearMonth.name == curDate %}
-          <h4>{{ yearMonth.name }}</h4>
-          <ul>
-              {% for post in yearMonth.items %}
-              <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+          <h4 class="header">{{ yearMonth.name }}</h4>
+          <div>
+              {% for blogpost in yearMonth.items %}
+              <div class="post">
+                  <div class='content current'><a href="{{ blogpost.url }}">{{ blogpost.title }}</a></div>
+                  <div class="author"><i>Posted on {{ blogpost.date | date: '%B %d, %Y' }}</i></div>
+              </div>
               {% endfor %}
-          </ul>
+          </div>
           {% endif %}
           {% endfor %}
       </div>
