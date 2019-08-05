@@ -10,7 +10,7 @@ body {
 }
 
 body.pull_up {
-  padding-top: 0px !important;
+  padding-top: 0 !important;
 }
 
 /*Opera Fix*/
@@ -22,9 +22,6 @@ body:before {
   margin-top:-32767px;
 }
 
-.navbar.navbar-static-top {
-  margin-bottom: 35px;
-}
 .navbar.transparent.navbar-inverse .navbar-inner {
   background: rgba(0,0,0,0.85);
   border-bottom: 1px solid rgb(88, 88, 88);
@@ -38,7 +35,7 @@ body:before {
   transition: margin .2s ease-in-out;
 }
 .navbar.navbar-inverse .navbar-inner {  
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0 10px 0;
   background: #252528;    
 }
 .navbar.navbar-inverse .navbar-inner.sticky {
@@ -46,8 +43,8 @@ body:before {
   border-bottom: 1px solid #252525;
 }
 .navbar-inverse .navbar-inner.sticky .container {
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 .navbar-inverse .nav > li > a {
   font-weight: bold;
@@ -85,12 +82,11 @@ body:before {
 }
 
 #st-search-input {
-  margin: 5px 0px 0px 20px;
+  margin: 5px 0 0 20px;
 }
 
 #wrap {
   min-height: 100%;
-  padding-top: 100px;
 }
 
 #wrap h1, #wrap h2 {
@@ -117,12 +113,12 @@ h3, h4 {
 }
 
 hr {
-  margin: 30px 0px 30px 0px;
+  margin: 30px 0 30px 0;
   border-top: 1px solid #cccccc;
 }
 
 #hero {
-  padding: 140px 0px 45px 0px;
+  padding: 140px 0 45px 0;
   background-image: url('/images/hero.png');
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -130,11 +126,11 @@ hr {
 }
 
 #hero h1 {
-  margin: 50px 0px 15px -5px;
+  margin: 50px 0 15px -5px;
 }
 
 #hero .mainblurb {
-  padding: 20px 70px 0px 0px;
+  padding: 20px 70px 0 0;
 }
 
 #hero .btn-large {
@@ -165,8 +161,8 @@ hr {
 }
 #hero .heroblurb .post {
   border-bottom: none;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 #hero .version {
@@ -187,7 +183,7 @@ hr {
 }
 
 .heroblurb hr {
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .heroblurb .btn-small {
@@ -200,7 +196,7 @@ a:hover {
 
 /* navbar css tweaks */
 .navbar .brand {
-  padding: 7px 0px 0px 0px;
+  padding: 7px 0 0 0;
 }
 
 .navbar .brand .logo {
@@ -231,7 +227,7 @@ a:hover {
 
 .userlogo {
   text-align: center;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 i.icon-med {
@@ -261,7 +257,7 @@ footer {
   margin-top: 30px;
   background-color: #262626;
   color: #fff;
-  padding: 35px 0px 35px 0px;
+  padding: 35px 0 35px 0;
 }
 
 /* blog posts */
@@ -275,29 +271,29 @@ footer .posts {
 }
 .posts .post:last-child {
   border-bottom: none;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 .posts .post .title {
   display: block;
   color: #b5b5b6;
-  margin: 0px;
+  margin: 0;
   font-size: 0.95em;
 }
 .posts .post .author{
-  margin: 0px;
+  margin: 0;
   font-size: 0.8em;
   font-style: italic;
 }
 .posts .post .content {
-  margin: 7px 0px 0px 0px;
+  margin: 7px 0 0 0;
   font-size: 0.85em;
 }
 .posts .post .readmore {
-  margin: 5px 0px 0px 0px;
+  margin: 5px 0 0 0;
 }
 .posts .post .header {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 footer .credits {
@@ -316,21 +312,21 @@ footer .credits .copyright {
 }
 footer .footmenu {
   margin-top: 10px;
-  padding-left: 0px;
+  padding-left: 0;
 }
 footer .sitemap {
-  margin-left: 0px;
+  margin-left: 0;
 }
 footer .sitemap .nav {
-  margin-left: 0px;
-  padding-left: 0px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 footer .column_header {
   /* copied from bootstrap's nav-header css */
   display: block;
-  padding: 3px 0px;
-  margin-bottom: 0px;
+  padding: 3px 0;
+  margin-bottom: 0;
   font-size: 11px;
   font-weight: bold;
   line-height: 20px;
@@ -353,7 +349,7 @@ footer .browsers {
 }
 
 footer .browsers i {
-  padding: 0px 5px;
+  padding: 0 5px;
 }
 
 /* nav list in footer */
