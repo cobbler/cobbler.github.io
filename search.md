@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Search
+breadcrumb: Search
 ---
 <div class="row-fluid">
  <div class="span9">

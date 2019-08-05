@@ -1,6 +1,7 @@
 ---
 layout: default
 title: About Cobbler
+breadcrumb: About
 ---
 
 ## Batteries Included

@@ -1,6 +1,7 @@
 ---
 layout: index
 title: Cobbler - Linux install and update server
+breadcrumb: Home
 cobbler:
   version: 2.8.4
   release: Nov 23rd, 2018
