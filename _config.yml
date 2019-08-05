@@ -7,7 +7,15 @@ markdown: rdiscount
 permalink: date
 exclude: ['README.md', 'Dockerfile', 'Gemfile', 'Gemfile.lock', 'dockerfiles']
 plugins:
+  - jekyll-coffeescript
+  - jekyll-gist
+  - jekyll-github-metadata
   - jekyll-paginate
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
 cobbler:
   version: 2.8.4
   released: 2018-11-23
