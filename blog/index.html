@@ -3,52 +3,64 @@ layout: default
 title: Blog
 breadcrumb: Blog
 ---
-
+<div class="container">
 <!-- post list -->
 {% for post in paginator.posts %}
-<div class="post">
-  <h2 class="header">{{ post.title }}</h2>
-  <div class="author">
-    <i>Posted by {{ post.author }} on {{ post.date | date: "%A, %B %d, %Y" }}</i>
+  <div class="row-fluid">
+    <div class="span10 posts">
+    <div class="post">
+      <h2 class="header">{{ post.title }}</h2>
+      <div class="author">
+        <i>Posted by {{ post.author }} on {{ post.date | date: "%A, %B %d, %Y" }}</i>
+      </div>
+      <div class="content">
+        {{ post.content | strip_html | truncatewords:30}}
+      </div>
+      <div class="readmore">
+        <a href="{{ post.url }}"><i class="icon-double-angle-right"></i> continue reading</a>
+      </div>
+    </div>
+    </div>
   </div>
-  <div class="content">
-    {{ post.content | strip_html | truncatewords:30}}
-  </div>
-  <div class="readmore">
-    <a href="{{ post.url }}"><i class="icon-double-angle-right"></i> continue reading</a>
-  </div>
-</div>
 {% endfor %}
 
 <!-- pagination -->
 {% if paginator.total_pages > 1 %}
+<div class="row-fluid">
 <div class="pagination">
   <ul>
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}">
+    {% if paginator.previous_page == 1 %}
+    <li><a href="{{ paginator.previous_page_path | relative_url }}">
       <i class="icon-angle-left"></i>
-    </a>
+    </a></li>
+    {% else %}
+    <li><a href="/blog/page{{paginator.previous_page}}"><i class="icon-angle-left"></i></a></li>
+    {% endif %}
   {% else %}
-    <i class="icon-angle-left"></i>
+    <li class="disabled"><span><i class="icon-angle-left"></i></span></li>
   {% endif %}
 
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <li class="disabled">{{ page }}</li>
-    {% elsif page == 1 %}
-      <a href="{{ paginator.previous_page_path | relative_url }}">{{ page }}</a>
-    {% else %}
-      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
-
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}">
-      <i class="icon-angle-right"></i>
-    </a>
+  {% if paginator.page == 1 %}
+  <li class="active"><span>1</span></li>
   {% else %}
-    <i class="icon-angle-right"></i>
+  <li><a href="/blog/">1</a></li>
+  {% endif %}
+
+  {% for count in (2..paginator.total_pages) %}
+  {% if count == paginator.page %}
+  <li class="active"><span>{{count}}</span></li>
+  {% else %}
+  <li><a href="/blog/page{{count}}">{{count}}</a></li>
+  {% endif %}
+  {% endfor %}
+  {% if paginator.next_page %}
+  <li><a href="/blog/page{{paginator.next_page}}"><i class="icon-angle-right"></i></a></li>
+  {% else %}
+  <li class="disabled"><span><i class="icon-angle-right"></i></span></li>
   {% endif %}
   </ul>
 </div>
+</div>
 {% endif %}
+</div>
