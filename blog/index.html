@@ -1,0 +1,54 @@
+---
+layout: default
+title: Blog
+breadcrumb: Blog
+---
+
+<!-- post list -->
+{% for post in paginator.posts %}
+<div class="post">
+  <h2 class="header">{{ post.title }}</h2>
+  <div class="author">
+    <i>Posted by {{ post.author }} on {{ post.date | date: "%A, %B %d, %Y" }}</i>
+  </div>
+  <div class="content">
+    {{ post.content | strip_html | truncatewords:30}}
+  </div>
+  <div class="readmore">
+    <a href="{{ post.url }}"><i class="icon-double-angle-right"></i> continue reading</a>
+  </div>
+</div>
+{% endfor %}
+
+<!-- pagination -->
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  <ul>
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">
+      <i class="icon-angle-left"></i>
+    </a>
+  {% else %}
+    <i class="icon-angle-left"></i>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <li class="disabled">{{ page }}</li>
+    {% elsif page == 1 %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">
+      <i class="icon-angle-right"></i>
+    </a>
+  {% else %}
+    <i class="icon-angle-right"></i>
+  {% endif %}
+  </ul>
+</div>
+{% endif %}

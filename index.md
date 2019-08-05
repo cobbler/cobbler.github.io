@@ -68,7 +68,7 @@ $('document').ready(function() {
       <!-- <div class="content">{{post.summary}}</div> -->
      </div>
 {% endfor %}
-     <div class="viewall"><a href="/posts/"><i class="icon-double-angle-right"> view all posts</i></a></div>
+     <div class="viewall"><a href="/blog/"><i class="icon-double-angle-right"> view all posts</i></a></div>
     </div>
     <div class="row well heroblurb">
      <div class="header supporters">Thanks to all our supporters!</div>

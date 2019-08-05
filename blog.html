@@ -11,9 +11,9 @@ breadcrumb: Blog
    <ul>
   {% if paginator.previous_page %}
     {% if paginator.previous_page == 1 %}
-    <li><a href="/posts/"><i class="icon-angle-left"></i></a></li>
+    <li><a href="/blog/"><i class="icon-angle-left"></i></a></li>
     {% else %}
-    <li><a href="/posts/page{{paginator.previous_page}}"><i class="icon-angle-left"></i></a></li>
+    <li><a href="/blog/page{{paginator.previous_page}}"><i class="icon-angle-left"></i></a></li>
     {% endif %}
   {% else %}
     <li class="disabled"><span><i class="icon-angle-left"></i></span></li>
@@ -22,18 +22,18 @@ breadcrumb: Blog
   {% if paginator.page == 1 %}
     <li class="active"><span>1</span></li>
   {% else %}
-    <li><a href="/posts/">1</a></li>
+    <li><a href="/blog/">1</a></li>
   {% endif %}
 
   {% for count in (2..paginator.total_pages) %}
     {% if count == paginator.page %}
     <li class="active"><span>{{count}}</span></li>
     {% else %}
-    <li><a href="/posts/page{{count}}">{{count}}</a></li>
+    <li><a href="/blog/page{{count}}">{{count}}</a></li>
     {% endif %}
   {% endfor %}
   {% if paginator.next_page %}
-    <li><a href="/posts/page{{paginator.next_page}}"><i class="icon-angle-right"></i></a></li>
+    <li><a href="/blog/page{{paginator.next_page}}"><i class="icon-angle-right"></i></a></li>
   {% else %}
     <li class="disabled"><span><i class="icon-angle-right"></i></span></li>
   {% endif %}
