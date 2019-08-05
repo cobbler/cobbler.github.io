@@ -6,6 +6,8 @@ highlighter: rouge
 markdown: rdiscount
 permalink: date
 exclude: ['README.md', 'Dockerfile', 'Gemfile', 'Gemfile.lock', 'dockerfiles']
+plugins:
+  - jekyll-paginate
 cobbler:
   version: 2.8.4
   released: 2018-11-23

@@ -215,6 +215,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rdiscount (2.2.0.1)
     rouge (2.2.1)
     ruby-enum (0.7.2)
       i18n
@@ -244,6 +245,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll-paginate
+  rdiscount
 
 BUNDLED WITH
    1.16.1
