@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.6.1 Released</title>
+   <title>Cobbler 2.6.2 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,47 +129,47 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2014/07/14/cobbler_2.4.5_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.5 Released</i></a></li>
+     <li class="previous"><a href="/blog/2014/07/18/cobbler_2.4.6_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.6 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2014/04/22/cobbler_2.4.4_released.html">Cobbler 2.4.4 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2014/07/14/cobbler_2.4.5_released.html">Cobbler 2.4.5 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.6.1 Released</h2>
-     <div class="author"><i>Posted by Jörgen on Thursday, May 22, 2014</i></div>
-     <div class="content"><p>Cobbler 2.6.1 is now officially available!</p>
+     <h2 class="header">Cobbler 2.6.2 Released</h2>
+     <div class="author"><i>Posted by Jörgen on Tuesday, July 15, 2014</i></div>
+     <div class="content"><p>Cobbler 2.6.2 is now officially available!</p>
 
 <p>This release is a minor bugfix release.</p>
 
 <p>New Features:</p>
 
 <ul>
-<li>Add a distro_signature for Ubuntu 14.04</li>
-<li>Improve performance of the "cobbler sync" operation</li>
-<li>Provide Debian and Ubuntu packages on the openSUSE build service</li>
-<li>Add support for a wget repo breed</li>
-<li>Cobbler and koan are now seperated debian packages</li>
+<li>Add EL7 (RHEL/CentOS) to distro signatures</li>
+<li>Add CloudLinux6 support to distro signatures</li>
+<li>Minor update to CSS; make better use of screen (tables)</li>
+<li>Make Cobbler work on EL7 (RHEL/CentOS)</li>
 </ul>
 
 
 <p>Bugfixes:</p>
 
 <ul>
-<li>Improve support for running inside chroot() and/or containers</li>
-<li>Added missing docs to the RPM packages</li>
-<li>Improved virt-install detection on non-rpm distros</li>
-<li>Several fixes for running Cobbler on Debian like systems</li>
-<li>Fixed typos in default kickstart files</li>
+<li>pre_install_network_config: only use slaves with a valid MAC address</li>
+<li>Remove colon from VLAN regex pattern</li>
+<li>Improve exception logging in BootCLI (Issue 148)</li>
+<li>Item.set_name optimizations</li>
+<li>Minor improvement to LDAP configuration (Issue 217)</li>
+<li>Fixes to Makefile (Issue 555)</li>
 </ul>
 
 
 <p>Sourcecode:</p>
 
 <ul>
-<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.1">https://github.com/cobbler/cobbler/releases/tag/v2.6.1</a></li>
+<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.2">https://github.com/cobbler/cobbler/releases/tag/v2.6.2</a></li>
 </ul>
 
 
@@ -177,7 +177,9 @@ var WRInitTime=(new Date()).getTime();
 
 <ul>
 <li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-6/">CentOS 6</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-7/">CentOS 7</a></li>
 <li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-6/">RHEL 6</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-7/">RHEL 7</a></li>
 <li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_18/">Fedora 18</a></li>
 <li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_19/">Fedora 19</a></li>
 <li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_20/">Fedora 20</a></li>
@@ -192,13 +194,13 @@ var WRInitTime=(new Date()).getTime();
 </ul>
 
 </div>
-     <div class="goback"><a href='/blog/page5/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page4/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2014/05/22/cobbler_2.6.1_released';
+        var disqus_identifier = '/posts/2014/07/15/cobbler_2.6.2_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -215,7 +217,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>May, 2014</h4><div class='post'><div class='content current'>Cobbler 2.6.1 Released</div><div class='author'><i>Posted on May 22, 2014</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>July, 2014</h4><div class='post'><div class='content current'><a href='/blog/2014/07/18/cobbler_2.6.3_released.html'>Cobbler 2.6.3 Released</a></div><div class='author'><i>Posted on July 18, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/07/18/cobbler_2.4.6_released.html'>Cobbler 2.4.6 Released</a></div><div class='author'><i>Posted on July 18, 2014</i></div></div><div class='post'><div class='content current'>Cobbler 2.6.2 Released</div><div class='author'><i>Posted on July 15, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/07/14/cobbler_2.4.5_released.html'>Cobbler 2.4.5 Released</a></div><div class='author'><i>Posted on July 14, 2014</i></div></div></div>
   </div>
  </div>
 </div>
@@ -285,7 +287,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

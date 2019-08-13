@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.6.6 Released</title>
+   <title>Fundraising!</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,82 +129,32 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2014/12/31/cobbler_2.6.7_released.html"><i class="icon-angle-left"></i> Cobbler 2.6.7 Released</i></a></li>
+     <li class="previous"><a href="/blog/2012/12/05/Fundraising_Complete_and_a_New_Website.html"><i class="icon-angle-left"></i> Fundraising Complete and New Website</i></a></li>
      
      
-     <li class="next"><a href="/blog/2014/08/15/cobbler_2.6.5_released.html">Cobbler 2.6.5 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2012/06/22/new-search-capability.html">New Search Capability <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.6.6 Released</h2>
-     <div class="author"><i>Posted by Jörgen on Sunday, October 19, 2014</i></div>
-     <div class="content"><p>Cobbler 2.6.6 is now officially available!</p>
+     <h2 class="header">Fundraising!</h2>
+     <div class="author"><i>Posted by James on Friday, October 05, 2012</i></div>
+     <div class="content"><p>As cloud infrastructures (specifically Infrastructure as a Service platforms) become more commonplace, Cobbler will need to be adapted to provide the same flexibility in image management as it does for bare-metal. The main challenge to adding these features to date has been a lack of hardware for testing.</p>
 
-<p>Feature improvements</p>
+<p>To overcome this, I have <a href="http://www.indiegogo.com/cobbler24">launched an Indiegogo campaign</a> to raise money for the project.</p>
 
-<ul>
-<li>Add proxy support for get-loaders, signature update and reposync (#1286)</li>
-<li>Update yaboot to 1.3.17</li>
-<li>Support virtio26 for generic qemu fallback (Koan)</li>
-</ul>
+<p>In addition to hardware for adding IaaS platform features, I also plan to use a dedicated server for running continuous integration testing via Jenkins. Right now, all development and testing takes place on a single server running a handful of VM's, so it's quite limiting performance-wise. Having a dedicated system that also automatically runs tests whenever commits are made will greatly speed up the development and release time.</p>
 
-
-<p>Bugfixes</p>
-
-<ul>
-<li>Changed Apache configuration directory in Ubuntu 14.04 (#1208)</li>
-<li>Creating RPMs is done with make rpms (#1268)</li>
-<li>Post install report mails are not mailed when ignorelist is empty (#1248)</li>
-<li>Regression: kickstart edit in cobbler-web fixed</li>
-<li>Regression: kickstart filepath validation</li>
-<li>Blacklist gpgkey as an invalid option to the repo statement</li>
-<li>gpgcheck / enabled are not valid in kickstart, only in config.repo</li>
-<li>Updated man page to reflect the removal of URL support for kickstarts</li>
-<li>Regression: inherit was not available as kickstart value</li>
-<li>Return right value from TftpdPyManager.what method</li>
-<li>Fixed a typo in the power management API</li>
-<li>Ensure all variables are available in PXE generation (#505)</li>
-<li>Dont reset CONFIG_ARGS as it might have been sourced from sysconfig/defaults (#1141)</li>
-</ul>
-
-
-<p>Sourcecode:</p>
-
-<ul>
-<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.6">https://github.com/cobbler/cobbler/releases/tag/v2.6.6</a></li>
-</ul>
-
-
-<p>Packages:</p>
-
-<ul>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-6/">CentOS 6</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-7/">CentOS 7</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-6/">RHEL 6</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-7/">RHEL 7</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_18/">Fedora 18</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_19/">Fedora 19</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_20/">Fedora 20</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_12.3/">openSUSE 12.3</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_13.1/">openSUSE 13.1</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_Factory/">openSUSE Factory</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Debian_7.0/">Debian 7</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_12.04/">Ubuntu 12.04</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_12.10/">Ubuntu 12.10</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_13.10/">Ubuntu 13.10</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_14.04/">Ubuntu 14.04</a></li>
-</ul>
-
+<p>So, please spread the word and help to make Cobbler better!</p>
 </div>
-     <div class="goback"><a href='/blog/page3/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page6/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2014/10/19/cobbler_2.6.6_released';
+        var disqus_identifier = '/posts/2012/10/05/Fundraising';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -221,7 +171,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>October, 2014</h4><div class='post'><div class='content current'>Cobbler 2.6.6 Released</div><div class='author'><i>Posted on October 19, 2014</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>October, 2012</h4><div class='post'><div class='content current'>Fundraising!</div><div class='author'><i>Posted on October 05, 2012</i></div></div></div>
   </div>
  </div>
 </div>
@@ -291,7 +241,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

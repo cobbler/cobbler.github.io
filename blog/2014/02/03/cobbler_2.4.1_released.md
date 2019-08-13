@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>New Search Capability</title>
+   <title>Cobbler 2.4.1 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,30 +129,66 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2012/10/05/Fundraising.html"><i class="icon-angle-left"></i> Fundraising!</i></a></li>
+     <li class="previous"><a href="/blog/2014/02/15/cobbler_2.4.2_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.2 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2012/06/17/cobbler_2.2.3-2_released.html">Cobbler 2.2.3-2 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2013/06/20/cobbler_2.4.0-1_released.html">Cobbler 2.4.0-1 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">New Search Capability</h2>
-     <div class="author"><i>Posted by James on Friday, June 22, 2012</i></div>
-     <div class="content"><p>I've added a new search function to the site, which will search the manual documentation. Since github uses jekyll for their page hosting, all site content has to be static, which really limits the search capability. Some third-party services exist to get around this issue, but I decided to go a different direction and wrote a jekyll plugin (using ferret to index the text) to generate a searchable JSON index. JQuery is used on the client side to grab that index and find the results based on a fuzzy matching algorithm.</p>
+     <h2 class="header">Cobbler 2.4.1 Released</h2>
+     <div class="author"><i>Posted by Jörgen on Monday, February 03, 2014</i></div>
+     <div class="content"><p>Cobbler 2.4.1 is now officially available! This release includes 100+ patches adding numerous signatures, bugfixes and several minor feature improvements.</p>
 
-<p>Now, obviously this is no Google-class search, but it works well enough to find words and scores pages higher the more words you enter and it finds on a page. I've put the <a href="https://github.com/cobbler/jekyll-dynamic-search">code up on github</a> if anyone's interested in seeing how this all works, and feel free to improve on it.</p>
+<p>Improved Features:</p>
 
-<p>You may notice that right now a lot of the results appear to be the same - that's because the plugin uses the title associated with the page it finds, and a lot (really most) of them have a generic title. That will be fixed as I continue updating the manual documentation. Beyond that, let me know if you run into issues with the search behaving oddly.</p>
+<ul>
+<li>Many distro_signatures updates</li>
+<li>Anamon logfile support has been extended</li>
+<li>Allow the use of systems without associated kickstart</li>
+<li>Koan now supports the qed disk driver</li>
+<li>Automatic cobbler_web restart after cobblerd restart</li>
+<li>Improved Puppet certificate management</li>
+<li>Cobbler replication now supports ssl</li>
+<li>Koan gained support for --proxy &amp; --server options</li>
+<li>Xen guest provisioning in koan</li>
+<li>Added a Cobbler post install report ignorelist</li>
+<li>Authentication token expiration time is now configurable</li>
+<li>Autentication passthru is now again functional</li>
+<li>SELinux detection in koan</li>
+</ul>
+
+
+<p>Bugfixes:</p>
+
+<ul>
+<li>Improved logging and exception handling in many places</li>
+<li>Several fixes for running Cobbler on OpenSUSE and SLES</li>
+<li>Better proxy handling in buildiso</li>
+<li>Concurrency/locking improvements</li>
+<li>Removed some hardcoded paths, making life easier for downstream packagers</li>
+<li>Add missing (sub)commands to the CLI</li>
+<li>Several Makefile fixes</li>
+<li>Small improvements to cobbler-web</li>
+<li>Many fixes to koan</li>
+<li>Several WSGI related improvements</li>
+<li>Many more...</li>
+</ul>
+
+
+<p>The (source) release can be found at: <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.1">https://github.com/cobbler/cobbler/releases/tag/v2.4.1</a></p>
+
+<p>Thanks to everyone who made this release possible!</p>
 </div>
-     <div class="goback"><a href='/blog/page7/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page6/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2012/06/22/new-search-capability';
+        var disqus_identifier = '/posts/2014/02/03/cobbler_2.4.1_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -169,7 +205,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>June, 2012</h4><div class='post'><div class='content current'>New Search Capability</div><div class='author'><i>Posted on June 22, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/17/cobbler_2.2.3-2_released.html'>Cobbler 2.2.3-2 Released</a></div><div class='author'><i>Posted on June 17, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/15/new-cobbler-home-page.html'>New Cobbler Home Page</a></div><div class='author'><i>Posted on June 15, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/06/cobbler_2.2.3-1_released.html'>Cobbler 2.2.3-1 Released</a></div><div class='author'><i>Posted on June 06, 2012</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>February, 2014</h4><div class='post'><div class='content current'><a href='/blog/2014/02/15/cobbler_2.4.2_released.html'>Cobbler 2.4.2 Released</a></div><div class='author'><i>Posted on February 15, 2014</i></div></div><div class='post'><div class='content current'>Cobbler 2.4.1 Released</div><div class='author'><i>Posted on February 03, 2014</i></div></div></div>
   </div>
  </div>
 </div>
@@ -239,7 +275,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

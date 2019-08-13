@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>New Domain - cobblerd.org</title>
+   <title>Cobbler 2.4.2 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,30 +129,44 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2013/06/20/cobbler_2.4.0-1_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.0-1 Released</i></a></li>
+     <li class="previous"><a href="/blog/2014/03/09/cobbler_2.4.3_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.3 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2012/12/05/Fundraising_Complete_and_a_New_Website.html">Fundraising Complete and New Website <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2014/02/03/cobbler_2.4.1_released.html">Cobbler 2.4.1 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">New Domain - cobblerd.org</h2>
-     <div class="author"><i>Posted by James on Wednesday, April 10, 2013</i></div>
-     <div class="content"><p>As you have probably noticed by now, Cobbler has a new domain name. GitHub <a href="https://github.com/blog/1452-new-github-pages-domain-github-io">recently announced</a> that they were moving pages to the .io domain. While I understand their reasoning, I'm not a fan of the new domain so I figured it was time to make the move to a dedicated domain.</p>
+     <h2 class="header">Cobbler 2.4.2 Released</h2>
+     <div class="author"><i>Posted by Jörgen on Saturday, February 15, 2014</i></div>
+     <div class="content"><p>Cobbler 2.4.2 is now officially available!</p>
 
-<p>This was a fairly painless process and is hopefully transparent for all users, but if anyone has any issues please let me know.</p>
+<p>Improved Features:</p>
 
-<p>Thanks and enjoy the new site!</p>
+<ul>
+<li>Add support for SLES 10 sp4 to distro_signatures</li>
+</ul>
+
+
+<p>Bugfixes:</p>
+
+<ul>
+<li>Major bugfix in distro detection routine for RHEL &amp; SuSE systems</li>
+<li>Corrected AutoYaST XML generation when scripts are included</li>
+<li>Fix elilo and yaboot filenames in dhcp configuration</li>
+</ul>
+
+
+<p>The (source) release can be found at: <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.2">https://github.com/cobbler/cobbler/releases/tag/v2.4.2</a></p>
 </div>
-     <div class="goback"><a href='/blog/page6/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page5/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2013/04/10/New_Domain';
+        var disqus_identifier = '/posts/2014/02/15/cobbler_2.4.2_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -169,7 +183,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>April, 2013</h4><div class='post'><div class='content current'>New Domain - cobblerd.org</div><div class='author'><i>Posted on April 10, 2013</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>February, 2014</h4><div class='post'><div class='content current'>Cobbler 2.4.2 Released</div><div class='author'><i>Posted on February 15, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/02/03/cobbler_2.4.1_released.html'>Cobbler 2.4.1 Released</a></div><div class='author'><i>Posted on February 03, 2014</i></div></div></div>
   </div>
  </div>
 </div>
@@ -239,7 +253,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

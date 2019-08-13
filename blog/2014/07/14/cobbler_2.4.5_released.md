@@ -263,7 +263,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

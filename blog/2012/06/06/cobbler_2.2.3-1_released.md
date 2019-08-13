@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.4.6 Released</title>
+   <title>Cobbler 2.2.3-1 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,68 +129,44 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2014/07/18/cobbler_2.6.3_released.html"><i class="icon-angle-left"></i> Cobbler 2.6.3 Released</i></a></li>
+     <li class="previous"><a href="/blog/2012/06/15/new-cobbler-home-page.html"><i class="icon-angle-left"></i> New Cobbler Home Page</i></a></li>
      
-     
-     <li class="next"><a href="/blog/2014/07/15/cobbler_2.6.2_released.html">Cobbler 2.6.2 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.4.6 Released</h2>
-     <div class="author"><i>Posted by Jörgen on Friday, July 18, 2014</i></div>
-     <div class="content"><p>Cobbler 2.4.6 is now officially available!</p>
-
-<p>NOTE:
-We recommend upgrading as soon as possible, this release contains an important security update.
-Please take notice of the following:</p>
+     <h2 class="header">Cobbler 2.2.3-1 Released</h2>
+     <div class="author"><i>Posted by James on Wednesday, June 06, 2012</i></div>
+     <div class="content"><p>A quick highlight of the changes in this release:</p>
 
 <ul>
-<li>https://bugzilla.redhat.com/show_bug.cgi?id=1095846</li>
-<li>https://bugzilla.redhat.com/show_bug.cgi?id=1095845</li>
+<li>Multiple security fixes:
+
+<ul>
+<li>CSRF support for the web GUI, which will now default to using https too.</li>
+<li>Power management subsystem completely re-worked to prevent command-injection (<a href="https://access.redhat.com/security/cve/CVE-2012-2395">CVE-2012-2395</a>).</li>
+</ul>
+</li>
+<li>Support for bind in chroot'd environments.</li>
+<li>Koan now uses virt-install CLI instead of directly accessing the virtinst API</li>
+<li>Various improvements for SuSE and autoyast, especially for PPC64-based systems.</li>
+<li>BETA support for ESXi5 and gPXE</li>
+<li>BETA support for using other template languages, like jinja2</li>
 </ul>
 
 
-<p>Improved Features:</p>
+<p>And of course tons of bug fixes.</p>
 
-<ul>
-<li>Improved the form for editing snippets/kickstarts (cobbler-web)</li>
-<li>Minor update to CSS; make better use of screen (tables) (cobbler-web)</li>
-<li>Add a new field to the system type: ipv6_prefix (#203)</li>
-</ul>
-
-
-<p>Bugfixes:</p>
-
-<ul>
-<li>Restrict kickstart/snippet paths to /var/lib/cobbler/ (#939 and CVE-2014-3225)</li>
-<li>Several improvements to the RPM specfile (redhat bugzilla #838884)</li>
-<li>Add missing icons to cobbler-web (#679)</li>
-<li>cobbler-ext-nodes was broken with mgmt_classes defined at the profile level (#790)</li>
-<li>Properly name the VLAN interface in the cobbler manpage</li>
-<li>Fix wrong address of the Free Software Foundation in source headers</li>
-</ul>
-
-
-<p>The (source) release can be found <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.6">here</a></p>
-
-<p>Fedora packages:</p>
-
-<ul>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler24/Fedora_18/">Fedora 18</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler24/Fedora_19/">Fedora 19</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler24/Fedora_20/">Fedora 20</a></li>
-</ul>
-
+<p>Now that this release is out, and things have settled down from the change in leadership, expect much more frequent minor updates to address bugs much sooner. We will also be focusing on documentation now, especially since many of the features above are not documented well (or at all). Thanks to everyone who helped out with this release!</p>
 </div>
-     <div class="goback"><a href='/blog/page4/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page7/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2014/07/18/cobbler_2.4.6_released';
+        var disqus_identifier = '/posts/2012/06/06/cobbler_2.2.3-1_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -207,7 +183,7 @@ Please take notice of the following:</p>
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>July, 2014</h4><div class='post'><div class='content current'><a href='/blog/2014/07/18/cobbler_2.6.3_released.html'>Cobbler 2.6.3 Released</a></div><div class='author'><i>Posted on July 18, 2014</i></div></div><div class='post'><div class='content current'>Cobbler 2.4.6 Released</div><div class='author'><i>Posted on July 18, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/07/15/cobbler_2.6.2_released.html'>Cobbler 2.6.2 Released</a></div><div class='author'><i>Posted on July 15, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/07/14/cobbler_2.4.5_released.html'>Cobbler 2.4.5 Released</a></div><div class='author'><i>Posted on July 14, 2014</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>June, 2012</h4><div class='post'><div class='content current'><a href='/blog/2012/06/22/new-search-capability.html'>New Search Capability</a></div><div class='author'><i>Posted on June 22, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/17/cobbler_2.2.3-2_released.html'>Cobbler 2.2.3-2 Released</a></div><div class='author'><i>Posted on June 17, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/15/new-cobbler-home-page.html'>New Cobbler Home Page</a></div><div class='author'><i>Posted on June 15, 2012</i></div></div><div class='post'><div class='content current'>Cobbler 2.2.3-1 Released</div><div class='author'><i>Posted on June 06, 2012</i></div></div></div>
   </div>
  </div>
 </div>
@@ -277,7 +253,7 @@ Please take notice of the following:</p>
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

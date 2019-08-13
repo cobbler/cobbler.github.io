@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.2.3-1 Released</title>
+   <title>Cobbler 2.4.0-1 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,44 +129,73 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2012/06/15/new-cobbler-home-page.html"><i class="icon-angle-left"></i> New Cobbler Home Page</i></a></li>
+     <li class="previous"><a href="/blog/2014/02/03/cobbler_2.4.1_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.1 Released</i></a></li>
      
+     
+     <li class="next"><a href="/blog/2013/04/10/New_Domain.html">New Domain - cobblerd.org <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.2.3-1 Released</h2>
-     <div class="author"><i>Posted by James on Wednesday, June 06, 2012</i></div>
-     <div class="content"><p>A quick highlight of the changes in this release:</p>
+     <h2 class="header">Cobbler 2.4.0-1 Released</h2>
+     <div class="author"><i>Posted by James on Thursday, June 20, 2013</i></div>
+     <div class="content"><p>I am happy to announce that after a year since the last release, Cobbler 2.4.0-1 is now officially available! The build process has been started for Fedora/EPEL, so the packages should be available in the -testing repos within a day or two, and in the stable branches following that (EPEL takes longer).</p>
+
+<p>Some highlights of the release:</p>
+
+<p>Major Features:</p>
 
 <ul>
-<li>Multiple security fixes:
+<li><a href="/manuals/2.6.0/3/3/1_-_Dynamic_Settings.html">Dynamic Settings</a></li>
+<li><a href="/manuals/2.6.0/3/2/3_-_Distro_Signatures.html">Distro Signatures</a></li>
+<li>Vastly improved support for Ubuntu, OpenSUSE and VMware ESXi (5.0 and 5.1)</li>
+<li>Added in new templated scripting support (needs documentation)</li>
+<li>New web interface improvements (tabs, etc.)</li>
+<li>Added apt-specific fields for repositories to make mirroring them easier</li>
+<li>Support for parameterized classes and defines in puppet using management classes</li>
+</ul>
+
+
+<p>Minor Features:</p>
 
 <ul>
-<li>CSRF support for the web GUI, which will now default to using https too.</li>
-<li>Power management subsystem completely re-worked to prevent command-injection (<a href="https://access.redhat.com/security/cve/CVE-2012-2395">CVE-2012-2395</a>).</li>
+<li>Added the bonded_bridge_slave interface type:</li>
+<li>Improved template error reporting</li>
+<li>Variables in fields are now evaluated through the templating engine</li>
+<li>Added openvz as a virtualization type for koan</li>
+<li>Added --virt-pxe-boot option for koan to force PXE booting of new systems</li>
+<li>Added a per-interface gateway option, for systems that support it</li>
+<li>Added support for new puppet command syntax</li>
+<li>Exposed replication rsync options</li>
 </ul>
-</li>
-<li>Support for bind in chroot'd environments.</li>
-<li>Koan now uses virt-install CLI instead of directly accessing the virtinst API</li>
-<li>Various improvements for SuSE and autoyast, especially for PPC64-based systems.</li>
-<li>BETA support for ESXi5 and gPXE</li>
-<li>BETA support for using other template languages, like jinja2</li>
+
+
+<p>Major Bugfixes:</p>
+
+<ul>
+<li>--available-as no longer copies all files.</li>
+<li>Improved gPXE/iPXE support, including FreeBSD</li>
+<li>Deleting objects now respects the --recursive option again</li>
 </ul>
 
 
-<p>And of course tons of bug fixes.</p>
+<p>Minor Bugfixes:</p>
 
-<p>Now that this release is out, and things have settled down from the change in leadership, expect much more frequent minor updates to address bugs much sooner. We will also be focusing on documentation now, especially since many of the features above are not documented well (or at all). Thanks to everyone who helped out with this release!</p>
+<ul>
+<li>Too many to list</li>
+</ul>
+
+
+<p>Thanks to everyone who made this release possible!</p>
 </div>
-     <div class="goback"><a href='/blog/page7/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page6/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2012/06/06/cobbler_2.2.3-1_released';
+        var disqus_identifier = '/posts/2013/06/20/cobbler_2.4.0-1_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -183,7 +212,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>June, 2012</h4><div class='post'><div class='content current'><a href='/blog/2012/06/22/new-search-capability.html'>New Search Capability</a></div><div class='author'><i>Posted on June 22, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/17/cobbler_2.2.3-2_released.html'>Cobbler 2.2.3-2 Released</a></div><div class='author'><i>Posted on June 17, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/15/new-cobbler-home-page.html'>New Cobbler Home Page</a></div><div class='author'><i>Posted on June 15, 2012</i></div></div><div class='post'><div class='content current'>Cobbler 2.2.3-1 Released</div><div class='author'><i>Posted on June 06, 2012</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>June, 2013</h4><div class='post'><div class='content current'>Cobbler 2.4.0-1 Released</div><div class='author'><i>Posted on June 20, 2013</i></div></div></div>
   </div>
  </div>
 </div>
@@ -253,7 +282,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

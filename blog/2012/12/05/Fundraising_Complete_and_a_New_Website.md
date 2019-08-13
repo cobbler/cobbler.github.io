@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.6.5 Released</title>
+   <title>Fundraising Complete and New Website</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,57 +129,38 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2014/10/19/cobbler_2.6.6_released.html"><i class="icon-angle-left"></i> Cobbler 2.6.6 Released</i></a></li>
+     <li class="previous"><a href="/blog/2013/04/10/New_Domain.html"><i class="icon-angle-left"></i> New Domain - cobblerd.org</i></a></li>
      
      
-     <li class="next"><a href="/blog/2014/08/15/cobbler_2.4.8_released.html">Cobbler 2.4.8 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2012/10/05/Fundraising.html">Fundraising! <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.6.5 Released</h2>
-     <div class="author"><i>Posted by Jörgen on Friday, August 15, 2014</i></div>
-     <div class="content"><p>Cobbler 2.6.5 is now officially available!</p>
+     <h2 class="header">Fundraising Complete and New Website</h2>
+     <div class="author"><i>Posted by James on Wednesday, December 05, 2012</i></div>
+     <div class="content"><p>First off, welcome to the new site! This redesign is basically just to add some polish to the site, which is now using the <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap framework</a> (as opposed to no framework). This new update also includes the draft version of the <a href="/manuals/2.4.0/">2.4.0 manual</a>, which has received a <em>lot</em> of work (with much more to come). In the coming weeks, I'll be redesigning the front page even more in order to give it a less "bloggy" feel, and to promote the platinum level sponsors from the fundraising campaign.</p>
 
-<p>This release is a very minor update to correct a bug which prevents that kickstarts for systems can't be changed.
-All 2.6.x users are encouraged to upgrade to this version!</p>
+<p>Speaking of which, the <a href="http://www.indiegogo.com/cobbler24">indiegogo campaign</a> concluded last night, and was a resounding success! We were able to exceed our funding goal of $4000 and hit $5776 in total contributions! The support from the community has been outstanding, and as I've often said this campaign has exceeded my expectations in every way.</p>
 
-<p>Sourcecode:</p>
+<p>Special thanks goes to our platinum-level contributors, lead by the <a href="http://www.eucalyptus.com/">Eucalyptus team</a> which matched all contributions during the last week and seriously pushed us over the top.</p>
 
-<ul>
-<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.5">https://github.com/cobbler/cobbler/releases/tag/v2.6.5</a></li>
-</ul>
+<p><img src="/images/supporters/eucalyptus_big.png" alt="Eucalyptus" /></p>
 
+<p>As I noted in the updates section of the campaign, I've already bought 3 of the 4 servers I wanted to get, and I'm waiting on final word from a hardware vendor in regards to a donation of another server. Once that is finalized, I will use some of the funds to add RAM to the servers I have purchased already (<a href="http://h10010.www1.hp.com/wwpc/us/en/sm/WF06b/15351-15351-4237916-4237918-4237917-4248009-5153252-5153253.html?dnr=1">HP N40L Micro Servers</a>), which only came with 2GB installed. A portion of the funds will be held in reserve to cover costs of maintaining these systems, for example power costs and replacement parts. Since part of the goal was to enable pushes of images and systems directly into IaaS platforms, I may use some of this funding in the future to support testing on Amazon and other platforms as well.</p>
 
-<p>Packages:</p>
+<p>Finally, I will most likely be tackling the issue of continuous integration testing first, in order to facilitate more regular and stable releases. Once that is complete, I will be working on adding features for cloud deployments.</p>
 
-<ul>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-6/">CentOS 6</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-7/">CentOS 7</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-6/">RHEL 6</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-7/">RHEL 7</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_18/">Fedora 18</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_19/">Fedora 19</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_20/">Fedora 20</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_12.3/">openSUSE 12.3</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_13.1/">openSUSE 13.1</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_Factory/">openSUSE Factory</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Debian_7.0/">Debian 7</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_12.04/">Ubuntu 12.04</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_12.10/">Ubuntu 12.10</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_13.10/">Ubuntu 13.10</a></li>
-<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_14.04/">Ubuntu 14.04</a></li>
-</ul>
-
+<p>Thanks for reading!</p>
 </div>
-     <div class="goback"><a href='/blog/page3/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page6/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2014/08/15/cobbler_2.6.5_released';
+        var disqus_identifier = '/posts/2012/12/05/Fundraising_Complete_and_a_New_Website';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -196,7 +177,7 @@ All 2.6.x users are encouraged to upgrade to this version!</p>
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>August, 2014</h4><div class='post'><div class='content current'>Cobbler 2.6.5 Released</div><div class='author'><i>Posted on August 15, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/08/15/cobbler_2.4.8_released.html'>Cobbler 2.4.8 Released</a></div><div class='author'><i>Posted on August 15, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/08/08/cobbler_2.6.4_released.html'>Cobbler 2.6.4 Released</a></div><div class='author'><i>Posted on August 08, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/08/08/cobbler_2.4.7_released.html'>Cobbler 2.4.7 Released</a></div><div class='author'><i>Posted on August 08, 2014</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>December, 2012</h4><div class='post'><div class='content current'>Fundraising Complete and New Website</div><div class='author'><i>Posted on December 05, 2012</i></div></div></div>
   </div>
  </div>
 </div>
@@ -266,7 +247,7 @@ All 2.6.x users are encouraged to upgrade to this version!</p>
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

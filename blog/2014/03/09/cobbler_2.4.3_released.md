@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.2.3-2 Released</title>
+   <title>Cobbler 2.4.3 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,37 +129,46 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2012/06/22/new-search-capability.html"><i class="icon-angle-left"></i> New Search Capability</i></a></li>
+     <li class="previous"><a href="/blog/2014/04/13/cobbler_2.6.0_released.html"><i class="icon-angle-left"></i> Cobbler 2.6.0 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2012/06/15/new-cobbler-home-page.html">New Cobbler Home Page <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2014/02/15/cobbler_2.4.2_released.html">Cobbler 2.4.2 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.2.3-2 Released</h2>
-     <div class="author"><i>Posted by James on Sunday, June 17, 2012</i></div>
-     <div class="content"><p>Minor release update to correct the DHCP config writing issue:</p>
+     <h2 class="header">Cobbler 2.4.3 Released</h2>
+     <div class="author"><i>Posted by Jörgen on Sunday, March 09, 2014</i></div>
+     <div class="content"><p>Cobbler 2.4.3 is now officially available!</p>
+
+<p>Improved Features:</p>
 
 <ul>
-<li>[BUGFIX] re-enable writing of DHCP entries for non-pxeboot-enabled systems unless they're static</li>
+<li>Improve support for ESXi when using updated sources</li>
+<li>Add support for SLES 12 to distro_signatures</li>
+<li>Add support for Oracle Enterprise Linux to distro_signatures</li>
 </ul>
 
 
-<p>I applied the fix suggested in that thread, so now dhcpd.conf entries will not be written if netboot-enabled is False and the interface is configured as static.</p>
+<p>Bugfixes:</p>
 
-<p>I'm starting to roll this out to Fedora now, so they should be in testing before long. This will replace the -1 release, which will never make it out of testing.</p>
+<ul>
+<li>Manual page correction regarding the use of the --server parameter</li>
+<li>Minor corrections to the build MANIFEST</li>
+<li>Fix a SyntaxError in Koan / OVZ install</li>
+</ul>
 
-<p>Enjoy!</p>
+
+<p>The (source) release can be found at: <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.3">https://github.com/cobbler/cobbler/releases/tag/v2.4.3</a></p>
 </div>
-     <div class="goback"><a href='/blog/page7/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page5/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2012/06/17/cobbler_2.2.3-2_released';
+        var disqus_identifier = '/posts/2014/03/09/cobbler_2.4.3_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -176,7 +185,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>June, 2012</h4><div class='post'><div class='content current'><a href='/blog/2012/06/22/new-search-capability.html'>New Search Capability</a></div><div class='author'><i>Posted on June 22, 2012</i></div></div><div class='post'><div class='content current'>Cobbler 2.2.3-2 Released</div><div class='author'><i>Posted on June 17, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/15/new-cobbler-home-page.html'>New Cobbler Home Page</a></div><div class='author'><i>Posted on June 15, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/06/cobbler_2.2.3-1_released.html'>Cobbler 2.2.3-1 Released</a></div><div class='author'><i>Posted on June 06, 2012</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>March, 2014</h4><div class='post'><div class='content current'>Cobbler 2.4.3 Released</div><div class='author'><i>Posted on March 09, 2014</i></div></div></div>
   </div>
  </div>
 </div>
@@ -246,7 +255,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

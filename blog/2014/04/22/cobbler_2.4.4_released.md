@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.6.9 Released</title>
+   <title>Cobbler 2.4.4 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,56 +129,55 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2015/09/30/cobbler_2.6.10_released.html"><i class="icon-angle-left"></i> Cobbler 2.6.10 Released</i></a></li>
+     <li class="previous"><a href="/blog/2014/05/22/cobbler_2.6.1_released.html"><i class="icon-angle-left"></i> Cobbler 2.6.1 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2015/06/12/cobbler_2.4.9_released.html">Cobbler 2.4.9 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2014/04/13/cobbler_2.6.0_released.html">Cobbler 2.6.0 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.6.9 Released</h2>
-     <div class="author"><i>Posted by Jörgen on Friday, June 12, 2015</i></div>
-     <div class="content"><p>Cobbler 2.6.9 is now officially available!</p>
+     <h2 class="header">Cobbler 2.4.4 Released</h2>
+     <div class="author"><i>Posted by Jörgen on Tuesday, April 22, 2014</i></div>
+     <div class="content"><p>Cobbler 2.4.4 is now officially available!</p>
 
-<p>This release works around the DNS issues we are having with the cobblerd.org domain.
-We have moved back to using hosted files on GitHub URLs.</p>
-
-<p>If you are using online features like <code>get-loaders</code> and <code>signature update</code> you will have
-to upgrade to this release!</p>
-
-<p>Feature improvements</p>
+<p>Improved Features:</p>
 
 <ul>
-<li>Add support for infiniband network interface type</li>
+<li>Add a distro_signature for Ubuntu 14.04</li>
+<li>Add an option to always write DHCP entries regardless of netboot setting</li>
+<li>Improve support for running inside chroot() and/or containers</li>
+<li>Improve performance of the "cobbler sync" operation</li>
 </ul>
 
 
-<p>Bugfixes</p>
+<p>Bugfixes:</p>
 
 <ul>
-<li>Fix problem in networking snippets related to per interface gateways</li>
-<li>Fix some issues in signaturs (duplicates, and re-add Fedora 21)</li>
+<li>Fix infinite loop in get_file_device_path() in chroot environment</li>
+<li>Fixed an Exception in Koans get_insert_script() function</li>
 </ul>
 
 
-<p>Sourcecode:</p>
+<p>The (source) release can be found <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.4">here</a></p>
+
+<p>Fedora packages:</p>
 
 <ul>
-<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.9">https://github.com/cobbler/cobbler/releases/tag/v2.6.9</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler24/Fedora_18/">Fedora 18</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler24/Fedora_19/">Fedora 19</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler24/Fedora_20/">Fedora 20</a></li>
 </ul>
 
-
-<p>Packages will be provided as soon as possible, please check <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26">here</a></p>
 </div>
-     <div class="goback"><a href='/blog/page2/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page5/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2015/06/12/cobbler_2.6.9_released';
+        var disqus_identifier = '/posts/2014/04/22/cobbler_2.4.4_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -195,7 +194,7 @@ to upgrade to this release!</p>
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>June, 2015</h4><div class='post'><div class='content current'>Cobbler 2.6.9 Released</div><div class='author'><i>Posted on June 12, 2015</i></div></div><div class='post'><div class='content current'><a href='/blog/2015/06/12/cobbler_2.4.9_released.html'>Cobbler 2.4.9 Released</a></div><div class='author'><i>Posted on June 12, 2015</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>April, 2014</h4><div class='post'><div class='content current'>Cobbler 2.4.4 Released</div><div class='author'><i>Posted on April 22, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/04/13/cobbler_2.6.0_released.html'>Cobbler 2.6.0 Released</a></div><div class='author'><i>Posted on April 13, 2014</i></div></div></div>
   </div>
  </div>
 </div>
@@ -265,7 +264,7 @@ to upgrade to this release!</p>
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

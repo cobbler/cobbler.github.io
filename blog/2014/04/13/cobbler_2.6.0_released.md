@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.6.10 Released</title>
+   <title>Cobbler 2.6.0 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,57 +129,67 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2016/01/23/cobbler_2.6.11_released.html"><i class="icon-angle-left"></i> Cobbler 2.6.11 Released</i></a></li>
+     <li class="previous"><a href="/blog/2014/04/22/cobbler_2.4.4_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.4 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2015/06/12/cobbler_2.6.9_released.html">Cobbler 2.6.9 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2014/03/09/cobbler_2.4.3_released.html">Cobbler 2.4.3 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.6.10 Released</h2>
-     <div class="author"><i>Posted by Jörgen on Wednesday, September 30, 2015</i></div>
-     <div class="content"><p>Cobbler 2.6.10 is now officially available!</p>
+     <h2 class="header">Cobbler 2.6.0 Released</h2>
+     <div class="author"><i>Posted by Jörgen on Sunday, April 13, 2014</i></div>
+     <div class="content"><p>Cobbler 2.6.0 is now officially available!</p>
 
-<p>This release mostly just adds support for some distros.</p>
+<p>This release cycle was primarily aimed at providing our software directly to our users.</p>
 
-<p>Feature improvements</p>
+<p>New Features:</p>
 
 <ul>
-<li>Use DNF when available (available on Fedora 22+)</li>
-<li>Add Fedora 22 to signatures</li>
-<li>Add Fedora 23 to signatures</li>
-<li>Add openSUSE 13.2 to signatures</li>
-<li>Add Debian Stretch (testing) to signatures</li>
-<li>Add XenServer 6.5.0 to signatures</li>
-<li>Add Ubuntu 15.10 to signatures</li>
+<li>Initial support for Nexenta 4: distro import and manual PXE booting</li>
+<li>Added support for ESXi 6</li>
+<li>Improved support for running Cobbler inside a chroot() or container</li>
+<li>Added a config setting (always_write_dhcp_entries) to always write DHCP entries regardless of netboot setting</li>
 </ul>
 
 
-<p>Bugfixes</p>
+<p>Bugfixes:</p>
 
 <ul>
-<li>Do not install distro_signatures.json in /etc/cobbler</li>
+<li>Lots of code cleanup &amp; bugfixes</li>
+<li>Minor improvements to the documentation</li>
 </ul>
 
 
 <p>Sourcecode:</p>
 
 <ul>
-<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.10">https://github.com/cobbler/cobbler/releases/tag/v2.6.10</a></li>
+<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.0">https://github.com/cobbler/cobbler/releases/tag/v2.6.0</a></li>
 </ul>
 
 
-<p>Packages will be provided as soon as possible, please check <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26">here</a></p>
+<p>Packages:</p>
+
+<ul>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-6/">CentOS 6</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-6/">RHEL 6</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_18/">Fedora 18</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_19/">Fedora 19</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_20/">Fedora 20</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_12.3/">openSUSE 12.3</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_13.1/">openSUSE 13.1</a></li>
+<li><a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_Factory/">openSUSE Factory</a></li>
+</ul>
+
 </div>
-     <div class="goback"><a href='/blog/page2/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page5/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2015/09/30/cobbler_2.6.10_released';
+        var disqus_identifier = '/posts/2014/04/13/cobbler_2.6.0_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -196,7 +206,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>September, 2015</h4><div class='post'><div class='content current'>Cobbler 2.6.10 Released</div><div class='author'><i>Posted on September 30, 2015</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>April, 2014</h4><div class='post'><div class='content current'><a href='/blog/2014/04/22/cobbler_2.4.4_released.html'>Cobbler 2.4.4 Released</a></div><div class='author'><i>Posted on April 22, 2014</i></div></div><div class='post'><div class='content current'>Cobbler 2.6.0 Released</div><div class='author'><i>Posted on April 13, 2014</i></div></div></div>
   </div>
  </div>
 </div>
@@ -266,7 +276,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

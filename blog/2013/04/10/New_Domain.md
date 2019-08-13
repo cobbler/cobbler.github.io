@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>New Cobbler Home Page</title>
+   <title>New Domain - cobblerd.org</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,30 +129,30 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2012/06/17/cobbler_2.2.3-2_released.html"><i class="icon-angle-left"></i> Cobbler 2.2.3-2 Released</i></a></li>
+     <li class="previous"><a href="/blog/2013/06/20/cobbler_2.4.0-1_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.0-1 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2012/06/06/cobbler_2.2.3-1_released.html">Cobbler 2.2.3-1 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2012/12/05/Fundraising_Complete_and_a_New_Website.html">Fundraising Complete and New Website <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">New Cobbler Home Page</h2>
-     <div class="author"><i>Posted by James on Friday, June 15, 2012</i></div>
-     <div class="content"><p>Welcome to the new Cobbler home page! The goal of this redesign is to make the website much more accessible, with documentation that's easier to find than digging through the github wiki. Going forward, there will be a manual for each major release (starting now with 2.2.3). This will allow us to provide documentation for users on older versions while maintaining updated docs for new releases (and maybe even the devel branch, as new features are added).</p>
+     <h2 class="header">New Domain - cobblerd.org</h2>
+     <div class="author"><i>Posted by James on Wednesday, April 10, 2013</i></div>
+     <div class="content"><p>As you have probably noticed by now, Cobbler has a new domain name. GitHub <a href="https://github.com/blog/1452-new-github-pages-domain-github-io">recently announced</a> that they were moving pages to the .io domain. While I understand their reasoning, I'm not a fan of the new domain so I figured it was time to make the move to a dedicated domain.</p>
 
-<p>Right now, the manual page is essentially a sorted hierarchy of of the wiki pages, with a LOT of holes in it. Not everything has been given subsection numbers, so things are pretty jumbled. I'm continuing to work on this, and I hope that by releasing this now others will start going through the manual pages and fixing things as well.</p>
+<p>This was a fairly painless process and is hopefully transparent for all users, but if anyone has any issues please let me know.</p>
 
-<p>Want to get started? Clone the <a href="https://github.com/cobbler/cobbler.github.com">cobbler.github.com</a> repo and start sending pull requests! All you need installed is the jekyll ruby gem and python-pygments to test it out. Since github runs their pages with jekyll's "safe mode" enabled, plugins don't work. This means you need to edit the .md files under the _dynamic/manuals directory and then run the generate_dynamic.sh script to compile everything into HTML files. This script then rsyncs from _dynamic/manuals/ to the root manuals/ directory. Run "git add" on that and commit.</p>
+<p>Thanks and enjoy the new site!</p>
 </div>
-     <div class="goback"><a href='/blog/page7/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page6/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2012/06/15/new-cobbler-home-page';
+        var disqus_identifier = '/posts/2013/04/10/New_Domain';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -169,7 +169,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>June, 2012</h4><div class='post'><div class='content current'><a href='/blog/2012/06/22/new-search-capability.html'>New Search Capability</a></div><div class='author'><i>Posted on June 22, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/17/cobbler_2.2.3-2_released.html'>Cobbler 2.2.3-2 Released</a></div><div class='author'><i>Posted on June 17, 2012</i></div></div><div class='post'><div class='content current'>New Cobbler Home Page</div><div class='author'><i>Posted on June 15, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/06/cobbler_2.2.3-1_released.html'>Cobbler 2.2.3-1 Released</a></div><div class='author'><i>Posted on June 06, 2012</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>April, 2013</h4><div class='post'><div class='content current'>New Domain - cobblerd.org</div><div class='author'><i>Posted on April 10, 2013</i></div></div></div>
   </div>
  </div>
 </div>
@@ -239,7 +239,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

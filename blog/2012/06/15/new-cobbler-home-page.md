@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.4.1 Released</title>
+   <title>New Cobbler Home Page</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,66 +129,30 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2014/02/15/cobbler_2.4.2_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.2 Released</i></a></li>
+     <li class="previous"><a href="/blog/2012/06/17/cobbler_2.2.3-2_released.html"><i class="icon-angle-left"></i> Cobbler 2.2.3-2 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2013/06/20/cobbler_2.4.0-1_released.html">Cobbler 2.4.0-1 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2012/06/06/cobbler_2.2.3-1_released.md">Cobbler 2.2.3-1 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.4.1 Released</h2>
-     <div class="author"><i>Posted by Jörgen on Monday, February 03, 2014</i></div>
-     <div class="content"><p>Cobbler 2.4.1 is now officially available! This release includes 100+ patches adding numerous signatures, bugfixes and several minor feature improvements.</p>
+     <h2 class="header">New Cobbler Home Page</h2>
+     <div class="author"><i>Posted by James on Friday, June 15, 2012</i></div>
+     <div class="content"><p>Welcome to the new Cobbler home page! The goal of this redesign is to make the website much more accessible, with documentation that's easier to find than digging through the github wiki. Going forward, there will be a manual for each major release (starting now with 2.2.3). This will allow us to provide documentation for users on older versions while maintaining updated docs for new releases (and maybe even the devel branch, as new features are added).</p>
 
-<p>Improved Features:</p>
+<p>Right now, the manual page is essentially a sorted hierarchy of of the wiki pages, with a LOT of holes in it. Not everything has been given subsection numbers, so things are pretty jumbled. I'm continuing to work on this, and I hope that by releasing this now others will start going through the manual pages and fixing things as well.</p>
 
-<ul>
-<li>Many distro_signatures updates</li>
-<li>Anamon logfile support has been extended</li>
-<li>Allow the use of systems without associated kickstart</li>
-<li>Koan now supports the qed disk driver</li>
-<li>Automatic cobbler_web restart after cobblerd restart</li>
-<li>Improved Puppet certificate management</li>
-<li>Cobbler replication now supports ssl</li>
-<li>Koan gained support for --proxy &amp; --server options</li>
-<li>Xen guest provisioning in koan</li>
-<li>Added a Cobbler post install report ignorelist</li>
-<li>Authentication token expiration time is now configurable</li>
-<li>Autentication passthru is now again functional</li>
-<li>SELinux detection in koan</li>
-</ul>
-
-
-<p>Bugfixes:</p>
-
-<ul>
-<li>Improved logging and exception handling in many places</li>
-<li>Several fixes for running Cobbler on OpenSUSE and SLES</li>
-<li>Better proxy handling in buildiso</li>
-<li>Concurrency/locking improvements</li>
-<li>Removed some hardcoded paths, making life easier for downstream packagers</li>
-<li>Add missing (sub)commands to the CLI</li>
-<li>Several Makefile fixes</li>
-<li>Small improvements to cobbler-web</li>
-<li>Many fixes to koan</li>
-<li>Several WSGI related improvements</li>
-<li>Many more...</li>
-</ul>
-
-
-<p>The (source) release can be found at: <a href="https://github.com/cobbler/cobbler/releases/tag/v2.4.1">https://github.com/cobbler/cobbler/releases/tag/v2.4.1</a></p>
-
-<p>Thanks to everyone who made this release possible!</p>
+<p>Want to get started? Clone the <a href="https://github.com/cobbler/cobbler.github.com">cobbler.github.com</a> repo and start sending pull requests! All you need installed is the jekyll ruby gem and python-pygments to test it out. Since github runs their pages with jekyll's "safe mode" enabled, plugins don't work. This means you need to edit the .md files under the _dynamic/manuals directory and then run the generate_dynamic.sh script to compile everything into HTML files. This script then rsyncs from _dynamic/manuals/ to the root manuals/ directory. Run "git add" on that and commit.</p>
 </div>
-     <div class="goback"><a href='/blog/page6/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page7/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2014/02/03/cobbler_2.4.1_released';
+        var disqus_identifier = '/posts/2012/06/15/new-cobbler-home-page';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -205,7 +169,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>February, 2014</h4><div class='post'><div class='content current'><a href='/blog/2014/02/15/cobbler_2.4.2_released.html'>Cobbler 2.4.2 Released</a></div><div class='author'><i>Posted on February 15, 2014</i></div></div><div class='post'><div class='content current'>Cobbler 2.4.1 Released</div><div class='author'><i>Posted on February 03, 2014</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>June, 2012</h4><div class='post'><div class='content current'><a href='/blog/2012/06/22/new-search-capability.html'>New Search Capability</a></div><div class='author'><i>Posted on June 22, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/17/cobbler_2.2.3-2_released.html'>Cobbler 2.2.3-2 Released</a></div><div class='author'><i>Posted on June 17, 2012</i></div></div><div class='post'><div class='content current'>New Cobbler Home Page</div><div class='author'><i>Posted on June 15, 2012</i></div></div><div class='post'><div class='content current'><a href='/blog/2012/06/06/cobbler_2.2.3-1_released.md'>Cobbler 2.2.3-1 Released</a></div><div class='author'><i>Posted on June 06, 2012</i></div></div></div>
   </div>
  </div>
 </div>
@@ -275,7 +239,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 

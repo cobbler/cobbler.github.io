@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler 2.6.4 Released</title>
+   <title>Cobbler 2.6.3 Released</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -129,47 +129,53 @@ var WRInitTime=(new Date()).getTime();
    <div class="row-fluid">
     <ul class="pager">
      
-     <li class="previous"><a href="/blog/2014/08/15/cobbler_2.4.8_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.8 Released</i></a></li>
+     <li class="previous"><a href="/blog/2014/08/08/cobbler_2.4.7_released.html"><i class="icon-angle-left"></i> Cobbler 2.4.7 Released</i></a></li>
      
      
-     <li class="next"><a href="/blog/2014/08/08/cobbler_2.4.7_released.html">Cobbler 2.4.7 Released <i class="icon-angle-right"></i></a></li>
+     <li class="next"><a href="/blog/2014/07/18/cobbler_2.4.6_released.html">Cobbler 2.4.6 Released <i class="icon-angle-right"></i></a></li>
      
     </ul>
    </div>
    <div class="row-fluid posts">
     <div class="post">
-     <h2 class="header">Cobbler 2.6.4 Released</h2>
-     <div class="author"><i>Posted by Jörgen on Friday, August 08, 2014</i></div>
-     <div class="content"><p>Cobbler 2.6.4 is now officially available!</p>
+     <h2 class="header">Cobbler 2.6.3 Released</h2>
+     <div class="author"><i>Posted by Jörgen on Friday, July 18, 2014</i></div>
+     <div class="content"><p>Cobbler 2.6.3 is now officially available!</p>
+
+<p>NOTE:
+We recommend upgrading as soon as possible, this release contains an important security update.
+Please take notice of the following:</p>
+
+<ul>
+<li>https://bugzilla.redhat.com/show_bug.cgi?id=1095846</li>
+<li>https://bugzilla.redhat.com/show_bug.cgi?id=1095845</li>
+</ul>
+
 
 <p>New Features:</p>
 
 <ul>
-<li>Make kickstart selectable from a pulldown list in cobbler-web (#991)</li>
-<li>Minor adjustment to the error_page template (cobbler-web)</li>
-<li>Minor improvements to edit snippets/kickstarts template (cobbler-web)</li>
-<li>Allow for empty system status</li>
+<li>Add a new field to the system type: ipv6_prefix (#203)</li>
+<li>Return to kickstart/snippet list after save (cobbler-web)</li>
 </ul>
 
 
 <p>Bugfixes:</p>
 
 <ul>
-<li>Exit with an error if cobblerd executable can't be found (#1108 #1135)</li>
-<li>Fix cobbler sync bug through xmlrpc api (NoneType object has no attribute info)</li>
-<li>Changes (edit/add) to multiple interfaces in cobbler-web now actually work (#687)</li>
-<li>Don't send the Puppet environment when system status is empty (#560)</li>
-<li>Add strict kickstart check in the API (again for #939)</li>
-<li>Do not allow kickstarts in /etc/cobbler</li>
-<li>Fix broken gitdate, gitstamp values in version file (cobbler version)</li>
-<li>Prevent disappearing profiles after cobblerd restart (#1030)</li>
+<li>Restrict kickstart/snippet paths to /var/lib/cobbler/ (#939 and CVE-2014-3225)</li>
+<li>Several improvements to the RPM specfile</li>
+<li>Add missing icons to cobbler-web (#679)</li>
+<li>cobbler-ext-nodes was broken with mgmt_classes defined at the profile level (#790)</li>
+<li>Properly name the VLAN interface in the cobbler manpage</li>
+<li>Fix wrong address of the Free Software Foundation in source headers</li>
 </ul>
 
 
 <p>Sourcecode:</p>
 
 <ul>
-<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.4">https://github.com/cobbler/cobbler/releases/tag/v2.6.4</a></li>
+<li><a href="https://github.com/cobbler/cobbler/releases/tag/v2.6.3">https://github.com/cobbler/cobbler/releases/tag/v2.6.3</a></li>
 </ul>
 
 
@@ -194,13 +200,13 @@ var WRInitTime=(new Date()).getTime();
 </ul>
 
 </div>
-     <div class="goback"><a href='/blog/page3/'><i class='icon-double-angle-left'></i> go back</a></div>
+     <div class="goback"><a href='/blog/page4/'><i class='icon-double-angle-left'></i> go back</a></div>
      <hr>
      <div id="disqus_thread"></div>
      <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '/posts/2014/08/08/cobbler_2.6.4_released';
+        var disqus_identifier = '/posts/2014/07/18/cobbler_2.6.3_released';
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
@@ -217,7 +223,7 @@ var WRInitTime=(new Date()).getTime();
    </div>
   </div>
   <div class="span3">
-  <div class='posts related_by_date'><h4 class='header'>August, 2014</h4><div class='post'><div class='content current'><a href='/blog/2014/08/15/cobbler_2.6.5_released.html'>Cobbler 2.6.5 Released</a></div><div class='author'><i>Posted on August 15, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/08/15/cobbler_2.4.8_released.html'>Cobbler 2.4.8 Released</a></div><div class='author'><i>Posted on August 15, 2014</i></div></div><div class='post'><div class='content current'>Cobbler 2.6.4 Released</div><div class='author'><i>Posted on August 08, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/08/08/cobbler_2.4.7_released.html'>Cobbler 2.4.7 Released</a></div><div class='author'><i>Posted on August 08, 2014</i></div></div></div>
+  <div class='posts related_by_date'><h4 class='header'>July, 2014</h4><div class='post'><div class='content current'>Cobbler 2.6.3 Released</div><div class='author'><i>Posted on July 18, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/07/18/cobbler_2.4.6_released.html'>Cobbler 2.4.6 Released</a></div><div class='author'><i>Posted on July 18, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/07/15/cobbler_2.6.2_released.html'>Cobbler 2.6.2 Released</a></div><div class='author'><i>Posted on July 15, 2014</i></div></div><div class='post'><div class='content current'><a href='/blog/2014/07/14/cobbler_2.4.5_released.html'>Cobbler 2.4.5 Released</a></div><div class='author'><i>Posted on July 14, 2014</i></div></div></div>
   </div>
  </div>
 </div>
@@ -287,7 +293,7 @@ var WRInitTime=(new Date()).getTime();
         </div>
 
         <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.html">Cobbler 2.8.3 Released</a></p>
+          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
           <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
         </div>
 
