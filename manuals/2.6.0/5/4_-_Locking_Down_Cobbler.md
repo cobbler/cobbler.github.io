@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler - 2.6.0 Manual</title>
+   <title>Locking Down Cobbler</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -121,15 +121,134 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manual - Version 2.6.x</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5</a> <span class="divider">/</span></li><li class="active">Locking Down Cobbler</li></ul>
+   <h1>Locking Down Cobbler</h1>
+<p>If you want to enable the
+<a href="Cobbler%20web%20interface">Cobbler web interface</a> for a lot
+of users, and don't trust all of them to know what they are doing
+all of the time, here are some tips on some good configuration
+practices to allow for configuring a server that is hard for
+someone to mess with in ways they shouldn't be messing with it --
+as defined by you and your site specific policy.</p>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1 - About Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/1_-_Release_Notes.html">1.1 - Release Notes</a></li><li><a href="/manuals/2.6.0/1/2_-_Distribution_Support.html">1.2 - Distribution Support</a></li><li><a href="/manuals/2.6.0/1/3_-_Distribution_Notes.html">1.3 - Distribution Notes</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/3/1_-_Nexenta.html">1.3.1 - Nexenta</a></li><li><a href="/manuals/2.6.0/1/3/2_-_FreeBSD.html">1.3.2 - FreeBSD</a></li></ul></ul><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2 - Installing Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">2.1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2.2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">2.3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">2.4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">2.4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">2.4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">2.5 - Relocating Your Installation</a></li></ul><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3 - General Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">3.1 - Cobbler Primitives</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1/1_-_Distros.html">3.1.1 - Distros</a></li><li><a href="/manuals/2.6.0/3/1/2_-_Profiles_and_Sub-Profiles.html">3.1.2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.6.0/3/1/3_-_Systems.html">3.1.3 - Systems</a></li><li><a href="/manuals/2.6.0/3/1/4_-_Images.html">3.1.4 - Images</a></li><li><a href="/manuals/2.6.0/3/1/5_-_Repos.html">3.1.5 - Repos</a></li><li><a href="/manuals/2.6.0/3/1/6_-_Management_Classes.html">3.1.6 - Management Classes</a></li><li><a href="/manuals/2.6.0/3/1/7_-_File_Resources.html">3.1.7 - File Resources</a></li><li><a href="/manuals/2.6.0/3/1/8_-_Package_Resources.html">3.1.8 - Package Resources</a></li></ul><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">3.2 - Cobbler Direct Commands</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/2/1_-_Check.html">3.2.1 - Check</a></li><li><a href="/manuals/2.6.0/3/2/2_-_Sync.html">3.2.2 - Sync</a></li><li><a href="/manuals/2.6.0/3/2/3_-_Distro_Signatures.html">3.2.3 - Distro Signatures</a></li><li><a href="/manuals/2.6.0/3/2/4_-_Import.html">3.2.4 - Import</a></li><li><a href="/manuals/2.6.0/3/2/5_-_Reposync.html">3.2.5 - Reposync</a></li><li><a href="/manuals/2.6.0/3/2/6_-_Build_ISO.html">3.2.6 - Build ISO</a></li><li><a href="/manuals/2.6.0/3/2/7_-_Command_Line_Search.html">3.2.7 - Command Line Search</a></li><li><a href="/manuals/2.6.0/3/2/8_-_Replication.html">3.2.8 - Replication</a></li><li><a href="/manuals/2.6.0/3/2/9_-_Validate_Kickstart.html">3.2.9 - Validate Kickstart</a></li><li><a href="/manuals/2.6.0/3/2/10_-_ACL_Setup.html">3.2.10 - ACL Setup</a></li><li><a href="/manuals/2.6.0/3/2/11_-_Dynamic_Settings.html">3.2.11 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/2/12_-_Version.html">3.2.12 - Version</a></li></ul><li><a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">3.3 - Cobbler Settings</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/3/1_-_Dynamic_Settings.html">3.3.1 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/3/2_-_Complete_Settings_List.html">3.3.2 - Complete Settings List</a></li></ul><li><a href="/manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.html">3.4 - Managing Services With Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/4/1_-_Managing_DHCP.html">3.4.1 - Managing DHCP</a></li><li><a href="/manuals/2.6.0/3/4/2_-_Managing_DNS.html">3.4.2 - Managing DNS</a></li><li><a href="/manuals/2.6.0/3/4/3_-_Managing_rsync.html">3.4.3 - Managing rsync</a></li><li><a href="/manuals/2.6.0/3/4/4_-_Managing_TFTP.html">3.4.4 - Managing TFTP</a></li></ul><li><a href="/manuals/2.6.0/3/5_-_Kickstart_Templating.html">3.5 - Kickstart Templating</a></li><li><a href="/manuals/2.6.0/3/6_-_Snippets.html">3.6 - Snippets</a></li><li><a href="/manuals/2.6.0/3/7_-_Package_Management_and_Mirroring.html">3.7 - Package Management and Mirroring</a></li><li><a href="/manuals/2.6.0/3/8_-_File_System_Information.html">3.8 - File System Information</a></li></ul><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4 - Advanced Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">4.1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Bonding.html">4.1.1 - Bonding</a></li><li><a href="/manuals/2.6.0/4/1/2_-_VLANs.html">4.1.2 - VLANs</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Bridging.html">4.1.3 - Bridging</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Bonded_Bridging.html">4.1.4 - Bonded Bridging</a></li></ul><li><a href="/manuals/2.6.0/4/2_-_SELinux.html">4.2 - SELinux</a></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">4.3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">4.3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Puppet_Integration.html">4.3.2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/4/3/3_-_Func_Integration.html">4.3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.6.0/4/4_-_Extending_Cobbler.html">4.4 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/4/1_-_Triggers.html">4.4.1 - Triggers</a></li><li><a href="/manuals/2.6.0/4/4/2_-_Modules.html">4.4.2 - Modules</a></li><li><a href="/manuals/2.6.0/4/4/3_-_Extending_Cheetah.html">4.4.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.6.0/4/5_-_Power_Management.html">4.5 - Power Management</a></li><li><a href="/manuals/2.6.0/4/6_-_Alternative_Template_Formats.html">4.6 - Alternative Template Formats</a></li><li><a href="/manuals/2.6.0/4/7_-_Multi-Homed_Cobbler_Servers.html">4.7 - Multi-Homed Cobbler Servers</a></li><li><a href="/manuals/2.6.0/4/8_-_Auto-Registration.html">4.8 - Auto-Registration</a></li><li><a href="/manuals/2.6.0/4/9_-_Batch_Editing.html">4.9 - Batch Editing</a></li><li><a href="/manuals/2.6.0/4/10_-_Moving_to_a_New_Server.html">4.10 - Moving to a New Server</a></li><li><a href="/manuals/2.6.0/4/11_-_PXE-boot_Menu_Passwords.html">4.11 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.6.0/4/12_-_Alternative_Storage_Backends.html">4.12 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/12/1_-_CouchDB.html">4.12.1 - CouchDB</a></li><li><a href="/manuals/2.6.0/4/12/2_-_MongoDB.html">4.12.2 - MongoDB</a></li><li><a href="/manuals/2.6.0/4/12/3_-_MySQL.html">4.12.3 - MySQL</a></li></ul><li><a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">4.13 - Using gPXE</a></li><li><a href="/manuals/2.6.0/4/14_-_Data_Revision_Control.html">4.14 - Data Revision Control</a></li></ul><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5 - Web Interface</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/1_-_Security_Overview.html">5.1 - Security Overview</a></li><li><a href="/manuals/2.6.0/5/2_-_Web_Authentication.html">5.2 - Web Authentication</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/2/1_-_PAM.html">5.2.1 - PAM</a></li><li><a href="/manuals/2.6.0/5/2/2_-_LDAP.html">5.2.2 - LDAP</a></li><li><a href="/manuals/2.6.0/5/2/3_-_Kerberos.html">5.2.3 - Kerberos</a></li><li><a href="/manuals/2.6.0/5/2/4_-_Spacewalk.html">5.2.4 - Spacewalk</a></li><li><a href="/manuals/2.6.0/5/2/5_-_Passthru.html">5.2.5 - Passthru</a></li><li><a href="/manuals/2.6.0/5/2/6_-_Digest.html">5.2.6 - Digest</a></li></ul><li><a href="/manuals/2.6.0/5/3_-_Web_Authorization.html">5.3 - Web Authorization</a></li><li><a href="/manuals/2.6.0/5/4_-_Locking_Down_Cobbler.html">5.4 - Locking Down Cobbler</a></li></ul><li><a href="/manuals/2.6.0/6_-_Koan.html">6 - Koan</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/6/1_-_Koan_Basics.html">6.1 - Koan Basics</a></li><li><a href="/manuals/2.6.0/6/2_-_Koan_With_ISOs.html">6.2 - Koan With ISOs</a></li><li><a href="/manuals/2.6.0/6/3_-_Installing-virtual-guests.html">6.3 - Installing-virtual-guests</a></li><li><a href="/manuals/2.6.0/6/4_-_Reinstallation.html">6.4 - Reinstallation</a></li><li><a href="/manuals/2.6.0/6/5_-_Virtual-networking-setup.html">6.5 - Virtual-networking-setup</a></li><li><a href="/manuals/2.6.0/6/6_-_Vmware.html">6.6 - Vmware</a></li></ul><li><a href="/manuals/2.6.0/7_-_Troubleshooting.html">7 - Troubleshooting</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/7/1_-_Debugging-tips.html">7.1 - Debugging-tips</a></li><li><a href="/manuals/2.6.0/7/2_-_Hints-redhat.html">7.2 - Hints-redhat</a></li><li><a href="/manuals/2.6.0/7/3_-_Virtualization-troubleshooting.html">7.3 - Virtualization-troubleshooting</a></li></ul><li>Appendix</li><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">Appendix.A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">Appendix.B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Appendix.C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/D_-_Memtest.html">Appendix.D - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/E_-_Anaconda_Monitoring.html">Appendix.E - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/F_-_System_Retirement.html">Appendix.F - System Retirement</a></li><li><a href="/manuals/2.6.0/Appendix/G_-_Booting_Live_CDs.html">Appendix.G - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/H_-_Clonezilla_Integration.html">Appendix.H - Clonezilla Integration</a></li></ul></ul></div>
+<h2>/etc/cobbler/modules.conf</h2>
+
+<p>For
+<a href="Web%20Authentication">Web Authentication</a>,
+choose authn_kerberos or authn_ldap if you don't have Kerberos.
+See <a href="Kerberos">Kerberos</a> and
+<a href="Ldap">LDAP</a> for details on how
+to set those up. Failing that, using the authn_digest is perfectly
+fine, but don't share passwords among the users. Logging goes to
+<code>/var/log/cobbler/\*.log</code> and can be used to see what user does
+what.</p>
+
+<p>For <a href="Security%20Overview">Customizable Security</a>,
+choose authz_ownership, as this will allow users to only edit
+things that they create unless you declare certain users to be
+admins. You should then define groups for users in
+<code>/etc/cobbler/users.conf</code> following the format of that file, then
+assign objects in cobbler (like distros, etc) ownership as
+described in
+<a href="/cobbler/wiki/AuthorizationWithOwnership">AuthorizationWithOwnership</a>.</p>
+
+<h2>Firewall</h2>
+
+<p>For koan to work you must unblock 25150 (XMLRPC/tcp-ip) as well as
+HTTP 80, HTTPS 443 and TFTP 69 (tcp/udp) if you want PXE.</p>
+
+<p>If you want to access read-write XMLRPC from outside the cobbler
+server, you'll need to unblock 25151.</p>
+
+<p>Also, if applicable, unblock DHCP!</p>
+
+<p>While it may be tempting to disable cobblerd, don't... cobbler uses
+cobblerd to generate dynamic content such as
+<a href="Kickstart%20Templates">Kickstart Templates</a> and this
+will mean nothing will work. Koan additionally communicates with
+cobblerd.</p>
+
+<h2>SELinux</h2>
+
+<p>Cobbler works with SELinux -- though you should be using EL 5 or
+later. EL 4 is not supported since it does not have
+public_content_t, meaning files can't be served from Apache and
+TFTP at the same time.</p>
+
+<p>You should install the semanage rules that "cobbler check" tells
+you about to ensure everything works according to plan.</p>
+
+<p>Also note, you may run into some problems if you need to relocate
+your <code>/var/www elsewhere</code>, which most users should not need to do.</p>
+
+<h2>Default Passwords</h2>
+
+<p>Run "cobbler check" and it will warn you if any of the sample
+kickstarts still have "cobbler" as the password. If you are using
+those templates, that's a problem, if not, don't worry about it,
+but you may want to comment out the password line to prevent them
+from being used.</p>
+
+<h2>Test Your Configuration</h2>
+
+<p>Log in as various users (create some in different groups if need
+be) to make sure your authorization, authentication, and/or ACLs
+are correct as you expect them. Then also make sure you can deploy
+some physical and virtual systems outside the network to ensure
+your firewall configurations do not cut off anything important.</p>
+
+<h2>Command Line ACLs</h2>
+
+<p>All of the above is about network security, if you want to run the
+cobbler CLI as non root, you can run "cobbler aclsetup" to grant
+access to non-root users, such as your friendly trusted
+neighborhood administrators. Be aware this grants them file access
+on all of cobbler's configuration. This all uses setfacl, don't
+chmod yourself if you can help it as the RPM takes good steps to
+get all of this right. Same for running setfacl yourself as there
+are lots of places it must be applied.</p>
+
+<h2>A Note About File Readablity and "Security"</h2>
+
+<p>By nature of provisioning, TFTP and HTTP and so forth are typically
+wide open protocols by design. This is actually a good thing due to
+the Catch-22 that if it was hard to install, installing would be
+hard. Ease of installation requires openness, so these steps above
+are about keeping people from changing your provisioning
+configurations to ways that they should not have access to change
+them -- they are not about denying access to data in the
+provisioning server, such as the contents of kickstarts. If you
+need to be transferring sensitive files, a long "HERE" document in
+kickstart %post is not the place to do it. scp those later or use a
+config management system to move the files.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/5/1_-_Security_Overview.html">1 - Security Overview</a></li><li><a href="/manuals/2.6.0/5/2_-_Web_Authentication.html">2 - Web Authentication</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/2/1_-_PAM.html">2.1 - PAM</a></li><li><a href="/manuals/2.6.0/5/2/2_-_LDAP.html">2.2 - LDAP</a></li><li><a href="/manuals/2.6.0/5/2/3_-_Kerberos.html">2.3 - Kerberos</a></li><li><a href="/manuals/2.6.0/5/2/4_-_Spacewalk.html">2.4 - Spacewalk</a></li><li><a href="/manuals/2.6.0/5/2/5_-_Passthru.html">2.5 - Passthru</a></li><li><a href="/manuals/2.6.0/5/2/6_-_Digest.html">2.6 - Digest</a></li></ul><li><a href="/manuals/2.6.0/5/3_-_Web_Authorization.html">3 - Web Authorization</a></li><li><a href="/manuals/2.6.0/5/4_-_Locking_Down_Cobbler.html">4 - Locking Down Cobbler</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

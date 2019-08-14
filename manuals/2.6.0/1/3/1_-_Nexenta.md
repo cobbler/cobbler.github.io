@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler - 2.6.0 Manual</title>
+   <title>Nexenta</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -121,15 +121,143 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manual - Version 2.6.x</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1/3_-_Distribution_Notes.html">3</a> <span class="divider">/</span></li><li class="active">Nexenta</li></ul>
+   <h1>Nexenta</h1>
+<h2>Installing NexentaStor with Cobbler</h2>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1 - About Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/1_-_Release_Notes.html">1.1 - Release Notes</a></li><li><a href="/manuals/2.6.0/1/2_-_Distribution_Support.html">1.2 - Distribution Support</a></li><li><a href="/manuals/2.6.0/1/3_-_Distribution_Notes.html">1.3 - Distribution Notes</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/3/1_-_Nexenta.html">1.3.1 - Nexenta</a></li><li><a href="/manuals/2.6.0/1/3/2_-_FreeBSD.html">1.3.2 - FreeBSD</a></li></ul></ul><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2 - Installing Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">2.1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2.2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">2.3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">2.4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">2.4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">2.4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">2.5 - Relocating Your Installation</a></li></ul><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3 - General Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">3.1 - Cobbler Primitives</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1/1_-_Distros.html">3.1.1 - Distros</a></li><li><a href="/manuals/2.6.0/3/1/2_-_Profiles_and_Sub-Profiles.html">3.1.2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.6.0/3/1/3_-_Systems.html">3.1.3 - Systems</a></li><li><a href="/manuals/2.6.0/3/1/4_-_Images.html">3.1.4 - Images</a></li><li><a href="/manuals/2.6.0/3/1/5_-_Repos.html">3.1.5 - Repos</a></li><li><a href="/manuals/2.6.0/3/1/6_-_Management_Classes.html">3.1.6 - Management Classes</a></li><li><a href="/manuals/2.6.0/3/1/7_-_File_Resources.html">3.1.7 - File Resources</a></li><li><a href="/manuals/2.6.0/3/1/8_-_Package_Resources.html">3.1.8 - Package Resources</a></li></ul><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">3.2 - Cobbler Direct Commands</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/2/1_-_Check.html">3.2.1 - Check</a></li><li><a href="/manuals/2.6.0/3/2/2_-_Sync.html">3.2.2 - Sync</a></li><li><a href="/manuals/2.6.0/3/2/3_-_Distro_Signatures.html">3.2.3 - Distro Signatures</a></li><li><a href="/manuals/2.6.0/3/2/4_-_Import.html">3.2.4 - Import</a></li><li><a href="/manuals/2.6.0/3/2/5_-_Reposync.html">3.2.5 - Reposync</a></li><li><a href="/manuals/2.6.0/3/2/6_-_Build_ISO.html">3.2.6 - Build ISO</a></li><li><a href="/manuals/2.6.0/3/2/7_-_Command_Line_Search.html">3.2.7 - Command Line Search</a></li><li><a href="/manuals/2.6.0/3/2/8_-_Replication.html">3.2.8 - Replication</a></li><li><a href="/manuals/2.6.0/3/2/9_-_Validate_Kickstart.html">3.2.9 - Validate Kickstart</a></li><li><a href="/manuals/2.6.0/3/2/10_-_ACL_Setup.html">3.2.10 - ACL Setup</a></li><li><a href="/manuals/2.6.0/3/2/11_-_Dynamic_Settings.html">3.2.11 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/2/12_-_Version.html">3.2.12 - Version</a></li></ul><li><a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">3.3 - Cobbler Settings</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/3/1_-_Dynamic_Settings.html">3.3.1 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/3/2_-_Complete_Settings_List.html">3.3.2 - Complete Settings List</a></li></ul><li><a href="/manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.html">3.4 - Managing Services With Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/4/1_-_Managing_DHCP.html">3.4.1 - Managing DHCP</a></li><li><a href="/manuals/2.6.0/3/4/2_-_Managing_DNS.html">3.4.2 - Managing DNS</a></li><li><a href="/manuals/2.6.0/3/4/3_-_Managing_rsync.html">3.4.3 - Managing rsync</a></li><li><a href="/manuals/2.6.0/3/4/4_-_Managing_TFTP.html">3.4.4 - Managing TFTP</a></li></ul><li><a href="/manuals/2.6.0/3/5_-_Kickstart_Templating.html">3.5 - Kickstart Templating</a></li><li><a href="/manuals/2.6.0/3/6_-_Snippets.html">3.6 - Snippets</a></li><li><a href="/manuals/2.6.0/3/7_-_Package_Management_and_Mirroring.html">3.7 - Package Management and Mirroring</a></li><li><a href="/manuals/2.6.0/3/8_-_File_System_Information.html">3.8 - File System Information</a></li></ul><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4 - Advanced Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">4.1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Bonding.html">4.1.1 - Bonding</a></li><li><a href="/manuals/2.6.0/4/1/2_-_VLANs.html">4.1.2 - VLANs</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Bridging.html">4.1.3 - Bridging</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Bonded_Bridging.html">4.1.4 - Bonded Bridging</a></li></ul><li><a href="/manuals/2.6.0/4/2_-_SELinux.html">4.2 - SELinux</a></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">4.3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">4.3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Puppet_Integration.html">4.3.2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/4/3/3_-_Func_Integration.html">4.3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.6.0/4/4_-_Extending_Cobbler.html">4.4 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/4/1_-_Triggers.html">4.4.1 - Triggers</a></li><li><a href="/manuals/2.6.0/4/4/2_-_Modules.html">4.4.2 - Modules</a></li><li><a href="/manuals/2.6.0/4/4/3_-_Extending_Cheetah.html">4.4.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.6.0/4/5_-_Power_Management.html">4.5 - Power Management</a></li><li><a href="/manuals/2.6.0/4/6_-_Alternative_Template_Formats.html">4.6 - Alternative Template Formats</a></li><li><a href="/manuals/2.6.0/4/7_-_Multi-Homed_Cobbler_Servers.html">4.7 - Multi-Homed Cobbler Servers</a></li><li><a href="/manuals/2.6.0/4/8_-_Auto-Registration.html">4.8 - Auto-Registration</a></li><li><a href="/manuals/2.6.0/4/9_-_Batch_Editing.html">4.9 - Batch Editing</a></li><li><a href="/manuals/2.6.0/4/10_-_Moving_to_a_New_Server.html">4.10 - Moving to a New Server</a></li><li><a href="/manuals/2.6.0/4/11_-_PXE-boot_Menu_Passwords.html">4.11 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.6.0/4/12_-_Alternative_Storage_Backends.html">4.12 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/12/1_-_CouchDB.html">4.12.1 - CouchDB</a></li><li><a href="/manuals/2.6.0/4/12/2_-_MongoDB.html">4.12.2 - MongoDB</a></li><li><a href="/manuals/2.6.0/4/12/3_-_MySQL.html">4.12.3 - MySQL</a></li></ul><li><a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">4.13 - Using gPXE</a></li><li><a href="/manuals/2.6.0/4/14_-_Data_Revision_Control.html">4.14 - Data Revision Control</a></li></ul><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5 - Web Interface</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/1_-_Security_Overview.html">5.1 - Security Overview</a></li><li><a href="/manuals/2.6.0/5/2_-_Web_Authentication.html">5.2 - Web Authentication</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/2/1_-_PAM.html">5.2.1 - PAM</a></li><li><a href="/manuals/2.6.0/5/2/2_-_LDAP.html">5.2.2 - LDAP</a></li><li><a href="/manuals/2.6.0/5/2/3_-_Kerberos.html">5.2.3 - Kerberos</a></li><li><a href="/manuals/2.6.0/5/2/4_-_Spacewalk.html">5.2.4 - Spacewalk</a></li><li><a href="/manuals/2.6.0/5/2/5_-_Passthru.html">5.2.5 - Passthru</a></li><li><a href="/manuals/2.6.0/5/2/6_-_Digest.html">5.2.6 - Digest</a></li></ul><li><a href="/manuals/2.6.0/5/3_-_Web_Authorization.html">5.3 - Web Authorization</a></li><li><a href="/manuals/2.6.0/5/4_-_Locking_Down_Cobbler.html">5.4 - Locking Down Cobbler</a></li></ul><li><a href="/manuals/2.6.0/6_-_Koan.html">6 - Koan</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/6/1_-_Koan_Basics.html">6.1 - Koan Basics</a></li><li><a href="/manuals/2.6.0/6/2_-_Koan_With_ISOs.html">6.2 - Koan With ISOs</a></li><li><a href="/manuals/2.6.0/6/3_-_Installing-virtual-guests.html">6.3 - Installing-virtual-guests</a></li><li><a href="/manuals/2.6.0/6/4_-_Reinstallation.html">6.4 - Reinstallation</a></li><li><a href="/manuals/2.6.0/6/5_-_Virtual-networking-setup.html">6.5 - Virtual-networking-setup</a></li><li><a href="/manuals/2.6.0/6/6_-_Vmware.html">6.6 - Vmware</a></li></ul><li><a href="/manuals/2.6.0/7_-_Troubleshooting.html">7 - Troubleshooting</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/7/1_-_Debugging-tips.html">7.1 - Debugging-tips</a></li><li><a href="/manuals/2.6.0/7/2_-_Hints-redhat.html">7.2 - Hints-redhat</a></li><li><a href="/manuals/2.6.0/7/3_-_Virtualization-troubleshooting.html">7.3 - Virtualization-troubleshooting</a></li></ul><li>Appendix</li><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">Appendix.A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">Appendix.B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Appendix.C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/D_-_Memtest.html">Appendix.D - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/E_-_Anaconda_Monitoring.html">Appendix.E - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/F_-_System_Retirement.html">Appendix.F - System Retirement</a></li><li><a href="/manuals/2.6.0/Appendix/G_-_Booting_Live_CDs.html">Appendix.G - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/H_-_Clonezilla_Integration.html">Appendix.H - Clonezilla Integration</a></li></ul></ul></div>
+<p>The following steps outline the Nexenta install process when using Cobbler.</p>
+
+<p>1) Assuming that Cobbler has been setup previously, verify that the signature file contains the entry for Nexenta:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">&quot;nexenta&quot;: {
+    &quot;4&quot;: {
+      &quot;signatures&quot;:[&quot;boot&quot;],
+      &quot;version_file&quot;: &quot;platform&quot;,
+      &quot;version_file_regex&quot;: null,
+      &quot;supported_arches&quot;:[&quot;x86_64&quot;],
+      &quot;supported_repo_breeds&quot;:[&quot;apt&quot;],
+      &quot;kernel_file&quot;:&quot;platform/i86pc/kernel/amd64/unix&quot;,
+      &quot;initrd_file&quot;:&quot;platform/i86pc/amd64/miniroot&quot;,
+      &quot;isolinux_ok&quot;:false,
+      &quot;kernel_options&quot;:&quot;&quot;,
+      &quot;kernel_options_post&quot;:&quot;&quot;,
+      &quot;boot_files&quot;:[]
+    }
+  }</code></pre></figure></p>
+
+<p>2) Obtain a Nexenta iso from http://www.nexenta.com/corp/nexentastor-download and mount it:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p /mnt/nexenta4 &amp;&amp; mnt /path/to/nexenta4.iso /mnt/nexenta4 -o loop`</code></pre></figure></p>
+
+<p>3) Import the distribution into Cobbler:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler import --name=nexenta-4 --path=/mnt/nexenta4</code></pre></figure></p>
+
+<p>Verify that a Nexenta distirbution is available via Cobbler: cobbler list
+Once the import is done, you can unmount the ISO:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo umount /mnt/nexenta4</code></pre></figure></p>
+
+<p>4) Nexenta uses a PXE Grub executable different from other, linux-like systems. To install a Nexenta on a desired system, you have to specify the PXE Grub file for that system. This can be done by using either a MAC address, or a subnet definition in your DHCP configuration file. In /etc/cobbler/dhcp.template:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">host test-1 {
+    hardware ethernet 00:0C:29:10:B6:10;
+    fixed-address 10.3.30.91;
+    filename &quot;boot/grub/pxegrub&quot;;
+  }
+  host test-2 {
+    hardware ethernet 00:0c:29:d1:9c:26;
+    fixed-address 10.3.30.97;
+    filename &quot;boot/grub/pxegrub&quot;;
+  }</code></pre></figure></p>
+
+<p>OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host definition in your dhcp config file.</p>
+
+<p>Note: the path <code>boot/grub/pxegrub</code> is a hardcoded default in the Nexenta boot process.</p>
+
+<p>5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The profiles are placed in /var/lib/cobbler/kickstarts/install_profiles. Each profile should be a file with the filename <code>machine.AACC003355FF</code> where AA..FF stand for the mac address of the machine, without <code>:</code> (columns). The contents of each profile should look like the following:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"><strong>PF_gateway=&quot;IP address&quot; (required)
+</strong>PF_nic_primary=&quot;NIC NAME&quot; (required)
+<strong>PF_dns_ip_1=&quot;IP address&quot; (required)
+</strong>PF_dns_ip_2=&quot;IP address&quot; (optional)
+<strong>PF_dns_ip_3=&quot;IP address&quot; (optional)
+</strong>PF_loghost=&quot;IP address&quot; (optional)
+<strong>PF_logport=&quot;Port Number&quot; (optional)
+</strong>PF_syspool_luns=&quot;list of space separated LUNs that will be used to create syspool&quot; (required)
+<strong>PF_syspool_spare=&quot;list of space separated LUNs that will be used as syspool spare&quot; (optional)
+</strong>PF_ipaddr_NIC_NAME=&quot;IP address&quot; (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
+<strong>PF_netmask_NIC_NAME=&quot;NETMASK&quot; (NIC_NAME is the name of the target NIC e1000g0, ixgbe1, etc.) (required)
+</strong>PF_nlm_key=&quot;LICENSE KEY&quot; (required)
+<strong>PF_language=&quot;en&quot; (used to choose localzation, but now only &quot;en&quot; is supported) (required)
+</strong>PF_ssh_enable=1 (enable SSH, by default SSH is disabled) (optional)
+__PF_ssh_port=&quot;PORT where SSH server will wait for incoming connections&quot; (optional)</code></pre></figure></p>
+
+<p>6) Power on the hardware. NexentaStor should boot from this setup.</p>
+
+<h2>Hints &amp; Notes</h2>
+
+<p>This process has been tested with Cobbler Release 2.6.0 running on Ubuntu 12.04 LTS.</p>
+
+<p>The install of Nexenta is automatic. That means that each machine to be booted with nexenta has to be configurated with a profile in kickstarts/install_profiles directory. To boot Nexenta nodes manually, in the file /var/lib/tftpboot/boot/grub/menu.lst replace the line:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install=1</code></pre></figure></p>
+
+<p>With</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64</code></pre></figure></p>
+
+<p>If you are adding a new distro, don't forget to enable NFS access to it! NFS share must be configured on the boot server. In particular, the directories in /var/www/cobbler/links/<distro-name> are exported. As an example, there is a /etc/exports file:</p>
+
+<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash"># /etc/exports: the access control list for filesystems which may be exported</p>
+
+<h1>to NFS clients.  See exports(5).</h1>
+
+<p>#</p>
+
+<h1>Example for NFSv2 and NFSv3:</h1>
+
+<h1>/srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)</h1>
+
+<p>#</p>
+
+<h1>Example for NFSv4:</h1>
+
+<h1>/srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)</h1>
+
+<h1>/srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)</h1>
+
+<p>#
+/var/www/cobbler/links/nexenta-a-x86_64 <em>(ro,sync,no_subtree_check)
+/var/www/cobbler/links/&lt;nexenta-distribution-name&gt; </em>(ro,sync,no_subtree_check)</code></pre></figure></p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1/3/1_-_Nexenta.html">1 - Nexenta</a></li><li><a href="/manuals/2.6.0/1/3/2_-_FreeBSD.html">2 - FreeBSD</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler - 2.6.0 Manual</title>
+   <title>Configuration Management</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -121,15 +121,115 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manual - Version 2.6.x</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Configuration Management</li></ul>
+   <h1>Configuration Management</h1>
+<p>The initial provisioning of client systems with cobbler is just one component of their management. We also need to consider how to continue to manage them using a configuration management system (CMS). Cobbler can help you provision and introduce a CMS onto your client systems.</p>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1 - About Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/1_-_Release_Notes.html">1.1 - Release Notes</a></li><li><a href="/manuals/2.6.0/1/2_-_Distribution_Support.html">1.2 - Distribution Support</a></li><li><a href="/manuals/2.6.0/1/3_-_Distribution_Notes.html">1.3 - Distribution Notes</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/3/1_-_Nexenta.html">1.3.1 - Nexenta</a></li><li><a href="/manuals/2.6.0/1/3/2_-_FreeBSD.html">1.3.2 - FreeBSD</a></li></ul></ul><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2 - Installing Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">2.1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2.2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">2.3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">2.4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">2.4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">2.4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">2.5 - Relocating Your Installation</a></li></ul><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3 - General Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">3.1 - Cobbler Primitives</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1/1_-_Distros.html">3.1.1 - Distros</a></li><li><a href="/manuals/2.6.0/3/1/2_-_Profiles_and_Sub-Profiles.html">3.1.2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.6.0/3/1/3_-_Systems.html">3.1.3 - Systems</a></li><li><a href="/manuals/2.6.0/3/1/4_-_Images.html">3.1.4 - Images</a></li><li><a href="/manuals/2.6.0/3/1/5_-_Repos.html">3.1.5 - Repos</a></li><li><a href="/manuals/2.6.0/3/1/6_-_Management_Classes.html">3.1.6 - Management Classes</a></li><li><a href="/manuals/2.6.0/3/1/7_-_File_Resources.html">3.1.7 - File Resources</a></li><li><a href="/manuals/2.6.0/3/1/8_-_Package_Resources.html">3.1.8 - Package Resources</a></li></ul><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">3.2 - Cobbler Direct Commands</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/2/1_-_Check.html">3.2.1 - Check</a></li><li><a href="/manuals/2.6.0/3/2/2_-_Sync.html">3.2.2 - Sync</a></li><li><a href="/manuals/2.6.0/3/2/3_-_Distro_Signatures.html">3.2.3 - Distro Signatures</a></li><li><a href="/manuals/2.6.0/3/2/4_-_Import.html">3.2.4 - Import</a></li><li><a href="/manuals/2.6.0/3/2/5_-_Reposync.html">3.2.5 - Reposync</a></li><li><a href="/manuals/2.6.0/3/2/6_-_Build_ISO.html">3.2.6 - Build ISO</a></li><li><a href="/manuals/2.6.0/3/2/7_-_Command_Line_Search.html">3.2.7 - Command Line Search</a></li><li><a href="/manuals/2.6.0/3/2/8_-_Replication.html">3.2.8 - Replication</a></li><li><a href="/manuals/2.6.0/3/2/9_-_Validate_Kickstart.html">3.2.9 - Validate Kickstart</a></li><li><a href="/manuals/2.6.0/3/2/10_-_ACL_Setup.html">3.2.10 - ACL Setup</a></li><li><a href="/manuals/2.6.0/3/2/11_-_Dynamic_Settings.html">3.2.11 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/2/12_-_Version.html">3.2.12 - Version</a></li></ul><li><a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">3.3 - Cobbler Settings</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/3/1_-_Dynamic_Settings.html">3.3.1 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/3/2_-_Complete_Settings_List.html">3.3.2 - Complete Settings List</a></li></ul><li><a href="/manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.html">3.4 - Managing Services With Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/4/1_-_Managing_DHCP.html">3.4.1 - Managing DHCP</a></li><li><a href="/manuals/2.6.0/3/4/2_-_Managing_DNS.html">3.4.2 - Managing DNS</a></li><li><a href="/manuals/2.6.0/3/4/3_-_Managing_rsync.html">3.4.3 - Managing rsync</a></li><li><a href="/manuals/2.6.0/3/4/4_-_Managing_TFTP.html">3.4.4 - Managing TFTP</a></li></ul><li><a href="/manuals/2.6.0/3/5_-_Kickstart_Templating.html">3.5 - Kickstart Templating</a></li><li><a href="/manuals/2.6.0/3/6_-_Snippets.html">3.6 - Snippets</a></li><li><a href="/manuals/2.6.0/3/7_-_Package_Management_and_Mirroring.html">3.7 - Package Management and Mirroring</a></li><li><a href="/manuals/2.6.0/3/8_-_File_System_Information.html">3.8 - File System Information</a></li></ul><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4 - Advanced Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">4.1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Bonding.html">4.1.1 - Bonding</a></li><li><a href="/manuals/2.6.0/4/1/2_-_VLANs.html">4.1.2 - VLANs</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Bridging.html">4.1.3 - Bridging</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Bonded_Bridging.html">4.1.4 - Bonded Bridging</a></li></ul><li><a href="/manuals/2.6.0/4/2_-_SELinux.html">4.2 - SELinux</a></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">4.3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">4.3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Puppet_Integration.html">4.3.2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/4/3/3_-_Func_Integration.html">4.3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.6.0/4/4_-_Extending_Cobbler.html">4.4 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/4/1_-_Triggers.html">4.4.1 - Triggers</a></li><li><a href="/manuals/2.6.0/4/4/2_-_Modules.html">4.4.2 - Modules</a></li><li><a href="/manuals/2.6.0/4/4/3_-_Extending_Cheetah.html">4.4.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.6.0/4/5_-_Power_Management.html">4.5 - Power Management</a></li><li><a href="/manuals/2.6.0/4/6_-_Alternative_Template_Formats.html">4.6 - Alternative Template Formats</a></li><li><a href="/manuals/2.6.0/4/7_-_Multi-Homed_Cobbler_Servers.html">4.7 - Multi-Homed Cobbler Servers</a></li><li><a href="/manuals/2.6.0/4/8_-_Auto-Registration.html">4.8 - Auto-Registration</a></li><li><a href="/manuals/2.6.0/4/9_-_Batch_Editing.html">4.9 - Batch Editing</a></li><li><a href="/manuals/2.6.0/4/10_-_Moving_to_a_New_Server.html">4.10 - Moving to a New Server</a></li><li><a href="/manuals/2.6.0/4/11_-_PXE-boot_Menu_Passwords.html">4.11 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.6.0/4/12_-_Alternative_Storage_Backends.html">4.12 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/12/1_-_CouchDB.html">4.12.1 - CouchDB</a></li><li><a href="/manuals/2.6.0/4/12/2_-_MongoDB.html">4.12.2 - MongoDB</a></li><li><a href="/manuals/2.6.0/4/12/3_-_MySQL.html">4.12.3 - MySQL</a></li></ul><li><a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">4.13 - Using gPXE</a></li><li><a href="/manuals/2.6.0/4/14_-_Data_Revision_Control.html">4.14 - Data Revision Control</a></li></ul><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5 - Web Interface</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/1_-_Security_Overview.html">5.1 - Security Overview</a></li><li><a href="/manuals/2.6.0/5/2_-_Web_Authentication.html">5.2 - Web Authentication</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/2/1_-_PAM.html">5.2.1 - PAM</a></li><li><a href="/manuals/2.6.0/5/2/2_-_LDAP.html">5.2.2 - LDAP</a></li><li><a href="/manuals/2.6.0/5/2/3_-_Kerberos.html">5.2.3 - Kerberos</a></li><li><a href="/manuals/2.6.0/5/2/4_-_Spacewalk.html">5.2.4 - Spacewalk</a></li><li><a href="/manuals/2.6.0/5/2/5_-_Passthru.html">5.2.5 - Passthru</a></li><li><a href="/manuals/2.6.0/5/2/6_-_Digest.html">5.2.6 - Digest</a></li></ul><li><a href="/manuals/2.6.0/5/3_-_Web_Authorization.html">5.3 - Web Authorization</a></li><li><a href="/manuals/2.6.0/5/4_-_Locking_Down_Cobbler.html">5.4 - Locking Down Cobbler</a></li></ul><li><a href="/manuals/2.6.0/6_-_Koan.html">6 - Koan</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/6/1_-_Koan_Basics.html">6.1 - Koan Basics</a></li><li><a href="/manuals/2.6.0/6/2_-_Koan_With_ISOs.html">6.2 - Koan With ISOs</a></li><li><a href="/manuals/2.6.0/6/3_-_Installing-virtual-guests.html">6.3 - Installing-virtual-guests</a></li><li><a href="/manuals/2.6.0/6/4_-_Reinstallation.html">6.4 - Reinstallation</a></li><li><a href="/manuals/2.6.0/6/5_-_Virtual-networking-setup.html">6.5 - Virtual-networking-setup</a></li><li><a href="/manuals/2.6.0/6/6_-_Vmware.html">6.6 - Vmware</a></li></ul><li><a href="/manuals/2.6.0/7_-_Troubleshooting.html">7 - Troubleshooting</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/7/1_-_Debugging-tips.html">7.1 - Debugging-tips</a></li><li><a href="/manuals/2.6.0/7/2_-_Hints-redhat.html">7.2 - Hints-redhat</a></li><li><a href="/manuals/2.6.0/7/3_-_Virtualization-troubleshooting.html">7.3 - Virtualization-troubleshooting</a></li></ul><li>Appendix</li><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">Appendix.A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">Appendix.B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Appendix.C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/D_-_Memtest.html">Appendix.D - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/E_-_Anaconda_Monitoring.html">Appendix.E - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/F_-_System_Retirement.html">Appendix.F - System Retirement</a></li><li><a href="/manuals/2.6.0/Appendix/G_-_Booting_Live_CDs.html">Appendix.G - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/H_-_Clonezilla_Integration.html">Appendix.H - Clonezilla Integration</a></li></ul></ul></div>
+<p>One option is cobbler's own lightweight CMS.  For that, see the document <a href="Built%20in%20configuration%20management">Built in configuration management</a>.</p>
+
+<p>Here we discuss the other option: deploying a CMS such as puppet, cfengine, bcfg2, Chef, etc.</p>
+
+<p>Cobbler doesn't force you to chose a particular CMS (or to use one at all), though it helps if you do some things to link cobbler's profiles with the "profiles" of the CMS. This, in general, makes management of both a lot easier.</p>
+
+<p>Note that there are two independent "variables" here: the possible client operating systems and the possible CMSes.  We don't attempt to cover all details of all combinations; rather we illustrate the principles and give a small number of illustrative examples of particular OS/CMS combinations. Currently cobbler has better support for Redhat-based OSes and for Puppet so the current examples tend to deal with this combination.</p>
+
+<h2>Background considerations</h2>
+
+<h3>Machine lifecyle</h3>
+
+<p>A typical computer has a lifecycle something like:</p>
+
+<ul>
+<li>installation</li>
+<li>initial configuration</li>
+<li>ongoing configuration and maintenance</li>
+<li>decommissioning</li>
+</ul>
 
 
-</div> <!-- end wrap -->
+<p>Typically installation happens once.  Likewise, the initial configuration happens once, usually shortly after installation.  By contrast ongoing configuration evolves over an extended period, perhaps of several years.  Sometimes part of that ongoing configuration may involve re-installing an OS from scratch.  We can regard this as repeating the earlier phase.</p>
 
+<p>We need not consider decommissioning here.</p>
+
+<p>Installation clearly belongs (in our context) to Cobbler.  In a complementary manner, ongoing configuration clearly belongs to the CMS.  But what about initial configuration?</p>
+
+<p>Some sites consider their initial configuration as the final phase of installation: in our context, that would put it at the back end of Cobbler, and potentially add significant configuration-based complication to the installation-based Cobbler set-up.</p>
+
+<p>But it is worth considering initial configuration as the first step of ongoing configuration: in our context that would put it as part of the CMS, and keep the Cobbler set-up simple and uncluttered.</p>
+
+<h3>Local package repositories</h3>
+
+<p>Give consideration to:</p>
+
+<ul>
+<li>local mirrors of OS repositories</li>
+<li>local repository of local packages</li>
+<li>local repository of pick-and-choose external packages</li>
+</ul>
+
+
+<p>In particular consider having the packages for your chosen CMS in one of the latter.</p>
+
+<h3>Package management</h3>
+
+<p>Some sites set up Cobbler always to deploy just a minimal subset of packages, then use the CMS to install many others in a large-scale fashion.  Other sites may set up Cobbler to deploy tailored sets of packages to different types of machines, then use the CMS to do relatively small-scale fine-tuning of that.</p>
+
+<h2>General scheme</h2>
+
+<p>We need to consider getting Cobbler to install and automatically invoke the CMS software.</p>
+
+<p>Set up Cobbler to include a package repository that contains your chosen CMS:</p>
+
+<pre><code>cobbler repo add ...
+</code></pre>
+
+<p>Then (illustrating a Redhat/Puppet combination) set up the kickstart file to say something like:</p>
+
+<pre><code>%packages
+puppet
+
+%post
+/sbin/chkconfig --add puppet
+</code></pre>
+
+<p>The detail may need to be more substantial, requiring some other associated local packages, files and configuration.  You may wish to manage this through <a href="Kickstart%20Snippets">Kickstart snippets</a>.</p>
+
+<h2>Conclusion</h2>
+
+<p>Hopefully this should get you started in linking up your
+provisioning configuration with your CMS
+implementation. The examples provided are for Puppet, but we can
+(in the future) presumably extend --mgmt-classes to work with other
+tools ... just let us know what you are interested in, or perhaps
+take a shot at creating a patch for it.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Puppet_Integration.html">2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/4/3/3_-_Func_Integration.html">3 - Func Integration</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>

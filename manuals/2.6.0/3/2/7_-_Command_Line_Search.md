@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Cobbler development team" />
 
-   <title>Cobbler - 2.6.0 Manual</title>
+   <title>Command Line Search</title>
 
    <!-- CSS -->
    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -121,15 +121,163 @@ var WRInitTime=(new Date()).getTime();
 
 <!-- begin content -->
 
-
 <div id="wrap" class="container">
-<h2>Cobbler Manual - Version 2.6.x</h2>
+ <div class="row">
+  <div class="span8">
+<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Command Line Search</li></ul>
+   <h1>Command Line Search</h1>
+<p>Command line search can be used to ask questions about your cobbler
+configuration, rather than just having to run "cobbler list" or
+"cobbler report" and scanning through the results. (The
+<a href="Cobbler%20Web%20Interface">Cobbler Web Interface</a> also
+supports search/filtering, for those that want to use it, though
+that is not documented on this page)</p>
 
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1 - About Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/1_-_Release_Notes.html">1.1 - Release Notes</a></li><li><a href="/manuals/2.6.0/1/2_-_Distribution_Support.html">1.2 - Distribution Support</a></li><li><a href="/manuals/2.6.0/1/3_-_Distribution_Notes.html">1.3 - Distribution Notes</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/1/3/1_-_Nexenta.html">1.3.1 - Nexenta</a></li><li><a href="/manuals/2.6.0/1/3/2_-_FreeBSD.html">1.3.2 - FreeBSD</a></li></ul></ul><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2 - Installing Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/1_-_Prerequisites.html">2.1 - Prerequisites</a></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2.2 - Installing From Packages</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/2/1_-_Fedora.html">2.2.1 - Fedora</a></li><li><a href="/manuals/2.6.0/2/2/2_-_RHEL_and_CentOS.html">2.2.2 - RHEL and CentOS</a></li><li><a href="/manuals/2.6.0/2/2/3_-_openSUSE.html">2.2.3 - openSUSE</a></li><li><a href="/manuals/2.6.0/2/2/4_-_Debian_and_Ubuntu.html">2.2.4 - Debian and Ubuntu</a></li></ul><li><a href="/manuals/2.6.0/2/3_-_Installing_From_Source.html">2.3 - Installing From Source</a></li><li><a href="/manuals/2.6.0/2/4_-_Configuration_Files.html">2.4 - Configuration Files</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/2/4/1_-_Settings_File.html">2.4.1 - Settings File</a></li><li><a href="/manuals/2.6.0/2/4/2_-_Modules_Configuration.html">2.4.2 - Modules Configuration</a></li></ul><li><a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">2.5 - Relocating Your Installation</a></li></ul><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3 - General Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">3.1 - Cobbler Primitives</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/1/1_-_Distros.html">3.1.1 - Distros</a></li><li><a href="/manuals/2.6.0/3/1/2_-_Profiles_and_Sub-Profiles.html">3.1.2 - Profiles and Sub-Profiles</a></li><li><a href="/manuals/2.6.0/3/1/3_-_Systems.html">3.1.3 - Systems</a></li><li><a href="/manuals/2.6.0/3/1/4_-_Images.html">3.1.4 - Images</a></li><li><a href="/manuals/2.6.0/3/1/5_-_Repos.html">3.1.5 - Repos</a></li><li><a href="/manuals/2.6.0/3/1/6_-_Management_Classes.html">3.1.6 - Management Classes</a></li><li><a href="/manuals/2.6.0/3/1/7_-_File_Resources.html">3.1.7 - File Resources</a></li><li><a href="/manuals/2.6.0/3/1/8_-_Package_Resources.html">3.1.8 - Package Resources</a></li></ul><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">3.2 - Cobbler Direct Commands</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/2/1_-_Check.html">3.2.1 - Check</a></li><li><a href="/manuals/2.6.0/3/2/2_-_Sync.html">3.2.2 - Sync</a></li><li><a href="/manuals/2.6.0/3/2/3_-_Distro_Signatures.html">3.2.3 - Distro Signatures</a></li><li><a href="/manuals/2.6.0/3/2/4_-_Import.html">3.2.4 - Import</a></li><li><a href="/manuals/2.6.0/3/2/5_-_Reposync.html">3.2.5 - Reposync</a></li><li><a href="/manuals/2.6.0/3/2/6_-_Build_ISO.html">3.2.6 - Build ISO</a></li><li><a href="/manuals/2.6.0/3/2/7_-_Command_Line_Search.html">3.2.7 - Command Line Search</a></li><li><a href="/manuals/2.6.0/3/2/8_-_Replication.html">3.2.8 - Replication</a></li><li><a href="/manuals/2.6.0/3/2/9_-_Validate_Kickstart.html">3.2.9 - Validate Kickstart</a></li><li><a href="/manuals/2.6.0/3/2/10_-_ACL_Setup.html">3.2.10 - ACL Setup</a></li><li><a href="/manuals/2.6.0/3/2/11_-_Dynamic_Settings.html">3.2.11 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/2/12_-_Version.html">3.2.12 - Version</a></li></ul><li><a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">3.3 - Cobbler Settings</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/3/1_-_Dynamic_Settings.html">3.3.1 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/3/2_-_Complete_Settings_List.html">3.3.2 - Complete Settings List</a></li></ul><li><a href="/manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.html">3.4 - Managing Services With Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/3/4/1_-_Managing_DHCP.html">3.4.1 - Managing DHCP</a></li><li><a href="/manuals/2.6.0/3/4/2_-_Managing_DNS.html">3.4.2 - Managing DNS</a></li><li><a href="/manuals/2.6.0/3/4/3_-_Managing_rsync.html">3.4.3 - Managing rsync</a></li><li><a href="/manuals/2.6.0/3/4/4_-_Managing_TFTP.html">3.4.4 - Managing TFTP</a></li></ul><li><a href="/manuals/2.6.0/3/5_-_Kickstart_Templating.html">3.5 - Kickstart Templating</a></li><li><a href="/manuals/2.6.0/3/6_-_Snippets.html">3.6 - Snippets</a></li><li><a href="/manuals/2.6.0/3/7_-_Package_Management_and_Mirroring.html">3.7 - Package Management and Mirroring</a></li><li><a href="/manuals/2.6.0/3/8_-_File_System_Information.html">3.8 - File System Information</a></li></ul><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4 - Advanced Topics</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">4.1 - Advanced Networking</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/1/1_-_Bonding.html">4.1.1 - Bonding</a></li><li><a href="/manuals/2.6.0/4/1/2_-_VLANs.html">4.1.2 - VLANs</a></li><li><a href="/manuals/2.6.0/4/1/3_-_Bridging.html">4.1.3 - Bridging</a></li><li><a href="/manuals/2.6.0/4/1/4_-_Bonded_Bridging.html">4.1.4 - Bonded Bridging</a></li></ul><li><a href="/manuals/2.6.0/4/2_-_SELinux.html">4.2 - SELinux</a></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">4.3 - Configuration Management</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">4.3.1 - Built-In Configuration Management</a></li><li><a href="/manuals/2.6.0/4/3/2_-_Puppet_Integration.html">4.3.2 - Puppet Integration</a></li><li><a href="/manuals/2.6.0/4/3/3_-_Func_Integration.html">4.3.3 - Func Integration</a></li></ul><li><a href="/manuals/2.6.0/4/4_-_Extending_Cobbler.html">4.4 - Extending Cobbler</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/4/1_-_Triggers.html">4.4.1 - Triggers</a></li><li><a href="/manuals/2.6.0/4/4/2_-_Modules.html">4.4.2 - Modules</a></li><li><a href="/manuals/2.6.0/4/4/3_-_Extending_Cheetah.html">4.4.3 - Extending Cheetah</a></li></ul><li><a href="/manuals/2.6.0/4/5_-_Power_Management.html">4.5 - Power Management</a></li><li><a href="/manuals/2.6.0/4/6_-_Alternative_Template_Formats.html">4.6 - Alternative Template Formats</a></li><li><a href="/manuals/2.6.0/4/7_-_Multi-Homed_Cobbler_Servers.html">4.7 - Multi-Homed Cobbler Servers</a></li><li><a href="/manuals/2.6.0/4/8_-_Auto-Registration.html">4.8 - Auto-Registration</a></li><li><a href="/manuals/2.6.0/4/9_-_Batch_Editing.html">4.9 - Batch Editing</a></li><li><a href="/manuals/2.6.0/4/10_-_Moving_to_a_New_Server.html">4.10 - Moving to a New Server</a></li><li><a href="/manuals/2.6.0/4/11_-_PXE-boot_Menu_Passwords.html">4.11 - PXE-boot Menu Passwords</a></li><li><a href="/manuals/2.6.0/4/12_-_Alternative_Storage_Backends.html">4.12 - Alternative Storage Backends</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/4/12/1_-_CouchDB.html">4.12.1 - CouchDB</a></li><li><a href="/manuals/2.6.0/4/12/2_-_MongoDB.html">4.12.2 - MongoDB</a></li><li><a href="/manuals/2.6.0/4/12/3_-_MySQL.html">4.12.3 - MySQL</a></li></ul><li><a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">4.13 - Using gPXE</a></li><li><a href="/manuals/2.6.0/4/14_-_Data_Revision_Control.html">4.14 - Data Revision Control</a></li></ul><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5 - Web Interface</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/1_-_Security_Overview.html">5.1 - Security Overview</a></li><li><a href="/manuals/2.6.0/5/2_-_Web_Authentication.html">5.2 - Web Authentication</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/5/2/1_-_PAM.html">5.2.1 - PAM</a></li><li><a href="/manuals/2.6.0/5/2/2_-_LDAP.html">5.2.2 - LDAP</a></li><li><a href="/manuals/2.6.0/5/2/3_-_Kerberos.html">5.2.3 - Kerberos</a></li><li><a href="/manuals/2.6.0/5/2/4_-_Spacewalk.html">5.2.4 - Spacewalk</a></li><li><a href="/manuals/2.6.0/5/2/5_-_Passthru.html">5.2.5 - Passthru</a></li><li><a href="/manuals/2.6.0/5/2/6_-_Digest.html">5.2.6 - Digest</a></li></ul><li><a href="/manuals/2.6.0/5/3_-_Web_Authorization.html">5.3 - Web Authorization</a></li><li><a href="/manuals/2.6.0/5/4_-_Locking_Down_Cobbler.html">5.4 - Locking Down Cobbler</a></li></ul><li><a href="/manuals/2.6.0/6_-_Koan.html">6 - Koan</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/6/1_-_Koan_Basics.html">6.1 - Koan Basics</a></li><li><a href="/manuals/2.6.0/6/2_-_Koan_With_ISOs.html">6.2 - Koan With ISOs</a></li><li><a href="/manuals/2.6.0/6/3_-_Installing-virtual-guests.html">6.3 - Installing-virtual-guests</a></li><li><a href="/manuals/2.6.0/6/4_-_Reinstallation.html">6.4 - Reinstallation</a></li><li><a href="/manuals/2.6.0/6/5_-_Virtual-networking-setup.html">6.5 - Virtual-networking-setup</a></li><li><a href="/manuals/2.6.0/6/6_-_Vmware.html">6.6 - Vmware</a></li></ul><li><a href="/manuals/2.6.0/7_-_Troubleshooting.html">7 - Troubleshooting</a></li><ul class="dirtree"><li><a href="/manuals/2.6.0/7/1_-_Debugging-tips.html">7.1 - Debugging-tips</a></li><li><a href="/manuals/2.6.0/7/2_-_Hints-redhat.html">7.2 - Hints-redhat</a></li><li><a href="/manuals/2.6.0/7/3_-_Virtualization-troubleshooting.html">7.3 - Virtualization-troubleshooting</a></li></ul><li>Appendix</li><ul class="dirtree"><li><a href="/manuals/2.6.0/Appendix/A_-_S390_Support.html">Appendix.A - S390 Support</a></li><li><a href="/manuals/2.6.0/Appendix/B_-_Power-PC_Support.html">Appendix.B - Power-PC Support</a></li><li><a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Appendix.C - Tips for RHN</a></li><li><a href="/manuals/2.6.0/Appendix/D_-_Memtest.html">Appendix.D - Memtest</a></li><li><a href="/manuals/2.6.0/Appendix/E_-_Anaconda_Monitoring.html">Appendix.E - Anaconda Monitoring</a></li><li><a href="/manuals/2.6.0/Appendix/F_-_System_Retirement.html">Appendix.F - System Retirement</a></li><li><a href="/manuals/2.6.0/Appendix/G_-_Booting_Live_CDs.html">Appendix.G - Booting Live CDs</a></li><li><a href="/manuals/2.6.0/Appendix/H_-_Clonezilla_Integration.html">Appendix.H - Clonezilla Integration</a></li></ul></ul></div>
+<p>Command line search works on all distro/profile/system/and repo
+objects.</p>
+
+<pre><code>cobbler distro find --help
+cobbler profile find --help
+cobbler system find --help
+cobbler repo find --help
+</code></pre>
+
+<p>NOTE: Some of these examples are kind of arbitrary. I'm sure you
+can think of some more real world examples.</p>
+
+<h2>Examples</h2>
+
+<p>Find what system record has a given mac address.</p>
+
+<pre><code>    cobbler system find --mac=AA:BB:CC:DD:EE:FF
+</code></pre>
+
+<p>If anything is using a certain kernel, delete that object and all
+it's children (profiles, systems, etc).</p>
+
+<pre><code>    cobbler distro find --kernel=/path/to/kernel | xargs -n1 --replace cobbler distro remove --name={} --recursive
+</code></pre>
+
+<p>What profiles use the repo "epel-5-i386-testing" ?</p>
+
+<pre><code>    cobbler profile find --repos=epel-5-i386-testing
+</code></pre>
+
+<p>Which profiles are owned by neo AND mranderson?</p>
+
+<pre><code>   cobbler profile find --owners="neo,mranderson"
+   # lists need to be comma delimited, like this, with no unneeded spaces
+</code></pre>
+
+<p>What systems are set to pass the kernel argument "color=red" ?</p>
+
+<pre><code>   cobbler system find --kopts="color=red"
+</code></pre>
+
+<p>What systems are set to pass the kernel argument "color=red" and
+"number=5" ?</p>
+
+<pre><code>   cobbler system find --kopts="color=red number=5"
+   # space delimited key value pairs
+   # key1=value1 key2 key3=value3
+</code></pre>
+
+<p>What systems set the kickstart metadata variable of foo to the
+value 'bar' ?</p>
+
+<pre><code>   cobbler system find --ksmeta="foo=bar"
+   # space delimited key value pairs again
+</code></pre>
+
+<p>What systems are set to netboot disabled?</p>
+
+<pre><code>   cobbler system find --netboot-enabled=0
+   # note, this also accepts 'false', or 'no'
+</code></pre>
+
+<p>For all systems that are assigned to profile "foo" that are set to
+netboot disabled, enable them.</p>
+
+<pre><code>   cobbler system find --profile=foo --netboot-enabled=0 | xargs -n1 --replace cobbler system edit --name={} --netboot-enabled=1
+   # demonstrates an "AND" query combined with xargs usage.
+</code></pre>
+
+<h2>A Note About Types And Wildcards</h2>
+
+<p>Though the cobbler objects behind the scenes store data in various
+different formats (booleans, hashes, lists, strings), it all works
+fom the command line as text.</p>
+
+<p>If multiple terms are specified to one argument, the search is an
+"AND" search.</p>
+
+<p>If multiple parameters are specified, the search is still an "AND"
+search.</p>
+
+<p>The find command understands patterns such as "*" and "?". This is
+supported using Python's fnmatch.</p>
+
+<p>To learn more:</p>
+
+<pre><code>pydoc fnmatch.fnmatch
+</code></pre>
+
+<p>All systems starting with the string foo:</p>
+
+<pre><code>cobbler system find --name="foo*"
+</code></pre>
+
+<p>This is rather useful when combined with xargs. This is a rather
+tame example, reporting on all systems starting with "TEST".</p>
+
+<pre><code>cobbler system find --name="TEST*" | xargs -n1 --replace cobbler system 
+report --name={}
+</code></pre>
+
+<p>By extension, you could use this to toggle the --netboot-enabled
+systems of machines with certain hostnames, mac addresses, and so
+forth, or perform other kinds of wholesale edits (for instance,
+deletes, or assigning profiles with certain names to new distros
+when upgrading them from F8 to F9, for instance).</p>
+
+<h2>API Usage</h2>
+
+<p>All of this functionality is also exposed through the API</p>
+
+<pre><code>#!/usr/bin/python
+import cobbler.api as capi
+api_handle = capi.BootAPI()
+matches = api_handle.find_profile(name="TEST*",return_list=True)
+print matches
+</code></pre>
+
+<p>You will find uses of ".find()" throughout the cobbler code that
+make use of this behavior.</p>
+
+     <hr>
+     <div id="disqus_thread"></div>
+     <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
+        var disqus_identifier = '';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+     </script>
+     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-</div> <!-- end wrap -->
-
+  </div>
+  <div class="span4">
+<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/3/2/1_-_Check.html">1 - Check</a></li><li><a href="/manuals/2.6.0/3/2/2_-_Sync.html">2 - Sync</a></li><li><a href="/manuals/2.6.0/3/2/3_-_Distro_Signatures.html">3 - Distro Signatures</a></li><li><a href="/manuals/2.6.0/3/2/4_-_Import.html">4 - Import</a></li><li><a href="/manuals/2.6.0/3/2/5_-_Reposync.html">5 - Reposync</a></li><li><a href="/manuals/2.6.0/3/2/6_-_Build_ISO.html">6 - Build ISO</a></li><li><a href="/manuals/2.6.0/3/2/7_-_Command_Line_Search.html">7 - Command Line Search</a></li><li><a href="/manuals/2.6.0/3/2/8_-_Replication.html">8 - Replication</a></li><li><a href="/manuals/2.6.0/3/2/9_-_Validate_Kickstart.html">9 - Validate Kickstart</a></li><li><a href="/manuals/2.6.0/3/2/10_-_ACL_Setup.html">10 - ACL Setup</a></li><li><a href="/manuals/2.6.0/3/2/11_-_Dynamic_Settings.html">11 - Dynamic Settings</a></li><li><a href="/manuals/2.6.0/3/2/12_-_Version.html">12 - Version</a></li></ul></div>
+  </div>
+ </div>
+</div>
 <!-- end content -->
 
 <footer>
