@@ -1,432 +1,155 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="author" content="Cobbler development team" />
+---
+layout: manpage
+title: 2 - FreeBSD
+meta: 2.6.0
+---
 
-   <title>FreeBSD</title>
+The following steps are required to enable FreeBSD support in Cobbler.
 
-   <!-- CSS -->
-   <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
-   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
-   <link rel="stylesheet" type="text/css" href="/css/style.css" />
-   <link rel="stylesheet" type="text/css" href="/css/search.css" />
+You can grab the patches and scripts from the following github repos:
 
-   <!-- Fonts -->
-   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
+<a href="git://github.com/jsabo/cobbler_misc.git">git://github.com/jsabo/cobbler_misc.git</a>
 
-   <!--[if lt IE 9]>
-     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-   <![endif]-->
+This would not be possible without the help from Doug Kilpatrick. Thanks Doug!
 
-   <!-- Icon -->
-   <link rel="icon" type="image/png" href="/images/favicon.png" />
+## Stuff to do once
 
-   <!-- JQuery/Bootstrap/custom scripts -->
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
-   <script type="text/javascript" src="/js/jquery.swiftype.search.js"></script>
-</head>
-<body class="pull_up">
+- Install FreeBSD with full sources
+    -   Select &quot;Standard&quot; installation
+    -   Use entire disk
+    -   Install a standard MBR
+    -   Create a new slice and use the entire disk
+    -   Mount it at /
+    -   Choose the &quot;Developer&quot; distribution
+        -   Full sources, binaries and doc but no games
+- Install from a FreeBSD CD/DVD
+- Setup networking to copy files back and forth
+- In the post install &quot;Package Selection&quot; scroll down and select shells
+    - Install bash
+    - chsh -s /usr/local/bin/bash username or view
+- Rebuild pxeboot with tftp support
 
-<!-- ClickTale Top part -->
-<script type="text/javascript">
-var WRInitTime=(new Date()).getTime();
-</script>
-<!-- ClickTale end of Top part -->
-
-<div class="navbar transparent navbar-inverse navbar-static-top">
- <div class="navbar-inner">
-  <div class="container">
-   <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png" /></a>
-   <div class="nav-collapse collapse">
-    <ul class="nav pull-right">
-     <li><a href="/about.html" title="About"><i class="icon-cloud icon-med"></i> About </a></li>
-     <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Downloads <b class="caret"></b></a>
-       <ul class="dropdown-menu">
-         <li><a href="/downloads/2.8.x.html" title="Cobbler 2.8.x">2.8.x</a></li>
-         <li><a href="/downloads/2.6.x.html" title="Cobbler 2.6.x">2.6.x</a></li>
-         <li><a href="/downloads/2.4.x.html" title="Cobbler 2.4.x">2.4.x</a></li>
-       </ul>
-     </li>
-     <li><a href="/blog/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
-     <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-question-sign icon-med"></i> Manuals <b class="caret"></b></a>
-       <ul class="dropdown-menu">
-         <li><a href="/manuals/quickstart/" title="Quickstart Guide">Quickstart Guide</a></li>
-         <li><a href="/manuals/2.8.0/" title="Version 2.8.x">User Manual 2.8.x</a></li>
-         <li><a href="/manuals/2.6.0/" title="Version 2.6.x">User Manual 2.6.x</a></li>
-         <li><a href="/manuals/2.4.0/" title="Version 2.4.x">User Manual 2.4.x</a></li>
-         <li><a href="/manuals/developer/" title="Developer Guide">Developer Guide</a></li>
-       </ul>
-     </li>
-     <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i> Community <b class="caret"></b></a>
-       <ul class="dropdown-menu">
-         <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
-         <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
-         <li><a href="/users.html" title="Cobbler Users">Who's Using Cobbler</a></li>
-       </ul>
-     </li>
-     <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i> Github <b class="caret"></b></a>
-       <ul class="dropdown-menu">
-        <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main Repo</a></li>
-        <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue Tracker</a></li>
-        <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a></li>
-       </ul>
-     </li>
-     <li>
-      <form class="pull-right">
-       <input type="text" id="st-search-input" class="st-search-input" />
-      </form>
-     </li>
-    </ul>
-    <!-- <div id="st-results-container"></div> -->
-    <script type="text/javascript">
-      var Swiftype = window.Swiftype || {};
-      (function() {
-        Swiftype.key = 'ybEhsDqz2mEFrMtBHiwB';
-        Swiftype.inputElement = '#st-search-input';
-        Swiftype.resultContainingElement = '#st-results-container';
-        Swiftype.attachElement = '#st-search-input';
-        Swiftype.renderStyle = "new_page";
-        Swiftype.resultPageURL = '/search.html';
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.async = true;
-        script.src = "//swiftype.com/embed.js";
-        var entry = document.getElementsByTagName('script')[0];
-        entry.parentNode.insertBefore(script, entry);
-      }());
-    </script>
-   </div>
-   <!--
-   <form class="navbar-search pull-right" onsubmit="return false;">
-    <input id="searchbox" type="text" class="search-query" placeholder="Search Manuals" />
-   </form>
-   -->
-  </div>
- </div>
-</div>
-
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1_-_About_Cobbler.html">1</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/1/3_-_Distribution_Notes.html">3</a> <span class="divider">/</span></li><li class="active">FreeBSD</li></ul>
-   <h1>FreeBSD</h1>
-<p>The following steps are required to enable FreeBSD support in Cobbler.</p>
-
-<p>You can grab the patches and scripts from the following github repos:</p>
-
-<p><a href="git://github.com/jsabo/cobbler_misc.git">git://github.com/jsabo/cobbler_misc.git</a></p>
-
-<p>This would not be possible without the help from Doug Kilpatrick. Thanks Doug!</p>
-
-<h3>Stuff to do once</h3>
-
-<ul>
-<li>Install FreeBSD with full sources</li>
-</ul>
-
-
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">-   Select &quot;Standard&quot; installation
--   Use entire disk
--   Install a standard MBR
--   Create a new slice and use the entire disk
--   Mount it at /
--   Choose the &quot;Developer&quot; distribution
-    -   Full sources, binaries and doc but no games</p>
-
-<ul>
-<li>Install from a FreeBSD CD/DVD</li>
-<li>Setup networking to copy files back and forth</li>
-<li><p>In the post install &quot;Package Selection&quot; scroll down and select
-shells</p>
-
-<ul>
-<li>Install bash</li>
-<li>chsh -s /usr/local/bin/bash username or vipw</code></pre></figure></li>
-</ul>
-</li>
-<li><p>Rebuild pxeboot with tftp support</p></li>
-</ul>
-
-
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /sys/boot
+````bash
+cd /sys/boot
 make clean
 make LOADER_TFTP_SUPPORT=yes
-make install</code></pre></figure></p>
+make install
+````
 
-<ul>
-<li>Copy the pxeboot file to the Cobbler server.</li>
-</ul>
+- Copy the pxeboot file to the Cobbler server.
 
+## Stuff to do every supported release
 
-<h3>Stuff to do every supported release</h3>
-
-<ul>
-<li><p>Patch sysinstall with http install support</p></li>
-<li><p>The media location is hard coded in this patch and has to be
-updated every release. Just look for 8.X and change it.</p></li>
-</ul>
+- Patch sysinstall with http install support
+- The media location is hard coded in this patch and has to be updated every release. Just look for 8.X and change it.
 
 
-<p>The standard sysinstall doesn't really support HTTP. This patch
-adds full http support to sysinstall.</p>
+The standard sysinstall doesn't really support HTTP. This patch adds full http support to sysinstall.
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /usr
-patch -p0 &lt; /root/http_install.patch</code></pre></figure></p>
+````bash
+cd /usr
+patch -p0 &lt; /root/http_install.patch
+````
 
-<ul>
-<li>Rebuild FreeBSD mfsroot</li>
-</ul>
+- Rebuild FreeBSD mfsroot
 
 
-<p>We'll use "crunchgen" to create the contents of /stand in a ramdisk
-image. Crunchgen creates a single statically linked binary that
-acts like different normal binaries depending on how it's called.
-We need to include "fetch" and a few other binaries. This is a
-multi step process.</p>
+We'll use "crunchgen" to create the contents of /stand in a ramdisk image. Crunchgen creates a single statically linked
+binary that acts like different normal binaries depending on how it's called. We need to include "fetch" and a few other
+binaries. This is a multi step process.
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /tmp/bootcrunch
+````bash
+mkdir /tmp/bootcrunch
 cd /tmp/bootcrunch
 crunchgen -o /root/boot_crunch.conf
-make -f boot_crunch.mk</code></pre></figure></p>
+make -f boot_crunch.mk
+````
 
-<p>Once we've added our additional binaries we need to create a larger ramdisk.</p>
+Once we've added our additional binaries we need to create a larger ramdisk.
 
-<ul>
-<li>Create a new, larger ramdisk, and mount it.</li>
-</ul>
+- Create a new, larger ramdisk, and mount it.
 
+````bash
+dd if=/dev/zero of=/tmp/mfsroot bs=1024 count=$((1024 * 5))
+dev0=<code>mdconfig -f /tmp/mfsroot</code>;newfs $dev0;mkdir /mnt/mfsroot_new;mount /dev/$dev0 /mnt/mfsroot_new
+````
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">dd if=/dev/zero of=/tmp/mfsroot bs=1024 count=$((1024 * 5))
-dev0=<code>mdconfig -f /tmp/mfsroot</code>;newfs $dev0;mkdir /mnt/mfsroot_new;mount /dev/$dev0 /mnt/mfsroot_new</code></pre></figure></p>
+- Mount the standard installer's mfsroot
 
-<ul>
-<li>Mount the standard installer's mfsroot</li>
-</ul>
-
-
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir /mnt/cdrom; mount -t cd9660 -o -e /dev/acd0 /mnt/cdrom
+````bash
+mkdir /mnt/cdrom; mount -t cd9660 -o -e /dev/acd0 /mnt/cdrom
 cp /mnt/cdrom/boot/mfsroot.gz /tmp/mfsroot.old.gz
 gzip -d /tmp/mfsroot.old.gz; dev1=<code>mdconfig -f /tmp/mfsroot.old</code>
-mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old</code></pre></figure></p>
+mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old
+````
 
-<p>Copy everything from the old one to the new one. You'll be
-replacing the binaries, but it's simpler to just copy it all over.</p>
+Copy everything from the old one to the new one. You'll be replacing the binaries, but it's simpler to just copy it all over.
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">(cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)</code></pre></figure></p>
+````bash
+(cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)
+````
 
-<p>Next copy over the new bootcrunch file and create all of the
-symlinks after removing the old binaries.</p>
+Next copy over the new bootcrunch file and create all of the symlinks after removing the old binaries.
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cd /mnt/mfsroot_new/stand; rm -- *; cp /tmp/bootcrunch/boot_crunch ./
-for i in $(./boot_crunch 2&gt;&amp;1|grep -v usage);do if [ &quot;$i&quot; != &quot;boot_crunch&quot; ];then rm -f ./&quot;$i&quot;;ln ./boot_crunch &quot;$i&quot;;fi;done</code></pre></figure></p>
+````bash
+cd /mnt/mfsroot_new/stand; rm -- *; cp /tmp/bootcrunch/boot_crunch ./
+for i in $(./boot_crunch 2&gt;&amp;1|grep -v usage);do if [ "$i" != "boot_crunch" ];then rm -f ./"$i";ln ./boot_crunch "$i";fi;done
+````
 
-<p>Sysinstall uses install.cfg to start the install off. We've created
-a version of the install.cfg that uses fetch to pull down another
-configuration file from the Cobbler server which allows us to
-dynamically control the install. install.cfg uses a script called
-"doconfig.sh" to determine where the Cobbler installer is via the
-DHCP next-server field.</p>
+Sysinstall uses install.cfg to start the install off. We've created a version of the install.cfg that uses fetch to pull
+down another configuration file from the Cobbler server which allows us to dynamically control the install. install.cfg
+uses a script called "doconfig.sh" to determine where the Cobbler installer is via the DHCP next-server field.
 
-<p>Copy both install.cfg and doconfig.sh into place.</p>
+Copy both install.cfg and doconfig.sh into place.
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cp {install.cfg,doconfig.sh} /mnt/mfsroot_new/stand</code></pre></figure></p>
+````bash
+cp {install.cfg,doconfig.sh} /mnt/mfsroot_new/stand
+````
 
-<p>Now just unmount the ramdisk and compress the file</p>
+Now just unmount the ramdisk and compress the file
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">umount /mnt/mfsroot_new; umount /mnt/mfsroot_old
+````
+umount /mnt/mfsroot_new; umount /mnt/mfsroot_old
 mdconfig -d -u $dev0; mdconfig -d -u $dev1
-gzip /tmp/mfsroot</code></pre></figure></p>
+gzip /tmp/mfsroot
+````
 
-<p>Copy the mfsroot.gz to the Cobbler server.</p>
+Copy the mfsroot.gz to the Cobbler server.
 
-<h3>Stuff to do in Cobbler</h3>
+## Stuff to do in Cobbler
 
-<ul>
-<li>Enable Cobbler's tftp server in modules.conf</li>
-</ul>
-
-
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">[tftpd]
-module = manage_tftpd_py</code></pre></figure></p>
-
-<ul>
-<li>Mount the media</li>
-</ul>
+- Enable Cobbler's tftp server in modules.conf
 
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">mount /dev/cdrom /mnt</code></pre></figure></p>
+````
+[tftpd]
+module = manage_tftpd_py
+````
 
-<ul>
-<li>Import the distro</li>
-</ul>
+Mount the media
 
+````bash
+mount /dev/cdrom /mnt
+````
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64</code></pre></figure></p>
+- Import the distro
 
-<ul>
-<li>Copy the mfsroot.gz and the pxeboot.bs into the distro</li>
-</ul>
+````bash
+cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64
+````
 
-
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">cp pxeboot.bs /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
-cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/</code></pre></figure></p>
-
-<ul>
-<li>Configure a system to use the profile, turn on netboot, and off you go.</li>
-</ul>
+- Copy the mfsroot.gz and the pxeboot.bs into the distro
 
 
-<p>DHCP will tell the system to request pxelinux.0, so it will.  Pxelinux will request it's configuration file, which will have pxeboot.bs as the "kernel". Pxelinux will request pxeboot.bs, use the extention (.bs) to realize it's another boot loader, and chain to it. Pxeboot will then request all the .rc, .4th, the kernel, and mfsroot.gz. It will mount the ramdisk and start the installer. The installer will connect back to the Cobbler server to fetch the install.cfg (the kickstart file), and do the install as instructed, rebooting at the end.</p>
+````bash
+cp pxeboot.bs /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
+cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
+````
 
-     <hr>
-     <div id="disqus_thread"></div>
-     <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'cobbler'; // required: replace example with your forum shortname
-        var disqus_identifier = '';
+- Configure a system to use the profile, turn on netboot, and off you go.
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-     </script>
-     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
-  </div>
-  <div class="span4">
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/1/3/1_-_Nexenta.html">1 - Nexenta</a></li><li><a href="/manuals/2.6.0/1/3/2_-_FreeBSD.html">2 - FreeBSD</a></li></ul></div>
-  </div>
- </div>
-</div>
-<!-- end content -->
-
-<footer>
-  <div class="container">
-    <div class="row-fluid sections">
-      <div class="span6 footmenu">
-       <div class="row-fluid">
-        <div class="span3 sitemap">
-         <ul class="nav nav-list">
-          <li class="nav-header">Pages</li>
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog/">Blog Posts</a></li>
-          <li><a href="/about.html">About Cobbler</a></li>
-         </ul>
-        </div>
-        <div class="span2 sitemap">
-         <ul class="nav nav-list">
-          <li class="nav-header">Manuals</li>
-          <li><a href="/manuals/quickstart/">Quickstart</a></li>
-          <li><a href="/manuals/2.8.0/">2.8.x</a></li>
-          <li><a href="/manuals/2.6.0/">2.6.x</a></li>
-          <li><a href="/manuals/developer/">Developer</a></li>
-         </ul>
-        </div>
-        <div class="span3 sitemap">
-         <ul class="nav nav-list">
-          <li class="nav-header">Community</li>
-          <li><a href="/community.html">How to Get Help</a></li>
-          <li><a href="/supporters.html">Supporters</a></li>
-          <li><a href="/users.html">Who's Using Cobbler</a></li>
-         </ul>
-        </div>
-        <div class="span4 sitemap">
-         <ul class="nav nav-list">
-          <li class="nav-header">Github</li>
-          <li><a href="https://github.com/cobbler/cobbler">Code Repository</a></li>
-          <li><a href="https://github.com/cobbler/cobbler/issues">Issue Tracker</a></li>
-          <li><a href="https://github.com/cobbler/cobbler/wiki">Wiki</a></li>
-         </ul>
-        </div>
-       </div>
-    <div class="row-fluid">
-    </div>
-    <div class="row-fluid">
-     <p class="ending">Best viewed in anything but Internet Explorer&#0153; Seriously, please consider switching.</p>
-     <p class="browsers">
-      <a href="https://www.mozilla.org/en-US/firefox/new/"><i class="icon-firefox icon-2x"></i></a>
-      <a href="https://www.google.com/intl/en/chrome/browser/"><i class="icon-chrome icon-2x"></i></a>
-      <a href="http://www.opera.com/"><i class="icon-opera icon-2x"></i></a>
-      <a href="http://www.apple.com/safari/"><i class="icon-safari icon-2x"></i></a>
-     </p>
-    </div>
-      </div>
-      <div class="span3 posts">
-        <p class="column_header">Recent Posts:</p>
-
-        <div class="post">
-          <p class="title"><a href="/blog/2018/11/23/cobbler_2.8.4_released.md">Cobbler 2.8.4 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, November 23, 2018</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/blog/2018/05/04/cobbler_2.8.3_released.md">Cobbler 2.8.3 Released</a></p>
-          <p class="author">Posted by Jörgen on Friday, May 04, 2018</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/blog/2017/09/16/cobbler_2.8.2_released.html">Cobbler 2.8.2 Released</a></p>
-          <p class="author">Posted by Jörgen on Saturday, September 16, 2017</p>
-        </div>
-
-        <div class="post">
-          <p class="title"><a href="/blog/2017/05/24/cobbler_2.8.1_released.html">Cobbler 2.8.1 Released</a></p>
-          <p class="author">Posted by Jörgen on Wednesday, May 24, 2017</p>
-        </div>
-
-      </div>
-      <div class="span3 credits">
-        <div class="social">
-          <a href="https://twitter.com/cobblerproject" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true" data-width="100%">Follow @cobblerproject</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </div>
-        <div class="attributions">
-          <p class="column_header">Attributions:</p>
-          <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
-          <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
-        </div>
-        <div class="copyright">
-          <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
-          <script>$("#copyyear").text((new Date).getFullYear());</script>
-        </div>
-      </div>            
-    </div>
-  </div>
-</footer>
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-27319020-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-<!-- Google Analytics end -->
-
-</body>
-</html>
-
+DHCP will tell the system to request pxelinux.0, so it will.  Pxelinux will request it's configuration file, which will
+have pxeboot.bs as the "kernel". Pxelinux will request pxeboot.bs, use the extention (.bs) to realize it's another boot
+loader, and chain to it. Pxeboot will then request all the .rc, .4th, the kernel, and mfsroot.gz. It will mount the
+ramdisk and start the installer. The installer will connect back to the Cobbler server to fetch the install.cfg (the
+kickstart file), and do the install as instructed, rebooting at the end.
