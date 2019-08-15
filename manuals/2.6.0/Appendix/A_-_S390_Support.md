@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: S390 Support
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
 <h3>Introduction</h3>
 
 <p>Cobbler includes support for provisioning Linux on virtualized guests under z/VM, the System z hypervisor.</p>

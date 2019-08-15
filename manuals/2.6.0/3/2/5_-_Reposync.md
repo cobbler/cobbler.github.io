@@ -1,12 +1,16 @@
+---
+layout: manpage
+title: Reposync
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Reposync</li></ul>
-   <h1>Reposync</h1>
-<p>Yum repository management is an optional feature, and is not required to provision through cobbler.  However, if cobbler is configured to mirror certain repositories, it can then be used to associate profiles with those repositories.  Systems installed under those profiles will then be autoconfigured to use these repository mirrors in <code>/etc/yum.repos.d</code>, and if supported (Fedora Core 6 and later) these repositories can be leveraged even within Anaconda.  This can be useful if (A) you have a large install base, (B) you want fast installation and upgrades for your systems, or (C) have some extra software not in a standard repository but want provisioned systems to know about that repository.</p>
+Yum repository management is an optional feature, and is not required to provision through cobbler.  However, if cobbler
+is configured to mirror certain repositories, it can then be used to associate profiles with those repositories. Systems
+installed under those profiles will then be autoconfigured to use these repository mirrors in
+<code>/etc/yum.repos.d</code>, and if supported (Fedora Core 6 and later) these repositories can be leveraged even
+within Anaconda.  This can be useful if (A) you have a large install base, (B) you want fast installation and upgrades
+for your systems, or (C) have some extra software not in a standard repository but want provisioned systems to know
+about that repository.
 
 <p>Make sure there is plenty of space in cobbler’s webdir, which defaults to <code>/var/www/cobbler</code>.</p>
 

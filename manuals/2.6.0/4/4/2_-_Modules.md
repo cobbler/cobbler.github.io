@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Modules
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/4_-_Extending_Cobbler.html">4</a> <span class="divider">/</span></li><li class="active">Modules</li></ul>
-   <h1>Modules</h1>
 <p>Certain cobbler features can be user extended (in Python) by Cobbler users.</p>
 
 <p>These features include storage of data (serialization), authorization, and authentication. Over time, this list of module types will grow to support more options.  <a href="Triggers">Triggers</a> are basically modules.</p>

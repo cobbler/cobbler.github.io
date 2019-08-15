@@ -1,11 +1,8 @@
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Cobbler Import</li></ul>
-   <h1>Cobbler Import</h1>
+---
+layout: manpage
+title: Cobbler Import
+meta: 2.6.0
+---
 <p>The purpose of "cobbler import" is to  set up a network install server for one or more distributions. This mirrors content based on a DVD image, an ISO file, a tree on a mounted filesystem, an external rsync mirror or SSH location.</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler import --path=/path/to/distro --name=F12</code></pre></figure></p>

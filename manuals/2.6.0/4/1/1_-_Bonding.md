@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Advanced Networking - Bonding
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">1</a> <span class="divider">/</span></li><li class="active">Advanced Networking - Bonding</li></ul>
-   <h1>Advanced Networking - Bonding</h1>
 <p>Bonding is also known as trunking, or teaming. Different vendors use different names. It's used to join multiple physical interfaces to one logical interface, for redundancy and/or performance.</p>
 
 <p>You can set up a bond, to join interfaces eth0 and eth1 to a failover (active-backup) interface bond0 as follows:</p>

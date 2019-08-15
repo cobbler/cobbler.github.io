@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Func Integration
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">3</a> <span class="divider">/</span></li><li class="active">Func Integration</li></ul>
-   <h1>Func Integration</h1>
 <p>Func is a neat tool, (which, in full disclosure, Michael had a part
 in creating). Read all about it at
 <a href="https://fedorahosted.org/func">https://fedorahosted.org/func</a></p>

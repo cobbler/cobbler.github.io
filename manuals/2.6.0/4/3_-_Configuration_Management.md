@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Configuration Management
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Configuration Management</li></ul>
-   <h1>Configuration Management</h1>
 <p>The initial provisioning of client systems with cobbler is just one component of their management. We also need to consider how to continue to manage them using a configuration management system (CMS). Cobbler can help you provision and introduce a CMS onto your client systems.</p>
 
 <p>One option is cobbler's own lightweight CMS.  For that, see the document <a href="Built%20in%20configuration%20management">Built in configuration management</a>.</p>

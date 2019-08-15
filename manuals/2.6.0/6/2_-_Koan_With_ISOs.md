@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Koan with ISOs
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/6_-_Koan.html">6</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
 <p>While most of cobbler installing is about enabling scripted network
 installation, can also define image objects which track ISOs that
 koan can find and see. Currently this only works when using koan

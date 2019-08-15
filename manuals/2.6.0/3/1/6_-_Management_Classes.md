@@ -1,12 +1,8 @@
-
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">Management Classes</li></ul>
-   <h1>Management Classes</h1>
+---
+layout: manpage
+title: Management Classes
+meta: 2.6.0
+---
 <p>Management classes allow cobbler to function as a configuration management system.  The lego blocks of configuration management, resources are grouped together via Management Classes and linked to a system. Cobbler supports two (2) resource types, which are configured in the order listed below:</p>
 
 <ol>

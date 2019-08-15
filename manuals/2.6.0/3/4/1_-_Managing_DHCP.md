@@ -1,12 +1,9 @@
+---
+layout: manpage
+title: Managing DHCP
+meta: 2.6.0
+---
 
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.html">4</a> <span class="divider">/</span></li><li class="active">Managing DHCP</li></ul>
-   <h1>Managing DHCP</h1>
 <p>You may want cobbler to manage the DHCP entries of its client systems. It currently supports either ISC DHCP or dnsmasq (which, despite the name, supports DHCP). Cobbler can also be used to manage your DNS configuration (see <a href="/manuals/2.6.0/3/4/2_-_Managing_DNS.html">Managing DNS</a> for more details).</p>
 
 <p>To use ISC, your <code>/etc/cobbler/modules.conf</code> should contain:</p>

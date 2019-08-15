@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Triggers
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/4_-_Extending_Cobbler.html">4</a> <span class="divider">/</span></li><li class="active">Triggers</li></ul>
-   <h1>Triggers</h1>
 <h2>About</h2>
 
 <p>Cobbler triggers provide a way to tie user-defined actions to

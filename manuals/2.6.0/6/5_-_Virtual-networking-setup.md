@@ -1,13 +1,8 @@
-
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/6_-_Koan.html">6</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h3>Notice</h3>
+---
+layout: manpage
+title: Virtual Networking setup
+meta: 2.6.0
+---
 
 <p>For Xen and qemu/KVM virtual machines to be able to get outside access they will need to have a virtual bridge configured on the virtual host.   (If you're using VMware this page won't apply to you)</p>
 

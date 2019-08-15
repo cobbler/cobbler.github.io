@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: System retirement
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">System retirement</li></ul>
-   <h1>System retirement</h1>
 <h2>Using DBAN with Cobbler to automate system retirement</h2>
 
 <h3>Introduction</h3>

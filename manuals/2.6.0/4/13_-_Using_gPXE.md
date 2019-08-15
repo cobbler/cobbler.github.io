@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Using gPXE
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Using gPXE</li></ul>
-   <h1>Using gPXE</h1>
 <p>Support for gPXE (and by extension, iPXE) was added in 2.2.3 for booting ESXi5 installations, however it can be used for other installations as well.</p>
 
 <div class="alert alert-info alert-block"><b>Note:</b> gPXE/iPXE support is still somewhat experimental, so use it only when required.</div>

@@ -1,12 +1,8 @@
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/6_-_Koan.html">6</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h2>Virtualization With Koan</h2>
+---
+layout: manpage
+title: Virtualization With Koan
+meta: 2.6.0
+---
 
 <p>The main feature of koan is contact the cobbler server, learn about a configuration from Cobbler, and make that virtualized installation happen.  One other feature is [KoanDoesReinstall reinstallation of existing systems] but perhaps the more important one is how to do virtualized installs.</p>
 

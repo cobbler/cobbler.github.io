@@ -1,12 +1,9 @@
+---
+layout: manpage
+title: File Resources
+meta: 2.6.0
+---
 
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">File Resources</li></ul>
-   <h1>File Resources</h1>
 <p>File resources are managed using cobbler file add, allowing you to create and delete files on a system.</p>
 
 <h2>Actions</h2>

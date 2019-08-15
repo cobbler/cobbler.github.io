@@ -1,12 +1,8 @@
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/6_-_Koan.html">6</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h3>Koan</h3>
+---
+layout: manpage
+title: Koan
+meta: 2.6.0
+---
 
 <p>perhaps it stands for "kickstart over a network", koan is a helper client side helper for cobbler.  It's kind of a play on "Xen" too.</p>
 

@@ -1,12 +1,12 @@
+---
+layout: manpage
+title: Managing DNS
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.html">4</a> <span class="divider">/</span></li><li class="active">Managing DNS</li></ul>
-   <h1>Managing DNS</h1>
-<p>You may want cobbler to manage the DNS entries of its client systems.  Cobbler can do so automatically by using templates.  It currently supports either dnsmasq (which also provides DHCP) or BIND. Cobbler also has the ability to handle <a href="DHCP%20Management">DHCP Management</a>.</p>
+You may want cobbler to manage the DNS entries of its client systems. Cobbler can do so automatically by using
+templates. It currently supports either dnsmasq (which also provides DHCP) or BIND. Cobbler also has the ability to
+handle <a href="DHCP%20Management">DHCP Management</a>.
 
 <p>To use BIND, your <code>/etc/cobbler/modules.conf</code> should contain:</p>
 

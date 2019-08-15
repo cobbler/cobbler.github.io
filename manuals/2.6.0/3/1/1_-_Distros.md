@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Distros
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">Distros</li></ul>
-   <h1>Distros</h1>
 <p>The first step towards installing systems with Cobbler is to add a distribution record to cobbler’s configuration.</p>
 
 <p>The distro command has the following sub-commands:</p>

@@ -1,18 +1,18 @@
+---
+layout: manpage
+title: Hints and tips - Redhat
+meta: 2.6.0
+---
 
-<!-- begin content -->
+A collection of tips for using Cobbler to deploy and support Redhat-based machines, including CentOS, Fedora, 
+Scientific Linux, etc.
 
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/7_-_Troubleshooting.html">7</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h1>Hints and tips: Redhat</h1>
+## Rescue mode
 
-<p>A collection of tips for using Cobbler to deploy and support Redhat-based machines, including CentOS, Fedora, Scientific Linux, etc.</p>
-
-<h2>rescue mode</h2>
-
-<p>Redhat-based systems offer a "rescue" mode, typically used for trying to analyse and recover after a major OS problem.  The usual way of doing this is booting from a DVD and selecting "rescue" mode at the relevant point.  But it is also possible to do this via Cobbler.  Indeed, if the machine lacks a DVD drive, alternatives such as this are vital for attempted rescue operations.</p>
+Redhat-based systems offer a "rescue" mode, typically used for trying to analyse and recover after a major OS problem. 
+The usual way of doing this is booting from a DVD and selecting "rescue" mode at the relevant point. But it is also
+possible to do this via Cobbler.  Indeed, if the machine lacks a DVD drive, alternatives such as this are vital for
+attempted rescue operations.
 
 <p><strong>RISK:</strong>  <em>Because you are using this Cobbler deployment system that usually installs machines, there is the risk that this procedure could overwrite the very machine you are attempting to rescue.  So it is strongly recommended that, as part of your normal workflow, you develop and periodically verify this procedure in a safe, non-production, non-emergency environment.</em></p>
 

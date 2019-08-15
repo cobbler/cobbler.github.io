@@ -1,12 +1,9 @@
+---
+layout: manpage
+title: Multi-Homed Cobbler Servers
+meta: 2.6.0
+---
 
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Multi-Homed Cobbler Servers</li></ul>
-   <h1>Multi-Homed Cobbler Servers</h1>
 <p>How do you use Cobbler to provision machines onto multiple
 different subnets, assuming no DNS tricks can be employed, and
 where the server to provision the systems has different addresses

@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Locking Down Cobbler
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5</a> <span class="divider">/</span></li><li class="active">Locking Down Cobbler</li></ul>
-   <h1>Locking Down Cobbler</h1>
 <p>If you want to enable the
 <a href="Cobbler%20web%20interface">Cobbler web interface</a> for a lot
 of users, and don't trust all of them to know what they are doing

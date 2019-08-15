@@ -1,12 +1,8 @@
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/6_-_Koan.html">6</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h1>VMWare support for koan</h1>
+---
+layout: manpage
+title: VMWare support for koan
+meta: 2.6.0
+---
 
 <p>One goal of Cobbler is to abstract out all your installation types.  Basically the idea is create a profile one, use it for PXE, reinstallations (--replace-self) and virtualized machines all at once.</p>
 

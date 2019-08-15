@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Memtest
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Memtest</li></ul>
-   <h1>Memtest</h1>
 <p>If installed, cobbler will put an entry into all of your PXE menus
 allowing you to run memtest on physical systems without making
 changes in Cobbler. This can be handy for some simple diagnostics.</p>

@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Security Overview
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5</a> <span class="divider">/</span></li><li class="active">Security Overview</li></ul>
-   <h1>Security Overview</h1>
 <p>This section provides an overview of Cobbler's security model for the Web UI.</p>
 
 <h2>Why Customizable Security?</h2>

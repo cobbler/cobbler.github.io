@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Built-In Configuration Management
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">3</a> <span class="divider">/</span></li><li class="active">Built-In Configuration Management</li></ul>
-   <h1>Built-In Configuration Management</h1>
 <p>Cobbler is not just an installation server, it can also enable two different types of ongoing configuration management system (CMS):</p>
 
 <ul>

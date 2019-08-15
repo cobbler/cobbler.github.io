@@ -1,12 +1,8 @@
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h2>Batch Editing</h2>
+---
+layout: manpage
+title: Batch Editing
+meta: 2.6.0
+---
 
 <p>Do you want to apply a change to a lot of cobbler objects at once?</p>
 

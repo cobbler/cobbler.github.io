@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Web Authentication
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5</a> <span class="divider">/</span></li><li class="active">Web Authentication</li></ul>
-   <h1>Web Authentication</h1>
 <p>Authentication controls who has access to your cobbler server. Controlling the details of what they can subsequently do is covered by a second step, <a href="Web%20Authorization">Web Authorization</a>.</p>
 
 <p>Authentication is governed by a setting in the <code>[authentication]</code> section of <code>/etc/cobbler/modules.conf</code>, whose options are as follows:</p>

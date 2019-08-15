@@ -1,12 +1,8 @@
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h1>Power PC support</h1>
+---
+layout: manpage
+title: Power PC support
+meta: 2.6.0
+---
 
 <p>Cobbler includes support for provisioning Linux on PowerPC systems.
 This document will address how cobbler PowerPC support differs from

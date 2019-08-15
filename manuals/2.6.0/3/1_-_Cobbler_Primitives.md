@@ -1,10 +1,9 @@
-<!-- begin content -->
+---
+layout: manpage
+title: Cobbler Primitives
+meta: 2.6.0
+---
 
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li class="active">Cobbler Primitives</li></ul>
-   <h1>Cobbler Primitives</h1>
 <p>Primitives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section of the <a href="/manuals/2.6.0/1_-_About_Cobbler.html">Introduction to Cobbler</a> page. These objects are generally loosely related, though the distro/profile/system relation is somewhat more strict.</p>
 
 <p>This section covers the creation and use of these objects, as well as how they relate to each other - including the methodology by which attributes are inherited from parent objects.</p>

@@ -1,14 +1,18 @@
+---
+layout: manpage
+title: Cobbler Sync
+meta: 2.6.0
+---
 
-<!-- begin content -->
+The sync command is very important, though very often unnecessary for most situations. It's primary purpose is to force
+a rewrite of all configuration files, distribution files in the TFTP root, and to restart managed services. So why is it
+unnecessary? Because in most common situations (after an object is edited, for example), Cobbler executes what is known
+as a "lite sync" which rewrites most critical files.
 
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Cobbler Sync</li></ul>
-   <h1>Cobbler Sync</h1>
-<p>The sync command is very important, though very often unnecessary for most situations. It's primary purpose is to force a rewrite of all configuration files, distribution files in the TFTP root, and to restart managed services. So why is it unnecessary? Because in most common situations (after an object is edited, for example), Cobbler executes what is known as a "lite sync" which rewrites most critical files.</p>
-
-<p>When is a full sync required? When you are using manage_dhcpd (<a href="/manuals/2.6.0/3/4/1_-_Managing_DHCP.html">Managing DHCP</a>) with systems that use static leases. In that case, a full sync is required to rewrite the dhcpd.conf file and to restart the dhcpd service. Adding support for OMAPI is on the roadmap, which will hopefully relegate full syncs to troubleshooting situations.</p>
+When is a full sync required? When you are using manage_dhcpd
+(<a href="/manuals/2.6.0/3/4/1_-_Managing_DHCP.html">Managing DHCP</a>) with systems that use static leases. In that
+case, a full sync is required to rewrite the dhcpd.conf file and to restart the dhcpd service. Adding support for OMAPI
+is on the roadmap, which will hopefully relegate full syncs to troubleshooting situations.
 
 <p><strong>Example:</strong></p>
 

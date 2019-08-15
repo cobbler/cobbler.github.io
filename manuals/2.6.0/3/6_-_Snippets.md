@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Snippets
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li class="active">Snippets</li></ul>
-   <h1>Snippets</h1>
 <p>Snippets are a way of reusing common blocks of code between kickstarts (though this also works on files other than kickstart templates, but that's a sidenote). For instance, the default Cobbler installation has a snippet called "$SNIPPET('func_register_if_enabled')" that can help set up the application called Func (<a href="http://fedorahosted.org/func">http://fedorahosted.org/func</a>).</p>
 
 <p>This means that every time that this SNIPPET text appears in a kickstart file it is replaced by the contents of <code>/var/lib/cobbler/snippets/func_register_if_enabled</code>. This allows this block of text to be reused in every kickstart template -- you may think of snippets, if you like, as templates for templates!</p>

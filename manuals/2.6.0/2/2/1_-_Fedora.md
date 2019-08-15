@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Fedora
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/2_-_Installing_Cobbler.html">2</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/2/2_-_Installing_From_Packages.html">2</a> <span class="divider">/</span></li><li class="active">Fedora</li></ul>
-   <h1>Fedora</h1>
 <p>Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the yum command:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install cobbler</code></pre></figure></p>

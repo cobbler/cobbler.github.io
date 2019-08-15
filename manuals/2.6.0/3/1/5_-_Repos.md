@@ -1,13 +1,14 @@
+---
+layout: manpage
+title: Repos
+meta: 2.6.0
+---
 
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">Repos</li></ul>
-   <h1>Repos</h1>
-<p>Repository mirroring allows cobbler to mirror not only install trees ("cobbler import" does this for you) but also optional packages, 3rd party content, and even updates.   Mirroring all of this content locally on your network will result in faster, more up-to-date installations and faster updates.  If you are only provisioning a home setup, this will probably be overkill, though it can be very useful for larger setups (labs, datacenters, etc).  For information on how to keep your mirror up-to-date, see <a href="/manuals/2.6.0/3/2/5_-_Reposync.html">Reposync</a>.</p>
+Repository mirroring allows cobbler to mirror not only install trees ("cobbler import" does this for you) but also
+optional packages, 3rd party content, and even updates. Mirroring all of this content locally on your network will
+result in faster, more up-to-date installations and faster updates.  If you are only provisioning a home setup, this
+will probably be overkill, though it can be very useful for larger setups (labs, datacenters, etc).  For information on
+how to keep your mirror up-to-date, see <a href="/manuals/2.6.0/3/2/5_-_Reposync.html">Reposync</a>.
 
 <h4>Example:</h4>
 

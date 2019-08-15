@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: LDAP Authentication
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/5/2_-_Web_Authentication.html">2</a> <span class="divider">/</span></li><li class="active">LDAP Authentication</li></ul>
-   <h1>LDAP Authentication</h1>
 <p>By default, the Cobbler WebUI and Web services authenticate against
 a digest file. All users in the digest file are "in". What if you
 want to authenticate against an external resource? Cobbler can do

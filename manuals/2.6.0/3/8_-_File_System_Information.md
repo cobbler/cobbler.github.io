@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: File System Information
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li class="active">File System Information</li></ul>
-   <h1>File System Information</h1>
 <p>A typical Cobbler install looks something as follows. Note that in general Cobbler manages its own directories. Editing templates and configuration files is intended. Deleting directories will result in very loud alarms. Please do not ask for help if you decide to delete core directories or move them around.</p>
 
 <p>See <a href="/manuals/2.6.0/2/5_-_Relocating_Your_Installation.html">Relocating Your Installation</a> if you have space problems.</p>

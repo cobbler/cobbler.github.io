@@ -1,14 +1,15 @@
+---
+layout: manpage
+title: Profiles & Sub-Profiles
+meta: 2.6.0
+---
 
-<!-- begin content -->
+A profile associates a distribution to additional specialized options, such as a kickstart automation file. Profiles are
+the core unit of provisioning and at least one profile must exist for every distribution to be provisioned. A profile
+might represent, for instance, a web server or desktop configuration. In this way, profiles define a role to be
+performed.
 
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">Profiles & Sub-Profiles</li></ul>
-   <h1>Profiles & Sub-Profiles</h1>
-<p>A profile associates a distribution to additional specialized options, such as a kickstart automation file. Profiles are the core unit of provisioning and at least one profile must exist for every distribution to be provisioned. A profile might represent, for instance, a web server or desktop configuration. In this way, profiles define a role to be performed.</p>
-
-<p>The profile command has the following sub-commands:</p>
+The profile command has the following sub-commands:
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler profile --help</p>
 

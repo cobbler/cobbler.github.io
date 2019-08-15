@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Clonezilla integration
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Clonezilla integration</li></ul>
-   <h1>Clonezilla integration</h1>
 <p>Since many of us need to support non-linux systems in addition to
 Linux systems, some facility for support of these systems is
 helpful - especially if your dhcp server is pointing pxe boots to

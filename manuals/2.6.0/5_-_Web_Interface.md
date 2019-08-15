@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Cobbler Web User Interface
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li class="active">Cobbler Web User Interface</li></ul>
-   <h1>Cobbler Web User Interface</h1>
 <p>This section of the manual covers the Cobbler Web Interface. With the web user interface (WebUI), you can:</p>
 
 <ul>

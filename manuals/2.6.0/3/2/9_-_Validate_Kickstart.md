@@ -1,10 +1,6 @@
-
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Cobbler Validate Kickstart</li></ul>
-   <h1>Cobbler Validate Kickstart</h1>
+---
+layout: manpage
+title: Cobbler Validate Kickstart
+meta: 2.6.0
+---
 

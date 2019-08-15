@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Advanced Networking - Bridging
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">1</a> <span class="divider">/</span></li><li class="active">Advanced Networking - Bridging</li></ul>
-   <h1>Advanced Networking - Bridging</h1>
 <p>A bridge is a way to connect two Ethernet segments together in a protocol independent way. Packets are forwarded based on Ethernet address, rather than IP address (like a router). Since forwarding is done at Layer 2, all protocols can go transparently through a bridge. (<a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge">reference</a>).</p>
 
 <p>You can create a bridge in cobbler in the following way:</p>

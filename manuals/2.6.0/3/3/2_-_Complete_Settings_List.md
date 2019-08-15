@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Complete Settings List
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">3</a> <span class="divider">/</span></li><li class="active">Complete Settings List</li></ul>
-   <h1>Complete Settings List</h1>
 <p>This page documents all settings <code>/etc/cobbler/settings</code> available for configuring both cobblerd and the cobbler CLI command. Be sure to restart the cobblerd service after making changes to this file.</p>
 
 <p><strong>NOTE:</strong> The defaults shown here are noted via JSON syntax. The settings file is stored as YAML, so be sure to format it correctly or cobblerd and the CLI command will not work properly.</p>

@@ -1,12 +1,9 @@
+---
+layout: manpage
+title: Web Authorization
+meta: 2.6.0
+---
 
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/5_-_Web_Interface.html">5</a> <span class="divider">/</span></li><li class="active">Web Authorization</li></ul>
-   <h1>Web Authorization</h1>
 <p>Authorization happens after users have been <a href="Web%20Authentication">authenticated</a> and controls who is then allowed, or not allowed, to perform certain specific operations in cobbler.</p>
 
 <p>Note that this applies to the <a href="Cobbler%20web%20interface">Cobbler Web Interface</a> and <a href="XmlRpc">XMLRPC</a> only -- the local cobbler instance can be modified with the command line tool "cobbler" as the root user, regardless of authorization policy.</p>

@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Automatic Registration
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/4_-_Advanced_Topics.html">4</a> <span class="divider">/</span></li><li class="active">Automatic Registration</li></ul>
-   <h1>Automatic Registration</h1>
 <p>You have a lot of machines coming right "off the truck" and you
 want to plug them in, install them however (perhaps using PXE
 menus, koan with --profile, a live CD, etc) and then have the

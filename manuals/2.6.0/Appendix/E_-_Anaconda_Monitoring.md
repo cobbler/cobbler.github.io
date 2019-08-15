@@ -1,10 +1,9 @@
-<!-- begin content -->
+---
+layout: manpage
+title: Anaconda Monitoring
+meta: 2.6.0
+---
 
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/Appendix">Appendix</a> <span class="divider">/</span></li><li class="active">Anaconda Monitoring</li></ul>
-   <h1>Anaconda Monitoring</h1>
 <p>This page details the <strong>Ana</strong>conda <strong>Mon</strong>itoring service available in cobbler.  As anamon is rather distribution specific, support for it is considered deprecated at this time.</p>
 
 <h2>History</h2>

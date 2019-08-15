@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Dynamic Settings CLI Command
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Dynamic Settings CLI Command</li></ul>
-   <h1>Dynamic Settings CLI Command</h1>
 <p>The CLI command for dynamic settings has two sub-commands:</p>
 
 <p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler setting --help</p>

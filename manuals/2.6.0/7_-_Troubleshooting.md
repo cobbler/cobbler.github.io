@@ -1,11 +1,8 @@
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li class="active">Cobbler Manual</li></ul>
-   <h1>Cobbler Manual</h1>
-<h1>Frequently Asked Trouble Shooting Questions</h1>
+---
+layout: manpage
+title: Frequently Asked Trouble Shooting Questions
+meta: 2.6.0
+---
 
 <p>This section covers some questions that frequently come up in IRC,
 some of which are problems, and some of which are things about

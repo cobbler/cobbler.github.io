@@ -1,12 +1,8 @@
-
-
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Build ISO</li></ul>
-   <h1>Build ISO</h1>
+---
+layout: manpage
+title: Build ISO
+meta: 2.6.0
+---
 <p>Often an environment cannot support PXE because of either (A) an
 unfortunate lack of control over DHCP configurations (i.e. another
 group owns DHCP and won't give you a next-server entry), or (B) you

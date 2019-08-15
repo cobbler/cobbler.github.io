@@ -1,10 +1,8 @@
 ---
 layout: manpage
-title: 2 - FreeBSD
+title: 1 - Release Notes
 meta: 2.6.0
 ---
-
-# What's New
 
 ## 2.6.11
 
@@ -25,7 +23,7 @@ meta: 2.6.0
 
 ## 2.6.10
 
-## Feature improvements
+### Feature improvements
 
 - Use DNF when available (available on Fedora 22+)
 - Add Fedora 22 to signatures

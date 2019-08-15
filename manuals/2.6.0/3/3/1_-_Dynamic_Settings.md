@@ -1,12 +1,12 @@
+---
+layout: manpage
+title: Dynamic Settings
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">3</a> <span class="divider">/</span></li><li class="active">Dynamic Settings</li></ul>
-   <h1>Dynamic Settings</h1>
-<p>Prior to Cobbler 2.4.0, any changes to <code>/etc/cobbler/settings</code> required a restart of the cobblerd daemon for those changes to take affect. Now, with 2.4.0+, you can easily modify settings on the fly via the "cobbler setting" command.</p>
+Prior to Cobbler 2.4.0, any changes to <code>/etc/cobbler/settings</code> required a restart of the cobblerd daemon for
+those changes to take affect. Now, with 2.4.0+, you can easily modify settings on the fly via the "cobbler setting"
+command.
 
 <h3>Enabling Dynamic Settings</h3>
 

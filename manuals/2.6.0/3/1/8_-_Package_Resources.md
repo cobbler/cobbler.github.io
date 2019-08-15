@@ -1,11 +1,9 @@
+---
+layout: manpage
+title: Package Resources
+meta: 2.6.0
+---
 
-<!-- begin content -->
-
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/1_-_Cobbler_Primitives.html">1</a> <span class="divider">/</span></li><li class="active">Package Resources</li></ul>
-   <h1>Package Resources</h1>
 <p>Package resources are managed using cobbler package add, allowing you to install and uninstall packages on a system outside of your install process.</p>
 
 <h2>Actions</h2>

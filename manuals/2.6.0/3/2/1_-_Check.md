@@ -1,14 +1,17 @@
+---
+layout: manpage
+title: Cobbler Check
+meta: 2.6.0
+---
 
-<!-- begin content -->
+The check command is used to provide information to the user regarding possible issues with their installation. Many of
+these checks are feature-based, and may not show up depending on the features you have enabled in Cobbler.
 
-<div id="wrap" class="container">
- <div class="row">
-  <div class="span8">
-<ul class="breadcrumb"><li><a href="/manuals">manuals</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0">2.6.0</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3_-_General_Topics.html">3</a> <span class="divider">/</span></li><li><a href="/manuals/2.6.0/3/2_-_Cobbler_Direct_Commands.html">2</a> <span class="divider">/</span></li><li class="active">Cobbler Check</li></ul>
-   <h1>Cobbler Check</h1>
-<p>The check command is used to provide information to the user regarding possible issues with their installation. Many of these checks are feature-based, and may not show up depending on the features you have enabled in Cobbler.</p>
-
-<p>One of the more important things to remember about the check command is that the output contains suggestions, and not absolutes. That is, the check output may always show up (for example, the SELinux check when it is enabled on the system), or the suggested remedy is not required to make Cobbler function properly (for example, the firewall checks). It is very important to evaluate each item in the listed output individually, and not be concerned with them unless you are having definite problems with functionality.</p>
+One of the more important things to remember about the check command is that the output contains suggestions, and not
+absolutes. That is, the check output may always show up (for example, the SELinux check when it is enabled on the
+system), or the suggested remedy is not required to make Cobbler function properly (for example, the firewall checks).
+It is very important to evaluate each item in the listed output individually, and not be concerned with them unless you
+are having definite problems with functionality.
 
 <p><strong>Example:</strong></p>
 
