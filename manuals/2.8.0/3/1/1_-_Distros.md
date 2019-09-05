@@ -23,11 +23,14 @@ cobbler distro report
 
 ### Add/Edit Options
 
-In general, it’s really a lot easier to follow the import workflow -- it only requires waiting for the mirror content to be copied and/or scanned. Imported mirrors also save time during install since they don’t have to hit external installation sources. Please read the {% linkup title:"Cobbler Import" extrameta:2.8.0 %} documentation for more details.
+In general, it’s really a lot easier to follow the import workflow -- it only requires waiting for the mirror content to
+be copied and/or scanned. Imported mirrors also save time during install since they don’t have to hit external
+installation sources. Please read the [Cobbler Import]({% link manuals/2.8.0/3/2/4_-_Import.md %}) documentation for
+more details.
 
 If you want to be explicit with distribution definition, however, here’s how it works:
 
-<b>Example:</b>
+**Example:**
 
 {% highlight bash %}
 $ cobbler distro add --name=string --kernel=path --initrd=path [options]
@@ -87,8 +90,10 @@ $ cobbler distro add --name=string --kernel=path --initrd=path [options]
  <tr>
   <td class="nowrap">--fetchable-files</td>
   <td>
-   <p>This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The "value" portion of the name is the path/name they will be available as via TFTP.</p>
-   <p>Please see the {% linkup title:"Managing TFTP" extrameta:2.8.0 %} section for more details on using the python-based TFTP server.</p>
+   <p>This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The
+   "value" portion of the name is the path/name they will be available as via TFTP.</p>
+   <p>Please see the [Managing TFTP]({% link manuals/2.8.0/3/4/4_-_Managing_TFTP.md %}) section for more details on
+   using the python-based TFTP server.</p>
   </td>
  </tr>
  <tr>
@@ -137,47 +142,70 @@ Kickstart Metadata             : {'a': 'b', 'c': 'd', 'e': 'f'}
 {% highlight bash %}
 --ksmeta="foo=bar baz=3 asdf"
 {% endhighlight %}
-   <p>See the section on {% linkup title:"Kickstart Templating" extrameta:2.8.0 %} for further information.</p>
+   <p>See the section on [Kickstart Templating]({% link manuals/2.8.0/3/5_-_Kickstart_Templating.md %}) for further
+   information.</p>
   </td>
  </tr>
  <tr>
   <td class="nowrap">--mgmt-classes</td>
   <td>
    <p>Management classes that should be associated with this distro for use with configuration management systems.</p>
-   <p>Please see the {% linkup title:"Configuration Management" extrameta:2.8.0 %} section for more details on integrating Cobbler with configuration management systems.</p>
+   <p>Please see the [Configuration Management]({% link manuals/2.8.0/4/3_-_Configuration_Management.md %}) section for
+   more details on integrating Cobbler with configuration management systems.</p>
   </td>
  </tr>
  <tr>
   <td class="nowrap">--os-version</td>
-  <td>Generally this field can be ignored. It is intended to alter some hardware setup for virtualized instances when provisioning guests with koan. The valid options for --os-version vary depending on what is specified for --breed. If you specify an invalid option, the error message will contain a list of valid os versions that can be used. If you do not know the os version or it does not appear in the list, omitting this argument or using "other" should be perfectly fine. Largely this is needed to support older distributions in virtualized settings, such as "rhel2.1", one of the OS choices if the breed is set to "redhat". If you do not encounter any problems with virtualized instances, this option can be safely ignored.</td>
+  <td>Generally this field can be ignored. It is intended to alter some hardware setup for virtualized instances when
+  provisioning guests with koan. The valid options for --os-version vary depending on what is specified for --breed. If
+  you specify an invalid option, the error message will contain a list of valid os versions that can be used. If you do
+  not know the os version or it does not appear in the list, omitting this argument or using "other" should be perfectly
+  fine. Largely this is needed to support older distributions in virtualized settings, such as "rhel2.1", one of the OS
+  choices if the breed is set to "redhat". If you do not encounter any problems with virtualized instances, this option
+  can be safely ignored.</td>
  </tr>
  <tr>
   <td class="nowrap">--owners</td>
   <td>
-   <p>The value for --owners is a space seperated list of users and groups as specified in <code>/etc/cobbler/users.conf</code>.</p>
-   <p>Users with small sites and a limited number of admins can probably ignore this option, since it only applies to the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell. Furthermore, this is only respected when using the "authz_ownership" module which must be enabled and is not the default.</p>
-   <p>Please see the {% linkup title:"Web Authorization" extrameta:2.8.0 %} section for more details.</p>
+   <p>The value for --owners is a space seperated list of users and groups as specified in
+   <code>/etc/cobbler/users.conf</code>.</p>
+   <p>Users with small sites and a limited number of admins can probably ignore this option, since it only applies to
+   the Cobbler WebUI and XMLRPC interface, not the "cobbler" command line tool run from the shell. Furthermore, this is
+   only respected when using the "authz_ownership" module which must be enabled and is not the default.</p>
+   <p>Please see the [Web Authorization]({% link manuals/2.8.0/5/3_-_Web_Authorization.md %}) section for more
+   details.</p>
   </td>
  </tr>
  <tr>
   <td class="nowrap">--redhat-management-key</td>
   <td>
-   <p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in {% linkup title:"Cobbler Settings" extrameta:2.8.0 %} will be used if this field is left blank.</p>
-   <p>Please see the {% linkup title:"Tips For RHN" extrameta:2.8.0 %} section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+   <p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys
+   here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named
+   "redhat_register" is included. The default option specified in
+   [Cobbler Settings]({% link manuals/2.8.0/3/3_-_Cobbler_Settings.md %}) will be used if this field is left blank.</p>
+   <p>Please see the [Tips For RHN]({% link manuals/2.8.0/Appendix/C_-_Tips_for_RHN.md %}) section for more details on
+   integrating Cobbler with RHN/Spacewalk.</p>
   </td>
  </tr>
  <tr>
   <td class="nowrap">--redhat-management-server</td>
   <td>
-   <p>The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in {% linkup title:"Cobbler Settings" extrameta:2.8.0 %} will be used if this field is left blank.</p>
-   <p>Please see the {% linkup title:"Tips For RHN" extrameta:2.8.0 %} section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+   <p>The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in
+   [Cobbler Settings]({% link manuals/2.8.0/3/3_-_Cobbler_Settings.md %}) will be used if this field is left blank.</p>
+   <p>Please see the [Tips For RHN]({% link manuals/2.8.0/Appendix/C_-_Tips_for_RHN.md %}) section for more details on
+   integrating Cobbler with RHN/Spacewalk.</p>
   </td>
  </tr>
  <tr>
   <td class="nowrap">--template-files</td>
   <td>
-   <p>This feature allows cobbler to be used as a configuration management system. The argument is a space delimited string of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the system. Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function as a lightweight templated configuration management system.</p>
-   <p>Please see the {% linkup title:"Built-In Configuration Management" extrameta:2.8.0 %} section for more details on using template files.</p>
+   <p>This feature allows cobbler to be used as a configuration management system. The argument is a space delimited
+   string of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the
+   system. Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function
+   as a lightweight templated configuration management system.</p>
+   <p>Please see the
+   [Built-In Configuration Management]({% link manuals/2.8.0/4/3/1_-_Built-In_Configuration_Management.md %}) section
+   for more details on using template files.</p>
   </td>
  </tr>
 </tbody>

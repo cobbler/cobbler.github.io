@@ -4,9 +4,14 @@ title: Cobbler Check
 meta: 2.8.0
 ---
 
-The check command is used to provide information to the user regarding possible issues with their installation. Many of these checks are feature-based, and may not show up depending on the features you have enabled in Cobbler.
+The check command is used to provide information to the user regarding possible issues with their installation. Many of
+these checks are feature-based, and may not show up depending on the features you have enabled in Cobbler.
 
-One of the more important things to remember about the check command is that the output contains suggestions, and not absolutes. That is, the check output may always show up (for example, the SELinux check when it is enabled on the system), or the suggested remedy is not required to make Cobbler function properly (for example, the firewall checks). It is very important to evaluate each item in the listed output individually, and not be concerned with them unless you are having definite problems with functionality.
+One of the more important things to remember about the check command is that the output contains suggestions, and not
+absolutes. That is, the check output may always show up (for example, the SELinux check when it is enabled on the
+system), or the suggested remedy is not required to make Cobbler function properly (for example, the firewall checks).
+It is very important to evaluate each item in the listed output individually, and not be concerned with them unless you
+are having definite problems with functionality.
 
 **Example:**
 

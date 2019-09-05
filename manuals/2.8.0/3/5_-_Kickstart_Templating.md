@@ -4,86 +4,61 @@ title: Kickstart Templating
 meta: 2.8.0
 ---
 
+Kickstarts automate Red Hat and Fedora based Linux installations. This document also pertains to templating as it
+relates to other distributions, which also have similar answer files. 
 
-Kickstarts automate Red Hat and Fedora based Linux installations.
-This document also pertains to templating as it relates to other
-distributions, which also have similar answer files. 
+With any distribution if you are repeatedly installing a lot of different configurations, you can get into a scenario
+where you have too many different answer files to maintain or the answer files get to be rather complex and unruly. A
+kickstart templating system, such as Cobbler's, can help you keep these under control.
 
-With any distribution if you are repeatedly installing a lot of
-different configurations, you can get into a scenario where you
-have too many different answer files to maintain or the answer
-files get to be rather complex and unruly. A kickstart templating
-system, such as Cobbler's, can help you keep these under control.
+When cobbler profiles (created with "cobbler profile add") are created with the parameter --kickstart and the kickstart
+lives on the filesystem, the file is treated as a kickstart template, not a raw kickstart. This means they contain
+information about how to build a kickstart, but a given template might be modified by various variables on a per profile
+or per system basis. This allows you to use the same source information (and maintain that), but have it work in
+different ways for different profiles and different systems.
 
-When cobbler profiles (created with "cobbler profile add") are
-created with the parameter --kickstart and the kickstart lives on
-the filesystem, the file is treated as a kickstart template, not a
-raw kickstart. This means they contain information about how to
-build a kickstart, but a given template might be modified by
-various variables on a per profile or per system basis. This allows
-you to use the same source information (and maintain that), but
-have it work in different ways for different profiles and different
-systems.
+It also means that Cobbler, when you use "cobbler import" can assign kickstarts that work for fully automated installs
+out of the box, but they are also easy to customize and change by manipulating settings on cobbler objects or editing
+the global cobbler settings file.
 
-It also means that Cobbler, when you use "cobbler import" can
-assign kickstarts that work for fully automated installs out of the
-box, but they are also easy to customize and change by manipulating
-settings on cobbler objects or editing the global cobbler settings
-file.
-
-The main feature in cobbler kickstart templating is the ability to
-declare variables on cobbler objects like distributions, profiles,
-and systems. On the command line, this is the --ksmeta parameter.
-The same source templates can result in different output based on
-different variables set in cobbler with --ksmeta, which this
-document will explain.
+The main feature in cobbler kickstart templating is the ability to declare variables on cobbler objects like
+distributions, profiles, and systems. On the command line, this is the --ksmeta parameter. The same source templates can
+result in different output based on different variables set in cobbler with --ksmeta, which this document will explain.
 
 ## Down The Rabbit Hole
 
-Templating is very powerful, especially if you have a very large
-amount of profiles and/or systems to maintain.
+Templating is very powerful, especially if you have a very large amount of profiles and/or systems to maintain.
 
-Users can just treat templates like kickstarts, not explore this
-feature fully, or pretend this feature doesn't exist, but if more
-customization is needed, the support is there.
+Users can just treat templates like kickstarts, not explore this feature fully, or pretend this feature doesn't exist,
+but if more customization is needed, the support is there.
 
-This article will get into a lot of complicated (and optional)
-topics, so just take from it what you need. If this sounds too
-complicated, it's not required that you understand all of it.
+This article will get into a lot of complicated (and optional) topics, so just take from it what you need. If this
+sounds too complicated, it's not required that you understand all of it.
 
 ## First off
 
-Cobbler uses [Cheetah](http://cheetahtemplate.org/) for
-its kickstart templating engine. Read more at the Cheetah page and
-you will learn a lot of advanced features you can employ in your
-kickstart templates. However, knowledge of all parts of Cheetah are
-not required. Basic variable solution is automagic and doesn't
-require any advanced knowledge of how the templating works.
+Cobbler uses [Cheetah](http://cheetahtemplate.org/) for its kickstart templating engine. Read more at the Cheetah page
+and you will learn a lot of advanced features you can employ in your kickstart templates. However, knowledge of all
+parts of Cheetah are not required. Basic variable solution is automagic and doesn't require any advanced knowledge of
+how the templating works.
 
-Cheetah is nice in that most of the things you can do in the
-powerful Python programming language you can do in your Cheetah
-templates, so it is very flexible. However some things do not look
-quite like Python, so you have to pay a little attention to the
-syntax.
+Cheetah is nice in that most of the things you can do in the powerful Python programming language you can do in your
+Cheetah templates, so it is very flexible. However some things do not look quite like Python, so you have to pay a
+little attention to the syntax.
 
 ## Hierarchy
 
-As with all things in cobbler, kickstart template variables
-(--ksmeta) take the following precendence:
+As with all things in cobbler, kickstart template variables (--ksmeta) take the following precendence:
 
--   Distro parameters come first
--   Profile parameters override Distro Parameters
--   System parameters override Profile Parameters
+- Distro parameters come first
+- Profile parameters override Distro Parameters
+- System parameters override Profile Parameters
 
-If a distro has an attribute "bar" and the profile that is the
-child of the distro does not, the profile will still have the value
-of "bar" accessible in the kickstart template. However, if the
-system then supplies it's own value for "bar", the system value,
-not the distro value, will be used in rendering the kickstart for
-the system. This is what we mean by "inheritance". It is a simple
-system of overriding things from the most specific (systems) to the
-least specific (profiles, then distros) to allow for
-customizations.
+If a distro has an attribute "bar" and the profile that is the child of the distro does not, the profile will still have
+the value of "bar" accessible in the kickstart template. However, if the system then supplies it's own value for "bar",
+the system value, not the distro value, will be used in rendering the kickstart for the system. This is what we mean by
+"inheritance". It is a simple system of overriding things from the most specific (systems) to the least specific
+(profiles, then distros) to allow for customizations.
 
 ## Basic Variable substitution
 
@@ -111,29 +86,24 @@ settings, timezones, etc.
 
 ## Snippets
 
-If you find yourself reusing a lot of pieces of code between
-several different kickstart templates, cobbler snippets are for
-you.
+If you find yourself reusing a lot of pieces of code between several different kickstart templates, cobbler snippets are
+for you.
 
-Read more at {%linkup title:"Snippets" extrameta:2.8.0 %}
+Read more at [Snippets]({%link manuals/2.8.0/3/6_-_Snippets.md %})
 
-That page also includes some user contributed snippet examples --
-some of which make some heavy use of the Cheetah template engine.
-Snippets don't have to be complex, but you may find those examples
-educational.
+That page also includes some user contributed snippet examples -- some of which make some heavy use of the Cheetah
+template engine. Snippets don't have to be complex, but you may find those examples educational.
 
 ## Escaping
 
-If your kickstart file contains any shell macros like
-`$(list-harddrives)` they should be escaped like this:
+If your kickstart file contains any shell macros like `$(list-harddrives)` they should be escaped like this:
 
     \$(list-harddrives)
 
-This prevents Cheetah from trying to substitute something for
-$(list-harddrives), or worse, getting confused and erroring out.
+This prevents Cheetah from trying to substitute something for $(list-harddrives), or worse, getting confused and
+erroring out.
 
-In general, escaping things doesn't hurt, even though in all cases,
-things don't have to be escaped.
+In general, escaping things doesn't hurt, even though in all cases, things don't have to be escaped.
 
 Example:
 
@@ -226,16 +196,15 @@ in Cobbler templating, you do it as follows:
 This should also be apparent in the output from "cobbler system
 dumpvars --name=foo"
 
-Again, usually you should not have to access these directly, see
-{% linkup title:"Advanced Networking" extrameta:2.8.0 %} for details
-about Cobbler templates all the network info out for you.
+Again, usually you should not have to access these directly, see 
+[Advanced Networking]({% link manuals/2.8.0/4/1_-_Advanced_Networking.md %}) for details about Cobbler templates all
+the network info out for you.
 
 ## Built-in functions and extensibility
 
-You can optionally expose custom-written functions to all Cheetah
-templates. To see a list of these functions you have configured for
-your site (Cobbler doesn't currently ship with any) and/or add new
-functions, see {% linkup title:"Extending Cheetah" extrameta:2.8.0 %}.
+You can optionally expose custom-written functions to all Cheetah templates. To see a list of these functions you have
+configured for your site (Cobbler doesn't currently ship with any) and/or add new functions, see
+[Extending Cheetah]({% link manuals/2.8.0/4/4/3_-_Extending_Cheetah.md %}).
 
 ## Raw Escaping
 
@@ -327,33 +296,26 @@ variables:
     to better tell when kickstarts are fully complete. The
     implementation of what "kickstart\_done" means may vary depending
     on the cobbler version, but it should always be placed in a
-    kickstart template as the last line in %post. Beware in version 2.2.0, $kickstart_done does not exist anymore. Use $SNIPPLET('kickstart_done') instead between a cheetah stanza.
--   (there may be other
-    {% linkup title:"Snippets" extrameta:2.8.0 %} and macros
-    used not listed above)
+    kickstart template as the last line in %post. Beware in version 2.2.0, $kickstart_done does not exist anymore. Use
+    $SNIPPLET('kickstart_done') instead between a cheetah stanza.
+-   (there may be other [Snippets]({% link manuals/2.8.0/3/6_-_Snippets.md %}) and macros used not listed above)
 
 Over time these will become first class Cobbler snippets.
 
 ## Validation
 
-Cobbler contains a command "cobbler validateks" that will run
-ksvalidator (part of the pykickstart package) against all rendered
-kickstarts to see if Anaconda will likely like them. It should be
-noted that ksvalidator is not perfect, and in some cases, it will
-report false positives and/or negatives. However, it is still
-useful to make sure that your rendered output from the kickstart
-templates is still good.
+Cobbler contains a command "cobbler validateks" that will run ksvalidator (part of the pykickstart package) against all
+rendered kickstarts to see if Anaconda will likely like them. It should be noted that ksvalidator is not perfect, and in
+some cases, it will report false positives and/or negatives. However, it is still useful to make sure that your rendered
+output from the kickstart templates is still good.
 
 Testing an install in a VM is often a better idea.
 
 ## Looking at results
 
-As was said earlier, what is provided for --kickstart is a
-template, not a kickstart. Templates are used to generate
-kickstarts. The actual contents of the files are served up
-dynamically from Python and Apache. If you would like to see the
-output of cobbler first hand (for your own review), you can run the
-following commands:
+As was said earlier, what is provided for --kickstart is a template, not a kickstart. Templates are used to generate
+kickstarts. The actual contents of the files are served up dynamically from Python and Apache. If you would like to see
+the output of cobbler first hand (for your own review), you can run the following commands:
 
 For profiles:
 
@@ -373,15 +335,13 @@ Example:
     #import time
     $time.strftime('%m/%d/%Y')
 
-However what modules you can import are very limited for security
-reasons. If you see a module cobbler won't let you import, add it
-to the whitelist in `/etc/cobbler/settings`.
+However what modules you can import are very limited for security reasons. If you see a module cobbler won't let you
+import, add it to the whitelist in `/etc/cobbler/settings`.
 
 ## Comments
 
-Cheetah makes comments with double hash marks "\#\#". Any line
-starting with "\#\#" will not show up in the rendered kickstart
-file at all.
+Cheetah makes comments with double hash marks "\#\#". Any line starting with "\#\#" will not show up in the rendered
+kickstart file at all.
 
 Kickstart comments "\#" will show up in the rendered output.
 
@@ -397,19 +357,22 @@ the single "\#" comment form everywhere though.
 
 ## Further info
 
-_This was originally a separate section in "Advanced topics" (itself originally part of the original, oversized man page. It has been moved here, but needs to be merged properly with the text above._
+_This was originally a separate section in "Advanced topics" (itself originally part of the original, oversized man
+page. It has been moved here, but needs to be merged properly with the text above._
 
-If and only if --kickstart options reference filesystem URLs, --ksmeta allows for templating of the kickstart files to achieve advanced functions.  If the --ksmeta option for a profile read --ksmeta="foo=7 bar=llama", anywhere in the kickstart file where the string "$bar" appeared would be replaced with the string "llama".  
+If and only if --kickstart options reference filesystem URLs, --ksmeta allows for templating of the kickstart files to
+achieve advanced functions.  If the --ksmeta option for a profile read --ksmeta="foo=7 bar=llama", anywhere in the
+kickstart file where the string "$bar" appeared would be replaced with the string "llama".  
 
 To apply these changes, "cobbler sync" must be run to generate custom kickstarts for each profile/system.
 
 For NFS and HTTP kickstart URLs, the "--ksmeta" options will have no effect. This is a good reason to let
-cobbler manage your kickstart files, though the URL functionality is provided for integration with legacy infrastructure, possibly including web apps that already generate kickstarts.
+cobbler manage your kickstart files, though the URL functionality is provided for integration with legacy
+infrastructure, possibly including web apps that already generate kickstarts.
 
 ## Other Resources
 
--   [Kickstart-list](http://www.redhat.com/mailman/listinfo/kickstart-list)
-    is a great mailing list for info
+-   [Kickstart-list](http://www.redhat.com/mailman/listinfo/kickstart-list) is a great mailing list for info
 -   [Cheetah web page](http://cheetahtemplate.org)
 -   [Article on some Cheetah features (devshed.com)](http://www.devshed.com/c/a/Python/Templating-with-Cheetah/3/)
 -   [RHEL 5 Install Guide (section on kickstart options)](http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Installation_Guide-en-US/s1-kickstart2-options.html)

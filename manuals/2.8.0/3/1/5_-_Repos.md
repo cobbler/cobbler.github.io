@@ -3,7 +3,11 @@ layout: manpage
 title: Repos
 meta: 2.8.0
 ---
-Repository mirroring allows cobbler to mirror not only install trees ("cobbler import" does this for you) but also optional packages, 3rd party content, and even updates.   Mirroring all of this content locally on your network will result in faster, more up-to-date installations and faster updates.  If you are only provisioning a home setup, this will probably be overkill, though it can be very useful for larger setups (labs, datacenters, etc).  For information on how to keep your mirror up-to-date, see {% linkup title:"Reposync" extrameta:2.8.0 %}.
+Repository mirroring allows cobbler to mirror not only install trees ("cobbler import" does this for you) but also
+optional packages, 3rd party content, and even updates. Mirroring all of this content locally on your network will
+result in faster, more up-to-date installations and faster updates.  If you are only provisioning a home setup, this
+will probably be overkill, though it can be very useful for larger setups (labs, datacenters, etc).  For information on
+how to keep your mirror up-to-date, see [Reposync]({% link manuals/2.8.0/3/2/5_-_Reposync.md %}).
 
 #### Example:
 {% highlight bash %}
@@ -12,9 +16,11 @@ $ cobbler repo add --mirror=url --name=string [--rpmlist=list] [--creatrepo-flag
 {% endhighlight %}
 
 ### mirror
-The addresss of the yum mirror.  This can be an rsync:// URL, an ssh location, or a http:// or ftp:// mirror location.  Filesystem paths also work.
+The addresss of the yum mirror.  This can be an rsync:// URL, an ssh location, or a http:// or ftp:// mirror location.
+Filesystem paths also work.
 
-The mirror address should specify an exact repository to mirror -- just one architecture and just one distribution.  If you have a seperate repo to mirror for a different arch, add that repo seperately.
+The mirror address should specify an exact repository to mirror -- just one architecture and just one distribution. If
+you have a seperate repo to mirror for a different arch, add that repo seperately.
 
 #### Example:
 {% highlight bash %}
@@ -23,10 +29,13 @@ http://mirrors.kernel.org/fedora/extras/6/i386/ (for http://)
 user@yourmirror.example.com/fedora-linux-core/updates/6/i386  (for SSH)
 {% endhighlight %}
 
-Experimental support is also provided for mirroring RHN content when you need a fast local mirror.  The mirror syntax for this is --mirror=rhn://channel-name and you must have entitlements for this to work.  This requires the cobbler server to be installed on RHEL5 or later.  You will also need a version of yum-utils equal or greater to 1.0.4.
+Experimental support is also provided for mirroring RHN content when you need a fast local mirror. The mirror syntax for
+this is --mirror=rhn://channel-name and you must have entitlements for this to work. This requires the cobbler server to
+be installed on RHEL5 or later.  You will also need a version of yum-utils equal or greater to 1.0.4.
 
 ### name
-This name is used as the save location for the mirror.  If the mirror represented, say, Fedora Core 6 i386 updates, a good name would be "fc6i386updates".  Again, be specific.
+This name is used as the save location for the mirror.  If the mirror represented, say, Fedora Core 6 i386 updates, a
+good name would be "fc6i386updates".  Again, be specific.
 
 This name corresponds with values given to the --repos parameter of "cobbler profile add".  If a profile has a --repos value that matches the name given here, that repo can be automatically set up during provisioning (when supported) and installed systems will also use the boot server as a mirror (unless "yum_post_install_mirror" is disabled in the settings file).  By default the provisioning server will act as a mirror to systems it installs, which may not be desirable for laptop configurations, etc.
 

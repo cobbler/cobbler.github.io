@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Cobbler Manuals
+breadcrumb: Manuals
 ---
 ## Cobbler Manuals
 

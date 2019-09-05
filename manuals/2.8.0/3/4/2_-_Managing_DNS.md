@@ -4,7 +4,9 @@ title: Managing DNS
 meta: 2.8.0
 ---
 
-You may want cobbler to manage the DNS entries of its client systems.  Cobbler can do so automatically by using templates.  It currently supports either dnsmasq (which also provides DHCP) or BIND. Cobbler also has the ability to handle [DHCP Management](DHCP Management).
+You may want cobbler to manage the DNS entries of its client systems.  Cobbler can do so automatically by using
+templates. It currently supports either dnsmasq (which also provides DHCP) or BIND. Cobbler also has the ability to
+handle [DHCP Management](DHCP Management).
 
 To use BIND, your `/etc/cobbler/modules.conf` should contain:
 
@@ -34,9 +36,12 @@ The relevant software packages also need to be present;  "cobbler check" will ve
 
 ## General considerations
 
-* Your maintenance is performed on template files.  These do not take effect until a `cobbler sync` has been performed to generate the run-time data files.
+* Your maintenance is performed on template files.  These do not take effect until a `cobbler sync` has been performed
+to generate the run-time data files.
 
-* The serial number on the generated zone files is the cobbler server's UNIX epoch time, that is, seconds since 1970-01-01 00:00:00 UTC. If, very unusually, your server's time gets reset backwards, your new zone serial number could have a smaller number than previously, and the zones will not propagate.
+* The serial number on the generated zone files is the cobbler server's UNIX epoch time, that is, seconds since
+1970-01-01 00:00:00 UTC. If, very unusually, your server's time gets reset backwards, your new zone serial number could
+have a smaller number than previously, and the zones will not propagate.
 
 ## BIND considerations
 
@@ -52,7 +57,8 @@ Note that the reverse zones are in simple IP ordering, not in BIND-style "0.0.10
 
 ### Restricting Zone Scope
 
-DNS hostnames will be put into their "best fit" zone.  Continuing the above illustration, example hosts would be placed as follows:
+DNS hostnames will be put into their "best fit" zone.  Continuing the above illustration, example hosts would be placed
+as follows:
 
 * `baz.bar.foo.example.com` as host `baz` in zone `bar.foo.example.com`
 * `fie.foo.example.com` as host `fie` in `foo.example.com`
@@ -60,15 +66,23 @@ DNS hostnames will be put into their "best fit" zone.  Continuing the above illu
 
 ### Default and zone-specific templating
 
-Cobbler will use `/etc/cobbler/bind.template` and `/etc/cobbler/zone.template` as a starting point for BIND's `named.conf` and individual zone files, respectively.  You may drop zone-specific template files into the directory `/etc/cobbler/zone_templates/` which will override the default.  For example, if you have a zone 'foo.example.com', you may create `/etc/cobbler/zone_templates/foo.example.com` which will be used in lieu of the default `/etc/cobbbler/zone.template` when generating that zone.  This can be useful to define zone-specific records such as MX, CNAME, SRV, and TXT.
+Cobbler will use `/etc/cobbler/bind.template` and `/etc/cobbler/zone.template` as a starting point for BIND's
+`named.conf` and individual zone files, respectively.  You may drop zone-specific template files into the directory
+`/etc/cobbler/zone_templates/` which will override the default.  For example, if you have a zone 'foo.example.com', you
+may create `/etc/cobbler/zone_templates/foo.example.com` which will be used in lieu of the default
+`/etc/cobbbler/zone.template` when generating that zone.  This can be useful to define zone-specific records such as MX,
+CNAME, SRV, and TXT.
 
-All template files must be user edited for the local networking environment.  Read the file and understand how BIND works before proceeding.
+All template files must be user edited for the local networking environment.  Read the file and understand how BIND
+works before proceeding.
 
-BIND's `named.conf` file and all zone files will be updated only when "cobbler sync" is run, so it is important to remember to use it.
+BIND's `named.conf` file and all zone files will be updated only when "cobbler sync" is run, so it is important to
+remember to use it.
 
 ### Other
 
-Note that your client's system interfaces _must_ have a `--dns-name` set to be considered for inclusion in the zone files.  If "cobbler system report" shows that your `--dns-name` is unset, it can be set by:
+Note that your client's system interfaces _must_ have a `--dns-name` set to be considered for inclusion in the zone
+files. If "cobbler system report" shows that your `--dns-name` is unset, it can be set by:
 
     cobbler system edit --name=foo.example.com --dns-name=foo.example.com
 

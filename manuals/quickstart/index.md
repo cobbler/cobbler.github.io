@@ -4,17 +4,29 @@ title: Cobbler Quickstart Guide
 meta: 2.8.0
 ---
 
-Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to manage, but it does support a great deal of functionality immediately after installation with little to no customization needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated installation methodology of your chosen distribution. 
+Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to
+manage, but it does support a great deal of functionality immediately after installation with little to no customization
+needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated
+installation methodology of your chosen distribution. 
 
-This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future, we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on Fedora, however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please see the {% linkup title:"Installing Cobbler" extrameta:2.8.0 %} section for details on installation and prerequisites for your specific OS version.
+This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future,
+we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on
+Fedora, however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please
+see the [Installing Cobbler]({% link manuals/2.8.0/2_-_Installing_Cobbler.md %}) section for details on installation
+and prerequisites for your specific OS version.
 
-Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here: {% linkup title:"Cobbler Web User Interface" extrameta:2.8.0 %}
+Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here:
+[Cobbler Web User Interface]({% link manuals/2.8.0/5_-_Web_Interface.md %})
 
 ## Disable SELinux (optional)
 
-Before getting started with cobbler, it may be a good idea to either disable SELinux or set it to "permissive" mode, especially if you are unfamiliar with SELinux troubleshooting or modifying SELinux policy. Cobbler constantly evolves to assist in managing new system technologies, and the policy that ships with your OS can sometimes lag behind the feature-set we provide, resulting in AVC denials that break cobbler's functionality.
+Before getting started with cobbler, it may be a good idea to either disable SELinux or set it to "permissive" mode,
+especially if you are unfamiliar with SELinux troubleshooting or modifying SELinux policy. Cobbler constantly evolves
+to assist in managing new system technologies, and the policy that ships with your OS can sometimes lag behind the
+feature-set we provide, resulting in AVC denials that break cobbler's functionality.
 
-If you would like to continue using SELinux on the system running cobblerd, be sure to read the {% linkup title:"SELinux With Cobbler" extrameta:2.8.0 %} section in this manual.
+If you would like to continue using SELinux on the system running cobblerd, be sure to read the
+[SELinux With Cobbler]({% link manuals/2.8.0/4/2_-_SELinux.md %}) section in this manual.
 
 ## Installing Cobbler
 
@@ -30,7 +42,8 @@ This will pull in all of the requirements you need for a basic setup.
 
 Before starting the cobblerd service, there are a few things you should modify.
 
-Settings for cobbler/cobblerd are stored in `/etc/cobbler/settings`. This file is a YAML formatted data file, so be sure to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running. 
+Settings for cobbler/cobblerd are stored in `/etc/cobbler/settings`. This file is a YAML formatted data file, so be sure
+to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running. 
 
 ### Default Encrypted Password 
 
@@ -40,7 +53,8 @@ This setting controls the root password that is set for new systems during the k
 default_password_crypted: "$1$bfI7WLZz$PxXetL97LkScqJFxnW7KS1"
 {% endhighlight %}
 
-You should modify this by running the following command and inserting the output into the above string (be sure to save the quote marks):
+You should modify this by running the following command and inserting the output into the above string (be sure to save
+the quote marks):
 
 {% highlight bash %}
 $ openssl passwd -1
@@ -48,14 +62,17 @@ $ openssl passwd -1
 
 ### Server and Next_Server
 
-The server option sets the IP that will be used for the address of the cobbler server. **_DO NOT_** use 0.0.0.0, as it is not the listening address. This should be set to the IP you want hosts that are being built to contact the cobbler server on for such protocols as HTTP and TFTP.
+The server option sets the IP that will be used for the address of the cobbler server. **_DO NOT_** use 0.0.0.0, as it
+is not the listening address. This should be set to the IP you want hosts that are being built to contact the cobbler
+server on for such protocols as HTTP and TFTP.
 
 {% highlight yaml %}
 # default, localhost
 server: 127.0.0.1
 {% endhighlight %}
 
-The next_server option is used for DHCP/PXE as the IP of the TFTP server from which network boot files are downloaded. Usually, this will be the same IP as the server setting.
+The next_server option is used for DHCP/PXE as the IP of the TFTP server from which network boot files are downloaded.
+Usually, this will be the same IP as the server setting.
 
 {% highlight yaml %}
 # default, localhost
@@ -64,14 +81,16 @@ next_server: 127.0.0.1
 
 ### DHCP Management and DHCP Server Template
 
-In order to PXE boot, you need a DHCP server to hand out addresses and direct the booting system to the TFTP server where it can download the network boot files. Cobbler can manage this for you, via the manage_dhcp setting:
+In order to PXE boot, you need a DHCP server to hand out addresses and direct the booting system to the TFTP server
+where it can download the network boot files. Cobbler can manage this for you, via the manage_dhcp setting:
 
 {% highlight yaml %}
 # default, don't manage
 manage_dhcp: 0
 {% endhighlight %}
 
-Change that setting to 1 so cobbler will generate the dhcpd.conf file based on the dhcp.template that is included with cobbler. This template will most likely need to be modified as well, based on your network settings:
+Change that setting to 1 so cobbler will generate the dhcpd.conf file based on the dhcp.template that is included with
+cobbler. This template will most likely need to be modified as well, based on your network settings:
 
 {% highlight bash %}
 $ vi /etc/cobbler/dhcp.template
@@ -91,13 +110,16 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 }
 {% endhighlight %}
 
-No matter what, make sure you do not modify the "next-server $next_server;" line, as that is how the next_server setting is pulled into the configuration. This file is a cheetah template, so be sure not to modify anything starting after this line:
+No matter what, make sure you do not modify the "next-server $next_server;" line, as that is how the next_server setting
+is pulled into the configuration. This file is a cheetah template, so be sure not to modify anything starting after this
+line:
 
 {% highlight cheetah %}
 #for dhcp_tag in $dhcp_tags.keys():
 {% endhighlight %}
 
-Completely going through the dhcpd.conf configuration syntax is beyond the scope of this document, but for more information see the man page for more details:
+Completely going through the dhcpd.conf configuration syntax is beyond the scope of this document, but for more
+information see the man page for more details:
 
 {% highlight bash %}
 $ man dhcpd.conf
@@ -105,13 +127,17 @@ $ man dhcpd.conf
 
 ## Files and Directory Notes
 
-Cobbler makes heavy use of the `/var` directory. The `/var/www/cobbler/ks_mirror` directory is where all of the distribution and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
+Cobbler makes heavy use of the `/var` directory. The `/var/www/cobbler/ks_mirror` directory is where all of the
+distribution and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
 
-If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please read the {% linkup title:"Relocating Your Installation" extrameta:2.8.0 %} section of the manual to learn how you can relocate your installation properly.
+If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please
+read the [Relocating Your Installation]({% link manuals/2.8.0/2/5_-_Relocating_Your_Installation.md %}) section of the
+manual to learn how you can relocate your installation properly.
 
 ## Starting and Enabling the Cobbler Service
 
-Once you have updated your settings, you're ready to start the service. Fedora now uses systemctl to manage services, but you can still use the regular init script:
+Once you have updated your settings, you're ready to start the service. Fedora now uses systemctl to manage services,
+but you can still use the regular init script:
 
 {% highlight bash %}
 $ systemctl start cobblerd.service
@@ -138,7 +164,10 @@ cobblerd.service - Cobbler Helper Daemon
 
 ## Checking for Problems and Your First Sync
 
-Now that the cobblerd service is up and running, it's time to check for problems. Cobbler's check command will make some suggestions, but it is important to remember that _these are mainly only suggestions_ and probably aren't critical for basic functionality. If you are running iptables or SELinux, it is important to review any messages concerning those that check may report.
+Now that the cobblerd service is up and running, it's time to check for problems. Cobbler's check command will make some
+suggestions, but it is important to remember that _these are mainly only suggestions_ and probably aren't critical for
+basic functionality. If you are running iptables or SELinux, it is important to review any messages concerning those
+that check may report.
 
 {% highlight bash %}
 $ cobbler check
@@ -150,9 +179,11 @@ The following are potential configuration items that you may want to fix:
 Restart cobblerd and then run 'cobbler sync' to apply changes.
 {% endhighlight %}
 
-If you decide to follow any of the suggestions, such as installing extra packages, making configuration changes, etc., be sure to restart the cobblerd service as it suggests so the changes are applied.
+If you decide to follow any of the suggestions, such as installing extra packages, making configuration changes, etc.,
+be sure to restart the cobblerd service as it suggests so the changes are applied.
 
-Once you are done reviewing the output of "cobbler check", it is time to synchronize things for the first time. This is not critical, but a failure to properly sync at this point can reveal a configuration problem.
+Once you are done reviewing the output of "cobbler check", it is time to synchronize things for the first time. This is
+not critical, but a failure to properly sync at this point can reveal a configuration problem.
 
 {% highlight bash %}
 $ cobbler sync
@@ -188,11 +219,15 @@ Assuming all went well and no errors were reported, you are ready to move on to 
 
 ## Importing Your First Distribution
 
-Cobbler automates adding distributions and profiles via the "cobbler import" command. This command can (usually) automatically detect the type and version of the distribution your importing and create (one or more) profiles with the correct settings for you.
+Cobbler automates adding distributions and profiles via the "cobbler import" command. This command can (usually)
+automatically detect the type and version of the distribution your importing and create (one or more) profiles with the
+correct settings for you.
 
 ### Download an ISO Image
 
-In order to import a distribution, you will need a DVD ISO for your distribution. **NOTE:** You must use a full DVD, and not a "Live CD" ISO. For this example, we'll be using the Fedora 28 x86_64 ISO, [available for download here](http://download.fedoraproject.org/pub/fedora/linux/releases/28/Server/x86_64/iso/Fedora-Server-dvd-x86_64-28-1.1.iso).
+In order to import a distribution, you will need a DVD ISO for your distribution. **NOTE:** You must use a full DVD, and
+not a "Live CD" ISO. For this example, we'll be using the Fedora 28 x86_64 ISO,
+[available for download here](http://download.fedoraproject.org/pub/fedora/linux/releases/28/Server/x86_64/iso/Fedora-Server-dvd-x86_64-28-1.1.iso).
 
 Once this file is downloaded, mount it somewhere:
 
@@ -208,11 +243,14 @@ You are now ready to import the distribution. The name and path arguments are th
 $ cobbler import --name=fedora28 --arch=x86_64 --path=/mnt
 {% endhighlight %}
 
-The --arch option need not be specified, as it will normally be auto-detected. We're doing so in this example in order to prevent multiple architectures from being found (Fedora ships i386 packages on the full DVD, and cobbler will create both x86_64 and i386 distros by default).
+The --arch option need not be specified, as it will normally be auto-detected. We're doing so in this example in order
+to prevent multiple architectures from being found (Fedora ships i386 packages on the full DVD, and cobbler will create
+both x86_64 and i386 distros by default).
 
 ### Listing Objects
 
-If no errors were reported during the import, you can view details about the distros and profiles that were created during the import. 
+If no errors were reported during the import, you can view details about the distros and profiles that were created
+during the import. 
 
 {% highlight bash %}
 $ cobbler distro list
@@ -220,7 +258,8 @@ $ cobbler distro list
 $ cobbler profile list
 {% endhighlight %}
 
-The import command will typically create at least one distro/profile pair, which will have the same name as shown above. In some cases (for instance when a xen-based kernel is found), more than one distro/profile pair will be created.
+The import command will typically create at least one distro/profile pair, which will have the same name as shown above.
+In some cases (for instance when a xen-based kernel is found), more than one distro/profile pair will be created.
 
 ### Object Details
 
@@ -247,15 +286,23 @@ Red Hat Management Server      : <<inherit>>
 Template Files                 : {}
 {% endhighlight %}
 
-As you can see above, the import command filled out quite a few fields automatically, such as the breed, OS version, and initrd/kernel file locations. The "Kickstart Metadata" field (--ksmeta internally) is used for miscellaneous variables, and contains the critical "tree" variable. This is used in the kickstart templates to specify the URL where the installation files can be found.
+As you can see above, the import command filled out quite a few fields automatically, such as the breed, OS version, and
+initrd/kernel file locations. The "Kickstart Metadata" field (--ksmeta internally) is used for miscellaneous variables,
+and contains the critical "tree" variable. This is used in the kickstart templates to specify the URL where the
+installation files can be found.
 
-Something else to note: some fields are set to "&lt;&lt;inherit&gt;&gt;". This means they will use either the default setting (found in the settings file), or (in the case of profiles, sub-profiles, and systems) will use whatever is set in the parent object.
+Something else to note: some fields are set to "&lt;&lt;inherit&gt;&gt;". This means they will use either the default
+setting (found in the settings file), or (in the case of profiles, sub-profiles, and systems) will use whatever is set
+in the parent object.
 
 ## Creating a System
 
-Now that you have a distro and profile, you can create a system. Profiles can be used to PXE boot, but most of the features in cobbler revolve around system objects. The more information you give about a system, the more cobbler will do automatically for you.
+Now that you have a distro and profile, you can create a system. Profiles can be used to PXE boot, but most of the
+features in cobbler revolve around system objects. The more information you give about a system, the more cobbler will
+do automatically for you.
 
-First, we'll create a system object based on the profile that was created during the import. When creating a system, the name and profile are the only two required fields:
+First, we'll create a system object based on the profile that was created during the import. When creating a system, the
+name and profile are the only two required fields:
 
 {% highlight bash %}
 $ cobbler system add --name=test --profile=fedora28-x86_64
@@ -307,7 +354,8 @@ Virt RAM (MB)                  : <<inherit>>
 Virt Type                      : <<inherit>>
 {% endhighlight %}
 
-The primary reason for creating a system object is network configuration. When using profiles, you're limited to DHCP interfaces, but with systems you can specify many more network configuration options. 
+The primary reason for creating a system object is network configuration. When using profiles, you're limited to DHCP
+interfaces, but with systems you can specify many more network configuration options. 
 
 So now we'll setup a single, simple interface in the 192.168.1/24 network:
 
@@ -321,6 +369,13 @@ The default gateway isn't specified per-NIC, so just add that separately (along 
 $ cobbler system edit --name=test --gateway=192.168.1.1 --hostname=test.mydomain.com
 {% endhighlight %}
 
-The --hostname field corresponds to the local system name and is returned by the "hostname" command. The --dns-name (which can be set per-NIC) should correspond to a DNS A-record tied to the IP of that interface. Neither are required, but it is a good practice to specify both. Some advanced features (like configuration management) rely on the --dns-name field for system record look-ups.
+The --hostname field corresponds to the local system name and is returned by the "hostname" command. The `--dns-name`
+(which can be set per-NIC) should correspond to a DNS A-record tied to the IP of that interface. Neither are required,
+but it is a good practice to specify both. Some advanced features (like configuration management) rely on the 
+`--dns-name` field for system record look-ups.
 
-Whenever a system is edited, cobbler executes what is known as a "lite sync", which regenerates critical files like the PXE boot file in the TFTP root directory. One thing it will **NOT** do is execute service management actions, like regenerating the dhcpd.conf and restarting the DHCP service. After adding a system with a static interface it is a good idea to execute a full "cobbler sync" to ensure the dhcpd.conf file is rewritten with the correct static lease and the service is bounced.
+Whenever a system is edited, cobbler executes what is known as a "lite sync", which regenerates critical files like the
+PXE boot file in the TFTP root directory. One thing it will **NOT** do is execute service management actions, like
+regenerating the dhcpd.conf and restarting the DHCP service. After adding a system with a static interface it is a good
+idea to execute a full "cobbler sync" to ensure the dhcpd.conf file is rewritten with the correct static lease and the
+service is bounced.

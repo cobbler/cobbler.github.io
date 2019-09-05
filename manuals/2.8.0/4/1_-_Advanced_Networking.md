@@ -4,7 +4,8 @@ title: Advanced Networking
 meta: 2.8.0
 ---
 
-This page details some of the networking tips and tricks in more detail, regarding what you can set on system records to set up networking, without having to know a lot about kickstart/Anaconda.
+This page details some of the networking tips and tricks in more detail, regarding what you can set on system records to
+set up networking, without having to know a lot about kickstart/Anaconda.
 
 These features include:
 
@@ -30,7 +31,8 @@ $ cobbler system edit --name=foo1.bar.local --interface=dmz --mac=AA:BB:CC:DD:EE
 
 The default interface is named eth0, but you don't have to call it that.
 
-Note that you can't name your interface after a kernel module you're using. For example: if a NIC is called 'drbd', the module drbd.ko would stop working. This is due to an "alias" line in /etc/modprobe.conf.
+Note that you can't name your interface after a kernel module you're using. For example: if a NIC is called 'drbd', the
+module drbd.ko would stop working. This is due to an "alias" line in /etc/modprobe.conf.
 
 ## Name Servers
 
@@ -55,11 +57,13 @@ So, for example to route the 192.168.1.0/24 network through 192.168.1.254:
 $ cobbler system edit --name=foo --interface=eth0 --static-routes="192.168.1.0/24:192.168.1.254"
 {% endhighlight %}
 
-As with all lists in cobbler, the --static-routes list is space-separated so you can specify multiple static routes if needed.
+As with all lists in cobbler, the --static-routes list is space-separated so you can specify multiple static routes if
+needed.
 
 ## Kickstart Notes
 
-Three different networking {% linkup title:"Snippets" extrameta:2.8.0 %} must be present in your kickstart files for this to work:
+Three different networking [Snippets]({% link manuals/2.8.0/3/6_-_Snippets.md %}) must be present in your kickstart
+files for this to work:
 
 <pre>
 pre_install_network_config
@@ -67,4 +71,5 @@ network_config
 post_install_network_config
 </pre>
 
-The default kickstart templates (/var/lib/cobbler/kickstart/sample\*.ks) have these installed by default so they work out of the box. Please use those files as a reference as to where to correctly include the $SNIPPET definitions.
+The default kickstart templates (`/var/lib/cobbler/kickstart/sample\*.ks`) have these installed by default so they work
+out of the box. Please use those files as a reference as to where to correctly include the $SNIPPET definitions.

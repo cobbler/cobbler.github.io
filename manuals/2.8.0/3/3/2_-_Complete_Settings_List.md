@@ -4,9 +4,11 @@ title: Complete Settings List
 meta: 2.8.0
 ---
 
-This page documents all settings `/etc/cobbler/settings` available for configuring both cobblerd and the cobbler CLI command. Be sure to restart the cobblerd service after making changes to this file.
+This page documents all settings `/etc/cobbler/settings` available for configuring both cobblerd and the cobbler CLI
+command. Be sure to restart the cobblerd service after making changes to this file.
 
-**NOTE:** The defaults shown here are noted via JSON syntax. The settings file is stored as YAML, so be sure to format it correctly or cobblerd and the CLI command will not work properly.
+**NOTE:** The defaults shown here are noted via JSON syntax. The settings file is stored as YAML, so be sure to format
+it correctly or cobblerd and the CLI command will not work properly.
 
 ### allow_duplicate_hostnames
 * **type:** Boolean
@@ -14,7 +16,8 @@ This page documents all settings `/etc/cobbler/settings` available for configuri
 
 #### Description: 
 
-If set, Cobbler will allow multiple systems to use the same FQDN for the --dns-name interface option. This field is used for system identification for things like configuration management integration, so take care when enabling it.
+If set, Cobbler will allow multiple systems to use the same FQDN for the --dns-name interface option. This field is used
+for system identification for things like configuration management integration, so take care when enabling it.
 
 ### allow_duplicate_ips
 * **type:** Boolean
@@ -22,7 +25,8 @@ If set, Cobbler will allow multiple systems to use the same FQDN for the --dns-n
 
 #### Description:
 
-If set, Cobbler will allow multiple systems to use the same IP address for interfaces. If enabled, this could impact managed services like DHCP and DNS where multiple active systems conflict.
+If set, Cobbler will allow multiple systems to use the same IP address for interfaces. If enabled, this could impact
+managed services like DHCP and DNS where multiple active systems conflict.
 
 ### allow_duplicate_macs
 * **type:** Boolean
@@ -30,7 +34,8 @@ If set, Cobbler will allow multiple systems to use the same IP address for inter
 
 #### Description:
 
-If set, Cobbler will allow multiple systems to use the same MAC address for interfaces. If enabled, this could impact managed services like DHCP and DNS where multiple active systems conflict.
+If set, Cobbler will allow multiple systems to use the same MAC address for interfaces. If enabled, this could impact
+managed services like DHCP and DNS where multiple active systems conflict.
 
 ### allow_dynamic_settings
 * **type:** Boolean
@@ -38,7 +43,8 @@ If set, Cobbler will allow multiple systems to use the same MAC address for inte
 
 #### Description:
 
-If enabled, Cobbler will allow settings to be modified on the fly without a restart to the cobblerd daemon. Please reference the {% linkup title:"Dynamic Settings" extrameta:2.8.0 %} section for more details.
+If enabled, Cobbler will allow settings to be modified on the fly without a restart to the cobblerd daemon. Please
+reference the [Dynamic Settings]({% link manuals/2.8.0/3/3/1_-_Dynamic_Settings.md %}) section for more details.
 
 ### anamon_enabled
 * **type:** Boolean
@@ -48,7 +54,8 @@ If enabled, Cobbler will allow settings to be modified on the fly without a rest
 
 If set, anamon will be enabled during the Anaconda kickstart process. This is specific to Red Hat style kickstarts only.
 
-Please refer to the {% linkup title:"Anaconda Monitoring" extrameta:2.8.0 %} section for more details.
+Please refer to the [Anaconda Monitoring]({% link manuals/2.8.0/Appendix/E_-_Anaconda_Monitoring.md %}) section for
+more details.
 
 ### bind_chroot_path
 * **type:** String
@@ -56,9 +63,10 @@ Please refer to the {% linkup title:"Anaconda Monitoring" extrameta:2.8.0 %} sec
 
 #### Description:
 
-This sets the path of the directory in which bind-chroot compatible configuration files will be created. In most situations, this should be automatically detected by default (set to an empty string).
+This sets the path of the directory in which bind-chroot compatible configuration files will be created. In most
+situations, this should be automatically detected by default (set to an empty string).
 
-Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing DNS]({% link manuals/2.8.0/3/4/2_-_Managing_DNS.md %}) section for more details.
 
 ### bind_master
 * **type:** String
@@ -68,7 +76,7 @@ Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section fo
 
 The bind master to use when creating slave DNS zones.
 
-Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing DNS]({% link manuals/2.8.0/3/4/2_-_Managing_DNS.md %}) section for more details.
 
 ### build_reporting_email
 * **type:** Array of Strings
@@ -124,9 +132,10 @@ Not currently used.
 
 #### Description:
 
-The default directory to use as scratch space when building an ISO via Cobbler. This can be overridden on the command line.
+The default directory to use as scratch space when building an ISO via Cobbler. This can be overridden on the command
+line.
 
-Please refer to the {% linkup title:"Build ISO" extrameta:2.8.0 %} section for more details.
+Please refer to the [Build ISO]({% link manuals/2.8.0/3/2/6_-_Build_ISO.md %}) section for more details.
 
 ### cheetah_import_whitelist
 * **type:** Array of Strings
@@ -136,7 +145,9 @@ Please refer to the {% linkup title:"Build ISO" extrameta:2.8.0 %} section for m
 
 This setting creates a whitelist of python modules that can be imported in a template.
 
-This is a security issue, as allowing certain python modules would allow users to create templates that overwrite system files (ie. the os module) or execute shell commands (ie. the subprocess module). Make sure you understand the capabilities a python module has before adding them to this whitelist.
+This is a security issue, as allowing certain python modules would allow users to create templates that overwrite system
+files (ie. the os module) or execute shell commands (ie. the subprocess module). Make sure you understand the
+capabilities a python module has before adding them to this whitelist.
 
 ### client_use_localhost
 * **type:** Boolean
@@ -144,7 +155,9 @@ This is a security issue, as allowing certain python modules would allow users t
 
 #### Description:
 
-If enabled, all commands will be forced to use the localhost address instead of the "server" setting. The cobbler client command can be used to manage remote cobblerd instances, so enabling this option would force all cobbler commands to operate locally only.
+If enabled, all commands will be forced to use the localhost address instead of the "server" setting. The cobbler client
+command can be used to manage remote cobblerd instances, so enabling this option would force all cobbler commands to
+operate locally only.
 
 ### cobbler_master
 * **type:** String
@@ -154,7 +167,7 @@ If enabled, all commands will be forced to use the localhost address instead of 
 
 The default server to pull from when using the replicate command.
 
-Please refer to the {% linkup title:"Replicate" extrameta:2.8.0 %} section for more details.
+Please refer to the [Replicate]({% link manuals/2.8.0/3/2/8_-_Replication.md %}) section for more details.
 
 ### consoles
 * **type:** String
@@ -172,9 +185,12 @@ The path to the directory containing system consoles, used primarily for clearin
 
 Default options to use for the createrepo command when creating new repositories during a reposync. 
 
-If you have createrepo >= 0.4.10, consider "-c cache --update -C", which can dramatically improve your "cobbler reposync" time. "-s sha" enables working with Fedora repos from F11/F12 from EL-4 or EL-5 without python-hashlib installed (which is not available on EL-4)
+If you have createrepo >= 0.4.10, consider "-c cache --update -C", which can dramatically improve your
+"cobbler reposync" time. "-s sha" enables working with Fedora repos from F11/F12 from EL-4 or EL-5 without
+python-hashlib installed (which is not available on EL-4)
 
-Please refer to the {% linkup title:"Package Management and Mirroring" extrameta:2.8.0 %} section for more details.
+Please refer to the [Package Management and Mirroring]({% link manuals/2.8.0/3/7_-_Package_Management_and_Mirroring.md %})
+section for more details.
 
 ### default_deployment_method
 * **type:** String
@@ -190,7 +206,9 @@ Not currently used.
 
 #### Description:
 
-The default kickstart file to use if no other is specified. This option is effectively deprecated, as the default kickstart to use is now specified in the distro signatures configuration file. Please see the {% linkup title:"Distro Signatures" extrameta:2.8.0 %} section for more details.
+The default kickstart file to use if no other is specified. This option is effectively deprecated, as the default
+kickstart to use is now specified in the distro signatures configuration file. Please see the
+[Distro Signatures]({% link manuals/2.8.0/3/2/3_-_Distro_Signatures.md %}) section for more details.
 
 ### default_name_servers
 * **type:** Array of Strings
@@ -198,7 +216,8 @@ The default kickstart file to use if no other is specified. This option is effec
 
 #### Description:
 
-A list of name servers to assign to all systems and profiles that are built. This will be used both pre and post install.
+A list of name servers to assign to all systems and profiles that are built. This will be used both pre and post
+install.
 
 ### default_name_servers_search
 * **type:** Array of Strings
@@ -216,7 +235,7 @@ A list of domains to search by default. This will be inserted into the resolv.co
 
 A list of owners to assign to newly created objects. This is used only for Web UI authorization.
 
-Please refer to the {% linkup title:"Web Authorization" extrameta:2.8.0 %} section for more details.
+Please refer to the [Web Authorization]({% link manuals/2.8.0/5/3_-_Web_Authorization.md %}) section for more details.
 
 ### default_password_crypted
 * **type:** String
@@ -240,9 +259,11 @@ Be sure to enclose the hash with quotation marks.
 
 #### Description:
 
-The default template type to use when parsing kickstarts and snippets. The default template type is Cheetah, and changing this value will currently break all snippets and templates currently shipped with Cobbler.
+The default template type to use when parsing kickstarts and snippets. The default template type is Cheetah, and
+changing this value will currently break all snippets and templates currently shipped with Cobbler.
 
-Please refer to the {% linkup title:"Alternative Template Formats" extrameta:2.8.0 %} section for more details.
+Please refer to the [Alternative Template Formats]({% link manuals/2.8.0/4/6_-_Alternative_Template_Formats.md %})
+section for more details.
 
 ### default_virt_bridge
 * **type:** String
@@ -258,7 +279,8 @@ The default bridge to assign virtual interfaces to.
 
 #### Description:
 
-The default disk driver to use for virtual disks. Older versions of python-virtinst do not support changing this at build time, so this option will be ignored in those cases.
+The default disk driver to use for virtual disks. Older versions of python-virtinst do not support changing this at
+build time, so this option will be ignored in those cases.
 
 ### default_virt_file_size
 * **type:** Integer
@@ -284,7 +306,7 @@ The default size (in megabytes) of RAM to assign to new virtual machines.
 
 The default virtualization type to use for virtual machines created with the koan utility.
 
-Please refer to the {% linkup title:"Koan" extrameta:2.8.0 %} section for more details.
+Please refer to the [Koan]({% link manuals/2.8.0/6_-_Koan.md %}) section for more details.
 
 ### enable_gpxe
 * **type:** Boolean
@@ -294,7 +316,7 @@ Please refer to the {% linkup title:"Koan" extrameta:2.8.0 %} section for more d
 
 If set, Cobbler will enable the use of gPXE.
 
-Please refer to the {% linkup title:"Using gPXE" extrameta:2.8.0 %} section for more details.
+Please refer to the [Using gPXE]({% link manuals/2.8.0/4/13_-_Using_gPXE.md %}) section for more details.
 
 ### enable_menu
 * **type:** Boolean
@@ -302,7 +324,10 @@ Please refer to the {% linkup title:"Using gPXE" extrameta:2.8.0 %} section for 
 
 #### Description:
 
-If set, Cobbler will add each new profile entry to the default PXE boot menu. This can be overridden on a per-profile basis when adding/editing profiles with --enable-menu=0/1. Users should ordinarily leave this setting enabled unless they are concerned with accidental reinstalls from users who select an entry at the PXE boot menu. Adding a password to the boot menus templates may also be a good solution to prevent unwanted reinstallations.
+If set, Cobbler will add each new profile entry to the default PXE boot menu. This can be overridden on a per-profile
+basis when adding/editing profiles with --enable-menu=0/1. Users should ordinarily leave this setting enabled unless
+they are concerned with accidental reinstalls from users who select an entry at the PXE boot menu. Adding a password to
+the boot menus templates may also be a good solution to prevent unwanted reinstallations.
 
 ### func_auto_setup
 * **type:** Boolean
@@ -310,9 +335,10 @@ If set, Cobbler will add each new profile entry to the default PXE boot menu. Th
 
 #### Description:
 
-If set, Cobbler will install and configure Func. This makes sure each installed machine is set up to use func out of the box, which is a powerful way to script and control remote machines.
+If set, Cobbler will install and configure Func. This makes sure each installed machine is set up to use func out of the
+box, which is a powerful way to script and control remote machines.
 
-Please refer to the {% linkup title:"Func Integration" extrameta:2.8.0 %} section for more details.
+Please refer to the [Func Integration]({% link manuals/2.8.0/4/3/3_-_Func_Integration.md %}) section for more details.
 
 ### func_master
 * **type:** String
@@ -322,7 +348,7 @@ Please refer to the {% linkup title:"Func Integration" extrameta:2.8.0 %} sectio
 
 The Func master server (overlord) to use by default.
 
-Please refer to the {% linkup title:"Func Integration" extrameta:2.8.0 %} section for more details.
+Please refer to the [Func Integration]({% link manuals/2.8.0/4/3/3_-_Func_Integration.md %}) section for more details.
 
 ### http_port
 * **type:** String
@@ -348,7 +374,7 @@ Not currently used.
 
 The directory containing the buildiso.template, which is a SYSLINUX style configuration file for use in the buildiso process.
 
-Please refer to the {% linkup title:"Build ISO" extrameta:2.8.0 %} section for more details.
+Please refer to the [Build ISO]({% link manuals/2.8.0/3/2/6_-_Build_ISO.md %}) section for more details.
 
 ### kerberos_realm
 * **type:** String
@@ -358,7 +384,7 @@ Please refer to the {% linkup title:"Build ISO" extrameta:2.8.0 %} section for m
 
 Not currently used (all kerberos configuration must currently be done manually).
 
-Please refer to the {% linkup title:"Kerberos Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [Kerberos Authentication]({% link manuals/2.8.0/5/2/3_-_Kerberos.md %}) section for more details.
 
 ### kernel_options
 * **type:** Dictionary
@@ -388,7 +414,7 @@ Same as the kernel_options setting, but specific to s390x architectures.
 
 If set, the LDAP authentication module will use an anonymous bind when connecting to the LDAP server.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_base_dn
 * **type:** String
@@ -398,7 +424,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The base DN to use for LDAP authentication.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_management_default_type
 * **type:** String
@@ -408,7 +434,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 Not currently used.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_port
 * **type:** Integer
@@ -418,7 +444,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The port to use when connecting to the LDAP server. If TLS is enabled and this port is the default of 389, cobbler will internally convert it to 636 for SSL.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_search_bind_dn
 * **type:** String
@@ -428,7 +454,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The DN to use for binding to the LDAP server for authentication, used only if ldap_anonymous_bind=0.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_search_passwd
 * **type:** String
@@ -438,7 +464,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The password to use when binding to the LDA server for authentication, used only if ldap_anonymous_bind=0.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_search_prefix
 * **type:** String
@@ -448,7 +474,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The prefix to use for searches when querying the LDAP server.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_server
 * **type:** Boolean
@@ -458,7 +484,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The LDAP server to use for LDAP authentication.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_tls
 * **type:** Boolean
@@ -468,7 +494,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 If set, the LDAP authentication will occur over a SSL/TLS encrypted connection.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_tls_cacertfile
 * **type:** Boolean
@@ -478,7 +504,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The CA certificate file to use when using TLS encryption.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_tls_keyfile
 * **type:** Boolean
@@ -488,7 +514,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The certificate key file to use when using TLS encryption.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### ldap_tls_certfile
 * **type:** Boolean
@@ -498,7 +524,7 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 The certificate file to use when using TLS encryption.
 
-Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [LDAP Authentication]({% link manuals/2.8.0/5/2/2_-_LDAP.md %}) section for more details.
 
 ### manage_dhcp
 * **type:** Boolean
@@ -506,11 +532,13 @@ Please refer to the {% linkup title:"LDAP Authentication" extrameta:2.8.0 %} sec
 
 #### Description:
 
-If enabled, Cobbler will rewrite the dhcpd.conf file based on the template `/etc/cobbler/dhcp.template`. If you are using static IP addresses for interfaces, you must enable this option so that static lease entries are written and available for the PXE phase of the installation.
+If enabled, Cobbler will rewrite the dhcpd.conf file based on the template `/etc/cobbler/dhcp.template`. If you are
+using static IP addresses for interfaces, you must enable this option so that static lease entries are written and
+available for the PXE phase of the installation.
 
 Alternatively, if DNSMASQ is being used for DNS/DHCP, it will manage those configuration files.
 
-Please refer to the {% linkup title:"Managing DHCP" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing DHCP]({% link manuals/2.8.0/3/4/1_-_Managing_DHCP.md %}) section for more details.
 
 ### manage_dns
 * **type:** Boolean
@@ -522,7 +550,7 @@ If enabled, Cobbler will write the named.conf and BIND zone files based on templ
 
 Alternatively, if DNSMASQ is being used for DNS/DHCP, it will manage those configuration files.
 
-Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing DNS]({% link manuals/2.8.0/3/4/2_-_Managing_DNS.md %}) section for more details.
 
 ### manage_forward_zones
 * **type:** List of Strings
@@ -530,9 +558,10 @@ Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section fo
 
 #### Description:
 
-If enabled along with the manage_dns option, Cobbler will generate configurations for the forward-based zones specified in the list.
+If enabled along with the manage_dns option, Cobbler will generate configurations for the forward-based zones specified
+in the list.
 
-Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing DNS]({% link manuals/2.8.0/3/4/2_-_Managing_DNS.md %}) section for more details.
 
 ### manage_reverse_zones
 * **type:** List of Strings
@@ -540,9 +569,10 @@ Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section fo
 
 #### Description:
 
-If enabled along with the manage_dns option, Cobbler will generate configurations for the reverse-based zones specified in the list.
+If enabled along with the manage_dns option, Cobbler will generate configurations for the reverse-based zones specified
+in the list.
 
-Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing DNS]({% link manuals/2.8.0/3/4/2_-_Managing_DNS.md %}) section for more details.
 
 ### manage_rsync
 * **type:** Boolean
@@ -550,9 +580,10 @@ Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section fo
 
 #### Description:
 
-If set, Cobbler will generate the rsyncd.conf configuration file. This is required if using a system running cobblerd as a replica master.
+If set, Cobbler will generate the rsyncd.conf configuration file. This is required if using a system running cobblerd as
+a replica master.
 
-Please refer to the {% linkup title:"Replicate" extrameta:2.8.0 %} section for more details.
+Please refer to the [Replicate]({% link manuals/2.8.0/3/2/8_-_Replication.md %}) section for more details.
 
 ### manage_tftpd
 * **type:** Boolean
@@ -560,9 +591,10 @@ Please refer to the {% linkup title:"Replicate" extrameta:2.8.0 %} section for m
 
 #### Description:
 
-If set, Cobbler will copy files required for the PXE netboot process to the TFTPD root directory and will also generate PXE boot configuration files for systems and profiles.
+If set, Cobbler will copy files required for the PXE netboot process to the TFTPD root directory and will also generate
+PXE boot configuration files for systems and profiles.
 
-Please refer to the {% linkup title:"Managing TFTP" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing TFTP]({% link manuals/2.8.0/3/4/4_-_Managing_TFTP.md %}) section for more details.
 
 ### mgmt_classes
 * **type:** List of Strings
@@ -572,7 +604,8 @@ Please refer to the {% linkup title:"Managing TFTP" extrameta:2.8.0 %} section f
 
 A default list of management class names to give all objects, for use with configuration management integration.
 
-Please refer to the {% linkup title:"Configuration Management" extrameta:2.8.0 %} section for more details.
+Please refer to the [Configuration Management]({% link manuals/2.8.0/4/3_-_Configuration_Management.md %}) section for
+more details.
 
 ### mgmt_parameters
 * **type:** Dictionary
@@ -582,7 +615,8 @@ Please refer to the {% linkup title:"Configuration Management" extrameta:2.8.0 %
 
 A default list of management parameters to give all objects, for use with configuration management integration.
 
-Please refer to the {% linkup title:"Configuration Management" extrameta:2.8.0 %} section for more details.
+Please refer to the [Configuration Management]({% link manuals/2.8.0/4/3_-_Configuration_Management.md %}) section for
+more details.
 
 ### next_server
 * **type:** String
@@ -590,9 +624,11 @@ Please refer to the {% linkup title:"Configuration Management" extrameta:2.8.0 %
 
 #### Description:
 
-If manage_dhcp is enabled, this will be the default next-server value passed to systems that are PXE booting. This value can be overriden on a per-system basis via the --server option.
+If manage_dhcp is enabled, this will be the default next-server value passed to systems that are PXE booting. This value
+can be overriden on a per-system basis via the --server option.
 
-Please refer to the {% linkup title:"Multi-Homed Cobbler Servers" extrameta:2.8.0 %} section for more details.
+Please refer to the [Multi-Homed Cobbler Servers]({% link manuals/2.8.0/4/7_-_Multi-Homed_Cobbler_Servers.md %}) section
+for more details.
 
 ### power_management_default_type
 * **type:** String
@@ -602,7 +638,7 @@ Please refer to the {% linkup title:"Multi-Homed Cobbler Servers" extrameta:2.8.
 
 The default power management type, when using Cobbler's power management feature.
 
-Please refer to the {% linkup title:"Power Management" extrameta:2.8.0 %} section for more details.
+Please refer to the [Power Management]({% link manuals/2.8.0/4/5_-_Power_Management.md %}) section for more details.
 
 ### power_template_dir
 * **type:** String
@@ -610,9 +646,11 @@ Please refer to the {% linkup title:"Power Management" extrameta:2.8.0 %} sectio
 
 #### Description:
 
-The path to the directory containing templates that will be used for generating data sent to the various power management functions (typically provided by cluster fencing agents). As of 2.2.3, templates are no longer required for the default function of most fence agents.
+The path to the directory containing templates that will be used for generating data sent to the various power
+management functions (typically provided by cluster fencing agents). As of 2.2.3, templates are no longer required for
+the default function of most fence agents.
 
-Please refer to the {% linkup title:"Power Management" extrameta:2.8.0 %} section for more details.
+Please refer to the [Power Management]({% link manuals/2.8.0/4/5_-_Power_Management.md %}) section for more details.
 
 ### puppet_auto_setup
 * **type:** Boolean
@@ -622,7 +660,8 @@ Please refer to the {% linkup title:"Power Management" extrameta:2.8.0 %} sectio
 
 If enabled, Cobbler will install and configure the [Puppet configuration management](http://puppetlabs.com/solutions/configuration-management/) software on new systems.
 
-Please refer to the {% linkup title:"Puppet Integration" extrameta:2.8.0 %} section for more details.
+Please refer to the [Puppet Integration]({% link manuals/2.8.0/4/3/2_-_Puppet_Integration.md %}) section for more
+details.
 
 ### puppetca_path
 * **type:** String
@@ -630,9 +669,11 @@ Please refer to the {% linkup title:"Puppet Integration" extrameta:2.8.0 %} sect
 
 #### Description:
 
-The path to the puppetca command, which is used by cobbler to auto-register and cleanup Puppet CA certificates during the build process for new systems.
+The path to the puppetca command, which is used by cobbler to auto-register and cleanup Puppet CA certificates during
+the build process for new systems.
 
-Please refer to the {% linkup title:"Puppet Integration" extrameta:2.8.0 %} section for more details.
+Please refer to the [Puppet Integration]({% link manuals/2.8.0/4/3/2_-_Puppet_Integration.md %}) section for more
+details.
 
 ### pxe_just_once
 * **type:** Boolean
@@ -640,9 +681,11 @@ Please refer to the {% linkup title:"Puppet Integration" extrameta:2.8.0 %} sect
 
 #### Description:
 
-If enabled, Cobbler will set the netboot_enabled flag for systems to 0 when the build process is complete. This prevents systems from ending up in a PXE reboot/installation loop which can happen when PXE is set to the default boot option.
+If enabled, Cobbler will set the netboot_enabled flag for systems to 0 when the build process is complete. This prevents
+systems from ending up in a PXE reboot/installation loop which can happen when PXE is set to the default boot option.
 
-**NOTE:** This requires the use of the $SNIPPET('kickstart_done') in your %post (usually the last line of the %post script). This snippet is included in the sample*.ks files, so review those as a reference for use.
+**NOTE:** This requires the use of the $SNIPPET('kickstart_done') in your %post (usually the last line of the %post
+script). This snippet is included in the sample*.ks files, so review those as a reference for use.
 
 ### pxe_template_dir
 * **type:** String
@@ -658,7 +701,9 @@ The directory containing the templates used for generating PXE boot configuratio
 
 #### Description:
 
-The default RHN registration key to use with the included RHN/Satellite/Spacewalk registration scripts. This can be overridden on a per-object basis, for instance when you want to use different registration keys to place systems in different RHN channels, etc.
+The default RHN registration key to use with the included RHN/Satellite/Spacewalk registration scripts. This can be
+overridden on a per-object basis, for instance when you want to use different registration keys to place systems in
+different RHN channels, etc.
 
 ### redhat_management_permissive
 * **type:** Boolean
@@ -668,9 +713,12 @@ The default RHN registration key to use with the included RHN/Satellite/Spacewal
 
 If set, this will allow per-user access in the Web UI when using the authn_spacewalk module for authentication.
 
-However, doing so will permit all Spacewalk/Satellite users with certain roles (config_admin and org_admin) to edit all of cobbler's configuration. Users should turn this on only if they want this behavior and do not have a cross-multi-org seperation concern. If you have a single org in your satellite, it's probably safe to turn this on to enable the use of the Web UI alongside a Satellite install.
+However, doing so will permit all Spacewalk/Satellite users with certain roles (config_admin and org_admin) to edit all
+of cobbler's configuration. Users should turn this on only if they want this behavior and do not have a cross-multi-org
+seperation concern. If you have a single org in your satellite, it's probably safe to turn this on to enable the use of
+the Web UI alongside a Satellite install.
 
-Please refer to the {% linkup title:"Spacewalk Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [Spacewalk Authentication]({% link manuals/2.8.0/5/2/4_-_Spacewalk.md %}) section for more details.
 
 ### redhat_management_server
 * **type:** String
@@ -678,9 +726,10 @@ Please refer to the {% linkup title:"Spacewalk Authentication" extrameta:2.8.0 %
 
 #### Description:
 
-The default RHN server to use for registration via the included RHN/Satellite/Spacewalk registration scripts as well as the authn_spacewalk authentication module.
+The default RHN server to use for registration via the included RHN/Satellite/Spacewalk registration scripts as well as
+the authn_spacewalk authentication module.
 
-Please refer to the {% linkup title:"Spacewalk Authentication" extrameta:2.8.0 %} section for more details.
+Please refer to the [Spacewalk Authentication]({% link manuals/2.8.0/5/2/4_-_Spacewalk.md %}) section for more details.
 
 ### redhat_management_type
 * **type:** String
@@ -688,7 +737,8 @@ Please refer to the {% linkup title:"Spacewalk Authentication" extrameta:2.8.0 %
 
 #### Description:
 
-When using a Red Hat management platform in addition to Cobbler, this option is used to speficy the type of RHN server being used:
+When using a Red Hat management platform in addition to Cobbler, this option is used to speficy the type of RHN server
+being used:
 
 <pre>
 "off"    : I'm not using Red Hat Network, Satellite, or Spacewalk
@@ -696,7 +746,7 @@ When using a Red Hat management platform in addition to Cobbler, this option is 
 "site"   : I'm using Red Hat Satellite Server or Spacewalk
 </pre>
 
-Please refer to the {% linkup title:"Tips For RHN" extrameta:2.8.0 %} section for more details.
+Please refer to the [Tips For RHN]({% link manuals/2.8.0/Appendix/C_-_Tips_for_RHN.md %}) section for more details.
 
 ### register_new_installs
 * **type:** Boolean
@@ -704,9 +754,12 @@ Please refer to the {% linkup title:"Tips For RHN" extrameta:2.8.0 %} section fo
 
 #### Description:
 
-If enabled, this allows `/usr/bin/cobbler-register` (part of the koan package) to be used to remotely add new cobbler system records to cobbler. This effectively allows for registration of new hardware from system records, even during the build process when building a system based only on a profile.
+If enabled, this allows `/usr/bin/cobbler-register` (part of the koan package) to be used to remotely add new cobbler
+system records to cobbler. This effectively allows for registration of new hardware from system records, even during the
+build process when building a system based only on a profile.
 
-Please refer to the {% linkup title:"Automatic Registration" extrameta:2.8.0 %} section for more details.
+Please refer to the [Automatic Registration]({% link manuals/2.8.0/4/8_-_Auto-Registration.md %}) section for more
+details.
 
 ### remove_old_puppet_certs_automatically
 * **type:** Boolean
@@ -716,7 +769,8 @@ Please refer to the {% linkup title:"Automatic Registration" extrameta:2.8.0 %} 
 
 If enabled when using Puppet integration, Cobbler can be triggered (through the use of snippets) to automatically remove CA certificates for a given FQDN. This prevents failed Puppet registrations when a conflicting cert already exists.
 
-Please refer to the {% linkup title:"Puppet Integration" extrameta:2.8.0 %} section for more details.
+Please refer to the [Puppet Integration]({% link manuals/2.8.0/4/3/2_-_Puppet_Integration.md %}) section for more
+details.
 
 ### replicate_rsync_options
 * **type:** String
@@ -726,7 +780,7 @@ Please refer to the {% linkup title:"Puppet Integration" extrameta:2.8.0 %} sect
 
 This setting is used to specify additional options that are passed to the rsync command during the replicate process.
 
-Please refer to the {% linkup title:"Replicate" extrameta:2.8.0 %} section for more details.
+Please refer to the [Replicate]({% link manuals/2.8.0/3/2/8_-_Replication.md %}) section for more details.
 
 ### reposync_flags
 * **type:** String
@@ -734,9 +788,10 @@ Please refer to the {% linkup title:"Replicate" extrameta:2.8.0 %} section for m
 
 #### Description:
 
-This setting is used to specify additional options that are passed to the reposync command during the reposync process. This is specific to yum, and is not used with apt or other repository types.
+This setting is used to specify additional options that are passed to the reposync command during the reposync process.
+This is specific to yum, and is not used with apt or other repository types.
 
-Please refer to the {% linkup title:"Reposync" extrameta:2.8.0 %} section for more details.
+Please refer to the [Reposync]({% link manuals/2.8.0/3/2/5_-_Reposync.md %}) section for more details.
 
 ### restart_dhcp
 * **type:** Boolean
@@ -744,9 +799,10 @@ Please refer to the {% linkup title:"Reposync" extrameta:2.8.0 %} section for mo
 
 #### Description:
 
-If enabled, Cobbler will restart the dhcpd or dnsmasq daemon during a "cobbler sync" and after all configuration files have been generated. This will only happen when manage_dhcp is enabled.
+If enabled, Cobbler will restart the dhcpd or dnsmasq daemon during a "cobbler sync" and after all configuration files
+have been generated. This will only happen when manage_dhcp is enabled.
 
-Please refer to the {% linkup title:"Managing DHCP" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing DHCP]({% link manuals/2.8.0/3/4/1_-_Managing_DHCP.md %}) section for more details.
 
 ### restart_dns
 * **type:** Boolean
@@ -754,9 +810,10 @@ Please refer to the {% linkup title:"Managing DHCP" extrameta:2.8.0 %} section f
 
 #### Description:
 
-If enabled, Cobbler will restart the named or dnsmasq daemon during a "cobbler sync" and after all configuration files have been generated. This will only happen when manage_dns is enabled.
+If enabled, Cobbler will restart the named or dnsmasq daemon during a "cobbler sync" and after all configuration files
+have been generated. This will only happen when manage_dns is enabled.
 
-Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing DNS]({% link manuals/2.8.0/3/4/2_-_Managing_DNS.md %}) section for more details.
 
 ### restart_xinetd
 * **type:** Boolean
@@ -764,9 +821,10 @@ Please refer to the {% linkup title:"Managing DNS" extrameta:2.8.0 %} section fo
 
 #### Description:
 
-If enabled, Cobbler will restart the xinetd daemon during a "cobbler sync" and after all configuration files have been generated.
+If enabled, Cobbler will restart the xinetd daemon during a "cobbler sync" and after all configuration files have been
+generated.
 
-Please refer to the {% linkup title:"Managing TFTP" extrameta:2.8.0 %} section for more details.
+Please refer to the [Managing TFTP]({% link manuals/2.8.0/3/4/4_-_Managing_TFTP.md %}) section for more details.
 
 ### run_install_triggers
 * **type:** Boolean
@@ -774,11 +832,14 @@ Please refer to the {% linkup title:"Managing TFTP" extrameta:2.8.0 %} section f
 
 #### Description:
 
-If disabled, no install triggers (whether old-style bash or newer python-based scripts) will be run. This is an easy way to lock down cobbler if this functionality is not desired, as these scripts are run as the root user and can present a security risk.
+If disabled, no install triggers (whether old-style bash or newer python-based scripts) will be run. This is an easy way
+to lock down cobbler if this functionality is not desired, as these scripts are run as the root user and can present a
+security risk.
 
-**NOTE:** Disabling this will break the "cobbler status" command, which relies on installation triggers to generate the start and stop times for the builds.
+**NOTE:** Disabling this will break the "cobbler status" command, which relies on installation triggers to generate the
+start and stop times for the builds.
 
-Please refer to the {% linkup title:"Triggers" extrameta:2.8.0 %} section for more details.
+Please refer to the [Triggers]({% link manuals/2.8.0/4/4/1_-_Triggers.md %}) section for more details.
 
 ### scm_track_enabled
 * **type:** Boolean
@@ -786,9 +847,12 @@ Please refer to the {% linkup title:"Triggers" extrameta:2.8.0 %} section for mo
 
 #### Description:
 
-If enabled, Cobbler will execute a trigger for all add/edit/sync events which uses the scm_track_mode option to revision control Cobbler's data objects.
+If enabled, Cobbler will execute a trigger for all add/edit/sync events which uses the scm_track_mode option to revision
+control Cobbler's data objects.
 
-Please refer to the {% linkup title:"Data Revision Control" extrameta:2.8.0 %} section for more details.
+Please refer to the [Data Revision Control]({% link manuals/2.8.0/4/14_-_Data_Revision_Control.md %}) section for more
+details.
+
 
 ### scm_track_mode
 * **type:** String
@@ -796,11 +860,13 @@ Please refer to the {% linkup title:"Data Revision Control" extrameta:2.8.0 %} s
 
 #### Description:
 
-If scm_track_enabled is set to true, Cobbler will use the source control method specified by this setting to revision control data objects. Currently, only "git" and "hg" are supported.
+If scm_track_enabled is set to true, Cobbler will use the source control method specified by this setting to revision
+control data objects. Currently, only "git" and "hg" are supported.
 
 **NOTE:** Only data in `/var/lib/cobbler` is revision controlled.
 
-Please refer to the {% linkup title:"Data Revision Control" extrameta:2.8.0 %} section for more details.
+Please refer to the [Data Revision Control]({% link manuals/2.8.0/4/14_-_Data_Revision_Control.md %}) section for more
+details.
 
 ### serializer_pretty_json
 * **type:** Boolean
@@ -808,7 +874,9 @@ Please refer to the {% linkup title:"Data Revision Control" extrameta:2.8.0 %} s
 
 #### Description:
 
-If enabled, Cobbler will "pretty-print" JSON files that are written to disk, including those for all data object types. By default, the JSON is condensed into a single line, which can make them a bit difficult to read. The trade-off is a slightly larger file per object (though this size difference is negligable).
+If enabled, Cobbler will "pretty-print" JSON files that are written to disk, including those for all data object types.
+By default, the JSON is condensed into a single line, which can make them a bit difficult to read. The trade-off is a
+slightly larger file per object (though this size difference is negligable).
 
 ### server
 * **type:** String
@@ -816,11 +884,14 @@ If enabled, Cobbler will "pretty-print" JSON files that are written to disk, inc
 
 #### Description:
 
-This is the address of the cobbler server. As it is used by systems during the install process, it must be the address or hostname of the system as those systems can see the server. If you have a server that appears differently to different subnets (dual homed, etc), you can use the --server option to override this value.
+This is the address of the cobbler server. As it is used by systems during the install process, it must be the address
+or hostname of the system as those systems can see the server. If you have a server that appears differently to
+different subnets (dual homed, etc), you can use the --server option to override this value.
 
 This value is also used by the cobbler CLI command, unless the client_use_localhost setting is enabled.
 
-Please refer to the {% linkup title:"Multi-Homed Cobbler Servers" extrameta:2.8.0 %} section for more details.
+Please refer to the [Multi-Homed Cobbler Servers]({% link manuals/2.8.0/4/7_-_Multi-Homed_Cobbler_Servers.md %}) section
+for more details.
 
 ### sign_puppet_certs_automatically
 * **type:** Boolean
@@ -828,9 +899,12 @@ Please refer to the {% linkup title:"Multi-Homed Cobbler Servers" extrameta:2.8.
 
 #### Description:
 
-If enabled when using Puppet integration, Cobbler can be triggered (through the use of snippets) to automatically register CA certificates for a given FQDN, allowing puppet to be run during the %post section of the installation without issues.
+If enabled when using Puppet integration, Cobbler can be triggered (through the use of snippets) to automatically
+register CA certificates for a given FQDN, allowing puppet to be run during the %post section of the installation
+without issues.
 
-Please refer to the {% linkup title:"Puppet Integration" extrameta:2.8.0 %} section for more details.
+Please refer to the [Puppet Integration]({% link manuals/2.8.0/4/3/2_-_Puppet_Integration.md %}) section for more
+details.
 
 ### snippetsdir
 * **type:** String
@@ -838,7 +912,9 @@ Please refer to the {% linkup title:"Puppet Integration" extrameta:2.8.0 %} sect
 
 #### Description:
 
-The default directory containing Cobbler's snippets. Any snippet referenced by the $SNIPPET('') call in a template must live under this directory, for security purposes. Snippets can be located in sub-directories here to aid in organization.
+The default directory containing Cobbler's snippets. Any snippet referenced by the $SNIPPET('') call in a template must
+live under this directory, for security purposes. Snippets can be located in sub-directories here to aid in
+organization.
 
 ### template_remote_kickstarts
 * **type:** Boolean
@@ -856,7 +932,7 @@ If this option is enabled and a remote (non-local) kickstart file is specified f
 
 If enabled, any VM created by Koan will be set to start at boot time.
 
-Please refer to the {% linkup title:"Koan" extrameta:2.8.0 %} section for more details.
+Please refer to the [Koan]({% link manuals/2.8.0/6_-_Koan.md %}) section for more details.
 
 ### webdir
 * **type:** String
@@ -886,7 +962,8 @@ The default yum repo priority for repos managed by Cobbler. If different repos p
 
 This option is only valid for yum repos, and is not used for apt or other repo types.
 
-Please refer to the {% linkup title:"Package Management and Mirroring" extrameta:2.8.0 %} section for more details.
+Please refer to the [Package Management and Mirroring]({% link manuals/2.8.0/3/7_-_Package_Management_and_Mirroring.md %})
+section for more details.
 
 ### yum_post_install_mirror
 * **type:** Boolean
@@ -894,7 +971,9 @@ Please refer to the {% linkup title:"Package Management and Mirroring" extrameta
 
 #### Description:
 
-If enabled, Cobbler will add yum.repos.d entries for all repos allocated to a system or profile. If disabled, these repos will only be used during the build process. Normally, this option should be left enabled unless you are using other configuration management systems to configure the repos in use after the build process is complete.
+If enabled, Cobbler will add yum.repos.d entries for all repos allocated to a system or profile. If disabled, these
+repos will only be used during the build process. Normally, this option should be left enabled unless you are using
+other configuration management systems to configure the repos in use after the build process is complete.
 
 ### yumdownloader_flags
 * **type:** String
@@ -904,4 +983,5 @@ If enabled, Cobbler will add yum.repos.d entries for all repos allocated to a sy
 
 Extra flags for the yumdownloader command, which is used to pull down individual RPM files out of a yum repo.
 
-Please refer to the {% linkup title:"Package Management and Mirroring" extrameta:2.8.0 %} section for more details.
+Please refer to the [Package Management and Mirroring]({% link manuals/2.8.0/3/7_-_Package_Management_and_Mirroring.md %})
+section for more details.

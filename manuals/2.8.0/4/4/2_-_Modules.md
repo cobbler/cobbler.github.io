@@ -7,7 +7,8 @@ meta: 2.8.0
 
 Certain cobbler features can be user extended (in Python) by Cobbler users.
 
-These features include storage of data (serialization), authorization, and authentication. Over time, this list of module types will grow to support more options.  [Triggers](Triggers) are basically modules.
+These features include storage of data (serialization), authorization, and authentication. Over time, this list of
+module types will grow to support more options.  [Triggers](Triggers) are basically modules.
 
 ## See Also
 

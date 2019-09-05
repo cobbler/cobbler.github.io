@@ -65,36 +65,27 @@ host to save typing.
 
 ## Limitations
 
-It is perfectly fine to sync data bi-directionally, though keep in
-mind metadata being synced is not timestamped with the time of the
-last edit (this may be a nice future extension), so the latest sync
-"wins". Cobbler replicate is, generally, designed to have a
-"master" concept, so it is probably not desirable yet to do
-bi-directional syncing.
+It is perfectly fine to sync data bi-directionally, though keep in mind metadata being synced is not timestamped with
+the time of the last edit (this may be a nice future extension), so the latest sync "wins". Cobbler replicate is,
+generally, designed to have a "master" concept, so it is probably not desirable yet to do bi-directional syncing.
 
 ## Common Use Cases
 
 ## High Availability / Disaster Recovery
 
-A remote cobbler server periodically replicates from the master to
-keep an active installation.
+A remote cobbler server periodically replicates from the master to keep an active installation.
 
 ## Load Balancing
 
-Similar to the HA/Disaster Recovery case, consider using a
-{% linkup title:"Triggers" extrameta:2.8.0 %} to notify the other
-server to pull new metadata when commands are issued.
+Similar to the HA/Disaster Recovery case, consider using a [Triggers]({% link manuals/2.8.0/4/4/1_-_Triggers.md %})
+to notify the other server to pull new metadata when commands are issued.
 
 ## Multiple Geographies
 
 Several remote servers pull from the master, either triggered by a
-{% linkup title:"Triggers" extrameta:2.8.0 %} on the central
-server, or otherwise on daily cron. This allows for establishing
-install mirrors that are closer and therefore faster and less
-bandwidth hungry. The admin can choose whether or not system
-records should be centrally managed. It may be desirable to just
-centrally provide the distributions and profiles and keep the
-system records on each seperate cobbler server, however, there is
-nothing to say all records can't be kept centrally as well. (Choose
-one or the other, don't do a mixture of both.)
+[Triggers]({% link manuals/2.8.0/4/4/1_-_Triggers.md %}) on the central server, or otherwise on daily cron. This allows
+for establishing install mirrors that are closer and therefore faster and less bandwidth hungry. The admin can choose
+whether or not system records should be centrally managed. It may be desirable to just centrally provide the
+distributions and profiles and keep the system records on each seperate cobbler server, however, there is nothing to say
+all records can't be kept centrally as well. (Choose one or the other, don't do a mixture of both.)
 

@@ -4,7 +4,9 @@ title: Advanced Networking - Bonded Bridging
 meta: 2.8.0
 ---
 
-Some situations, such as virtualization hosts, require more redundancy in their bridging setups. In this case, 2.8.0 introduced a new interface type - the bonded_bridge_slave. This is an interface that is a bond master to one or more physical interfaces, and is itself a bridged slave interface.
+Some situations, such as virtualization hosts, require more redundancy in their bridging setups. In this case, 2.8.0
+introduced a new interface type - the bonded_bridge_slave. This is an interface that is a bond master to one or more
+physical interfaces, and is itself a bridged slave interface.
 
 You can create a bonded_bridge_slave in cobbler in the following way:
 
@@ -20,4 +22,6 @@ $ cobbler system edit --name=foo --interface=br0 --interface-type=bridge \
                       --netmask=255.255.255.0 --static=1
 {% endhighlight %}
 
-**NOTE** Please reference the {% linkup title:"Advanced Networking - Bonding" extrameta:2.8.0 %} and {% linkup title:"Advanced Networking - Bridging" extrameta:2.8.0 %} sections for requirements specific to each of these interface types.
+**NOTE** Please reference the [Advanced Networking - Bonding]({% link manuals/2.8.0/4/1/1_-_Bonding.md %}) and
+[Advanced Networking - Bridging]({% link manuals/2.8.0/4/1/3_-_Bridging.md %}) sections for requirements specific to
+each of these interface types.

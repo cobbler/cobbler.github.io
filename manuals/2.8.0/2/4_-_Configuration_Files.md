@@ -7,5 +7,5 @@ meta: 2.8.0
 
 Cobbler has many configuration files, however only a few typically need be modified for basic functionality:
 
-* {% linkup title:"Settings File" extrameta:2.8.0 %}
-* {% linkup title:"Modules Configuration" extrameta:2.8.0 %}
+- [Settings File]({% link manuals/2.8.0/2/4/1_-_Settings_File.md %})
+- [Modules Configuration]({% link manuals/2.8.0/2/4/2_-_Modules_Configuration.md %})

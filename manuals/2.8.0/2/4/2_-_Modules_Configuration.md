@@ -4,7 +4,10 @@ title: Modules Configuration
 meta: 2.8.0
 ---
 
-Cobbler supports add-on modules, some of which can provide the same functionality (for instance, the authentication/authorization modules discussed in the {% linkup title:"Web Authentication" extrameta:2.8.0 %} section). Modules of this nature are configured via the `/etc/cobbler/modules.conf file`, for example:
+Cobbler supports add-on modules, some of which can provide the same functionality (for instance, the
+authentication/authorization modules discussed in the 
+[Web Authentication]({% link manuals/2.8.0/5/2_-_Web_Authentication.md %}) section). Modules of this nature are
+configured via the `/etc/cobbler/modules.conf file`, for example:
 
 {% highlight ini %}
 # dns:
@@ -20,6 +23,9 @@ module = manage_bind
 
 As you can see above, this file has a typical INI-style syntax where sections are denoted with the **\[\]** brackets and entries are of the form **"key = value"**.
 
-Many of these sections are covered in the {% linkup title:"Managing Services With Cobbler" extrameta:2.8.0 %} and {% linkup title:"Web Authentication" extrameta:2.8.0 %} topics later in this manual. Please refer to those sections for further details on modifying this file.
+Many of these sections are covered in the
+[Managing Services With Cobbler]{% link manuals/2.8.0/3/4_-_Managing_Services_With_Cobbler.md %} and
+[Web Authentication]({% link manuals/2.8.0/5/2_-_Web_Authentication.md %}) topics later in this manual. Please refer to
+those sections for further details on modifying this file.
 
 As with the settings file, you must restart cobblerd after making changes to this file.

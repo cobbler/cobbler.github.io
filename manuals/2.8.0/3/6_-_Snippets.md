@@ -3,9 +3,13 @@ layout: manpage
 title: Snippets
 meta: 2.8.0
 ---
-Snippets are a way of reusing common blocks of code between kickstarts (though this also works on files other than kickstart templates, but that's a sidenote). For instance, the default Cobbler installation has a snippet called "$SNIPPET('func\_register\_if\_enabled')" that can help set up the application called Func.
+Snippets are a way of reusing common blocks of code between kickstarts (though this also works on files other than
+kickstart templates, but that's a sidenote). For instance, the default Cobbler installation has a snippet called
+"$SNIPPET('func\_register\_if\_enabled')" that can help set up the application called Func.
 
-This means that every time that this SNIPPET text appears in a kickstart file it is replaced by the contents of `/var/lib/cobbler/snippets/func_register_if_enabled`. This allows this block of text to be reused in every kickstart template -- you may think of snippets, if you like, as templates for templates!
+This means that every time that this SNIPPET text appears in a kickstart file it is replaced by the contents of
+`/var/lib/cobbler/snippets/func_register_if_enabled`. This allows this block of text to be reused in every kickstart
+template -- you may think of snippets, if you like, as templates for templates!
 
 To review, the syntax looks like:
 
@@ -195,20 +199,15 @@ If you come up with any clever tricks, paste them here to share,
 and also share them with the cobbler mailing list so we can talk
 about them.
 
-Note that some of these rely on cobbler's
-[Cheetah powered](http://cheetahtemplate.org)
-[KickstartTemplating](/cobbler/wiki/KickstartTemplating) engine
-pretty heavily so they might be a little hard to read at first.
-Snippets can just be simple reusable blocks of basic copy and paste
-text and can also be simple. Either way works depending on what you
-want to do.
+Note that some of these rely on cobbler's [Cheetah powered](http://cheetahtemplate.org)
+[KickstartTemplating]({% link manuals/2.8.0/3/5_-_Kickstart_Templating.md %}}) engine pretty heavily so they might be a
+little hard to read at first. Snippets can just be simple reusable blocks of basic copy and paste text and can also be
+simple. Either way works depending on what you want to do.
 
-NOTE: Content provided here is not part of Cobbler's "core" code so
-we may not be able to help you on the mailing list or IRC with
-snippets that aren't yet part of cobbler's core distribution.
-Cobbler does ship a few in `/var/lib/cobbler/snippets` that we can
-answer questions on, and in general, if you have a good idea, we'd
-love to work with you to get it shipped with Cobbler.
+NOTE: Content provided here is not part of Cobbler's "core" code so we may not be able to help you on the mailing list
+or IRC with snippets that aren't yet part of cobbler's core distribution. Cobbler does ship a few in
+`/var/lib/cobbler/snippets` that we can answer questions on, and in general, if you have a good idea, we'd love to work
+with you to get it shipped with Cobbler.
 
 ### Adding an SSH key to authorized keys
 
@@ -222,8 +221,7 @@ love to work with you to get it shipped with Cobbler.
 
 Instructions for setup:
 
-1.  Decide what to call your snippet. I'll use the name
-    `publickey_root_robin`.
+1.  Decide what to call your snippet. I'll use the name `publickey_root_robin`.
 2.  Save your code in `/var/lib/cobbler/snippets/<snippet name>`
 3.  Add your new snippet to your kickstart template, e.g.
 
@@ -235,13 +233,11 @@ Instructions for setup:
 
 Contributed by: Matt Hyclak
 
-This snippet makes use of if/else, getVar, and the split()
-function.
+This snippet makes use of if/else, getVar, and the `split()` function.
 
-It provides some additional options for partitioning compared with
-the example shipped with Cobbler. If the disk you want to partition
-is not sda, then simply set a ksmeta variable for the system (e.g.
-cobbler system edit --name=oldIDEbox --ksmeta="disk=hda")
+It provides some additional options for partitioning compared with the example shipped with Cobbler. If the disk you
+want to partition is not sda, then simply set a ksmeta variable for the system (e.g. 
+`cobbler system edit --name=oldIDEbox --ksmeta="disk=hda"`)
 
     #set $hostname = $getVar('$hostname', None)
     #set $hostpart = $getVar('$hostpart', None)
@@ -273,8 +269,8 @@ cobbler system edit --name=oldIDEbox --ksmeta="disk=hda")
 
 ### Another partitioning example
 
-Use software raid if there are more then one disk present (e.g.
-cobbler system edit --name=webServer --ksmeta="disks=sda,sdb")
+Use software raid if there are more then one disk present (e.g. 
+`cobbler system edit --name=webServer --ksmeta="disks=sda,sdb"`)
 
 Contributed by: Harry Hoffman
 
@@ -307,16 +303,13 @@ Contributed by: Harry Hoffman
 
 Contributed by: Matt Hyclak
 
-NOTE: Advanced Snippets in all recent versions of Cobbler make this
-unneccessary (this is an older snippet), but it's still a neat
-trick to learn some Cheetah skills.
+NOTE: Advanced Snippets in all recent versions of Cobbler make this unneccessary (this is an older snippet), but it's
+still a neat trick to learn some Cheetah skills.
 
-This snippet makes use of if/else, getVar, the split() function,
-include, and try/except.
+This snippet makes use of if/else, getVar, the split() function, include, and try/except.
 
-This snippet allows the administrator to create a file containing
-the package selection based on hostname and includes it if
-possible, otherwise it fallse back to a default.
+This snippet allows the administrator to create a file containing the package selection based on hostname and includes
+it if possible, otherwise it fallse back to a default.
 
     #set $hostname = $getVar('$hostname', None)
     
@@ -342,10 +335,8 @@ possible, otherwise it fallse back to a default.
 
 Contributed by: Luc de Louw
 
-This snippet add or removes packages depending on the profile name.
-Assuming you have profiles named rhel5, rhel5-test, rhel4 and
-rhel4-test. You need to install packages depending if it a test
-system or not.
+This snippet add or removes packages depending on the profile name. Assuming you have profiles named rhel5, rhel5-test,
+rhel4 and rhel4-test. You need to install packages depending if it a test system or not.
 
     #if 'test' in $profile_name
     #Test System selected, adding some more packages
@@ -363,8 +354,7 @@ system or not.
     
     #end if
 
-Add $SNIPPET('snippetname') at the %packages section in the
-kickstart template
+Add $SNIPPET('snippetname') at the %packages section in the kickstart template
 
 ### Root Password Generation
 
@@ -443,15 +433,13 @@ appropriate packages to install. To fully automate a RHEL
 installation, the kickstart needs a *key* option, either setting
 the key or explicitly skipping it.
 
-This is not to be confused with
-[TipsForRhn](/cobbler/wiki/TipsForRhn), which includes registration
-instructions for RHN Hosted and Satellite. Cobbler actually is
-happy with "key --skip" in most cases.
+This is not to be confused with [TipsForRhn]({% link manuals/2.8.0/Appendix/C_-_Tips_for_RHN.md %}), which includes
+registration instructions for RHN Hosted and Satellite. Cobbler actually is happy with "key --skip" in most cases.
 
 See also:
 
--   [http://kbase.redhat.com/faq/FAQ\_103\_8967.shtm](http://kbase.redhat.com/faq/FAQ_103_8967.shtm)
--   [http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Installation\_Guide-en-US/s1-kickstart2-options.html\#id3080516](http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Installation_Guide-en-US/s1-kickstart2-options.html#id3080516)
+- [http://kbase.redhat.com/faq/FAQ\_103\_8967.shtm](http://kbase.redhat.com/faq/FAQ_103_8967.shtm)
+- [http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Installation\_Guide-en-US/s1-kickstart2-options.html\#id3080516](http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Installation_Guide-en-US/s1-kickstart2-options.html#id3080516)
 
 Add this to the kickstart template:
 

@@ -4,23 +4,32 @@ title: Cobbler Primitives
 meta: 2.8.0
 ---
 
-Primitives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section of the {% linkup title:"Introduction to Cobbler" extrameta:2.8.0 %} page. These objects are generally loosely related, though the distro/profile/system relation is somewhat more strict.
+Primitives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section of
+the [Introduction to Cobbler]({% link manuals/2.8.0/1_-_About_Cobbler.md %}) page. These objects are generally loosely
+related, though the distro/profile/system relation is somewhat more strict.
 
-This section covers the creation and use of these objects, as well as how they relate to each other - including the methodology by which attributes are inherited from parent objects.
+This section covers the creation and use of these objects, as well as how they relate to each other - including the
+methodology by which attributes are inherited from parent objects.
 
 ## Standard Rules
 
-Cobbler has a standard set of rules for manipulating primitive field values and, in the case of distros/profiles/systems, how those values are inherited from parents to children.
+Cobbler has a standard set of rules for manipulating primitive field values and, in the case of
+distros/profiles/systems, how those values are inherited from parents to children.
 
 ### Inheritance of Values
 
 Inheritance of values is based on the field type. 
 
-* For regular fields and arrays, the value will only be inherited if the field is set to '&lt;&lt;inherit&gt;&gt;'. Since distros and other objects like repos do not have a parent, these values are inherited from the defaults in {% linkup title:"Cobbler Settings" extrameta:2.8.0 %}. If the field is specifically set to an empty string, no value will be inherited.
-* For hashes, the values from the parent will always be inherited and blended with the child values. If the parent and child have the same key, the child's values will win an override the parent's.
+- For regular fields and arrays, the value will only be inherited if the field is set to '&lt;&lt;inherit&gt;&gt;'.
+  Since distros and other objects like repos do not have a parent, these values are inherited from the defaults in
+  [Cobbler Settings]({% link manuals/2.8.0/3/3_-_Cobbler_Settings.md %}). If the field is specifically set to an empty
+  string, no value will be inherited.
+- For hashes, the values from the parent will always be inherited and blended with the child values. If the parent and
+  child have the same key, the child's values will win an override the parent's.
 
 ### Array Fields
-Some fields in Cobbler (for example, the --name-servers field) are stored as arrays. These arrays are always considered arrays of strings, and are always specified in Cobbler as a space-separated list when using add/edit.
+Some fields in Cobbler (for example, the --name-servers field) are stored as arrays. These arrays are always considered
+arrays of strings, and are always specified in Cobbler as a space-separated list when using add/edit.
 
 **Example:**
 
@@ -29,11 +38,13 @@ $ cobbler [object] edit --name=foo --field="a b c d"
 {% endhighlight %}
 
 ### Hash Fields (key=value)
-Other fields in Cobbler (for example, the --ksmeta field) are stored as hashes - that is a list of key=value pairs. As with arrays, both the keys and values are always interpreted as strings.
+Other fields in Cobbler (for example, the --ksmeta field) are stored as hashes - that is a list of key=value pairs. As
+with arrays, both the keys and values are always interpreted as strings.
 
 #### Preserving Values When Editing
 
-By default, any time a hash field is manipulated during an edit, the contents of the field are replaced completely with the new values specified during the edit.
+By default, any time a hash field is manipulated during an edit, the contents of the field are replaced completely with
+the new values specified during the edit.
 
 **Example:**
 
@@ -95,11 +106,13 @@ $ cobbler distro report --name=foo | grep "Kickstart Meta"
 Kickstart Metadata             : {'a': '~', 'c': '~', 'b': '~'}
 {% endhighlight %}
 
-<div class="alert alert-info alert-block"><b>Note:</b> While valid syntax, this could cause problems for some fields where Cobbler expects a value (for example, --template-files).</div>
+<div class="alert alert-info alert-block">**Note:** While valid syntax, this could cause problems for some fields where
+Cobbler expects a value (for example, --template-files).</div>
 
 #### Keys With Multiple Values
 
-It is also possible to specify multiple values for the same key. In this situation, Cobbler will convert the value portion to an array:
+It is also possible to specify multiple values for the same key. In this situation, Cobbler will convert the value
+portion to an array:
 
 {% highlight bash %}
 $ cobbler distro edit --name=foo --in-place --ksmeta="a=b a=c a=d"
@@ -107,7 +120,8 @@ $ cobbler distro report --name=foo | grep "Kickstart Meta"
 Kickstart Metadata             : {'a': ['b', 'c', 'd']}
 {% endhighlight %}
 
-<div class="alert alert-info alert-block"><b>Note:</b> You must specify --in-place for this to work. By default the behavior will result in a single value, with the last specified value being the winner.</div>
+<div class="alert alert-info alert-block"><b>Note:</b> You must specify --in-place for this to work. By default the
+behavior will result in a single value, with the last specified value being the winner.</div>
 
 ## Standard Primitive Sub-commands
 
@@ -147,7 +161,9 @@ As with the list command, the report command is also available as a top-level co
 
 The remove command uses only the --name option.
 
-<div class="alert alert-info alert-block"><b>Note:</b> Removing an object will also remove any child objects (profiles, sub-profiles and/or systems). Prior versions of Cobbler required an additional --recursive option to enable this behavior, but it has become the default in recent versions so use remove with caution.</div>
+<div class="alert alert-info alert-block">**Note:** Removing an object will also remove any child objects (profiles,
+sub-profiles and/or systems). Prior versions of Cobbler required an additional --recursive option to enable this
+behavior, but it has become the default in recent versions so use remove with caution.</div>
 
 **Example:**
 
@@ -171,9 +187,11 @@ $ cobbler [object] rename --name=foo --newname=bar
 
 The find command allows you to search for objects based on object attributes.
 
-Please refer to the {% linkup title:"Command Line Search" extrameta:2.8.0 %} section for more details regarding the find sub-command.
+Please refer to the [Command Line Search]({% link manuals/2.8.0/3/2/7_-_Command_Line_Search.md %}) section for more
+details regarding the find sub-command.
 
 ### Dumpvars (Debugging)
 
-The dumpvars command is intended to be used for debugging purposes, and for those writing snippets. In general, it is not required for day-to-day use.
+The dumpvars command is intended to be used for debugging purposes, and for those writing snippets. In general, it is
+not required for day-to-day use.
 
