@@ -6,4 +6,5 @@ meta: 2.8.0
 ---
 ## Cobbler Manual - Version 2.8.x
 
-{% listdir %}
+{% assign navroot = site.data.sitetree['nav28'] %}
+{% include nav.html nav=navroot %}

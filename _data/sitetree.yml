@@ -1,0 +1,272 @@
+nav26:
+  - title: 1 - About Cobbler
+    url: /manuals/2.6.0/1_-_About_Cobbler.html
+    subnav:
+      - title: 1 - Release Notes
+        url: /manuals/2.6.0/1/1_-_Release_Notes.html
+      - title: 2 - Distribution Support
+      - title: 3 - Distribution Notes
+        subnav:
+          - title: 1 - Nexenta
+          - title: 2 - FreeBSD
+  - title: 2 - Installing Cobbler
+    url: /manuals/2.6.0/2_-_Installing_Cobbler.html
+    subnav:
+      - title: 1 - Prerequisites
+      - title: 2 - Installing from Packages
+        subnav:
+          - title: 1 - Fedora
+          - title: 2 - RHEL and CentOS
+          - title: 3 - openSUSE
+          - title: 4 - Debian and Ubuntu
+      - title: 3 - Installing from Source
+      - title: 4 - Configuration Files
+        subnav:
+          - title: Settings File
+          - title: Modules Configuration
+      - title: 5 - Relocating your installation
+  - title: 3 - General Topics
+    subnav:
+      - title: Cobbler Primitives
+        subnav:
+          - title: 1 - Distros
+          - title: 2 - Profiles and Sub-Profiles
+          - title: 3 - Systems
+          - title: 4 - Images
+          - title: 5 - Repos
+          - title: 6 - Management Classes
+          - title: 7 - File Resources
+          - title: 8 - Package Resources
+      - title: Cobbler Direct Commands
+        subnav:
+          - title: 1 - Check
+          - title: 2 - Sync
+          - title: 3 - Distro Signatures
+          - title: 4 - Import
+          - title: 5 - Reposync
+          - title: 6 - Build ISO
+          - title: 7 - Command Line Search
+          - title: 8 - Replication
+          - title: 9 - Validate Kickstart
+          - title: 10 - ACL Setup
+          - title: 11 - Dynamic Settings
+          - title: 12 - Version
+      - title: Cobbler Settings
+        subnav:
+          - title: 1 - Dynamic Settings
+          - title: 2 - Complete Settings List
+      - title: Managing Services with Cobbler
+        subnav:
+          - title: Managing DHCP
+          - title: Managing DNS
+          - title: Managing rsync
+          - title: Managing TFTP
+      - title: Kickstart Templating
+      - title: Snippets
+      - title: Package Management and Mirroring
+      - title: File System Information
+  - title: 4 - Advanced Topics
+    subnav:
+      - title: 1 - Advanced Networking
+        subnav:
+          - title: 1 - Bonding
+          - title: 2 - VLANs
+          - title: 3 - Bridging
+          - title: 4 - Bonded Bridging
+      - title: 2 - SELinux
+      - title: 3 - Configuration Management
+        subnav:
+          - title: 1 - Built-In Configuration Management
+          - title: 2 - Puppet Integration
+          - title: 3 - Func Integration
+      - title: 4 - Extending Cobbler
+        subnav:
+          - title: 1 - Triggers
+          - title: 2 - Modules
+          - title: 3 - Extending Cheetah
+      - title: 5 - Power Management
+      - title: 6 - Alternative Template Formats
+      - title: 7 - Multi Homes Cobbler Servers
+      - title: 8 - Auto Registration
+      - title: 9 - Batch Editing
+      - title: 10 - Moving to a new server
+      - title: 11 - PXE boot menu passwords
+      - title: 12 - Alternative storage backends
+        subnav:
+          - title: 1 - CouchDB
+          - title: 2 - MongoDB
+          - title: 3 - MySQL
+      - title: 13 - Using gPXE
+      - title: 14 - Data Revisision Control
+  - title: 5 - Web Interface
+    subnav:
+      - title: 1 - Security Overview
+      - title: 2 - Web Authentication
+        subnav:
+          - title: 1 - PAM
+          - title: 2 - LDAP
+          - title: 3 - Kerberos
+          - title: 4 - Spacewalk
+          - title: 5 - Passthru
+          - title: 6 - Digest
+      - title: 3 - Web Authorization
+      - title: 4 - Locking down Cobbler
+  - title: 6 - Koan
+    subnav:
+      - title: 1 - Koan Basics
+      - title: 2 - Koan With ISOs
+      - title: 3 - Installing virtual guests
+      - title: 4 - Reinstallation
+      - title: 5 - Virtual Networking Setup
+      - title: 6 - VMWare
+  - title: 7 - Troubleshooting
+    subnav:
+      - title: 1 - Debugging Tips
+      - title: 2 - Hints Redhat
+      - title: 3 - Virtualization Troubleshooting
+  - title: Appendix
+    subnav:
+      - title: A - S390 Support
+      - title: B - Power-PC Support
+      - title: C - Tips for RHN
+      - title: D - Memtest
+      - title: E - Anaconda Monitoring
+      - title: F - System Retirement
+      - title: G - Booting Live CDs
+      - title: H - Clonezilla Integration
+nav28:
+  - title: 1 - About Cobbler
+    url: /manuals/2.8.0/1_-_About_Cobbler.html
+    subnav:
+      - title: 1 - Release Notes
+        url: /manuals/2.8.0/1/1_-_Release_Notes.html
+      - title: 2 - Distribution Support
+      - title: 3 - Distribution Notes
+        subnav:
+          - title: 1 - Nexenta
+          - title: 2 - FreeBSD
+  - title: 2 - Installing Cobbler
+    url: /manuals/2.8.0/2_-_Installing_Cobbler.html
+    subnav:
+      - title: 1 - Prerequisites
+      - title: 2 - Installing from Packages
+        subnav:
+          - title: 1 - Fedora
+          - title: 2 - RHEL and CentOS
+          - title: 3 - openSUSE
+          - title: 4 - Debian and Ubuntu
+      - title: 3 - Installing from Source
+      - title: 4 - Configuration Files
+        subnav:
+          - title: Settings File
+          - title: Modules Configuration
+      - title: 5 - Relocating your installation
+  - title: 3 - General Topics
+    subnav:
+      - title: Cobbler Primitives
+        subnav:
+          - title: 1 - Distros
+          - title: 2 - Profiles and Sub-Profiles
+          - title: 3 - Systems
+          - title: 4 - Images
+          - title: 5 - Repos
+          - title: 6 - Management Classes
+          - title: 7 - File Resources
+          - title: 8 - Package Resources
+      - title: Cobbler Direct Commands
+        subnav:
+          - title: 1 - Check
+          - title: 2 - Sync
+          - title: 3 - Distro Signatures
+          - title: 4 - Import
+          - title: 5 - Reposync
+          - title: 6 - Build ISO
+          - title: 7 - Command Line Search
+          - title: 8 - Replication
+          - title: 9 - Validate Kickstart
+          - title: 10 - ACL Setup
+          - title: 11 - Dynamic Settings
+          - title: 12 - Version
+      - title: Cobbler Settings
+        subnav:
+          - title: 1 - Dynamic Settings
+          - title: 2 - Complete Settings List
+      - title: Managing Services with Cobbler
+        subnav:
+          - title: Managing DHCP
+          - title: Managing DNS
+          - title: Managing rsync
+          - title: Managing TFTP
+      - title: Kickstart Templating
+      - title: Snippets
+      - title: Package Management and Mirroring
+      - title: File System Information
+  - title: 4 - Advanced Topics
+    subnav:
+      - title: 1 - Advanced Networking
+        subnav:
+          - title: 1 - Bonding
+          - title: 2 - VLANs
+          - title: 3 - Bridging
+          - title: 4 - Bonded Bridging
+      - title: 2 - SELinux
+      - title: 3 - Configuration Management
+        subnav:
+          - title: 1 - Built-In Configuration Management
+          - title: 2 - Puppet Integration
+          - title: 3 - Func Integration
+      - title: 4 - Extending Cobbler
+        subnav:
+          - title: 1 - Triggers
+          - title: 2 - Modules
+          - title: 3 - Extending Cheetah
+      - title: 5 - Power Management
+      - title: 6 - Alternative Template Formats
+      - title: 7 - Multi Homes Cobbler Servers
+      - title: 8 - Auto Registration
+      - title: 9 - Batch Editing
+      - title: 10 - Moving to a new server
+      - title: 11 - PXE boot menu passwords
+      - title: 12 - Alternative storage backends
+        subnav:
+          - title: 1 - CouchDB
+          - title: 2 - MongoDB
+          - title: 3 - MySQL
+      - title: 13 - Using gPXE
+      - title: 14 - Data Revisision Control
+  - title: 5 - Web Interface
+    subnav:
+      - title: 1 - Security Overview
+      - title: 2 - Web Authentication
+        subnav:
+          - title: 1 - PAM
+          - title: 2 - LDAP
+          - title: 3 - Kerberos
+          - title: 4 - Spacewalk
+          - title: 5 - Passthru
+          - title: 6 - Digest
+      - title: 3 - Web Authorization
+      - title: 4 - Locking down Cobbler
+  - title: 6 - Koan
+    subnav:
+      - title: 1 - Koan Basics
+      - title: 2 - Koan With ISOs
+      - title: 3 - Installing virtual guests
+      - title: 4 - Reinstallation
+      - title: 5 - Virtual Networking Setup
+      - title: 6 - VMWare
+  - title: 7 - Troubleshooting
+    subnav:
+      - title: 1 - Debugging Tips
+      - title: 2 - Hints Redhat
+      - title: 3 - Virtualization Troubleshooting
+  - title: Appendix
+    subnav:
+      - title: A - S390 Support
+      - title: B - Power-PC Support
+      - title: C - Tips for RHN
+      - title: D - Memtest
+      - title: E - Anaconda Monitoring
+      - title: F - System Retirement
+      - title: G - Booting Live CDs
+      - title: H - Clonezilla Integration
