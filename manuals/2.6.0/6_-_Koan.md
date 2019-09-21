@@ -4,9 +4,6 @@ title: Koan
 meta: 2.6.0
 ---
 
-<p>This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual machines with Cobbler.</p>
-
-<h2>Section Topics:</h2>
-
-<div class="toc"><ul class="dirtree"><li><a href="/manuals/2.6.0/6/1_-_Koan_Basics.html">1 - Koan Basics</a></li><li><a href="/manuals/2.6.0/6/2_-_Koan_With_ISOs.html">2 - Koan With ISOs</a></li><li><a href="/manuals/2.6.0/6/3_-_Installing-virtual-guests.html">3 - Installing-virtual-guests</a></li><li><a href="/manuals/2.6.0/6/4_-_Reinstallation.html">4 - Reinstallation</a></li><li><a href="/manuals/2.6.0/6/5_-_Virtual-networking-setup.html">5 - Virtual-networking-setup</a></li><li><a href="/manuals/2.6.0/6/6_-_Vmware.html">6 - Vmware</a></li></ul></div>
+This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual
+machines with Cobbler.
 

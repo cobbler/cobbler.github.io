@@ -6,6 +6,3 @@ meta: 2.8.0
 
 This section of the manual covers the cobbler utility koan, which is used to quickly and easily provision virtual
 machines with Cobbler.
-
-## Section Topics:
-{% listdir %}
