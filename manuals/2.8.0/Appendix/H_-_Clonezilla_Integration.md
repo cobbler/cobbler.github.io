@@ -1,7 +1,10 @@
 ---
 layout: manpage
-title: Clonezilla integration
+title: Clonezilla Integration
 meta: 2.8.0
+breadcrumb: Clonezilla Integration
+nav: H - Clonezilla Integration
+navversion: nav28
 ---
 
 

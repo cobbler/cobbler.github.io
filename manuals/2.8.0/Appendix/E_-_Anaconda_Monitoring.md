@@ -2,6 +2,9 @@
 layout: manpage
 title: Anaconda Monitoring
 meta: 2.8.0
+breadcrumb: Anaconda Monitoring
+nav: E - Anaconda Monitoring
+navversion: nav28
 ---
 
 

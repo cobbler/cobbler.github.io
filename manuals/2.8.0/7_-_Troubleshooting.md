@@ -1,7 +1,10 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Troubleshooting
 meta: 2.8.0
+breadcrumb: Troubleshooting
+nav: 7 - Troubleshooting
+navversion: nav28
 ---
 # Frequently Asked Trouble Shooting Questions
 

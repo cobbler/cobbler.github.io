@@ -2,6 +2,9 @@
 layout: manpage
 title: Cobbler Web User Interface
 meta: 2.8.0
+breadcrumb: Web Interface
+nav: 5 - Web Interface
+navversion: nav28
 ---
 This section of the manual covers the Cobbler Web Interface. With the web user interface (WebUI), you can:
 

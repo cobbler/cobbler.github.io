@@ -2,6 +2,9 @@
 layout: manpage
 title: Introduction to Cobbler
 meta: 2.8.0
+breadcrumb: About
+nav: 1 - About Cobbler
+navversion: nav28
 ---
 
 Cobbler is a build and deployment system. The primary functionality of cobbler is to simplify the lives of

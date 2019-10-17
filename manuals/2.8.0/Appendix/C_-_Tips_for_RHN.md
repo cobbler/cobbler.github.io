@@ -2,6 +2,9 @@
 layout: manpage
 title: Tips For RHN
 meta: 2.8.0
+breadcrumb: Tips For RHN
+nav: C - Tips For RHN
+navversion: nav28
 ---
 If you're deploying RHEL, there are a few extra kickstart and Cobbler tricks you can employ to make provisioning a snap,
 all consolidated in one place...

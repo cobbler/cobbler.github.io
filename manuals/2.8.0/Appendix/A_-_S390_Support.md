@@ -1,7 +1,10 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: S390 Support
 meta: 2.8.0
+breadcrumb: S390 Support
+nav: A - S390 Support
+navversion: nav28
 ---
 
 <div class="alert alert-info alert-block"><b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.</div>
