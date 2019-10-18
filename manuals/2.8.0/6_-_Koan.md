@@ -2,7 +2,6 @@
 layout: manpage
 title: Koan
 meta: 2.8.0
-breadcrumb: Koan
 nav: 6 - Koan
 navversion: nav28
 ---

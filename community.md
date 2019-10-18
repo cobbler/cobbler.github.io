@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Cobbler Community and Help
-breadcrumb: Community
 ---
 
 # Connecting to the Cobbler Community

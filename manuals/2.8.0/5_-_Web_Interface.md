@@ -2,7 +2,6 @@
 layout: manpage
 title: Cobbler Web User Interface
 meta: 2.8.0
-breadcrumb: Web Interface
 nav: 5 - Web Interface
 navversion: nav28
 ---

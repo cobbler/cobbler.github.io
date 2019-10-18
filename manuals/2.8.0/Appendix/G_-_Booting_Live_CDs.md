@@ -2,7 +2,6 @@
 layout: manpage
 title: Booting Live CD's
 meta: 2.8.0
-breadcrumb: Booting Live CD's
 nav: G - Booting Live CDs
 navversion: nav28
 ---

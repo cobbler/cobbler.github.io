@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Who's Using Cobbler
-breadcrumb: Users
 users:
   - img: acision
     url: http://www.acision.com

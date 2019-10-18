@@ -2,7 +2,6 @@
 layout: manpage
 title: Tips For RHN
 meta: 2.8.0
-breadcrumb: Tips For RHN
 nav: C - Tips For RHN
 navversion: nav28
 ---

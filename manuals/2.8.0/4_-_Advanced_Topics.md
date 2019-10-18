@@ -2,7 +2,6 @@
 layout: manpage
 title: Advanced Topics
 meta: 2.8.0
-breadcrumb: Advanced Topics
 nav: 4 - Advanced Topics
 navversion: nav28
 ---

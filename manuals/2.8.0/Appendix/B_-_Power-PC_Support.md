@@ -2,7 +2,6 @@
 layout: manpage
 title: Power-PC Support
 meta: 2.8.0
-breadcrumb: Power-PC Support
 nav: B - Power-PC Support
 navversion: nav28
 ---

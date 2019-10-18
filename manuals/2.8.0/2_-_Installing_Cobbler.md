@@ -2,7 +2,6 @@
 layout: manpage
 title: Installing Cobbler
 meta: 2.8.0
-breadcrumb: Installing Cobbler
 nav: 2 - Installing Cobbler
 navversion: nav28
 ---

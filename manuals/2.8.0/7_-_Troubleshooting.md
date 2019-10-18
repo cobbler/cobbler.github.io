@@ -2,10 +2,10 @@
 layout: manpage
 title: Troubleshooting
 meta: 2.8.0
-breadcrumb: Troubleshooting
 nav: 7 - Troubleshooting
 navversion: nav28
 ---
+
 # Frequently Asked Trouble Shooting Questions
 
 This section covers some questions that frequently come up in IRC, some of which are problems, and some of which are

@@ -1,7 +1,6 @@
 ---
 layout: manpage
 title: Alternative Storage Backends
-breadcrumb: Alternative Storage Backends
 meta: 2.8.0
 nav: 12 - Alternative storage backends
 navversion: nav28

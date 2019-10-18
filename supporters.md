@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Cobbler Supporters
-breadcrumb: Supporters
 contributors:
   - name: Platinum
     items:

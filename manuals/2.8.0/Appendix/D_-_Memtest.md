@@ -2,7 +2,6 @@
 layout: manpage
 title: Memtest
 meta: 2.8.0
-breadcrumb: Memtest
 nav: D - Memtest
 navversion: nav28
 ---

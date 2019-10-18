@@ -2,11 +2,9 @@
 layout: manpage
 title: Clonezilla Integration
 meta: 2.8.0
-breadcrumb: Clonezilla Integration
 nav: H - Clonezilla Integration
 navversion: nav28
 ---
-
 
 Since many of us need to support non-linux systems in addition to Linux systems, some facility for support of these
 systems is helpful - especially if your dhcp server is pointing pxe boots to your cobbler server. PXE booting a

@@ -2,7 +2,6 @@
 layout: manpage
 title: Introduction to Cobbler
 meta: 2.8.0
-breadcrumb: About
 nav: 1 - About Cobbler
 navversion: nav28
 ---

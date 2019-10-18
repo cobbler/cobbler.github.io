@@ -2,7 +2,6 @@
 layout: manpage
 title: System retirement
 meta: 2.8.0
-breadcrumb: System retirement
 nav: F - System retirement
 navversion: nav28
 ---
