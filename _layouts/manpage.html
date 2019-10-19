@@ -7,7 +7,8 @@
 {% include disqus.html %}
   </div>
   <div class="span4">
-{% listdir %}
+      {% assign navroot = site.data.sitetree[page.navversion] %}
+      {% include nav_manpage.html nav=navroot %}
   </div>
  </div>
 </div>

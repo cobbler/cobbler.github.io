@@ -3,6 +3,8 @@ layout: manpage
 title: Alternative Storage Backends
 breadcrumb: Alternative Storage Backends
 meta: 2.8.0
+nav: 12 - Alternative storage backends
+navversion: nav28
 ---
 
 Cobbler saves object data via serializers implemented as Cobbler [Modules]({% link manuals/2.8.0/4/4/2_-_Modules.md %}).

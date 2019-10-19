@@ -2,6 +2,8 @@
 layout: manpage
 title: SELinux With Cobbler
 meta: 2.8.0
+nav: 2 - SELinux
+navversion: nav28
 ---
 
 
