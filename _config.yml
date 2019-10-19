@@ -4,9 +4,9 @@ url: "https://cobbler.github.io"
 lsi: false
 highlighter: rouge
 markdown: rdiscount
-permalink: date
+permalink: "/blog/:year/:month/:day/:title.html"
 paginate: 5
-paginate_path: "/blog/page:num/"
+paginate_path: "/blog/:num/"
 exclude: ['README.md', 'Dockerfile', 'Gemfile', 'Gemfile.lock', 'dockerfiles', '_site', '.idea']
 plugins:
   - jekyll-coffeescript
