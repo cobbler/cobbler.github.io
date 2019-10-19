@@ -2,6 +2,8 @@
 layout: manpage
 title: Anaconda Monitoring
 meta: 2.6.0
+nav: E - Anaconda Monitoring
+navversion: nav26
 ---
 
 <p>This page details the <strong>Ana</strong>conda <strong>Mon</strong>itoring service available in cobbler.  As anamon is rather distribution specific, support for it is considered deprecated at this time.</p>

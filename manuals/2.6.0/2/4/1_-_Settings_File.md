@@ -2,6 +2,8 @@
 layout: manpage
 title: Settings File
 meta: 2.6.0
+nav: Settings File
+navversion: nav26
 ---
 
 The main settings file for cobbler is <code>/etc/cobbler/settings</code>. Cobbler also supports

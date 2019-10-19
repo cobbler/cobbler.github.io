@@ -2,6 +2,8 @@
 layout: manpage
 title: Extending Cobbler
 meta: 2.8.0
+nav: 4 - Extending Cobbler
+navversion: nav28
 ---
 
 This section covers methods to extend the functionality of Cobbler through the use of

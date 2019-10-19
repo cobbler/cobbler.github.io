@@ -2,6 +2,8 @@
 layout: manpage
 title: Advanced Networking - Bonded Bridging
 meta: 2.8.0
+nav: 4 - Bonded Bridging
+navversion: nav28
 ---
 
 Some situations, such as virtualization hosts, require more redundancy in their bridging setups. In this case, 2.8.0

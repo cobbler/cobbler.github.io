@@ -2,6 +2,8 @@
 layout: manpage
 title: Images
 meta: 2.6.0
+nav: 4 - Images
+navversion: nav26
 ---
 
 Cobbler can help with booting images physically and virtually, though the usage of these commands varies substantially

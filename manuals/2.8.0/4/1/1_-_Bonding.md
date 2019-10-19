@@ -2,6 +2,8 @@
 layout: manpage
 title: Advanced Networking - Bonding
 meta: 2.8.0
+nav: 1 - Bonding
+navversion: nav28
 ---
 
 Bonding is also known as trunking, or teaming. Different vendors use different names. It's used to join multiple

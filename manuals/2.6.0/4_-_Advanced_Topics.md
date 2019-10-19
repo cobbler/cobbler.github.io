@@ -2,6 +2,8 @@
 layout: manpage
 title: Advanced Topics
 meta: 2.6.0
+nav: 4 - Advanced Topics
+navversion: nav26
 ---
 
 <p>This section of the manual covers the more advanced use cases for Cobbler, including methods for customizing and

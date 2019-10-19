@@ -2,7 +2,10 @@
 layout: manpage
 title: Dynamic Settings CLI Command
 meta: 2.8.0
+nav: 11 - Dynamic Settings
+navversion: nav28
 ---
+
 The CLI command for dynamic settings has two sub-commands:
 
 {% highlight bash %}

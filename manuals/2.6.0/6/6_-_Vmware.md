@@ -2,6 +2,8 @@
 layout: manpage
 title: VMWare support for koan
 meta: 2.6.0
+nav: 6 - VMWare
+navversion: nav26
 ---
 
 <p>One goal of Cobbler is to abstract out all your installation types.  Basically the idea is create a profile one, use it for PXE, reinstallations (--replace-self) and virtualized machines all at once.</p>

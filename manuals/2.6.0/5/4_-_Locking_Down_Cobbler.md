@@ -2,6 +2,8 @@
 layout: manpage
 title: Locking Down Cobbler
 meta: 2.6.0
+nav: 4 - Locking down Cobbler
+navversion: nav26
 ---
 
 <p>If you want to enable the

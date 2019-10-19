@@ -2,6 +2,8 @@
 layout: manpage
 title: Power PC support
 meta: 2.6.0
+nav: B - Power-PC Support
+navversion: nav26
 ---
 
 <p>Cobbler includes support for provisioning Linux on PowerPC systems.

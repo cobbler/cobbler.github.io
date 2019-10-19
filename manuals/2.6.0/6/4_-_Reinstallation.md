@@ -2,6 +2,8 @@
 layout: manpage
 title: Reinstallation
 meta: 2.6.0
+nav: 4 - Reinstallation
+navversion: nav26
 ---
 
 <p>Cobbler's helper program, koan, can be installed on remote systems.</p>

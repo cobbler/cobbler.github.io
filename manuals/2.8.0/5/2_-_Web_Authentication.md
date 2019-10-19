@@ -2,6 +2,8 @@
 layout: manpage
 title: Web Authentication
 meta: 2.8.0
+nav: 2 - Web Authentication
+navversion: nav28
 ---
 
 Authentication controls who has access to your cobbler server. Controlling the details of what they can subsequently do

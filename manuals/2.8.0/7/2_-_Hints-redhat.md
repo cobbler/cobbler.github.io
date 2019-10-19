@@ -1,7 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Hints Redhat
 meta: 2.8.0
+nav: 2 - Hints Redhat
+navversion: nav28
 ---
 # Hints and tips: Redhat
 

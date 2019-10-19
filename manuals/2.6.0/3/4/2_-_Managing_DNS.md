@@ -2,6 +2,8 @@
 layout: manpage
 title: Managing DNS
 meta: 2.6.0
+nav: Managing DHCP
+navversion: nav26
 ---
 
 You may want cobbler to manage the DNS entries of its client systems. Cobbler can do so automatically by using

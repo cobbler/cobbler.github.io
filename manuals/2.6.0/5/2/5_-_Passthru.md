@@ -2,6 +2,8 @@
 layout: manpage
 title: Passthru Authentication
 meta: 2.6.0
+nav: 5 - Passthru
+navversion: nav26
 ---
 
 Passthru authentication has been added back to Cobbler Web as of version 2.6.0. Passthru authentication allows you to

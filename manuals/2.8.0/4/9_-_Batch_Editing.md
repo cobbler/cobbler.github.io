@@ -2,7 +2,10 @@
 layout: manpage
 title: Cobbler Manual
 meta: 2.8.0
+nav: 9 - Batch Editing
+navversion: nav28
 ---
+
 ## Batch Editing
 
 Do you want to apply a change to a lot of cobbler objects at once?

@@ -2,6 +2,8 @@
 layout: manpage
 title: Puppet Integration
 meta: 2.6.0
+nav: 2 - Puppet Integration
+navversion: nav26
 ---
 
 <h2>Puppet support</h2>

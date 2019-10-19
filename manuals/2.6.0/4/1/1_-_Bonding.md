@@ -2,6 +2,8 @@
 layout: manpage
 title: Advanced Networking - Bonding
 meta: 2.6.0
+nav: 1 - Bonding
+navversion: nav26
 ---
 
 <p>Bonding is also known as trunking, or teaming. Different vendors use different names. It's used to join multiple physical interfaces to one logical interface, for redundancy and/or performance.</p>

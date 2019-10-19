@@ -2,6 +2,8 @@
 layout: manpage
 title: Koan with ISOs
 meta: 2.6.0
+nav: 2 - Koan With ISOs
+navversion: nav26
 ---
 
 <p>While most of cobbler installing is about enabling scripted network

@@ -2,6 +2,8 @@
 layout: manpage
 title: Alternative Storage Backends - MongoDB
 meta: 2.6.0
+nav: 2 - MongoDB
+navversion: nav26
 ---
 
 <p>Cobbler 2.2.x introduced support for MongoDB as alternate storage backend, due to the native use of JSON. Currently, support for this backend is BETA-quality, and it should not be used for critical production systems.</p>

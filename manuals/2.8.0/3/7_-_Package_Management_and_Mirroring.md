@@ -2,6 +2,8 @@
 layout: manpage
 title: Package Management and Mirroring
 meta: 2.8.0
+nav: Package Management and Mirroring
+navversion: nav28
 ---
 
 ### About

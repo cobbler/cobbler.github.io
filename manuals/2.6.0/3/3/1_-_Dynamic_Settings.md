@@ -2,6 +2,8 @@
 layout: manpage
 title: Dynamic Settings
 meta: 2.6.0
+nav: 1 - Dynamic Settings
+navversion: nav26
 ---
 
 Prior to Cobbler 2.4.0, any changes to <code>/etc/cobbler/settings</code> required a restart of the cobblerd daemon for

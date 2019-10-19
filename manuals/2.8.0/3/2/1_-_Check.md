@@ -2,6 +2,8 @@
 layout: manpage
 title: Cobbler Check
 meta: 2.8.0
+nav: 1 - Check
+navversion: nav28
 ---
 
 The check command is used to provide information to the user regarding possible issues with their installation. Many of

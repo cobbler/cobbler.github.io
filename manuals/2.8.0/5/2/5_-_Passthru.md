@@ -2,6 +2,8 @@
 layout: manpage
 title: Passthru Authentication
 meta: 2.8.0
+nav: 5 - Passthru
+navversion: nav28
 ---
 Passthru authentication has been added back to Cobbler Web as of version 2.8.0. Passthru authentication allows you to
 setup your webserver to perform authentication and Cobbler Web will use the value of REMOTE_USER to determine

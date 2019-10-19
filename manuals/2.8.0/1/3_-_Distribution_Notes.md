@@ -2,6 +2,8 @@
 layout: manpage
 title: Distribution Notes
 meta: 2.8.0
+nav: 3 - Distribution Notes
+navversion: nav28
 ---
 
 

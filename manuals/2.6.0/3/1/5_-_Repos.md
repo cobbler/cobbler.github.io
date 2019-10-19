@@ -2,6 +2,8 @@
 layout: manpage
 title: Repos
 meta: 2.6.0
+nav: 5 - Repos
+navversion: nav26
 ---
 
 Repository mirroring allows cobbler to mirror not only install trees ("cobbler import" does this for you) but also

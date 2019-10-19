@@ -2,6 +2,8 @@
 layout: manpage
 title: openSUSE
 meta: 2.6.0
+nav: 3 - openSUSE
+navversion: nav26
 ---
 
 Enabled require apache modules (/etc/sysconfig/apache2:APACHE_MODULES)

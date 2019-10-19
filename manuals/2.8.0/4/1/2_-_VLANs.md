@@ -2,6 +2,8 @@
 layout: manpage
 title: Advanced Networking - VLANs
 meta: 2.8.0
+nav: 2 - VLANs
+navversion: nav28
 ---
 
 You can now add VLAN tags to interfaces from Cobbler. In this case we have two VLANs on eth0: 10 and 20. The default

@@ -2,7 +2,10 @@
 layout: manpage
 title: Cobbler Manual
 meta: 2.8.0
+nav: 3 - Installing virtual guests
+navversion: nav28
 ---
+
 ## Virtualization With Koan 
 
 The main feature of koan is contact the cobbler server, learn about a configuration from Cobbler, and make that

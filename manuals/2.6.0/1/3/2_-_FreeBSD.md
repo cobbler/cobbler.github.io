@@ -2,6 +2,8 @@
 layout: manpage
 title: 2 - FreeBSD
 meta: 2.6.0
+nav: 2 - FreeBSD
+navversion: nav26
 ---
 
 The following steps are required to enable FreeBSD support in Cobbler.

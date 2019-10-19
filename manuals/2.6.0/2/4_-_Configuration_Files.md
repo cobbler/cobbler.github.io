@@ -2,6 +2,8 @@
 layout: manpage
 title: Configuration Files
 meta: 2.6.0
+nav: 4 - Configuration Files
+navversion: nav26
 ---
 
 Cobbler has many configuration files, however only a few typically need be modified for basic functionality:

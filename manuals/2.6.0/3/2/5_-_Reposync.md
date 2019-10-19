@@ -2,6 +2,8 @@
 layout: manpage
 title: Reposync
 meta: 2.6.0
+nav: 5 - Reposync
+navversion: nav26
 ---
 
 Yum repository management is an optional feature, and is not required to provision through cobbler. However, if cobbler

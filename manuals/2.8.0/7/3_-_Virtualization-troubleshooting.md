@@ -1,7 +1,9 @@
 ---
 layout: manpage
-title: Cobbler Manual
+title: Virtualization Troubleshooting
 meta: 2.8.0
+nav: 3 - Virtualization Troubleshooting
+navversion: nav28
 ---
 # Frequently Asked Virtualization Trouble Shooting Questions
 

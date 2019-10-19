@@ -2,6 +2,8 @@
 layout: manpage
 title: Command Line Search
 meta: 2.6.0
+nav: 7 - Command Line Search
+navversion: nav26
 ---
 
 Command line search can be used to ask questions about your cobbler configuration, rather than just having to run

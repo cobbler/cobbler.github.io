@@ -2,6 +2,8 @@
 layout: manpage
 title: Relocating Your Installation
 meta: 2.6.0
+nav: 5 - Relocating your installation
+navversion: nav26
 ---
 
 Often folks don't have a very large `/var` partition, which is what cobbler uses by default for mirroring install trees

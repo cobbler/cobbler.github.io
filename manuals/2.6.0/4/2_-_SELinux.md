@@ -2,6 +2,8 @@
 layout: manpage
 title: SELinux With Cobbler
 meta: 2.6.0
+nav: 2 - SELinux
+navversion: nav26
 ---
 
 <p>SELinux policies are typically provided by the upstream distribution (Fedora, Ubuntu, etc.). As new features are added to cobbler (and we do add new features frequently), those policies may become out-of-date leading to AVC denials and other problems. If you wish to run SELinux on your cobbler system, we expect you to know how to write policy and resolve AVCs.</p>

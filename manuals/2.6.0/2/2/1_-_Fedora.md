@@ -2,6 +2,8 @@
 layout: manpage
 title: Fedora
 meta: 2.6.0
+nav: 1 - Fedora
+navversion: nav26
 ---
 
 Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the

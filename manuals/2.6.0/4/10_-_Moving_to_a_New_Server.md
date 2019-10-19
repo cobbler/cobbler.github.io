@@ -2,6 +2,8 @@
 layout: manpage
 title: Moving to a new Server
 meta: 2.6.0
+nav: 10 - Moving to a new server
+navversion: nav26
 ---
 
 <p>What if you have Cobbler installed on Box A, and decide it really

@@ -2,6 +2,8 @@
 layout: manpage
 title: Cobbler Manual
 meta: 2.8.0
+nav: 2 - Koan With ISOs
+navversion: nav28
 ---
 
 While most of cobbler installing is about enabling scripted network installation, can also define image objects which

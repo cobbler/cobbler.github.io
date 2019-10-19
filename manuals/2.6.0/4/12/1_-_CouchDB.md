@@ -2,6 +2,8 @@
 layout: manpage
 title: Alternative Storage Backends - CouchDB
 meta: 2.6.0
+nav: 1 - CouchDB
+navversion: nav26
 ---
 
 <p>Cobbler 2.0.x introduced support for CouchDB as alternate storage backend, primarily as a proof of concept for NoSQL style databases. Currently, support for this backend is ALPHA-quality as it has not received significant testing.</p>

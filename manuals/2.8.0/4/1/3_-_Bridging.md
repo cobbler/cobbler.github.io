@@ -2,6 +2,8 @@
 layout: manpage
 title: Advanced Networking - Bridging
 meta: 2.8.0
+nav: 3 - Bridging
+navversion: nav28
 ---
 
 A bridge is a way to connect two Ethernet segments together in a protocol independent way. Packets are forwarded based

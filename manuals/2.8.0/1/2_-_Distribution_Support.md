@@ -2,6 +2,8 @@
 layout: manpage
 title: Distribution Support
 meta: 2.8.0
+nav: 2 - Distribution Support
+navversion: nav28
 ---
 
 Cobbler currently supports importing a wide array of distributions from many vendors. However, since Cobbler has a

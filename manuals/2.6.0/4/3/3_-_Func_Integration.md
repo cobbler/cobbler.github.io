@@ -2,6 +2,8 @@
 layout: manpage
 title: Func Integration
 meta: 2.6.0
+nav: 3 - Func Integration
+navversion: nav26
 ---
 
 <p>Func is a neat tool, (which, in full disclosure, Michael had a part

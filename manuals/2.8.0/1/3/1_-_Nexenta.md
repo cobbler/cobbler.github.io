@@ -2,6 +2,8 @@
 layout: manpage
 title: Nexenta
 meta: 2.8.0
+nav: 1 - Nexenta
+navversion: nav28
 ---
 
 ## Installing NexentaStor with Cobbler

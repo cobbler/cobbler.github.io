@@ -2,6 +2,8 @@
 layout: manpage
 title: Memtest
 meta: 2.6.0
+nav: D - Memtest
+navversion: nav26
 ---
 
 <p>If installed, cobbler will put an entry into all of your PXE menus

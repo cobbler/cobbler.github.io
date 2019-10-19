@@ -2,6 +2,8 @@
 layout: manpage
 title: Cobbler Version
 meta: 2.6.0
+nav: 12 - Version
+navversion: nav26
 ---
 
 The Cobbler version command is very simple, and provides a little more detailed information about your installation.

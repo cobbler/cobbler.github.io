@@ -2,6 +2,8 @@
 layout: manpage
 title: File System Information
 meta: 2.8.0
+nav: File System Information
+navversion: nav28
 ---
 
 

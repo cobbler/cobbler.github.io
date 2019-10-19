@@ -2,6 +2,8 @@
 layout: manpage
 title: Booting Live CD's
 meta: 2.6.0
+nav: G - Booting Live CDs
+navversion: nav26
 ---
 
 <p>Live CD's can be used for a variety of tasks.  They might update firmware, run diagnostics, assist with cloning systems, or just serve up a desktop environment.</p>

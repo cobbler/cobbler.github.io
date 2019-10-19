@@ -2,6 +2,8 @@
 layout: manpage
 title: Management Classes
 meta: 2.6.0
+nav: 6 - Management Classes
+navversion: nav26
 ---
 
 Management classes allow cobbler to function as a configuration management system. The lego blocks of configuration

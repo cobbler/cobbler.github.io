@@ -2,13 +2,17 @@
 layout: manpage
 title: What's New
 meta: 2.8.0
+nav: 1 - Release Notes
+navversion: nav28
 ---
 
 ## 2.8.0
 
 ### Deprecation warnings
 
-The following list of features have been deprecated and will *not* be available in Cobbler 3.0. Users depending on one of these features should stick to the 2.8.x (LTS) series. If you'd like to maintain one of these features in 3.x and beyond, then please reach out to the developers through GitHub or the mailinglist.
+The following list of features have been deprecated and will *not* be available in Cobbler 3.0. Users depending on one
+of these features should stick to the 2.8.x (LTS) series. If you'd like to maintain one of these features in 3.x and
+beyond, then please reach out to the developers through GitHub or the mailinglist.
 
 - MySQL backend
 - CouchDB backend

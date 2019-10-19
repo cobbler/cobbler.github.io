@@ -2,6 +2,8 @@
 layout: manpage
 title: Build ISO
 meta: 2.6.0
+nav: 6 - Build ISO
+navversion: nav26
 ---
 
 Often an environment cannot support PXE because of either (A) an unfortunate lack of control over DHCP configurations

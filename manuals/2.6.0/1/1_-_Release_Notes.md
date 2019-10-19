@@ -2,6 +2,8 @@
 layout: manpage
 title: 1 - Release Notes
 meta: 2.6.0
+nav: 1 - Release Notes
+navversion: nav26
 ---
 
 ## 2.6.11

@@ -2,6 +2,8 @@
 layout: manpage
 title: Digest Authentication
 meta: 2.8.0
+nav: 6 - Digest
+navversion: nav28
 ---
 
 Digest authentication with Apache is no longer supported due to the fact that we have moved to a session/token based

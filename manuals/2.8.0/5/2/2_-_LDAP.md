@@ -2,6 +2,8 @@
 layout: manpage
 title: LDAP Authentication
 meta: 2.8.0
+nav: 2 - LDAP
+navversion: nav28
 ---
 
 By default, the Cobbler WebUI and Web services authenticate against a digest file. All users in the digest file are

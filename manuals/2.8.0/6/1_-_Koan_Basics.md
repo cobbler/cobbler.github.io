@@ -2,7 +2,10 @@
 layout: manpage
 title: Cobbler Manual
 meta: 2.8.0
+nav: 1 - Koan Basics
+navversion: nav28
 ---
+
 ### Koan
 
 perhaps it stands for "kickstart over a network", koan is a helper client side helper for cobbler.  It's kind of a play

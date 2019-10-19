@@ -2,6 +2,8 @@
 layout: manpage
 title: Using gPXE
 meta: 2.6.0
+nav: 13 - Using gPXE
+navversion: nav26
 ---
 
 <p>Support for gPXE (and by extension, iPXE) was added in 2.2.3 for booting ESXi5 installations, however it can be used for other installations as well.</p>

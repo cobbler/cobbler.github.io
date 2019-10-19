@@ -2,6 +2,8 @@
 layout: manpage
 title: Package Resources
 meta: 2.6.0
+nav: 8 - Package Resources
+navversion: nav26
 ---
 
 Package resources are managed using cobbler package add, allowing you to install and uninstall packages on a system

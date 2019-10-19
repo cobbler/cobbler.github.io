@@ -2,6 +2,8 @@
 layout: manpage
 title: Hints and tips - Redhat
 meta: 2.6.0
+nav: 2 - Hints Redhat
+navversion: nav26
 ---
 
 A collection of tips for using Cobbler to deploy and support Redhat-based machines, including CentOS, Fedora, 

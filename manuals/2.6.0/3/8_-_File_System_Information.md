@@ -2,6 +2,8 @@
 layout: manpage
 title: File System Information
 meta: 2.6.0
+nav: File System Information
+navversion: nav26
 ---
 
 <p>A typical Cobbler install looks something as follows. Note that in general Cobbler manages its own directories. Editing templates and configuration files is intended. Deleting directories will result in very loud alarms. Please do not ask for help if you decide to delete core directories or move them around.</p>

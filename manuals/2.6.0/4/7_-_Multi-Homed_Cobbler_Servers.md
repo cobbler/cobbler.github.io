@@ -2,6 +2,8 @@
 layout: manpage
 title: Multi-Homed Cobbler Servers
 meta: 2.6.0
+nav: 7 - Multi Homed Cobbler Servers
+navversion: nav26
 ---
 
 <p>How do you use Cobbler to provision machines onto multiple

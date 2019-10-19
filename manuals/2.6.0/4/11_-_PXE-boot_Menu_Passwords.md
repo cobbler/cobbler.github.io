@@ -2,6 +2,8 @@
 layout: manpage
 title: PXE Boot Menu Passwords 
 meta: 2.6.0
+nav: 11 - PXE boot menu passwords
+navversion: nav26
 ---
 
 <p>== How to create a PXE boot menu password ==</p>

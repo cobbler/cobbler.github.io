@@ -2,6 +2,8 @@
 layout: manpage
 title: Power Management
 meta: 2.8.0
+nav: 5 - Power Management
+navversion: nav28
 ---
 
 Cobbler allows for linking your power management systems with cobbler, making it very easy to make changes to your

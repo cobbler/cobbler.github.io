@@ -2,6 +2,8 @@
 layout: manpage
 title: Systems
 meta: 2.6.0
+nav: 3 - Systems
+navversion: nav26
 ---
 
 System records map a piece of hardware (or a virtual machine) with the cobbler profile to be assigned to run on it. This

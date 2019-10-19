@@ -2,6 +2,8 @@
 layout: manpage
 title: File Resources
 meta: 2.6.0
+nav: 7 - File Resources
+navversion: nav26
 ---
 
 File resources are managed using cobbler file add, allowing you to create and delete files on a system.

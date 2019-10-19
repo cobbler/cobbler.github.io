@@ -2,6 +2,8 @@
 layout: manpage
 title: Cobbler Manual
 meta: 2.8.0
+nav: 6 - VMWare
+navversion: nav28
 ---
 # VMWare support for koan
 

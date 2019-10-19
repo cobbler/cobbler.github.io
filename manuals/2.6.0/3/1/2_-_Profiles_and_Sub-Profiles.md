@@ -2,6 +2,8 @@
 layout: manpage
 title: Profiles & Sub-Profiles
 meta: 2.6.0
+nav: 2 - Profiles and Sub-Profiles
+navversion: nav26
 ---
 
 A profile associates a distribution to additional specialized options, such as a kickstart automation file. Profiles are

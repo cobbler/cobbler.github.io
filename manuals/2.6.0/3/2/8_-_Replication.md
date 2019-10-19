@@ -2,6 +2,8 @@
 layout: manpage
 title: Replicate
 meta: 2.6.0
+nav: 8 - Replication
+navversion: nav26
 ---
 
 {% highlight bash %}

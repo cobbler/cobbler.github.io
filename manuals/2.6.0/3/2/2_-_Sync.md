@@ -2,6 +2,8 @@
 layout: manpage
 title: Cobbler Sync
 meta: 2.6.0
+nav: 2 - Sync
+navversion: nav26
 ---
 
 The sync command is very important, though very often unnecessary for most situations. It's primary purpose is to force

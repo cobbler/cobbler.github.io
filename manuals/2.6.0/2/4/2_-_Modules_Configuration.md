@@ -2,7 +2,10 @@
 layout: manpage
 title: Modules Configuration
 meta: 2.6.0
+nav: Modules Configuration
+navversion: nav26
 ---
+
 Cobbler supports add-on modules, some of which can provide the same functionality (for instance, the 
 authentication/authorization modules discussed in the
 <a href="/manuals/2.6.0/5/2_-_Web_Authentication.html">Web Authentication</a> section). Modules of this nature are

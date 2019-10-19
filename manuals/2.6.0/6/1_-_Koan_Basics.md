@@ -2,6 +2,8 @@
 layout: manpage
 title: Koan
 meta: 2.6.0
+nav: 1 - Koan Basics
+navversion: nav26
 ---
 
 <p>perhaps it stands for "kickstart over a network", koan is a helper client side helper for cobbler.  It's kind of a play on "Xen" too.</p>

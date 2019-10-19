@@ -2,6 +2,8 @@
 layout: manpage
 title: 1 - Nexenta
 meta: 2.6.0
+nav: 1 - Nexenta
+navversion: nav26
 ---
 
 ##Installing NexentaStor with Cobbler
@@ -64,11 +66,15 @@ host test-1 {
   }
 ````
 
-OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host definition in your dhcp config file.
+OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host
+definition in your dhcp config file.
 
-Note: the path <code>boot/grub/pxegrub</code> is a hardcoded default in the Nexenta boot process.
+Note: the path `boot/grub/pxegrub` is a hardcoded default in the Nexenta boot process.
 
-5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The profiles are placed in /var/lib/cobbler/kickstarts/install_profiles. Each profile should be a file with the filename <code>machine.AACC003355FF</code> where AA..FF stand for the mac address of the machine, without <code>:</code> (columns). The contents of each profile should look like the following:
+5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The
+profiles are placed in `/var/lib/cobbler/kickstarts/install_profiles`. Each profile should be a file with the filename
+`machine.AACC003355FF` where AA..FF stand for the mac address of the machine, without <code>:</code> (columns). The
+contents of each profile should look like the following:
 
 ````
 PF_gateway="IP address" (required)

@@ -2,6 +2,8 @@
 layout: manpage
 title: Clonezilla integration
 meta: 2.6.0
+nav: H - Clonezilla Integration
+navversion: nav26
 ---
 
 <p>Since many of us need to support non-linux systems in addition to

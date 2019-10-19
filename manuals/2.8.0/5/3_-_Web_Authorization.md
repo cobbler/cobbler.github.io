@@ -2,6 +2,8 @@
 layout: manpage
 title: Web Authorization
 meta: 2.8.0
+nav: 3 - Web Authorization
+navversion: nav28
 ---
 
 Authorization happens after users have been [authenticated](Web Authentication) and controls who is then allowed, or not

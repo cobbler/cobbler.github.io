@@ -2,6 +2,8 @@
 layout: manpage
 title: Frequently Asked Trouble Shooting Questions
 meta: 2.6.0
+nav: 7 - Troubleshooting
+navversion: nav26
 ---
 
 This section covers some questions that frequently come up in IRC, some of which are problems, and some of which are

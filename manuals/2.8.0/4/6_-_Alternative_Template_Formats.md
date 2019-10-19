@@ -2,6 +2,8 @@
 layout: manpage
 title: Alternative Template Formats
 meta: 2.8.0
+nav: 6 - Alternative Template Formats
+navversion: nav28
 ---
 
 The default templating engine currently is Cheetah, as of cobbler 2.4.0 support for the Jinja2 templating engine has

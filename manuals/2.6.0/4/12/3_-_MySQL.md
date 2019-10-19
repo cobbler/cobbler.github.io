@@ -2,6 +2,8 @@
 layout: manpage
 title: Alternative Storage Backends - MySQL
 meta: 2.6.0
+nav: 3 - MySQL
+navversion: nav26
 ---
 
 <p>Cobbler 2.4.0 introduced support for MySQL as alternate storage backend. Currently, support for this backend is ALPHA-quality, and it should not be used for critical production systems.</p>

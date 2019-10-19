@@ -2,6 +2,8 @@
 layout: manpage
 title: Installing From Source
 meta: 2.6.0
+nav: 3 - Installing from Source
+navversion: nav26
 ---
 
 Cobbler is licensed under the General Public License (GPL), version 2 or later. You can download it, free of charge,

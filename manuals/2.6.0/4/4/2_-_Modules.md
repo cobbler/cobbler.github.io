@@ -2,6 +2,8 @@
 layout: manpage
 title: Modules
 meta: 2.6.0
+nav: 2 - Modules
+navversion: nav26
 ---
 
 <p>Certain cobbler features can be user extended (in Python) by Cobbler users.</p>

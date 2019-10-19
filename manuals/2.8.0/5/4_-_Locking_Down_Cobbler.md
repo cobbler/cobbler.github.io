@@ -2,6 +2,8 @@
 layout: manpage
 title: Locking Down Cobbler
 meta: 2.8.0
+nav: 4 - Locking down Cobbler
+navversion: nav28
 ---
 
 If you want to enable the [Cobbler web interface](Cobbler web interface) for a lot of users, and don't trust all of them

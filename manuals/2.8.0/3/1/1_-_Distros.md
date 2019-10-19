@@ -2,6 +2,8 @@
 layout: manpage
 title: Distros
 meta: 2.8.0
+nav: 1 - Distros
+navversion: nav28
 ---
 The first step towards installing systems with Cobbler is to add a distribution record to cobbler’s configuration.
 

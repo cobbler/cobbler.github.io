@@ -2,6 +2,8 @@
 layout: manpage
 title: Web Authorization
 meta: 2.6.0
+nav: 3 - Web Authorization
+navversion: nav26
 ---
 
 <p>Authorization happens after users have been <a href="Web%20Authentication">authenticated</a> and controls who is then allowed, or not allowed, to perform certain specific operations in cobbler.</p>

@@ -2,6 +2,8 @@
 layout: manpage
 title: System retirement
 meta: 2.6.0
+nav: F - System Retirement
+navversion: nav26
 ---
 
 <h2>Using DBAN with Cobbler to automate system retirement</h2>

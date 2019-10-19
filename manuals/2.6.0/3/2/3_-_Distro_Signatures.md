@@ -2,7 +2,11 @@
 layout: manpage
 title: Distro Signatures
 meta: 2.6.0
+nav: 3 - Distro Signatures
+navversion: nav26
 ---
+
+<p>Prior to Cobbler 2.4.0, import modules for each supported distro were separate and customized for each specific distribution. The values for breed and os-version were hard-coded into cobbler, so adding support for new distros or newer versions of an already supported distro required code changes and a complete Cobbler upgrade.</p>
 
 Prior to Cobbler 2.4.0, import modules for each supported distro were separate and customized for each specific
 distribution. The values for breed and os-version were hard-coded into cobbler, so adding support for new distros or

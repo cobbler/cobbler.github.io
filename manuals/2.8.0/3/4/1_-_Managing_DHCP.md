@@ -2,6 +2,8 @@
 layout: manpage
 title: Managing DHCP
 meta: 2.8.0
+nav: Managing DHCP
+navversion: nav28
 ---
 
 You may want cobbler to manage the DHCP entries of its client systems. It currently supports either ISC DHCP or dnsmasq

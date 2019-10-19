@@ -2,6 +2,8 @@
 layout: manpage
 title: S390 Support
 meta: 2.6.0
+nav: A - S390 Support
+navversion: nav26
 ---
 
 ### Introduction

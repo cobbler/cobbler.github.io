@@ -2,6 +2,8 @@
 layout: manpage
 title: Triggers
 meta: 2.6.0
+nav: 1 - Triggers
+navversion: nav26
 ---
 
 <h2>About</h2>

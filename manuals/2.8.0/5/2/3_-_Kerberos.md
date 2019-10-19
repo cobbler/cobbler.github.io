@@ -2,6 +2,8 @@
 layout: manpage
 title: Kerberos Authentication
 meta: 2.8.0
+nav: 3 - Kerberos
+navversion: nav28
 ---
 
 Do you want to authenticate users using Cobbler's Web UI against Kerberos? If so, this is for you.

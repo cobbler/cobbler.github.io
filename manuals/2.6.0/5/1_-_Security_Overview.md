@@ -2,6 +2,8 @@
 layout: manpage
 title: Security Overview
 meta: 2.6.0
+nav: 1 - Security Overview
+navversion: nav26
 ---
 
 <p>This section provides an overview of Cobbler's security model for the Web UI.</p>

@@ -2,6 +2,8 @@
 layout: manpage
 title: Cobbler Primitives
 meta: 2.6.0
+nav: Cobbler Primitives
+navversion: nav26
 ---
 
 Primitives are the building blocks Cobbler uses to represent builds, as outlined in the "How We Model Things" section

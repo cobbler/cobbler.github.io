@@ -2,7 +2,10 @@
 layout: manpage
 title: Dynamic Settings
 meta: 2.8.0
+nav: 1 - Dynamic Settings
+navversion: nav28
 ---
+
 Prior to Cobbler 2.4.0, any changes to `/etc/cobbler/settings` required a restart of the cobblerd daemon for those
 changes to take affect. Now, with 2.4.0+, you can easily modify settings on the fly via the "cobbler setting" command.
 

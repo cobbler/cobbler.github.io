@@ -2,7 +2,10 @@
 layout: manpage
 title: Triggers
 meta: 2.8.0
+nav: 1 - Triggers
+navversion: nav28
 ---
+
 ## About
 
 Cobbler triggers provide a way to tie user-defined actions to certain cobbler commands -- for instance, to provide

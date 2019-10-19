@@ -2,6 +2,8 @@
 layout: manpage
 title: Extending Cheetah
 meta: 2.8.0
+nav: 3 - Extending Cheetah
+navversion: nav28
 ---
 
 Cobbler uses Cheetah for it's templating system, it also wants to support other choices and may in the future support

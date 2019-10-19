@@ -2,6 +2,8 @@
 layout: manpage
 title: Virtualization With Koan
 meta: 2.6.0
+nav: 3 - Installing virtual guests
+navversion: nav26
 ---
 
 <p>The main feature of koan is contact the cobbler server, learn about a configuration from Cobbler, and make that virtualized installation happen.  One other feature is [KoanDoesReinstall reinstallation of existing systems] but perhaps the more important one is how to do virtualized installs.</p>

@@ -2,6 +2,8 @@
 layout: manpage
 title: LDAP Authentication
 meta: 2.6.0
+nav: 2 - LDAP
+navversion: nav26
 ---
 
 <p>By default, the Cobbler WebUI and Web services authenticate against

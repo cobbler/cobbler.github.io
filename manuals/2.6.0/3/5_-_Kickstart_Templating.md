@@ -2,6 +2,8 @@
 layout: manpage
 title: Kickstart Templating
 meta: 2.6.0
+nav: Kickstart Templating
+navversion: nav26
 ---
 
 <p>Kickstarts automate Red Hat and Fedora based Linux installations.

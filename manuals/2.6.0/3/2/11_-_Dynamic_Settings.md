@@ -2,6 +2,8 @@
 layout: manpage
 title: Dynamic Settings CLI Command
 meta: 2.6.0
+nav: 11 - Dynamic Settings
+navversion: nav26
 ---
 
 The CLI command for dynamic settings has two sub-commands:

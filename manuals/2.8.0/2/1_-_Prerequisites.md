@@ -2,6 +2,8 @@
 layout: manpage
 title: Prerequisites for Installation
 meta: 2.8.0
+nav: 1 - Prerequisites
+navversion: nav28
 ---
 
 Cobbler has both definite and optional prerequisites, based on the features you'd like to use. This section documents

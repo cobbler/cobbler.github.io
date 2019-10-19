@@ -2,6 +2,8 @@
 layout: manpage
 title: File System ACLs
 meta: 2.8.0
+nav: 10 - ACL Setup
+navversion: nav28
 ---
 
 Cobbler contains an "aclsetup" command for automation of setting up file system acls (i.e. setfacl) on directories that

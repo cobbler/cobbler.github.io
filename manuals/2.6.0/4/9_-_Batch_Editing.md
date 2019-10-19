@@ -2,6 +2,8 @@
 layout: manpage
 title: Batch Editing
 meta: 2.6.0
+nav: 9 - Batch Editing
+navversion: nav26
 ---
 
 <p>Do you want to apply a change to a lot of cobbler objects at once?</p>

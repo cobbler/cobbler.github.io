@@ -2,6 +2,8 @@
 layout: manpage
 title: Red Hat Entperise Linux
 meta: 2.6.0
+nav: 2 - RHEL and CentOS
+navversion: nav26
 ---
 
 Cobbler is packaged for RHEL variants through the [Fedora EPEL](http://fedoraproject.org/wiki/EPEL) (Extra Packages for

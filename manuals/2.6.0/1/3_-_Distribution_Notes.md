@@ -2,6 +2,8 @@
 layout: manpage
 title: Distribution Notes
 meta: 2.6.0
+nav: 3 - Distribution Notes
+navversion: nav26
 ---
 
 Cobbler was originally written to support Fedora, Red Hat, and derivative distributions such as CentOS or
