@@ -72,6 +72,8 @@ projects:
     url: http://fedorahosted.org/spacewalk
   - img: symbolic
     url: http://www.opensymbolic.org
+  - img: suse
+    url: https://www.suse.com/de-de/products/suse-manager/
 ---
 
 # Who's Using Cobbler

@@ -143,9 +143,11 @@ but you can still use the regular init script:
 $ systemctl start cobblerd.service
 $ systemctl enable cobblerd.service
 $ systemctl status cobblerd.service
+{% endhighlight %}
 
 or 
 
+{% highlight bash %}
 $ service cobblerd start 
 $ chkconfig cobblerd on
 $ service cobblerd status
@@ -254,7 +256,6 @@ during the import.
 
 {% highlight bash %}
 $ cobbler distro list
-
 $ cobbler profile list
 {% endhighlight %}
 
