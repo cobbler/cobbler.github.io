@@ -1,4 +1,4 @@
-FROM jekyll/jekyll as build
+FROM jekyll/jekyll:latest as build
 WORKDIR /app
 COPY --chown=jekyll:jekyll . /app
 RUN chown -R jekyll:jekyll /app
