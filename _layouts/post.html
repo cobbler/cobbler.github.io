@@ -19,13 +19,28 @@ layout: default
      <h2 class="header">{{ page.title }}</h2>
      <div class="author"><i>Posted by {{ page.author }} on {{ page.date | date: "%A, %B %d, %Y" }}</i></div>
      <div class="content">{{ content }}</div>
-     <div class="goback">{% post_index %}</div>
-{% include disqus.md %}
+{% include disqus.html %}
     </div>
    </div>
   </div>
   <div class="span3">
-  {% related_posts_by_date %}
+      <div class='posts related_by_date'>
+          {% assign postsByYearMonth = site.posts | group_by_exp:"post", "post.date | date: '%Y %b'" %}
+          {% assign curDate = page.date | date: '%Y %b' %}
+          {% for yearMonth in postsByYearMonth %}
+          {% if yearMonth.name == curDate %}
+          <h4 class="header">{{ yearMonth.name }}</h4>
+          <div>
+              {% for blogpost in yearMonth.items %}
+              <div class="post">
+                  <div class='content current'><a href="{{ blogpost.url }}">{{ blogpost.title }}</a></div>
+                  <div class="author"><i>Posted on {{ blogpost.date | date: '%B %d, %Y' }}</i></div>
+              </div>
+              {% endfor %}
+          </div>
+          {% endif %}
+          {% endfor %}
+      </div>
   </div>
  </div>
 </div>

@@ -1,15 +1,15 @@
-{% include header.md %}
+{% include header.html %}
 <div id="wrap" class="container">
  <div class="row">
   <div class="span8">
-{% breadcrumb directory:"manuals" %}
    <h1>{{ page.title }}</h1>
 {{ content }}
-{% include disqus.md %}
+{% include disqus.html %}
   </div>
   <div class="span4">
-{% listdir %}
+      {% assign navroot = site.data.sitetree[page.navversion] %}
+      {% include nav_manpage.html nav=navroot %}
   </div>
  </div>
 </div>
-{% include footer.md %}
+{% include footer.html %}
