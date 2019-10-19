@@ -2,6 +2,8 @@
 layout: manpage
 title: Cobbler Settings
 meta: 2.8.0
+nav: Cobbler Settings
+navversion: nav28
 ---
 
 Cobbler has many features, many of which are disabled out of the box for simplicity's sake. Various settings are used to

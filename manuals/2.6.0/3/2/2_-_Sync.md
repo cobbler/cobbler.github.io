@@ -10,37 +10,29 @@ unnecessary? Because in most common situations (after an object is edited, for e
 as a "lite sync" which rewrites most critical files.
 
 When is a full sync required? When you are using manage_dhcpd
-(<a href="/manuals/2.6.0/3/4/1_-_Managing_DHCP.html">Managing DHCP</a>) with systems that use static leases. In that
-case, a full sync is required to rewrite the dhcpd.conf file and to restart the dhcpd service. Adding support for OMAPI
-is on the roadmap, which will hopefully relegate full syncs to troubleshooting situations.
+([Managing DHCP]({% link manuals/2.6.0/3/4/1_-_Managing_DHCP.md %})) with systems that use static leases. In that
+case, a full sync is required to rewrite the `dhcpd.conf` file and to restart the dhcpd service. Adding support for
+OMAPI is on the roadmap, which will hopefully relegate full syncs to troubleshooting situations.
 
-<p><strong>Example:</strong></p>
+**Example:** `$ cobbler sync`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler sync</code></pre></figure></p>
+### How Sync Works
 
-<h3>How Sync Works</h3>
+A full sync will perform the following actions:
 
-<p>A full sync will perform the following actions:</p>
+1. Run pre-sync [Triggers]({% link manuals/2.6.0/4/4/1_-_Triggers.md %})
+2. Clean the TFTP tree of any and all files
+3. Re-copy boot loaders to the TFTP tree
+4. Re-copy distribution files to the TFTP tree
+    - This will attempt to hardlink files if possible
+5. Rewrite the pxelinux.cfg/default file
+6. Rewrite all other pxelinux.cfg files for systems
+7. Rewrite all managed config files (DHCP, DNS, etc.) and restarts services
+8. Cleans the "link cache"
+9. Executes post-sync and change [Triggers]({% link manuals/2.6.0/4/4/1_-_Triggers.md %})
 
-<ol>
-<li>Run pre-sync <a href="/manuals/2.6.0/4/4/1_-_Triggers.html">Triggers</a></li>
-<li>Clean the TFTP tree of any and all files</li>
-<li>Re-copy boot loaders to the TFTP tree</li>
-<li>Re-copy distribution files to the TFTP tree
+As noted above, this can take quite a bit of time if there are many distributions.
 
-<ul>
-<li>This will attempt to hardlink files if possible</li>
-</ul>
-</li>
-<li>Rewrite the pxelinux.cfg/default file</li>
-<li>Rewrite all other pxelinux.cfg files for systems</li>
-<li>Rewrite all managed config files (DHCP, DNS, etc.) and restarts services</li>
-<li>Cleans the "link cache"</li>
-<li>Executes post-sync and change <a href="/manuals/2.6.0/4/4/1_-_Triggers.html">Triggers</a></li>
-</ol>
+**See also:**
 
-
-<p>As noted above, this can take quite a bit of time if there are many distributions.</p>
-
-<p><strong>See also:</strong>
-* <a href="/manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.html">Managing Services With Cobbler</a></p>
+- [Managing Services With Cobbler]({% link manuals/2.6.0/3/4_-_Managing_Services_With_Cobbler.md %})

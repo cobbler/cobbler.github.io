@@ -5,14 +5,18 @@ meta: 2.8.0
 ---
 ## Virtualization With Koan 
 
-The main feature of koan is contact the cobbler server, learn about a configuration from Cobbler, and make that virtualized installation happen.  One other feature is [KoanDoesReinstall reinstallation of existing systems] but perhaps the more important one is how to do virtualized installs. 
+The main feature of koan is contact the cobbler server, learn about a configuration from Cobbler, and make that
+virtualized installation happen.  One other feature is [KoanDoesReinstall reinstallation of existing systems] but
+perhaps the more important one is how to do virtualized installs. 
 
-Koan is its own seperate tool, a seperate package from cobbler, that is designed for use with a remote cobbler server.   (The same folks that work on cobbler work on koan and it's available from the same repositories)
+Koan is its own seperate tool, a seperate package from cobbler, that is designed for use with a remote cobbler server.
+(The same folks that work on cobbler work on koan and it's available from the same repositories)
 
     yum install koan
 
-It is a very small tool and generally does not always need to be updated when cobbler is updated, but keeping koan updated ensures you have all the latest features available.
-In general, the major release numbers of Cobbler and koan should match, but it's not so important if the minor release numbers don't match.
+It is a very small tool and generally does not always need to be updated when cobbler is updated, but keeping koan
+updated ensures you have all the latest features available. In general, the major release numbers of Cobbler and koan
+should match, but it's not so important if the minor release numbers don't match.
 
 ### Manpage 
 
@@ -34,8 +38,9 @@ In general, the major release numbers of Cobbler and koan should match, but it's
 
 Koan is designed to install things as set up in cobbler to ensure installs are consistent and repeatable.
 
-Often though, users of koan may not be cobbler server administrators or may want to install a VM on a test system -- so they'll want to override
-some things as stored in cobbler.  Koan allows an extensive system of overrides to tweak what Cobbler tells us about how a particular cobbler profile should be installed.
+Often though, users of koan may not be cobbler server administrators or may want to install a VM on a test system -- so
+they'll want to override some things as stored in cobbler. Koan allows an extensive system of overrides to tweak what
+Cobbler tells us about how a particular cobbler profile should be installed.
 
 
 
@@ -55,8 +60,8 @@ some things as stored in cobbler.  Koan allows an extensive system of overrides 
        options)
 
 
-Nearly all of these variables can also be defined and centrally managed
-by the Cobbler server and are also described in the cobbler manpage in depth.
+Nearly all of these variables can also be defined and centrally managed by the Cobbler server and are also described in
+the cobbler manpage in depth.
 
     man cobbler
 

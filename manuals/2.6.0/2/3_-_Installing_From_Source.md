@@ -9,7 +9,7 @@ using the links below.
 
 ## Latest Source
 
-The latest source code (it's all Python) is available through <a href="https://github.com/cobbler/cobbler">git</a>.
+The latest source code (it's all Python) is available through [git](https://github.com/cobbler/cobbler).
 
 ### Getting the Code
 
@@ -30,26 +30,26 @@ $ cd cobbler
 $ git checkout release24
 ````
 
-<div class="alert alert-info alert-block"><b>Note:</b> The release24 branch corresponds to the official release version for the 2.4.x series. The master branch is the development series, and always uses an odd number for the minor version (for example, 2.5.0).</div>
-
+<div class="alert alert-info alert-block">
+    <b>Note:</b> The release24 branch corresponds to the official release version for the 2.4.x series. The master
+    branch is the development series, and always uses an odd number for the minor version (for example, 2.5.0).
+</div>
 
 ## Installing
 
-When building from source, make sure you have the correct
-<a href="/manuals/2.6.0/2/1_-_Prerequisites.html">Prerequisites for Installation</a>. Once they are, you can install
-cobbler with the following command:
+When building from source, make sure you have the correct  {% link manuals/2.6.0/2/1_-_Prerequisites.md %}. Once they
+are, you can install cobbler with the following command: `$ make install`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ make install</code></pre></figure></p>
+This command will rewrite all configuration files on your system if you have an existing installation of Cobbler
+(whether it was installed via packages or from an older source tree). To preserve your existing configuration files,
+snippets and kickstarts, run this command: `$ make devinstall`
 
-<p>This command will rewrite all configuration files on your system if you have an existing installation of Cobbler (whether it was installed via packages or from an older source tree). To preserve your existing configuration files, snippets and kickstarts, run this command:</p>
+To install the Cobbler web GUI, use this command: `$ make webtest`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ make devinstall</code></pre></figure></p>
-
-To install the Cobbler web GUI, use this command:
-
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ make webtest</code></pre></figure></p>
-
-<div class="alert alert-info alert-block"><b>Note:</b> This will do a full install, not just the web GUI. "make webtest" is a wrapper around "make devinstall", so your configuration files will also be saved when running this command.</div>
+<div class="alert alert-info alert-block">
+    <b>Note:</b> This will do a full install, not just the web GUI. "make webtest" is a wrapper around
+    "make devinstall", so your configuration files will also be saved when running this command.
+</div>
 
 ### Building Packages from Source (RPM)
 

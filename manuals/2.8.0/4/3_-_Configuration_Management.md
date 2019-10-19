@@ -2,6 +2,8 @@
 layout: manpage
 title: Configuration Management
 meta: 2.8.0
+nav: 3 - Configuration Management
+navversion: nav28
 ---
 
 
@@ -9,7 +11,8 @@ The initial provisioning of client systems with cobbler is just one component of
 consider how to continue to manage them using a configuration management system (CMS). Cobbler can help you provision
 and introduce a CMS onto your client systems.
 
-One option is cobbler's own lightweight CMS. For that, see the document [Built in configuration management](Built in configuration management).
+One option is cobbler's own lightweight CMS. For that, see the document
+[Built in configuration management](Built in configuration management).
 
 Here we discuss the other option: deploying a CMS such as puppet, cfengine, bcfg2, Chef, etc.
 

@@ -4,14 +4,20 @@ title: Advanced Networking - Bridging
 meta: 2.6.0
 ---
 
-<p>A bridge is a way to connect two Ethernet segments together in a protocol independent way. Packets are forwarded based on Ethernet address, rather than IP address (like a router). Since forwarding is done at Layer 2, all protocols can go transparently through a bridge. (<a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge">reference</a>).</p>
+A bridge is a way to connect two Ethernet segments together in a protocol independent way. Packets are forwarded based
+on Ethernet address, rather than IP address (like a router). Since forwarding is done at Layer 2, all protocols can go
+transparently through a bridge. ([reference](http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge)).
 
-<p>You can create a bridge in cobbler in the following way:</p>
+You can create a bridge in cobbler in the following way:
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 --interface-type=bridge_slave --interface-master=br0
+{% highlight bash %}
+$ cobbler system edit --name=foo --interface=eth0 --mac=AA:BB:CC:DD:EE:F0 --interface-type=bridge_slave --interface-master=br0
 $ cobbler system edit --name=foo --interface=eth1 --mac=AA:BB:CC:DD:EE:F1 --interface-type=bridge_slave --interface-master=br0
-$ cobbler system edit --name=foo --interface=br0 --interface-type=bridge --bridge-opts=&quot;stp=no&quot; --ip-address=192.168.1.100 --netmask=255.255.255.0</code></pre></figure></p>
+$ cobbler system edit --name=foo --interface=br0 --interface-type=bridge --bridge-opts=&quot;stp=no&quot; --ip-address=192.168.1.100 --netmask=255.255.255.0
+{% endhighlight %}
 
-<p>You can specify any bridging options you would like, so please read the brctl manpage for details if you are unfamiliar with bridging.</p>
+You can specify any bridging options you would like, so please read the brctl manpage for details if you are unfamiliar
+with bridging.
 
-<p><strong>NOTE</strong> You must install the bridge-utils package during the build process for this to work in the %post section of your build.</p>
+**NOTE:** You must install the bridge-utils package during the build process for this to work in the %post section of
+your build.

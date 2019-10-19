@@ -2,8 +2,14 @@
 layout: manpage
 title: Profiles & Sub-Profiles
 meta: 2.8.0
+nav: 2 - Profiles and Sub-Profiles
+navversion: nav28
 ---
-A profile associates a distribution to additional specialized options, such as a kickstart automation file. Profiles are the core unit of provisioning and at least one profile must exist for every distribution to be provisioned. A profile might represent, for instance, a web server or desktop configuration. In this way, profiles define a role to be performed.
+
+A profile associates a distribution to additional specialized options, such as a kickstart automation file. Profiles are
+the core unit of provisioning and at least one profile must exist for every distribution to be provisioned. A profile
+might represent, for instance, a web server or desktop configuration. In this way, profiles define a role to be
+performed.
 
 The profile command has the following sub-commands:
 

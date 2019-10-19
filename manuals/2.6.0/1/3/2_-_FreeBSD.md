@@ -8,7 +8,7 @@ The following steps are required to enable FreeBSD support in Cobbler.
 
 You can grab the patches and scripts from the following github repos:
 
-<a href="git://github.com/jsabo/cobbler_misc.git">git://github.com/jsabo/cobbler_misc.git</a>
+[git://github.com/jsabo/cobbler_misc.git](git://github.com/jsabo/cobbler_misc.git)
 
 This would not be possible without the help from Doug Kilpatrick. Thanks Doug!
 
@@ -83,7 +83,8 @@ gzip -d /tmp/mfsroot.old.gz; dev1=<code>mdconfig -f /tmp/mfsroot.old</code>
 mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old
 ````
 
-Copy everything from the old one to the new one. You'll be replacing the binaries, but it's simpler to just copy it all over.
+Copy everything from the old one to the new one. You'll be replacing the binaries, but it's simpler to just copy it all
+over.
 
 ````bash
 (cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)
@@ -108,7 +109,7 @@ cp {install.cfg,doconfig.sh} /mnt/mfsroot_new/stand
 
 Now just unmount the ramdisk and compress the file
 
-````
+````bash
 umount /mnt/mfsroot_new; umount /mnt/mfsroot_old
 mdconfig -d -u $dev0; mdconfig -d -u $dev1
 gzip /tmp/mfsroot
@@ -121,22 +122,14 @@ Copy the mfsroot.gz to the Cobbler server.
 - Enable Cobbler's tftp server in modules.conf
 
 
-````
+````ini
 [tftpd]
 module = manage_tftpd_py
 ````
 
-Mount the media
+- Mount the media: `mount /dev/cdrom /mnt`
 
-````bash
-mount /dev/cdrom /mnt
-````
-
-- Import the distro
-
-````bash
-cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64
-````
+- Import the distro: `cobbler import --path=/mnt/ --name=freebsd-8.2-x86_64`
 
 - Copy the mfsroot.gz and the pxeboot.bs into the distro
 

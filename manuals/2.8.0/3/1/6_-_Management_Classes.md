@@ -2,7 +2,10 @@
 layout: manpage
 title: Management Classes
 meta: 2.8.0
+nav: 6 - Management Classes
+navversion: nav28
 ---
+
 Management classes allow cobbler to function as a configuration management system. The lego blocks of configuration
 management, resources are grouped together via Management Classes and linked to a system. Cobbler supports two (2)
 resource types, which are configured in the order listed below:

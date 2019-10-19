@@ -2,6 +2,8 @@
 layout: manpage
 title: Modules Configuration
 meta: 2.8.0
+nav: Modules Configuration
+navversion: nav28
 ---
 
 Cobbler supports add-on modules, some of which can provide the same functionality (for instance, the
@@ -21,7 +23,8 @@ configured via the `/etc/cobbler/modules.conf file`, for example:
 module = manage_bind
 {% endhighlight %}
 
-As you can see above, this file has a typical INI-style syntax where sections are denoted with the **\[\]** brackets and entries are of the form **"key = value"**.
+As you can see above, this file has a typical INI-style syntax where sections are denoted with the **\[\]** brackets and
+entries are of the form **"key = value"**.
 
 Many of these sections are covered in the
 [Managing Services With Cobbler]{% link manuals/2.8.0/3/4_-_Managing_Services_With_Cobbler.md %} and

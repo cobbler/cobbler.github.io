@@ -3,40 +3,32 @@ layout: manpage
 title: Build ISO
 meta: 2.6.0
 ---
-<p>Often an environment cannot support PXE because of either (A) an
-unfortunate lack of control over DHCP configurations (i.e. another
-group owns DHCP and won't give you a next-server entry), or (B) you
-are using static IPs only.</p>
 
-<p>This is easily solved:</p>
+Often an environment cannot support PXE because of either (A) an unfortunate lack of control over DHCP configurations
+(i.e. another group owns DHCP and won't give you a next-server entry), or (B) you are using static IPs only.
 
-<pre><code># cobbler buildiso
-</code></pre>
+This is easily solved: `$ cobbler buildiso`
 
-<p>What this command does is to copy all distro kernel/initrds onto a
-boot CD image and generate a menu for the ISO that is essentially
-equivalent to the PXE menu provided to net-installing machines via
-Cobbler.</p>
+What this command does is to copy all distro kernel/initrds onto a boot CD image and generate a menu for the ISO that
+is essentially equivalent to the PXE menu provided to net-installing machines via Cobbler.
 
-<p>By default, the boot CD menu will include all profiles and systems,
-you can force it to display a list of profiles/systems in concern
-with the following.</p>
+By default, the boot CD menu will include all profiles and systems, you can force it to display a list of
+profiles/systems in concern with the following.
 
-<p>Cobbler versions >= 2.2.0:</p>
+Cobbler versions >= 2.2.0:
 
-<pre><code># cobbler buildiso --systems="system1 system2 system3"
-# cobbler buildiso --profiles="profile1 profile2 profile3"
-</code></pre>
+{% highlight bash %}
+$ cobbler buildiso --systems="system1 system2 system3"
+$ cobbler buildiso --profiles="profile1 profile2 profile3"
+{% endhighlight %}
 
-<p>Cobbler versions &lt; 2.2.0:</p>
+Cobbler versions < 2.2.0:
 
-<pre><code># cobbler buildiso --systems="system1,system2,system3"
-# cobbler buildiso --profiles="profile1,profile2,profile3"
-</code></pre>
+{% highlight bash %}
+$ cobbler buildiso --systems="system1,system2,system3"
+$ cobbler buildiso --profiles="profile1,profile2,profile3"
+{% endhighlight %}
 
-<p>If you need to install into a lab (or other environment) that does not have network
-access to the cobbler server, you can also copy a full distribution tree plus profile
-and system records onto a disk image:</p>
-
-<pre><code># cobbler buildiso --standalone --distro="distro1"
-</code></pre>
+If you need to install into a lab (or other environment) that does not have network access to the cobbler server, you
+can also copy a full distribution tree plus profile and system records onto a disk image:
+`$ cobbler buildiso --standalone --distro="distro1"`

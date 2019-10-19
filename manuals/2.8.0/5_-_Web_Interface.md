@@ -18,7 +18,8 @@ You cannnot (yet):
   * Auto-Import media
   * Do a "cobbler validateks"
 
-The WebUI is intended to be self-explanatory and contains tips and explanations for nearly every field you can edit.  It also contains links to additional documentation, including the Cobbler manpage documentation in HTML format.
+The WebUI is intended to be self-explanatory and contains tips and explanations for nearly every field you can edit. It
+also contains links to additional documentation, including the Cobbler manpage documentation in HTML format.
 
 ## Basic Setup
 
@@ -52,12 +53,14 @@ The WebUI is intended to be self-explanatory and contains tips and explanations 
 
 ## Basic setup (2.2.x and higher)
 
-In addition to the steps above, cobbler 2.2.x has a requirement for `mod_wsgi` which, when installed via EPEL, will be disabled by default. Attempting to start httpd will result in:
+In addition to the steps above, cobbler 2.2.x has a requirement for `mod_wsgi` which, when installed via EPEL, will be
+disabled by default. Attempting to start httpd will result in:
 
     Invalid command 'WSGIScriptAliasMatch', perhaps misspelled \
       or defined by a module not included in the server configuration
 
-You can enable this module by editing `/etc/httpd/conf.d/wsgi.conf` and un-commenting the "LoadModule wsgi_module modules/mod_wsgi.so" line.
+You can enable this module by editing `/etc/httpd/conf.d/wsgi.conf` and un-commenting the
+"LoadModule wsgi_module modules/mod_wsgi.so" line.
 
 ### Next steps
 
@@ -74,7 +77,9 @@ Should you ever need to debug things, see the following log files:
 
 ### Further setup
 
-Cobbler authenticates all WebUI logins through `cobblerd`, which uses a configurable authentication mechanism.  You may wish to adjust that for your environment.  For instance, if in `modules.conf` above you choose to stay with the authn_configfile module, you may want to add your system administrator usernames to the digest file:
+Cobbler authenticates all WebUI logins through `cobblerd`, which uses a configurable authentication mechanism. You may
+wish to adjust that for your environment.  For instance, if in `modules.conf` above you choose to stay with the
+authn_configfile module, you may want to add your system administrator usernames to the digest file:
 
     htdigest /etc/cobbler/users.digest "Cobbler" <username>
 
@@ -82,7 +87,8 @@ You may also want to refine for authorization settings.
 
 ### Rewrite Rule for secure-http
 
-To redirect access to the WebUI via https on an Apache webserver, you can use the following rewrite rule, probably at the end of Apache's `ssl.conf`:
+To redirect access to the WebUI via https on an Apache webserver, you can use the following rewrite rule, probably at
+the end of Apache's `ssl.conf`:
 
     ### Force SSL only on the WebUI
     <VirtualHost *:80>

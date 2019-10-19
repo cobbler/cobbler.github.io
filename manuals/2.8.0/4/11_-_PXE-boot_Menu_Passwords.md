@@ -2,7 +2,10 @@
 layout: manpage
 title: Cobbler Manual
 meta: 2.8.0
+nav: 11 - PXE boot menu passwords
+navversion: nav28
 ---
+
 == How to create a PXE boot menu password ==
 
 There are two different levels of password: 
@@ -46,7 +49,8 @@ openssl passwd -1 -salt sXiKzkus mypassword
 
 ### Sample usage 
 
-In this example, the master menu password will be used for all the entries (because the profile entry is blank).  I have not looked into a way to dynamically set a different password based on the profile variables yet.
+In this example, the master menu password will be used for all the entries (because the profile entry is blank). I have
+not looked into a way to dynamically set a different password based on the profile variables yet.
 
 pxedefault.template:
 

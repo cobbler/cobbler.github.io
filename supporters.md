@@ -40,7 +40,12 @@ contributors:
     items:
     - name: tshubitz
 ---
-Cobbler conducted a [fundraising campaign](http://www.indiegogo.com/cobbler24) during Nov-Dec of 2012, in order to raise money to help pay for additional hardware to be used to aid in adding new features such as a dedicated CI server (jenkins) and the ability to deploy images built by Cobbler into IaaS platforms such as Eucalyptus, Openstack, etc.
+
+# Cobbler Supporters
+
+Cobbler conducted a [fundraising campaign](http://www.indiegogo.com/cobbler24) during Nov-Dec of 2012, in order to raise
+money to help pay for additional hardware to be used to aid in adding new features such as a dedicated CI server
+(jenkins) and the ability to deploy images built by Cobbler into IaaS platforms such as Eucalyptus, Openstack, etc.
 
 The following is the list of those who generously contributed:
 

@@ -15,7 +15,8 @@ cobbler setting report
 
 ### cobbler setting edit
 
-This command allows you to modify a setting on the fly. It takes affect immediately, however depending on the setting you change, a "cobbler sync" may be required afterwards in order for the change to be fully applied.
+This command allows you to modify a setting on the fly. It takes affect immediately, however depending on the setting
+you change, a "cobbler sync" may be required afterwards in order for the change to be fully applied.
 
 This syntax of this command is as follows:
 
@@ -23,7 +24,8 @@ This syntax of this command is as follows:
 $ cobbler setting edit --name=option --value=value
 {% endhighlight %}
 
-As with other cobbler primitives, settings that are array-based should be space-separated while hashes should be a space-separated list of key=value pairs.
+As with other cobbler primitives, settings that are array-based should be space-separated while hashes should be a
+space-separated list of key=value pairs.
 
 ### cobbler setting report
 

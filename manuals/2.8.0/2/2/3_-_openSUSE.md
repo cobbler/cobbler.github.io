@@ -2,6 +2,8 @@
 layout: manpage
 title: openSUSE
 meta: 2.8.0
+nav: 3 - openSUSE
+navversion: nav28
 ---
 
 

@@ -4,41 +4,43 @@ title: File Resources
 meta: 2.6.0
 ---
 
-<p>File resources are managed using cobbler file add, allowing you to create and delete files on a system.</p>
+File resources are managed using cobbler file add, allowing you to create and delete files on a system.
 
-<h2>Actions</h2>
+## Actions
 
-<h3>create</h3>
+### create
 
-<p>Create the file. [Default]</p>
+Create the file. [Default]
 
-<h3>remove</h3>
+### remove
 
-<p>Remove the file.</p>
+Remove the file.
 
-<h2>Attributes</h2>
+## Attributes
 
-<h3>mode</h3>
+### mode
 
-<p>Permission mode (as in chmod).</p>
+Permission mode (as in chmod).
 
-<h3>group</h3>
+### group
 
-<p>The group owner of the file.</p>
+The group owner of the file.
 
-<h3>user</h3>
+### user
 
-<p>The user for the file.</p>
+The user for the file.
 
-<h3>path</h3>
+### path
 
-<p>The path for the file.</p>
+The path for the file.
 
-<h3>template</h3>
+### template
 
-<p>The template for the file.</p>
+The template for the file.
 
-<h4>Example:</h4>
+#### Example:
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler file add --name=string --comment=string [--action=string] --mode=string --group=string \
---user=string --path=string [--template=string]</code></pre></figure></p>
+{% highlight bash %}
+$ cobbler file add --name=string --comment=string [--action=string] --mode=string --group=string \
+--user=string --path=string [--template=string]</code></pre></figure>
+{% endhighlight %}

@@ -2,28 +2,25 @@
 layout: manpage
 title: Replicate
 meta: 2.8.0
+nav: 8 - Replication
+navversion: nav28
 ---
 
     cobbler replicate --help
 
-Replication works by downloading the configuration from one cobbler
-server into another. It is useful for Highly Available setups,
-disaster recovery, support of multiple geographies, or for load
-balancing.
+Replication works by downloading the configuration from one cobbler server into another. It is useful for Highly
+Available setups, disaster recovery, support of multiple geographies, or for load balancing.
 
     cobbler replicate --master=master.example.org
 
-With the default arguments, only distribution and profile metadata
-are synchronized. Without any of the other sync flags (described
-below) it is assumed data backing these objects (such as
-kernels/initrds, etc) are already accessible. Don't worry though,
-cobbler can help move those over too.
+With the default arguments, only distribution and profile metadata are synchronized. Without any of the other sync flags
+(described below) it is assumed data backing these objects (such as kernels/initrds, etc) are already accessible. Don't
+worry though, cobbler can help move those over too.
 
 ## Transferring More Than Just Metadata
 
-Cobbler can transfer mirrored trees, packages, snippets, kickstart
-templates, and triggers as well. To do this, just use the
-appropriate flags with cobbler replicate.
+Cobbler can transfer mirrored trees, packages, snippets, kickstart templates, and triggers as well. To do this, just use
+the appropriate flags with cobbler replicate.
 
     [root@localhost mdehaan]# cobbler replicate --help
     Usage: cobbler [options]
@@ -41,27 +38,19 @@ appropriate flags with cobbler replicate.
 
 ## Setup
 
-On each replica-to-be cobbler server, just install cobbler as
-normal, and make sure `/etc/cobbler/settings` and
-/etc/cobbler/modules.conf are appropriate. Use "cobbler check" to
-spot check your work. Cobbler replicate will not configure these
-files, and you may want different site-specific settings for
-variables in these files. That's fine, as cobbler replicate will
-respect these.
+On each replica-to-be cobbler server, just install cobbler as normal, and make sure `/etc/cobbler/settings` and
+`/etc/cobbler/modules.conf` are appropriate. Use "cobbler check" to spot check your work. Cobbler replicate will not
+configure these files, and you may want different site-specific settings for variables in these files. That's fine, as
+cobbler replicate will respect these.
 
 ## How It Works
 
-Metadata is transferred over Cobbler XMLRPC, so you'll need to have
-the Cobbler XMLRPC endpoint accessible --
-[http://servername:80/cobbler\_api](http://servername:80/cobbler_api).
-This is the read only API so no authentication is required. This is
-possible because this is a user-initiated pull operation, not a
-push operation.
+Metadata is transferred over Cobbler XMLRPC, so you'll need to have the Cobbler XMLRPC endpoint accessible --
+[http://servername:80/cobbler\_api](http://servername:80/cobbler_api). This is the read only API so no authentication is
+required. This is possible because this is a user-initiated pull operation, not a push operation.
 
-Files are transferred either by rsync (over ssh) or scp, so you
-will probably want to use ssh-agent prior to kicking off the
-replicate command, or otherwise use authorized\_keys on the remote
-host to save typing.
+Files are transferred either by rsync (over ssh) or scp, so you will probably want to use ssh-agent prior to kicking off
+the replicate command, or otherwise use authorized\_keys on the remote host to save typing.
 
 ## Limitations
 

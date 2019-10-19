@@ -4,32 +4,38 @@ title: File System ACLs
 meta: 2.6.0
 ---
 
-<p>Cobbler contains an "aclsetup" command for automation of setting up file system acls (i.e. setfacl) on directories that cobbler needs to read and write to.</p>
+Cobbler contains an "aclsetup" command for automation of setting up file system acls (i.e. setfacl) on directories that
+cobbler needs to read and write to.
 
-<h2>Using File System ACLs</h2>
+## Using File System ACLs
 
-<p>Usage of this command allows the administrator to grant access to other users without granting them the ability to run cobbler as root.</p>
+Usage of this command allows the administrator to grant access to other users without granting them the ability to run
+cobbler as root.
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler aclsetup --help
-Usage: cobbler aclsetup  [ARGS]</p>
+{% highlight bash %}
+$ cobbler aclsetup --help
+Usage: cobbler aclsetup  [ARGS]
 
-<p>Options:
+Options:
   -h, --help            show this help message and exit
   --adduser=ADDUSER     give acls to this user
   --addgroup=ADDGROUP   give acls to this group
   --removeuser=REMOVEUSER
                         remove acls from this user
   --removegroup=REMOVEGROUP
-                        remove acls from this group</code></pre></figure></p>
+                        remove acls from this group
+{% endhighlight %}
 
-<p>Example:</p>
+Example: `$ cobbler aclsetup --adduser=timmy`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler aclsetup --adduser=timmy</code></pre></figure></p>
+The above example gives timmy access to run cobbler commands.
 
-<p>The above example gives timmy access to run cobbler commands.</p>
+Note that aclsetup does grant access to configure all of `/etc/cobbler`, `/var/www/cobbler`, and `/var/lib/cobbler`, so
+it is still rather powerful in terms of the access it grants (though somewhat less so than providing root).
 
-<p>Note that aclsetup does grant access to configure all of <code>/etc/cobbler</code>, <code>/var/www/cobbler</code>, and <code>/var/lib/cobbler</code>, so it is still rather powerful in terms of the access it grants (though somewhat less so than providing root).</p>
+A user with acls can, for instance, edit cobbler triggers which are later run by cobblerd (as root). In this event,
+cobbler access (either sudo or aclsetup) should not be granted to users you do not trust completely. This should not be
+a major problem as in giving them access to configure future aspects of your network (via the provisioning server) they
+are already being granted fairly broad rights.
 
-<p>A user with acls can, for instance, edit cobbler triggers which are later run by cobblerd (as root). In this event, cobbler access (either sudo or aclsetup) should not be granted to users you do not trust completely. This should not be a major problem as in giving them access to configure future aspects of your network (via the provisioning server) they are already being granted fairly broad rights.</p>
-
-<p>It is at least nicer than running "sudo" all of the time if you were going to grant a user "no password" sudo access to cobbler.</p>
+It is at least nicer than running "sudo" all of the time if you were going to grant a user "no password" sudo access to cobbler.

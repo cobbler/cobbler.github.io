@@ -6,12 +6,14 @@ meta: 2.6.0
 
 The Cobbler version command is very simple, and provides a little more detailed information about your installation.
 
-<p><strong>Example:</strong></p>
+**Example:**
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler version
+{% highlight bash %}
+$ cobbler version
 Cobbler 2.4.0
   source: ?, ?
-  build time: Sun Nov 25 11:45:24 2012</code></pre></figure></p>
+  build time: Sun Nov 25 11:45:24 2012
+{% endhighlight %}
 
 The first piece of information is the version. The second line includes information regarding the associated commit for
 this version. In official releases, this should correspond to the commit for which the build was tagged in git. The

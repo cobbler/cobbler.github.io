@@ -48,11 +48,9 @@ make install
 
 * Patch sysinstall with http install support
 
--   The media location is hard coded in this patch and has to be
-    updated every release. Just look for 8.X and change it.
+-   The media location is hard coded in this patch and has to be updated every release. Just look for 8.X and change it.
 
-The standard sysinstall doesn't really support HTTP. This patch
-adds full http support to sysinstall.
+The standard sysinstall doesn't really support HTTP. This patch adds full http support to sysinstall.
 
 {% highlight bash %}
 cd /usr
@@ -61,11 +59,9 @@ patch -p0 < /root/http_install.patch
 
 * Rebuild FreeBSD mfsroot
 
-We'll use "crunchgen" to create the contents of /stand in a ramdisk
-image. Crunchgen creates a single statically linked binary that
-acts like different normal binaries depending on how it's called.
-We need to include "fetch" and a few other binaries. This is a
-multi step process.
+We'll use "crunchgen" to create the contents of /stand in a ramdisk image. Crunchgen creates a single statically linked
+binary that acts like different normal binaries depending on how it's called. We need to include "fetch" and a few other
+binaries. This is a multi step process.
 
 {% highlight bash %}
 mkdir /tmp/bootcrunch
@@ -92,27 +88,23 @@ gzip -d /tmp/mfsroot.old.gz; dev1=`mdconfig -f /tmp/mfsroot.old`
 mkdir /mnt/mfsroot_old; mount /dev/$dev1 /mnt/mfsroot_old
 {% endhighlight %}
 
-Copy everything from the old one to the new one. You'll be
-replacing the binaries, but it's simpler to just copy it all over.
+Copy everything from the old one to the new one. You'll be replacing the binaries, but it's simpler to just copy it all
+over.
 
 {% highlight bash %}
 (cd /mnt/mfsroot_old/; tar -cf - .) | (cd /mnt/mfsroot_new; tar -xf -)
 {% endhighlight %}
 
-Next copy over the new bootcrunch file and create all of the
-symlinks after removing the old binaries.
+Next copy over the new bootcrunch file and create all of the symlinks after removing the old binaries.
 
 {% highlight bash %}
 cd /mnt/mfsroot_new/stand; rm -- *; cp /tmp/bootcrunch/boot_crunch ./
 for i in $(./boot_crunch 2>&1|grep -v usage);do if [ "$i" != "boot_crunch" ];then rm -f ./"$i";ln ./boot_crunch "$i";fi;done
 {% endhighlight %}
 
-Sysinstall uses install.cfg to start the install off. We've created
-a version of the install.cfg that uses fetch to pull down another
-configuration file from the Cobbler server which allows us to
-dynamically control the install. install.cfg uses a script called
-"doconfig.sh" to determine where the Cobbler installer is via the
-DHCP next-server field.
+Sysinstall uses install.cfg to start the install off. We've created a version of the install.cfg that uses fetch to pull
+down another configuration file from the Cobbler server which allows us to dynamically control the install. install.cfg
+uses a script called "doconfig.sh" to determine where the Cobbler installer is via the DHCP next-server field.
 
 Copy both install.cfg and doconfig.sh into place.
 
@@ -160,4 +152,8 @@ cp mfsroot.gz /var/www/cobbler/ks_mirror/freebsd-8.2-x86_64/boot/
 
 * Configure a system to use the profile, turn on netboot, and off you go.
 
-DHCP will tell the system to request pxelinux.0, so it will.  Pxelinux will request it's configuration file, which will have pxeboot.bs as the "kernel". Pxelinux will request pxeboot.bs, use the extention (.bs) to realize it's another boot loader, and chain to it. Pxeboot will then request all the .rc, .4th, the kernel, and mfsroot.gz. It will mount the ramdisk and start the installer. The installer will connect back to the Cobbler server to fetch the install.cfg (the kickstart file), and do the install as instructed, rebooting at the end.
+DHCP will tell the system to request pxelinux.0, so it will.  Pxelinux will request it's configuration file, which will
+have pxeboot.bs as the "kernel". Pxelinux will request pxeboot.bs, use the extention (.bs) to realize it's another boot
+loader, and chain to it. Pxeboot will then request all the .rc, .4th, the kernel, and mfsroot.gz. It will mount the
+ramdisk and start the installer. The installer will connect back to the Cobbler server to fetch the install.cfg (the
+kickstart file), and do the install as instructed, rebooting at the end.

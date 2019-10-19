@@ -166,7 +166,8 @@ None.
 This release makes the use of --parent and --distro mutually exclusive. The consequence is that subprofiles always have
 the same distro as the parent profile. This has been the intended behaviour ever since subprofiles got introduced.
 
-Please check if you have subprofiles with different distros than the parent profile and reconsider and adjust your configuration.
+Please check if you have subprofiles with different distros than the parent profile and reconsider and adjust your
+configuration.
 
 ## 2.6.3
 
@@ -225,14 +226,14 @@ Please check if you have subprofiles with different distros than the parent prof
 This release cycle was primarily aimed at providing our software directly to our users.
 A substantial overhaul of our building &amp; packaging infrastructure allows us to provide packages and repositories for:
 
-- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-6/">CentOS 6</a>
-- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-6/">RHEL 6</a>
-- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_18/">Fedora 18</a>
-- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_19/">Fedora 19</a>
-- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_20/">Fedora 20</a>
-- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_12.3/">openSUSE 12.3</a>
-- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_13.1/">openSUSE 13.1</a>
-- <a href="http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_Factory/">openSUSE Factory</a>
+- [CentOS 6](http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/CentOS_CentOS-6/)
+- [RHEL 6](http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/RedHat_RHEL-6/)
+- [Fedora 18](http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_18/)
+- [Fedora 19](http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_19/)
+- [Fedora 20](http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/Fedora_20/)
+- [openSUSE 12.3](http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_12.3/)
+- [openSUSE 13.1](http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_13.1/)
+- [openSUSE Factory](http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/openSUSE_Factory/)
 
 ### Features
 

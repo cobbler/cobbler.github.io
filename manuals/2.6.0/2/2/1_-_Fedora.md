@@ -4,21 +4,31 @@ title: Fedora
 meta: 2.6.0
 ---
 
-<p>Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the yum command:</p>
+Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the
+yum command:
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install cobbler</code></pre></figure></p>
+{% highlight bash %}
+$ sudo yum install cobbler
+{% endhighlight %}
 
-<p>With Fedora's packaging system, new releases are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler for Fedora (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:</p>
+With Fedora's packaging system, new releases are held in a "testing" repository for a period of time to vet bugs. If you
+would like to install the most up to date version of cobbler for Fedora (which may not be fully vetted for a production
+environment), enable the -testing repo when installing or updating:
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sudo yum install --enablerepo=updates-testing cobbler</p>
+{% highlight bash %}
+$ sudo yum install --enablerepo=updates-testing cobbler
+{% endhighlight %}
 
-<h1>or</h1>
+or
 
-<p>$ sudo yum update --enablerepo=updates-testing cobbler</code></pre></figure></p>
+{% highlight bash %}
+$ sudo yum update --enablerepo=updates-testing cobbler
+{% endhighlight %}
 
-<p>Once cobbler is installed, start and enable the service:</p>
+Once cobbler is installed, start and enable the service:
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ systemctl start cobblerd.service
+{% highlight bash %}
+$ systemctl start cobblerd.service
 $ systemctl enable cobblerd.service
 $ systemctl status cobblerd.service
 cobblerd.service - Cobbler Helper Daemon
@@ -26,9 +36,12 @@ cobblerd.service - Cobbler Helper Daemon
       Active: active (running) since Sun, 17 Jun 2012 13:01:28 -0500; 1min 44s ago
     Main PID: 1234 (cobblerd)
       CGroup: name=systemd:/system/cobblerd.service
-          └ 1234 /usr/bin/python /usr/bin/cobblerd -F</code></pre></figure></p>
+          └ 1234 /usr/bin/python /usr/bin/cobblerd -F
+{% endhighlight %}
 
-<p>And (re)start/enable Apache:</p>
+And (re)start/enable Apache:
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ systemctl start httpd.service
-$ systemctl enable httpd.service</code></pre></figure></p>
+{% highlight bash %}
+$ systemctl start httpd.service
+$ systemctl enable httpd.service
+{% endhighlight %}

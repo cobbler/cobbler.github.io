@@ -4,30 +4,28 @@ title: Replicate
 meta: 2.6.0
 ---
 
-<pre><code>cobbler replicate --help
-</code></pre>
+{% highlight bash %}
+cobbler replicate --help
+{% endhighlight %}
 
-<p>Replication works by downloading the configuration from one cobbler
-server into another. It is useful for Highly Available setups,
-disaster recovery, support of multiple geographies, or for load
-balancing.</p>
+Replication works by downloading the configuration from one cobbler server into another. It is useful for Highly
+Available setups, disaster recovery, support of multiple geographies, or for load balancing.
 
-<pre><code>cobbler replicate --master=master.example.org
-</code></pre>
+{% highlight bash %}
+cobbler replicate --master=master.example.org
+{% endhighlight %}
 
-<p>With the default arguments, only distribution and profile metadata
-are synchronized. Without any of the other sync flags (described
-below) it is assumed data backing these objects (such as
-kernels/initrds, etc) are already accessible. Don't worry though,
-cobbler can help move those over too.</p>
+With the default arguments, only distribution and profile metadata are synchronized. Without any of the other sync flags
+(described below) it is assumed data backing these objects (such as kernels/initrds, etc) are already accessible. Don't
+worry though, cobbler can help move those over too.
 
-<h2>Transferring More Than Just Metadata</h2>
+## Transferring More Than Just Metadata
 
-<p>Cobbler can transfer mirrored trees, packages, snippets, kickstart
-templates, and triggers as well. To do this, just use the
-appropriate flags with cobbler replicate.</p>
+Cobbler can transfer mirrored trees, packages, snippets, kickstart templates, and triggers as well. To do this, just use
+the appropriate flags with cobbler replicate.
 
-<pre><code>[root@localhost mdehaan]# cobbler replicate --help
+{% highlight bash %}
+[root@localhost mdehaan]# cobbler replicate --help
 Usage: cobbler [options]
 
 Options:
@@ -40,63 +38,48 @@ Options:
   --image=PATTERN       pattern of images to replicate
   --omit-data           do not rsync data
   --prune               remove objects (of all types) not found on the master
-</code></pre>
+{% endhighlight %}
 
-<h2>Setup</h2>
+## Setup
 
-<p>On each replica-to-be cobbler server, just install cobbler as
-normal, and make sure <code>/etc/cobbler/settings</code> and
-/etc/cobbler/modules.conf are appropriate. Use "cobbler check" to
-spot check your work. Cobbler replicate will not configure these
-files, and you may want different site-specific settings for
-variables in these files. That's fine, as cobbler replicate will
-respect these.</p>
+On each replica-to-be cobbler server, just install cobbler as normal, and make sure `/etc/cobbler/settings` and
+`/etc/cobbler/modules.conf` are appropriate. Use `cobbler check` to spot check your work. Cobbler replicate will not
+configure these files, and you may want different site-specific settings for variables in these files. That's fine, as
+cobbler replicate will respect these.
 
-<h2>How It Works</h2>
+## How It Works
 
-<p>Metadata is transferred over Cobbler XMLRPC, so you'll need to have
-the Cobbler XMLRPC endpoint accessible --
-<a href="http://servername:80/cobbler_api">http://servername:80/cobbler_api</a>.
-This is the read only API so no authentication is required. This is
-possible because this is a user-initiated pull operation, not a
-push operation.</p>
+Metadata is transferred over Cobbler XMLRPC, so you'll need to have the Cobbler XMLRPC endpoint accessible --
+[http://servername:80/cobbler_api](http://servername:80/cobbler_api).
+This is the read only API so no authentication is required. This is possible because this is a user-initiated pull
+operation, not a push operation.
 
-<p>Files are transferred either by rsync (over ssh) or scp, so you
-will probably want to use ssh-agent prior to kicking off the
-replicate command, or otherwise use authorized_keys on the remote
-host to save typing.</p>
+Files are transferred either by rsync (over ssh) or scp, so you will probably want to use ssh-agent prior to kicking off
+the replicate command, or otherwise use authorized_keys on the remote host to save typing.
 
-<h2>Limitations</h2>
+## Limitations
 
-<p>It is perfectly fine to sync data bi-directionally, though keep in
-mind metadata being synced is not timestamped with the time of the
-last edit (this may be a nice future extension), so the latest sync
-"wins". Cobbler replicate is, generally, designed to have a
-"master" concept, so it is probably not desirable yet to do
-bi-directional syncing.</p>
+It is perfectly fine to sync data bi-directionally, though keep in mind metadata being synced is not timestamped with
+the time of the last edit (this may be a nice future extension), so the latest sync "wins". Cobbler replicate is,
+generally, designed to have a "master" concept, so it is probably not desirable yet to do bi-directional syncing.
 
-<h2>Common Use Cases</h2>
+## Common Use Cases
 
-<h2>High Availability / Disaster Recovery</h2>
+## High Availability / Disaster Recovery
 
-<p>A remote cobbler server periodically replicates from the master to
-keep an active installation.</p>
+A remote cobbler server periodically replicates from the master to keep an active installation.
 
-<h2>Load Balancing</h2>
+## Load Balancing
 
-<p>Similar to the HA/Disaster Recovery case, consider using a
-<a href="/manuals/2.6.0/4/4/1_-_Triggers.html">Triggers</a> to notify the other
-server to pull new metadata when commands are issued.</p>
+Similar to the HA/Disaster Recovery case, consider using a [Triggers]({% link manuals/2.6.0/4/4/1_-_Triggers.md %}) to
+notify the other server to pull new metadata when commands are issued.
 
-<h2>Multiple Geographies</h2>
+## Multiple Geographies
 
-<p>Several remote servers pull from the master, either triggered by a
-<a href="/manuals/2.6.0/4/4/1_-_Triggers.html">Triggers</a> on the central
-server, or otherwise on daily cron. This allows for establishing
-install mirrors that are closer and therefore faster and less
-bandwidth hungry. The admin can choose whether or not system
-records should be centrally managed. It may be desirable to just
-centrally provide the distributions and profiles and keep the
-system records on each seperate cobbler server, however, there is
-nothing to say all records can't be kept centrally as well. (Choose
-one or the other, don't do a mixture of both.)</p>
+Several remote servers pull from the master, either triggered by a
+[Triggers]({% link manuals/2.6.0/4/4/1_-_Triggers.md %}) on the central
+server, or otherwise on daily cron. This allows for establishing install mirrors that are closer and therefore faster
+and less bandwidth hungry. The admin can choose whether or not system records should be centrally managed. It may be
+desirable to just centrally provide the distributions and profiles and keep the system records on each seperate cobbler
+server, however, there is nothing to say all records can't be kept centrally as well. (Choose one or the other, don't do
+a mixture of both.)

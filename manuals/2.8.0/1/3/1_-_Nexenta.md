@@ -47,7 +47,9 @@ Once the import is done, you can unmount the ISO:
 sudo umount /mnt/nexenta4
 {% endhighlight %}
 
-4) Nexenta uses a PXE Grub executable different from other, linux-like systems. To install a Nexenta on a desired system, you have to specify the PXE Grub file for that system. This can be done by using either a MAC address, or a subnet definition in your DHCP configuration file. In /etc/cobbler/dhcp.template:
+4) Nexenta uses a PXE Grub executable different from other, linux-like systems. To install a Nexenta on a desired
+system, you have to specify the PXE Grub file for that system. This can be done by using either a MAC address, or a
+subnet definition in your DHCP configuration file. In /etc/cobbler/dhcp.template:
 
 {% highlight bash %}
   host test-1 {
@@ -62,11 +64,15 @@ sudo umount /mnt/nexenta4
   }
 {% endhighlight %}
 
-OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host definition in your dhcp config file.
+OR if you are installing only Nexenta on all machines on a subnet, you may use the subnet definition instead of host
+definition in your dhcp config file.
 
 Note: the path `boot/grub/pxegrub` is a hardcoded default in the Nexenta boot process.
 
-5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The profiles are placed in /var/lib/cobbler/kickstarts/install_profiles. Each profile should be a file with the filename `machine.AACC003355FF` where AA..FF stand for the mac address of the machine, without `:` (columns). The contents of each profile should look like the following:
+5) In order the have unmanned installation, an installation profile must be created for each booted Nexenta system. The
+profiles are placed in /var/lib/cobbler/kickstarts/install_profiles. Each profile should be a file with the filename
+`machine.AACC003355FF` where AA..FF stand for the mac address of the machine, without `:` (columns). The contents of
+each profile should look like the following:
 
 {% highlight bash %}
 __PF_gateway="IP address" (required)
@@ -92,7 +98,9 @@ __PF_ssh_port="PORT where SSH server will wait for incoming connections" (option
 
 This process has been tested with Cobbler Release 2.8.0 running on Ubuntu 12.04 LTS.
 
-The install of Nexenta is automatic. That means that each machine to be booted with nexenta has to be configurated with a profile in kickstarts/install_profiles directory. To boot Nexenta nodes manually, in the file /var/lib/tftpboot/boot/grub/menu.lst replace the line:
+The install of Nexenta is automatic. That means that each machine to be booted with nexenta has to be configurated with
+a profile in kickstarts/install_profiles directory. To boot Nexenta nodes manually, in the file
+/var/lib/tftpboot/boot/grub/menu.lst replace the line:
 
 {% highlight bash %} 
 kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64,auto_install=1
@@ -104,7 +112,8 @@ With
 kernel$ /images/nexenta-a-x86_64/platform/i86pc/kernel/amd64/unix -B iso_nfs_path=10.3.30.95:/var/www/cobbler/links/nexenta-a-x86_64
 {% endhighlight %}
 
-If you are adding a new distro, don't forget to enable NFS access to it! NFS share must be configured on the boot server. In particular, the directories in /var/www/cobbler/links/<distro-name> are exported. As an example, there is a /etc/exports file:
+If you are adding a new distro, don't forget to enable NFS access to it! NFS share must be configured on the boot
+server. In particular, the directories in /var/www/cobbler/links/<distro-name> are exported. As an example, there is a /etc/exports file:
 
 {% highlight bash %}
 # /etc/exports: the access control list for filesystems which may be exported

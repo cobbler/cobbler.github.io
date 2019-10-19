@@ -2,11 +2,16 @@
 layout: manpage
 title: Alternative Storage Backends - MySQL
 meta: 2.8.0
+nav: 3 - MySQL
+navversion: nav28
 ---
 
-<div class="alert alert-info alert-block"><b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.</div>
+<div class="alert alert-info alert-block">
+    <b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.
+</div>
 
-Cobbler 2.4.0 introduced support for MySQL as alternate storage backend. Currently, support for this backend is ALPHA-quality, and it should not be used for critical production systems.
+Cobbler 2.4.0 introduced support for MySQL as alternate storage backend. Currently, support for this backend is
+ALPHA-quality, and it should not be used for critical production systems.
 
 ### Serializer Setup
 
@@ -26,7 +31,8 @@ etc...
 
 ### MySQL Schema
 
-The schema for the cobbler database is very simple, and essentially uses MySQL as a key/value store with a TEXT field storing the JSON for each object. The schema is as follows:
+The schema for the cobbler database is very simple, and essentially uses MySQL as a key/value store with a TEXT field
+storing the JSON for each object. The schema is as follows:
 
 {% highlight sql %}
 CREATE DATABASE cobbler;
@@ -43,4 +49,6 @@ CREATE TABLE package (name VARCHAR(100) NOT NULL PRIMARY KEY, data TEXT) ENGINE=
 
 ### MySQL Configuration File
 
-This serializer does not yet have a configuration file, and unfortunately still hard-codes certain database values in the cobbler/modules/serializer_mysql.py file. If you modify the privileges or database name in the schema above, you must edit the .py module as well (be sure to remove the .pyo/.pyc files for that modules) and restart cobblerd.
+This serializer does not yet have a configuration file, and unfortunately still hard-codes certain database values in
+the `cobbler/modules/serializer_mysql.py` file. If you modify the privileges or database name in the schema above, you
+must edit the .py module as well (be sure to remove the .pyo/.pyc files for that modules) and restart cobblerd.

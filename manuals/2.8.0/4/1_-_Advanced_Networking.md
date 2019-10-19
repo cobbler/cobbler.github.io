@@ -2,6 +2,8 @@
 layout: manpage
 title: Advanced Networking
 meta: 2.8.0
+nav: 1 - Advanced Networking
+navversion: nav28
 ---
 
 This page details some of the networking tips and tricks in more detail, regarding what you can set on system records to

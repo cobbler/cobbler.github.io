@@ -2,11 +2,16 @@
 layout: manpage
 title: Alternative Storage Backends - MongoDB
 meta: 2.8.0
+nav: 2 - MongoDB
+navversion: nav28
 ---
 
-<div class="alert alert-info alert-block"><b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.</div>
+<div class="alert alert-info alert-block">
+    <b>Warning:</b> This feature has been deprecated and will not be available in Cobbler 3.0.
+</div>
 
-Cobbler 2.2.x introduced support for MongoDB as alternate storage backend, due to the native use of JSON. Currently, support for this backend is BETA-quality, and it should not be used for critical production systems.
+Cobbler 2.2.x introduced support for MongoDB as alternate storage backend, due to the native use of JSON. Currently,
+support for this backend is BETA-quality, and it should not be used for critical production systems.
 
 ### Serializer Setup
 
@@ -26,7 +31,8 @@ etc...
 
 ### MongoDB Configuration File
 
-The configuration file for the MongoDB serializer is `/etc/cobbler/mongodb.conf`. This is an INI-style configuration file, which has the following default entries:
+The configuration file for the MongoDB serializer is `/etc/cobbler/mongodb.conf`. This is an INI-style configuration
+file, which has the following default entries:
 
 {% highlight ini %}
 [connection]

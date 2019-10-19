@@ -2,6 +2,8 @@
 layout: manpage
 title: Complete Settings List
 meta: 2.8.0
+nav: 2 - Complete Settings List
+navversion: nav28
 ---
 
 This page documents all settings `/etc/cobbler/settings` available for configuring both cobblerd and the cobbler CLI

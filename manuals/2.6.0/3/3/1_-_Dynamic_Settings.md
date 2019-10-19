@@ -8,18 +8,20 @@ Prior to Cobbler 2.4.0, any changes to <code>/etc/cobbler/settings</code> requir
 those changes to take affect. Now, with 2.4.0+, you can easily modify settings on the fly via the "cobbler setting"
 command.
 
-<h3>Enabling Dynamic Settings</h3>
+### Enabling Dynamic Settings
 
-<p>Dynamic settings are not enabled by default. In order to enable them, you must set "allow_dynamic_settings: 1" in <code>/etc/cobbler/settings</code> and restart cobblerd.</p>
+Dynamic settings are not enabled by default. In order to enable them, you must set `allow_dynamic_settings: 1` in
+`/etc/cobbler/settings` and restart cobblerd.
 
-<h3>Caveats</h3>
+### Caveats
 
-<p>Over the years, the Cobbler settings file has grown organically, and as such has not always had consistent spacing applied to the YAML entries it contains. In order to ensure that augeas can correctly rewrite the settings, you must run the following sed command:</p>
+Over the years, the Cobbler settings file has grown organically, and as such has not always had consistent spacing
+applied to the YAML entries it contains. In order to ensure that augeas can correctly rewrite the settings, you must run
+the following sed command: `$ sed -i &#39;s/^[[:space:]]+/ /&#39; /etc/cobbler/settings`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ sed -i &#39;s/^[[:space:]]+/ /&#39; /etc/cobbler/settings</code></pre></figure></p>
+When dynamic settings are enabled, the `cobbler check` command will also print out this recommendation.
 
-<p>When dynamic settings are enabled, the "cobbler check" command will also print out this recommendation.</p>
+### CLI Commands
 
-<h3>CLI Commands</h3>
-
-<p>Please see the <a href="/manuals/2.6.0/3/2/11_-_Dynamic_Settings.html">Dynamic Settings CLI Command</a> section for details on the dynamic settings commands.</p>
+Please see the [Dynamic Settings CLI Command]({% link manuals/2.6.0/3/2/11_-_Dynamic_Settings.md %}) section for details
+on the dynamic settings commands.

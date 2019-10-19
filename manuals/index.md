@@ -7,13 +7,13 @@ breadcrumb: Manuals
 
 ### User Manuals
 
-* <a href="/manuals/2.8.0">User Manual 2.8.x</a>
+- [User Manual 2.8.x](/manuals/2.8.0)
 
 ### Quickstart Guide
 
-* <a href="/manuals/quickstart">Quickstart Guide</a>
+- [Quickstart Guide](/manuals/quickstart)
 
 ### Developer Manuals
 
-* <a href="/manuals/developer">Developer Guide</a>
+- [Developer Guide](/manuals/developer)
 

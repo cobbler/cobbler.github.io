@@ -13,15 +13,17 @@ system), or the suggested remedy is not required to make Cobbler function proper
 It is very important to evaluate each item in the listed output individually, and not be concerned with them unless you
 are having definite problems with functionality.
 
-<p><strong>Example:</strong></p>
+**Example:**
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler check
-The following are potential configuration items that you may want to fix:</p>
+{% highlight bash %}
+$ cobbler check
+The following are potential configuration items that you may want to fix:
 
-<p>1 : SELinux is enabled. Please review the following wiki page for details on ensuring cobbler works correctly in your SELinux environment:
+1 : SELinux is enabled. Please review the following wiki page for details on ensuring cobbler works correctly in your SELinux environment:
     https://github.com/cobbler/cobbler/wiki/Selinux
-2 : comment &#39;dists&#39; on /etc/debmirror.conf for proper debian support
-3 : comment &#39;arches&#39; on /etc/debmirror.conf for proper debian support
-4 : Dynamic settings changes are enabled, be sure you run &quot;sed -i &#39;s/^[[:space:]]+/ /&#39; /etc/cobbler/settings&quot; to ensure the settings file is properly indented</p>
+2 : comment 'dists' on /etc/debmirror.conf for proper debian support
+3 : comment 'arches' on /etc/debmirror.conf for proper debian support
+4 : Dynamic settings changes are enabled, be sure you run "sed -i 's/^[[:space:]]+/ /' /etc/cobbler/settings" to ensure the settings file is properly indented
 
-<p>Restart cobblerd and then run &#39;cobbler sync&#39; to apply changes.</code></pre></figure></p>
+Restart cobblerd and then run 'cobbler sync' to apply changes.
+{% endhighlight %}

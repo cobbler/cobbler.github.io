@@ -4,14 +4,16 @@ title: Fedora
 meta: 2.8.0
 ---
 
-
-Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the yum command:
+Cobbler is packaged and available through the Fedora packaging system, so you just need to install the packages with the
+yum command:
 
 {% highlight bash %}
 $ sudo yum install cobbler
 {% endhighlight %}
 
-With Fedora's packaging system, new releases are held in a "testing" repository for a period of time to vet bugs. If you would like to install the most up to date version of cobbler for Fedora (which may not be fully vetted for a production environment), enable the -testing repo when installing or updating:
+With Fedora's packaging system, new releases are held in a "testing" repository for a period of time to vet bugs. If you
+would like to install the most up to date version of cobbler for Fedora (which may not be fully vetted for a production
+environment), enable the -testing repo when installing or updating:
 
 {% highlight bash %}
 $ sudo yum install --enablerepo=updates-testing cobbler

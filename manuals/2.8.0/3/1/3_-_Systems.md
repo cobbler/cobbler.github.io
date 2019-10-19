@@ -2,8 +2,12 @@
 layout: manpage
 title: Systems
 meta: 2.8.0
+nav: 3 - Systems
+navversion: nav28
 ---
-System records map a piece of hardware (or a virtual machine) with the cobbler profile to be assigned to run on it. This may be thought of as chosing a role for a specific system.
+
+System records map a piece of hardware (or a virtual machine) with the cobbler profile to be assigned to run on it. This
+may be thought of as chosing a role for a specific system.
 
 The system commmand has the following sub-commands:
 
@@ -27,9 +31,16 @@ cobbler system rename
 cobbler system report
 {% endhighlight %}
 
-Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though they are useful when system specific customizations are required. One such customization would be defining the MAC address. If there is a specific role inteded for a given machine, system records should be created for it.
+Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though
+they are useful when system specific customizations are required. One such customization would be defining the MAC
+address. If there is a specific role inteded for a given machine, system records should be created for it.
 
-System commands have a wider variety of control offered over network details. In order to use these to the fullest possible extent, the kickstart template used by cobbler must contain certain kickstart snippets (sections of code specifically written for Cobbler to make these values become reality). Compare your kickstart templates with the stock ones in `/var/lib/cobbler/kickstarts` if you have upgraded, to make sure you can take advantage of all options to their fullest potential. If you are a new cobbler user, base your kickstarts off of these templates. Non-kickstart based distributions, while supported by Cobbler, may not be able to use all of these features.
+System commands have a wider variety of control offered over network details. In order to use these to the fullest
+possible extent, the kickstart template used by cobbler must contain certain kickstart snippets (sections of code
+specifically written for Cobbler to make these values become reality). Compare your kickstart templates with the stock
+ones in `/var/lib/cobbler/kickstarts` if you have upgraded, to make sure you can take advantage of all options to their
+fullest potential. If you are a new cobbler user, base your kickstarts off of these templates. Non-kickstart based
+distributions, while supported by Cobbler, may not be able to use all of these features.
 
 **Example:**
 

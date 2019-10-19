@@ -4,29 +4,31 @@ title: Package Resources
 meta: 2.6.0
 ---
 
-<p>Package resources are managed using cobbler package add, allowing you to install and uninstall packages on a system outside of your install process.</p>
+Package resources are managed using cobbler package add, allowing you to install and uninstall packages on a system
+outside of your install process.
 
-<h2>Actions</h2>
+## Actions
 
-<h3>install</h3>
+### install
 
-<p>Install the package. [Default]</p>
+Install the package. [Default]
 
-<h3>uninstall</h3>
+### uninstall
 
-<p>Uninstall the package.</p>
+Uninstall the package.
 
-<h2>Attributes</h2>
+## Attributes
 
-<h3>installer</h3>
+### installer
 
-<p>Which package manager to use, vaild options [rpm|yum].</p>
+Which package manager to use, vaild options [rpm|yum].
 
-<h3>version</h3>
+### version
 
-<p>Which version of the package to install.</p>
+Which version of the package to install.
 
-<h4>Example:</h4>
+#### Example:
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler package add --name=string --comment=string [--action=install|uninstall] --installer=string \
-[--version=string]</code></pre></figure></p>
+{% highlight bash %}
+$ cobbler package add --name=string --comment=string [--action=install|uninstall] --installer=string [--version=string]
+{% endhighlight %}

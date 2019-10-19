@@ -2,15 +2,21 @@
 layout: manpage
 title: Distro Signatures
 meta: 2.8.0
+nav: 3 - Distro Signatures
+navversion: nav28
 ---
 
-Prior to Cobbler 2.4.0, import modules for each supported distro were separate and customized for each specific distribution. The values for breed and os-version were hard-coded into cobbler, so adding support for new distros or newer versions of an already supported distro required code changes and a complete Cobbler upgrade.
+Prior to Cobbler 2.4.0, import modules for each supported distro were separate and customized for each specific
+distribution. The values for breed and os-version were hard-coded into cobbler, so adding support for new distros or
+newer versions of an already supported distro required code changes and a complete Cobbler upgrade.
 
-Cobbler 2.4.0 introduces the concept of distro signatures to make adding support for newer distro versions without requiring an upgrade to the rest of the system.
+Cobbler 2.4.0 introduces the concept of distro signatures to make adding support for newer distro versions without
+requiring an upgrade to the rest of the system.
 
 ### Distro Signatures File
 
-The distro signatures are stored in `/var/lib/cobbler/distro_signatures.json`. As the extension indicates, this is a JSON-formatted file, with the following structure:
+The distro signatures are stored in `/var/lib/cobbler/distro_signatures.json`. As the extension indicates, this is a
+JSON-formatted file, with the following structure:
 
 {% highlight json %}
 {"breeds":
@@ -105,7 +111,9 @@ Breed 'ubuntu' has 3 total signatures
 
 #### cobbler signature update
 
-This command will cause Cobbler to go and fetch the latest distro signature file from http://cobbler.github.con/signatures/latest.json, and load the signatures in that file. This file will be tested first, to ensure it is formatted correctly.
+This command will cause Cobbler to go and fetch the latest distro signature file from 
+[http://cobbler.github.con/signatures/latest.json](http://cobbler.github.con/signatures/latest.json), and load the
+signatures in that file. This file will be tested first, to ensure it is formatted correctly.
 
 {% highlight bash %}
 cobbler signature update

@@ -11,54 +11,57 @@ Scientific Linux, etc.
 
 Redhat-based systems offer a "rescue" mode, typically used for trying to analyse and recover after a major OS problem. 
 The usual way of doing this is booting from a DVD and selecting "rescue" mode at the relevant point. But it is also
-possible to do this via Cobbler.  Indeed, if the machine lacks a DVD drive, alternatives such as this are vital for
+possible to do this via Cobbler. Indeed, if the machine lacks a DVD drive, alternatives such as this are vital for
 attempted rescue operations.
 
-<p><strong>RISK:</strong>  <em>Because you are using this Cobbler deployment system that usually installs machines, there is the risk that this procedure could overwrite the very machine you are attempting to rescue.  So it is strongly recommended that, as part of your normal workflow, you develop and periodically verify this procedure in a safe, non-production, non-emergency environment.</em></p>
+**RISK:** Because you are using this Cobbler deployment system that usually installs machines, there is the risk that
+this procedure could overwrite the very machine you are attempting to rescue. So it is strongly recommended that, as
+part of your normal workflow, you develop and periodically verify this procedure in a safe, non-production,
+non-emergency environment.
 
-<p>The example below illustrates RHEL 5.6.  The detail may vary for other Redhat-like flavours.</p>
+The example below illustrates RHEL 5.6. The detail may vary for other Redhat-like flavours.
 
-<h3>Assumptions</h3>
+### Assumptions
 
-<ul>
-<li>Your target machine's Cobbler network deployment is supported by exactly one active DHCP server.</li>
-<li>Your deployed machines are already present in Cobbler for their earlier deployment purposes.</li>
-<li>A deployed machine's <code>kopts</code> setting field is usually null.</li>
-<li>A deployed machine's <code>netboot-enabled</code> setting is false outside deployment time.</li>
-</ul>
+- Your target machine's Cobbler network deployment is supported by exactly one active DHCP server.
+- Your deployed machines are already present in Cobbler for their earlier deployment purposes.
+- A deployed machine's `kopts` setting field is usually null.
+- A deployed machine's `netboot-enabled` setting is false outside deployment time.
 
+### Procedure
 
-<h3>Procedure</h3>
+As stated above: <em>verify this periodically, outside emergency times, in a non-production environment.</em>
 
-<p>As stated above: <em>verify this periodically, outside emergency times, in a non-production environment.</em></p>
+On the Cobbler server:
 
-<p>On the Cobbler server:</p>
-
-<pre><code>cobbler system edit --name=sick-machine --kopts='rescue'
+{% highlight bash %}
+cobbler system edit --name=sick-machine --kopts='rescue'
 cobbler system edit --name=sick-machine --netboot-enabled=true
 cobbler sync
-</code></pre>
+{% endhighlight %}
 
-<p>As always, don't forget that "cobbler sync".</p>
+As always, don't forget that "cobbler sync".
 
-<p>At the client "sick-machine", start a normal deployment-style network boot.  During this you should eventually see:</p>
+At the client "sick-machine", start a normal deployment-style network boot. During this you should eventually see:
 
-<ul>
-<li>Usual blue screen: <code>Loading SCSI driver</code>.  There may be a couple of similar screens.</li>
-<li>Usual blue screen: <code>Sending request for IP information for eth0...</code>.  (The exact value of that "eth0" is dependent on your machine.)</li>
-<li>Usual blue screen: repeat <code>Sending request for IP...</code> , but this time the header bar at the top should have <code>Rescue Mode</code> appended.</li>
-<li>Usual back-to-black: <code>running anaconda</code> and a couple of related lines.</li>
-<li>Blue screen with header bar <code>Rescue</code> and options "Continue", "Read-Only", "Skip".</li>
-</ul>
+- Usual blue screen: `Loading SCSI driver`. There may be a couple of similar screens.
+- Usual blue screen: `Sending request for IP information for eth0...`. (The exact value of that "eth0" is dependent on
+  your machine.)
+- Usual blue screen: repeat `Sending request for IP...` , but this time the header bar at the top should have
+  `Rescue Mode` appended.
+- Usual back-to-black: `running anaconda` and a couple of related lines.
+- Blue screen with header bar `Rescue` and options "Continue", "Read-Only", "Skip".
 
+In particular, if the second `Sending request for IP...` screen fails to say `Rescue Mode`, it is strongly recommended
+that you immediately abort the process to avoid the risk of overwriting the machine.
 
-<p>In particular, if the second <code>Sending request for IP...</code> screen fails to say <code>Rescue Mode</code>, it is strongly recommended that you immediately abort the process to avoid the risk of overwriting the machine.</p>
+At this point you select whichever option is appropriate for your rescue and follow the Redhat rescue procedures. (The
+detail is independent of, and beyond the scope of, this Cobbler procedure.)
 
-<p>At this point you select whichever option is appropriate for your rescue and follow the Redhat rescue procedures.  (The detail is independent of, and beyond the scope of, this Cobbler procedure.)</p>
+When you have finished, on the Cobbler server nullify the rescue:
 
-<p>When you have finished, on the Cobbler server nullify the rescue:</p>
-
-<pre><code>cobbler system edit --name=sick-machine --kopts=''
+{% highlight bash %}
+cobbler system edit --name=sick-machine --kopts=''
 cobbler system edit --name=sick-machine --netboot-enabled=false
 cobbler sync
-</code></pre>
+{% endhighlight %}

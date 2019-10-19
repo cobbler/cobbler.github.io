@@ -4,7 +4,8 @@ title: Installing From Source
 meta: 2.8.0
 ---
 
-Cobbler is licensed under the General Public License (GPL), version 2 or later. You can download it, free of charge, using the links below.
+Cobbler is licensed under the General Public License (GPL), version 2 or later. You can download it, free of charge,
+using the links below.
 
 ## Latest Source
 

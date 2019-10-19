@@ -5,7 +5,8 @@ meta: 2.8.0
 ---
 ### Koan
 
-perhaps it stands for "kickstart over a network", koan is a helper client side helper for cobbler.  It's kind of a play on "Xen" too.
+perhaps it stands for "kickstart over a network", koan is a helper client side helper for cobbler.  It's kind of a play
+on "Xen" too.
 
 ### SYNOPSIS
 
@@ -13,9 +14,11 @@ perhaps it stands for "kickstart over a network", koan is a helper client side h
 
 ### DESCRIPTION
  
-Koan is a client-side helper program for use with Cobbler.  koan allows for both network provisioning of new virtualized guests (Xen, QEMU/KVM, VMware) and re-installation of an existing system.  
+Koan is a client-side helper program for use with Cobbler.  koan allows for both network provisioning of new virtualized
+guests (Xen, QEMU/KVM, VMware) and re-installation of an existing system.  
 
-When invoked, koan requests install information from a remote cobbler boot server, it then kicks off installations based on what is retrieved from cobbler and fed in on the koan command line.   The examples below show the various use cases.
+When invoked, koan requests install information from a remote cobbler boot server, it then kicks off installations based
+on what is retrieved from cobbler and fed in on the koan command line. The examples below show the various use cases.
 
 ### LISTING REMOTE COBBLER OBJECTS
 
@@ -82,7 +85,10 @@ Flag                Explanation                             Example
 
 Nearly all of these variables can also be defined and centrally managed by the Cobbler server.
 
-If installing virtual machines in environments without DHCP, use of --system instead of --profile is required.  Additionally use --static-interface=eth0 to supply which interface to use to supply network information.  The installer will boot from this virtual interface.  Leaving off --static-interface will result in an unsuccessful network installation.
+If installing virtual machines in environments without DHCP, use of --system instead of --profile is required.
+Additionally use --static-interface=eth0 to supply which interface to use to supply network information. The installer
+will boot from this virtual interface. Leaving off --static-interface will result in an unsuccessful network
+installation.
 
 ### CONFIGURATION MANAGEMENT
 
@@ -92,10 +98,14 @@ koan --server=cobbler.example.org --update-config
 
 Additionally, adding the flag --summary will print configuration run stats.
 
-Koan passes in the system's FQDN in the background during the configuration request. Cobbler will match this FQDN to a configured system defined by Cobbler.
+Koan passes in the system's FQDN in the background during the configuration request. Cobbler will match this FQDN to a
+configured system defined by Cobbler.
 
 The FQDN (Fully Qualified Domain Name) maps to the system's hostname field.
 
 ### ENVIRONMENT VARIABLES
 
-Koan respects the COBBLER_SERVER variable to specify the cobbler server to use.  This is a convenient way to avoid using the --server option for each command.  This variable is set automatically on systems installed via cobbler, assuming standard kickstart templates are used.  If you need to change this on an installed system, edit /etc/profile.d/cobbler.{csh,sh}.
+Koan respects the COBBLER_SERVER variable to specify the cobbler server to use. This is a convenient way to avoid using
+the --server option for each command. This variable is set automatically on systems installed via cobbler, assuming
+standard kickstart templates are used. If you need to change this on an installed system, edit
+/etc/profile.d/cobbler.{csh,sh}.

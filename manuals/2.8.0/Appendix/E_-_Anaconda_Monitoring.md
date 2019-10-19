@@ -7,8 +7,8 @@ nav: E - Anaconda Monitoring
 navversion: nav28
 ---
 
-
-This page details the **Ana**conda **Mon**itoring service available in cobbler.  As anamon is rather distribution specific, support for it is considered deprecated at this time.
+This page details the **Ana**conda **Mon**itoring service available in cobbler.  As anamon is rather distribution
+specific, support for it is considered deprecated at this time.
 
 ## History
 

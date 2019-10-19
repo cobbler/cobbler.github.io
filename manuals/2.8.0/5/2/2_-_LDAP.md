@@ -4,15 +4,12 @@ title: LDAP Authentication
 meta: 2.8.0
 ---
 
-By default, the Cobbler WebUI and Web services authenticate against
-a digest file. All users in the digest file are "in". What if you
-want to authenticate against an external resource? Cobbler can do
-that too. These instructions can be used to make it authenticate
-against LDAP instead.
+By default, the Cobbler WebUI and Web services authenticate against a digest file. All users in the digest file are
+"in". What if you want to authenticate against an external resource? Cobbler can do that too. These instructions can be
+used to make it authenticate against LDAP instead.
 
-For the purposes of these instructions, we are authenticating
-against a new source install of FreeIPA -- though any LDAP install
-should work in the same manner.
+For the purposes of these instructions, we are authenticating against a new source install of FreeIPA -- though any LDAP
+install should work in the same manner.
 
 ## Instructions
 
@@ -81,10 +78,9 @@ things by changing the `/etc/cobbler/users.conf` file.
 
 ## Troubleshooting LDAP
 
-The following trick lets you test your username/password
-combinations outside of the web app and may prove useful in
-verifying that your LDAP configuration is correct. replace $VERSION
-with your python version, for instance 2.4 or 2.5, etc.
+The following trick lets you test your username/password combinations outside of the web app and may prove useful in
+verifying that your LDAP configuration is correct. replace $VERSION with your python version, for instance 2.4 or 2.5,
+etc.
 
     # cp /usr/lib/python$VERSION/site-packages/cobbler/demo_connect.py /tmp/demo_connect.py
     # python /tmp/demo_connect.py --user=username --pass=password

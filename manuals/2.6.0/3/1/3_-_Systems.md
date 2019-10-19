@@ -7,13 +7,12 @@ meta: 2.6.0
 System records map a piece of hardware (or a virtual machine) with the cobbler profile to be assigned to run on it. This
 may be thought of as chosing a role for a specific system.
 
-<p>The system commmand has the following sub-commands:</p>
+The system commmand has the following sub-commands: `$ cobbler system --help`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system --help</p>
+Usage:
 
-<h1>usage</h1>
-
-<p>cobbler system add
+{% highlight bash %}
+cobbler system add
 cobbler system copy
 cobbler system dumpvars
 cobbler system edit
@@ -26,362 +25,477 @@ cobbler system powerstatus
 cobbler system reboot
 cobbler system remove
 cobbler system rename
-cobbler system report</code></pre></figure></p>
+cobbler system report
+{% endhighlight %}
 
-<p>Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though they are useful when system specific customizations are required. One such customization would be defining the MAC address. If there is a specific role inteded for a given machine, system records should be created for it.</p>
+Note that if provisioning via koan and PXE menus alone, it is not required to create system records in cobbler, though
+they are useful when system specific customizations are required. One such customization would be defining the MAC
+address. If there is a specific role inteded for a given machine, system records should be created for it.
 
-<p>System commands have a wider variety of control offered over network details. In order to use these to the fullest possible extent, the kickstart template used by cobbler must contain certain kickstart snippets (sections of code specifically written for Cobbler to make these values become reality). Compare your kickstart templates with the stock ones in <code>/var/lib/cobbler/kickstarts</code> if you have upgraded, to make sure you can take advantage of all options to their fullest potential. If you are a new cobbler user, base your kickstarts off of these templates. Non-kickstart based distributions, while supported by Cobbler, may not be able to use all of these features.</p>
+System commands have a wider variety of control offered over network details. In order to use these to the fullest
+possible extent, the kickstart template used by cobbler must contain certain kickstart snippets (sections of code
+specifically written for Cobbler to make these values become reality). Compare your kickstart templates with the stock
+ones in `/var/lib/cobbler/kickstarts` if you have upgraded, to make sure you can take advantage of all options to their
+fullest potential. If you are a new cobbler user, base your kickstarts off of these templates. Non-kickstart based
+distributions, while supported by Cobbler, may not be able to use all of these features.
 
-<p><strong>Example:</strong></p>
+**Example:** `$ cobbler system add --name=string [--profile=name|--image=name] [options]`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system add --name=string [--profile=name|--image=name] [options]</code></pre></figure></p>
+As you can see, a system must either be assigned to a --profile or an --image, which are mutually exclusive options.
 
-<p>As you can see, a system must either be assigned to a --profile or an --image, which are mutually exclusive options.</p>
+### Add/Edit Options
 
-<h3>Add/Edit Options</h3>
+#### --name (required)
 
-<h4>--name (required)</h4>
+The system name works like the name option for other commands.
 
-<p>The system name works like the name option for other commands.</p>
+If the name looks like a MAC address or an IP, the name will implicitly be used for either `--mac` or `--ip-address` of
+the first interface, respectively. However, it’s usually better to give a descriptive name -- don’t rely on this
+behavior.
 
-<p>If the name looks like a MAC address or an IP, the name will implicitly be used for either --mac or --ip-address of the first interface, respectively. However, it’s usually better to give a descriptive name -- don’t rely on this behavior.</p>
+A system created with name "default" has special semantics. If a default system object exists, it sets all undefined
+systems to PXE to a specific profile. Without a "default" system name created, PXE will fall through to local boot for
+unconfigured systems.
 
-<p>A system created with name "default" has special semantics. If a default system object exists, it sets all undefined systems to PXE to a specific profile. Without a "default" system name created, PXE will fall through to local boot for unconfigured systems.</p>
+When using "default" name, don’t specify any other arguments than --profile ... they won’t be used.
 
-<p>When using "default" name, don’t specify any other arguments than --profile ... they won’t be used.</p>
+#### --profile (required, if --image not set)
 
-<h4>--profile (required, if --image not set)</h4>
+The name of the profile or sub-profile to which this system belongs.
 
-<p>The name of the profile or sub-profile to which this system belongs.</p>
+#### --image (required, if --profile not set)
 
-<h4>--image (required, if --profile not set)</h4>
+The name of the image to which this system belongs.
 
-<p>The name of the image to which this system belongs.</p>
+#### --boot-files
 
-<h4>--boot-files</h4>
+This option is used to specify additional files that should be copied to the TFTP directory for the distro so that they
+can be fetched during earlier stages of the installation. Some distributions (for example, VMware ESXi) require this
+option to function correctly.
 
-<p>This option is used to specify additional files that should be copied to the TFTP directory for the distro so that they can be fetched during earlier stages of the installation. Some distributions (for example, VMware ESXi) require this option to function correctly.</p>
+#### --clobber
 
-<h4>--clobber</h4>
+This option allows "add" to overwrite an existing system with the same name, so use it with caution.
 
-<p>This option allows "add" to overwrite an existing system with the same name, so use it with caution.</p>
+#### --comment
 
-<h4>--comment</h4>
+An optional comment to associate with this system.
 
-<p>An optional comment to associate with this system.</p>
+#### --enable-gpxe
 
-<h4>--enable-gpxe</h4>
+When enabled, the system will use gPXE instead of regular PXE for booting.
 
-<p>When enabled, the system will use gPXE instead of regular PXE for booting.</p>
+Please refer to the <a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">Using gPXE</a> section for details on using gPXE for
+booting over a network.
 
-<p>Please refer to the <a href="/manuals/2.6.0/4/13_-_Using_gPXE.html">Using gPXE</a> section for details on using gPXE for booting over a network.</p>
+#### --fetchable-files
 
-<h4>--fetchable-files</h4>
+This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The
+"value" portion of the name is the path/name they will be available as via TFTP.
 
-<p>This option is used to specify a list of key=value files that can be fetched via the python based TFTP server. The "value" portion of the name is the path/name they will be available as via TFTP.</p>
+Please see the [Managing TFTP]({% link manuals/2.6.0/3/4/4_-_Managing_TFTP.md %}) section for more details on using the
+python-based TFTP server.
 
-<p>Please see the <a href="/manuals/2.6.0/3/4/4_-_Managing_TFTP.html">Managing TFTP</a> section for more details on using the python-based TFTP server.</p>
+#### --gateway
 
-<h4>--gateway</h4>
+Sets the default gateway, which in Redhat-based systems is typically in `/etc/sysconfig/network`. Per-interface gateways
+are not supported at this time. This option will be ignored unless --static=1 is also set on the interface.
 
-<p>Sets the default gateway, which in Redhat-based systems is typically in <code>/etc/sysconfig/network</code>. Per-interface gateways are not supported at this time. This option will be ignored unless --static=1 is also set on the interface.</p>
+#### --hostname
 
-<h4>--hostname</h4>
+This field corresponds to the hostname set in a systems `/etc/sysconfig/network` file. This has no bearing on DNS, even
+when manage_dns is enabled. Use --dns-name instead for that feature, which is a per-interface setting.
 
-<p>This field corresponds to the hostname set in a systems <code>/etc/sysconfig/network</code> file. This has no bearing on DNS, even when manage_dns is enabled. Use --dns-name instead for that feature, which is a per-interface setting.</p>
+#### --in-place
 
-<h4>--in-place</h4>
+By default, any modifications to `key=value` fields (ksmeta, kopts, etc.) do no preserve the contents. To preserve the
+contents of these fields, `--in-place` should be specified. This option is also required is using a key with multiple
+values (for example, `foo=bar foo=baz`).
 
-<p>By default, any modifications to key=value fields (ksmeta, kopts, etc.) do no preserve the contents. To preserve the contents of these fields, --in-place should be specified. This option is also required is using a key with multiple values (for example, "foo=bar foo=baz").</p>
+#### --kickstart
 
-<h4>--kickstart</h4>
+While it is recommended that the --kickstart parameter is only used within for the "profile add" command, there are
+limited scenarios when an install base switching to cobbler may have legacy kickstarts created on a per-system basis
+(one kickstart for each system, nothing shared) and may not want to immediately make use of the cobbler templating
+system. This allows specifing a kickstart for use on a per-system basis. Creation of a parent profile is still required.
+If the kickstart is a filesystem location, it will still be treated as a cobbler template.
 
-<p>While it is recommended that the --kickstart parameter is only used within for the "profile add" command, there are limited scenarios when an install base switching to cobbler may have legacy kickstarts created on a per-system basis (one kickstart for each system, nothing shared) and may not want to immediately make use of the cobbler templating system. This allows specifing a kickstart for use on a per-system basis. Creation of a parent profile is still required. If the kickstart is a filesystem location, it will still be treated as a cobbler template.</p>
+#### --kopts
 
-<h4>--kopts</h4>
+Sets kernel command-line arguments that the system will use during installation only. This field is a hash field, and
+accepts a set of key=value pairs:
 
-<p>Sets kernel command-line arguments that the system will use during installation only. This field is a hash field, and accepts a set of key=value pairs:</p>
+**Example:** `--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;`
 
-<p><strong>Example:</strong></p>
+#### --kopts-post
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--kopts=&quot;console=tty0 console=ttyS0,8,n,1 noapic&quot;</code></pre></figure></p>
+This is just like --kopts, though it governs kernel options on the installed OS, as opposed to kernel options fed to the
+installer. This requires some special snippets to be found in your kickstart template to work correctly.
 
-<h4>--kopts-post</h4>
+#### --ksmeta
 
-<p>This is just like --kopts, though it governs kernel options on the installed OS, as opposed to kernel options fed to the installer. This requires some special snippets to be found in your kickstart template to work correctly.</p>
+This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts
+a set of key=value pairs:
 
-<h4>--ksmeta</h4>
+**Example:** `--ksmeta=&quot;foo=bar baz=3 asdf&quot;`
 
-<p>This is an advanced feature that sets variables available for use in templates. This field is a hash field, and accepts a set of key=value pairs:</p>
+See the section on [Kickstart Templating]({% link manuals/2.6.0/3/5_-_Kickstart_Templating.md %}) for further
+information.
 
-<p><strong>Example:</strong></p>
+#### --ldap-enabled, --ldap-type
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--ksmeta=&quot;foo=bar baz=3 asdf&quot;</code></pre></figure></p>
+Cobbler contains features that enable ldap management for easier configuration after system provisioning. If set true,
+koan will run the ldap command as defined by the systems ldap_type. The default value is false.
 
-<p>See the section on <a href="/manuals/2.6.0/3/5_-_Kickstart_Templating.html">Kickstart Templating</a> for further information.</p>
+#### --mgmt-classes and --mgmt-parameters
 
-<h4>--ldap-enabled, --ldap-type</h4>
+Management classes and parameters that should be associated with this system for use with configuration management
+systems.
 
-<p>Cobbler contains features that enable ldap management for easier configuration after system provisioning. If set true, koan will run the ldap command as defined by the systems ldap_type. The default value is false.</p>
+Please see the [Configuration Management]({% link manuals/2.6.0/4/3_-_Configuration_Management.md %}) section for more
+details on integrating Cobbler with configuration management systems.
 
-<h4>--mgmt-classes and --mgmt-parameters</h4>
+#### --monit-enabled
 
-<p>Management classes and parameters that should be associated with this system for use with configuration management systems.</p>
+If set true, koan will reload monit after each configuration run. The default value is false.
 
-<p>Please see the <a href="/manuals/2.6.0/4/3_-_Configuration_Management.html">Configuration Management</a> section for more details on integrating Cobbler with configuration management systems.</p>
+#### --name-servers
 
-<h4>--monit-enabled</h4>
+If your nameservers are not provided by DHCP, you can specify a space seperated list of addresses here to configure each
+of the installed nodes to use them (provided the kickstarts used are installed on a per-system basis). Users with DHCP
+setups should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for
+each system record.
 
-<p>If set true, koan will reload monit after each configuration run. The default value is false.</p>
+#### --name-servers-search
 
-<h4>--name-servers</h4>
+As with the --name-servers option, this can be used to specify the default domain search line. Users with DHCP setups
+should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for each
+system record.
 
-<p>If your nameservers are not provided by DHCP, you can specify a space seperated list of addresses here to configure each of the installed nodes to use them (provided the kickstarts used are installed on a per-system basis). Users with DHCP setups should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for each system record.</p>
+#### --netboot-enabled
 
-<h4>--name-servers-search</h4>
+If set false, the system will be provisionable through koan but not through standard PXE. This will allow the system to
+fall back to default PXE boot behavior without deleting the cobbler system object. The default value allows PXE. Cobbler
+contains a PXE boot loop prevention feature (pxe_just_once, can be enabled in `/etc/cobbler/settings`) that can
+automatically trip off this value after a system gets done installing. This can prevent installs from appearing in an
+endless loop when the system is set to PXE first in the BIOS order.
 
-<p>As with the --name-servers option, this can be used to specify the default domain search line. Users with DHCP setups should not need to use this option. This is available to set in profiles to avoid having to set it repeatedly for each system record.</p>
+#### --owners
 
-<h4>--netboot-enabled</h4>
+The value for --owners is a space seperated list of users and groups as specified in `/etc/cobbler/users.conf`.
 
-<p>If set false, the system will be provisionable through koan but not through standard PXE. This will allow the system to fall back to default PXE boot behavior without deleting the cobbler system object. The default value allows PXE. Cobbler contains a PXE boot loop prevention feature (pxe_just_once, can be enabled in <code>/etc/cobbler/settings</code>) that can automatically trip off this value after a system gets done installing. This can prevent installs from appearing in an endless loop when the system is set to PXE first in the BIOS order.</p>
+#### --power-address, --power-type, --power-user, --power-password, --power-id
 
-<h4>--owners</h4>
+Cobbler contains features that enable integration with power management for easier installation, reinstallation, and
+management of machines in a datacenter environment. These parameters are described in the
+[Power Management]({% link manuals/2.6.0/4/5_-_Power_Management.md %}) section under
+[Advanced Topics]({% link manuals/2.6.0/4_-_Advanced_Topics.md %}. If you have a power-managed datacenter/lab setup,
+usage of these features may be something you are interested in.
 
-<p>The value for --owners is a space seperated list of users and groups as specified in <code>/etc/cobbler/users.conf</code>.</p>
+#### --proxy
 
-<h4>--power-address, --power-type, --power-user, --power-password, --power-id</h4>
+Specifies a proxy to use during the installation stage.
 
-<p>Cobbler contains features that enable integration with power management for easier installation, reinstallation, and management of machines in a datacenter environment. These parameters are described in the <a href="/manuals/2.6.0/4/5_-_Power_Management.html">Power Management</a> section under <a href="/manuals/2.6.0/4_-_Advanced_Topics.html">Advanced Topics</a>. If you have a power-managed datacenter/lab setup, usage of these features may be something you are interested in.</p>
+<div class="alert alert-info alert-block">
+    <b>Note:</b> Not all distributions support using a proxy in this manner.
+</div>
 
-<h4>--proxy</h4>
+#### --redhat-management-key
 
-<p>Specifies a proxy to use during the installation stage.</p>
+If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here
+and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is
+included. The default option specified in <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> will
+be used if this field is left blank.
 
-<div class="alert alert-info alert-block"><b>Note:</b> Not all distributions support using a proxy in this manner.</div>
+Please see the <a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on
+integrating Cobbler with RHN/Spacewalk.
 
+#### --redhat-management-server
 
-<h4>--redhat-management-key</h4>
+The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in
+<a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.
 
-<p>If you’re using Red Hat Network, Red Hat Satellite Server, or Spacewalk, you can store your authentication keys here and Cobbler can add the neccessary authentication code to your kickstart where the snippet named "redhat_register" is included. The default option specified in <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
+Please see the <a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on
+integrating Cobbler with RHN/Spacewalk.
 
-<p>Please see the <a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+#### --repos-enabled
 
-<h4>--redhat-management-server</h4>
+If set true, koan can reconfigure repositories after installation.
 
-<p>The RHN Satellite or Spacewalk server to use for registration. As above, the default option specified in <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> will be used if this field is left blank.</p>
+#### --server
 
-<p>Please see the <a href="/manuals/2.6.0/Appendix/C_-_Tips_for_RHN.html">Tips For RHN</a> section for more details on integrating Cobbler with RHN/Spacewalk.</p>
+This parameter should be useful only in select circumstances. If machines are on a subnet that cannot access the cobbler
+server using the name/IP as configured in the cobbler settings file, use this parameter to override that server name.
+See also `--dhcp-tag` for configuring the next server and DHCP informmation of the system if you are also using Cobbler
+to help manage your DHCP configuration.
 
-<h4>--repos-enabled</h4>
+#### --status
 
-<p>If set true, koan can reconfigure repositories after installation.</p>
+An optional field used to keep track of a systems build or deployment status. This field is only set manually, and is
+not updated automatically at this time.
 
-<h4>--server</h4>
+#### --template-files
 
-<p>This parameter should be useful only in select circumstances. If machines are on a subnet that cannot access the cobbler server using the name/IP as configured in the cobbler settings file, use this parameter to override that server name. See also --dhcp-tag for configuring the next server and DHCP informmation of the system if you are also using Cobbler to help manage your DHCP configuration.</p>
+This feature allows cobbler to be used as a configuration management system. The argument is a space delimited string
+of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the system.
+Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function as a
+lightweight templated configuration management system.
 
-<h4>--status</h4>
+Please see the
+<a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">Built-In Configuration Management</a> section
+for more details on using template files.
 
-<p>An optional field used to keep track of a systems build or deployment status. This field is only set manually, and is not updated automatically at this time.</p>
+#### --template-remote-kickstarts
 
-<h4>--template-files</h4>
+If enabled, any kickstart with a remote path (http://, ftp://, etc.) will not be passed through Cobbler's template
+engine.
 
-<p>This feature allows cobbler to be used as a configuration management system. The argument is a space delimited string of key=value pairs. Each key is the path to a template file, each value is the path to install the file on the system. Koan also can retrieve these files from a cobbler server on demand, effectively allowing cobbler to function as a lightweight templated configuration management system.</p>
+#### --virt-auto-boot
 
-<p>Please see the <a href="/manuals/2.6.0/4/3/1_-_Built-In_Configuration_Management.html">Built-In Configuration Management</a> section for more details on using template files.</p>
+**(Virt-only)** When set, the VM will be configured to automatically start when the host reboots.
 
-<h4>--template-remote-kickstarts</h4>
+#### --virt-cpus
 
-<p>If enabled, any kickstart with a remote path (http://, ftp://, etc.) will not be passed through Cobbler's template engine.</p>
+**(Virt-only)** The number of virtual CPUs to allocate to a system. The default for this value is set in the
+<a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> file, and should be set as an integer.
 
-<h4>--virt-auto-boot</h4>
+#### --virt-disk-driver
 
-<p><strong>(Virt-only)</strong> When set, the VM will be configured to automatically start when the host reboots.</p>
+**(Virt-only)** The type of disk driver to use for the disk image, for example "raw" or "qcow2".
 
-<h4>--virt-cpus</h4>
+#### --virt-file-size
 
-<p><strong>(Virt-only)</strong> The number of virtual CPUs to allocate to a system. The default for this value is set in the <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> file, and should be set as an integer.</p>
+**(Virt-only)** How large the disk image should be in Gigabytes. The default for this value is set in the
+<a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> file. This can be a space seperated list
+(ex: "5,6,7") to allow for multiple disks of different sizes depending on what is given to `--virt-path`. This should be
+input as a integer or decimal value without units.
 
-<h4>--virt-disk-driver</h4>
+#### --virt-path
 
-<p><strong>(Virt-only)</strong> The type of disk driver to use for the disk image, for example "raw" or "qcow2".</p>
+**(Virt-only)** Where to store the virtual image on the host system. Except for advanced cases, this parameter can
+usually be omitted. For disk images, the value is usually an absolute path to an existing directory with an optional
+file name component. There is support for specifying partitions "/dev/sda4" or volume groups "VolGroup00", etc.
 
-<h4>--virt-file-size</h4>
+For multiple disks, seperate the values with commas such as "VolGroup00,VolGroup00" or "/dev/sda4,/dev/sda5". Both those
+examples would create two disks for the VM.
 
-<p><strong>(Virt-only)</strong> How large the disk image should be in Gigabytes. The default for this value is set in the <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> file. This can be a space seperated list (ex: "5,6,7") to allow for multiple disks of different sizes depending on what is given to --virt-path. This should be input as a integer or decimal value without units.</p>
+#### --virt-pxe-boot
 
-<h4>--virt-path</h4>
+**(Virt-only)** When set, the guest VM will use PXE to boot. By default, koan will use the --location option to
+virt-install to specify the installer for the guest.
 
-<p><strong>(Virt-only)</strong> Where to store the virtual image on the host system. Except for advanced cases, this parameter can usually be omitted. For disk images, the value is usually an absolute path to an existing directory with an optional file name component. There is support for specifying partitions "/dev/sda4" or volume groups "VolGroup00", etc.</p>
+#### --virt-ram
 
-<p>For multiple disks, seperate the values with commas such as "VolGroup00,VolGroup00" or "/dev/sda4,/dev/sda5". Both those examples would create two disks for the VM.</p>
+**(Virt-only)** How many megabytes of RAM to consume. The default for this value is set in the
+<a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> file. This should be input as an integer
+without units, and will be interpretted as MB.
 
-<h4>--virt-pxe-boot</h4>
+#### --virt-type
 
-<p><strong>(Virt-only)</strong> When set, the guest VM will use PXE to boot. By default, koan will use the --location option to virt-install to specify the installer for the guest.</p>
+**(Virt-only)** Koan can install images using several different virutalization types. Choose one or the other strings to
+specify, or values will default to attempting to find a compatible installation type on the client system ("auto"). See
+the <a href="/manuals/2.6.0/6_-_Koan.html">Koan</a> section for more documentation. The default for this value is set in
+the <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> file.
 
-<h4>--virt-ram</h4>
+### Interface Specific Commands
 
-<p><strong>(Virt-only)</strong> How many megabytes of RAM to consume. The default for this value is set in the <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> file. This should be input as an integer without units, and will be interpretted as MB.</p>
+System primitives are unique in that they are the only object in Cobbler that embeds another complex object -
+interfaces. As such, there is an entire subset of options that are specific to interfaces only.
 
-<h4>--virt-type</h4>
+#### --interface
 
-<p><strong>(Virt-only)</strong> Koan can install images using several different virutalization types. Choose one or the other strings to specify, or values will default to attempting to find a compatible installation type on the client system ("auto"). See the <a href="/manuals/2.6.0/6_-_Koan.html">Koan</a> section for more documentation. The default for this value is set in the <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a> file.</p>
+All interface options require the use of the --interface=ifname option. If this is omitted, Cobbler will default to
+using the interface name "eth0", which may not be what you want. We may also change this default behavior in the future,
+so in general it is always best to explicitly specify the interface name with this option.
 
-<h3>Interface Specific Commands</h3>
+<div class="alert alert-info alert-block">
+    <b>Note:</b> **You can only edit one interface at a time!** If you specify multiple --interface options, only the
+    last one will be used.
+</div>
 
-<p>System primitives are unique in that they are the only object in Cobbler that embeds another complex object - interfaces. As such, there is an entire subset of options that are specific to interfaces only.</p>
 
-<h4>--interface</h4>
+**Interface naming notes:**
 
-<p>All interface options require the use of the --interface=ifname option. If this is omitted, Cobbler will default to using the interface name "eth0", which may not be what you want. We may also change this default behavior in the future, so in general it is always best to explicitly specify the interface name with this option.</p>
+Additional interfaces can be specified (for example: eth1, or any name you like, as long as it does not conflict with
+any reserved names such as kernel module names) for use with the edit command. Defining VLANs this way is also
+supported, if you want to add VLAN 5 on interface eth0, simply name your interface eth0:5.
 
-<div class="alert alert-info alert-block"><b>Note:</b> **You can only edit one interface at a time!** If you specify multiple --interface options, only the last one will be used.</div>
+**Example:**
 
-
-<p><strong>Interface naming notes:</strong></p>
-
-<p>Additional interfaces can be specified (for example: eth1, or any name you like, as long as it does not conflict with any reserved names such as kernel module names) for use with the edit command. Defining VLANs this way is also supported, if you want to add VLAN 5 on interface eth0, simply name your interface eth0:5.</p>
-
-<p><strong>Example:</strong></p>
-
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
+````bash
+$ cobbler system edit --name=foo --ip-address=192.168.1.50 --mac=AA:BB:CC:DD:EE:A0
 $ cobbler system edit --name=foo --interface=eth0 --ip-address=192.168.1.51 --mac=AA:BB:CC:DD:EE:A1
-$ cobbler system report foo</code></pre></figure></p>
+$ cobbler system report foo``
+````
 
-<p>Interfaces can be deleted using the --delete-interface option.</p>
+Interfaces can be deleted using the --delete-interface option.
 
-<p><strong>Example:</strong></p>
+**Example:**
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system edit --name=foo --interface=eth2 --delete-interface</code></pre></figure></p>
+`$ cobbler system edit --name=foo --interface=eth2 --delete-interface`
 
-<h4>--bonding-opts and --bridge-opts</h4>
+#### --bonding-opts and --bridge-opts
 
-<p>Bonding and bridge options for the master-interface may be specified using --bonding-opts="foo=1 bar=2" or --bridge-opts="foo=1 bar=2", respectively. These are only used if the --interface-type is a master or bonded_bridge_slave (which is also a bond master).</p>
+Bonding and bridge options for the master-interface may be specified using `--bonding-opts="foo=1 bar=2"` or
+`--bridge-opts="foo=1 bar=2"`, respectively. These are only used if the `--interface-type` is a `master` or
+`bonded_bridge_slave` (which is also a bond master).
 
-<h4>--dhcp-tag</h4>
+#### --dhcp-tag
 
-<p>If you are setting up a PXE environment with multiple subnets/gateways, and are using cobbler to manage a DHCP configuration, you will probably want to use this option. If not, it can be ignored.</p>
+If you are setting up a PXE environment with multiple subnets/gateways, and are using cobbler to manage a DHCP
+configuration, you will probably want to use this option. If not, it can be ignored.
 
-<p>By default, the dhcp tag for all systems is "default" and means that in the DHCP template files the systems will expand out where $insert_cobbler_systems_definitions is found in the DHCP template. However, you may want certain systems to expand out in other places in the DHCP config file. Setting --dhcp-tag=subnet2 for instance, will cause that system to expand out where $insert_cobbler_system_definitions_subnet2 is found, allowing you to insert directives to specify different subnets (or other parameters) before the DHCP configuration entries for those particular systems.</p>
+By default, the dhcp tag for all systems is "default" and means that in the DHCP template files the systems will expand
+out where `$insert_cobbler_systems_definitions` is found in the DHCP template. However, you may want certain systems to
+expand out in other places in the DHCP config file. Setting `--dhcp-tag=subnet2` for instance, will cause that system to
+expand out where `$insert_cobbler_system_definitions_subnet2` is found, allowing you to insert directives to specify
+different subnets (or other parameters) before the DHCP configuration entries for those particular systems.
 
-<h4>--dns-name</h4>
+#### --dns-name
 
-<p>If using the DNS management feature (see advanced section -- cobbler supports auto-setup of BIND and dnsmasq), use this to define a hostname for the system to receive from DNS.</p>
+If using the DNS management feature (see advanced section -- cobbler supports auto-setup of BIND and dnsmasq), use this
+to define a hostname for the system to receive from DNS.
 
-<p><strong>Example:</strong></p>
+**Example:**
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--dns-name=mycomputer.example.com</code></pre></figure></p>
+`--dns-name=mycomputer.example.com``
 
-<p>This is a per-interface parameter. If you have multiple interfaces, it may be different for each interface, for example, assume a DMZ/dual-homed setup.</p>
+This is a per-interface parameter. If you have multiple interfaces, it may be different for each interface, for example,
+assume a DMZ/dual-homed setup.
 
-<h4>--interface-type and --interface-master</h4>
+#### --interface-type and --interface-master
 
-<p>One of the other advanced networking features supported by Cobbler is NIC bonding and bridging. You can use this to bond multiple physical network interfaces to one single logical interface to reduce single points of failure in your network, or to create bridged interfaces for things like tunnels and virtual machine networks. Supported values for the --interface-type parameter are "bond", "bond_slave", "bridge", "bridge_slave" and "bonded_bridge_slave". If one of the "_slave" options is specified, you also need to define the master-interface for this bond using --interface-master=INTERFACE.</p>
+One of the other advanced networking features supported by Cobbler is NIC bonding and bridging. You can use this to bond
+multiple physical network interfaces to one single logical interface to reduce single points of failure in your network,
+or to create bridged interfaces for things like tunnels and virtual machine networks. Supported values for the
+`--interface-type` parameter are "bond", "bond_slave", "bridge", "bridge_slave" and "bonded_bridge_slave". If one of the
+"_slave" options is specified, you also need to define the master-interface for this bond using
+`--interface-master=INTERFACE`.
 
-<div class="alert alert-info alert-block"><b>Note:</b> The options "master" and "slave" are deprecated, and are assumed to me "bond" and "bond_slave" when encountered. When a system object is saved, the deprecated values will be overwritten with the new, correct values.</div>
+<div class="alert alert-info alert-block">
+    <b>Note:</b> The options "master" and "slave" are deprecated, and are assumed to me "bond" and "bond_slave" when
+    encountered. When a system object is saved, the deprecated values will be overwritten with the new, correct values.
+</div>
 
 
-<p>For more details on using these interface types, please see the <a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">Advanced Networking</a> section.</p>
+For more details on using these interface types, please see the
+<a href="/manuals/2.6.0/4/1_-_Advanced_Networking.html">Advanced Networking</a> section.
 
-<h4>--ip-address</h4>
+#### --ip-address
 
-<p>If cobbler is configured to generate a DHCP configuratition (see advanced section), use this setting to define a specific IP for this system in DHCP. Leaving off this parameter will result in no DHCP management for this particular system.</p>
+If cobbler is configured to generate a DHCP configuratition (see advanced section), use this setting to define a
+specific IP for this system in DHCP. Leaving off this parameter will result in no DHCP management for this particular
+system.
 
-<p><strong>Example:</strong></p>
+**Example:** `--ip-address=192.168.1.50`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--ip-address=192.168.1.50</code></pre></figure></p>
+Note for Itanium users:  this setting is always required for IA64 regardless of whether DHCP management is enabled.
 
-<p>Note for Itanium users:  this setting is always required for IA64 regardless of whether DHCP management is enabled.</p>
+If DHCP management is disabled and the interface is labelled --static=1, this setting will be used for static IP
+configuration.
 
-<p>If DHCP management is disabled and the interface is labelled --static=1, this setting will be used for static IP configuration.</p>
+Special feature: To control the default PXE behavior for an entire subnet, this field can also be passed in using CIDR
+notation. If --ip-address is CIDR, do not specify any other arguments other than --name and --profile.
 
-<p>Special feature: To control the default PXE behavior for an entire subnet, this field can also be passed in using CIDR notation. If --ip-address is CIDR, do not specify any other arguments other than --name and --profile.</p>
+When using the CIDR notation trick, don’t specify any arguments other than --name and --profile... they won’t be used.
 
-<p>When using the CIDR notation trick, don’t specify any arguments other than --name and --profile... they won’t be used.</p>
+#### --ipv6-address
 
-<h4>--ipv6-address</h4>
+The IPv6 address to use for this interface.
 
-<p>The IPv6 address to use for this interface.</p>
+<div class="alert alert-info alert-block">
+    <b>Note:</b> This is not mutually exclusive with the --ipv6-autoconfiguration option, as interfaces can have many
+    IPv6 addresses.
+</div>
 
-<div class="alert alert-info alert-block"><b>Note:</b> This is not mutually exclusive with the --ipv6-autoconfiguration option, as interfaces can have many IPv6 addresses.</div>
 
+#### --ipv6-autoconfiguration
 
-<h4>--ipv6-autoconfiguration</h4>
+Use autoconfiguration mode to obtain the IPv6 address for this interface.
 
-<p>Use autoconfiguration mode to obtain the IPv6 address for this interface.</p>
+#### --ipv6-default-device
 
-<h4>--ipv6-default-device</h4>
+The default IPv6 device.
 
-<p>The default IPv6 device.</p>
+#### --ipv6-secondaries
 
-<h4>--ipv6-secondaries</h4>
+The list of IPv6 secondaries for this interface.
 
-<p>The list of IPv6 secondaries for this interface.</p>
+#### --ipv6-mtu
 
-<h4>--ipv6-mtu</h4>
+Same as --mtu, however specific to the IPv6 stack for this interface.
 
-<p>Same as --mtu, however specific to the IPv6 stack for this interface.</p>
+#### --ipv6-static-routes
 
-<h4>--ipv6-static-routes</h4>
+Same as --static-routes, however specific to the IPv6 stack for this interface.
 
-<p>Same as --static-routes, however specific to the IPv6 stack for this interface.</p>
+#### --ipv6-default-gateway
 
-<h4>--ipv6-default-gateway</h4>
+This is the default gateway to use for this interface, specific only to the IPv6 stack. Unlike --gateway, this is set
+per-interface.
 
-<p>This is the default gateway to use for this interface, specific only to the IPv6 stack. Unlike --gateway, this is set per-interface.</p>
+#### --mac-address (--mac)
 
-<h4>--mac-address (--mac)</h4>
+Specifying a mac address via --mac allows the system object to boot directly to a specific profile via PXE, bypassing
+cobbler’s PXE menu. If the name of the cobbler system already looks like a mac address, this is inferred from the
+system name and does not need to be specified.
 
-<p>Specifying a mac address via --mac allows the system object to boot directly to a specific profile via PXE, bypassing cobbler’s PXE menu. If the name of the cobbler system already looks like a mac address, this is inferred from the system name and does not need to be specified.</p>
+MAC addresses have the format AA:BB:CC:DD:EE:FF. It’s higly recommended to register your MAC-addresses in Cobbler if
+you’re using static adressing with multiple interfaces, or if you are using any of the advanced networking features like
+bonding, bridges or VLANs.
 
-<p>MAC addresses have the format AA:BB:CC:DD:EE:FF. It’s higly recommended to register your MAC-addresses in Cobbler if you’re using static adressing with multiple interfaces, or if you are using any of the advanced networking features like bonding, bridges or VLANs.</p>
+Cobbler does contain a feature (enabled in `/etc/cobbler/settings`) that can automatically add new system records when
+it finds profiles being provisioned on hardware it has seen before. This may help if you do not have a report of all the
+MAC addresses in your datacenter/lab configuration.
 
-<p>Cobbler does contain a feature (enabled in <code>/etc/cobbler/settings</code>) that can automatically add new system records when it finds profiles being provisioned on hardware it has seen before. This may help if you do not have a report of all the MAC addresses in your datacenter/lab configuration.</p>
+#### --mtu
 
-<h4>--mtu</h4>
+Sets the MTU (max transfer unit) property for the interface. Normally, this is set to 9000 to enable jumbo frames, but
+remember you must also enable it on in your switch configuration to function properly.
 
-<p>Sets the MTU (max transfer unit) property for the interface. Normally, this is set to 9000 to enable jumbo frames, but remember you must also enable it on in your switch configuration to function properly.</p>
+#### --management
 
-<h4>--management</h4>
+When set to true, this interface will take precedence over others as the communication link to the Cobbler server. This
+means it will be used as the default kickstart interface if there are multiple interfaces to choose from.
 
-<p>When set to true, this interface will take precedence over others as the communication link to the Cobbler server. This means it will be used as the default kickstart interface if there are multiple interfaces to choose from.</p>
+#### --static
 
-<h4>--static</h4>
+Indicates that this interface is statically configured. Many fields (such as gateway/subnet) will not be used unless
+this field is enabled .When Cobbler is managing DHCP, this will result in a static lease entry being created in the
+dhcpd.conf.
 
-<p>Indicates that this interface is statically configured. Many fields (such as gateway/subnet) will not be used unless this field is enabled .When Cobbler is managing DHCP, this will result in a static lease entry being created in the dhcpd.conf.</p>
+#### --static-routes
 
-<h4>--static-routes</h4>
+This is a space delimited list of ip/mask:gateway routing information in that format, which will be added as extra
+routes on the system. Most systems will not need this information.
 
-<p>This is a space delimited list of ip/mask:gateway routing information in that format, which will be added as extra routes on the system. Most systems will not need this information.</p>
+`--static-routes="192.168.1.0/16:192.168.1.1 172.16.0.0/16:172.16.0.1"`
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">--static-routes=&quot;192.168.1.0/16:192.168.1.1 172.16.0.0/16:172.16.0.1&quot;</code></pre></figure></p>
+#### --netmask (formerly --subnet)
 
-<h4>--netmask (formerly --subnet)</h4>
+This is the netmask of the interface, for example 255.255.255.0.
 
-<p>This is the netmask of the interface, for example 255.255.255.0.</p>
+#### --virt-bridge
 
-<h4>--virt-bridge</h4>
+**(Virt-only)** When specified, koan will associate the given interface with the physical bridge on the system. If no
+bridge is specified, this value will be inherited from the profile, which in turn may be inherited from the default virt
+bridge configured in [Cobbler Settings]({% link manuals/2.6.0/3/3_-_Cobbler_Settings.md %}).
 
-<p><strong>(Virt-only)</strong> When specified, koan will associate the given interface with the physical bridge on the system. If no bridge is specified, this value will be inherited from the profile, which in turn may be inherited from the default virt bridge configured in <a href="/manuals/2.6.0/3/3_-_Cobbler_Settings.html">Cobbler Settings</a>.</p>
+### Get Kickstart (getks)
 
-<h3>Get Kickstart (getks)</h3>
+The getks command shows the rendered kickstart/response file (preseed, etc.) for the given system. This is useful for
+previewing what will be downloaded from Cobbler when the system is building. This is also a good opportunity to catch
+snippets that are not rendering correctly.
 
-<p>The getks command shows the rendered kickstart/response file (preseed, etc.) for the given system. This is useful for previewing what will be downloaded from Cobbler when the system is building. This is also a good opportunity to catch snippets that are not rendering correctly.</p>
+As with remove, the --name option is required and is the only valid argument.
 
-<p>As with remove, the --name option is required and is the only valid argument.</p>
+**Example:** `$ cobbler system getks --name=foo | less``
 
-<p><strong>Example:</strong></p>
+### Power Commands
 
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system getks --name=foo | less</code></pre></figure></p>
+By configuring the --power-* options above, Cobbler can be used to power on/off and reboot systems in your environment.
 
-<h3>Power Commands</h3>
+**Example:** `$ cobbler system poweron --name=foo`
 
-<p>By configuring the --power-* options above, Cobbler can be used to power on/off and reboot systems in your environment.</p>
-
-<p><strong>Example:</strong></p>
-
-<p><figure class="highlight"><pre><code class="language-bash" data-lang="bash">$ cobbler system poweron --name=foo</code></pre></figure></p>
-
-<p>Please see the <a href="/manuals/2.6.0/4/5_-_Power_Management.html">Power Management</a> section for more details on using these commands.</p>
+Please see the [Power Management]({% link manuals/2.6.0/4/5_-_Power_Management.md %}) section for more details on using
+these commands.

@@ -11,10 +11,8 @@ Try using xargs combined with "cobbler list" commands, such as:
 
     cobbler profile list | xargs -n1 --replace cobbler profile edit --virt-bridge=xenbr1 --name={} 
 
-The above example sets the virtual bridge used by every cobbler
-profile to 'xenbr1'.
+The above example sets the virtual bridge used by every cobbler profile to 'xenbr1'.
 
-You can filter the profile list by sticking a "grep" commmand in
-there as a pipe before the xargs.
+You can filter the profile list by sticking a "grep" commmand in there as a pipe before the xargs.
 
 See also [Command Line Search](Command Line Search)

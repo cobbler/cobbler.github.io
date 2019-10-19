@@ -4,7 +4,9 @@ title: Distribution Support
 meta: 2.8.0
 ---
 
-Cobbler currently supports importing a wide array of distributions from many vendors. However, since Cobbler has a history rooted in Red Hat based distributions, support for them is definitely the strongest. For others, the level of support varies from very good to requiring a lot of manual steps to get things working smoothly.
+Cobbler currently supports importing a wide array of distributions from many vendors. However, since Cobbler has a
+history rooted in Red Hat based distributions, support for them is definitely the strongest. For others, the level of
+support varies from very good to requiring a lot of manual steps to get things working smoothly.
 
 Here is the full list of supported distributions. 
 
@@ -748,4 +750,6 @@ Key:
 
 </table>
 
-<div class="alert alert-info alert-block"><b>Note:</b> This list does not include support for images, which can be just about any OS.</div>
+<div class="alert alert-info alert-block">
+    <b>Note:</b> This list does not include support for images, which can be just about any OS.
+</div>

@@ -11,7 +11,9 @@ navversion: nav28
 
 ### Introduction
 
-The following method details using [DBAN](http://dban.sourceforge.net/) with Cobbler to create a PXE boot image that will securely wipe the disk of the system being retired. This could also be used if you are shipping a disk back to the manufacturer and wanted to ensure all data is "securely" wiped.
+The following method details using [DBAN](http://dban.sourceforge.net/) with Cobbler to create a PXE boot image that
+will securely wipe the disk of the system being retired. This could also be used if you are shipping a disk back to the
+manufacturer and wanted to ensure all data is "securely" wiped.
 
 ### Steps
 
@@ -53,7 +55,8 @@ Mount the ISO and copy the floppy disk image file:
     cp -p /mnt/dban_1_0_7_i386.ima /tmp/
     umount /mnt
 
-Mount the floppy disk image file and copy the kernel image file, initial ram disk, and (optionally) the boot configuration file:
+Mount the floppy disk image file and copy the kernel image file, initial ram disk, and (optionally) the boot
+configuration file:
 
     mount -o loop,ro /tmp/dban_1_0_7_i386.ima /mnt
     mkdir -p /opt/cobbler/dban-1.0.7
@@ -87,9 +90,15 @@ Add the DBAN distro and profile to Cobbler:
 
 ### Notes
 
-You can setup DBAN to autowipe the system in question by supplying the kernel option of nuke="dwipe --autonuke". We are not doing it in this example because people sometimes only half-read things and it would suck to find out too late that you'd wiped a system you didn't mean to.
+You can setup DBAN to autowipe the system in question by supplying the kernel option of nuke="dwipe --autonuke". We are
+not doing it in this example because people sometimes only half-read things and it would suck to find out too late that
+you'd wiped a system you didn't mean to.
 
-It should go without saying that, while it might be a mildly fun prank, you shouldn't set this to be your default pxe boot menu choice. You'll most likely get fired and/or beat up by your fellow employees.
+It should go without saying that, while it might be a mildly fun prank, you shouldn't set this to be your default pxe
+boot menu choice. You'll most likely get fired and/or beat up by your fellow employees.
 
-If you do set this profile, it will show up as an option in the PXE menus. If this concerns you, set up a syslinux password by editing the templates in `/etc/cobbler` to ensure no one walks up to a system and blitzes it involuntarily. An option to keep a profile out of the PXE menu is doable if enough people request it or someone wants to submit a patch...
+If you do set this profile, it will show up as an option in the PXE menus. If this concerns you, set up a syslinux
+password by editing the templates in `/etc/cobbler` to ensure no one walks up to a system and blitzes it involuntarily.
+An option to keep a profile out of the PXE menu is doable if enough people request it or someone wants to submit a
+patch...
 
