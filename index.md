@@ -2,8 +2,8 @@
 layout: index
 title: Cobbler - Linux install and update server
 cobbler:
-  version: 2.8.4
-  release: Nov 23rd, 2018
+  version: 3.0.1
+  release: Sep 08th, 2019
 users:
   - img: acision
   - img: alstom
