@@ -68,7 +68,7 @@
         <div class="attributions">
           <p class="column_header">Attributions:</p>
           <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif" /></a></div>
-          <div class="attribution">"Gears", by <a href="http://www.flickr.com/photos/17258892@N05/">Ralph Bijker</a></div>
+          <div class="attribution">"Gears", by <a href="https://unsplash.com/@bill_oxford" rel="nofollow">Bill Oxford</a></div>
         </div>
         <div class="copyright">
           <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
