@@ -7,7 +7,7 @@ title: Cobbler Manuals
 
 ### User Manuals
 
-- [User Manual 2.8.x](/manuals/2.8.0)
+- [User Manual 2.8.x](https://cobbler.readthedocs.io/en/latest/)
 
 ### Quickstart Guide
 
