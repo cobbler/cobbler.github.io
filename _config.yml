@@ -3,7 +3,7 @@ description: Officaial website for the Cobbler-Project.
 url: "https://cobbler.github.io"
 lsi: false
 highlighter: rouge
-markdown: rdiscount
+markdown: kramdown
 permalink: "/blog/:year/:month/:day/:title.html"
 paginate: 5
 paginate_path: "/blog/:num/"
