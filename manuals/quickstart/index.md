@@ -12,11 +12,11 @@ installation methodology of your chosen distribution.
 This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future,
 we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on
 Fedora, however they should work for any Red Hat-based distribution, such as RHEL, CentOS, or Scientific Linux. Please
-see the [Installing Cobbler]({% link manuals/2.8.0/2_-_Installing_Cobbler.md %}) section for details on installation
-and prerequisites for your specific OS version.
+see the [Installing Cobbler](https://cobbler.readthedocs.io/en/release28/installation.html) section for details on
+installation and prerequisites for your specific OS version.
 
 Finally, this guide will focus only on the CLI application. For more details regarding cobbler's web UI, go here:
-[Cobbler Web User Interface]({% link manuals/2.8.0/5_-_Web_Interface.md %})
+[Cobbler Web User Interface](https://cobbler.readthedocs.io/en/release28/web-interface.html)
 
 ## Disable SELinux (optional)
 
@@ -26,7 +26,7 @@ to assist in managing new system technologies, and the policy that ships with yo
 feature-set we provide, resulting in AVC denials that break cobbler's functionality.
 
 If you would like to continue using SELinux on the system running cobblerd, be sure to read the
-[SELinux With Cobbler]({% link manuals/2.8.0/4/2_-_SELinux.md %}) section in this manual.
+[SELinux With Cobbler](https://cobbler.readthedocs.io/en/release28/4_advanced/SELinux.html) section in this manual.
 
 ## Installing Cobbler
 
@@ -131,8 +131,8 @@ Cobbler makes heavy use of the `/var` directory. The `/var/www/cobbler/ks_mirror
 distribution and repository files are copied, so you will need 5-10GB of free space per distribution you wish to import. 
 
 If you have installed cobbler onto a system that has very little free space in the partition containing `/var`, please
-read the [Relocating Your Installation]({% link manuals/2.8.0/2/5_-_Relocating_Your_Installation.md %}) section of the
-manual to learn how you can relocate your installation properly.
+read the [Relocating Your Installation](https://cobbler.readthedocs.io/en/release28/2_installation/relocating%20your%20installation.html)
+section of the manual to learn how you can relocate your installation properly.
 
 ## Starting and Enabling the Cobbler Service
 
