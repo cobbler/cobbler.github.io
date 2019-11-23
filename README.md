@@ -1,4 +1,4 @@
-#cobbler.github.io
+# cobbler.github.io
 
 Github pages website for the Cobbler Project. Documentation you can find at
 [Readthedocs](https://cobbler.readthedocs.io).
