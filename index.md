@@ -51,7 +51,7 @@ $('document').ready(function() {
    <div class="span9">
     <h1>Welcome to Cobbler!</h1>
     <p class="mainblurb">Cobbler is a Linux installation server that allows for rapid setup of network installation environments. It glues together and automates many associated Linux tasks so you do not have to hop between many various commands and applications when deploying new systems, and, in some cases, changing existing ones. Cobbler can help with provisioning, managing DNS and DHCP, package updates, power management, configuration management orchestration, and much more.</p>
-    <p><a href="/manuals/quickstart/" class="btn btn-info btn-large">Get Started Now!</a></p>
+    <p><a href="/quickstart/" class="btn btn-info btn-large">Get Started Now!</a></p>
    </div>
    <div class="span3">
     <div class="row well heroblurb posts">
