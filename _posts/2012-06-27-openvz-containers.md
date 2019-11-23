@@ -115,4 +115,4 @@ filesystem usage, or for creating containers in ploop-file.
 --virt-path not used now. Container will be created in /vz/private/$VEID, where $VEID will be replaced by
 openvz with CTID (container ID). Can be redefined by vz_ve_private variable you can place in ks_meta.
 --virt_bridge not used now.
-{% endighlight %}
+{% endhighlight %}
