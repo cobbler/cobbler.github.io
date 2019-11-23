@@ -13,7 +13,3 @@ title: Cobbler Manuals
 
 - [Quickstart Guide](/manuals/quickstart)
 
-### Developer Manuals
-
-- [Developer Guide](/manuals/developer)
-
