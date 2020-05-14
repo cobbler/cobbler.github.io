@@ -7,7 +7,7 @@ meta: 2.8.0
 Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to
 manage, but it does support a great deal of functionality immediately after installation with little to no customization
 needed. Before getting started with cobbler, you should have a good working knowledge of PXE as well as the automated
-installation methodology of your chosen distribution. 
+installation methodology of your chosen distribution.
 
 This quickstart guide will focus on the Red Hat kickstart process, which is very mature and well-tested. In the future,
 we will be adding quickstart guides for other distributions, such as Ubuntu and SuSE. The steps below will be focused on
@@ -43,11 +43,11 @@ This will pull in all of the requirements you need for a basic setup.
 Before starting the cobblerd service, there are a few things you should modify.
 
 Settings for cobbler/cobblerd are stored in `/etc/cobbler/settings`. This file is a YAML formatted data file, so be sure
-to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running. 
+to take care when editing this file as an incorrectly formatted file will prevent cobbler/cobblerd from running.
 
-### Default Encrypted Password 
+### Default Encrypted Password
 
-This setting controls the root password that is set for new systems during the kickstart. 
+This setting controls the root password that is set for new systems during the kickstart.
 
 {% highlight yaml %}
 default_password_crypted: "$1$bfI7WLZz$PxXetL97LkScqJFxnW7KS1"
@@ -145,10 +145,10 @@ $ systemctl enable cobblerd.service
 $ systemctl status cobblerd.service
 {% endhighlight %}
 
-or 
+or
 
 {% highlight bash %}
-$ service cobblerd start 
+$ service cobblerd start
 $ chkconfig cobblerd on
 $ service cobblerd status
 {% endhighlight %}
@@ -199,17 +199,17 @@ rendering TFTPD files
 generating /etc/xinetd.d/tftp
 cleaning link caches
 running: find /var/lib/tftpboot/images/.link_cache -maxdepth 1 -type f -links 1 -exec rm -f '{}' ';'
-received on stdout: 
-received on stderr: 
+received on stdout:
+received on stderr:
 running post-sync triggers
 running python triggers from /var/lib/cobbler/triggers/sync/post/*
 running python trigger cobbler.modules.sync_post_restart_services
 running: dhcpd -t -q
-received on stdout: 
-received on stderr: 
+received on stdout:
+received on stderr:
 running: service dhcpd restart
-received on stdout: 
-received on stderr: 
+received on stdout:
+received on stderr:
 running shell triggers from /var/lib/cobbler/triggers/sync/post/*
 running python triggers from /var/lib/cobbler/triggers/change/*
 running python trigger cobbler.modules.scm_track
@@ -237,7 +237,7 @@ Once this file is downloaded, mount it somewhere:
 $ mount -t iso9660 -o loop,ro /path/to/isos/Fedora-Server-dvd-x86_64-28-1.1.iso /mnt
 {% endhighlight %}
 
-### Run the Import 
+### Run the Import
 
 You are now ready to import the distribution. The name and path arguments are the only required options for import:
 
@@ -252,7 +252,7 @@ both x86_64 and i386 distros by default).
 ### Listing Objects
 
 If no errors were reported during the import, you can view details about the distros and profiles that were created
-during the import. 
+during the import.
 
 {% highlight bash %}
 $ cobbler distro list
@@ -272,7 +272,7 @@ Name                           : fedora28-x86_64
 Architecture                   : x86_64
 TFTP Boot Files                : {}
 Breed                          : redhat
-Comment                        : 
+Comment                        :
 Fetchable Files                : {}
 Initrd                         : /var/www/cobbler/ks_mirror/fedora28-x86_64/images/pxeboot/initrd.img
 Kernel                         : /var/www/cobbler/ks_mirror/fedora28-x86_64/images/pxeboot/vmlinuz
@@ -312,14 +312,14 @@ test
 $ cobbler system report --name=test
 Name                           : test
 TFTP Boot Files                : {}
-Comment                        : 
+Comment                        :
 Enable gPXE?                   : 0
 Fetchable Files                : {}
-Gateway                        : 
-Hostname                       : 
-Image                          : 
+Gateway                        :
+Hostname                       :
+Image                          :
 IPv6 Autoconfiguration         : False
-IPv6 Default Device            : 
+IPv6 Default Device            :
 Kernel Options                 : {}
 Kernel Options (Post Install)  : {}
 Kickstart                      : <<inherit>>
@@ -333,11 +333,11 @@ Name Servers                   : []
 Name Servers Search Path       : []
 Netboot Enabled                : True
 Owners                         : ['admin']
-Power Management Address       : 
-Power Management ID            : 
-Power Management Password      : 
+Power Management Address       :
+Power Management ID            :
+Power Management Password      :
 Power Management Type          : ipmitool
-Power Management Username      : 
+Power Management Username      :
 Profile                        : fedora28-x86_64
 Proxy                          : <<inherit>>
 Red Hat Management Key         : <<inherit>>
@@ -356,12 +356,12 @@ Virt Type                      : <<inherit>>
 {% endhighlight %}
 
 The primary reason for creating a system object is network configuration. When using profiles, you're limited to DHCP
-interfaces, but with systems you can specify many more network configuration options. 
+interfaces, but with systems you can specify many more network configuration options.
 
 So now we'll setup a single, simple interface in the 192.168.1/24 network:
 
 {% highlight bash %}
-$ cobbler system edit --name=test --interface=eth0 --mac=00:11:22:AA:BB:CC --ip-address=192.168.1.100 --netmask=255.255.255.0 --static=1 --dns-name=test.mydomain.com 
+$ cobbler system edit --name=test --interface=eth0 --mac=00:11:22:AA:BB:CC --ip-address=192.168.1.100 --netmask=255.255.255.0 --static=1 --dns-name=test.mydomain.com
 {% endhighlight %}
 
 The default gateway isn't specified per-NIC, so just add that separately (along with the hostname):
@@ -372,7 +372,7 @@ $ cobbler system edit --name=test --gateway=192.168.1.1 --hostname=test.mydomain
 
 The --hostname field corresponds to the local system name and is returned by the "hostname" command. The `--dns-name`
 (which can be set per-NIC) should correspond to a DNS A-record tied to the IP of that interface. Neither are required,
-but it is a good practice to specify both. Some advanced features (like configuration management) rely on the 
+but it is a good practice to specify both. Some advanced features (like configuration management) rely on the
 `--dns-name` field for system record look-ups.
 
 Whenever a system is edited, cobbler executes what is known as a "lite sync", which regenerates critical files like the
