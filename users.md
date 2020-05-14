@@ -56,6 +56,8 @@ users:
     url: http://www.inventx.ch
   - img: dw
     url: http://dashwire.com
+  - img: spindle
+    url: https://wearespindle.com/
 
 projects:
   - img: autotest
@@ -69,7 +71,7 @@ projects:
   - img: reliam
     url: http://reliam.com
   - img: spacewalk
-    url: http://fedorahosted.org/spacewalk
+    url: https://spacewalkproject.github.io/
   - img: symbolic
     url: http://www.opensymbolic.org
   - img: suse

@@ -31,6 +31,7 @@ users:
   - img: speakeasy
   - img: spi
   - img: spilgames
+  - img: spindle
   - img: stoneit
   - img: sulair
   - img: sunypotsdam

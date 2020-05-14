@@ -5,7 +5,7 @@ html, body {height: 100%;}
 body {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Roboto Condensed', serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
   font-size: 0.95em;
 }
 
@@ -34,9 +34,9 @@ body:before {
   -moz-transition: margin .2s ease-in-out;
   transition: margin .2s ease-in-out;
 }
-.navbar.navbar-inverse .navbar-inner {  
+.navbar.navbar-inverse .navbar-inner {
   padding: 10px 0 10px 0;
-  background: #252528;    
+  background: #252528;
 }
 .navbar.navbar-inverse .navbar-inner.sticky {
   background: rgba(0,0,0,0.8);
@@ -90,7 +90,7 @@ body:before {
 }
 
 #wrap h1, #wrap h2 {
-  border-bottom: 1px solid black; 
+  border-bottom: 1px solid black;
 }
 
 #wrap h3 {
