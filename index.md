@@ -1,9 +1,6 @@
 ---
 layout: index
 title: Cobbler - Linux install and update server
-cobbler:
-  version: 3.1.1
-  release: Jan 02nd, 2020
 users:
   - img: acision
   - img: alstom
@@ -57,8 +54,8 @@ $('document').ready(function() {
    <div class="span3">
     <div class="row well heroblurb posts">
      <div class="header">Latest Version:</div>
-     <div class="version">{{ page.cobbler.version }}</div>
-     <div class="release">released on {{ page.cobbler.release }}</div>
+     <div class="version">{{ site.cobbler.version }}</div>
+     <div class="release">released on {{ site.cobbler.released }}</div>
      <div><hr /></div>
      <div class="header latestnews">Latest News:</div>
 {% for post in site.posts limit:1 %}
