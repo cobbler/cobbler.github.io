@@ -1,98 +1,57 @@
-// helper function, gets the keys from a hash
-// and dumps them into an array
-function getkeys(obj) {
-    var keys = [];
-    for(var key in obj) {
-        if(obj.hasOwnProperty(key)) {
-            keys.push(key);
+(function() {
+    function displaySearchResults(results, store) {
+        var searchResults = document.getElementById('search-results');
+
+        if (results.length) { // Are there any results?
+            var appendString = '';
+
+            for (var i = 0; i < results.length; i++) {  // Iterate over the results
+                var ref = results[i]['ref'];
+                var item = store.find(element => element["name"] === ref);
+                appendString += '<li><a href="' + item.url + '">' + item.title + '</a>';
+                appendString += '<p>' + item.content.substring(0, 150) + '...</p></li>';
+            }
+
+            searchResults.innerHTML = appendString;
+        } else {
+            searchResults.innerHTML = '<li>No results found</li>';
         }
     }
-    return keys;
-}
 
-var search_data = null;
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
 
-$(document).ready(function() {
-  $("#searchbox").typeahead({
-    source: function (query, process) {
-      // and go...
-      if (!search_data) {
-        $.getJSON('/search.json', function(data,status) {
-          search_data = data;
-        });
-      }
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
 
-      var s_words = query.split(" ");
-      var results = {};
-      var final_results = [];
-
-      // now loop through all the words in the search JSON...
-      $.each(getkeys(search_data["words"]), function(idx,key) {
-        // for each word we're looking for
-        $.each(s_words, function(idx,val) {
-          // "fuzzy" matching logic with match and regex, 
-          // but only if the key is 3 or more characters
-          var s_reg = val;
-          if (val.length > 2) {
-            try {
-              s_reg = new RegExp(val.split('').join('\\w*').replace(/\W/, ""), 'i');
-            } catch(e) { 
-              // just use the raw string for the match below.
-              // this block gets hit if some enters a search like
-              // "word*"
+            if (pair[0] === variable) {
+                return decodeURIComponent(pair[1].replace(/\+/g, '%20'));
             }
-          }
-          if (key.match(s_reg)) { 
-            // we have a "match", so now we take all of the indexed
-            // documents for that word and save them into our results,
-            // adding to the original score if this document was already
-            // found through another word.
-            $.each(search_data["words"][key],function(widx,wobj) {
-              // "u" is the ferret-based id, which is an index into 
-              // the "index" hash table in our data
-              var id = wobj["u"];
-              if (search_data["index"][id]) {
-                if (!results[id]) {
-                  results[id] = {}
-                  results[id]["s"] = 0.0;                           // the score
-                  results[id]["t"] = search_data["index"][id]["t"]; // the title
-                  results[id]["u"] = search_data["index"][id]["u"]; // the url
-                }
-
-                // As stated above, add the score for this word/document 
-                // to this results total score
-                //
-                // TODO: adjust the score based on how fuzzy the result was?
-                results[id]["s"] += parseFloat(wobj["s"]);
-              }
-            });
-          }
-        });
-      });
-
-      // get all the keys from the results
-      var keys = [];
-      $.each(results, function(key,val) {
-        keys.push(key);
-      });
-
-      // sort keys high to low based on the score, or
-      // alphabetically in the event of a tie score
-      keys.sort(function(a,b) {
-         var res = results[b]["s"] - results[a]["s"];
-         if (res == 0.0) {
-            return (results[a]["t"] > results[b]["t"]) ? 1 : ( (results[b]["t"] > results[a]["t"]) ? -1 : 0 );
-         } else {
-            return res;
-         }
-      });
-
-      // fill up the array of results with the entries
-      // with the highest scores first
-      $.each(keys, function(idx,key) {
-        final_results.push(results[key]["t"]);
-      });
-      process(final_results);
+        }
     }
-  });
-});
+
+    var searchTerm = getQueryVariable('query');
+
+    if (searchTerm) {
+        document.getElementById('search-box').setAttribute("value", searchTerm);
+
+        // Initalize lunr with the fields it will be searching on. I've given title
+        // a boost of 10 to indicate matches on this field are more important.
+        var idx = lunr(function () {
+            this.ref('name')
+            this.field('title')
+            this.field('category')
+            this.field('tags')
+            this.field('content')
+            this.field('url')
+
+            window.store.forEach(function (doc) {
+                this.add(doc)
+            }, this)
+        })
+
+        var results = idx.search(searchTerm); // Get lunr to perform a search
+        displaySearchResults(results, window.store); // We'll write this in the next section
+    }
+})();

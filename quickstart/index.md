@@ -1,8 +1,9 @@
 ---
-layout: manpage
+layout: default
 title: Cobbler Quickstart Guide
-meta: 2.8.0
 ---
+
+## Intro
 
 Cobbler can be a somewhat complex system to get started with, due to the wide variety of technologies it is designed to
 manage, but it does support a great deal of functionality immediately after installation with little to no customization
