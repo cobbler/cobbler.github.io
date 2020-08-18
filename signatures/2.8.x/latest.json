@@ -1079,6 +1079,54 @@
         "kernel_options": "",
         "kernel_options_post": "",
         "boot_files": []
+      },
+      "eoan": {
+        "signatures": [
+          "dists",
+          ".disk"
+        ],
+        "version_file": "Release|mini-info",
+        "version_file_regex": "Codename: eoan|Ubuntu 19.10",
+        "kernel_arch": "linux-headers-(.*)\\.deb",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "amd64"
+        ],
+        "supported_repo_breeds": [
+          "apt"
+        ],
+        "kernel_file": "(linux|vmlinuz(.*))",
+        "initrd_file": "initrd($|.gz$|.lz$)",
+        "isolinux_ok": false,
+        "default_kickstart": "sample.seed",
+        "kernel_options": "",
+        "kernel_options_post": "",
+        "boot_files": []
+      },
+      "focal": {
+        "signatures": [
+          "dists",
+          ".disk"
+        ],
+        "version_file": "Release|mini-info",
+        "version_file_regex": "Codename: focal|Ubuntu 20.04",
+        "kernel_arch": "linux-headers-(.*)\\.deb",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "amd64"
+        ],
+        "supported_repo_breeds": [
+          "apt"
+        ],
+        "kernel_file": "(linux|vmlinuz(.*))",
+        "initrd_file": "initrd($|.gz$|.lz$)",
+        "isolinux_ok": false,
+        "default_kickstart": "",
+        "kernel_options": "",
+        "kernel_options_post": "",
+        "boot_files": []
       }
     },
     "suse": {
