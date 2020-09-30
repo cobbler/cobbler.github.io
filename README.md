@@ -6,4 +6,7 @@ Github pages website for the Cobbler Project. Documentation you can find at
 ## How to work with this repository?
 
 We have a file called `Dockerfile`. There you can find various stages for building, linting and serving the
-website locally. 
+website locally.We hope that these features will surely help you creating an magnificient and splendid 
+website.
+
+
