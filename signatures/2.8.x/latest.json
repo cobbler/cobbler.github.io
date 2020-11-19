@@ -141,6 +141,30 @@
         "kernel_options_post": "",
         "boot_files": []
       },
+      "ovz7": {
+        "signatures": [
+          "Packages"
+        ],
+        "version_file": "(openvz)-release-7(.*)\\.rpm",
+        "version_file_regex": null,
+        "kernel_arch": "vzkernel-(.*).rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "x86_64"
+        ],
+        "supported_repo_breeds": [
+          "rsync",
+          "yum"
+        ],
+        "kernel_file": "vmlinuz(.*)",
+        "initrd_file": "initrd(.*)\\.img",
+        "isolinux_ok": false,
+        "default_kickstart": "sample.ks",
+        "kernel_options": "",
+        "kernel_options_post": "",
+        "boot_files": []
+      },
       "fedora16": {
         "signatures": [
           "Packages"
@@ -550,6 +574,70 @@
         "kernel_options_post": "",
         "boot_files": []
       },
+      "fedora31": {
+        "signatures": [
+          "Packages"
+        ],
+        "version_file": "(fedora)-release-31-(.*)\\.noarch\\.rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "aarch64",
+          "i386",
+          "x86_64",
+          "ppc64le"
+        ],
+        "supported_repo_breeds": [
+          "rsync",
+          "rhn",
+          "yum"
+        ],
+        "kernel_file": "vmlinuz(.*)",
+        "initrd_file": "initrd(.*)\\.img",
+        "isolinux_ok": false,
+        "default_kickstart": "sample.ks",
+        "kernel_options": "repo=$tree",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64": [
+            "grub"
+          ]
+        }
+      },
+      "fedora32": {
+        "signatures": [
+          "Packages"
+        ],
+        "version_file": "(fedora)-release-32-(.*)\\.noarch\\.rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "aarch64",
+          "i386",
+          "x86_64",
+          "ppc64le"
+        ],
+        "supported_repo_breeds": [
+          "rsync",
+          "rhn",
+          "yum"
+        ],
+        "kernel_file": "vmlinuz(.*)",
+        "initrd_file": "initrd(.*)\\.img",
+        "isolinux_ok": false,
+        "default_kickstart": "sample.ks",
+        "kernel_options": "repo=$tree",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64": [
+            "grub"
+          ]
+        }
+      },
       "cloudlinux6": {
         "signatures": [
           "Packages"
@@ -696,6 +784,36 @@
       }
     },
     "ubuntu": {
+      "artful": {
+        "signatures": [
+          "dists",
+          ".disk"
+        ],
+        "version_file": "Release|mini-info",
+        "version_file_regex": "Codename: artful|Ubuntu 17.10",
+        "kernel_arch": "linux-headers-(.*)\\.deb",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "amd64",
+          "ppc64el"
+        ],
+        "supported_repo_breeds": [
+          "apt"
+        ],
+        "kernel_file": "(vm)?linux(.*)",
+        "initrd_file": "initrd(.*)\\.gz",
+        "isolinux_ok": false,
+        "default_kickstart": "/var/lib/cobbler/kickstarts/sample.seed",
+        "kernel_options": "",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64el": [
+            "grub"
+          ]
+        }
+      },
       "lucid": {
         "signatures": [
           "dists",
@@ -864,6 +982,30 @@
         "kernel_options_post": "",
         "boot_files": []
       },
+      "utopic": {
+        "signatures": [
+          "dists",
+          ".disk"
+        ],
+        "version_file": "Release|mini-info",
+        "version_file_regex": "Codename: utopic|Ubuntu 14.10",
+        "kernel_arch": "linux-headers-(.*)\\.deb",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "amd64"
+        ],
+        "supported_repo_breeds": [
+          "apt"
+        ],
+        "kernel_file": "linux(.*)",
+        "initrd_file": "initrd(.*)\\.gz",
+        "isolinux_ok": false,
+        "default_kickstart": "/var/lib/cobbler/kickstarts/sample.seed",
+        "kernel_options": "",
+        "kernel_options_post": "",
+        "boot_files": []
+      },
       "vivid": {
         "signatures": [
           "dists",
@@ -880,7 +1022,7 @@
         "supported_repo_breeds": [
           "apt"
         ],
-        "kernel_file": "linux(.*)",
+        "kernel_file": "(vm)?linux(.*)",
         "initrd_file": "initrd(.*)\\.gz",
         "isolinux_ok": false,
         "default_kickstart": "/var/lib/cobbler/kickstarts/sample.seed",
@@ -967,30 +1109,6 @@
         ],
         "version_file": "Release|mini-info",
         "version_file_regex": "Codename: zesty|Ubuntu 17.04",
-        "kernel_arch": "linux-headers-(.*)\\.deb",
-        "kernel_arch_regex": null,
-        "supported_arches": [
-          "i386",
-          "amd64"
-        ],
-        "supported_repo_breeds": [
-          "apt"
-        ],
-        "kernel_file": "linux(.*)",
-        "initrd_file": "initrd(.*)\\.gz",
-        "isolinux_ok": false,
-        "default_kickstart": "/var/lib/cobbler/kickstarts/sample.seed",
-        "kernel_options": "",
-        "kernel_options_post": "",
-        "boot_files": []
-      },
-      "artful": {
-        "signatures": [
-          "dists",
-          ".disk"
-        ],
-        "version_file": "Release|mini-info",
-        "version_file_regex": "Codename: artful|Ubuntu 17.10",
         "kernel_arch": "linux-headers-(.*)\\.deb",
         "kernel_arch_regex": null,
         "supported_arches": [
@@ -1130,6 +1248,30 @@
       }
     },
     "suse": {
+      "suse": {
+        "signatures": [],
+        "version_file": "",
+        "version_file_regex": "",
+        "kernel_arch": "",
+        "kernel_arch_regex": "",
+        "supported_arches": [
+          "i386",
+          "x86_64",
+          "ia64",
+          "ppc",
+          "ppc64",
+          "s390",
+          "s390x"
+        ],
+        "supported_repo_breeds": [],
+        "kernel_file": "",
+        "initrd_file": "",
+        "isolinux_ok": false,
+        "default_kickstart": "",
+        "kernel_options": "",
+        "kernel_options_post": "",
+        "boot_files": []
+      },
       "opensuse11.2": {
         "signatures": [
           "suse"
@@ -1515,7 +1657,33 @@
         "kernel_file": "linux[64.gz]?",
         "initrd_file": "initrd[64]?",
         "isolinux_ok": false,
-        "default_kickstart": "/var/lib/cobbler/kickstarts/sample_autoyast.xml",
+        "default_kickstart": "sample_autoyast.xml",
+        "kernel_options": "install=$tree",
+        "kernel_options_post": "",
+        "boot_files": []
+      },
+      "sles11generic": {
+        "signatures": [
+          "suse"
+        ],
+        "version_file": "sles-release-11(.*).rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "i586",
+          "x86_64",
+          "ppc64",
+          "s390x"
+        ],
+        "supported_repo_breeds": [
+          "yum"
+        ],
+        "kernel_file": "linux[64.gz]?",
+        "initrd_file": "initrd[64]?",
+        "isolinux_ok": false,
+        "default_kickstart": "sample_autoyast.xml",
         "kernel_options": "install=$tree",
         "kernel_options_post": "",
         "boot_files": []
@@ -1544,6 +1712,35 @@
         "kernel_options": "install=$tree",
         "kernel_options_post": "",
         "boot_files": []
+      },
+      "sles12generic": {
+        "signatures": [
+          "suse"
+        ],
+        "version_file": "(sles|SLES-for-VMware)-release-12(.*).rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "x86_64",
+          "s390x",
+          "ppc64le"
+        ],
+        "supported_repo_breeds": [
+          "yum"
+        ],
+        "kernel_file": "linux[64.gz]?",
+        "initrd_file": "initrd[64]?",
+        "isolinux_ok": false,
+        "default_kickstart": "sample_autoyast.xml",
+        "kernel_options": "install=$tree",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64le": [
+            "grub"
+          ]
+        }
       },
       "sles12sp1": {
         "signatures": [
@@ -1590,7 +1787,126 @@
         "kernel_file": "linux[64.gz]?",
         "initrd_file": "initrd[64]?",
         "isolinux_ok": false,
-        "default_kickstart": "/var/lib/cobbler/kickstarts/sample_autoyast.xml",
+        "default_kickstart": "sample_autoyast.xml",
+        "kernel_options": "install=$tree",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64le": [
+            "grub"
+          ]
+        }
+      },
+      "sles12sp3": {
+        "signatures": [
+          "suse"
+        ],
+        "version_file": "(sles|SLES-for-VMware)-release-12.3-(.*).rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "i586",
+          "x86_64",
+          "ppc64le"
+        ],
+        "supported_repo_breeds": [
+          "yum"
+        ],
+        "kernel_file": "linux[64.gz]?",
+        "initrd_file": "initrd[64]?",
+        "isolinux_ok": false,
+        "default_kickstart": "sample_autoyast.xml",
+        "kernel_options": "install=$tree",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64le": [
+            "grub"
+          ]
+        }
+      },
+      "sles12sp4": {
+        "signatures": [
+          "suse"
+        ],
+        "version_file": "(sles|SLES-for-VMware|SLES_SAP)-release-12.4-(.*).rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "i586",
+          "x86_64",
+          "ppc64le"
+        ],
+        "supported_repo_breeds": [
+          "yum"
+        ],
+        "kernel_file": "linux[64.gz]?",
+        "initrd_file": "initrd[64]?",
+        "isolinux_ok": false,
+        "default_kickstart": "sample_autoyast.xml",
+        "kernel_options": "dhcptimeout=120, net.ifnames=1, install=$tree",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64le": [
+            "grub"
+          ]
+        }
+      },
+      "sles12sp5": {
+        "signatures": [
+          "suse"
+        ],
+        "version_file": "(sles|SLES-for-VMware|SLES_SAP)-release-12.5-(.*).rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "i386",
+          "i586",
+          "x86_64",
+          "ppc64le"
+        ],
+        "supported_repo_breeds": [
+          "yum"
+        ],
+        "kernel_file": "linux[64.gz]?",
+        "initrd_file": "initrd[64]?",
+        "isolinux_ok": false,
+        "default_kickstart": "sample_autoyast.xml",
+        "kernel_options": "dhcptimeout=120, net.ifnames=1, install=$tree",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64le": [
+            "grub"
+          ]
+        }
+      },
+      "sles15generic": {
+        "signatures": [
+          "."
+        ],
+        "version_file": "sles-release-15(.*).rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "x86_64",
+          "s390x",
+          "ppc64le"
+        ],
+        "supported_repo_breeds": [
+          "yum"
+        ],
+        "kernel_file": "linux[64.gz]?",
+        "initrd_file": "initrd[64]?",
+        "isolinux_ok": false,
+        "default_kickstart": "sample_autoyast.xml",
         "kernel_options": "install=$tree",
         "kernel_options_post": "",
         "boot_files": []
@@ -2240,6 +2556,28 @@
         ],
         "version_file": "^XS-REPOSITORY$",
         "version_file_regex": "^.*product=\"XenServer\" version=\"7\\.1\\.([0-9]+)\".*$",
+        "kernel_arch": "xen\\.gz",
+        "kernel_arch_regex": "^.*(x86_64).*$",
+        "supported_arches": [
+          "x86_64"
+        ],
+        "supported_repo_breeds": [],
+        "kernel_file": "mboot\\.c32",
+        "initrd_file": "xen\\.gz",
+        "isolinux_ok": false,
+        "default_kickstart": "",
+        "kernel_options": "",
+        "kernel_options_post": "",
+        "boot_files": [
+          "install.img"
+        ]
+      },
+      "xenserver720": {
+        "signatures": [
+          "packages.xenserver"
+        ],
+        "version_file": "^XS-REPOSITORY$",
+        "version_file_regex": "^.*product=\"XenServer\" version=\"7\\.2\\.([0-9]+)\".*$",
         "kernel_arch": "xen\\.gz",
         "kernel_arch_regex": "^.*(x86_64).*$",
         "supported_arches": [
