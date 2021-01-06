@@ -124,7 +124,7 @@
         "signatures": [
           "BaseOS"
         ],
-        "version_file": "(redhat|sl|slf|centos|oraclelinux|vzlinux)-release-(?!notes)([\\w]*-)*8[\\.-]+(.*)\\.rpm",
+        "version_file": "(redhat|sl|slf|centos|centos-linux|centos-stream|oraclelinux|vzlinux)-release-(?!notes)([\\w]*-)*8[\\.-]+(.*)\\.rpm",
         "version_file_regex": null,
         "kernel_arch": "kernel-(.*).rpm",
         "kernel_arch_regex": null,
@@ -678,6 +678,38 @@
           "Packages"
         ],
         "version_file": "(fedora)-release-32-(.*)\\.noarch\\.rpm",
+        "version_file_regex": null,
+        "kernel_arch": "kernel-(.*)\\.rpm",
+        "kernel_arch_regex": null,
+        "supported_arches": [
+          "aarch64",
+          "i386",
+          "x86_64",
+          "ppc64le"
+        ],
+        "supported_repo_breeds": [
+          "rsync",
+          "rhn",
+          "yum"
+        ],
+        "kernel_file": "vmlinuz(.*)",
+        "initrd_file": "initrd(.*)\\.img",
+        "isolinux_ok": false,
+        "default_autoinstall": "sample.ks",
+        "kernel_options": "repo=$tree",
+        "kernel_options_post": "",
+        "boot_files": [],
+        "boot_loaders": {
+          "ppc64": [
+            "grub"
+          ]
+        }
+      },
+      "fedora33": {
+        "signatures": [
+          "Packages"
+        ],
+        "version_file": "(fedora)-release-33-(.*)\\.noarch\\.rpm",
         "version_file_regex": null,
         "kernel_arch": "kernel-(.*)\\.rpm",
         "kernel_arch_regex": null,
@@ -1581,35 +1613,11 @@
         "kernel_options_post": "",
         "boot_files": []
       },
-      "opensuse15.0": {
+      "opensuse15generic": {
         "signatures": [
           ""
         ],
-        "version_file": "openSUSE-release-15.0-(.*).rpm",
-        "version_file_regex": null,
-        "kernel_arch": "kernel-(.*)\\.rpm",
-        "kernel_arch_regex": null,
-        "supported_arches": [
-          "aarch64",
-          "x86_64",
-          "ppc64le"
-        ],
-        "supported_repo_breeds": [
-          "yum"
-        ],
-        "kernel_file": "(linux|vmlinuz(.*))",
-        "initrd_file": "initrd(.*)",
-        "isolinux_ok": false,
-        "default_autoinstall": "sample_autoyast.xml",
-        "kernel_options": "",
-        "kernel_options_post": "",
-        "boot_files": []
-      },
-      "opensuse15.1": {
-        "signatures": [
-          ""
-        ],
-        "version_file": "openSUSE-release-15.1-(.*).rpm",
+        "version_file": "openSUSE-release-15.(.*).rpm",
         "version_file_regex": null,
         "kernel_arch": "kernel-(.*)\\.rpm",
         "kernel_arch_regex": null,
@@ -2246,6 +2254,29 @@
         "boot_files": [
           "*.*"
         ]
+      },
+      "esxi70u1": {
+        "signatures": [
+          "b.b00"
+        ],
+        "version_file": "vmware-esx-base-osl\\.txt",
+        "version_file_regex": "^(VMware )?ESXi( )?(v)?7(\\.)?0(\\.)?1.*$",
+        "kernel_arch": "tools\\.t00",
+        "kernel_arch_regex": "^.*(x86_64).*$",
+        "supported_arches": [
+          "x86_64"
+        ],
+        "supported_repo_breeds": [],
+        "kernel_file": "mboot\\.c32",
+        "initrd_file": "imgpayld\\.tgz",
+        "isolinux_ok": false,
+        "default_autoinstall": "sample_esxi7.ks",
+        "kernel_options": "",
+        "kernel_options_post": "",
+        "template_files": "/etc/cobbler/boot_loader_conf/bootcfg_esxi70u1.template=$local_img_path/cobbler-boot.cfg",
+        "boot_files": [
+          "*.*"
+        ]
       }
     },
     "freebsd": {
@@ -2744,6 +2775,42 @@
     "unix": {
     },
     "windows": {
+     "2003": {
+      "supported_arches":["x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub"]}
+     },
+     "2008": {
+      "supported_arches":["x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub","ipxe"]}
+     },
+     "2012": {
+      "supported_arches":["x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub","ipxe"]}
+     },
+     "2016": {
+      "supported_arches":["x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub","ipxe"]}
+     },
+     "2019": {
+      "supported_arches":["x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub","ipxe"]}
+     },
+     "XP": {
+      "supported_arches":["i386","x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub"]}
+     },
+     "7": {
+      "supported_arches":["x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub","ipxe"]}
+     },
+     "8": {
+      "supported_arches":["x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub","ipxe"]}
+     },
+     "10": {
+      "supported_arches":["x86_64"],
+      "boot_loaders":{"x86_64":["pxelinux","grub","ipxe"]}
+     }
     },
     "powerkvm": {
       "2.1": {
