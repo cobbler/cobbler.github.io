@@ -37,11 +37,6 @@ users:
   - img: tripleit
   - img: widexs
 ---
-<script>
-$('document').ready(function() {
-  $('.carousel').carousel({ interval: 2500 });
-});
-</script>
 
 <div id="hero" class="hero-unit">
  <div class="container">
