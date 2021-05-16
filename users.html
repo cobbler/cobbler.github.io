@@ -1,0 +1,146 @@
+---
+layout: default
+title: Who's Using Cobbler
+users:
+  - img: acision
+    url: http://www.acision.com
+  - img: alstom
+    url: http://www.alstom.com/
+  - img: beantown
+    url: http://beantownhost.com
+  - img: carol
+    url: http://www.carol.com/
+  - img: dell
+    url: http://www.dell.com
+  - img: eucalyptus
+    url: http://www.eucalyptus.com/
+  - img: fedora
+    url: http://www.fedoraproject.org/
+  - img: flpc
+    url: http://www.uclug.org/flpc
+  - img: kynetx
+    url: http://www.kynetx.com
+  - img: linkshare
+    url: http://linkshare.com
+  - img: mi
+    url: http://www.mcclatchyinteractive.com/
+  - img: ohio
+    url: http://www.ohio.edu
+  - img: ouit
+    url: http://www.ou.edu/ouit
+  - img: pnnl
+    url: http://pnl.gov
+  - img: puzzleitc
+    url: http://puzzle.ch
+  - img: quantcast
+    url: http://www.quantcast.com/
+  - img: speakeasy
+    url: http://speakeasy.net
+  - img: spi
+    url: http://imageworks.com/
+  - img: spilgames
+    url: http://spil.com/cobbler
+  - img: stoneit
+    url: http://www.stone-it.com
+  - img: sulair
+    url: http://library.stanford.edu
+  - img: sunypotsdam
+    url: http://www.potsdam.edu
+  - img: tomtom
+    url: http://www.tomtom.com
+  - img: tripleit
+    url: http://www.triple-it.nl/
+  - img: widexs
+    url: http://www.widexs.nl
+  - img: inventx
+    url: http://www.inventx.ch
+  - img: dw
+    url: http://dashwire.com
+  - img: spindle
+    url: https://wearespindle.com/
+
+projects:
+  - img: autotest
+    url: http://autotest.github.com/
+  - img: beaker
+    url: http://beaker-project.org/
+  - img: bytecode
+    url: http://www.byte-code.com
+  - img: genome
+    url: http://genome.et.redhat.com
+  - img: reliam
+    url: http://reliam.com
+  - img: spacewalk
+    url: https://spacewalkproject.github.io/
+  - img: symbolic
+    url: http://www.opensymbolic.org
+  - img: suse
+    url: https://www.suse.com/de-de/products/suse-manager/
+---
+
+<h1>Who's Using Cobbler</h1>
+
+<p>Cobbler is currently in use at a wide-variety of organizations such as hosting companies, financial institutions,
+datacenters, compute grids/clusters, universities, K-12 schools, consulting groups, ISVs, and world government agencies
+and departments.  Many home users and small to mid-size companies can and do use it as well.</p>
+
+<p>The following is an opt-in list of some Cobbler users. To either add or remove your company/organization from this
+    list, please <a href="https://github.com/cobbler/cobbler.github.com/issues">open an issue here</a>.</p>
+
+<h2>Companies Using Cobbler</h2>
+
+<div class="container">
+ <div id="companiesUsingCobblerCarousel" class="carousel">
+    <div class="carousel-inner">
+{% for user in page.users %}
+{% if forloop.first %}
+  <div class="carousel-item active">
+{% else %}
+  <div class="carousel-item">
+{% endif %}
+    <a href="{{ user.url }}"><img src="/images/who/{{ user.img }}_logo_sm.png" alt="" /></a>
+  </div>
+ {% capture current %}{% cycle 'users': '','','','goose' %}{% endcapture %}
+ {% if current != '' %}
+ </div>
+ <div class="row-fluid">
+ {% endif %}
+{% endfor %}
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#companiesUsingCobblerCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#companiesUsingCobblerCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+</button>
+</div>
+</div>
+
+<h2>Applications Using Cobbler (As a Service)</h2>
+
+<div class="container">
+ <div id="appsUsingCobblerCarousel" class="carousel">
+  <div class="carousel-inner">
+{% for project in page.projects %}
+{% if forloop.first %}
+  <div class="carousel-item active">
+{% else %}
+  <div class="carousel-item">
+{% endif %}
+    <a href="{{ project.url }}"><img src="/images/who/{{ project.img }}_logo_sm.png" alt="" /></a>
+  </div>
+ {% capture current %}{% cycle 'projects': '','','','goose' %}{% endcapture %}
+{% endfor %}
+ </div>
+<button class="carousel-control-prev" type="button" data-bs-target="#appsUsingCobblerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#appsUsingCobblerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+</div>
+</div>

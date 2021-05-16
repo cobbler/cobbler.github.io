@@ -1,6 +1,6 @@
 <!-- end content -->
 
-<footer>
+<footer class="mt-auto bg-dark text-white">
     <div class="container">
         <div class="row">
             <div class="col-1">
@@ -37,7 +37,7 @@
                 </ul>
             </div>
             <div class="col-4">
-                <p class="column_header">Recent Posts:</p>
+                <h5>Recent Posts:</h5>
                 {% for post in site.posts limit:4 %}
                 <div class="post">
                     <p class="title"><a href="{{ post.url}}">{{ post.title}}</a></p>

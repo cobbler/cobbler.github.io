@@ -1,0 +1,162 @@
+---
+layout: index
+title: Cobbler - Linux install and update server
+users:
+  - img: acision
+  - img: alstom
+  - img: autotest
+  - img: beaker
+  - img: beantown
+  - img: bytecode
+  - img: carol
+  - img: dell
+  - img: dw
+  - img: eucalyptus
+  - img: fedora
+  - img: flpc
+  - img: genome
+  - img: kynetx
+  - img: linkshare
+  - img: mi
+  - img: ohio
+  - img: ouit
+  - img: pnnl
+  - img: puzzleitc
+  - img: quantcast
+  - img: reliam
+  - img: spacewalk
+  - img: speakeasy
+  - img: spi
+  - img: spilgames
+  - img: spindle
+  - img: stoneit
+  - img: sulair
+  - img: sunypotsdam
+  - img: symbolic
+  - img: tomtom
+  - img: tripleit
+  - img: widexs
+---
+
+<div class="hero">
+    <div class="container">
+        <div class="row align-items-center g-5 py-5">
+            <div class="col-8">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to Cobbler!</h1>
+                <p>Cobbler is a Linux installation server that allows for rapid setup of network
+                    installation environments. It glues together and automates many associated Linux tasks so you do not
+                    have to hop between many various commands and applications when deploying new systems, and, in some
+                    cases, changing existing ones. Cobbler can help with provisioning, managing DNS and DHCP, package
+                    updates, power management, configuration management orchestration, and much more.</p>
+                <p><a href="/quickstart/" class="btn btn-info btn-large">Get Started Now!</a></p>
+            </div>
+            <div class="col-4">
+                <div class="d-grid gap-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">Latest Version: {{ site.cobbler.version }}</div>
+                            <div class="card-subtitle mb-2 text-muted">released on {{ site.cobbler.released }}</div>
+                            <div class="card-link">
+                                <a href="/blog/">view all posts</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">Latest News:</div>
+                            {% for post in site.posts limit:1 %}
+                            <div class="post">
+                                <div class="title"><a href="{{ post.url}}">{{ post.title}}</a></div>
+                                <div class="author">by {{ post.author }} on {{ post.date | date: "%B %d, %Y" }}</div>
+                                <!-- <div class="content">{{post.summary}}</div> -->
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Thanks to all our supporters!</div>
+                        <div class="card-text">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="https://spilgames.com/"><img src="/images/supporters/spilgames.png"/></a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="https://www.quantcast.com/"><img src="/images/supporters/quantcast.png"/></a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="https://getfedora.org/"><img src="/images/supporters/fedora.png"/></a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="https://www.puzzle.ch/"><img src="/images/supporters/puzzleitc.png"/></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary" href="/supporters.html">view all supporters</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container px-4 py-5">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="feature col">
+            <div class="feature-icon bg-primary bg-gradient">
+                <img src="/images/gears.jpg" class="img-polaroid" alt="gears"/>
+            </div>
+            <h4>How Does Cobbler Help?</h4>
+            <p>Automation is the key to speed, consistency and repeatability. These properties are critical to managing
+                an infrastructure, whether it is comprised of a few servers or a few thousand servers. Cobbler helps by
+                automating the process of provisioning servers from bare metal, or when deploying virtual machines onto
+                various hypervisors.</p>
+        </div>
+        <div class="feature col">
+            <div class="feature-icon bg-primary bg-gradient">
+                <svg class="bi" height="1em" width="1em">
+                    <use href="/images/recycle.svg"></use>
+                </svg>
+            </div>
+            <h4>Reduce, Reuse...</h4>
+            <p>Just as configuration management systems rely on templates to simplify updates, so too does Cobbler.
+                Templates are used extensively for management of services like DNS and DHCP, and the response files
+                given to the various distributions (kickstart, preseed, etc.) are all templated to maximize code
+                reuse.</p>
+            <p>In addition to templates, Cobbler relies on a system of snippets - small chunks of code (which are really
+                templates themselves) that can be embedded in other templates. This allows admins to write things once,
+                use it wherever they need it via a simple include, all while managing the content in just one place.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h4>Who's using Cobbler?</h4>
+    <div id="usingCobblerCarousel" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
+        <div class="carousel-inner">
+            {% for user in page.users %}
+            {% if forloop.first %}
+            <div class="carousel-item active">
+            {% else %}
+            <div class="carousel-item">
+            {% endif %}
+                <div><img class="d-block w-100" src="/images/who/{{ user.img }}_logo_sm.png" alt=""/></div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#usingCobblerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#usingCobblerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <p>These are just a small sample of the hundreds of companies, universities and government orgnaizations
+        that rely on Cobbler every day to build their infrastructure.</p>
+    <div class="viewall"><a href="/users.html"><i class="icon-double-angle-right"> view more</i></a></div>
+</div>
