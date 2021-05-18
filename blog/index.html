@@ -16,7 +16,7 @@ breadcrumb: Blog
             {{ post.content | strip_html | truncatewords:30}}
         </div>
         <div class="readmore">
-            <a href="{{ post.url }}"><i class="icon-double-angle-right"></i> continue reading</a>
+            <a href="{{ post.url }}"><i class="fas fa-angle-double-right"></i> continue reading</a>
         </div>
     </div>
 </div>
@@ -31,17 +31,17 @@ breadcrumb: Blog
             {%- if paginator.previous_page == 1 -%}
             <li class="page-item">
                 <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}">
-                    <i class="icon-angle-left"></i>
+                    <i class="fas fa-angle-left"></i>
                 </a>
             </li>
             {%- else -%}
             <li class="page-item">
-                <a class="page-link" href="/blog/{{paginator.previous_page}}"><i class="icon-angle-left"></i></a>
+                <a class="page-link" href="/blog/{{paginator.previous_page}}"><i class="fas fa-angle-left"></i></a>
             </li>
             {%- endif -%}
             {%- else -%}
             <li class="page-item disabled">
-                <span class="page-link"><i class="icon-angle-left"></i></span>
+                <span class="page-link"><i class="fas fa-angle-left"></i></span>
             </li>
             {%- endif -%}
 
@@ -68,10 +68,10 @@ breadcrumb: Blog
             {%- endfor -%}
             {%- if paginator.next_page -%}
             <li class="page-item">
-                <a class="page-link" href="/blog/{{paginator.next_page}}"><i class="icon-angle-right"></i></a>
+                <a class="page-link" href="/blog/{{paginator.next_page}}"><i class="fas fa-angle-right"></i></a>
             </li>
             {%- else -%}
-            <li class="page-item disabled"><span><i class="icon-angle-right"></i></span></li>
+            <li class="page-item disabled"><span><i class="fas fa-angle-right"></i></span></li>
             {%- endif -%}
         </ul>
     </div>

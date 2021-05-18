@@ -7,14 +7,15 @@ layout: default
             <ul class="pagination">
                 {%- if page.next.url -%}
                 <li class="page-item">
-                    <a class="page-link" href="{{ page.next.url }}"><i class="icon-angle-left"></i> {{
+                    <a class="page-link" href="{{ page.next.url }}"><i class="fas fa-angle-left"></i> {{
                         page.next.title }}</i></a>
                 </li>
                 {%- endif -%}
                 {%- if page.previous.url -%}
                 <li class="page-item">
-                    <a class="page-link" href="{{ page.previous.url }}">{{ page.previous.title }} <i
-                            class="icon-angle-right"></i></a>
+                    <a class="page-link" href="{{ page.previous.url }}">
+                        {{ page.previous.title }}<i class="fas fa-angle-right"></i>
+                    </a>
                 </li>
                 {%- endif -%}
             </ul>
