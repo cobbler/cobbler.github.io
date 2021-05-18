@@ -1,76 +1,87 @@
-<header class="bg-dark text-white">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-decoration-none" href="/">
-                <object class="logo" data="/images/logo-cobbler-new.svg" height="50px">
-                    <img src="/images/logo-cobbler-new.png" alt="Cobbler Logo"/>
-                </object>
-                <span class="fs-4">Cobbler</span>
+<header class="p-3 bg-dark text-white">
+    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+        <nav class="dropdown">
+            <a class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 text-white text-decoration-none dropdown-toggle"
+               href="#" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownNav">
+                <img class="logo" src="/images/logo-cobbler-new.svg" alt="Cobbler Logo" height="50px"/>
+                <span class="ms-2 fs-4">Cobbler</span>
             </a>
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li>
-                    <a class="btn btn-secondary" href="/about.html" title="About">
+            <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="dropdownNav">
+                <li class="nav-item px-2">
+                    <a class="text-white text-decoration-none" href="/" title="Home">
+                        <i class="icon-home icon-med"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="text-white text-decoration-none" href="/about.html" title="About">
                         <i class="icon-cloud icon-med"></i> About
                     </a>
                 </li>
-                <li class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="icon-question-sign icon-med"></i>Downloads
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><a class="dropdown-item" type="button" href="/downloads/3.x.x.html">3.x.x</a></li>
-                        <li><a class="dropdown-item" type="button" href="/downloads/2.x.x.html">2.x.x</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="btn btn-secondary" href="/blog/" title="Blog Posts">
+                <li class="nav-item px-2">
+                    <a class="text-white text-decoration-none" href="/blog/" title="Blog Posts">
                         <i class="icon-bookmark icon-med"></i> Blog Posts
                     </a>
                 </li>
-                <li class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item px-2 dropdown">
+                    <a class="dropdown-toggle text-white text-decoration-none" href="#" role="button"
+                       id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="icon-question-sign icon-med"></i>Downloads
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenu2">
+                        <li><a class="dropdown-item" href="/downloads/3.x.x.html">3.x.x</a></li>
+                        <li><a class="dropdown-item" href="/downloads/2.x.x.html">2.x.x</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item px-2 dropdown">
+                    <a class="dropdown-toggle text-white text-decoration-none" href="#" role="button"
+                       id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="icon-group icon-med"></i>Community
-                    </button>
-                    <ul class="dropdown-menu"  aria-labelledby="dropdownMenu3">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenu3">
                         <li>
-                            <a class="dropdown-item" href="/community.html" title="How to Get Help">How to Get Help</a>
+                            <a class="dropdown-item" href="/community.html" title="How to Get Help">
+                                How to Get Help</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/supporters.html" title="Supporters of Cobbler">Supporters</a>
+                            <a class="dropdown-item" href="/supporters.html"
+                               title="Supporters of Cobbler">Supporters</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/users.html" title="Cobbler Users">Who's Using Cobbler</a>
+                            <a class="dropdown-item" href="/users.html" title="Cobbler Users">Who's Using
+                                Cobbler</a>
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu4"
-                            data-bs-toggle="dropdown" aria-expanded="false"><i class="icon-github icon-med"></i>
-                        Github <b class="caret"></b></button>
-                    <ul class="dropdown-menu">
+                <li class="nav-item px-2 dropdown">
+                    <a class="dropdown-toggle text-white text-decoration-none" href="#" role="button"
+                       id="dropdownMenu4" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="icon-github icon-med"></i>Github</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
                         <li>
-                            <a class="dropdown-item" href="https://github.com/cobbler/cobbler" title="Main Repository"
+                            <a class="dropdown-item" href="https://github.com/cobbler/cobbler"
+                               title="Main Repository"
                                target="_blank">Main Repo</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="https://github.com/cobbler/cobbler/issues" title="Issues"
+                            <a class="dropdown-item" href="https://github.com/cobbler/cobbler/issues"
+                               title="Issues"
                                target="_blank">Issue Tracker</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki"
+                            <a class="dropdown-item" href="https://github.com/cobbler/cobbler/wiki"
+                               title="Github Wiki"
                                target="_blank">Wiki</a>
                         </li>
                     </ul>
                 </li>
             </ul>
-            <div class="col-md-3 text-end">
-                <form action="/search.html" method="get">
-                    <label style="display: none" for="search-box">Search</label>
-                    <input class="st-search-input" type="text" id="search-box" placeholder="Search" name="query">
-                </form>
-            </div>
+        </nav>
+        <div class="d-flex align-items-center justify-content-end">
+            <form class="d-flex align-items-center" action="/search.html" method="get">
+                <label style="display: none" for="search-box">Search</label>
+                <input class="st-search-input me-1" type="text" id="search-box" placeholder="Search" name="query">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </div>
 </header>
