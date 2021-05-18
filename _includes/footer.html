@@ -3,7 +3,7 @@
 <footer class="mt-auto bg-dark text-white">
     <div class="container">
         <div class="row">
-            <div class="col-1">
+            <div class="col-2">
                 <h5>Pages</h5>
                 <ul class="list-unstyled">
                     <li><a href="/">Home</a></li>
@@ -11,7 +11,7 @@
                     <li><a href="/about.html">About Cobbler</a></li>
                 </ul>
             </div>
-            <div class="col-1">
+            <div class="col-2">
                 <h5>Manuals</h5>
                 <ul class="list-unstyled">
                     <li><a href="https://cobbler.readthedocs.io/en/latest/quickstart-guide.html">Quickstart</a></li>
@@ -20,7 +20,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-1">
+            <div class="col-2">
                 <h5>Community</h5>
                 <ul class="list-unstyled">
                     <li><a href="/community.html">How to Get Help</a></li>
@@ -28,7 +28,7 @@
                     <li><a href="/users.html">Who's Using Cobbler</a></li>
                 </ul>
             </div>
-            <div class="col-1">
+            <div class="col-2">
                 <h5>Github</h5>
                 <ul class="list-unstyled">
                     <li><a href="https://github.com/cobbler/cobbler">Code Repository</a></li>
@@ -37,29 +37,15 @@
                 </ul>
             </div>
             <div class="col-4">
-                <h5>Recent Posts:</h5>
-                {% for post in site.posts limit:4 %}
-                <div class="post">
-                    <p class="title"><a href="{{ post.url}}">{{ post.title}}</a></p>
-                    <p class="author">Posted by {{ post.author }} on {{ post.date | date: "%A, %B %d, %Y" }}</p>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="col-4 credits">
-                <div class="social">
-                    <a href="https://twitter.com/cobblerproject?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="true">Follow @cobblerproject</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-                <div class="attributions">
-                    <p class="column_header">Attributions:</p>
-                    <div class="attribution">"Lens Flare", by <a href="http://creativity103.com/"><img
-                            src="/images/creativity103.gif"/></a></div>
-                    <div class="attribution">"Gears", by <a href="https://unsplash.com/@bill_oxford" rel="nofollow">Bill
-                        Oxford</a></div>
-                </div>
-                <div class="copyright">
-                    <p>All other content, &copy; <span id="copyyear"></span><br/>by James Cammarata</p>
-                    <script>document.querySelector("#copyyear").innerText = (new Date).getFullYear();</script>
-                </div>
+                <a href="https://twitter.com/cobblerproject?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="true">Follow @cobblerproject</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                Attributions:
+                <ul class="list-unstyled">
+                    <li>"Lens Flare", by <a href="http://creativity103.com/"><img src="/images/creativity103.gif"/></a></li>
+                    <li>"Gears", by <a href="https://unsplash.com/@bill_oxford" rel="nofollow">Bill Oxford</a></li>
+                    <li><p>All other content, &copy; <span id="copyyear"></span><br/>by the Cobbler Project</p>
+                        <script>document.querySelector("#copyyear").innerText = (new Date).getFullYear();</script>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
