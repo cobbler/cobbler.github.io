@@ -6,7 +6,7 @@ breadcrumb: Blog
 
 <!-- post list -->
 {% for post in paginator.posts %}
-  <div class="row">
+  <div class="row my-2">
     <div class="span10 posts">
     <div class="post">
       <h2 class="header">{{ post.title }}</h2>
@@ -26,8 +26,8 @@ breadcrumb: Blog
 
 <!-- pagination -->
 {% if paginator.total_pages > 1 %}
-<div class="row-fluid">
-<div>
+<div class="row">
+<div class="mt-2">
   <ul class="pagination">
   {%- if paginator.previous_page -%}
     {%- if paginator.previous_page == 1 -%}

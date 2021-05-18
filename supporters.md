@@ -42,9 +42,10 @@ contributors:
 
 # Cobbler Supporters
 
-Cobbler conducted a [fundraising campaign](http://www.indiegogo.com/cobbler24) during Nov-Dec of 2012, in order to raise
-money to help pay for additional hardware to be used to aid in adding new features such as a dedicated CI server
-(jenkins) and the ability to deploy images built by Cobbler into IaaS platforms such as Eucalyptus, Openstack, etc.
+Cobbler conducted a [fundraising campaign](https://www.indiegogo.com/projects/cobbler-2-4-0-and-beyond#/) during
+Nov-Dec of 2012, in order to raise money to help pay for additional hardware to be used to aid in adding new features
+such as a dedicated CI server (Jenkins) and the ability to deploy images built by Cobbler into IaaS platforms such as
+Eucalyptus, Openstack, etc.
 
 **Update from 2018/19:** Many thanks also to SUSE who dedicated devs porting cobbler from Python 2 to Python 3!
 
