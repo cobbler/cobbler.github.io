@@ -53,8 +53,8 @@ users:
             <div class="col-4">
                 <div class="d-grid gap-3">
                     <div class="card">
+                        <div class="card-header">Latest Version: {{ site.cobbler.version }}</div>
                         <div class="card-body">
-                            <div class="card-title">Latest Version: {{ site.cobbler.version }}</div>
                             <div class="card-subtitle mb-2 text-muted">released on {{ site.cobbler.released }}</div>
                             <div class="card-link">
                                 <a href="/blog/">view all posts</a>
@@ -62,8 +62,8 @@ users:
                         </div>
                     </div>
                     <div class="card">
+                        <div class="card-header">Latest News:</div>
                         <div class="card-body">
-                            <div class="card-title">Latest News:</div>
                             {% for post in site.posts limit:1 %}
                             <div class="post">
                                 <div class="title"><a href="{{ post.url}}">{{ post.title}}</a></div>
@@ -103,24 +103,24 @@ users:
     </div>
 </div>
 
-<div class="container px-4 py-5">
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-        <div class="feature col">
-            <div class="feature-icon bg-primary bg-gradient">
-                <img src="/images/gears.jpg" class="img-polaroid" alt="gears"/>
-            </div>
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-3 text-center">
+            <img class="img-thumbnail" src="/images/gears.jpg" alt="gears"/>
+        </div>
+        <div class="col-9">
             <h4>How Does Cobbler Help?</h4>
             <p>Automation is the key to speed, consistency and repeatability. These properties are critical to managing
                 an infrastructure, whether it is comprised of a few servers or a few thousand servers. Cobbler helps by
                 automating the process of provisioning servers from bare metal, or when deploying virtual machines onto
                 various hypervisors.</p>
         </div>
-        <div class="feature col">
-            <div class="feature-icon bg-primary bg-gradient">
-                <svg class="bi" height="1em" width="1em">
-                    <use href="/images/recycle.svg"></use>
-                </svg>
-            </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-3 text-center">
+            <object class="bi img-thumbnail" data="/images/recycle.svg" height="160px" width="160px"></object>
+        </div>
+        <div class="col-9">
             <h4>Reduce, Reuse...</h4>
             <p>Just as configuration management systems rely on templates to simplify updates, so too does Cobbler.
                 Templates are used extensively for management of services like DNS and DHCP, and the response files
@@ -131,32 +131,36 @@ users:
                 use it wherever they need it via a simple include, all while managing the content in just one place.</p>
         </div>
     </div>
-</div>
-
-<div class="container">
-    <h4>Who's using Cobbler?</h4>
-    <div id="usingCobblerCarousel" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
-        <div class="carousel-inner">
-            {% for user in page.users %}
-            {% if forloop.first %}
-            <div class="carousel-item active">
-            {% else %}
-            <div class="carousel-item">
-            {% endif %}
-                <div><img class="d-block w-100" src="/images/who/{{ user.img }}_logo_sm.png" alt=""/></div>
+    <div class="row align-items-center">
+        <div class="col-3 text-center">
+            <div id="usingCobblerCarousel" class="carousel slide img-thumbnail" data-bs-ride="carousel" data-interval="2000">
+                <div class="carousel-inner">
+                    {% for user in page.users %}
+                    {% if forloop.first %}
+                    <div class="carousel-item active">
+                        {% else %}
+                        <div class="carousel-item">
+                            {% endif %}
+                            <div><img class="d-block w-100" src="/images/who/{{ user.img }}_logo_sm.png" alt=""/></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#usingCobblerCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#usingCobblerCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
-            {% endfor %}
+            <div class="col-9">
+                <h4>Who's using Cobbler?</h4>
+                <p>These are just a small sample of the hundreds of companies, universities and government orgnaizations
+                    that rely on Cobbler every day to build their infrastructure.</p>
+                <div class="viewall"><a href="/users.html"><i class="icon-double-angle-right"> view more</i></a></div>
+            </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#usingCobblerCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#usingCobblerCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-    <p>These are just a small sample of the hundreds of companies, universities and government orgnaizations
-        that rely on Cobbler every day to build their infrastructure.</p>
-    <div class="viewall"><a href="/users.html"><i class="icon-double-angle-right"> view more</i></a></div>
 </div>

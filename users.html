@@ -92,20 +92,20 @@ and departments.  Many home users and small to mid-size companies can and do use
 <div class="container">
  <div id="companiesUsingCobblerCarousel" class="carousel">
     <div class="carousel-inner">
-{% for user in page.users %}
-{% if forloop.first %}
+{%- for user in page.users -%}
+{%- if forloop.first -%}
   <div class="carousel-item active">
-{% else %}
+{%- else -%}
   <div class="carousel-item">
-{% endif %}
+{%- endif -%}
     <a href="{{ user.url }}"><img src="/images/who/{{ user.img }}_logo_sm.png" alt="" /></a>
   </div>
  {% capture current %}{% cycle 'users': '','','','goose' %}{% endcapture %}
- {% if current != '' %}
+ {%- if current != '' -%}
  </div>
  <div class="row-fluid">
- {% endif %}
-{% endfor %}
+ {%- endif -%}
+{%- endfor -%}
 </div>
 <button class="carousel-control-prev" type="button" data-bs-target="#companiesUsingCobblerCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -123,16 +123,16 @@ and departments.  Many home users and small to mid-size companies can and do use
 <div class="container">
  <div id="appsUsingCobblerCarousel" class="carousel">
   <div class="carousel-inner">
-{% for project in page.projects %}
-{% if forloop.first %}
+{%- for project in page.projects -%}
+{%- if forloop.first -%}
   <div class="carousel-item active">
-{% else %}
+{%- else -%}
   <div class="carousel-item">
-{% endif %}
+{%- endif -%}
     <a href="{{ project.url }}"><img src="/images/who/{{ project.img }}_logo_sm.png" alt="" /></a>
   </div>
- {% capture current %}{% cycle 'projects': '','','','goose' %}{% endcapture %}
-{% endfor %}
+ {%- capture current -%}{%- cycle 'projects': '','','','goose' -%}{%- endcapture -%}
+{%- endfor -%}
  </div>
 <button class="carousel-control-prev" type="button" data-bs-target="#appsUsingCobblerCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
