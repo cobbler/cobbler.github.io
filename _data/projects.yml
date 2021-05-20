@@ -1,9 +1,9 @@
 - img: autotest
   url: http://autotest.github.com/
 - img: beaker
-  url: http://beaker-project.org/
+  url: https://beaker-project.org/
 - img: bytecode
-  url: http://www.byte-code.com
+  url: https://www.byte-code.com/
 - img: genome
   url: http://genome.et.redhat.com
 - img: reliam
