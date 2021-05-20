@@ -15,63 +15,25 @@ title: Who's Using Cobbler
 <h2>Companies Using Cobbler</h2>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div id="companiesUsingCobblerCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                {%- for user in site.data.users -%}
-                {%- if forloop.first -%}
-                <div class="carousel-item active">
-                    <a href="{{ user.url }}"><img src="/images/who/{{ user.img }}_logo_sm.png" alt=""/></a>
-                </div>
-                {%- else -%}
-                <div class="carousel-item">
-                    <a href="{{ user.url }}"><img src="/images/who/{{ user.img }}_logo_sm.png" alt=""/></a>
-                </div>
-                {%- endif -%}
-                {% capture current %}{% cycle 'users': '','','','goose' %}{% endcapture %}
-                {%- endfor -%}
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#companiesUsingCobblerCarousel"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#companiesUsingCobblerCarousel"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+    <div class="row row-cols-4">
+        {%- for user in site.data.users -%}
+        <div class="col py-2">
+            <a href="{{ user.url }}"><img src="/images/who/{{ user.img }}_logo_sm.png" alt=""/></a>
         </div>
+        {% capture current %}{% cycle 'users': '','','','goose' %}{% endcapture %}
+        {%- endfor -%}
     </div>
 </div>
 
 <h2>Applications Using Cobbler (As a Service)</h2>
 
 <div class="container">
-    <div id="appsUsingCobblerCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+    <div class="row row-cols-4">
             {%- for project in site.data.projects -%}
-            {%- if forloop.first -%}
-            <div class="carousel-item active">
+            <div class="col py-2">
                 <a href="{{ project.url }}"><img src="/images/who/{{ project.img }}_logo_sm.png" alt=""/></a>
             </div>
-            {%- else -%}
-            <div class="carousel-item">
-                <a href="{{ project.url }}"><img src="/images/who/{{ project.img }}_logo_sm.png" alt=""/></a>
-            </div>
-            {%- endif -%}
             {%- capture current -%}{%- cycle 'projects': '','','','goose' -%}{%- endcapture -%}
             {%- endfor -%}
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#appsUsingCobblerCarousel"
-                data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#appsUsingCobblerCarousel"
-                data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 </div>
