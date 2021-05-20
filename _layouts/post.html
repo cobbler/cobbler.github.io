@@ -2,46 +2,64 @@
 layout: default
 ---
 <div class="container">
- <div class="row-fluid">
-  <div class="span9">
-   <div class="row-fluid">
-    <ul class="pager">
-     {% if page.next.url %}
-     <li class="previous"><a href="{{ page.next.url }}"><i class="icon-angle-left"></i> {{ page.next.title }}</i></a></li>
-     {% endif %}
-     {% if page.previous.url %}
-     <li class="next"><a href="{{ page.previous.url }}">{{ page.previous.title }} <i class="icon-angle-right"></i></a></li>
-     {% endif %}
-    </ul>
-   </div>
-   <div class="row-fluid posts">
-    <div class="post">
-     <h2 class="header">{{ page.title }}</h2>
-     <div class="author"><i>Posted by {{ page.author }} on {{ page.date | date: "%A, %B %d, %Y" }}</i></div>
-     <div class="content">{{ content }}</div>
-{% include disqus.html %}
+    <div class="row">
+        <div class="row">
+            <ul class="pagination">
+                {%- if page.next.url -%}
+                <li class="page-item">
+                    <a class="page-link" href="{{ page.next.url }}"><i class="fas fa-angle-left"></i> {{
+                        page.next.title }}</i></a>
+                </li>
+                {%- endif -%}
+                {%- if page.previous.url -%}
+                <li class="page-item">
+                    <a class="page-link" href="{{ page.previous.url }}">
+                        {{ page.previous.title }}<i class="fas fa-angle-right"></i>
+                    </a>
+                </li>
+                {%- endif -%}
+            </ul>
+        </div>
+        <div class="row">
+            <h2 class="header">{{ page.title }}</h2>
+        </div>
+        <div class="row">
+            <div class="">
+                <i>Posted by {{ page.author }} on {{ page.date | date: "%A, %B %d, %Y" }}</i>
+            </div>
+        </div>
+        <div class="row content">
+            {{ content }}
+        </div>
+        <div class="row">
+            {% include disqus.html %}
+        </div>
+        <div class="row">
+            {% assign postsByYearMonth = site.posts | group_by_exp:"post", "post.date | date: '%Y %b'" %}
+            {% assign curDate = page.date | date: '%Y %b' %}
+            {%- for yearMonth in postsByYearMonth -%}
+            {%- if yearMonth.name == curDate -%}
+            <h2 class="header">Related posts in {{ yearMonth.name }}</h2>
+            <div class="container">
+                <div class="row row-cols-auto">
+                    {%- for blogpost in yearMonth.items -%}
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                {{ blogpost.title }}
+                            </div>
+                            <div class="card-body">
+                                <div class="card-text"><i>Posted on {{ blogpost.date | date: '%B %d, %Y' }}</i></div>
+                                <a class="btn btn-primary mt-2" href="{{ blogpost.url }}">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+            {%- endif -%}
+            {%- endfor -%}
+        </div>
     </div>
-   </div>
-  </div>
-  <div class="span3">
-      <div class='posts related_by_date'>
-          {% assign postsByYearMonth = site.posts | group_by_exp:"post", "post.date | date: '%Y %b'" %}
-          {% assign curDate = page.date | date: '%Y %b' %}
-          {% for yearMonth in postsByYearMonth %}
-          {% if yearMonth.name == curDate %}
-          <h4 class="header">{{ yearMonth.name }}</h4>
-          <div>
-              {% for blogpost in yearMonth.items %}
-              <div class="post">
-                  <div class='content current'><a href="{{ blogpost.url }}">{{ blogpost.title }}</a></div>
-                  <div class="author"><i>Posted on {{ blogpost.date | date: '%B %d, %Y' }}</i></div>
-              </div>
-              {% endfor %}
-          </div>
-          {% endif %}
-          {% endfor %}
-      </div>
-  </div>
- </div>
 </div>
 

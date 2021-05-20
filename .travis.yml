@@ -1,9 +1,0 @@
-language: ruby
-rvm:
-  - 2.6.3
-
-cache: bundler
-
-script:
-  - bundle install
-  - bundle exec jekyll build

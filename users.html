@@ -1,0 +1,39 @@
+---
+layout: default
+title: Who's Using Cobbler
+---
+
+<h1>Who's Using Cobbler</h1>
+
+<p>Cobbler is currently in use at a wide-variety of organizations such as hosting companies, financial institutions,
+    datacenters, compute grids/clusters, universities, K-12 schools, consulting groups, ISVs, and world government
+    agencies and departments. Many home users and small to mid-size companies can and do use it as well.</p>
+
+<p>The following is an opt-in list of some Cobbler users. To either add or remove your company/organization from this
+    list, please <a href="https://github.com/cobbler/cobbler.github.com/issues">open an issue here</a>.</p>
+
+<h2>Companies Using Cobbler</h2>
+
+<div class="container">
+    <div class="row row-cols-4 align-items-center">
+        {%- for user in site.data.users -%}
+        <div class="col py-2">
+            <a href="{{ user.url }}"><img src="/images/who/{{ user.img }}_logo_sm.png" alt=""/></a>
+        </div>
+        {% capture current %}{% cycle 'users': '','','','goose' %}{% endcapture %}
+        {%- endfor -%}
+    </div>
+</div>
+
+<h2>Applications Using Cobbler (As a Service)</h2>
+
+<div class="container">
+    <div class="row row-cols-4 align-items-center">
+            {%- for project in site.data.projects -%}
+            <div class="col py-2">
+                <a href="{{ project.url }}"><img src="/images/who/{{ project.img }}_logo_sm.png" alt=""/></a>
+            </div>
+            {%- capture current -%}{%- cycle 'projects': '','','','goose' -%}{%- endcapture -%}
+            {%- endfor -%}
+    </div>
+</div>

@@ -1,50 +1,79 @@
-<div class="navbar transparent navbar-inverse navbar-static-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="/"><img class="logo" src="/images/logo-brand.png"/></a>
-            <div class="nav-collapse collapse">
-                <ul class="nav pull-right">
-                    <li><a href="/about.html" title="About"><i class="icon-cloud icon-med"></i> About </a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                class="icon-question-sign icon-med"></i> Downloads <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/downloads/3.x.x.html" title="Cobbler 3.x.x">3.x.x</a></li>
-                            <li><a href="/downloads/2.x.x.html" title="Cobbler 2.x.x">2.x.x</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/blog/" title="Blog Posts"><i class="icon-bookmark icon-med"></i> Blog Posts</a></li>
-                    <li><a href="/quickstart/" title="Quickstart Guide">Quickstart</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-group icon-med"></i>
-                            Community <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/community.html" title="How to Get Help">How to Get Help</a></li>
-                            <li><a href="/supporters.html" title="Supporters of Cobbler">Supporters</a></li>
-                            <li><a href="/users.html" title="Cobbler Users">Who's Using Cobbler</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-github icon-med"></i>
-                            Github <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://github.com/cobbler/cobbler" title="Main Repository" target="_blank">Main
-                                Repo</a></li>
-                            <li><a href="https://github.com/cobbler/cobbler/issues" title="Issues" target="_blank">Issue
-                                Tracker</a></li>
-                            <li><a href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki" target="_blank">Wiki</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <form class="pull-right" action="/search.html" method="get">
-                            <label style="display: none" for="search-box">Search</label>
-                            <input class="st-search-input" type="text" id="search-box" placeholder="Search" name="query">
-                        </form>
-                    </li>
-                </ul>
-            </div>
+<header class="p-3 bg-dark text-white">
+    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+        <nav class="dropdown">
+            <a class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 text-white text-decoration-none dropdown-toggle"
+               href="#" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownNav">
+                <img class="logo" src="/images/logo-cobbler-new.svg" alt="Cobbler Logo" height="50px"/>
+                <span class="ms-2 fs-4">Cobbler</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark shadow px-1" aria-labelledby="dropdownNav">
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="/" title="Home">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="/about.html" title="About">
+                        <i class="fas fa-cloud"></i> About
+                    </a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="/blog/" title="Blog Posts">
+                        <i class="fas fa-blog"></i> Blog Posts
+                    </a>
+                </li>
+                <li class="nav-item px-2">
+                    <a  class="dropdown-item text-white text-decoration-none" href="/branding.html"
+                        title="Branding">
+                        <i class="fas fa-paint-brush"></i> Branding
+                    </a>
+                </li>
+                <li class="nav-item px-2">
+                    <h6 class="dropdown-header"><i class="fas fa-cloud-download-alt"></i> Downloads</h6>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="/downloads/3.x.x.html">Cobbler 3.x.x</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="/downloads/2.x.x.html">Cobbler 2.x.x</a>
+                </li>
+                <li class="nav-item px-2">
+                    <h6 class="dropdown-header"><i class="fas fa-users"></i> Community</h6>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="/community.html" title="How to Get Help">
+                        How to Get Help</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="/supporters.html" title="Supporters of Cobbler">Supporters</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="/users.html" title="Cobbler Users">Who's Using Cobbler</a>
+                </li>
+                <li class="nav-item px-2">
+                    <h6 class="dropdown-header"><i class="fab fa-github"></i> Github</h6>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="https://github.com/cobbler/cobbler"
+                       title="Main Repository"
+                       target="_blank">Main Repo</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="https://github.com/cobbler/cobbler/issues" title="Issues"
+                       target="_blank">Issue Tracker</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="dropdown-item text-white text-decoration-none" href="https://github.com/cobbler/cobbler/wiki" title="Github Wiki"
+                       target="_blank">Wiki</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="d-flex align-items-center justify-content-end">
+            <form class="d-flex align-items-center" action="/search.html" method="get">
+                <label style="display: none" for="search-box">Search</label>
+                <input class="st-search-input me-1" type="text" id="search-box" placeholder="Search" name="query">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </div>
-</div>
+</header>

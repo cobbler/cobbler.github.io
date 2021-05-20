@@ -8,38 +8,27 @@
    <title>{{ page.title }}</title>
 
    <!-- CSS -->
-   <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-responsive.min.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome.css" />
-   <link rel="stylesheet" type="text/css" href="/lib/font/font-awesome-ext.css" />
-   <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
-   <link rel="stylesheet" type="text/css" href="/css/style.css" />
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+   <link href="/lib/fontawesome/css/all.css" rel="stylesheet">
+   <link href="/css/style.css" rel="stylesheet">
 
    <!-- Fonts -->
-   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
-
-   <!--[if lt IE 9]>
-     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-   <![endif]-->
+   <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Habibi|Roboto+Condensed' />
 
    <!-- Icon -->
-   <link rel="icon" type="image/png" href="/images/favicon.png" />
+   <link rel="icon" type="image/svg+xml" href="/images/logo-cobbler-new.svg" />
 
    <!-- JQuery/Bootstrap/custom scripts -->
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-   <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="/js/jquery.ba-hashchange.min.js"></script>
-</head>
-<body class="pull_up">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+   <script defer src="/lib/fontawesome/js/all.js"></script>
+   <script defer src="/lib/fontawesome/attribution.js"></script>
 
-<!-- ClickTale Top part -->
-<script type="text/javascript">
-var WRInitTime=(new Date()).getTime();
-</script>
-<!-- ClickTale end of Top part -->
+</head>
+<body class="d-flex flex-column min-vh-100">
 
 {% include navigation.html %}
 
 <!-- begin content -->
+
+</body>
+</html>
