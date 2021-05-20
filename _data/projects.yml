@@ -1,0 +1,16 @@
+- img: autotest
+  url: http://autotest.github.com/
+- img: beaker
+  url: http://beaker-project.org/
+- img: bytecode
+  url: http://www.byte-code.com
+- img: genome
+  url: http://genome.et.redhat.com
+- img: reliam
+  url: http://reliam.com
+- img: spacewalk
+  url: https://spacewalkproject.github.io/
+- img: symbolic
+  url: http://www.opensymbolic.org
+- img: suse
+  url: https://www.suse.com/de-de/products/suse-manager/

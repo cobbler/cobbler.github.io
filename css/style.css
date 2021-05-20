@@ -5,3 +5,13 @@
   background-position: center top;
   background-size: 100% 100%;
 }
+
+#matrix-svg {
+  height: 1em;
+  width: 1em;
+}
+
+#matrix-svg {
+  color: #ffffff;
+  fill: #ffffff;
+}
