@@ -15,7 +15,7 @@ title: Who's Using Cobbler
 <h2>Companies Using Cobbler</h2>
 
 <div class="container">
-    <div class="row row-cols-4">
+    <div class="row row-cols-4 align-items-center">
         {%- for user in site.data.users -%}
         <div class="col py-2">
             <a href="{{ user.url }}"><img src="/images/who/{{ user.img }}_logo_sm.png" alt=""/></a>
@@ -28,7 +28,7 @@ title: Who's Using Cobbler
 <h2>Applications Using Cobbler (As a Service)</h2>
 
 <div class="container">
-    <div class="row row-cols-4">
+    <div class="row row-cols-4 align-items-center">
             {%- for project in site.data.projects -%}
             <div class="col py-2">
                 <a href="{{ project.url }}"><img src="/images/who/{{ project.img }}_logo_sm.png" alt=""/></a>
