@@ -27,13 +27,13 @@ The planned release for 3.4.0 was the 31.07.2022 (DD-MM-YYYY). Sadly due to many
 work re-prioritisation it was not possible to hold this. A big factor is also that this is the biggest release I am
 creating and me being a junior developer means sometimes I see things a little too optimistic.
 
-The current GitHub projects view can be found [here](https://github.com/orgs/cobbler/projects/2/views/4). 
+The current GitHub projects view can be found [here](https://github.com/orgs/cobbler/projects/2/views/4).
 
 At the moment we have eight tickets open and seven are in progress. In progress means that there is a PR linked to it or
 someone started drafting a PoC in the issue how this will be achieved with a PR in the near future.
 
 At the moment for those tickets we have 12 PRs open. However, many of those are inactive. This means I need to rebase
-them, improve them to match our quality standards and then find someone from work (I am working at SUSE) to review them. 
+them, improve them to match our quality standards and then find someone from work (I am working at SUSE) to review them.
 
 The new tentative date should be around new year 2023. Hopefully... Updates follow soon (TM).
 
@@ -48,7 +48,7 @@ achieve.
   prefer UI based workflows.
 - Support for a **wider range of web servers** is a big step towards the containerization of the server. You can now for
   example use Nginx as a webserver since Cobbler runs as a Gunicorn application (plus the XML-RPC server) that can be
-  proxied via virtually every modern webserver. 
+  proxied via virtually every modern webserver.
 - We will complete the **golang client**, so third party applications can interface easier with Cobbler.
 - A **new CLI** will be created in golang with the above-mentioned library to decouple the CLI from the server. You just
   need access to the XML-RPC API and you can fully manage your server from anywhere.
@@ -73,7 +73,7 @@ I am planning after 3.4.0 to achieve the following things either with a 3.4.x re
 - **Koan**: This trustworthy tool should get some love. At the moment many tests are missing, and we just hope it works
   with new releases.
 - **Backward compatibility for terraform provider**: The Terraform provider was a little neglected and should receive
-  backwards compatibility with 3.3.x & 3.4.x. Hopefully this helps with the adoption of Cobbler into more environments. 
+  backwards compatibility with 3.3.x & 3.4.x. Hopefully this helps with the adoption of Cobbler into more environments.
 - **Backward compatibility for Web-UI** with 3.3.x: Since the old Web-UI was removed for 3.3.x and wasn't delivered in
   time.
 - **API specification**: I aim to create an openAPI specification. The big problem is XML-RPC since openAPI only allows
@@ -81,7 +81,7 @@ I am planning after 3.4.0 to achieve the following things either with a 3.4.x re
   with much effort. The creation of this API specification should allow for auto-generated API clients in many languages
   in the long-term future and much easier exploration of the Cobbler API.
 - **More automated documentation updates**: At the moment we have a lot of documentation. I hope to move this closer to
-  the actual code pieces to enable our docs to be more up to date so the efforts is lowered to maintain them. 
+  the actual code pieces to enable our docs to be more up to date so the efforts is lowered to maintain them.
 
 ### Zero-Bug strategy
 
@@ -101,7 +101,7 @@ I personally am planning to achieve that with my contributions through the follo
 
 ## Long term plans
 
-Noting concrete here but a list of things that come into my mind and partly already have tickets:
+Nothing concrete here but a list of things that come into my mind and partly already have tickets:
 
 - Transition away from XML-RPC
 - Introduce Rust or golang server side
