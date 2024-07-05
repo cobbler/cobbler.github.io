@@ -19,6 +19,6 @@ plugins:
   - jekyll-default-layout
   - jekyll-titles-from-headings
 cobbler:
-  version: 3.3.4
-  released: 2024-02-26
-  versions: [3.3.4]
+  version: 3.3.5
+  released: 2024-07-05
+  versions: [3.3.5]
