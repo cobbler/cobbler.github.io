@@ -1,0 +1,9 @@
+#!/bin/bash 
+for PROFILE in $(cobbler profile list); do
+    DIST=$(cobbler profile report --name $PROFILE | grep ^Distribution | awk {' print $3 '});
+    VER=$(cobbler distro report --name $DIST | grep "OS Version" | awk {' print $4 '});
+    [[ ($VER == "focal" || $VER == "jammy" || $VER == "noble") ]] || continue;
+    sed -i "s,auto-install/enable=true priority=critical netcfg/choose_interface=auto url=http://10.0.0.10/cblr/svc/op/autoinstall/profile/${PROFILE} hostname=.* domain=local.lan suite=${VER},," /var/lib/tftpboot/grub/x86_64_menu_items.cfg;
+    sed -i "s,auto-install/enable=true priority=critical netcfg/choose_interface=auto url=http://10.0.0.10/cblr/svc/op/autoinstall/profile/${PROFILE} hostname=.* domain=local.lan suite=${VER},," /var/lib/tftpboot/pxelinux.cfg/default;
+    DIST="" && VER="";
+done

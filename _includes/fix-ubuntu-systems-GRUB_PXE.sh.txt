@@ -1,0 +1,12 @@
+#!/bin/bash 
+for SYSTEM in $(cobbler system list); do
+    PROFILE=$(cobbler system report --name $SYSTEM | grep ^Profile | awk {' print $3 '})
+    DIST=$(cobbler profile report --name $PROFILE | grep ^Distribution | awk {' print $3 '});
+    VER=$(cobbler distro report --name $DIST | grep "OS Version" | awk {' print $4 '});
+    [[ ($VER == "focal" || $VER == "jammy" || $VER == "noble") ]] || continue;
+    MAC=$(cobbler system report --name $SYSTEM | grep "MAC Addr" | awk {' print $4 '})
+    sed -i "s,auto-install/enable=true priority=critical netcfg/choose_interface=auto url=http://10.0.0.10/cblr/svc/op/autoinstall/system/${SYSTEM} hostname=.* domain=local.lan suite=${VER},," /var/lib/tftpboot/grub/system/$MAC;
+    MAC=$(echo $MAC | sed 's,:,-,g');
+    sed -i "s,auto-install/enable=true priority=critical netcfg/choose_interface=auto url=http://10.0.0.10/cblr/svc/op/autoinstall/profile/${PROFILE} hostname=.* domain=local.lan suite=${VER},," /var/lib/tftpboot/pxelinux.cfg/01-$MAC;
+	PROFILE="" && DIST="" && VER="" && MAC="";
+done
