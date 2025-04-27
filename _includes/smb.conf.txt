@@ -1,0 +1,13 @@
+[global]
+        server role = standalone
+        log level = 5
+        load printers = no
+        security = USER
+        map to guest = Bad User
+        guest account = nobody
+[DISTRO]
+        path = /var/www/cobbler
+        public = yes
+        browseable = yes
+        writeable = no
+        printable = no
