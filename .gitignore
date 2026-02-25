@@ -3,3 +3,7 @@ _site
 test.idx
 .idea/
 Gemfile.lock
+
+
+# Ignore VSCode AI rules
+.github/instructions/codacy.instructions.md
